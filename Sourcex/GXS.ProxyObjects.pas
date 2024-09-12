@@ -54,9 +54,11 @@ type
       write SetMasterMaterialObject;
   end;
 
-  { A proxy object with its own material.
-     This proxy object can take a mesh from one master and a materia from
-     a material library. }
+  (*
+    A proxy object with its own material.
+    This proxy object can take a mesh from one master and a materia from
+    a material library.
+  *)
   TgxMaterialProxy = class(TgxProxyObject, IgxMaterialLibrarySupported)
   private
     FTempLibMaterialName: string;
@@ -76,13 +78,15 @@ type
     destructor Destroy; override;
     procedure DoRender(var ARci: TgxRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
-    { Specifies the Material, that current master object will use.
-       Provides a faster way to access FMasterLibMaterial, compared to
-       MasterLibMaterialName }
+    (*
+      Specifies the Material, that current master object will use.
+      Provides a faster way to access FMasterLibMaterial, compared to
+      MasterLibMaterialName
+    *)
     property MasterLibMaterial: TgxLibMaterial read FMasterLibMaterial write
       FMasterLibMaterial stored False;
   published
-    
+
     property MaterialLibrary: TgxMaterialLibrary read FMaterialLibrary write
       SetMaterialLibrary;
     // Specifies the Material, that current master object will use.
@@ -172,12 +176,15 @@ type
     property EndFrame: Integer read FEndFrame;
     property CurrentFrameDelta: Single read FCurrentFrameDelta;
     property CurrentTime: TGProgressTimes read FCurrentTime;
-    { Gets the Bones Matrix in the current animation frame.
-     (since the masterobject is shared between all proxies, each proxy will have it's bones matrices) }
+    (*
+     Gets the Bones Matrix in the current animation frame.
+     (since the masterobject is shared between all proxies,
+      each proxy will have it's bones matrices)
+     *)
     function BoneMatrix(BoneIndex: integer): TMatrix4f; overload;
     function BoneMatrix(BoneName: string): TMatrix4f; overload;
     procedure BoneMatricesClear;
-    { A standard version of the RayCastIntersect function. }
+    // A standard version of the RayCastIntersect function
     function RayCastIntersect(const rayStart, rayVector: TVector4f;
       intersectPoint: PVector4f = nil;
       intersectNormal: PVector4f = nil): Boolean; override;
@@ -221,9 +228,7 @@ type
       SetOnBeforeRender;
   end;
 
-//-------------------------------------------------------------
-implementation
-//-------------------------------------------------------------
+implementation //-------------------------------------------------------------
 
 // ------------------
 // ------------------ TgxColorProxy ------------------
@@ -238,7 +243,6 @@ end;
 destructor TgxColorProxy.Destroy;
 begin
   FFrontColor.Free;
-
   inherited Destroy;
 end;
 
@@ -376,7 +380,6 @@ begin
         SetVector(intersectNormal^, LocalToAbsolute(intersectNormal^));
       end;
     end;
-
   end;
 end;
 
@@ -509,9 +512,7 @@ begin
 
           if Assigned(FOnBeforeRender) then
             FOnBeforeRender(self, FCurrentTime.deltaTime, FCurrentTime.newTime);
-
           DoRender(ARci, ARenderSelf, Count > 0);
-
           // Stores Bones matrices of the current frame
           if (FStoreBonesMatrix) and (MasterActor.Skeleton <> nil) then
             DoStoreBonesMatrices;
@@ -523,7 +524,6 @@ begin
           startframe := sf;
           endframe := ef;
         end;
-
         ARci.proxySubObject := oldProxySubObject;
       end;
     end;
@@ -584,7 +584,6 @@ begin
           Bmo.BoneIndex := Bone.BoneID;
           FBonesMatrices.AddObject(Bone.Name, Bmo);
         end;
-
       end;
     end;
   end;
@@ -664,7 +663,6 @@ begin
 
     // FORCE ACTOR TO ASSUME ACTORPROXY CURRENT ANIMATION FRAME
     TgxDummyActor(RefActor).DoAnimate();
-
     HaspooTransformation := pooTransformation in self.ProxyOptions;
 
     // transform RAYSTART
@@ -915,9 +913,7 @@ begin
   end;
 end;
 
-//-------------------------------------------------------------
-initialization
-//-------------------------------------------------------------
+initialization //-------------------------------------------------------------
 
   RegisterClasses([TgxColorProxy, TgxFreeFormProxy, TgxActorProxy,
     TgxMaterialProxy]);

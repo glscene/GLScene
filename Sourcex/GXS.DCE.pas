@@ -37,16 +37,16 @@ uses
   GLScene.Manager,
   GLScene.VectorTypes,
   GLScene.Strings,
+  GLScene.Coordinates,
 
   GXS.Scene,
   GXS.VectorFileObjects,
   GXS.DCEMisc,
   GXS.EllipseCollision,
-  GXS.TerrainRenderer,
-  GLScene.Coordinates;
+  GXS.TerrainRenderer;
 
 type
-  // Only csEllipsoid can have dynamic behaviour 
+  // Only csEllipsoid can have dynamic behaviour
   TgxDCEShape = (csEllipsoid, csBox, csFreeform, csTerrain);
 
   (* Indicates which type of layer comparison is made when trying to detect
@@ -177,7 +177,7 @@ type
     FBounceFactor: single; // 0 (don't bounce); 1 (bounce forever)
     FSize: TgCoordinates;
     //Number of iterations of the collision method
-	FMaxRecursionDepth: byte;
+   	FMaxRecursionDepth: byte;
     FSlideOrBounce: TgxDCESlideOrBounce; // gak20041122
     // Movement
     FAccel: TAffineVector; // Current acceleration
@@ -239,9 +239,7 @@ function GetOrCreateDCEStatic(obj: TgxBaseSceneObject): TgxDCEStatic; overload;
 function GetOrCreateDCEDynamic(behaviours: TgxBehaviours): TgxDCEDynamic; overload;
 function GetOrCreateDCEDynamic(obj: TgxBaseSceneObject): TgxDCEDynamic; overload;
 
-// -------------------------------------------------------------------
-implementation
-// -------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 function RotateVectorByObject(obj: TgxBaseSceneObject; v: TAffineVector): TAffineVector;
 var
@@ -1115,17 +1113,16 @@ begin
   result := GetOrCreateDCEDynamic(obj.behaviours);
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // ------------------------------------------------------------
 
 
 RegisterXCollectionItemClass(TgxDCEStatic);
 RegisterXCollectionItemClass(TgxDCEDynamic);
 
-finalization
+finalization // --------------------------------------------------------------
 
 UnregisterXCollectionItemClass(TgxDCEStatic);
 UnregisterXCollectionItemClass(TgxDCEDynamic);
+
 
 end.

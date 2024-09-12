@@ -2957,9 +2957,7 @@ begin
   Result := (Abs(AlphaFuncRef) > 0.001);
 end;
 
-//-------------------------------------------------
-initialization
-//-------------------------------------------------
+initialization //--------------------------------------------------------------
 
 RegisterClasses([TgxMaterialLibrary, TgxMaterial, TgxShader]);
 

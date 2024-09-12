@@ -4,11 +4,10 @@
 unit GLS.SmartObjects;
 
 (*
-  These objects have built-in properties and methods to support sound, vision,
-  physics, and finding shortest paths through obstacle terrains. In addition,
-  they have artificial intelligence to conduct dialogues and make
-  independent decisions. The smart spatial objects are used to interact
-  with other smart objects.
+  The objects that have built-in properties and methods to support sound, vision,
+  physics, and finding shortest paths through mezza obstacles, hightfields or terrains. 
+  They should have AI to conduct dialogues and make independent decisions. 
+  The smart spatial objects are used to interact with other smart objects and cyborgs.
 
   The registered classes:
    [TGLSmartGerm, TGLSmartCells, TGLSmartSwarm, TGLSmartNet, TGLCyborg, TGLCyborgs]

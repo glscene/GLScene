@@ -313,14 +313,13 @@
         <DCCReference Include="..\SourceX\GXS.ROAMPatch.pas"/>
         <DCCReference Include="..\SourceX\GXS.Ragdoll.pas"/>
         <DCCReference Include="..\SourceX\GXS.RandomHDS.pas"/>
-        <DCCReference Include="..\SourceX\GXS.RedBlackTree.pas"/>
+        <DCCReference Include="..\Source\GLScene.RedBlackTree.pas"/>
         <DCCReference Include="..\SourceX\GXS.RenderContextInfo.pas"/>
         <DCCReference Include="..\SourceX\GXS.Scene.pas"/>
         <DCCReference Include="..\SourceX\GXS.WinContext.pas"/>
         <DCCReference Include="..\SourceX\GXS.SceneViewer.pas"/>
         <DCCReference Include="..\SourceX\GXS.Screen.pas"/>
         <DCCReference Include="..\SourceX\GXS.ScreenSaver.pas"/>
-        <DCCReference Include="..\SourceX\GXS.ScriptBase.pas"/>
         <DCCReference Include="..\SourceX\GXS.Selection.pas"/>
         <DCCReference Include="..\SourceX\GXS.ShadowHDS.pas"/>
         <DCCReference Include="..\SourceX\GXS.ShadowPlane.pas"/>
@@ -329,7 +328,7 @@
         <DCCReference Include="..\SourceX\GXS.SimpleNavigation.pas"/>
         <DCCReference Include="..\SourceX\GXS.Skydome.pas"/>
         <DCCReference Include="..\SourceX\GXS.SmoothNavigator.pas"/>
-        <DCCReference Include="..\SourceX\GXS.Sound.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.SoundManager.pas"/>
         <DCCReference Include="..\SourceX\GXS.SoundFileObjects.pas"/>
         <DCCReference Include="..\SourceX\GXS.SpaceText.pas"/>
         <DCCReference Include="..\SourceX\GXS.SpatialPartitioning.pas"/>
@@ -420,6 +419,9 @@
         <DCCReference Include="..\Source\GLScene.Polynomials.pas"/>
         <DCCReference Include="..\Source\GLScene.Color.pas"/>
         <DCCReference Include="..\Source\GLScene.PipelineTransform.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.ScriptBase.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.SmartObjects.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CyborgManager.pas"/>
         <None Include="..\Sourcex\GXS.Scene.inc"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">

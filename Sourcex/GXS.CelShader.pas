@@ -22,22 +22,25 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.Color,
+  GLScene.TextureFormat,
+
   GXS.Texture,
   GXS.Context,
   GXS.Graphics,
   GXS.ImageUtils,
-  GLScene.Color,
   GXS.RenderContextInfo,
   GXS.Material,
-  GXS.State,
-  GLScene.TextureFormat;
+  GXS.State;
 
 type
-  { Cel shading options.
+  (*
+   Cel shading options.
      csoOutlines: Render a second outline pass.
      csoTextured: Allows for a primary texture that the cel shading
                   is modulated with and forces the shade definition
-                  to render as a second texture. }
+                  to render as a second texture.
+  *)
   TgxCelShaderOption = (csoOutlines, csoTextured, csoNoBuildShadeTexture);
   TgxCelShaderOptions = set of TgxCelShaderOption;
 
@@ -45,7 +48,7 @@ type
   TgxCelShaderGetIntensity = procedure(Sender: TObject; var intensity: Byte) of
     object;
 
-  { A generic cel shader.  }
+  // A generic cel shader.
   TgxCelShader = class(TgxShader)
   private
     FOutlineWidth: Single;
@@ -63,16 +66,12 @@ type
     procedure BuildShadeTexture;
     procedure Loaded; override;
     function GenerateVertexProgram: string;
-
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-
     procedure DoApply(var rci: TgxRenderContextInfo; Sender: TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
-
     property ShadeTexture: TgxTexture read FShadeTexture;
-
   published
     property CelShaderOptions: TgxCelShaderOptions read FCelShaderOptions write
       SetCelShaderOptions;
@@ -82,9 +81,7 @@ type
       FOnGetIntensity;
   end;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // -----------------------------------------------------------
 
 // ------------------
 // ------------------ TgxCelShader ------------------
@@ -325,6 +322,8 @@ begin
     NotifyChange(Self);
   end;
 end;
+
+//--------------------------------------------------------------------------
 
 end.
 

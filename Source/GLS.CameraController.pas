@@ -20,10 +20,10 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-
-  GLS.Scene,
   GLScene.Coordinates,
   GLScene.PersistentClasses,
+
+  GLS.Scene,
   GLS.SmoothNavigator;
 
 type

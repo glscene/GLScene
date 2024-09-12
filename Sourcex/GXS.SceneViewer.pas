@@ -28,7 +28,7 @@ uses
   GXS.WinContext;
 
 type
-  TCreateParams = record
+  TgxCreateParams = record
     Caption: PChar;
     Style: DWORD;
     ExStyle: DWORD;
@@ -40,7 +40,8 @@ type
     WinClassName: array[0..63] of Char;
   end;
 
-  TTouchEvent = procedure(X, Y, TouchWidth, TouchHeight : integer; TouchID : Cardinal; MultiTouch : boolean) of object;
+  TgxTouchEvent = procedure(X, Y, TouchWidth, TouchHeight : integer;
+    TouchID : Cardinal; MultiTouch : boolean) of object;
 
   (* Component where the GLScene objects get rendered.
      This component delimits the area where OpenGL renders the scene,
@@ -60,9 +61,9 @@ type
     FMouseInControl: Boolean;
     FLastScreenPos: TPoint;
     FPenAsTouch: boolean;
-    FOnTouchMove: TTouchEvent;
-    FOnTouchUp: TTouchEvent;
-    FOnTouchDown: TTouchEvent;
+    FOnTouchMove: TgxTouchEvent;
+    FOnTouchUp: TgxTouchEvent;
+    FOnTouchDown: TgxTouchEvent;
     procedure WMEraseBkgnd(var Message: TWMEraseBkgnd); message WM_ERASEBKGND;
     procedure WMPaint(var Message: TWMPaint); message WM_PAINT;
     procedure WMSize(var Message: TWMSize); message WM_SIZE;
@@ -86,7 +87,7 @@ type
     procedure SetCamera(const val: TgxCamera);
     function GetCamera: TgxCamera;
     procedure SetBuffer(const val: TgxSceneBuffer);
-    procedure CreateParams(var Params: TCreateParams); /// Vcl - override;
+    procedure CreateParams(var Params: TgxCreateParams); /// Vcl - override;
     procedure CreateWnd; /// Vcl - override;
     procedure DestroyWnd; /// Vcl - override;
     procedure Loaded; override;
@@ -143,9 +144,9 @@ type
     property PenAsTouch: boolean read FPenAsTouch write FPenAsTouch;
     property OnMouseLeave: TNotifyEvent read FOnMouseLeave write FOnMouseLeave;
     property OnMouseEnter: TNotifyEvent read FOnMouseEnter write FOnMouseEnter;
-    property OnTouchMove: TTouchEvent read FOnTouchMove write FOnTouchMove;
-    property OnTouchUp: TTouchEvent read FOnTouchUp write FOnTouchUp;
-    property OnTouchDown: TTouchEvent read FOnTouchDown write FOnTouchDown;
+    property OnTouchMove: TgxTouchEvent read FOnTouchMove write FOnTouchMove;
+    property OnTouchUp: TgxTouchEvent read FOnTouchUp write FOnTouchUp;
+    property OnTouchDown: TgxTouchEvent read FOnTouchDown write FOnTouchDown;
     property Align;
     property Anchors;
 ///    property DragCursor;
@@ -183,9 +184,7 @@ procedure SetupVSync(const AVSyncMode : TgxSyncMode);
 var
  Handle: HWND;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // -----------------------------------------------------------
 
 // ------------------
 // ------------------ TgxSceneViewerFMX ------------------
@@ -304,7 +303,7 @@ begin
   FBuffer.Assign(val);
 end;
 
-procedure TgxSceneViewer.CreateParams(var Params: TCreateParams);
+procedure TgxSceneViewer.CreateParams(var Params: TgxCreateParams);
 begin
   inherited;  /// Vcl -  inherited CreateParams(Params);
   with Params do
@@ -554,9 +553,7 @@ begin
   end;
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // ------------------------------------------------------------
 
   RegisterClass(TgxSceneViewer);
 

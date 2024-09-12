@@ -243,7 +243,7 @@ begin
   inherited;
 end;
 
-initialization
+initialization //-------------------------------------------------------------
 
 RegisterClasses([TGLScriptLibrary, TGLScripts, TGLScriptBase]);
 

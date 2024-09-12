@@ -202,8 +202,10 @@ type
     property LightSmoothing: boolean read FLightSmoothing write SetLightSmoothing;
     (* Not used *)
     property MaterialName: string read FMaterialName write SetMaterialName;
-    { If true, the height-field will not be emptied and generation will take the
-      existing heights to shape the new landscape }
+    (*
+      If true, the height-field will not be emptied and generation will take the
+      existing heights to shape the new landscape
+    *)
     property PrimerLandscape: boolean read FPrimerLandscape write SetPrimerLandscape;
     // Enable the sea surface truncation
     property Sea: boolean read FSea write SetSea;
@@ -604,9 +606,7 @@ procedure PrimerIsland(LowZ, HighZ: single; var z: TMapOfSingle);
 const
   VerticalScalingFactor = 128;
 
-// ==========================================================================
-implementation
-// ==========================================================================
+implementation //-------------------------------------------------------------
 
 const // Neighbourhood vectors and weight
   NeighX: array [0 .. 8] of integer = (-1, 0, 1, 1, 1, 0, -1, -1, 0);
@@ -3116,9 +3116,7 @@ begin
   end; // for i
 end;
 
-//----------------------------------------------
-initialization
-//----------------------------------------------
+initialization //-------------------------------------------------------------
 
 rhdsStartTime := GetTickCount;
 

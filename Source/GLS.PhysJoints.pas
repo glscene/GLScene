@@ -11,8 +11,8 @@ unit GLS.PhysJoints;
 interface
 
 uses
-  GLScene.VectorTypes,
   GLS.Scene,
+  GLScene.VectorTypes,
   GLScene.VectorGeometry;
 
 type
@@ -207,9 +207,7 @@ type
   TGLBallAndSocketJoint = class(TGLJoint)
   end;
 
-//======================================================================
-implementation
-//======================================================================
+implementation //--------------------------------------------------------------
 
 constructor TGLLink.Create(LinkLength, TwistAngle, LinkAngle,
   LinkDistance: Real);
@@ -259,5 +257,7 @@ constructor TGLType8Link.Create(Length, Angle: Real);
 begin
   inherited Create(Length, 0, Angle, 0);
 end;
+
+//---------------------------------------------------------------------------
 
 end.

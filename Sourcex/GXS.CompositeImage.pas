@@ -14,9 +14,10 @@ uses
   System.Classes,
   FMX.Graphics,
 
+  GLScene.TextureFormat,
+
   GXS.Graphics,
   GXS.Texture,
-  GLScene.TextureFormat,
   GXS.Context;
 
 type
@@ -51,9 +52,7 @@ type
     property Depth: Integer read GetDepth write SetDepth;
   end;
 
-//=========================================================
-implementation
-//=========================================================
+implementation //------------------------------------------------------------
 
 // ------------------
 // ------------------ TgxCompositeImage ------------------
@@ -268,9 +267,8 @@ begin
     Result := ttNoShape;
 end;
 
-//=========================================================
-initialization
-//=========================================================
+initialization //-------------------------------------------------------------
+
   RegisterTextureImageClass(TgxCompositeImage);
 
 end.

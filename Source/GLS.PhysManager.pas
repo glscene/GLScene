@@ -10,7 +10,6 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  Vcl.Dialogs,
 
   GLScene.XCollection,
   GLScene.VectorGeometry,
@@ -31,7 +30,7 @@ type
     RungeKutta2, ***RungeKutta4***, RungKutta4Adaptive
     State Variables:  Position,  Velocity
 
-    Verlet 
+    Verlet
     State Variables:  Position, Old Position
   *)
 
@@ -265,7 +264,7 @@ procedure TGLPhysManager.WriteForces(stream: TStream);
 var
   writer: TWriter;
 begin
-  // messagedlg('Writing forces',mtInformation,[mbOk],0);
+  // Writing forces
   writer := TWriter.Create(stream, 16384);
   try
     Forces.WriteToFiler(writer);
@@ -447,7 +446,7 @@ var
   // UnDampedMomentum,DampedMomentum:Real;
 begin
 {$IFDEF DEBUG}
-  messagedlg('Euler integration', mtinformation, [mbok], 0);
+  Write('Euler integration');
 {$ENDIF}
   for i := 0 to Owner.fInertias.Count - 1 do
   begin
@@ -695,7 +694,7 @@ begin
       FManager.DeRegisterInertia(Self);
     if Assigned(val) then
       val.RegisterInertia(Self);
-    // messagedlg(val.GetNamePath,mtinformation,[mbok],0);
+    // Write(val.GetNamePath);
   end;
 end;
 
@@ -715,7 +714,7 @@ end;
 
 procedure TGLBaseInertia.WriteToFiler(writer: TWriter);
 begin
-  inherited; // Dan Bartlett
+  inherited;
   with writer do
   begin
     WriteInteger(0); // Archive Version 0

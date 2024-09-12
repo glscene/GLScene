@@ -21,7 +21,7 @@ uses
   System.Classes,
 
   Vcl.Forms,
-  VCL.Dialogs,
+ // VCL.Dialogs,
 
   GLS.ApplicationFileIO,
 
@@ -210,7 +210,8 @@ begin
   if not FileExists(FSourceCodeFile) then
   begin
     if csDesigning in ComponentState then
-      MessageDlg('Source File Not Found', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
+      // MessageDlg('Source File Not Found', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
+      Write('Source File Not Found')
     else
      {$IFDEF USE_LOGGING}
        LogError('Source File Not Found');
@@ -333,7 +334,8 @@ begin
       else
       begin
         if csDesigning in ComponentState then
-          MessageDlg('Fail Run NVCC', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
+          // MessageDlg('Fail Run NVCC', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
+          Write('Fail Run NVCC')
         else
          {$IFDEF USE_LOGGING}
             LogError('Fail Run NVCC');
@@ -353,7 +355,8 @@ begin
         FConsoleContent := string(StrPas(Buffer));
         msg := Format('Success Compilation', [FConsoleContent]);
         if csDesigning in ComponentState then
-          MessageDlg(msg, TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0)
+          // MessageDlg(msg, TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0)
+          Write(msg)
         else
          {$IFDEF USE_LOGGING}
            LogInfo(msg);
@@ -363,7 +366,8 @@ begin
       begin
         msg := Format('Fail Compilation', [StrPas(Buffer)]);
         if csDesigning in ComponentState then
-          MessageDlg(msg, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
+          //MessageDlg(msg, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
+          Write(msg)
         else
           {$IFDEF USE_LOGGING}
             LogError(msg);
@@ -378,7 +382,8 @@ begin
     else
     begin
       if csDesigning in ComponentState then
-        MessageDlg('Fail Create Pipe', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
+        //MessageDlg('Fail Create Pipe', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0)
+        Write(msg)
       else
        {$IFDEF USE_LOGGING}
         GLSLogger.LogError(strFailCreatePipe);
@@ -420,7 +425,7 @@ procedure TGLCUDACompiler.setOutputCodeType(const Value
   : TGLCUDACompilerOutput);
 begin
   if Value = codeUndefined then
-    exit;
+    Exit;
   FOutputCodeType := Value;
 end;
 

@@ -156,9 +156,7 @@ function GetOrCreateInertia(obj: TGLBaseSceneObject): TGLBInertia; overload;
 function GetOrCreateAcceleration(behaviours: TGLBehaviours): TGLBAcceleration; overload;
 function GetOrCreateAcceleration(obj: TGLBaseSceneObject): TGLBAcceleration; overload;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // -----------------------------------------------------------
 
 function GetInertia(const AGLSceneObject: TGLBaseSceneObject): TGLBInertia;
 var
@@ -602,15 +600,13 @@ begin
   end;
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // ------------------------------------------------------------
 
 // class registrations
   RegisterXCollectionItemClass(TGLBInertia);
   RegisterXCollectionItemClass(TGLBAcceleration);
 
-finalization
+finalization // --------------------------------------------------------------
 
   UnregisterXCollectionItemClass(TGLBInertia);
   UnregisterXCollectionItemClass(TGLBAcceleration);

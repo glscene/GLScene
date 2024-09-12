@@ -48,8 +48,8 @@ uses
   GLScene.PersistentClasses,
   GLScene.Strings,
   GLScene.Utils,
-
   GLScene.Coordinates,
+
   GXS.Scene,
   GXS.Objects,
   GXS.HUDObjects,

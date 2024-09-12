@@ -10,6 +10,6 @@ uses
 
 begin
   Application.Initialize;
-  Application.CreateForm(TfFormPathfinder, fFormPathfinder);
+  Application.CreateForm(TFormPathfinder, fFormPathfinder);
   Application.Run;
 end.

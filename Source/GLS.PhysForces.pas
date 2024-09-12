@@ -7,7 +7,6 @@ interface
 
 uses
   System.Classes,
-  Vcl.Dialogs,
 
   GLScene.VectorTypes,
   GLScene.XCollection,
@@ -139,18 +138,18 @@ end;
 
 procedure TGLForce.SetObject1(const val: TGLBaseSceneObject);
 begin
-  // if val.Behaviours.IndexOfClass(TGLBaseInertia) >=0 then
-  fObject1 := val
-  // else
-  // messagedlg('Object1 does not have an inertia behaviour',mtWarning,[mbOk],0);
+  if val.Behaviours.IndexOfClass(TGLBaseInertia) >=0 then
+    fObject1 := val
+  else
+    Write('Object1 does not have an inertia behaviour');
 end;
 
 procedure TGLForce.SetObject2(const val: TGLBaseSceneObject);
 begin
-  // if val.Behaviours.IndexOfClass(TGLBaseInertia) >=0 then
-  fObject2 := val
-  // else
-  // messagedlg('Object2 does not have an inertia behaviour',mtWarning,[mbOk],0);
+  if val.Behaviours.IndexOfClass(TGLBaseInertia) >=0 then
+    fObject2 := val
+  else
+   Write('Object2 does not have an inertia behaviour');
 end;
 
 procedure TGLForce.SetPosition1(const val: TgCoordinates);
@@ -204,7 +203,7 @@ end;
 procedure TGLForce.WriteToFiler(writer: TWriter);
 begin
   inherited WriteToFiler(writer);
-  // messagedlg('Writing to filer'+GetNamePath,mtInformation,[mbOk],0);
+  // Write('Writing to filer'+GetNamePath);
   with writer do
   begin
     fposition1.WriteToFiler(writer);
@@ -223,7 +222,7 @@ end;
 
 procedure TGLForce.ReadFromFiler(reader: TReader);
 begin
-  // messagedlg('Reading from filer'+GetNamePath,mtInformation,[mbOk],0);
+  // Read('Reading from filer'+GetNamePath);
   inherited ReadFromFiler(reader);
   with reader do
   begin
@@ -240,8 +239,11 @@ end;
 procedure TGLForce.SetName(const val: String);
 begin
   inherited SetName(val);
-  // if Assigned(vGLBehaviourNameChangeEvent) then
-  // vGLBehaviourNameChangeEvent(Self);
+  (*
+  if Assigned(vGLBehaviourNameChangeEvent)
+  then
+   vGLBehaviourNameChangeEvent(Self);
+  *)
 end;
 
 function TGLForce.CalculateForce(): TAffineVector;

@@ -21,21 +21,18 @@ uses
   GXS.Context;
 
 type
-
   TProcInt = procedure(I: Integer) of object;
   TProcAffineAffineAffine = procedure(V1, V2, V3: TAffineFLTVector) of object;
 
-  // Stores information about an intersected triangle. 
-  TOctreeTriangleInfo = record
+  // Stores information about an intersected triangle.
+  TgxOctreeTriangleInfo = record
     Index: Integer;
     Vertex: array [0 .. 2] of TAffineVector;
   end;
+  PgxOctreeTriangleInfo = ^TgxOctreeTriangleInfo;
 
-  POctreeTriangleInfo = ^TOctreeTriangleInfo;
-
-  POctreeNode = ^TOctreeNode;
-
-  TOctreeNode = record
+  PgxOctreeNode = ^TgxOctreeNode;
+  TgxOctreeNode = record
     MinExtent: TAffineFLTVector;
     MaxExtent: TAffineFLTVector;
     // TextureHandle:TgxTextureHandle;
@@ -43,7 +40,7 @@ type
     WillDraw: Boolean; // temporary change
     // Duplicates possible?
     TriArray: array of Integer; // array of triangle references
-    ChildArray: array [0 .. 7] of POctreeNode; // Octree's 8 children
+    ChildArray: array [0 .. 7] of PgxOctreeNode; // Octree's 8 children
   end;
 
   // Manages an Octree containing references to triangles.
@@ -63,38 +60,38 @@ type
     // Check if a sphere (at point C with radius) lies within the AABB specified by min and max entents
     function SphereInNode(const MinExtent, MaxExtent: TAffineVector;
       const C: TVector4f; Radius: Single): Boolean;
-    procedure WalkTriToLeafx(Onode: POctreeNode;
+    procedure WalkTriToLeafx(Onode: PgxOctreeNode;
       const V1, V2, V3: TAffineFLTVector);
-    procedure WalkPointToLeafx(ONode: POctreeNode; const P: TAffineVector);
-    procedure WalkSphereToLeafx(Onode: POctreeNode; const P: TVector4f;
+    procedure WalkPointToLeafx(ONode: PgxOctreeNode; const P: TAffineVector);
+    procedure WalkSphereToLeafx(Onode: PgxOctreeNode; const P: TVector4f;
       Radius: Single);
-    procedure WalkRayToLeafx(Onode: POctreeNode; const P, V: TVector4f);
-    function GetExtent(const Flags: array of Byte; ParentNode: POctreeNode)
+    procedure WalkRayToLeafx(Onode: PgxOctreeNode; const P, V: TVector4f);
+    function GetExtent(const Flags: array of Byte; ParentNode: PgxOctreeNode)
       : TAffineFLTVector;
     // Recursive routine to build nodes from parent to max depth level.
-    procedure Refine(ParentNode: POctreeNode; Level: Integer);
+    procedure Refine(ParentNode: PgxOctreeNode; Level: Integer);
     // Main "walking" routines.  Walks the item through the Octree down to a leaf node.
-    procedure WalkPointToLeaf(ONode: POctreeNode; const P: TAffineVector);
-    procedure WalkTriToLeaf(Onode: POctreeNode;
+    procedure WalkPointToLeaf(ONode: PgxOctreeNode; const P: TAffineVector);
+    procedure WalkTriToLeaf(Onode: PgxOctreeNode;
       const V1, V2, V3: TAffineVector);
-    procedure WalkRayToLeaf(Onode: POctreeNode; const P, V: TVector4f);
+    procedure WalkRayToLeaf(Onode: PgxOctreeNode; const P, V: TVector4f);
     // Example of how to process each node in the tree
-    procedure ConvertR4(ONode: POctreeNode; const Scale: TAffineFLTVector);
+    procedure ConvertR4(ONode: PgxOctreeNode; const Scale: TAffineFLTVector);
     procedure CreateTree(Depth: Integer);
     procedure CutMesh;
   public
     WorldMinExtent, WorldMaxExtent: TAffineFLTVector;
-    RootNode: POctreeNode; // always points to root node
-    MaxOlevel: Integer; // max depth level of TOctreeNode
+    RootNode: PgxOctreeNode; // always points to root node
+    MaxOlevel: Integer; // max depth level of TgxOctreeNode
     NodeCount: Integer;
     // number of nodes (ex: 8 for level 1, 72 for level 2 etc).
     TriCountMesh: Integer; // total number of triangles in the mesh
     TriCountOctree: Integer; // total number of triangles cut into the octree
     MeshCount: Integer; // number of meshes currently cut into the Octree
-    ResultArray: array of POctreeNode; // holds the result nodes of various calls
+    ResultArray: array of PgxOctreeNode; // holds the result nodes of various calls
     // Needed this change - Used in ECMisc.pas
     TriangleFiler: TgAffineVectorList;
-    procedure WalkSphereToLeaf(Onode: POctreeNode; const P: TVector4f;
+    procedure WalkSphereToLeaf(Onode: PgxOctreeNode; const P: TVector4f;
       Radius: Single);
     (* Initializes the tree from the triangle list.
       All triangles must be contained in the world extent to be properly
@@ -106,7 +103,7 @@ type
     destructor Destroy; override;
     function RayCastIntersect(const RayStart, RayVector: TVector4f;
       IntersectPoint: PVector4f = nil; IntersectNormal: PVector4f = nil;
-      TriangleInfo: POctreeTriangleInfo = nil): Boolean;
+      TriangleInfo: PgxOctreeTriangleInfo = nil): Boolean;
     function SphereSweepIntersect(const RayStart, RayVector: TVector4f;
       const Velocity, Radius: Single; IntersectPoint: PVector4f = nil;
       IntersectNormal: PVector4f = nil): Boolean;
@@ -123,9 +120,7 @@ type
     // function SphereIntersect(position:TAffineVector; radius:single);
   end;
 
-//===================================================================
-implementation
-//===================================================================
+implementation //--------------------------------------------------------
 
 // ----------------------------------------------------------------------
 // Name  : CheckPointInSphere()
@@ -815,8 +810,7 @@ begin
 end;
 
 procedure TgxOctree.DisposeTree;
-
-  procedure WalkDispose(var Node: POctreeNode);
+  (*sub*)procedure WalkDispose(var Node: PgxOctreeNode);
   var
     I: Integer;
   begin
@@ -847,7 +841,7 @@ procedure TgxOctree.CutMesh;
   procedure AddTriangleToNodes(N: Integer);
   var
     X, K: Integer;
-    P: POctreeNode;
+    P: PgxOctreeNode;
   begin
     for X := 0 to High(ResultArray) do
     begin
@@ -887,7 +881,7 @@ begin
   // This formula is non-quadrant specific; ie: good.
 end;
 
-function TgxOctree.GetExtent(const Flags: array of Byte; ParentNode: POctreeNode)
+function TgxOctree.GetExtent(const Flags: array of Byte; ParentNode: PgxOctreeNode)
   : TAffineFLTVector;
 var
   Emin, Emax: TAffineFLTVector;
@@ -914,7 +908,7 @@ procedure TgxOctree.InitializeTree(const AWorldMinExtent, AWorldMaxExtent
   const ATreeDepth: Integer);
 var
   N: Integer;
-  Newnode: POctreeNode;
+  Newnode: PgxOctreeNode;
 begin
   Self.WorldMinExtent := AWorldMinExtent;
   Self.WorldMaxExtent := AWorldMaxExtent;
@@ -939,12 +933,12 @@ begin
   CutMesh;
 end;
 
-procedure TgxOctree.Refine(ParentNode: POctreeNode; Level: Integer);
+procedure TgxOctree.Refine(ParentNode: PgxOctreeNode; Level: Integer);
 var
   N, X, Z: Integer;
-  Pwork: array [0 .. 7] of POctreeNode;
+  Pwork: array [0 .. 7] of PgxOctreeNode;
   // Stores addresses of newly created children.
-  Newnode: POctreeNode;
+  Newnode: PgxOctreeNode;
 begin
   if Level < MaxOlevel then
   begin
@@ -971,7 +965,7 @@ begin
   end; // end if
 end;
 
-procedure TgxOctree.ConvertR4(ONode: POctreeNode; const Scale: TAffineFLTVector);
+procedure TgxOctree.ConvertR4(ONode: PgxOctreeNode; const Scale: TAffineFLTVector);
 var
   N: Smallint;
 begin
@@ -994,13 +988,13 @@ begin
     (APoint.Z <= Max.Z);
 end;
 
-procedure TgxOctree.WalkPointToLeaf(Onode: POctreeNode; const P: TAffineVector);
+procedure TgxOctree.WalkPointToLeaf(Onode: PgxOctreeNode; const P: TAffineVector);
 begin
   Finalize(Resultarray);
   WalkPointToLeafx(Onode, P);
 end;
 
-procedure TgxOctree.WalkPointToLeafx(Onode: POctreeNode; const P: TAffineVector);
+procedure TgxOctree.WalkPointToLeafx(Onode: PgxOctreeNode; const P: TAffineVector);
 var
   N: Integer;
 begin
@@ -1047,14 +1041,14 @@ begin
     Result := FALSE;
 end;
 
-procedure TgxOctree.WalkSphereToLeaf(Onode: POctreeNode; const P: TVector4f;
+procedure TgxOctree.WalkSphereToLeaf(Onode: PgxOctreeNode; const P: TVector4f;
   Radius: Single);
 begin
   Finalize(Resultarray);
   WalkSphereToLeafx(Onode, P, Radius);
 end;
 
-procedure TgxOctree.WalkSphereToLeafx(Onode: POctreeNode; const P: TVector4f;
+procedure TgxOctree.WalkSphereToLeafx(Onode: PgxOctreeNode; const P: TVector4f;
   Radius: Single);
 var
   N: Integer;
@@ -1073,14 +1067,14 @@ begin
 end;
 
 // Cast a ray (point p, vector v) into the Octree (ie: ray-box intersect).
-procedure TgxOctree.WalkRayToLeaf(Onode: POctreeNode; const P, V: TVector4f);
+procedure TgxOctree.WalkRayToLeaf(Onode: PgxOctreeNode; const P, V: TVector4f);
 begin
   Finalize(Resultarray);
 
   WalkRayToLeafx(Onode, P, V);
 end;
 
-procedure TgxOctree.WalkRayToLeafx(Onode: POctreeNode; const P, V: TVector4f);
+procedure TgxOctree.WalkRayToLeafx(Onode: PgxOctreeNode; const P, V: TVector4f);
 var
   N: Integer;
   Coord: TVector4f;
@@ -1139,14 +1133,14 @@ end;
 
 //-----------------------------------------------------
 
-procedure TgxOctree.WalkTriToLeaf(Onode: POctreeNode;
+procedure TgxOctree.WalkTriToLeaf(Onode: PgxOctreeNode;
   const V1, V2, V3: TAffineFLTVector);
 begin
   Finalize(Resultarray);
   WalkTriToLeafx(Onode, V1, V2, V3);
 end;
 
-procedure TgxOctree.WalkTriToLeafx(Onode: POctreeNode;
+procedure TgxOctree.WalkTriToLeafx(Onode: PgxOctreeNode;
   const V1, V2, V3: TAffineFLTVector);
 var
   M: Integer;
@@ -1169,13 +1163,13 @@ end;
 
 function TgxOctree.RayCastIntersect(const RayStart, RayVector: TVector4f;
   IntersectPoint: PVector4f = nil; IntersectNormal: PVector4f = nil;
-  TriangleInfo: POctreeTriangleInfo = nil): Boolean;
+  TriangleInfo: PgxOctreeTriangleInfo = nil): Boolean;
 const
   CInitialMinD: Single = 1E40;
 var
   I, T, K: Integer;
   D, MinD: Single;
-  P: POctreeNode;
+  P: PgxOctreeNode;
   IPoint, INormal: TVector4f;
 begin
   WalkRayToLeaf(RootNode, RayStart, RayVector);
@@ -1261,7 +1255,7 @@ var
   I, T, K: Integer;
   MinD2, Sd2, Radius2: Single;
   DistanceToTravel, DistanceToTravelMinusRadius2: Single;
-  P: POctreeNode;
+  P: PgxOctreeNode;
   PNormal: TAffineVector;
   PNormal4: TVector4f;
   NEGpNormal4: TVector4f;
@@ -1418,7 +1412,7 @@ end;
 function TgxOctree.TriangleIntersect(const V1, V2, V3: TAffineVector): Boolean;
 var
   I, T, K: Integer;
-  P: POctreeNode;
+  P: PgxOctreeNode;
   P1, P2, P3: PAffineVector;
 begin
   Result := False; // default: no collision
@@ -1478,7 +1472,6 @@ begin
       { // } I := I + 3;
     end;
   end;
-
   TriList.Free;
 end;
 
@@ -1487,7 +1480,7 @@ function TgxOctree.GetTrianglesFromNodesIntersectingAABB(const ObjAABB: TAABB)
 var
   AABB1: TAABB;
 
-  procedure HandleNode(Onode: POctreeNode);
+  procedure HandleNode(Onode: PgxOctreeNode);
   var
     AABB2: TAABB;
     I: Integer;
@@ -1512,7 +1505,7 @@ var
 
 var
   I, K: Integer;
-  P: POctreeNode;
+  P: PgxOctreeNode;
   TriangleIndices: TgIntegerList;
 
 begin
@@ -1543,7 +1536,6 @@ begin
   finally
     TriangleIndices.Free;
   end;
-
 end;
 
 function TgxOctree.GetTrianglesFromNodesIntersectingCube(const ObjAABB: TAABB;
@@ -1552,7 +1544,7 @@ var
   AABB1: TAABB;
   M1To2, M2To1: TMatrix4f;
 
-  procedure HandleNode(Onode: POctreeNode);
+  procedure HandleNode(Onode: PgxOctreeNode);
   var
     AABB2: TAABB;
     I: Integer;
@@ -1577,7 +1569,7 @@ var
 
 var
   I, K: Integer;
-  P: POctreeNode;
+  P: PgxOctreeNode;
   TriangleIndices: TgIntegerList;
 begin
   // Calc AABBs
@@ -1611,5 +1603,7 @@ begin
     TriangleIndices.Free;
   end;
 end;
+
+//---------------------------------------------------------------------------
 
 end.

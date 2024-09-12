@@ -14,13 +14,14 @@ uses
   System.SysUtils,
 
   GLScene.XCollection,
-  GXS.Scene,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
-  GXS.VectorFileObjects,
   GLScene.GeometryBB,
   GLScene.Manager,
-  GLScene.VectorTypes;
+  GLScene.VectorTypes,
+
+  GXS.Scene,
+  GXS.VectorFileObjects;
 
 type
   TgxBCollision = class;
@@ -83,7 +84,7 @@ type
     class function FriendlyName: String; override;
     class function FriendlyDescription: String; override;
   published
-    { Refers the collision manager. }
+    // Refers the collision manager.
     property Manager: TgxCollisionManager read FManager write SetManager;
     property BoundingMode: TCollisionBoundingMode read FBoundingMode
       write FBoundingMode;
@@ -127,9 +128,7 @@ function GetOrCreateCollision(behaviours: TgxBehaviours)
   This helper function is convenient way to access a TgxBCollision. *)
 function GetOrCreateCollision(obj: TgxBaseSceneObject): TgxBCollision; overload;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 const
   cEpsilon: Single = 1E-6;
@@ -950,15 +949,13 @@ begin
   Result := GetOrCreateCollision(obj.behaviours);
 end;
 
-// ------------------------------------------------------------------
-initialization
-
-// ------------------------------------------------------------------
+initialization // -----------------------------------------------------------
 
 RegisterXCollectionItemClass(TgxBCollision);
 
-finalization
+finalization // -------------------------------------------------------------
 
 UnregisterXCollectionItemClass(TgxBCollision);
+
 
 end.

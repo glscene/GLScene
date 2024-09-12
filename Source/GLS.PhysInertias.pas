@@ -8,7 +8,6 @@ interface
 uses
   System.SysUtils,
   System.Classes,
-  Vcl.Dialogs,
 
   GLScene.PersistentClasses,
   GLScene.XCollection,
@@ -379,7 +378,10 @@ begin
   // F = -Normalised(V)*( Constant + (Linear)*(V) + (Quadtratic)*(V)*(V) )
   dampingForce := VectorScale(VectorNormalize(velocity),
     -(damping.Constant + damping.Linear * v + damping.Quadratic * v * v));
-  // dampingForce:=VectorScale(VectorNormalize(velocity),-(Damping.Constant+Damping.Linear*v+Damping.Quadratic*v*v));
+  (*
+    dampingForce:=VectorScale(VectorNormalize(velocity),
+    -(Damping.Constant+Damping.Linear*v+Damping.Quadratic*v*v));
+  *)
   ApplyForce(dampingForce);
 end;
 
@@ -779,12 +781,17 @@ begin
   fBodyInverseInertiaTensor := fBodyInertiaTensor;
 
   InvertMatrix(fBodyInverseInertiaTensor);
-  // Messagedlg('setting BodyIit: '+Format('%f,%f,%f,%f,%f,%f,%f,%f,%f',[fBodyInverseInertiaTensor[0][0],fBodyInverseInertiaTensor[0][1],fBodyInverseInertiaTensor[0][2],fBodyInverseInertiaTensor[1][0],fBodyInverseInertiaTensor[1][1],fBodyInverseInertiaTensor[1][2],fBodyInverseInertiaTensor[2][0],fBodyInverseInertiaTensor[2][1],fBodyInverseInertiaTensor[2][2]]),mtinformation,[mbok],0);
-
+  // Write
+  (*
+    Messagedlg('setting BodyIit: '+ Format('%f,%f,%f,%f,%f,%f,%f,%f,%f',
+    [fBodyInverseInertiaTensor[0][0],fBodyInverseInertiaTensor[0][1],fBodyInverseInertiaTensor[0][2],
+     fBodyInverseInertiaTensor[1][0],fBodyInverseInertiaTensor[1][1],fBodyInverseInertiaTensor[1][2],
+     fBodyInverseInertiaTensor[2][0],fBodyInverseInertiaTensor[2][1],
+     fBodyInverseInertiaTensor[2][2]]),mtinformation,[mbok],0);
+  *)
   AngularOrientation := IdentityQuaternion;
   AngularMomentum := VectorTransform(RotationSpeed.AsAffineVector,
     fBodyInertiaTensor);
-
 end;
 
 procedure TGLRigidBodyInertia.CalcAuxiliary();
@@ -820,7 +827,6 @@ begin
   OwnerBaseSceneObject.position.y := LinearPosition.Y;
   OwnerBaseSceneObject.position.z := LinearPosition.Z;
   OwnerBaseSceneObject.EndUpdate;
-
 end;
 
 procedure TGLRigidBodyInertia.StateToArray(var StateArray: TStateArray;
@@ -910,6 +916,8 @@ begin
   // SetDESolver(ssEuler);
 end;
 
+//---------------------------------------------------------------------------
+
 destructor TGLRigidBodyInertia.Destroy;
 begin
   // FLinearDamping.Free;
@@ -989,7 +997,7 @@ procedure TGLRigidBodyInertia.DoProgress(const progressTime : TProgressTimes);
   UnDampedAngularMomentum,DampedAngularMomentum:Real;
   i:integer;
   begin
-  //    messagedlg('Calculating next state...',mtinformation,[mbOk],0);
+  // Write('Calculating next state...');
 
   with OwnerBaseSceneObject do
   with progressTime do

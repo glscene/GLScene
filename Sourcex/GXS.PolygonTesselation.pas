@@ -25,9 +25,7 @@ uses
 procedure DoTesselate(Vertexes: TgAffineVectorList;
   Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 
-//------------------------------------------------
-implementation
-//------------------------------------------------
+implementation //-------------------------------------------------------------
 
 var
   TessMesh: TgxMeshObject;

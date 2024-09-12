@@ -29,6 +29,7 @@ uses
   Vcl.Dialogs,
   Vcl.ExtDlgs,
   Vcl.Graphics,
+
   GLScene.OpenGLTokens,
   GLScene.Strings,
   GLScene.VectorGeometry,
@@ -39,7 +40,6 @@ var
   vImageScaleFilterWidth: Integer = 5; // Relative sample radius for filtering
 
 type
-
   TIntermediateFormat = record
     R, G, B, A: Single;
   end;
@@ -91,7 +91,6 @@ procedure Build2DMipmap(const ASrc: Pointer; const ADst: TPointerArray;
 procedure AlphaGammaBrightCorrection(const ASrc: Pointer;
   AColorFormat: Cardinal; ADataType: Cardinal; ASrcWidth, ASrcHeight: Integer;
   anAlphaProc: TImageAlphaProc; ABrightness: Single; AGamma: Single);
-
 
 // Converts a string into color
 function StringToColorAdvancedSafe(const Str: string;
@@ -148,7 +147,6 @@ type
     Depth: Integer; // The bit depth.
     NumColors: Integer; // Number of entries in the device's color table.
   end;
-
 
 //----------------------------------------------------------------------------
 

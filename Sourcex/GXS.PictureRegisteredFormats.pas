@@ -25,9 +25,7 @@ function GraphicClassForExtension(const anExtension: string): TGraphicClass;
    the corresponding TGraphicClass (extensions do not include the '.'). *)
 procedure HackTPictureRegisteredFormats(destList: TStrings);
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // -----------------------------------------------------------
 
 type
   PInteger = ^integer;

@@ -47,7 +47,7 @@ type
   TECTriMeshList = Array of TECTriMesh;
 
   TECFreeForm = record
-    OctreeNodes: array of POctreeNode;
+    OctreeNodes: array of PgxOctreeNode;
     triangleFiler: ^TgAffineVectorList;
     InvertedNormals: Boolean;
     ObjectInfo: TECObjectInfo;
@@ -685,7 +685,7 @@ end;
 procedure CheckCollisionFreeForm(var MP: TECMovePack);
 var
   n, i, t, k: Integer;
-  p: POctreeNode;
+  p: PgxOctreeNode;
   p1, p2, p3: PAffineVector;
   v1, v2, v3: TAffineVector;
   Collided: Boolean;

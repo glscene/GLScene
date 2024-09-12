@@ -4792,15 +4792,13 @@ begin
   Result := GetProcAddressGLS('glResizeBuffersMESA') <> nil;
 end;
 
-//--------------------------------------
-initialization
-//--------------------------------------
+initialization //-------------------------------------------------------------
 
 {$IFNDEF CROSSVCL}
 Set8087CW($133F);
 {$ENDIF}
 
-finalization
+finalization //---------------------------------------------------------------
 
 CloseOpenGL;
 

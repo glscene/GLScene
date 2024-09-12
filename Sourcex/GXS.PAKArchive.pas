@@ -19,7 +19,6 @@ const
   SIGN = 'PACK';
 
 type
-
   TPakHeader = record
     Signature: array [0 .. 3] of AnsiChar;
     DirOffset: integer;
@@ -58,9 +57,7 @@ type
     procedure Extract(ContentName, NewName: string); override;
   end;
 
-//=======================================================
-implementation
-//=======================================================
+implementation //-------------------------------------------------------------
 
 var
   Dir: TFileSection;
@@ -286,9 +283,7 @@ begin
     Extract(FContentList.IndexOf(ContentName), NewName);
 end;
 
-//----------------------------------------
-initialization
-//----------------------------------------
+initialization //-------------------------------------------------------------
 
 RegisterArchiveFormat('pak', 'PAK File', TPAKArchive);
 

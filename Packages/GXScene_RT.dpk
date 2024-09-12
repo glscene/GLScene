@@ -164,14 +164,13 @@ contains
   GXS.ROAMPatch in '..\SourceX\GXS.ROAMPatch.pas',
   GXS.Ragdoll in '..\SourceX\GXS.Ragdoll.pas',
   GXS.RandomHDS in '..\SourceX\GXS.RandomHDS.pas',
-  GXS.RedBlackTree in '..\SourceX\GXS.RedBlackTree.pas',
+  GLScene.RedBlackTree in '..\Source\GLScene.RedBlackTree.pas',
   GXS.RenderContextInfo in '..\SourceX\GXS.RenderContextInfo.pas',
   GXS.Scene in '..\SourceX\GXS.Scene.pas',
   GXS.WinContext in '..\SourceX\GXS.WinContext.pas',
   GXS.SceneViewer in '..\SourceX\GXS.SceneViewer.pas',
   GXS.Screen in '..\SourceX\GXS.Screen.pas',
   GXS.ScreenSaver in '..\SourceX\GXS.ScreenSaver.pas',
-  GXS.ScriptBase in '..\SourceX\GXS.ScriptBase.pas',
   GXS.Selection in '..\SourceX\GXS.Selection.pas',
   GXS.ShadowHDS in '..\SourceX\GXS.ShadowHDS.pas',
   GXS.ShadowPlane in '..\SourceX\GXS.ShadowPlane.pas',
@@ -180,7 +179,7 @@ contains
   GXS.SimpleNavigation in '..\SourceX\GXS.SimpleNavigation.pas',
   GXS.Skydome in '..\SourceX\GXS.Skydome.pas',
   GXS.SmoothNavigator in '..\SourceX\GXS.SmoothNavigator.pas',
-  GXS.Sound in '..\SourceX\GXS.Sound.pas',
+  GXS.SoundManager in '..\Sourcex\GXS.SoundManager.pas',
   GXS.SoundFileObjects in '..\SourceX\GXS.SoundFileObjects.pas',
   GXS.SpaceText in '..\SourceX\GXS.SpaceText.pas',
   GXS.SpatialPartitioning in '..\SourceX\GXS.SpatialPartitioning.pas',
@@ -270,6 +269,9 @@ contains
   GLScene.Keyboard in '..\Source\GLScene.Keyboard.pas',
   GLScene.Polynomials in '..\Source\GLScene.Polynomials.pas',
   GLScene.Color in '..\Source\GLScene.Color.pas',
-  GLScene.PipelineTransform in '..\Source\GLScene.PipelineTransform.pas';
+  GLScene.PipelineTransform in '..\Source\GLScene.PipelineTransform.pas',
+  GXS.ScriptBase in '..\Sourcex\GXS.ScriptBase.pas',
+  GXS.SmartObjects in '..\Sourcex\GXS.SmartObjects.pas',
+  GXS.CyborgManager in '..\Sourcex\GXS.CyborgManager.pas';
 
 end.

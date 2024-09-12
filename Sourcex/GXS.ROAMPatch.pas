@@ -27,13 +27,13 @@ type
   // Exception use by splitter for SafeTesselation
   EGLROAMException = class(Exception);
 
-  PROAMTriangleNode = ^TROAMTriangleNode;
-  TROAMTriangleNode = packed record
+  PROAMTriangleNode = ^TgxROAMTriangleNode;
+  TgxROAMTriangleNode = packed record
     Base, Left, Right: PROAMTriangleNode;
     LeftChild, RightChild: PROAMTriangleNode;
   end;
 
-  TROAMRenderPoint = packed record
+  TgxROAMRenderPoint = packed record
     X, Y: Integer;
     Idx: Integer;
   end;
@@ -130,9 +130,7 @@ function GetROAMTrianglesCapacity: Integer;
 procedure DrawContours(Vertices: TgAffineVectorList; VertexIndices: TgIntegerList;
   ContourInterval: Integer; ContourWidth: Integer; DecVal: Integer);
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // -----------------------------------------------------------
 
 var
   FVBOVertHandle, FVBOTexHandle: TgxVBOArrayBufferHandle;
@@ -140,7 +138,7 @@ var
 
   vNextPatchID: Integer;
   vNbTris, vTriangleNodesCapacity: Integer;
-  vTriangleNodes: array of TROAMTriangleNode;
+  vTriangleNodes: array of TgxROAMTriangleNode;
 
   RenderRaster: PSmallIntRaster;
   RenderIndices: PIntegerArray;
@@ -821,9 +819,9 @@ begin
 end;
 
 procedure RecursRender(const tri: PROAMTriangleNode;
-  const Left, Right, apex: TROAMRenderPoint);
+  const Left, Right, apex: TgxROAMRenderPoint);
 var
-  half: TROAMRenderPoint;
+  half: TgxROAMRenderPoint;
   LocalIndices: PIntegerArray;
 begin
   if Assigned(tri.LeftChild) then
@@ -849,7 +847,7 @@ end;
 procedure TgxROAMPatch.RenderROAM(Vertices: TgAffineVectorList;
   VertexIndices: TgIntegerList; TexCoords: TGTexPointList);
 
-  procedure ROAMRenderPoint(var p: TROAMRenderPoint; anX, anY: Integer);
+  procedure ROAMRenderPoint(var p: TgxROAMRenderPoint; anX, anY: Integer);
   begin
     p.X := anX;
     p.Y := anY;
@@ -858,7 +856,7 @@ procedure TgxROAMPatch.RenderROAM(Vertices: TgAffineVectorList;
   end;
 
 var
-  rtl, rtr, rbl, rbr: TROAMRenderPoint;
+  rtl, rtr, rbl, rbr: TgxROAMRenderPoint;
 begin
   RenderVertices := Vertices;
   RenderTexCoords := TexCoords;
@@ -960,14 +958,14 @@ FVBOVertHandle := TgxVBOArrayBufferHandle.Create;
 FVBOTexHandle := TgxVBOArrayBufferHandle.Create;
 FVBOIndicesHandle := TgxVBOElementArrayHandle.Create;
 
-//---------------------------------------
-finalization
-//---------------------------------------
+finalization //-------------------------------------------------------------
 
 FVBOVertHandle.Free;
 FVBOTexHandle.Free;
 FVBOIndicesHandle.Free;
 
 SetROAMTrianglesCapacity(0);
+
+// -------------------------------------------------------------------------
 
 end.
