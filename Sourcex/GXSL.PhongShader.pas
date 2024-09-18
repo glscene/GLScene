@@ -28,7 +28,7 @@ uses
 type
   TgxPhongShader = class(TgxCustomAsmShader)
   private
-    FLightIDs: TgIntegerList;
+    FLightIDs: TgxIntegerList;
     FDesignTimeEnabled: Boolean;
     FAmbientPass: Boolean;
     procedure SetDesignTimeEnabled(const Value: Boolean);
@@ -183,7 +183,7 @@ begin
 
     Add('END');
   end;
-  FLightIDs := TgIntegerList.Create;
+  FLightIDs := TgxIntegerList.Create;
 end;
 
 function TgxPhongShader.ShaderSupported: Boolean;

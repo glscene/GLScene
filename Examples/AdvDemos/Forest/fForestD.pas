@@ -20,7 +20,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.XCollection,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLScene.TextureFormat,
@@ -112,7 +112,7 @@ type
     Path: TFileName;
     TestTree: TGLTree;
     TreesShown: Integer;
-    nearTrees: TGLPersistentObjectList;
+    nearTrees: TGPersistentObjectList;
     Imposter: TImposter;
     densityBitmap: TBitmap;
     mirrorTexture: TGLTextureHandle;
@@ -126,9 +126,7 @@ type
 var
   Form1: TForm1;
 
-// -----------------------------------------------
-implementation
-// -----------------------------------------------
+implementation // ------------------------------------------------------------
 
 {$R *.dfm}
 
@@ -218,7 +216,7 @@ begin
   SetCursorPos(lmp.X, lmp.Y);
   ShowCursor(False);
 
-  nearTrees := TGLPersistentObjectList.Create;
+  nearTrees := TGPersistentObjectList.Create;
 
   camTurn := -60;
   enableRectReflection := False;

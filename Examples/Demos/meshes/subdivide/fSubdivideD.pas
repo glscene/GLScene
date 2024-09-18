@@ -21,7 +21,7 @@ uses
   GLS.SceneViewer,
   GLS.MeshUtils,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.Cadencer,
 
   GLS.Material,

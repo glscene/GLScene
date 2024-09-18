@@ -16,7 +16,7 @@ uses
   Vcl.StdCtrls,
 
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,

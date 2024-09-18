@@ -31,7 +31,7 @@
 #include "GLS.SkyDome.hpp"
 #include "GLS.TerrainRenderer.hpp"
 
-#include "GLScene.VectorLists.hpp"
+#include "GLS.VectorLists.hpp"
 #include "GLScene.VectorTypes.hpp"
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.VectorFileObjects.hpp"

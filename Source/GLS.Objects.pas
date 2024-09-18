@@ -238,13 +238,13 @@ type
     FEnabled: Boolean;
     FMinSize, FMaxSize: Single;
     FFadeTresholdSize: Single;
-    FDistanceAttenuation: TgCoordinates;
+    FDistanceAttenuation: TGLCoordinates;
   protected
     procedure SetEnabled(const val: Boolean);
     procedure SetMinSize(const val: Single);
     procedure SetMaxSize(const val: Single);
     procedure SetFadeTresholdSize(const val: Single);
-    procedure SetDistanceAttenuation(const val: TgCoordinates);
+    procedure SetDistanceAttenuation(const val: TGLCoordinates);
     procedure DefineProperties(Filer: TFiler); override;
     procedure ReadData(Stream: TStream);
     procedure WriteData(Stream: TStream);
@@ -261,7 +261,7 @@ type
     property FadeTresholdSize: Single read FFadeTresholdSize
       write SetFadeTresholdSize stored False;
     // Components XYZ are for constant, linear and quadratic attenuation.
-    property DistanceAttenuation: TgCoordinates read FDistanceAttenuation
+    property DistanceAttenuation: TGLCoordinates read FDistanceAttenuation
       write SetDistanceAttenuation;
   end;
 
@@ -271,7 +271,7 @@ type
   TGLPoints = class(TGLImmaterialSceneObject)
   private
     FPositions: TGLAffineVectorList;
-    FColors: TGVectorList;
+    FColors: TGLVectorList;
     FSize: Single;
     FStyle: TGLPointStyle;
     FPointParameters: TGLPointParameters;
@@ -282,7 +282,7 @@ type
     procedure SetStatic(const val: Boolean);
     procedure SetSize(const val: Single);
     procedure SetPositions(const val: TGLAffineVectorList); inline;
-    procedure SetColors(const val: TGVectorList);
+    procedure SetColors(const val: TGLVectorList);
     procedure SetStyle(const val: TGLPointStyle);
     procedure SetPointParameters(const val: TGLPointParameters);
   public
@@ -297,7 +297,7 @@ type
       if contains a single color, all points will use that color
       if contains N colors, the first N points (at max) will be rendered
       using the corresponding colors *)
-    property Colors: TGVectorList read FColors write SetColors;
+    property Colors: TGLVectorList read FColors write SetColors;
   published
     // If true points do not write their Z to the depth buffer.
     property NoZWrite: Boolean read FNoZWrite write SetNoZWrite;
@@ -412,7 +412,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     function AxisAlignedDimensionsUnscaled: TGLVector; override;
-    procedure AddNode(const coords: TgCoordinates); overload;
+    procedure AddNode(const coords: TGLCoordinates); overload;
     procedure AddNode(const X, Y, Z: TGLFloat); overload;
     procedure AddNode(const Value: TGLVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -616,7 +616,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure NotifyChange(Sender: TObject); override;
-    procedure AddNode(const coords: TgCoordinates); overload;
+    procedure AddNode(const coords: TGLCoordinates); overload;
     procedure AddNode(const X, Y, Z: TGLFloat); overload;
     procedure AddNode(const Value: TGLVector); overload;
     procedure AddNode(const Value: TAffineVector); overload;
@@ -1447,7 +1447,7 @@ begin
   FMinSize := 0;
   FMaxSize := 128;
   FFadeTresholdSize := 1;
-  FDistanceAttenuation := TgCoordinates.CreateInitialized(Self, XHmgVector,
+  FDistanceAttenuation := TGLCoordinates.CreateInitialized(Self, XHmgVector,
     csVector);
 end;
 
@@ -1567,7 +1567,7 @@ begin
   end;
 end;
 
-procedure TGLPointParameters.SetDistanceAttenuation(const val: TgCoordinates);
+procedure TGLPointParameters.SetDistanceAttenuation(const val: TGLCoordinates);
 begin
   FDistanceAttenuation.Assign(val);
 end;
@@ -1584,7 +1584,7 @@ begin
   FSize := cDefaultPointSize;
   FPositions := TGLAffineVectorList.Create;
   FPositions.Add(NullVector);
-  FColors := TGVectorList.Create;
+  FColors := TGLVectorList.Create;
   FPointParameters := TGLPointParameters.Create(Self);
 end;
 
@@ -1736,7 +1736,7 @@ begin
   StructureChanged;
 end;
 
-procedure TGLPoints.SetColors(const val: TGVectorList);
+procedure TGLPoints.SetColors(const val: TGLVectorList);
 begin
   FColors.Assign(val);
   StructureChanged;
@@ -2040,7 +2040,7 @@ begin
   // DivideVector(Result, Scale.AsVector);     //DanB ?
 end;
 
-procedure TGLNodedLines.AddNode(const coords: TgCoordinates);
+procedure TGLNodedLines.AddNode(const coords: TGLCoordinates);
 var
   n: TGLNode;
 begin
@@ -3117,7 +3117,7 @@ begin
   end;
 end;
 
-procedure TGLPolygonBase.AddNode(const coords: TgCoordinates);
+procedure TGLPolygonBase.AddNode(const coords: TGLCoordinates);
 var
   n: TGLNode;
 begin

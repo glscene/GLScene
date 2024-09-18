@@ -143,8 +143,8 @@ type
     function GetUpdating: Boolean;
     function PointNearLine(const LineItem: TLineItem; const X,Z: Single; Tolerance: single = 1): boolean;
     function PointNearSegment(const StartNode, EndNode: TLineNode; const X,Z: Single; LineWidth: single; Tolerance: single = 1): boolean;
-    procedure StitchStrips(idx: TgIntegerList);
-    procedure AddStitchMarker(idx: TgIntegerList);
+    procedure StitchStrips(idx: TgxIntegerList);
+    procedure AddStitchMarker(idx: TgxIntegerList);
     procedure SetShowNodes(const Value: Boolean);
     procedure SetNoZWrite(const Value: Boolean);
     procedure SetLightmapIndex(const value: Integer);
@@ -777,7 +777,7 @@ begin
   result:= sqrt(sqr(xt - X) + sqr(yt - Z)) <= lDist;
 end;
 
-procedure TgxMeshLines.StitchStrips(idx: TgIntegerList);
+procedure TgxMeshLines.StitchStrips(idx: TgxIntegerList);
 var
   i: integer;
   i0, i1, i2: integer;
@@ -797,7 +797,7 @@ begin
   end;
 end;
 
-procedure TgxMeshLines.AddStitchMarker(idx: TgIntegerList);
+procedure TgxMeshLines.AddStitchMarker(idx: TgxIntegerList);
 begin
   idx.Add(-1);
   idx.Add(-2);

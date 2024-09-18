@@ -449,7 +449,7 @@ begin
   for i := 0 to Owner.fInertias.Count - 1 do
   begin
     Inertia1 := TgxBaseInertia(Owner.fInertias.Items[i]);
-    // TGLRigidBodyInertia(FObjects.Items[i]).SetTorque(0,0,0);
+    // TgxRigidBodyInertia(FObjects.Items[i]).SetTorque(0,0,0);
     for j := 0 to Owner.fForceFieldEmitters.Count - 1 do
     begin
       Inertia1.CalculateForceFieldForce

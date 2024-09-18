@@ -26,12 +26,12 @@ type
   // modified from TGLBInertia
   private
     FMass: Single;
-    FTranslationSpeed: TgCoordinates;
+    FTranslationSpeed: TGLCoordinates;
     FTranslationDamping: TGLDamping;
   protected
     function CalcLinearPositionDot(): TAffineVector;
     function CalcLinearMomentumDot(): TAffineVector;
-    procedure SetTranslationSpeed(const val: TgCoordinates);
+    procedure SetTranslationSpeed(const val: TGLCoordinates);
     procedure SetTranslationDamping(const val: TGLDamping);
   public
     fForce: TAffineVector;
@@ -71,7 +71,7 @@ type
     procedure SurfaceBounce(const surfaceNormal: TGLVector; restitution: Single);
   published
     property Mass: Single read FMass write FMass;
-    property TranslationSpeed: TgCoordinates read FTranslationSpeed
+    property TranslationSpeed: TGLCoordinates read FTranslationSpeed
       write SetTranslationSpeed;
 
     (* Enable/Disable damping (damping has a high cpu-cycle cost).
@@ -118,7 +118,7 @@ type
     fInertiaTensor: TGLInertiaTensor;
     InverseInertiaTensor: TAffineMAtrix;
     // LinearVelocity:TAffineVector;
-    fRotationSpeed: TgCoordinates;
+    fRotationSpeed: TGLCoordinates;
     /// AngularVelocity:TAffineVector;      //rotation about axis, magnitude=speed
     // damping properties
     FRotationDamping: TGLDamping;
@@ -166,13 +166,13 @@ type
     procedure ApplyLocalForce(pos, Force: TVector3f); override;
     procedure ApplyLocalImpulse(xpos, ypos, zpos, x, y, z: Real);
     procedure SetInertiaTensor(newVal: TGLInertiaTensor);
-    procedure SetRotationSpeed(const val: TgCoordinates);
+    procedure SetRotationSpeed(const val: TGLCoordinates);
     procedure SetRotationDamping(const val: TGLDamping);
   published
     property Density: Real read fDensity write fDensity;
     property InertiaTensor: TGLInertiaTensor read fInertiaTensor
       write SetInertiaTensor;
-    property RotationSpeed: TgCoordinates read fRotationSpeed
+    property RotationSpeed: TGLCoordinates read fRotationSpeed
       write SetRotationSpeed;
     property RotationDamping: TGLDamping read FRotationDamping
       write SetRotationDamping;
@@ -207,7 +207,7 @@ begin
   inherited Create(aOwner);
   FMass := 1;
   StateSize := 6;
-  FTranslationSpeed := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FTranslationSpeed := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
   LinearPosition := OwnerBaseSceneObject.position.AsAffineVector;
   LinearMomentum := FTranslationSpeed.AsAffineVector;
   FTranslationDamping := TGLDamping.Create(Self);
@@ -267,7 +267,7 @@ begin
   SetUpStartingState();
 end;
 
-procedure TGLParticleInertia.SetTranslationSpeed(const val: TgCoordinates);
+procedure TGLParticleInertia.SetTranslationSpeed(const val: TGLCoordinates);
 begin
   FTranslationSpeed.Assign(val);
   LinearMomentum := VectorScale(FTranslationSpeed.AsAffineVector, FMass);
@@ -576,7 +576,7 @@ begin
   fInertiaTensor := newVal;
 end;
 
-procedure TGLRigidBodyInertia.SetRotationSpeed(const val: TgCoordinates);
+procedure TGLRigidBodyInertia.SetRotationSpeed(const val: TGLCoordinates);
 begin
   AngularMomentum := VectorTransform(val.AsAffineVector, fBodyInertiaTensor);
   fRotationSpeed.Assign(val);
@@ -896,7 +896,7 @@ begin
   StateSize := 13;
 
   fInertiaTensor := TGLInertiaTensor.Create(Self);
-  fRotationSpeed := TgCoordinates.CreateInitialized(Self, VectorMake(0, 0, 0));
+  fRotationSpeed := TGLCoordinates.CreateInitialized(Self, VectorMake(0, 0, 0));
 
   // LinearPosition:=OwnerBaseSceneObject.Position.AsAffineVector;
   AngularOrientation := IdentityQuaternion; // fromAngleAxis(0,XVector);

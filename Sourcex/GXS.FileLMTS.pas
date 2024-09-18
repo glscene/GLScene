@@ -130,7 +130,7 @@ var
   _4cc: cardinal;
   C: integer;
   fName: string;
-  vi: TgIntegerList;
+  vi: TgxIntegerList;
   libmat: TgxLibmaterial;
   lmnames, matnames: TStringlist;
   MatInfoHeader: array [0 .. 3] of ansichar;
@@ -143,7 +143,7 @@ begin
   MO := TgxMeshObject.CreateOwned(owner.MeshObjects);
   MO.Mode := momFaceGroups;
 
-  vi := TgIntegerList.create;
+  vi := TgxIntegerList.create;
 
   LL := owner.LightmapLibrary;
   ML := owner.MaterialLibrary;

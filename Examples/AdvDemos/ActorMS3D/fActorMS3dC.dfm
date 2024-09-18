@@ -93,7 +93,7 @@ object Form1: TForm1
       Left = 228
       Top = 26
       Width = 386
-      Height = 21
+      Height = 31
       Margins.Left = 7
       Margins.Top = 7
       Margins.Right = 7

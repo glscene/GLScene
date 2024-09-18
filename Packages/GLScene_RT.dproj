@@ -203,7 +203,6 @@
         <DCCReference Include="..\Source\GLS.Context.pas"/>
         <DCCReference Include="..\Source\GLS.Coordinates.pas"/>
         <DCCReference Include="..\Source\GLS.CyborgManager.pas"/>
-        <DCCReference Include="..\Source\GLScene.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Source\GLS.DCE.pas"/>
         <DCCReference Include="..\Source\GLS.DynamicTexture.pas"/>
         <DCCReference Include="..\Source\GLS.EParticleMasksManager.pas"/>
@@ -394,6 +393,7 @@
         <DCCReference Include="..\Source\GLS.OpenGLAdapter.pas"/>
         <DCCReference Include="..\Source\gnuGettext.pas"/>
         <DCCReference Include="..\Source\gnuGettextInit.pas"/>
+        <DCCReference Include="..\Source\GLS.CurvesAndSurfaces.pas"/>
         <None Include="..\Source\GLScene.Defines.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

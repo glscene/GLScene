@@ -289,7 +289,7 @@ function TgxDCEManager.MoveByDistance(var Body: TgxDCEDynamic;
 var
   // Friction and bounce
   TotalFriction, Bounce, f, m, restitution: single;
-  ContactList: TgIntegerList;
+  ContactList: TgxIntegerList;
   // Temporary properties (Static or Dynamic)
   tFriction, tBounceFactor: single;
   TObject: TgxBaseSceneObject;
@@ -416,7 +416,7 @@ begin
   // Generate events and calculate average friction
   lastobj := -1;
   TotalFriction := Body.Friction;
-  ContactList := TgIntegerList.Create;
+  ContactList := TgxIntegerList.Create;
 
   try
     for i := 0 to High(MP.Contacts) do

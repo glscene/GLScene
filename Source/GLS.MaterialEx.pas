@@ -403,43 +403,43 @@ type
     FLibSamplerName: TGLMaterialComponentName;
     FLibTexture: TGLAbstractTexture;
     FLibSampler: TGLTextureSampler;
-    FTextureOffset, FTextureScale: TgCoordinates;
+    FTextureOffset, FTextureScale: TGLCoordinates;
     FTextureRotate: Single;
     FTextureMatrixIsIdentity: Boolean;
     FTextureOverride: Boolean;
     FTextureMatrix: TGLMatrix;
     FMappingMode: TGLTextureMappingMode;
     FEnvColor: TGColor;
-    FMapSCoordinates: TgCoordinates4;
-    FMapTCoordinates: TgCoordinates4;
-    FMapRCoordinates: TgCoordinates4;
-    FMapQCoordinates: TgCoordinates4;
+    FMapSCoordinates: TGLCoordinates4;
+    FMapTCoordinates: TGLCoordinates4;
+    FMapRCoordinates: TGLCoordinates4;
+    FMapQCoordinates: TGLCoordinates4;
     FSwizzling: TGLTextureSwizzling;
     function GetLibTextureName: TGLMaterialComponentName;
     function GetLibSamplerName: TGLMaterialComponentName;
     procedure SetLibTextureName(const AValue: TGLMaterialComponentName);
     procedure SetLibSamplerName(const AValue: TGLMaterialComponentName);
-    function GetTextureOffset: TgCoordinates;
-    procedure SetTextureOffset(const AValue: TgCoordinates);
+    function GetTextureOffset: TGLCoordinates;
+    procedure SetTextureOffset(const AValue: TGLCoordinates);
     function StoreTextureOffset: Boolean;
-    function GetTextureScale: TgCoordinates;
-    procedure SetTextureScale(const AValue: TgCoordinates);
+    function GetTextureScale: TGLCoordinates;
+    procedure SetTextureScale(const AValue: TGLCoordinates);
     function StoreTextureScale: Boolean;
     procedure SetTextureMatrix(const AValue: TGLMatrix);
     procedure SetTextureRotate(AValue: Single);
     function StoreTextureRotate: Boolean;
     procedure SetMappingMode(const AValue: TGLTextureMappingMode);
-    function GetMappingSCoordinates: TgCoordinates4;
-    procedure SetMappingSCoordinates(const AValue: TgCoordinates4);
+    function GetMappingSCoordinates: TGLCoordinates4;
+    procedure SetMappingSCoordinates(const AValue: TGLCoordinates4);
     function StoreMappingSCoordinates: Boolean;
-    function GetMappingTCoordinates: TgCoordinates4;
-    procedure SetMappingTCoordinates(const AValue: TgCoordinates4);
+    function GetMappingTCoordinates: TGLCoordinates4;
+    procedure SetMappingTCoordinates(const AValue: TGLCoordinates4);
     function StoreMappingTCoordinates: Boolean;
-    function GetMappingRCoordinates: TgCoordinates4;
-    procedure SetMappingRCoordinates(const AValue: TgCoordinates4);
+    function GetMappingRCoordinates: TGLCoordinates4;
+    procedure SetMappingRCoordinates(const AValue: TGLCoordinates4);
     function StoreMappingRCoordinates: Boolean;
-    function GetMappingQCoordinates: TgCoordinates4;
-    procedure SetMappingQCoordinates(const AValue: TgCoordinates4);
+    function GetMappingQCoordinates: TGLCoordinates4;
+    procedure SetMappingQCoordinates(const AValue: TGLCoordinates4);
     function StoreMappingQCoordinates: Boolean;
     procedure SetSwizzling(const AValue: TGLTextureSwizzling);
     function StoreSwizzling: Boolean;
@@ -464,13 +464,13 @@ type
       write SetLibTextureName;
     property LibSamplerName: TGLMaterialComponentName read GetLibSamplerName
       write SetLibSamplerName;
-    property TextureOffset: TgCoordinates read GetTextureOffset write
+    property TextureOffset: TGLCoordinates read GetTextureOffset write
       SetTextureOffset stored StoreTextureOffset;
     (* Texture coordinates scaling.
        Scaling is applied before applying the offset, and is applied
        to the texture coordinates, meaning that a scale factor of (2, 2, 2)
        will make your texture look twice smaller. *)
-    property TextureScale: TgCoordinates read GetTextureScale write
+    property TextureScale: TGLCoordinates read GetTextureScale write
       SetTextureScale stored StoreTextureScale;
     (* Texture coordinates rotating.
        Rotating is applied after applying offset and scale,
@@ -486,13 +486,13 @@ type
     (* Texture mapping coordinates mode for S, T, R and Q axis.
     This property stores the coordinates for automatic texture
     coordinates generation. *)
-    property MappingSCoordinates: TgCoordinates4 read GetMappingSCoordinates
+    property MappingSCoordinates: TGLCoordinates4 read GetMappingSCoordinates
       write SetMappingSCoordinates stored StoreMappingSCoordinates;
-    property MappingTCoordinates: TgCoordinates4 read GetMappingTCoordinates
+    property MappingTCoordinates: TGLCoordinates4 read GetMappingTCoordinates
       write SetMappingTCoordinates stored StoreMappingTCoordinates;
-    property MappingRCoordinates: TgCoordinates4 read GetMappingRCoordinates
+    property MappingRCoordinates: TGLCoordinates4 read GetMappingRCoordinates
       write SetMappingRCoordinates stored StoreMappingRCoordinates;
-    property MappingQCoordinates: TgCoordinates4 read GetMappingQCoordinates
+    property MappingQCoordinates: TGLCoordinates4 read GetMappingQCoordinates
       write SetMappingQCoordinates stored StoreMappingQCoordinates;
     // Texture color fetching parameters.
     property Swizzling: TGLTextureSwizzling read FSwizzling write
@@ -3710,51 +3710,51 @@ begin
     Result := '';
 end;
 
-function TGLTextureProperties.GetMappingQCoordinates: TgCoordinates4;
+function TGLTextureProperties.GetMappingQCoordinates: TGLCoordinates4;
 begin
   if not Assigned(FMapQCoordinates) then
-    FMapQCoordinates := TgCoordinates4.CreateInitialized(Self, WHmgVector,
+    FMapQCoordinates := TGLCoordinates4.CreateInitialized(Self, WHmgVector,
       csVector);
   Result := FMapQCoordinates;
 end;
 
-function TGLTextureProperties.GetMappingRCoordinates: TgCoordinates4;
+function TGLTextureProperties.GetMappingRCoordinates: TGLCoordinates4;
 begin
   if not Assigned(FMapRCoordinates) then
-    FMapRCoordinates := TgCoordinates4.CreateInitialized(Self, ZHmgVector,
+    FMapRCoordinates := TGLCoordinates4.CreateInitialized(Self, ZHmgVector,
       csVector);
   Result := FMapRCoordinates;
 end;
 
-function TGLTextureProperties.GetMappingSCoordinates: TgCoordinates4;
+function TGLTextureProperties.GetMappingSCoordinates: TGLCoordinates4;
 begin
   if not Assigned(FMapSCoordinates) then
-    FMapSCoordinates := TgCoordinates4.CreateInitialized(Self, XHmgVector,
+    FMapSCoordinates := TGLCoordinates4.CreateInitialized(Self, XHmgVector,
       csVector);
   Result := FMapSCoordinates;
 end;
 
-function TGLTextureProperties.GetMappingTCoordinates: TgCoordinates4;
+function TGLTextureProperties.GetMappingTCoordinates: TGLCoordinates4;
 begin
   if not Assigned(FMapTCoordinates) then
-    FMapTCoordinates := TgCoordinates4.CreateInitialized(Self, YHmgVector,
+    FMapTCoordinates := TGLCoordinates4.CreateInitialized(Self, YHmgVector,
       csVector);
   Result := FMapTCoordinates;
 end;
 
-function TGLTextureProperties.GetTextureOffset: TgCoordinates;
+function TGLTextureProperties.GetTextureOffset: TGLCoordinates;
 begin
   if not Assigned(FTextureOffset) then
     FTextureOffset :=
-      TgCoordinates3.CreateInitialized(Self, NullHmgVector, csPoint);
+      TGLCoordinates3.CreateInitialized(Self, NullHmgVector, csPoint);
   Result := FTextureOffset;
 end;
 
-function TGLTextureProperties.GetTextureScale: TgCoordinates;
+function TGLTextureProperties.GetTextureScale: TGLCoordinates;
 begin
   if not Assigned(FTextureScale) then
     FTextureScale :=
-      TgCoordinates3.CreateInitialized(Self, VectorMake(1, 1, 1, 1), csVector);
+      TGLCoordinates3.CreateInitialized(Self, VectorMake(1, 1, 1, 1), csVector);
   Result := FTextureScale;
 end;
 
@@ -3874,25 +3874,25 @@ begin
 end;
 
 procedure TGLTextureProperties.SetMappingQCoordinates(
-  const AValue: TgCoordinates4);
+  const AValue: TGLCoordinates4);
 begin
   MappingQCoordinates.Assign(AValue);
 end;
 
 procedure TGLTextureProperties.SetMappingRCoordinates(
-  const AValue: TgCoordinates4);
+  const AValue: TGLCoordinates4);
 begin
   MappingRCoordinates.Assign(AValue);
 end;
 
 procedure TGLTextureProperties.SetMappingSCoordinates(
-  const AValue: TgCoordinates4);
+  const AValue: TGLCoordinates4);
 begin
   MappingSCoordinates.Assign(AValue);
 end;
 
 procedure TGLTextureProperties.SetMappingTCoordinates(
-  const AValue: TgCoordinates4);
+  const AValue: TGLCoordinates4);
 begin
   MappingTCoordinates.Assign(AValue);
 end;
@@ -3911,7 +3911,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGLTextureProperties.SetTextureOffset(const AValue: TgCoordinates);
+procedure TGLTextureProperties.SetTextureOffset(const AValue: TGLCoordinates);
 begin
   TextureOffset.Assign(AValue);
   CalculateTextureMatrix;
@@ -3927,7 +3927,7 @@ begin
   end;
 end;
 
-procedure TGLTextureProperties.SetTextureScale(const AValue: TgCoordinates);
+procedure TGLTextureProperties.SetTextureScale(const AValue: TGLCoordinates);
 begin
   TextureScale.Assign(AValue);
   CalculateTextureMatrix;

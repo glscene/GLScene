@@ -48,7 +48,7 @@ type
 
   TECFreeForm = record
     OctreeNodes: array of PgxOctreeNode;
-    triangleFiler: ^TgAffineVectorList;
+    triangleFiler: ^TgxAffineVectorList;
     InvertedNormals: Boolean;
     ObjectInfo: TECObjectInfo;
   end;

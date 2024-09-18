@@ -19,7 +19,7 @@ uses
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.XCollection,

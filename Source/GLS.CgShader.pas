@@ -185,7 +185,7 @@ type
     procedure EnableTexture;
     procedure DisableTexture;
     // Procedures for setting varying parameters with an array of values.
-    procedure SetParameterPointer(Values: TGVectorList); overload;
+    procedure SetParameterPointer(Values: TGLVectorList); overload;
     procedure SetParameterPointer(Values: TGLAffineVectorList); overload;
     procedure EnableClientState;
     procedure DisableClientState;
@@ -949,7 +949,7 @@ begin
   cgGLSetParameterPointer(FHandle, 3, GL_FLOAT, 0, Values.List);
 end;
 
-procedure TCgParameter.SetParameterPointer(Values: TGVectorList);
+procedure TCgParameter.SetParameterPointer(Values: TGLVectorList);
 begin
   Assert(FVariability = CG_VARYING);
   cgGLSetParameterPointer(FHandle, 4, GL_FLOAT, 0, Values.List);

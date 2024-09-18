@@ -54,7 +54,7 @@ type
   private
     FClients: TList;
     FThorpoints: PThorpointArray;
-    FTarget: TgCoordinates;
+    FTarget: TGLCoordinates;
     FCadencer: TGLCadencer;
     FMaxpoints: integer;
     FGlowSize: single;
@@ -68,7 +68,7 @@ type
     procedure RegisterClient(aClient: TGLBThorFX);
     procedure DeRegisterClient(aClient: TGLBThorFX);
     procedure DeRegisterAllClients;
-    procedure SetTarget(const val: TgCoordinates);
+    procedure SetTarget(const val: TGLCoordinates);
     procedure SetCadencer(const val: TGLCadencer);
     procedure SetMaxpoints(const val: integer);
     function StoreGlowSize: boolean;
@@ -86,7 +86,7 @@ type
     destructor Destroy; override;
     procedure DoProgress(const progressTime: TGLProgressTimes); override;
   published
-    property Target: TgCoordinates read FTarget write SetTarget;
+    property Target: TGLCoordinates read FTarget write SetTarget;
     property Cadencer: TGLCadencer read FCadencer write SetCadencer;
     property Maxpoints: integer read FMaxpoints write SetMaxpoints default 256;
     property GlowSize: single read FGlowSize write FGlowSize stored StoreGlowSize;
@@ -106,13 +106,13 @@ type
   private
     FManager: TGLThorFXManager;
     FManagerName: String; // NOT persistent, temporarily used for persistence
-    FTarget: TgCoordinates;
+    FTarget: TGLCoordinates;
   protected
     procedure SetManager(const val: TGLThorFXManager);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
     procedure Loaded; override;
-    procedure SetTarget(const val: TgCoordinates);
+    procedure SetTarget(const val: TGLCoordinates);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -141,7 +141,7 @@ begin
   inherited Create(AOwner);
   FClients := TList.Create;
   RegisterManager(Self);
-  FTarget := TgCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
+  FTarget := TGLCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
   FTarget.Style := csPoint;
   FMaxpoints := 64;
   FGlowSize := 0.2;
@@ -201,7 +201,7 @@ begin
   FClients.Clear;
 end;
 
-procedure TGLThorFXManager.SetTarget(const val: TgCoordinates);
+procedure TGLThorFXManager.SetTarget(const val: TGLCoordinates);
 begin
   FTarget.Assign(val);
   ThorInit;
@@ -368,7 +368,7 @@ end;
 constructor TGLBThorFX.Create(AOwner: TXCollection);
 begin
   inherited Create(AOwner);
-  FTarget := TgCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
+  FTarget := TGLCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
   FTarget.Style := csPoint;
 end;
 
@@ -442,7 +442,7 @@ begin
   inherited Assign(Source);
 end;
 
-procedure TGLBThorFX.SetTarget(const val: TgCoordinates);
+procedure TGLBThorFX.SetTarget(const val: TGLCoordinates);
 begin
   FTarget.Assign(val);
 end;

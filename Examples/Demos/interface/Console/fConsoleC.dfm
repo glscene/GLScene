@@ -290,9 +290,9 @@ object Form1: TForm1
       HudSprite.Material.BlendingMode = bmTransparency
       HudSprite.Material.Texture.TextureMode = tmModulate
       HudSprite.Material.Texture.Disabled = False
-      HudSprite.Position.Coordinates = {00002F4366E69742000000000000803F}
-      HudSprite.Width = 350.000000000000000000
-      HudSprite.Height = 151.899993896484400000
+      HudSprite.Position.Coordinates = {00809C4300000543000000000000803F}
+      HudSprite.Width = 626.000000000000000000
+      HudSprite.Height = 266.000000000000000000
       HudSprite.Rotation = 0.000000000000000000
       HudText.Position.Coordinates = {0000404000000040000000000000803F}
       HudText.BitmapFont = Font1

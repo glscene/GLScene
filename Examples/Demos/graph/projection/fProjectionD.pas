@@ -15,7 +15,7 @@ uses
   GLS.SceneViewer,
   GLS.Texture,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.RenderContextInfo,
   GLS.State,
   GLScene.VectorTypes,

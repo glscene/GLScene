@@ -101,7 +101,7 @@ function GetNextIsoline(var Isoline: TgxIsoline): Boolean;
 
 // Defines contouring segments inside a triangle using elevations 
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TgAffineVectorList);
+  ElevationDelta: Single; Segments: TgxAffineVectorList);
 
 //----------------------------------------------------------------------
 implementation
@@ -389,7 +389,7 @@ begin
 end;
 
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TgAffineVectorList);
+  ElevationDelta: Single; Segments: TgxAffineVectorList);
 
   function SegmentIntersect(const a, b: TAffineVector; e: Single): Integer;
   var

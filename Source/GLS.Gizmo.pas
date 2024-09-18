@@ -63,12 +63,12 @@ type
   TGLGizmoUndoItem = class(TCollectionItem)
   private
     FOldLibMaterialName: string;
-    FOldAutoScaling: TgCoordinates;
+    FOldAutoScaling: TGLCoordinates;
     FEffectedObject: TGLCustomSceneObject;
     FOldMatr: TGLMatrix;
     FOldMatrix: TGLMatrix;
     procedure SetEffectedObject(const Value: TGLCustomSceneObject);
-    procedure SetOldAutoScaling(const Value: TgCoordinates);
+    procedure SetOldAutoScaling(const Value: TGLCoordinates);
     procedure SetOldMatrix(const Value: TGLMatrix);
   protected
     procedure DoUndo; virtual;
@@ -85,7 +85,7 @@ type
   published
     property EffectedObject: TGLCustomSceneObject read FEffectedObject
       write SetEffectedObject;
-    property OldAutoScaling: TgCoordinates read FOldAutoScaling
+    property OldAutoScaling: TGLCoordinates read FOldAutoScaling
       write SetOldAutoScaling;
     property OldLibMaterialName: string read FOldLibMaterialName
       write FOldLibMaterialName;
@@ -1717,7 +1717,7 @@ end;
 constructor TGLGizmoUndoItem.Create(AOwner: TCollection);
 begin
   inherited;
-  FOldAutoScaling := TgCoordinates.CreateInitialized(Self,
+  FOldAutoScaling := TGLCoordinates.CreateInitialized(Self,
     NullHmgVector, CsPoint);
 end;
 
@@ -1768,7 +1768,7 @@ begin
     FEffectedObject.FreeNotification(GetGizmo);
 end;
 
-procedure TGLGizmoUndoItem.SetOldAutoScaling(const Value: TgCoordinates);
+procedure TGLGizmoUndoItem.SetOldAutoScaling(const Value: TGLCoordinates);
 begin
   FOldAutoScaling.Assign(Value);
 end;

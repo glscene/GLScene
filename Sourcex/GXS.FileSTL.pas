@@ -245,7 +245,7 @@ var
   i: Integer;
   header: TSTLHeader;
   dataFace: TSTLFace;
-  list: TgAffineVectorList;
+  list: TgxAffineVectorList;
 const
   cHeaderTag = 'GXScene STL export';
 begin

@@ -90,7 +90,7 @@ type
   TgxASEMeshObject = class(TObject)
   private
     FFaces: TgxASEFaceList;
-    FVertices: TgAffineVectorList;
+    FVertices: TgxAffineVectorList;
     FMatrix: TMatrix4f;
     FInheritedPosition: TAffineVector;
     FInheritedScale: TAffineVector;
@@ -101,18 +101,18 @@ type
     FScale: TAffineVector;
     FScaleAxisAngle: Single;
     FScaleAxis: TAffineVector;
-    FTexChannels: array [0..GL_ASE_MAX_TEXURE_CHANNELS - 1] of TgAffineVectorList;
+    FTexChannels: array [0..GL_ASE_MAX_TEXURE_CHANNELS - 1] of TgxAffineVectorList;
     FTexChannelsCount: Integer;
     FHasNormals: Boolean;
     FMaterialID: Integer;
-    function AddTexChannel: TgAffineVectorList;
-    function GetTextChannel(Channel: Integer): TgAffineVectorList;
+    function AddTexChannel: TgxAffineVectorList;
+    function GetTextChannel(Channel: Integer): TgxAffineVectorList;
   public
     constructor Create;
     destructor Destroy; override;
     property Faces: TgxASEFaceList read FFaces;
-    property Vertices: TgAffineVectorList read FVertices;
-    property TextChannel[Channel: Integer]: TgAffineVectorList read GetTextChannel;
+    property Vertices: TgxAffineVectorList read FVertices;
+    property TextChannel[Channel: Integer]: TgxAffineVectorList read GetTextChannel;
     property TextChannelsCount: Integer read FTexChannelsCount;
     property Matrix: TMatrix4f read FMatrix;
     property InheritedPosition: TAffineVector read FInheritedPosition;
@@ -803,14 +803,14 @@ var
   norm, tex, light: Boolean;
   lmt: array [0..2] of TAffineVector;
   subID: Integer;
-  vi: TgIntegerList;
+  vi: TgxIntegerList;
 begin
   norm := aASEMesh.HasNormals;
   tex := aASEMesh.TextChannelsCount > 0;
   light := tex and (aASEMesh.TextChannelsCount > 1);
   subID := -1;
 
-  vi := TgIntegerList.Create;
+  vi := TgxIntegerList.Create;
   if tex or norm then begin
     // here used NOT optimized storage
 
@@ -937,7 +937,7 @@ end;
 constructor TgxASEMeshObject.Create;
 begin
   FFaces := TgxASEFaceList.Create;
-  FVertices := TgAffineVectorList.Create;
+  FVertices := TgxAffineVectorList.Create;
   FTexChannelsCount := 0;
   FHasNormals := False;
   FMaterialID := -1;
@@ -954,15 +954,15 @@ begin
   inherited;
 end;
 
-function TgxASEMeshObject.AddTexChannel: TgAffineVectorList;
+function TgxASEMeshObject.AddTexChannel: TgxAffineVectorList;
 begin
   Assert(FTexChannelsCount < GL_ASE_MAX_TEXURE_CHANNELS, 'texture channels count maximum reached');
-  Result := TgAffineVectorList.Create;
+  Result := TgxAffineVectorList.Create;
   FTexChannels[FTexChannelsCount] := Result;
   Inc(FTexChannelsCount);
 end;
 
-function TgxASEMeshObject.GetTextChannel(Channel: Integer): TgAffineVectorList;
+function TgxASEMeshObject.GetTextChannel(Channel: Integer): TgxAffineVectorList;
 begin
   Result := FTexChannels[Channel];
 end;
@@ -1476,7 +1476,7 @@ procedure TgxASEVectorFile.ParseMeshTextureVertices(var aLineIndex: Integer; aMe
 var
   Data: string;
   Index: Integer;
-  channel: TgAffineVectorList;
+  channel: TgxAffineVectorList;
 begin
   Inc(aLineIndex);
   Data := FStringData[aLineIndex];

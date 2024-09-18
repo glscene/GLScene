@@ -427,7 +427,7 @@ var
   FaceExtractor: TFaceExtractor;
   VertexCount: integer;
   Vertex: TAffineVector;
-  OffsetList: TgIntegerList;
+  OffsetList: TgxIntegerList;
   Face: TFace;
   iMO: integer;
   TriMeshData: PdxTriMeshData;
@@ -436,7 +436,7 @@ begin
   FaceExtractor := TFaceExtractor.Create(BaseMesh);
 
   try
-    OffsetList := TgIntegerList.Create;
+    OffsetList := TgxIntegerList.Create;
     FaceExtractor.ProcessMesh;
     VertexCount := 0;
     for i := 0 to BaseMesh.MeshObjects.Count - 1 do

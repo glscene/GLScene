@@ -840,7 +840,7 @@ object InfoForm: TInfoForm
         Size.PlatformDefault = False
         TabOrder = 0
         Viewport.Width = 520.000000000000000000
-        Viewport.Height = 352.000000000000000000
+        Viewport.Height = 336.000000000000000000
       end
     end
     object TabItemAbout: TTabItem
@@ -884,8 +884,8 @@ object InfoForm: TInfoForm
         Size.Height = 233.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        Viewport.Width = 536.000000000000000000
-        Viewport.Height = 229.000000000000000000
+        Viewport.Width = 540.000000000000000000
+        Viewport.Height = 233.000000000000000000
       end
       object LabelOfficial: TLabel
         AutoSize = True

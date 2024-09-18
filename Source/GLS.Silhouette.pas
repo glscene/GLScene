@@ -39,19 +39,19 @@ type
     need some helper methods for generating the indexed sets. *)
   TGLSilhouette = class
   private
-    FVertices: TGVectorList;
+    FVertices: TGLVectorList;
     FIndices: TgIntegerList;
     FCapIndices: TgIntegerList;
     FParameters: TGLSilhouetteParameters;
   protected
     procedure SetIndices(const value: TgIntegerList);
     procedure SetCapIndices(const value: TgIntegerList);
-    procedure SetVertices(const value: TGVectorList);
+    procedure SetVertices(const value: TGLVectorList);
   public
     constructor Create; virtual;
     destructor Destroy; override;
     property Parameters: TGLSilhouetteParameters read FParameters write FParameters;
-    property Vertices: TGVectorList read FVertices write SetVertices;
+    property Vertices: TGLVectorList read FVertices write SetVertices;
     property Indices: TgIntegerList read FIndices write SetIndices;
     property CapIndices: TgIntegerList read FCapIndices write SetCapIndices;
     procedure Flush; virtual;
@@ -126,7 +126,7 @@ implementation // -------------------------------------------------------------
 constructor TGLSilhouette.Create;
 begin
   inherited;
-  FVertices := TGVectorList.Create;
+  FVertices := TGLVectorList.Create;
   FIndices := TgIntegerList.Create;
   FCapIndices := TgIntegerList.Create;
 end;
@@ -149,7 +149,7 @@ begin
   FCapIndices.Assign(value);
 end;
 
-procedure TGLSilhouette.SetVertices(const value: TGVectorList);
+procedure TGLSilhouette.SetVertices(const value: TGLVectorList);
 begin
   FVertices.Assign(value);
 end;

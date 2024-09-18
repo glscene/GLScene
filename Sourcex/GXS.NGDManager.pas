@@ -17,7 +17,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
-  GXS.VectorLists, // TgAffineVectorList for Tree
+  GXS.VectorLists, // TgxAffineVectorList for Tree
   GLScene.XCollection, // TXCollection file function
   GLScene.GeometryBB,
   GXS.BaseClasses,
@@ -1619,7 +1619,7 @@ end;
 function TgxNGDBehaviour.GetTreeCollision: PNewtonCollision;
 var
   meshIndex, triangleIndex: Integer;
-  triangleList: TgAffineVectorList;
+  triangleList: TgxAffineVectorList;
   v: array [0 .. 2] of TAffineVector;
 begin
 

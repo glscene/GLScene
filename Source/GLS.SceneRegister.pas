@@ -819,10 +819,10 @@ end;
 
 procedure TGLCoordinatesProperty.Edit;
 var
-  glc: TgCoordinates;
+  glc: TGLCoordinates;
   x, y, z: Single;
 begin
-  glc := TgCoordinates(GetOrdValue);
+  glc := TGLCoordinates(GetOrdValue);
   x := glc.x;
   y := glc.y;
   z := glc.z;
@@ -1588,7 +1588,7 @@ begin
   RegisterPropertyEditor(TypeInfo(string), TGLTexture, 'ImageClassName', TGLImageClassProperty);
   RegisterPropertyEditor(TypeInfo(TGLSoundFile), TGLSoundSample, '', TGLSoundFileProperty);
   RegisterPropertyEditor(TypeInfo(string), TGLBaseSoundSource, 'SoundName', TGLSoundNameProperty);
-  RegisterPropertyEditor(TypeInfo(TgCoordinates), nil, '', TGLCoordinatesProperty);
+  RegisterPropertyEditor(TypeInfo(TGLCoordinates), nil, '', TGLCoordinatesProperty);
   RegisterPropertyEditor(TypeInfo(TGColor), nil, '', TGLColorProperty);
   RegisterPropertyEditor(TypeInfo(TGLMaterial), nil, '', TGLMaterialProperty);
   RegisterComponentEditor(TGLGuiLayout, TGLGUILayoutEditor);

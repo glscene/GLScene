@@ -262,8 +262,8 @@ type
     and Colors properties. *)
   TgxPoints = class(TgxImmaterialSceneObject)
   private
-    FPositions: TgAffineVectorList;
-    FColors: TGVectorList;
+    FPositions: TgxAffineVectorList;
+    FColors: TgxVectorList;
     FSize: Single;
     FStyle: TgxPointStyle;
     FPointParameters: TgxPointParameters;
@@ -273,8 +273,8 @@ type
     procedure SetNoZWrite(const val: Boolean);
     procedure SetStatic(const val: Boolean);
     procedure SetSize(const val: Single);
-    procedure SetPositions(const val: TgAffineVectorList);
-    procedure SetColors(const val: TGVectorList);
+    procedure SetPositions(const val: TgxAffineVectorList);
+    procedure SetColors(const val: TgxVectorList);
     procedure SetStyle(const val: TgxPointStyle);
     procedure SetPointParameters(const val: TgxPointParameters);
   public
@@ -283,13 +283,13 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     // Points positions. If empty, a single point is assumed at (0, 0, 0)
-    property Positions: TgAffineVectorList read FPositions write SetPositions;
+    property Positions: TgxAffineVectorList read FPositions write SetPositions;
     (* Defines the points colors.
        if empty, point color will be opaque white
        if contains a single color, all points will use that color
        if contains N colors, the first N points (at max) will be rendered
       using the corresponding colors. *)
-    property Colors: TGVectorList read FColors write SetColors;
+    property Colors: TgxVectorList read FColors write SetColors;
   published
     // If true points do not write their Z to the depth buffer.
     property NoZWrite: Boolean read FNoZWrite write SetNoZWrite;
@@ -432,7 +432,7 @@ type
     FOptions: TgxLinesOptions;
     FNURBSOrder: Integer;
     FNURBSTolerance: Single;
-    FNURBSKnots: TGSingleList;
+    FNURBSKnots: TgxSingleList;
   protected
     procedure SetSplineMode(const val: TgxLineSplineMode);
     procedure SetDivision(const Value: Integer);
@@ -444,7 +444,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    property NURBSKnots: TGSingleList read FNURBSKnots;
+    property NURBSKnots: TgxSingleList read FNURBSKnots;
     property NURBSOrder: Integer read FNURBSOrder write SetNURBSOrder;
     property NURBSTolerance: Single read FNURBSTolerance write SetNURBSTolerance;
   published
@@ -1558,9 +1558,9 @@ begin
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
   FStyle := psSquare;
   FSize := cDefaultPointSize;
-  FPositions := TgAffineVectorList.Create;
+  FPositions := TgxAffineVectorList.Create;
   FPositions.Add(NullVector);
-  FColors := TGVectorList.Create;
+  FColors := TgxVectorList.Create;
   FPointParameters := TgxPointParameters.Create(Self);
 end;
 
@@ -1705,13 +1705,13 @@ begin
   end;
 end;
 
-procedure TgxPoints.SetPositions(const val: TgAffineVectorList);
+procedure TgxPoints.SetPositions(const val: TgxAffineVectorList);
 begin
   FPositions.Assign(val);
   StructureChanged;
 end;
 
-procedure TgxPoints.SetColors(const val: TGVectorList);
+procedure TgxPoints.SetColors(const val: TgxVectorList);
 begin
   FColors.Assign(val);
   StructureChanged;
@@ -2060,7 +2060,7 @@ begin
   inherited Create(AOwner);
   FDivision := 10;
   FSplineMode := lsmLines;
-  FNURBSKnots := TGSingleList.Create;
+  FNURBSKnots := TgxSingleList.Create;
   FNURBSOrder := 0;
   FNURBSTolerance := 50;
 end;

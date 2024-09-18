@@ -93,8 +93,8 @@ procedure OptimizeMesh(aMeshObject : TgxMeshObject; options : TMeshOptimizerOpti
 var
    i : Integer;
    fg : TgxFaceGroup;
-   coords, texCoords, normals : TgAffineVectorList;
-   il : TgIntegerList;
+   coords, texCoords, normals : TgxAffineVectorList;
+   il : TgxIntegerList;
    materialName : String;
 begin
    if (mooMergeObjects in options) then begin
@@ -112,8 +112,8 @@ begin
       if (aMeshObject.Mode<>momFaceGroups) or (aMeshObject.FaceGroups.Count<=1) then begin
          if aMeshObject.FaceGroups.Count=1 then
             materialName:=aMeshObject.FaceGroups[0].MaterialName;
-         texCoords:=TgAffineVectorList.Create;
-         normals:=TgAffineVectorList.Create;
+         texCoords:=TgxAffineVectorList.Create;
+         normals:=TgxAffineVectorList.Create;
          coords:=aMeshObject.ExtractTriangles(texCoords, normals);
          try
             il:=BuildVectorCountOptimizedIndices(coords, normals, texCoords);
@@ -161,20 +161,20 @@ end;
 procedure FacesSmooth(aMeshObj: TgxMeshObject; aWeldDistance: Single=0.0000001; aThreshold: Single=35.0; InvertNormals:boolean=false);
 Var
   I, J, K, L: integer;
-  WeldedVertex: TgAffineVectorList;
-  TmpIntegerList: TgIntegerList;
+  WeldedVertex: TgxAffineVectorList;
+  TmpIntegerList: TgxIntegerList;
   IndexMap: TStringList;
   n: TAffineVector;
-  indicesMap : TgIntegerList;
+  indicesMap : TgxIntegerList;
   Index: Integer;
-  FaceList: TgIntegerList;
-  NormalList: TgAffineVectorList;
-  FaceNormalList: TgAffineVectorList;
+  FaceList: TgxIntegerList;
+  NormalList: TgxAffineVectorList;
+  FaceNormalList: TgxAffineVectorList;
   FaceGroup: TgxFaceGroup;
   FG, FG1: TgxFGVertexIndexList;
   Threshold: Single;
   Angle: Single;
-  ReferenceMap: TgIntegerList;
+  ReferenceMap: TgxIntegerList;
   ID1, ID2: Integer;
   Index1, Index2, Index3: Integer;
 
@@ -199,10 +199,10 @@ Var
 begin
   Threshold := aThreshold * Pi/180.0;
   //build the vectices reference map
-  ReferenceMap := TgIntegerList.Create;
-  WeldedVertex := TgAffineVectorList.Create;
+  ReferenceMap := TgxIntegerList.Create;
+  WeldedVertex := TgxAffineVectorList.Create;
   WeldedVertex.Assign(aMeshObj.Vertices);
-  indicesMap := TgIntegerList.Create;
+  indicesMap := TgxIntegerList.Create;
   //first of all, weld the very closed vertices
   WeldVertices(WeldedVertex, indicesMap, aWeldDistance);
   //then, rebuild the map list
@@ -210,7 +210,7 @@ begin
   for I:=0 to WeldedVertex.Count-1 do
   begin
     ReferenceMap.Assign(indicesMap);
-    TmpIntegerList := TgIntegerList.Create;
+    TmpIntegerList := TgxIntegerList.Create;
     Index := ReferenceMap.IndexOf(I);
     while Index>=0 do
     begin
@@ -225,10 +225,10 @@ begin
   WeldedVertex.free;
   indicesMap.free;
   //create a TexPoint list for save face infomation, where s=facegroup index, t=face index
-  FaceList := TgIntegerList.Create;
-  NormalList := TgAffineVectorList.Create;
-  FaceNormalList := TgAffineVectorList.Create;
-  //NormalIndex := TgIntegerList.Create;
+  FaceList := TgxIntegerList.Create;
+  NormalList := TgxAffineVectorList.Create;
+  FaceNormalList := TgxAffineVectorList.Create;
+  //NormalIndex := TgxIntegerList.Create;
   for I:=0 to aMeshObj.FaceGroups.Count-1 do
   begin
     FaceGroup := aMeshObj.FaceGroups[I];

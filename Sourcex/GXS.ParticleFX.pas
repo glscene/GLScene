@@ -504,7 +504,7 @@ type
     procedure ComputeOuterColor(var lifeTime: Single; var outer: TgxColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
-    procedure RotateVertexBuf(buf: TgAffineVectorList; lifeTime: Single;
+    procedure RotateVertexBuf(buf: TgxAffineVectorList; lifeTime: Single;
       const axis: TAffineVector; offsetAngle: Single);
   public
     constructor Create(aOwner: TComponent); override;
@@ -575,8 +575,8 @@ type
   private
     FNbSides: Integer;
     Fvx, Fvy: TAffineVector; // NOT persistent
-    FVertices: TgAffineVectorList; // NOT persistent
-    FVertBuf: TgAffineVectorList; // NOT persistent
+    FVertices: TgxAffineVectorList; // NOT persistent
+    FVertBuf: TgxAffineVectorList; // NOT persistent
   protected
     procedure SetNbSides(const val: Integer);
     function TexturingMode: Cardinal; override;
@@ -612,8 +612,8 @@ type
   private
     FTexHandle: TgxTextureHandle;
     Fvx, Fvy, Fvz: TAffineVector; // NOT persistent
-    FVertices: TgAffineVectorList; // NOT persistent
-    FVertBuf: TgAffineVectorList; // NOT persistent
+    FVertices: TgxAffineVectorList; // NOT persistent
+    FVertBuf: TgxAffineVectorList; // NOT persistent
     FAspectRatio: Single;
     FRotation: Single;
     FShareSprites: TgxBaseSpritePFXManager;
@@ -2300,7 +2300,7 @@ begin
   end;
 end;
 
-procedure TgxLifeColoredPFXManager.RotateVertexBuf(buf: TgAffineVectorList;
+procedure TgxLifeColoredPFXManager.RotateVertexBuf(buf: TgxAffineVectorList;
   lifeTime: Single; const axis: TAffineVector; offsetAngle: Single);
 var
   rotateAngle: Single;
@@ -2449,14 +2449,14 @@ begin
     Fvx.V[i] := matrix.V[i].X * FParticleSize;
     Fvy.V[i] := matrix.V[i].Y * FParticleSize;
   end;
-  FVertices := TgAffineVectorList.Create;
+  FVertices := TgxAffineVectorList.Create;
   FVertices.Capacity := FNbSides;
   for i := 0 to FNbSides - 1 do
   begin
     SinCos(i * c2PI / FNbSides, s, c);
     FVertices.Add(VectorCombine(FVx, Fvy, c, s));
   end;
-  FVertBuf := TgAffineVectorList.Create;
+  FVertBuf := TgxAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 
@@ -2665,7 +2665,7 @@ begin
     Fvz.V[i] := matrix.V[i].Z;
   end;
 
-  FVertices := TgAffineVectorList.Create;
+  FVertices := TgxAffineVectorList.Create;
   for i := 0 to 3 do
   begin
     SinCos(i * cPIdiv2 + cPIdiv4, s, c);
@@ -2677,7 +2677,7 @@ begin
     FVertices.TransformAsPoints(matrix);
   end;
 
-  FVertBuf := TgAffineVectorList.Create;
+  FVertBuf := TgxAffineVectorList.Create;
   FVertBuf.Count := FVertices.Count;
 end;
 

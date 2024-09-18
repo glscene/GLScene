@@ -185,8 +185,8 @@ type
     procedure EnableTexture;
     procedure DisableTexture;
     // Procedures for setting varying parameters with an array of values.
-    procedure SetParameterPointer(Values: TGVectorList); overload;
-    procedure SetParameterPointer(Values: TgAffineVectorList); overload;
+    procedure SetParameterPointer(Values: TgxVectorList); overload;
+    procedure SetParameterPointer(Values: TgxAffineVectorList); overload;
     procedure EnableClientState;
     procedure DisableClientState;
     // LongName retruns ShaderName.[program type].ProgramName.ParamName.
@@ -941,13 +941,13 @@ begin
   cgGLEnableClientState(FHandle);
 end;
 
-procedure TCGxParameter.SetParameterPointer(Values: TgAffineVectorList);
+procedure TCGxParameter.SetParameterPointer(Values: TgxAffineVectorList);
 begin
   Assert(FVariability = CG_VARYING);
   cgGLSetParameterPointer(FHandle, 3, GL_FLOAT, 0, Values.List);
 end;
 
-procedure TCGxParameter.SetParameterPointer(Values: TGVectorList);
+procedure TCGxParameter.SetParameterPointer(Values: TgxVectorList);
 begin
   Assert(FVariability = CG_VARYING);
   cgGLSetParameterPointer(FHandle, 4, GL_FLOAT, 0, Values.List);

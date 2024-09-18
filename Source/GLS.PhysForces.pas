@@ -26,8 +26,8 @@ type
   private
     fObject1: TGLBaseSceneObject;
     fObject2: TGLBaseSceneObject;
-    fposition1: TgCoordinates;
-    fposition2: TgCoordinates;
+    fposition1: TGLCoordinates;
+    fposition2: TGLCoordinates;
     object1Name: String;
     object2Name: String;
     // fOnCustomForce: TOnCustomForce;
@@ -51,14 +51,14 @@ type
     class function UniqueItem: Boolean; override;
     procedure SetObject1(const val: TGLBaseSceneObject);
     procedure SetObject2(const val: TGLBaseSceneObject);
-    procedure SetPosition1(const val: TgCoordinates);
-    procedure SetPosition2(const val: TgCoordinates);
+    procedure SetPosition1(const val: TGLCoordinates);
+    procedure SetPosition2(const val: TGLCoordinates);
     function CalculateForce(): TAffineVector; virtual;
   published
     property Object1: TGLBaseSceneObject read fObject1 write SetObject1;
     property Object2: TGLBaseSceneObject read fObject2 write SetObject2;
-    property Position1: TgCoordinates read fposition1 write SetPosition1;
-    property Position2: TgCoordinates read fposition2 write SetPosition2;
+    property Position1: TGLCoordinates read fposition1 write SetPosition1;
+    property Position2: TGLCoordinates read fposition2 write SetPosition2;
     // property OnCustomForce:TOnCustomForce read fOnCustomForce write fOnCustomForce;
   end;
 
@@ -108,8 +108,8 @@ uses
 constructor TGLForce.Create(aOwner: TXCollection);
 begin
   inherited; // Create(aOwner)
-  fposition1 := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
-  fposition2 := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  fposition1 := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  fposition2 := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
   // fObject1:=TGLBaseSceneObject.Create(Self);
   // fObject2:=TGLBaseSceneObject.Create(Self);
 end;
@@ -152,12 +152,12 @@ begin
    Write('Object2 does not have an inertia behaviour');
 end;
 
-procedure TGLForce.SetPosition1(const val: TgCoordinates);
+procedure TGLForce.SetPosition1(const val: TGLCoordinates);
 begin
   fposition1.Assign(val); // DB101
 end;
 
-procedure TGLForce.SetPosition2(const val: TgCoordinates);
+procedure TGLForce.SetPosition2(const val: TGLCoordinates);
 begin
   fposition2.Assign(val);
 end;

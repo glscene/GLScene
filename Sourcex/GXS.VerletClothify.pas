@@ -136,7 +136,7 @@ type
   TgxMeshObjectVerletNode = class(TgxVerletNode)
   private
     MeshObject : TgxMeshObject;
-    VertexIndices : TgIntegerList;
+    VertexIndices : TgxIntegerList;
   public
     procedure AfterProgress; override;
 
@@ -337,7 +337,7 @@ end;
 constructor TgxMeshObjectVerletNode.CreateOwned(const aOwner: TgxVerletWorld);
 begin
   inherited;
-  VertexIndices := TgIntegerList.Create;
+  VertexIndices := TgxIntegerList.Create;
 end;
 
 destructor TgxMeshObjectVerletNode.Destroy;

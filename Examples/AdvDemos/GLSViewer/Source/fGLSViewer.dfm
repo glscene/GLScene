@@ -1,17 +1,13 @@
 object FormGLSViewer: TFormGLSViewer
   Left = 188
   Top = 87
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'GLSViewer'
-  ClientHeight = 837
-  ClientWidth = 1223
+  ClientHeight = 702
+  ClientWidth = 1080
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Icon.Data = {
@@ -133,51 +129,44 @@ object FormGLSViewer: TFormGLSViewer
   ShowHint = True
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 168
-  TextHeight = 24
+  TextHeight = 13
   object StatusBar: TStatusBar
     Left = 0
-    Top = 803
-    Width = 1223
-    Height = 34
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 683
+    Width = 1080
+    Height = 19
     Panels = <
       item
         Text = 'X'
-        Width = 88
+        Width = 50
       end
       item
         Text = 'Y'
-        Width = 88
+        Width = 50
       end
       item
         Text = 'Z'
-        Width = 88
+        Width = 50
       end
       item
         Text = 'Model'
-        Width = 70
+        Width = 40
       end>
+    ExplicitTop = 459
+    ExplicitWidth = 699
   end
   object snViewer: TGLSceneViewer
-    Left = 267
-    Top = 97
-    Width = 956
-    Height = 706
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 273
+    Top = 56
+    Width = 807
+    Height = 627
     Camera = Camera
     BeforeRender = snViewerBeforeRender
     AfterRender = snViewerAfterRender
     Buffer.BackgroundColor = clBlack
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roTwoSideLighting]
     Buffer.FaceCulling = False
-    FieldOfView = 163.876159667968800000
+    FieldOfView = 161.876480102539100000
     PenAsTouch = False
     OnMouseLeave = snViewerMouseLeave
     Align = alClient
@@ -187,25 +176,17 @@ object FormGLSViewer: TFormGLSViewer
   end
   object ControlBar: TControlBar
     Left = 0
-    Top = 46
-    Width = 1223
-    Height = 51
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 27
+    Width = 1080
+    Height = 29
     Align = alTop
-    RowSize = 46
     TabOrder = 2
+    ExplicitWidth = 699
     object atbTools: TActionToolBar
-      Left = 580
+      Left = 357
       Top = 2
-      Width = 113
-      Height = 42
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Width = 65
+      Height = 22
       ActionManager = ActionManager
       Caption = 'Tools'
       Color = clMenuBar
@@ -215,21 +196,17 @@ object FormGLSViewer: TFormGLSViewer
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -23
+      Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       Spacing = 0
     end
     object atbView: TActionToolBar
-      Left = 176
+      Left = 118
       Top = 2
-      Width = 383
-      Height = 42
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Width = 218
+      Height = 22
       ActionManager = ActionManager
       Caption = 'View'
       Color = clMenuBar
@@ -239,7 +216,7 @@ object FormGLSViewer: TFormGLSViewer
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -23
+      Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -248,12 +225,8 @@ object FormGLSViewer: TFormGLSViewer
     object atbFile: TActionToolBar
       Left = 19
       Top = 2
-      Width = 136
-      Height = 42
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Width = 78
+      Height = 22
       ActionManager = ActionManager
       Caption = 'File'
       Color = clMenuBar
@@ -263,7 +236,7 @@ object FormGLSViewer: TFormGLSViewer
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -23
+      Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -275,12 +248,8 @@ object FormGLSViewer: TFormGLSViewer
   object amMenuBar: TActionMainMenuBar
     Left = 0
     Top = 0
-    Width = 1223
-    Height = 46
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 1080
+    Height = 27
     UseSystemFont = False
     ActionManager = ActionManager
     Caption = 'ActionMainMenuBar'
@@ -291,35 +260,28 @@ object FormGLSViewer: TFormGLSViewer
     ColorMap.UnusedColor = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
-    Font.Height = -19
+    Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     Spacing = 0
+    ExplicitWidth = 699
   end
   object PanelLeft: TPanel
     Left = 0
-    Top = 97
-    Width = 267
-    Height = 706
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 56
+    Width = 273
+    Height = 627
     Align = alLeft
     TabOrder = 4
     object tvScene: TTreeView
       Left = 1
       Top = 1
-      Width = 265
-      Height = 704
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Width = 271
+      Height = 625
       Align = alClient
       CheckStyles = [csDimmed]
       Images = dmImages.ImageListGLS
-      Indent = 33
+      Indent = 19
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
@@ -519,6 +481,9 @@ object FormGLSViewer: TFormGLSViewer
         6D0070007500740069006E0067000000410000005E0000005E000000FFFFFFFF
         FFFFFFFF0000000000000000000000000001114300550044004100470065006E
         006500720061007400650064004D00650073006800}
+      ExplicitLeft = -4
+      ExplicitTop = 3
+      ExplicitWidth = 151
     end
   end
   object Scene: TGLScene

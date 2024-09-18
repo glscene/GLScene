@@ -52,7 +52,7 @@ type
   private
     FClients: TList;
     FFireParticles: PGLFireParticleArray;
-    FFireDir, FInitialDir: TgCoordinates;
+    FFireDir, FInitialDir: TGLCoordinates;
     FCadencer: TGLCadencer;
     FMaxParticles, FParticleLife: Integer;
     FParticleSize, FFireDensity, FFireEvaporation: Single;
@@ -67,8 +67,8 @@ type
     procedure RegisterClient(aClient: TGLBFireFX);
     procedure DeRegisterClient(aClient: TGLBFireFX);
     procedure DeRegisterAllClients;
-    procedure SetFireDir(const val: TgCoordinates);
-    procedure SetInitialDir(const val: TgCoordinates);
+    procedure SetFireDir(const val: TGLCoordinates);
+    procedure SetInitialDir(const val: TGLCoordinates);
     procedure SetCadencer(const val: TGLCadencer);
     function StoreParticleSize: Boolean;
     procedure SetInnerColor(const val: TGColor);
@@ -100,9 +100,9 @@ type
     procedure DoProgress(const progressTime: TGLProgressTimes); override;
   published
     // Adjusts the acceleration direction (abs coordinates).
-    property FireDir: TgCoordinates read FFireDir write SetFireDir;
+    property FireDir: TGLCoordinates read FFireDir write SetFireDir;
     // Adjusts the initial direction (abs coordinates).
-    property InitialDir: TgCoordinates read FInitialDir write SetInitialDir;
+    property InitialDir: TGLCoordinates read FInitialDir write SetInitialDir;
     // The cadencer that will "drive" the animation of the system.
     property Cadencer: TGLCadencer read FCadencer write SetCadencer;
     // Maximum number of simultaneous particles in the system.
@@ -210,8 +210,8 @@ begin
   inherited Create(AOwner);
   FClients := TList.Create;
   RegisterManager(Self);
-  FFireDir := TgCoordinates.CreateInitialized(Self, VectorMake(0, 0.5, 0), csPoint);
-  FInitialDir := TgCoordinates.CreateInitialized(Self, YHmgVector, csPoint);
+  FFireDir := TGLCoordinates.CreateInitialized(Self, VectorMake(0, 0.5, 0), csPoint);
+  FInitialDir := TGLCoordinates.CreateInitialized(Self, YHmgVector, csPoint);
   FMaxParticles := 256;
   FParticleSize := 1.0;
   FInnerColor := TGColor.Create(Self);
@@ -280,13 +280,13 @@ begin
 end;
 
 
-procedure TGLFireFXManager.SetFireDir(const val: TgCoordinates);
+procedure TGLFireFXManager.SetFireDir(const val: TGLCoordinates);
 begin
   FFireDir.Assign(val);
 end;
 
 
-procedure TGLFireFXManager.SetInitialDir(const val: TgCoordinates);
+procedure TGLFireFXManager.SetInitialDir(const val: TGLCoordinates);
 begin
   FInitialDir.Assign(val);
 end;

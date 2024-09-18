@@ -20,7 +20,7 @@ uses
   GLS.SceneViewer,
   GLS.ShadowVolume,
   GLS.VectorFileObjects,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.FileSMD,
   GLS.Texture,
   GLScene.VectorTypes,

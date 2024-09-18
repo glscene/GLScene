@@ -37,7 +37,7 @@ uses
   Vcl.ImageCollection,
 
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.Keyboard,
   GLScene.VectorGeometry,
   GLS.Coordinates,
@@ -910,7 +910,7 @@ var
   I: Integer;
   mo: TGLMeshObject;
   fg: TFGVertexIndexList;
-  strips: TGLPersistentObjectList;
+  strips: TGPersistentObjectList;
 begin
   acConvertToTriangles.Execute;
   mo := ffObject.MeshObjects[0];

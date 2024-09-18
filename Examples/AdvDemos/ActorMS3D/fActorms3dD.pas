@@ -20,7 +20,7 @@ uses
   GLScene.Utils,
 
   GLScene.PipelineTransform,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.BaseClasses,

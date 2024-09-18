@@ -24,7 +24,7 @@ uses
   GLScene.Utils,
   GLS.BaseClasses,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.File3DS;
 
 type

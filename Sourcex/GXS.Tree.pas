@@ -49,9 +49,9 @@ type
   private
     FOwner: TgxTree;
     FCount: Integer;
-    FVertices: TgAffineVectorList;
-    FNormals: TgAffineVectorList;
-    FTexCoords: TgAffineVectorList;
+    FVertices: TgxAffineVectorList;
+    FNormals: TgxAffineVectorList;
+    FTexCoords: TgxAffineVectorList;
   public
     constructor Create(AOwner: TgxTree);
     destructor Destroy; override;
@@ -60,9 +60,9 @@ type
     procedure Clear;
     property Owner: TgxTree read FOwner;
     property Count: Integer read FCount;
-    property Vertices: TgAffineVectorList read FVertices;
-    property Normals: TgAffineVectorList read FNormals;
-    property TexCoords: TgAffineVectorList read FTexCoords;
+    property Vertices: TgxAffineVectorList read FVertices;
+    property Normals: TgxAffineVectorList read FNormals;
+    property TexCoords: TgxAffineVectorList read FTexCoords;
   end;
 
   TgxTreeBranch = class
@@ -75,8 +75,8 @@ type
     FBranchID: Integer;
     FParentID: Integer;
     FMatrix: TMatrix4f;
-    FLower: TgIntegerList;
-    FUpper: TgIntegerList;
+    FLower: TgxIntegerList;
+    FUpper: TgxIntegerList;
     FCentralLeader: Boolean;
     procedure BuildBranch(branchNoise: TgxTreeBranchNoise;
       const matrix: TMatrix4f; TexCoordY, Twist: Single; Level: Integer);
@@ -89,23 +89,23 @@ type
     property Right: TgxTreeBranch read FRight;
     property Parent: TgxTreeBranch read FParent;
     property matrix: TMatrix4f read FMatrix;
-    property Lower: TgIntegerList read FLower;
-    property Upper: TgIntegerList read FUpper;
+    property Lower: TgxIntegerList read FLower;
+    property Upper: TgxIntegerList read FUpper;
   end;
 
   TgxTreeBranches = class
   private
     FOwner: TgxTree;
-    FSinList: TGSingleList;
-    FCosList: TGSingleList;
-    FVertices: TgAffineVectorList;
-    FNormals: TgAffineVectorList;
-    FTexCoords: TgAffineVectorList;
-    FIndices: TgIntegerList;
+    FSinList: TgxSingleList;
+    FCosList: TgxSingleList;
+    FVertices: TgxAffineVectorList;
+    FNormals: TgxAffineVectorList;
+    FTexCoords: TgxAffineVectorList;
+    FIndices: TgxIntegerList;
     FRoot: TgxTreeBranch;
     FCount: Integer;
     FBranchCache: TList;
-    FBranchIndices: TgIntegerList;
+    FBranchIndices: TgxIntegerList;
     procedure BuildBranches;
   public
     constructor Create(AOwner: TgxTree);
@@ -113,11 +113,11 @@ type
     procedure BuildList(var rci: TgxRenderContextInfo);
     procedure Clear;
     property Owner: TgxTree read FOwner;
-    property SinList: TGSingleList read FSinList;
-    property CosList: TGSingleList read FCosList;
-    property Vertices: TgAffineVectorList read FVertices;
-    property Normals: TgAffineVectorList read FNormals;
-    property TexCoords: TgAffineVectorList read FTexCoords;
+    property SinList: TgxSingleList read FSinList;
+    property CosList: TgxSingleList read FCosList;
+    property Vertices: TgxAffineVectorList read FVertices;
+    property Normals: TgxAffineVectorList read FNormals;
+    property TexCoords: TgxAffineVectorList read FTexCoords;
     property Count: Integer read FCount;
   end;
 
@@ -269,9 +269,9 @@ constructor TgxTreeLeaves.Create(AOwner: TgxTree);
 begin
   FOwner := AOwner;
   FCount := 0;
-  FVertices := TgAffineVectorList.Create;
-  FNormals := TgAffineVectorList.Create;
-  FTexCoords := TgAffineVectorList.Create;
+  FVertices := TgxAffineVectorList.Create;
+  FNormals := TgxAffineVectorList.Create;
+  FTexCoords := TgxAffineVectorList.Create;
 end;
 
 destructor TgxTreeLeaves.Destroy;
@@ -370,8 +370,8 @@ constructor TgxTreeBranch.Create(AOwner: TgxTreeBranches;
 begin
   FOwner := AOwner;
   FParent := AParent;
-  FUpper := TgIntegerList.Create;
-  FLower := TgIntegerList.Create;
+  FUpper := TgxIntegerList.Create;
+  FLower := TgxIntegerList.Create;
   FCentralLeader := False;
 
   // Skeletal construction helpers
@@ -611,14 +611,14 @@ end;
 constructor TgxTreeBranches.Create(AOwner: TgxTree);
 begin
   FOwner := AOwner;
-  FSinList := TGSingleList.Create;
-  FCosList := TGSingleList.Create;
-  FVertices := TgAffineVectorList.Create;
-  FNormals := TgAffineVectorList.Create;
-  FTexCoords := TgAffineVectorList.Create;
-  FIndices := TgIntegerList.Create;
+  FSinList := TgxSingleList.Create;
+  FCosList := TgxSingleList.Create;
+  FVertices := TgxAffineVectorList.Create;
+  FNormals := TgxAffineVectorList.Create;
+  FTexCoords := TgxAffineVectorList.Create;
+  FIndices := TgxIntegerList.Create;
   FBranchCache := TList.Create;
-  FBranchIndices := TgIntegerList.Create;
+  FBranchIndices := TgxIntegerList.Create;
   FCount := 0;
 end;
 

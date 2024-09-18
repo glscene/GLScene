@@ -36,7 +36,7 @@ uses
   GLS.OpenGLAdapter,
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GLScene.CurvesAndSurfaces,
+  GLS.CurvesAndSurfaces,
   GLScene.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,

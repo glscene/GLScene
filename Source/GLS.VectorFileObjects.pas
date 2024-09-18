@@ -443,7 +443,7 @@ type
     FExtentCacheRevision: Cardinal;
     FTexCoords: TGLAffineVectorList; // provision for 3D textures
     FLightMapTexCoords: TGLAffineVectorList; // reserved for 2D surface needs
-    FColors: TGVectorList;
+    FColors: TGLVectorList;
     FFaceGroups: TGLFaceGroups;
     FMode: TGLMeshObjectMode;
     FRenderingOptions: TGLMeshObjectRenderingOptions;
@@ -467,20 +467,20 @@ type
   protected
     procedure SetTexCoords(const val: TGLAffineVectorList);
     procedure SetLightmapTexCoords(const val: TGLAffineVectorList);
-    procedure SetColors(const val: TGVectorList);
+    procedure SetColors(const val: TGLVectorList);
     procedure BufferArrays;
     procedure DeclareArraysToOpenGL(var mrci: TGLRenderContextInfo;
    	  EvenIfAlreadyDeclared: Boolean = False);
     procedure DisableOpenGLArrays(var mrci: TGLRenderContextInfo);
     procedure EnableLightMapArray(var mrci: TGLRenderContextInfo);
     procedure DisableLightMapArray(var mrci: TGLRenderContextInfo);
-    procedure SetTexCoordsEx(Index: Integer; const val: TGVectorList);
-    function GetTexCoordsEx(Index: Integer): TGVectorList;
-    procedure SetBinormals(const val: TGVectorList);
-    function GetBinormals: TGVectorList;
+    procedure SetTexCoordsEx(Index: Integer; const val: TGLVectorList);
+    function GetTexCoordsEx(Index: Integer): TGLVectorList;
+    procedure SetBinormals(const val: TGLVectorList);
+    function GetBinormals: TGLVectorList;
     procedure SetBinormalsTexCoordIndex(const val: Integer);
-    procedure SetTangents(const val: TGVectorList);
-    function GetTangents: TGVectorList;
+    procedure SetTangents(const val: TGLVectorList);
+    function GetTangents: TGLVectorList;
     procedure SetTangentsTexCoordIndex(const val: Integer);
     property ValidBuffers: TGLVBOBuffers read FValidBuffers write SetValidBuffers;
   public
@@ -513,10 +513,10 @@ type
     function PointInObject(const aPoint: TAffineVector): Boolean; virtual;
     // Returns the triangle data for a given triangle
     procedure GetTriangleData(tri: Integer; list: TGLAffineVectorList; var v0, v1, v2: TAffineVector); overload;
-    procedure GetTriangleData(tri: Integer; list: TGVectorList; var v0, v1, v2: TGLVector); overload;
+    procedure GetTriangleData(tri: Integer; list: TGLVectorList; var v0, v1, v2: TGLVector); overload;
     // Sets the triangle data of a given triangle
     procedure SetTriangleData(tri: Integer; list: TGLAffineVectorList; const v0, v1, v2: TAffineVector); overload;
-    procedure SetTriangleData(tri: Integer; list: TGVectorList; const v0, v1, v2: TGLVector); overload;
+    procedure SetTriangleData(tri: Integer; list: TGLVectorList; const v0, v1, v2: TGLVector); overload;
     (* Build the tangent space from the mesh object's vertex, normal
       and texcoord data, filling the binormals and tangents where specified. *)
     procedure BuildTangentSpace(buildBinormals: Boolean = True; buildTangents: Boolean = True);
@@ -524,7 +524,7 @@ type
     property Mode: TGLMeshObjectMode read FMode write FMode;
     property TexCoords: TGLAffineVectorList read FTexCoords write SetTexCoords;
     property LightMapTexCoords: TGLAffineVectorList read FLightMapTexCoords write SetLightmapTexCoords;
-    property Colors: TGVectorList read FColors write SetColors;
+    property Colors: TGLVectorList read FColors write SetColors;
     property FaceGroups: TGLFaceGroups read FFaceGroups;
     property RenderingOptions: TGLMeshObjectRenderingOptions read FRenderingOptions write FRenderingOptions;
     // If set, rendering will use VBO's instead of vertex arrays.
@@ -537,11 +537,11 @@ type
       Lists are created on demand, meaning that if you request
       TexCoordsEx[4] it will create the list up to and including 4.
       The extensions are only applied to the texture environment if they contain data. *)
-    property TexCoordsEx[index: Integer]: TGVectorList read GetTexCoordsEx write SetTexCoordsEx;
+    property TexCoordsEx[index: Integer]: TGLVectorList read GetTexCoordsEx write SetTexCoordsEx;
     // A TexCoordsEx list wrapper for binormals usage, returns TexCoordsEx[BinormalsTexCoordIndex].
-    property Binormals: TGVectorList read GetBinormals write SetBinormals;
+    property Binormals: TGLVectorList read GetBinormals write SetBinormals;
     // A TexCoordsEx list wrapper for tangents usage, returns TexCoordsEx[BinormalsTexCoordIndex].
-    property Tangents: TGVectorList read GetTangents write SetTangents;
+    property Tangents: TGLVectorList read GetTangents write SetTangents;
     // Specify the texcoord extension index for binormals (default = 2)
     property BinormalsTexCoordIndex: Integer read FBinormalsTexCoordIndex write SetBinormalsTexCoordIndex;
     // Specify the texcoord extension index for tangents (default = 3)
@@ -892,7 +892,7 @@ type
     FOverlaySkeleton: Boolean;
     FIgnoreMissingTextures: Boolean;
     FAutoCentering: TGLMeshAutoCenterings;
-    FAutoScaling: TgCoordinates;
+    FAutoScaling: TGLCoordinates;
     FMaterialLibraryCachesPrepared: Boolean;
     FConnectivity: TObject;
     FLastLoadedFilename: string;
@@ -904,7 +904,7 @@ type
     procedure SetLightmapLibrary(const val: TGLMaterialLibrary);
     procedure SetNormalsOrientation(const val: TGLMeshNormalsOrientation);
     procedure SetOverlaySkeleton(const val: Boolean);
-    procedure SetAutoScaling(const Value: TgCoordinates);
+    procedure SetAutoScaling(const Value: TGLCoordinates);
     procedure DestroyHandle; override;
     (* Invoked after creating a TGLVectorFile and before loading.
       Triggered by LoadFromFile/Stream and AddDataFromFile/Stream.
@@ -1002,7 +1002,7 @@ type
       no effect on already loaded mesh data or when adding from a file/stream.
       If you want to alter mesh data, use direct manipulation methods
       (on the TMeshObjects). *)
-    property AutoScaling: TgCoordinates read FAutoScaling write FAutoScaling;
+    property AutoScaling: TGLCoordinates read FAutoScaling write FAutoScaling;
     (* Material library where mesh materials will be stored/retrieved.
       If this property is not defined or if UseMeshMaterials is false,
       only the FreeForm's material will be used (and the mesh's materials
@@ -2910,7 +2910,7 @@ begin
   FMode := momTriangles;
   FTexCoords := TGLAffineVectorList.Create;
   FLightMapTexCoords := TGLAffineVectorList.Create;
-  FColors := TGVectorList.Create;
+  FColors := TGLVectorList.Create;
   FFaceGroups := TGLFaceGroups.CreateOwned(Self);
   FTexCoordsEx := TList.Create;
   FTangentsTexCoordIndex := 1;
@@ -2936,7 +2936,7 @@ begin
   FTexCoords.Free;
   FLightMapTexCoords.Free;
   for i := 0 to FTexCoordsEx.Count - 1 do
-    TGVectorList(FTexCoordsEx[i]).Free;
+    TGLVectorList(FTexCoordsEx[i]).Free;
   FTexCoordsEx.Free;
   if Assigned(FOwner) then
     FOwner.Remove(Self);
@@ -2962,15 +2962,15 @@ begin
 
     // Clear FTexCoordsEx.
     for I := 0 to FTexCoordsEx.Count - 1 do
-      TGVectorList(FTexCoordsEx[I]).Free;
+      TGLVectorList(FTexCoordsEx[I]).Free;
 
     FTexCoordsEx.Count := TGLMeshObject(Source).FTexCoordsEx.Count;
 
     // Fill FTexCoordsEx.
     for I := 0 to FTexCoordsEx.Count - 1 do
     begin
-      FTexCoordsEx[I] := TGVectorList.Create;
-      TGVectorList(FTexCoordsEx[I]).Assign(TGLMeshObject(Source).FTexCoordsEx[I]);
+      FTexCoordsEx[I] := TGLVectorList.Create;
+      TGLVectorList(FTexCoordsEx[I]).Assign(TGLMeshObject(Source).FTexCoordsEx[I]);
     end;
   end;
 end;
@@ -3197,32 +3197,32 @@ begin
   FLightMapTexCoords.Assign(val);
 end;
 
-procedure TGLMeshObject.SetColors(const val: TGVectorList);
+procedure TGLMeshObject.SetColors(const val: TGLVectorList);
 begin
   FColors.Assign(val);
 end;
 
-procedure TGLMeshObject.SetTexCoordsEx(Index: Integer; const val: TGVectorList);
+procedure TGLMeshObject.SetTexCoordsEx(Index: Integer; const val: TGLVectorList);
 begin
   TexCoordsEx[index].Assign(val);
 end;
 
-function TGLMeshObject.GetTexCoordsEx(Index: Integer): TGVectorList;
+function TGLMeshObject.GetTexCoordsEx(Index: Integer): TGLVectorList;
 var
   i: Integer;
 begin
   if index > FTexCoordsEx.Count - 1 then
     for i := FTexCoordsEx.Count - 1 to index do
-      FTexCoordsEx.Add(TGVectorList.Create);
-  Result := TGVectorList(FTexCoordsEx[index]);
+      FTexCoordsEx.Add(TGLVectorList.Create);
+  Result := TGLVectorList(FTexCoordsEx[index]);
 end;
 
-procedure TGLMeshObject.SetBinormals(const val: TGVectorList);
+procedure TGLMeshObject.SetBinormals(const val: TGLVectorList);
 begin
   Binormals.Assign(val);
 end;
 
-function TGLMeshObject.GetBinormals: TGVectorList;
+function TGLMeshObject.GetBinormals: TGLVectorList;
 begin
   Result := TexCoordsEx[BinormalsTexCoordIndex];
 end;
@@ -3236,12 +3236,12 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.SetTangents(const val: TGVectorList);
+procedure TGLMeshObject.SetTangents(const val: TGLVectorList);
 begin
   Tangents.Assign(val);
 end;
 
-function TGLMeshObject.GetTangents: TGVectorList;
+function TGLMeshObject.GetTangents: TGLVectorList;
 begin
   Result := TexCoordsEx[TangentsTexCoordIndex];
 end;
@@ -3331,7 +3331,7 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.GetTriangleData(tri: Integer; list: TGVectorList; var v0, v1, v2: TGLVector);
+procedure TGLMeshObject.GetTriangleData(tri: Integer; list: TGLVectorList; var v0, v1, v2: TGLVector);
 var
   i, LastCount, Count: Integer;
   fg: TFGVertexIndexList;
@@ -3483,7 +3483,7 @@ begin
   end;
 end;
 
-procedure TGLMeshObject.SetTriangleData(tri: Integer; list: TGVectorList; const v0, v1, v2: TGLVector);
+procedure TGLMeshObject.SetTriangleData(tri: Integer; list: TGLVectorList; const v0, v1, v2: TGLVector);
 var
   i, LastCount, Count: Integer;
   fg: TFGVertexIndexList;
@@ -5940,7 +5940,7 @@ begin
   FAutoCentering := [];
   FAxisAlignedDimensionsCache.X := -1;
   FBaryCenterOffsetChanged := True;
-  FAutoScaling := TgCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
+  FAutoScaling := TGLCoordinates.CreateInitialized(Self, XYZWHmgVector, csPoint);
 end;
 
 destructor TGLBaseMesh.Destroy;
@@ -6190,7 +6190,7 @@ begin
   end;
 end;
 
-procedure TGLBaseMesh.SetAutoScaling(const Value: TgCoordinates);
+procedure TGLBaseMesh.SetAutoScaling(const Value: TGLCoordinates);
 begin
   FAutoScaling.SetPoint(Value.DirectX, Value.DirectY, Value.DirectZ);
 end;

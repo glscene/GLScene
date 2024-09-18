@@ -139,7 +139,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure AddNode(const i: Integer; const coords: TgCoordinates); overload;
+    procedure AddNode(const i: Integer; const coords: TGLCoordinates); overload;
     procedure AddNode(const i: Integer; const X, Y, Z: TGLfloat); overload;
     procedure AddNode(const i: Integer; const value: TGLVector); overload;
     procedure AddNode(const i: Integer; const value: TAffineVector); overload;
@@ -169,7 +169,7 @@ type
   end;
 
   (* Page oriented pointer array, with persistent pointer target memory.
-    In TGVectorList a pointer to a vector will not be valid any more after
+    In TGLVectorList a pointer to a vector will not be valid any more after
     a call to SetCapacity, which might be done implicitely during Add.
     The TGLVectorPool keeps memory in its original position during its
     whole lifetime. *)
@@ -436,7 +436,7 @@ begin
 end;
 
 
-procedure TGLMultiPolygonBase.AddNode(const i: Integer; const coords: TgCoordinates);
+procedure TGLMultiPolygonBase.AddNode(const i: Integer; const coords: TGLCoordinates);
 begin
   Path[i].AddNode(coords);
 end;

@@ -196,7 +196,7 @@ type
     FTagFloat: Single;
 
     ObjList: TgxPersistentObjectList;
-    DistList: TGSingleList;
+    DistList: TgxSingleList;
     /// FOriginalFiler: TFiler;   //used to allow persistent events in behaviours & effects
     (* If somebody could look at DefineProperties, ReadBehaviours, ReadEffects
       and verify code is safe to use then it could be uncommented *)
@@ -1845,7 +1845,7 @@ begin
   FBoundingBoxOfChildren := NullBoundingBox;
   FBoundingBoxIncludingChildren := NullBoundingBox;
 
-  distList := TGSingleList.Create;
+  distList := TgxSingleList.Create;
   objList := TgxPersistentObjectList.Create;
 
 end;

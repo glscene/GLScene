@@ -20,7 +20,7 @@ uses
   Vcl.Imaging.jpeg,
   GLS.Texture,
   GLS.FileTGA,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   VectorTypes,
   GLScene.Utils,
   GLS.Context,

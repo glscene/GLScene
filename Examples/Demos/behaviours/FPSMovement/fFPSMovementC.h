@@ -26,7 +26,7 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.Octree.hpp"
-#include "GLScene.VectorLists.hpp"
+#include "GLS.VectorLists.hpp"
 #include "GLS.Collision.hpp"
 #include "GLS.Texture.hpp"
 #include <System.Classes.hpp>

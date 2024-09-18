@@ -634,7 +634,7 @@ var
   i: Integer;
   innerColor: TVector4f;
   lastTr: TAffineVector;
-  distList: TGSingleList;
+  distList: TgxSingleList;
   objList: TList;
   fp: PFireParticle;
 begin
@@ -661,7 +661,7 @@ begin
 
   if n > 1 then
   begin
-    distList := TGSingleList.Create;
+    distList := TgxSingleList.Create;
     objList := TList.Create;
     for i := 0 to n - 1 do
     begin

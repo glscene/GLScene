@@ -154,14 +154,14 @@ procedure TgxRagdolBone.CreateBoundingBox;
 var
   bone: TgxSkeletonBone;
   i, j: integer;
-  BoneVertices : TgAffineVectorList;
+  BoneVertices : TgxAffineVectorList;
   BoneVertex, max,min: TAffineVector;
   invMat, mat: TMatrix4f;
 begin
   bone := Ragdoll.Owner.Skeleton.BoneByID(FBoneID);
 
   //Get all vertices weighted to this bone
-  BoneVertices:=TgAffineVectorList.Create;
+  BoneVertices:=TgxAffineVectorList.Create;
   for i:=0 to Ragdoll.Owner.MeshObjects.Count-1 do
   with TgxSkeletonMeshObject(Ragdoll.Owner.MeshObjects[i]) do
     for j:=0 to Vertices.Count-1 do

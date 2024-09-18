@@ -14,7 +14,7 @@ uses
 
   GLS.Scene,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Objects,
   GLS.Coordinates,

@@ -186,7 +186,7 @@ type
     procedure MorphTo(morphTargetIndex: integer); override;
     procedure Lerp(morphTargetIndex1, morphTargetIndex2: integer; lerpFactor: single); override;
     procedure GetExtents(out min, max: TAffineVector); override;
-    function ExtractTriangles(texCoords: TgAffineVectorList = nil; normals: TgAffineVectorList = nil): TgAffineVectorList;
+    function ExtractTriangles(texCoords: TgxAffineVectorList = nil; normals: TgxAffineVectorList = nil): TgxAffineVectorList;
       override;
     procedure WriteToFiler(Writer: TgxVirtualWriter); override;
     procedure ReadFromFiler(Reader: TgxVirtualReader); override;
@@ -1105,8 +1105,8 @@ begin
   end;
 end;
 
-function TgxFile3DSDummyObject.ExtractTriangles(texCoords, normals: TgAffineVectorList):
-TgAffineVectorList;
+function TgxFile3DSDummyObject.ExtractTriangles(texCoords, normals: TgxAffineVectorList):
+TgxAffineVectorList;
 var
   I: integer;
 begin

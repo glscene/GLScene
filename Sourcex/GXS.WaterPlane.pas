@@ -44,9 +44,9 @@ type
     FLocks: packed array of ByteBool;
     FPositions, FVelocity: packed array of Single;
     FPlaneQuadIndices: TgxPersistentObjectList;
-    FPlaneQuadTexCoords: TGTexPointList;
-    FPlaneQuadVertices: TgAffineVectorList;
-    FPlaneQuadNormals: TgAffineVectorList;
+    FPlaneQuadTexCoords: TgxTexPointList;
+    FPlaneQuadVertices: TgxAffineVectorList;
+    FPlaneQuadNormals: TgxAffineVectorList;
     FActive: Boolean;
     FRainTimeInterval: Integer;
     FRainForce: Single;
@@ -135,9 +135,9 @@ begin
   FOptions := cDefaultWaterPlaneOptions;
 
   FPlaneQuadIndices := TgxPersistentObjectList.Create;
-  FPlaneQuadTexCoords := TGTexPointList.Create;
-  FPlaneQuadVertices := TgAffineVectorList.Create;
-  FPlaneQuadNormals := TgAffineVectorList.Create;
+  FPlaneQuadTexCoords := TgxTexPointList.Create;
+  FPlaneQuadVertices := TgxAffineVectorList.Create;
+  FPlaneQuadNormals := TgxAffineVectorList.Create;
   FMask := TImage.Create(AOwner);
   FMask.Bitmap.OnChange := DoMaskChanged;
 
@@ -277,7 +277,7 @@ var
   i, j, ij, resSqr: Integer;
   maskBmp: TBitmap;
   scanLine: PIntegerArray;
-  il: TgIntegerList;
+  il: TgxIntegerList;
   locked: Boolean;
 begin
   resSqr := FResolution * FResolution;
@@ -312,7 +312,7 @@ begin
   FPlaneQuadIndices.Clean;
   for j := 0 to Resolution - 2 do
   begin
-    il := TgIntegerList.Create;
+    il := TgxIntegerList.Create;
     for i := 0 to Resolution - 1 do
     begin
       ij := i + j * Resolution;
@@ -329,7 +329,7 @@ begin
       else if il.Count > 0 then
       begin
         FPlaneQuadIndices.Add(il);
-        il := TgIntegerList.Create;
+        il := TgxIntegerList.Create;
       end;
     end;
     if il.Count > 0 then
@@ -437,7 +437,7 @@ end;
 procedure TgxWaterPlane.BuildList(var rci: TgxRenderContextInfo);
 var
   i: Integer;
-  il: TgIntegerList;
+  il: TgxIntegerList;
 begin
   glPushClientAttribDefaultEXT(GL_CLIENT_VERTEX_ARRAY_BIT);
 
@@ -458,7 +458,7 @@ begin
 
   for i := 0 to FPlaneQuadIndices.Count - 1 do
   begin
-    il := TgIntegerList(FPlaneQuadIndices[i]);
+    il := TgxIntegerList(FPlaneQuadIndices[i]);
     glDrawElements(GL_QUAD_STRIP, il.Count, GL_UNSIGNED_INT, il.List);
   end;
 

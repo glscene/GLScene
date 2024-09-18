@@ -27,7 +27,7 @@ uses
   GLS.Graph,
   GLScene.VectorTypes,
   GLS.SkyDome,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.FileDDS,
  
   GLS.Material,

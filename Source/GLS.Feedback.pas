@@ -64,7 +64,7 @@ type
     procedure BuildMeshFromBuffer(
       Vertices: TGLAffineVectorList = nil;
       Normals: TGLAffineVectorList = nil;
-      Colors: TGVectorList = nil;
+      Colors: TGLVectorList = nil;
       TexCoords: TGLAffineVectorList = nil;
       VertexIndices: TgIntegerList = nil);
     // True when there is data in the buffer ready for parsing
@@ -187,7 +187,7 @@ end;
 procedure TGLFeedback.BuildMeshFromBuffer(
   Vertices: TGLAffineVectorList = nil;
   Normals: TGLAffineVectorList = nil;
-  Colors: TGVectorList = nil;
+  Colors: TGLVectorList = nil;
   TexCoords: TGLAffineVectorList = nil;
   VertexIndices: TgIntegerList = nil);
 var
@@ -195,14 +195,14 @@ var
   i, j, LCount, skip: Integer;
   vertex, color, texcoord: TGLVector;
   tempVertices, tempNormals, tempTexCoords: TGLAffineVectorList;
-  tempColors: TGVectorList;
+  tempColors: TGLVectorList;
   tempIndices: TgIntegerList;
   ColorBuffered, TexCoordBuffered: Boolean;
 begin
   Assert(FMode <> fm2D, 'Cannot build mesh from fm2D feedback mode.');
 
   tempVertices := TGLAffineVectorList.Create;
-  tempColors := TGVectorList.Create;
+  tempColors := TGLVectorList.Create;
   tempTexCoords := TGLAffineVectorList.Create;
 
   ColorBuffered := (FMode = fm3DColor) or

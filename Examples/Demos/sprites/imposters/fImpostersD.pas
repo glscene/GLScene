@@ -33,7 +33,7 @@ uses
   GLS.BaseClasses,
   GLS.Material,
   GLS.CompositeImage,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorTypes, GLS.SimpleNavigation;
 
 type

@@ -78,7 +78,6 @@ contains
   GLS.Context in '..\Source\GLS.Context.pas',
   GLS.Coordinates in '..\Source\GLS.Coordinates.pas',
   GLS.CyborgManager in '..\Source\GLS.CyborgManager.pas',
-  GLScene.CurvesAndSurfaces in '..\Source\GLScene.CurvesAndSurfaces.pas',
   GLS.DCE in '..\Source\GLS.DCE.pas',
   GLS.DynamicTexture in '..\Source\GLS.DynamicTexture.pas',
   GLS.EParticleMasksManager in '..\Source\GLS.EParticleMasksManager.pas',
@@ -268,7 +267,8 @@ contains
   PasJSON in '..\Source\PasJSON.pas',
   GLS.OpenGLAdapter in '..\Source\GLS.OpenGLAdapter.pas',
   gnuGettext in '..\Source\gnuGettext.pas',
-  gnuGettextInit in '..\Source\gnuGettextInit.pas';
+  gnuGettextInit in '..\Source\gnuGettextInit.pas',
+  GLS.CurvesAndSurfaces in '..\Source\GLS.CurvesAndSurfaces.pas';
 
 end.
 

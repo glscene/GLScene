@@ -108,7 +108,7 @@ type
   published
   end;
 
-  TGLLightmapBounds = class(TgCustomCoordinates)
+  TGLLightmapBounds = class(TGLCustomCoordinates)
   private
     function GetLeft: TGLFloat;
     function GetTop: TGLFloat;

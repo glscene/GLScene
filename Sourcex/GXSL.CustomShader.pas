@@ -308,7 +308,7 @@ procedure CopyScreentoTexture(const ViewPortSize: TGXSize; const TextureTarget: 
 procedure CopyScreentoTexture2(const ViewPortSize: TGXSize; const TextureTarget: Word = GL_TEXTURE_2D);
 
 function IsFogEnabled(const AFogSupportMode: TgxShaderFogSupport; var rci: TgxRenderContextInfo): Boolean;
-procedure GetActiveLightsList(const ALightIDs: TgIntegerList);
+procedure GetActiveLightsList(const ALightIDs: TgxIntegerList);
 
 //===========================================================
 implementation
@@ -317,7 +317,7 @@ implementation
 uses
   GXS.State;
 
-procedure GetActiveLightsList(const ALightIDs: TgIntegerList);
+procedure GetActiveLightsList(const ALightIDs: TgxIntegerList);
 var
   I: Integer;
 begin

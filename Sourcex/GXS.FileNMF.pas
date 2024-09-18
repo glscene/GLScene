@@ -134,12 +134,12 @@ procedure TgxNMFVectorFile.SaveToStream(aStream: TStream);
 var
   i, j: Integer;
   nmf: TFileNMF;
-  Vertices, TempVertices, Normals, TexCoords: TgAffineVectorList;
+  Vertices, TempVertices, Normals, TexCoords: TgxAffineVectorList;
 begin
   nmf := TFileNMF.Create;
-  Vertices := TgAffineVectorList.Create;
-  Normals := TgAffineVectorList.Create;
-  TexCoords := TgAffineVectorList.Create;
+  Vertices := TgxAffineVectorList.Create;
+  Normals := TgxAffineVectorList.Create;
+  TexCoords := TgxAffineVectorList.Create;
   try
     for i := 0 to Owner.MeshObjects.Count - 1 do
     begin

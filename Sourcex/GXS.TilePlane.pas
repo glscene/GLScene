@@ -29,7 +29,7 @@ type
   TgxTiledAreaRow = class(TgxPersistentObject)
   private
     FColMin, FColMax: Integer;
-    FData: TgIntegerList;
+    FData: TgxIntegerList;
   protected
     procedure SetColMin(const val: Integer);
     procedure SetColMax(const val: Integer);
@@ -43,10 +43,10 @@ type
     property Cell[col: Integer]: Integer read GetCell write SetCell; default;
     property ColMin: Integer read FColMin write SetColMin;
     property ColMax: Integer read FColMax write SetColMax;
-    property Data: TgIntegerList read FData;
+    property Data: TgxIntegerList read FData;
     procedure Pack;
     function Empty: Boolean;
-    procedure RemapTiles(remapList: TgIntegerList);
+    procedure RemapTiles(remapList: TgxIntegerList);
   end;
 
   { Stores tile information in a tiled area.
@@ -75,7 +75,7 @@ type
     procedure Pack;
     procedure Clear;
     function Empty: Boolean;
-    procedure RemapTiles(remapList: TgIntegerList);
+    procedure RemapTiles(remapList: TgxIntegerList);
   end;
 
   { A tiled textured plane.
@@ -131,7 +131,7 @@ implementation
 constructor TgxTiledAreaRow.Create;
 begin
   inherited;
-  FData := TgIntegerList.Create;
+  FData := TgxIntegerList.Create;
   FColMin := 0;
   FColMax := -1;
 end;
@@ -210,7 +210,7 @@ begin
   Result := (FData.Count = 0);
 end;
 
-procedure TgxTiledAreaRow.RemapTiles(remapList: TgIntegerList);
+procedure TgxTiledAreaRow.RemapTiles(remapList: TgxIntegerList);
 var
   i, k: Integer;
 begin
@@ -400,7 +400,7 @@ end;
 
 // RemapTiles
 //
-procedure TgxTiledArea.RemapTiles(remapList: TgIntegerList);
+procedure TgxTiledArea.RemapTiles(remapList: TgxIntegerList);
 var
   i: Integer;
   r: TgxTiledAreaRow;
@@ -598,7 +598,7 @@ end;
 procedure TgxTilePlane.BuildList(var rci: TgxRenderContextInfo);
 type
   TQuadListInfo = packed record
-    x, y: TgIntegerList;
+    x, y: TgxIntegerList;
   end;
 
   procedure IssueQuad(col, row: Integer);
@@ -630,8 +630,8 @@ begin
     SetLength(quadInfos, MaterialLibrary.Materials.Count);
     for i := 0 to High(quadInfos) do
     begin // correction in (i:=0) from (i:=1)
-      quadInfos[i].x := TgIntegerList.Create;
-      quadInfos[i].y := TgIntegerList.Create;
+      quadInfos[i].x := TgxIntegerList.Create;
+      quadInfos[i].y := TgxIntegerList.Create;
     end;
     // collect quads into quadInfos, sorted by material
     for row := Tiles.RowMin to Tiles.RowMax do

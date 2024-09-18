@@ -109,13 +109,13 @@ type
 (*  Some useful methods for setting up bump maps. *)
 procedure CalcObjectSpaceLightVectors(Light : TAffineVector;
                                       Vertices: TGLAffineVectorList;
-                                      Colors: TGVectorList);
+                                      Colors: TGLVectorList);
 procedure SetupTangentSpace(Vertices, Normals, TexCoords,
                             Tangents, BiNormals : TGLAffineVectorList);
 procedure CalcTangentSpaceLightVectors(Light : TAffineVector;
                                        Vertices, Normals,
                                        Tangents, BiNormals : TGLAffineVectorList;
-                                       Colors: TGVectorList);
+                                       Colors: TGLVectorList);
 function CreateObjectSpaceNormalMap(Width, Height : Integer;
                                     HiNormals,HiTexCoords : TGLAffineVectorList) : TBitmap;
 function CreateTangentSpaceNormalMap(Width, Height : Integer;
@@ -349,7 +349,7 @@ end;
 
 //----------------- BumpMapping routines ---------------------
 
-procedure CalcObjectSpaceLightVectors(Light: TAffineVector; Vertices: TGLAffineVectorList; Colors: TGVectorList);
+procedure CalcObjectSpaceLightVectors(Light: TAffineVector; Vertices: TGLAffineVectorList; Colors: TGLVectorList);
 var
   i: Integer;
   vec: TAffineVector;
@@ -456,7 +456,7 @@ end;
 
 procedure CalcTangentSpaceLightVectors(Light: TAffineVector;
   Vertices, Normals, Tangents, BiNormals: TGLAffineVectorList;
-  Colors: TGVectorList);
+  Colors: TGLVectorList);
 var
   i: Integer;
   mat: TAffineMatrix;

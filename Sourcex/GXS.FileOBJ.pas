@@ -153,7 +153,7 @@ type
   private
     FMode: TOBJFGMode;
     FName: string;
-    FPolygonVertices: TgIntegerList;
+    FPolygonVertices: TgxIntegerList;
     FCurrentVertexCount: Integer;
     FShowNormals: Boolean;
     procedure PolygonComplete; (* Current polygon completed. Adds FCurrentVertexCount
@@ -167,12 +167,12 @@ type
     procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure Add(VertexIdx, NormalIdx, TexCoordIdx: Integer);
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
-    procedure AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
-      aNormals: TgAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TgxAffineVectorList; aTexCoords: TgxAffineVectorList = nil;
+      aNormals: TgxAffineVectorList = nil); override;
     function TriangleCount: Integer; override;
     property Mode: TOBJFGMode read FMode write SetMode;
     property Name: string read FName write FName;
-    property PolygonVertices: TgIntegerList read FPolygonVertices;
+    property PolygonVertices: TgxIntegerList read FPolygonVertices;
     property ShowNormals: Boolean read FShowNormals write FShowNormals;
   end;
 
@@ -209,7 +209,7 @@ begin
   Assert(VertexIndices.Count = 0, 'Decide on the mode before adding vertices.');
   FMode := aMode;
   if FMode = objfgmmPolygons then
-    FPolygonVertices := TgIntegerList.Create
+    FPolygonVertices := TgxIntegerList.Create
   else
   begin
     FPolygonVertices.Free;
@@ -351,11 +351,11 @@ begin
   end;
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
-  aNormals: TgAffineVectorList = nil);
+procedure TOBJFGVertexNormalTexIndexList.AddToTriangles(aList: TgxAffineVectorList; aTexCoords: TgxAffineVectorList = nil;
+  aNormals: TgxAffineVectorList = nil);
 var
   i, j, N, n0: Integer;
-  vertexList, texCoordList, normalsList: TgAffineVectorList;
+  vertexList, texCoordList, normalsList: TgxAffineVectorList;
 begin
   vertexList := Owner.Owner.Vertices;
   texCoordList := Owner.Owner.TexCoords;
@@ -1353,7 +1353,7 @@ begin
     else
     begin
       if FPolygonVertices = nil then
-        FPolygonVertices := TgIntegerList.Create;
+        FPolygonVertices := TgxIntegerList.Create;
       FPolygonVertices.Assign(TOBJFGVertexNormalTexIndexList(Source).FPolygonVertices);
     end;
   end
@@ -1376,7 +1376,7 @@ begin
 
     if FMode = objfgmmPolygons then
     begin
-      FPolygonVertices := TgIntegerList.Create;
+      FPolygonVertices := TgxIntegerList.Create;
       FPolygonVertices.ReadFromFiler(reader);
     end;
   end

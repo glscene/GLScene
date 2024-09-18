@@ -24,7 +24,7 @@ uses
   GLS.VerletTypes,
   GLS.VerletClothify,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorGeometry,
   GLS.Texture,
   GLS.FileSMD,

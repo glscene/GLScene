@@ -22,7 +22,7 @@ uses
 
 (* Tesselates the polygon outlined by the Vertexes.
   And addeds them to the first facegroup of the Mesh. *)
-procedure DoTesselate(Vertexes: TgAffineVectorList;
+procedure DoTesselate(Vertexes: TgxAffineVectorList;
   Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 
 implementation //-------------------------------------------------------------
@@ -75,7 +75,7 @@ begin
   SetVector(PAffineVector(outData)^, coords[0], coords[1], coords[2]);
 end;
 
-procedure DoTesselate(Vertexes: TgAffineVectorList; Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
+procedure DoTesselate(Vertexes: TgxAffineVectorList; Mesh: TgxBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 var
   Tess: GLUTesselator;
   i: Integer;

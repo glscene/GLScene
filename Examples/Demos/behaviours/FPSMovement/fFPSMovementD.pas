@@ -27,7 +27,7 @@ uses
   GLS.Collision,
   GLS.VectorFileObjects,
   GLS.Navigator,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.Octree,
   GLS.File3DS,
   GLScene.VectorGeometry,

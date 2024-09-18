@@ -16,7 +16,7 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Graph,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLSL.Shader,

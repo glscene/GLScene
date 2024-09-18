@@ -44,27 +44,27 @@ uses
 type
   TgxBExplosionFX = class(TgxObjectPreEffect)
   private
-    FTriList: TgAffineVectorList;
-    FRotList: TgAffineVectorList;
-    FDirList: TgAffineVectorList;
-    FPosList: TgAffineVectorList;
+    FTriList: TgxAffineVectorList;
+    FRotList: TgxAffineVectorList;
+    FDirList: TgxAffineVectorList;
+    FPosList: TgxAffineVectorList;
     FEnabled: boolean;
     FFaceCount: integer;
     FSpeed: single;
     FDirection: TgxCoordinates;
     FMaxSteps: integer;
     FStep: integer;
-    procedure SetTriList(Value: TgAffineVectorList);
-    procedure SetRotList(Value: TgAffineVectorList);
-    procedure SetDirList(Value: TgAffineVectorList);
-    procedure SetPosList(Value: TgAffineVectorList);
+    procedure SetTriList(Value: TgxAffineVectorList);
+    procedure SetRotList(Value: TgxAffineVectorList);
+    procedure SetDirList(Value: TgxAffineVectorList);
+    procedure SetPosList(Value: TgxAffineVectorList);
     procedure SetDirection(value: TgxCoordinates);
     procedure SetEnabled(value: boolean);
   protected
-    property TriList: TgAffineVectorList read FTriList write SetTriList;
-    property RotList: TgAffineVectorList read FRotList write SetRotList;
-    property DirList: TgAffineVectorList read FDirList write SetDirList;
-    property PosList: TgAffineVectorList read FPosList write SetPosList;
+    property TriList: TgxAffineVectorList read FTriList write SetTriList;
+    property RotList: TgxAffineVectorList read FRotList write SetRotList;
+    property DirList: TgxAffineVectorList read FDirList write SetDirList;
+    property PosList: TgxAffineVectorList read FPosList write SetPosList;
     property FaceCount: integer read FFAceCount write FFaceCount;
     procedure CacheInfo;
   public
@@ -96,10 +96,10 @@ implementation
 constructor TgxBExplosionFx.Create(aOwner: TXCollection);
 begin
   inherited Create(AOwner);
-  FTriList := TgAffineVectorList.Create;
-  FRotList := TgAffineVectorList.Create;
-  FDirList := TgAffineVectorList.Create;
-  FPosList := TgAffineVectorList.Create;
+  FTriList := TgxAffineVectorList.Create;
+  FRotList := TgxAffineVectorList.Create;
+  FDirList := TgxAffineVectorList.Create;
+  FPosList := TgxAffineVectorList.Create;
   FDirection := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
 end;
 
@@ -124,22 +124,22 @@ begin
   Result := 'Explosion FX';
 end;
 
-procedure TgxBExplosionFx.SetTriList(Value: TgAffineVectorList);
+procedure TgxBExplosionFx.SetTriList(Value: TgxAffineVectorList);
 begin
   FTriList.Assign(Value);
 end;
 
-procedure TgxBExplosionFx.SetRotList(Value: TgAffineVectorList);
+procedure TgxBExplosionFx.SetRotList(Value: TgxAffineVectorList);
 begin
   FRotList.Assign(Value);
 end;
 
-procedure TgxBExplosionFx.SetDirList(Value: TgAffineVectorList);
+procedure TgxBExplosionFx.SetDirList(Value: TgxAffineVectorList);
 begin
   FDirList.Assign(Value);
 end;
 
-procedure TgxBExplosionFx.SetPosList(Value: TgAffineVectorList);
+procedure TgxBExplosionFx.SetPosList(Value: TgxAffineVectorList);
 begin
   FPosList.Assign(Value);
 end;

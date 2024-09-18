@@ -5,7 +5,7 @@ unit GLS.VectorLists;
 (*
   Misc. lists of vectors and entities
   The registered classes are:
-    [TGLAffineVectorList, TGVectorList, TGTexPointList,
+    [TGLAffineVectorList, TGLVectorList, TGTexPointList,
      TGSingleList, TGDoubleList, TG4ByteList, TGLongWordList]
 *)
 interface
@@ -177,7 +177,7 @@ type
   (* A list of TGLVectors.
    Similar to TList, but using TGLVector as items.
    The list has stack-like push/pop methods *)
-  TGVectorList = class(TGLBaseVectorList)
+  TGLVectorList = class(TGLBaseVectorList)
   private
     FList: PVectorArray;
   protected
@@ -1538,29 +1538,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TGVectorList ------------------
+// ------------------ TGLVectorList ------------------
 // ------------------
 
-constructor TGVectorList.Create;
+constructor TGLVectorList.Create;
 begin
   FItemSize := SizeOf(TGLVector);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGVectorList.Assign(Src: TPersistent);
+procedure TGLVectorList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGVectorList) then
-      System.Move(TGVectorList(Src).FList^, FList^, FCount * SizeOf(TGLVector));
+    if (Src is TGLVectorList) then
+      System.Move(TGLVectorList(Src).FList^, FList^, FCount * SizeOf(TGLVector));
   end
   else
     Clear;
 end;
 
-function TGVectorList.Add(const item: TGLVector): Integer;
+function TGLVectorList.Add(const item: TGLVector): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1569,17 +1569,17 @@ begin
   Inc(FCount);
 end;
 
-function TGVectorList.Add(const item: TAffineVector; w: Single): Integer;
+function TGLVectorList.Add(const item: TAffineVector; w: Single): Integer;
 begin
   Result := Add(VectorMake(item, w));
 end;
 
-function TGVectorList.Add(const X, Y, Z, w: Single): Integer;
+function TGLVectorList.Add(const X, Y, Z, w: Single): Integer;
 begin
   Result := Add(VectorMake(X, Y, Z, w));
 end;
 
-procedure TGVectorList.Add(const i1, i2, i3: TAffineVector; w: Single);
+procedure TGLVectorList.Add(const i1, i2, i3: TAffineVector; w: Single);
 begin
   Inc(FCount, 3);
   while FCount > FCapacity do
@@ -1592,22 +1592,22 @@ begin
   FList^[FCount - 1].W := w;
 end;
 
-function TGVectorList.AddVector(const item: TAffineVector): Integer;
+function TGLVectorList.AddVector(const item: TAffineVector): Integer;
 begin
   Result := Add(VectorMake(item));
 end;
 
-function TGVectorList.AddPoint(const item: TAffineVector): Integer;
+function TGLVectorList.AddPoint(const item: TAffineVector): Integer;
 begin
   Result := Add(PointMake(item));
 end;
 
-function TGVectorList.AddPoint(const X, Y: Single; const Z: Single = 0): Integer;
+function TGLVectorList.AddPoint(const X, Y: Single; const Z: Single = 0): Integer;
 begin
   Result := Add(PointMake(X, Y, Z));
 end;
 
-function TGVectorList.Get(Index: Integer): TGLVector;
+function TGLVectorList.Get(Index: Integer): TGLVector;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1615,7 +1615,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGVectorList.Insert(Index: Integer; const Item: TGLVector);
+procedure TGLVectorList.Insert(Index: Integer; const Item: TGLVector);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1629,7 +1629,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGVectorList.Put(Index: Integer; const Item: TGLVector);
+procedure TGLVectorList.Put(Index: Integer; const Item: TGLVector);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1637,18 +1637,18 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TGVectorList.SetCapacity(NewCapacity: Integer);
+procedure TGLVectorList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PVectorArray(FBaseList);
 end;
 
-procedure TGVectorList.Push(const Val: TGLVector);
+procedure TGLVectorList.Push(const Val: TGLVector);
 begin
   Add(Val);
 end;
 
-function TGVectorList.Pop: TGLVector;
+function TGLVectorList.Pop: TGLVector;
 begin
   if FCount > 0 then
   begin
@@ -1659,7 +1659,7 @@ begin
     Result := NullHmgVector;
 end;
 
-function TGVectorList.IndexOf(const item: TGLVector): Integer;
+function TGLVectorList.IndexOf(const item: TGLVector): Integer;
 var
   I: Integer;
 begin
@@ -1672,14 +1672,14 @@ begin
     end;
 end;
 
-function TGVectorList.FindOrAdd(const item: TGLVector): Integer;
+function TGLVectorList.FindOrAdd(const item: TGLVector): Integer;
 begin
   Result := IndexOf(item);
   if Result < 0 then
     Result := Add(item);
 end;
 
-function TGVectorList.FindOrAddPoint(const item: TAffineVector): Integer;
+function TGLVectorList.FindOrAddPoint(const item: TAffineVector): Integer;
 var
   ptItem: TGLVector;
 begin
@@ -1689,14 +1689,14 @@ begin
     Result := Add(ptItem);
 end;
 
-procedure TGVectorList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
+procedure TGLVectorList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
 begin
-  if (list1 is TGVectorList) and (list2 is TGVectorList) then
+  if (list1 is TGLVectorList) and (list2 is TGLVectorList) then
   begin
     Assert(list1.Count = list2.Count);
     Capacity := list1.Count;
     FCount := list1.Count;
-    VectorArrayLerp(TGVectorList(list1).List, TGVectorList(list2).List,
+    VectorArrayLerp(TGLVectorList(list1).List, TGLVectorList(list2).List,
       lerpFactor, FCount, List);
   end;
 end;
@@ -3387,7 +3387,7 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-  RegisterClasses([TGLAffineVectorList, TGVectorList, TGTexPointList, TGSingleList,
+  RegisterClasses([TGLAffineVectorList, TGLVectorList, TGTexPointList, TGSingleList,
                    TGDoubleList, TG4ByteList, TGLongWordList]);
 
 end.

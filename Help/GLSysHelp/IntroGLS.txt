@@ -1,0 +1,18 @@
+GLScene is an OpenGL based 3D library for Delphi, C++Builder and Lazarus. 
+It provides visual components and objects allowing description and effective rendering of 3D scenes.
+GLScene is not only an OpenGL wrapper or utility library, but it's grown to become a set of founding classes 
+for a generic 3D engine for the Rapid Application Development. 
+GLScene allows you to design and render 3D scenes quickly and without having to learn the intricacies of OpenGL: 
+if you know how to design a TForm, you'll easily master the basic operation of TGLScene. 
+Make sure to checkout the introduction tutorial included in the help folder.
+GLScene includes more than many components and a variety of founding classes. 
+The library comes with a comfortable set of demos showcasing the ease of use and demonstrating RAD wasn't done 
+at the expense of CPU horsepower. 
+The GLScene Sound System allows positional 3D audio via low-level APIs like 
+FMOD, BASS, OpenAL and WaveOut.
+Advanced demos and samples could be found in the project directory GLScene\Examples.
+Some additional options for compiler are in GLS.Scene.inc (activated/deactivated, all are inactive by default):
+The option DEFINE GLS_Graphics32_SUPPORT controls support Alex Denissov's Graphics32 library 
+(http://www.graphics32.org), once activated will redirect assignments from TBitmap32 to TGLBitmap32.
+
+GLXS Team

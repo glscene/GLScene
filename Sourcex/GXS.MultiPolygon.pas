@@ -10,7 +10,7 @@ unit GXS.MultiPolygon;
   And I reactivated the TgxVectorPool object. The GXS.VectorLists are not suitable for this job.
   When the tesselator finds an intersection of edges it wants us to give him some storage
   for this new vertex, and he wants a pointer (see tessCombine). The pointers taken from
-  TgAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
+  TgxAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
   can happen implicitly while adding. The TgxVectorPool keeps all pointers valid until the
   destruction itself.
 
@@ -96,12 +96,12 @@ type
 
   TgxPolygonList = class(TgxPersistentObjectList)
   private
-    FAktList: TgAffineVectorList;
-    function GetList(I: Integer): TgAffineVectorList;
+    FAktList: TgxAffineVectorList;
+    function GetList(I: Integer): TgxAffineVectorList;
   public
     procedure Add;
-    property AktList: TgAffineVectorList read FAktList;
-    property List[I: Integer]: TgAffineVectorList read GetList;
+    property AktList: TgxAffineVectorList read FAktList;
+    property List[I: Integer]: TgxAffineVectorList read GetList;
   end;
 
   (* Multipolygon is defined with multiple contours.
@@ -173,7 +173,7 @@ implementation
 
 type
   (* page oriented pointer array, with persistent pointer target memory.
-    In TGVectorList a pointer to a vector will not be valid any more after
+    In TgxVectorList a pointer to a vector will not be valid any more after
     a call to SetCapacity, which might be done implicitely during Add.
     The TgxVectorPool keeps memory in its original position during its
     whole lifetime. *)
@@ -241,13 +241,13 @@ end;
 
 procedure TgxPolygonList.Add;
 begin
-  FAktList := TgAffineVectorList.Create;
+  FAktList := TgxAffineVectorList.Create;
   inherited Add(FAktList);
 end;
 
-function TgxPolygonList.GetList(i: Integer): TgAffineVectorList;
+function TgxPolygonList.GetList(i: Integer): TgxAffineVectorList;
 begin
-  Result := TgAffineVectorList(Items[i]);
+  Result := TgxAffineVectorList(Items[i]);
 end;
 
 // ------------------

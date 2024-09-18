@@ -351,9 +351,9 @@ type
   // Simple Particles Source.
   TGLSourcePFXEffect = class(TGLParticleFXEffect)
   private
-    FInitialVelocity: TgCoordinates;
-    FInitialPosition: TgCoordinates;
-    FPositionDispersionRange: TgCoordinates;
+    FInitialVelocity: TGLCoordinates;
+    FInitialPosition: TGLCoordinates;
+    FPositionDispersionRange: TGLCoordinates;
     FVelocityDispersion: Single;
     FPositionDispersion: Single;
     FParticleInterval: Single;
@@ -365,9 +365,9 @@ type
     FTimeRemainder: Double;
     FRotationDispersion: Single;
   protected
-    procedure SetInitialVelocity(const val: TgCoordinates);
-    procedure SetInitialPosition(const val: TgCoordinates);
-    procedure SetPositionDispersionRange(const val: TgCoordinates);
+    procedure SetInitialVelocity(const val: TGLCoordinates);
+    procedure SetInitialPosition(const val: TGLCoordinates);
+    procedure SetPositionDispersionRange(const val: TGLCoordinates);
     procedure SetParticleInterval(const val: Single);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
@@ -384,11 +384,11 @@ type
       minInitialSpeed, maxInitialSpeed: Single;
       nbParticles: Integer);
   published
-    property InitialVelocity: TgCoordinates read FInitialVelocity write SetInitialVelocity;
+    property InitialVelocity: TGLCoordinates read FInitialVelocity write SetInitialVelocity;
     property VelocityDispersion: Single read FVelocityDispersion write FVelocityDispersion;
-    property InitialPosition: TgCoordinates read FInitialPosition write SetInitialPosition;
+    property InitialPosition: TGLCoordinates read FInitialPosition write SetInitialPosition;
     property PositionDispersion: Single read FPositionDispersion write FPositionDispersion;
-    property PositionDispersionRange: TgCoordinates read FPositionDispersionRange write SetPositionDispersionRange;
+    property PositionDispersionRange: TGLCoordinates read FPositionDispersionRange write SetPositionDispersionRange;
     property ParticleInterval: Single read FParticleInterval write SetParticleInterval;
     property VelocityMode: TGLSourcePFXVelocityMode read FVelocityMode write FVelocityMode default svmAbsolute;
     property PositionMode: TGLSourcePFXPositionMode read FPositionMode write FPositionMode default spmAbsoluteOffset;
@@ -403,12 +403,12 @@ type
    (simple velocity and const acceleration integration). *)
   TGLDynamicPFXManager = class(TGLParticleFXManager)
   private
-    FAcceleration: TgCoordinates;
+    FAcceleration: TGLCoordinates;
     FFriction: Single;
     FCurrentTime: Double;
     //FRotationCenter: TAffineVector;
   protected
-    procedure SetAcceleration(const val: TgCoordinates);
+    procedure SetAcceleration(const val: TGLCoordinates);
     (* Returns the maximum age for a particle.
        Particles older than that will be killed by DoProgress. *)
     function MaxParticleAge: Single; virtual; abstract;
@@ -419,7 +419,7 @@ type
     procedure DoProgress(const progressTime: TGLProgressTimes); override;
   published
     // Oriented acceleration applied to the particles.
-    property Acceleration: TgCoordinates read FAcceleration write SetAcceleration;
+    property Acceleration: TGLCoordinates read FAcceleration write SetAcceleration;
     (* Friction applied to the particles.
        Friction is applied as a speed scaling factor over 1 second, ie.
        a friction of 0.5 will half speed over 1 second, a friction of 3
@@ -744,7 +744,7 @@ end;
 
 procedure RndVector(const dispersion: TGLSourcePFXDispersionMode;
   var v: TAffineVector; var f: Single;
-  dispersionRange: TgCoordinates);
+  dispersionRange: TGLCoordinates);
 
   function GetRandomVector(NotIsotropic : boolean) : TVector3f;
   // Isotropic gives constrainted vector within a radius
@@ -1502,9 +1502,9 @@ end;
 constructor TGLSourcePFXEffect.Create(aOwner: TXCollection);
 begin
   inherited;
-  FInitialVelocity := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
-  FInitialPosition := TgCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
-  FPositionDispersionRange := TgCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
+  FInitialVelocity := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FInitialPosition := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FPositionDispersionRange := TGLCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
   FVelocityDispersion := 0;
   FPositionDispersion := 0;
   FParticleInterval := 0.1;
@@ -1589,17 +1589,17 @@ begin
   end;
 end;
 
-procedure TGLSourcePFXEffect.SetInitialVelocity(const val: TgCoordinates);
+procedure TGLSourcePFXEffect.SetInitialVelocity(const val: TGLCoordinates);
 begin
   FInitialVelocity.Assign(val);
 end;
 
-procedure TGLSourcePFXEffect.SetInitialPosition(const val: TgCoordinates);
+procedure TGLSourcePFXEffect.SetInitialPosition(const val: TGLCoordinates);
 begin
   FInitialPosition.Assign(val);
 end;
 
-procedure TGLSourcePFXEffect.SetPositionDispersionRange(const val: TgCoordinates);
+procedure TGLSourcePFXEffect.SetPositionDispersionRange(const val: TGLCoordinates);
 begin
   FPositionDispersionRange.Assign(val);
 end;
@@ -1894,7 +1894,7 @@ end;
 constructor TGLDynamicPFXManager.Create(aOwner: TComponent);
 begin
   inherited;
-  FAcceleration := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FAcceleration := TGLCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
   FFriction := 1;
 end;
 
@@ -1982,7 +1982,7 @@ begin
     Particles.Pack;
 end;
 
-procedure TGLDynamicPFXManager.SetAcceleration(const val: TgCoordinates);
+procedure TGLDynamicPFXManager.SetAcceleration(const val: TGLCoordinates);
 begin
   FAcceleration.Assign(val);
 end;

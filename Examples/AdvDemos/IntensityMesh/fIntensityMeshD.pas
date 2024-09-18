@@ -18,7 +18,7 @@ uses
   GLS.Scene,
   GLScene.VectorTypes,
   GLS.VectorFileObjects,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.SceneViewer,
   GLS.Mesh,
   GLS.Texture,

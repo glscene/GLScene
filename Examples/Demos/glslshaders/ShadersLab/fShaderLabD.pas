@@ -23,7 +23,7 @@ uses
   Vcl.Imaging.PngImage,
 
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorGeometry,
   GLS.BaseClasses,
   GLS.PersistentClasses,

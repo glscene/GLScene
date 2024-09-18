@@ -19,7 +19,7 @@ uses
   GLS.Objects,
   GLS.SceneViewer,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.Cadencer,
   GLS.Texture,
   GLS.Color,

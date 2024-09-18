@@ -389,7 +389,7 @@
         <DCCReference Include="..\Source\GLScene.Manager.pas"/>
         <DCCReference Include="..\Source\GLScene.Generics.pas"/>
         <DCCReference Include="..\Source\GLScene.GeometryBB.pas"/>
-        <DCCReference Include="..\Source\GLScene.CurvesAndSurfaces.pas"/>
+        <DCCReference Include="..\Sourcex\GXS.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Source\GLScene.AnimationUtils.pas"/>
         <DCCReference Include="..\Source\Formats.X.pas"/>
         <DCCReference Include="..\Source\GLScene.TextureFormat.pas"/>
@@ -404,7 +404,7 @@
         <DCCReference Include="..\Source\Formats.OCT.pas"/>
         <DCCReference Include="..\Source\Formats.Q3BSP.pas"/>
         <DCCReference Include="..\Source\Formats.VFW.pas"/>
-        <DCCReference Include="..\Source\Formats.VRML.pas"/>
+        <DCCReference Include="..\Sourcex\Formatx.VRML.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.Q3MD3.pas"/>
         <DCCReference Include="..\Source\Formats.B3D.pas"/>
         <DCCReference Include="..\Source\Formats.LWO.pas"/>
