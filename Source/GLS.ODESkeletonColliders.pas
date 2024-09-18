@@ -11,7 +11,7 @@ uses
   System.Classes,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.VectorFileObjects,
   ODE.Import;

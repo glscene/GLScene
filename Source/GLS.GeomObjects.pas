@@ -3,7 +3,7 @@
 //
 unit GLS.GeomObjects;
 
-(*
+(* 
   Geometric objects.
   The registered classes are:
     [TGLDodecahedron, TGLIcosahedron, TGLHexahedron, TGLOctahedron, TGLTetrahedron,
@@ -29,8 +29,8 @@ uses
 
   GLS.Scene,
   GLS.State,
-  GLScene.PersistentClasses,
-  GLScene.VectorLists,
+  GLS.PersistentClasses,
+  GLS.VectorLists,
   GLS.Silhouette,
   GLScene.GeometryBB,
   GLS.VectorFileObjects,

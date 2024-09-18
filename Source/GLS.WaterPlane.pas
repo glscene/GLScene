@@ -22,9 +22,9 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorGeometry,
   GLS.Scene,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
-  GLScene.BaseClasses,
+  GLS.VectorLists,
+  GLS.PersistentClasses,
+  GLS.BaseClasses,
   GLS.Context,
   GLS.RenderContextInfo,
   GLScene.VectorTypes,
@@ -44,8 +44,8 @@ const
      FPositions, FVelocity: packed array of Single;
      FPlaneQuadIndices: TgPersistentObjectList;
      FPlaneQuadTexCoords: TGTexPointList;
-     FPlaneQuadVertices: TGAffineVectorList;
-     FPlaneQuadNormals: TGAffineVectorList;
+     FPlaneQuadVertices: TGLAffineVectorList;
+     FPlaneQuadNormals: TGLAffineVectorList;
      FActive: Boolean;
      FRainTimeInterval: Integer;
      FRainForce: Single;
@@ -76,7 +76,7 @@ const
    public
      constructor Create(AOwner: TComponent); override;
      destructor Destroy; override;
-     procedure DoProgress(const progressTime: TGProgressTimes); override;
+     procedure DoProgress(const progressTime: TGLProgressTimes); override;
      procedure BuildList(var rci: TGLRenderContextInfo); override;
      procedure Assign(Source: TPersistent); override;
      function AxisAlignedDimensionsUnscaled: TGLVector; override;
@@ -134,8 +134,8 @@ begin
 
   FPlaneQuadIndices := TgPersistentObjectList.Create;
   FPlaneQuadTexCoords := TGTexPointList.Create;
-  FPlaneQuadVertices := TGAffineVectorList.Create;
-  FPlaneQuadNormals := TGAffineVectorList.Create;
+  FPlaneQuadVertices := TGLAffineVectorList.Create;
+  FPlaneQuadNormals := TGLAffineVectorList.Create;
   FMask := TPicture.Create;
   FMask.OnChange := DoMaskChanged;
   SetResolution(64);
@@ -151,7 +151,7 @@ begin
   inherited;
 end;
 
-procedure TGLWaterPlane.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLWaterPlane.DoProgress(const progressTime: TGLProgressTimes);
 var
   i: Integer;
 begin

@@ -21,9 +21,9 @@ uses
   GLS.HUDObjects,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLScene.Coordinates,
+  GLS.Coordinates,
  
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TFormTexFormat = class(TForm)

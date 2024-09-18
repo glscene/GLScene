@@ -13,8 +13,8 @@ uses
   Vcl.StdCtrls,
 
   GLScene.Keyboard,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.XCollection,
   GLScene.VectorGeometry,
 

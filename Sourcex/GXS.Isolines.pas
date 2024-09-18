@@ -14,15 +14,15 @@ uses
   System.Generics.Collections,
 
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorTypesExt,
   GLScene.Spline,
 
   GXS.Objects,
   GXS.MultiPolygon,
-  GLScene.Coordinates,
-  GLScene.Color,
+  GXS.Coordinates,
+  GXS.Color,
   GXS.SpaceText,
   GXS.VectorFileObjects;
 

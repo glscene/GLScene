@@ -14,7 +14,7 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
@@ -28,10 +28,10 @@ uses
   GLS.Silhouette,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
   GLS.SimpleNavigation,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.Utils;
 
 type

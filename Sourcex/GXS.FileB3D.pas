@@ -13,7 +13,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.TextureFormat,
 
   GXS.ApplicationFileIO,

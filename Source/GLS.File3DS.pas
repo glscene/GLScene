@@ -25,9 +25,9 @@ uses
   GLS.Texture,
   GLS.ApplicationFileIO,
   GLS.Context,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.File3DSSceneObjects,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.RenderContextInfo,
   GLS.Material,
 
@@ -49,7 +49,7 @@ type
   end;
 
   // An abstract class that describes how to interpolate animation keys.
-  TGLFile3DSAnimationKeys = class(TGPersistentObject)
+  TGLFile3DSAnimationKeys = class(TGLPersistentObject)
   private
     FNumKeys: Integer;
     FKeys: array of TKeyHeader3DS;
@@ -154,7 +154,7 @@ type
     procedure ReadFromFiler(Reader: TGVirtualReader); override;
   end;
 
-  TGLFile3DSAnimationKeyList = class(TGPersistentObject)
+  TGLFile3DSAnimationKeyList = class(TGLPersistentObject)
   private
     FAnimKeysList: array of TGLFile3DSAnimationKeys;
   protected
@@ -186,7 +186,7 @@ type
     procedure MorphTo(morphTargetIndex: Integer); override;
     procedure Lerp(morphTargetIndex1, morphTargetIndex2: Integer; lerpFactor: Single); override;
     procedure GetExtents(out min, max: TAffineVector); override;
-    function ExtractTriangles(texCoords: TGAffineVectorList = nil; normals: TGAffineVectorList = nil): TGAffineVectorList;
+    function ExtractTriangles(texCoords: TGLAffineVectorList = nil; normals: TGLAffineVectorList = nil): TGLAffineVectorList;
       override;
     procedure WriteToFiler(Writer: TGVirtualWriter); override;
     procedure ReadFromFiler(Reader: TGVirtualReader); override;
@@ -1103,7 +1103,7 @@ begin
   end;
 end;
 
-function TGLFile3DSDummyObject.ExtractTriangles(texCoords, normals: TGAffineVectorList): TGAffineVectorList;
+function TGLFile3DSDummyObject.ExtractTriangles(texCoords, normals: TGLAffineVectorList): TGLAffineVectorList;
 var
   I: Integer;
 begin

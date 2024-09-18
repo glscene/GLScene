@@ -12,7 +12,7 @@ uses
   System.SysUtils,
   GXS.VectorFileObjects,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.ApplicationFileIO,
   GXS.ParametricSurfaces,
   GXS.ImageUtils;

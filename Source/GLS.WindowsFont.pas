@@ -23,7 +23,7 @@ uses
   GLS.Texture,
   GLS.BitmapFont,
   GLS.RenderContextInfo,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.Utils,
   GLScene.VectorGeometry,
   GLScene.OpenGLTokens,

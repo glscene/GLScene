@@ -13,11 +13,11 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.Material,
-  GLScene.VectorLists,
+  GLS.VectorLists,
 
   Formats.GL2;
 

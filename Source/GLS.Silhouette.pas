@@ -18,7 +18,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists;
+  GLS.VectorLists;
 
 type
   TGSilhouetteStyle = (ssOmni, ssParallel);
@@ -96,9 +96,9 @@ type
     FEdgeFaces: TgIntegerList;
     FFaceVisible: TGByteList;
     FFaceVertexIndex: TgIntegerList;
-    FFaceNormal: TGAffineVectorList;
+    FFaceNormal: TGLAffineVectorList;
     FVertexMemory: TgIntegerList;
-    FVertices: TGAffineVectorList;
+    FVertices: TGLAffineVectorList;
     function GetEdgeCount: integer;
     function GetFaceCount: integer;
     function ReuseOrFindVertexID(const SeenFrom: TAffineVector; ASilhouette: TGLSilhouette; index: integer): integer;
@@ -274,12 +274,12 @@ constructor TGLConnectivity.Create(APrecomputeFaceNormal: Boolean);
 begin
   FFaceVisible := TGByteList.Create;
   FFaceVertexIndex := TgIntegerList.Create;
-  FFaceNormal := TGAffineVectorList.Create;
+  FFaceNormal := TGLAffineVectorList.Create;
   FEdgeVertices := TgIntegerList.Create;
   FEdgeFaces := TgIntegerList.Create;
   FPrecomputeFaceNormal := APrecomputeFaceNormal;
   FVertexMemory := TgIntegerList.Create;
-  FVertices := TGAffineVectorList.Create;
+  FVertices := TGLAffineVectorList.Create;
 end;
 
 destructor TGLConnectivity.Destroy;

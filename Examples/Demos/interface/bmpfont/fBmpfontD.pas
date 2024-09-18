@@ -19,8 +19,8 @@ uses
   GLS.Cadencer,
   GLS.BitmapFont,
   GLS.GeomObjects,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils,
   GLS.SceneViewer;
 

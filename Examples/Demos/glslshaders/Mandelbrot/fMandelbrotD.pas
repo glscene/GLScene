@@ -30,10 +30,10 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
   GLS.RenderContextInfo,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLSL.CustomShader,
   GLSL.Shader;
 

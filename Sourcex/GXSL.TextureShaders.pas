@@ -29,13 +29,13 @@ uses
   GXS.XOpenGL,
 
   GLScene.VectorGeometry,
-  GLScene.Color,
+  GXS.Color,
   GXS.Material,
   GLScene.Strings,
   GXS.VectorFileObjects,
   GXS.State,
-  GLScene.PersistentClasses,
-  GLScene.Coordinates,
+  GXS.PersistentClasses,
+  GXS.Coordinates,
   GXS.TextureCombiners,
   GXS.RenderContextInfo,
   GXS.ImageUtils;
@@ -43,33 +43,33 @@ uses
 type
   TgxShaderTextureSharing = class;
 
-  TgxShaderTextureSharingMaterial = class(TGInterfacedCollectionItem, IgxMaterialLibrarySupported)
+  TgxShaderTextureSharingMaterial = class(TgxInterfacedCollectionItem, IgxMaterialLibrarySupported)
   private
     FTextureMatrix: TMatrix4f;
     FNeedToUpdateTextureMatrix: Boolean;
     FTextureMatrixIsUnitary: Boolean;
     FLibMaterial: TgxLibMaterial;
-    FTexOffset: TgCoordinates2;
-    FTexScale: TgCoordinates2;
+    FTexOffset: TgxCoordinates2;
+    FTexScale: TgxCoordinates2;
     FBlendingMode: TgxBlendingMode;
-    FSpecular: TGColor;
-    FAmbient: TGColor;
-    FDiffuse: TGColor;
-    FEmission: TGColor;
+    FSpecular: TgxColor;
+    FAmbient: TgxColor;
+    FDiffuse: TgxColor;
+    FEmission: TgxColor;
     FShininess: TgxShininess;
     FMaterialLibrary: TgxMaterialLibrary;
     FLibMaterialName: TgxLibMaterialName;
-    procedure SetAmbient(const Value: TGColor);
-    procedure SetDiffuse(const Value: TGColor);
-    procedure SetEmission(const Value: TGColor);
+    procedure SetAmbient(const Value: TgxColor);
+    procedure SetDiffuse(const Value: TgxColor);
+    procedure SetEmission(const Value: TgxColor);
     procedure SetShininess(const Value: TgxShininess);
-    procedure SetSpecular(const Value: TGColor);
+    procedure SetSpecular(const Value: TgxColor);
     procedure SetMaterialLibrary(const Value: TgxMaterialLibrary);
     procedure SetLibMaterialName(const Value: TgxLibMaterialName);
     procedure SetBlendingMode(const Value: TgxBlendingMode);
     procedure SetLibMaterial(const Value: TgxLibMaterial);
-    procedure SetTexOffset(const Value: TgCoordinates2);
-    procedure SetTexScale(const Value: TgCoordinates2);
+    procedure SetTexOffset(const Value: TgxCoordinates2);
+    procedure SetTexScale(const Value: TgxCoordinates2);
     function GetTextureMatrix: TMatrix4f;
     function GetTextureMatrixIsUnitary: Boolean;
   protected
@@ -88,13 +88,13 @@ type
     property TextureMatrix: TMatrix4f read GetTextureMatrix;
     property TextureMatrixIsUnitary: Boolean read GetTextureMatrixIsUnitary;
   published
-    property TexOffset: TgCoordinates2 read FTexOffset write SetTexOffset;
-    property TexScale: TgCoordinates2 read FTexScale write SetTexScale;
+    property TexOffset: TgxCoordinates2 read FTexOffset write SetTexOffset;
+    property TexScale: TgxCoordinates2 read FTexScale write SetTexScale;
     property BlendingMode: TgxBlendingMode read FBlendingMode write SetBlendingMode;
-    property Emission: TGColor read FEmission write SetEmission;
-    property Ambient: TGColor read FAmbient write SetAmbient;
-    property Diffuse: TGColor read FDiffuse write SetDiffuse;
-    property Specular: TGColor read FSpecular write SetSpecular;
+    property Emission: TgxColor read FEmission write SetEmission;
+    property Ambient: TgxColor read FAmbient write SetAmbient;
+    property Diffuse: TgxColor read FDiffuse write SetDiffuse;
+    property Specular: TgxColor read FSpecular write SetSpecular;
     property Shininess: TgxShininess read FShininess write SetShininess;
     property MaterialLibrary: TgxMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
     property LibMaterialName: TgxLibMaterialName read FLibMaterialName write SetLibMaterialName;
@@ -329,19 +329,19 @@ end;
 constructor TgxShaderTextureSharingMaterial.Create(Collection: TCollection);
 begin
   inherited;
-  FSpecular := TGColor.Create(Self);
+  FSpecular := TgxColor.Create(Self);
   FSpecular.OnNotifyChange := OtherNotifychange;
-  FAmbient := TGColor.Create(Self);
+  FAmbient := TgxColor.Create(Self);
   FAmbient.OnNotifyChange := OtherNotifychange;
-  FDiffuse := TGColor.Create(Self);
+  FDiffuse := TgxColor.Create(Self);
   FDiffuse.OnNotifyChange := OtherNotifychange;
-  FEmission := TGColor.Create(Self);
+  FEmission := TgxColor.Create(Self);
   FEmission.OnNotifyChange := OtherNotifychange;
 
-  FTexOffset := TgCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2d);
+  FTexOffset := TgxCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2d);
   FTexOffset.OnNotifyChange := coordNotifychange;
 
-  FTexScale := TgCoordinates2.CreateInitialized(Self, XYZHmgVector, csPoint2d);
+  FTexScale := TgxCoordinates2.CreateInitialized(Self, XYZHmgVector, csPoint2d);
   FTexScale.OnNotifyChange := coordNotifychange;
   FNeedToUpdateTextureMatrix := True;
 end;
@@ -410,7 +410,7 @@ begin
   GetTextureSharingShader.NotifyChange(Self);
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetAmbient(const Value: TGColor);
+procedure TgxShaderTextureSharingMaterial.SetAmbient(const Value: TgxColor);
 begin
   FAmbient.Assign(Value);
 end;
@@ -420,12 +420,12 @@ begin
   FBlendingMode := Value;
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetDiffuse(const Value: TGColor);
+procedure TgxShaderTextureSharingMaterial.SetDiffuse(const Value: TgxColor);
 begin
   FDiffuse.Assign(Value);
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetEmission(const Value: TGColor);
+procedure TgxShaderTextureSharingMaterial.SetEmission(const Value: TgxColor);
 begin
   FEmission.Assign(Value);
 end;
@@ -475,18 +475,18 @@ begin
   FShininess := Value;
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetSpecular(const Value: TGColor);
+procedure TgxShaderTextureSharingMaterial.SetSpecular(const Value: TgxColor);
 begin
   FSpecular.Assign(Value);
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetTexOffset(const Value: TgCoordinates2);
+procedure TgxShaderTextureSharingMaterial.SetTexOffset(const Value: TgxCoordinates2);
 begin
   FTexOffset.Assign(Value);
   FNeedToUpdateTextureMatrix := True;
 end;
 
-procedure TgxShaderTextureSharingMaterial.SetTexScale(const Value: TgCoordinates2);
+procedure TgxShaderTextureSharingMaterial.SetTexScale(const Value: TgxCoordinates2);
 begin
   FTexScale.Assign(Value);
   FNeedToUpdateTextureMatrix := True;

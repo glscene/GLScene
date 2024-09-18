@@ -18,12 +18,12 @@ uses
   GLS.Cadencer,
   GLScene.VectorTypes,
   GLS.SceneViewer,
-  GLScene.Color,
+  GLS.Color,
 
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Material,
   GLS.SimpleNavigation,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TFormMegaglasscube = class(TForm)

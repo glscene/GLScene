@@ -21,8 +21,8 @@ uses
   System.SysUtils,
 
   GLScene.XCollection,
-  GLScene.PersistentClasses,
-  GLScene.BaseClasses,
+  GXS.PersistentClasses,
+  GXS.BaseClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Spline,
@@ -253,7 +253,7 @@ type
     class function UniqueItem: boolean; override;
     procedure StartPathTravel;
     procedure StopPathTravel;
-    procedure DoProgress(const progressTime : TGProgressTimes); override;
+    procedure DoProgress(const progressTime : TgxProgressTimes); override;
     function NextPath: integer;
     function PrevPath: integer;
     function FirstPath: integer;
@@ -1515,7 +1515,7 @@ begin
 end;
 
 //Calculate functions add into this method
-procedure TgxMovement.DoProgress(const progressTime : TGProgressTimes);
+procedure TgxMovement.DoProgress(const progressTime : TgxProgressTimes);
 var
   Path: TgxMovementPath;
 begin

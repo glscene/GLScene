@@ -14,7 +14,7 @@ uses
   System.SysUtils,
 
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLScene.Utils;

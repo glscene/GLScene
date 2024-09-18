@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLScene.BaseClasses;
+unit GLS.BaseClasses;
 
 (* Base classes *)
 
@@ -12,10 +12,10 @@ uses
   System.SysUtils,
 
   GLScene.Strings,
-  GLScene.PersistentClasses;
+  GLS.PersistentClasses;
 
 type
-  TGProgressTimes = packed record
+  TGLProgressTimes = packed record
     DeltaTime, NewTime: Double;
     SqrDeltaTime, InvSqrDeltaTime: Single;
   end;
@@ -23,20 +23,20 @@ type
   (* Progression event for time-base animations/simulations.
      deltaTime is the time delta since last progress and newTime is the new
      time after the progress event is completed. *)
-  TgProgressEvent = procedure(Sender: TObject; const DeltaTime, NewTime: Double) of object;
+  TGLProgressEvent = procedure(Sender: TObject; const DeltaTime, NewTime: Double) of object;
 
-  IGNotifyAble = interface(IInterface)
+  IGLNotifyAble = interface(IInterface)
     ['{00079A6C-D46E-4126-86EE-F9E2951B4593}']
     procedure NotifyChange(Sender: TObject);
   end;
 
-  IGProgessAble = interface(IInterface)
+  IGLProgessAble = interface(IInterface)
     ['{95E44548-B0FE-4607-98D0-CA51169AF8B5}']
-    procedure DoProgress(const progressTime: TGProgressTimes);
+    procedure DoProgress(const progressTime: TGLProgressTimes);
   end;
 
   // An abstract class describing the "update" interface.
-  TGUpdateAbleObject = class(TGInterfacedPersistent, IGNotifyAble)
+  TGLUpdateAbleObject = class(TGInterfacedPersistent, IGLNotifyAble)
   private
     FOwner: TPersistent;
     FUpdating: Integer;
@@ -55,13 +55,13 @@ type
   end;
 
   // A base class describing the "cadenceing" interface.
-  TGCadenceAbleComponent = class(TComponent, IGProgessAble)
+  TGLCadenceAbleComponent = class(TComponent, IGLProgessAble)
   public
-    procedure DoProgress(const progressTime: TGProgressTimes); virtual;
+    procedure DoProgress(const progressTime: TGLProgressTimes); virtual;
   end;
 
   // A base class describing the "update" interface.
-  TGUpdateAbleComponent = class(TGCadenceAbleComponent, IGNotifyAble)
+  TGLUpdateAbleComponent = class(TGLCadenceAbleComponent, IGLNotifyAble)
   public
     procedure NotifyChange(Sender: TObject); virtual;
   end;
@@ -78,43 +78,43 @@ type
 
 implementation //---------------------------------------------------------------
 
-constructor TGUpdateAbleObject.Create(AOwner: TPersistent);
+constructor TGLUpdateAbleObject.Create(AOwner: TPersistent);
 begin
   inherited Create;
   FOwner := AOwner;
 end;
 
-procedure TGUpdateAbleObject.NotifyChange(Sender: TObject);
+procedure TGLUpdateAbleObject.NotifyChange(Sender: TObject);
 begin
   if FUpdating = 0 then
   begin
     if Assigned(FOwner) then
     begin
-      if FOwner is TGUpdateAbleObject then
-        TGUpdateAbleObject(FOwner).NotifyChange(Self)
-      else if FOwner is TGUpdateAbleComponent then
-        TGUpdateAbleComponent(FOwner).NotifyChange(Self);
+      if FOwner is TGLUpdateAbleObject then
+        TGLUpdateAbleObject(FOwner).NotifyChange(Self)
+      else if FOwner is TGLUpdateAbleComponent then
+        TGLUpdateAbleComponent(FOwner).NotifyChange(Self);
     end;
     if Assigned(FOnNotifyChange) then
       FOnNotifyChange(Self);
   end;
 end;
 
-procedure TGUpdateAbleObject.Notification(Sender: TObject; Operation: TOperation);
+procedure TGLUpdateAbleObject.Notification(Sender: TObject; Operation: TOperation);
 begin
 end;
 
-function TGUpdateAbleObject.GetOwner: TPersistent;
+function TGLUpdateAbleObject.GetOwner: TPersistent;
 begin
   Result := FOwner;
 end;
 
-procedure TGUpdateAbleObject.BeginUpdate;
+procedure TGLUpdateAbleObject.BeginUpdate;
 begin
   Inc(FUpdating);
 end;
 
-procedure TGUpdateAbleObject.EndUpdate;
+procedure TGLUpdateAbleObject.EndUpdate;
 begin
   Dec(FUpdating);
   if FUpdating <= 0 then
@@ -125,23 +125,23 @@ begin
 end;
 
 // ------------------
-// ------------------ TGCadenceAbleComponent ------------------
+// ------------------ TGLCadenceAbleComponent ------------------
 // ------------------
 
-procedure TGCadenceAbleComponent.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLCadenceAbleComponent.DoProgress(const progressTime: TGLProgressTimes);
 begin
   // nothing
 end;
 
 // ------------------
-// ------------------ TGUpdateAbleObject ------------------
+// ------------------ TGLUpdateAbleObject ------------------
 // ------------------
 
-procedure TGUpdateAbleComponent.NotifyChange(Sender: TObject);
+procedure TGLUpdateAbleComponent.NotifyChange(Sender: TObject);
 begin
   if Assigned(Owner) then
-    if (Owner is TGUpdateAbleComponent) then
-      (Owner as TGUpdateAbleComponent).NotifyChange(Self);
+    if (Owner is TGLUpdateAbleComponent) then
+      (Owner as TGLUpdateAbleComponent).NotifyChange(Self);
 end;
 
 // ------------------
@@ -151,8 +151,8 @@ end;
 constructor TGNotifyCollection.Create(AOwner: TPersistent; AItemClass: TCollectionItemClass);
 begin
   inherited Create(AOwner, AItemClass);
-  if Assigned(AOwner) and (AOwner is TGUpdateAbleComponent) then
-    FOnNotifyChange := TGUpdateAbleComponent(AOwner).NotifyChange;
+  if Assigned(AOwner) and (AOwner is TGLUpdateAbleComponent) then
+    FOnNotifyChange := TGLUpdateAbleComponent(AOwner).NotifyChange;
 end;
 
 procedure TGNotifyCollection.Update(Item: TCollectionItem);

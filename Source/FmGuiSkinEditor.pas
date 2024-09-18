@@ -32,8 +32,8 @@ uses
   GLS.Gui, 
   GLS.Graphics, 
   GLScene.Utils,
-  GLScene.Coordinates,
-  GLScene.BaseClasses, 
+  GLS.Coordinates,
+  GLS.BaseClasses, 
   GLS.Material;
 
 type

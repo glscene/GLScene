@@ -238,13 +238,9 @@ contains
   GLScene.RGBE in '..\Source\GLScene.RGBE.pas',
   GLScene.Utils in '..\Source\GLScene.Utils.pas',
   GLScene.Manager in '..\Source\GLScene.Manager.pas',
-  GLScene.PersistentClasses in '..\Source\GLScene.PersistentClasses.pas',
   GLScene.Generics in '..\Source\GLScene.Generics.pas',
   GLScene.GeometryBB in '..\Source\GLScene.GeometryBB.pas',
-  GLScene.VectorLists in '..\Source\GLScene.VectorLists.pas',
   GLScene.CurvesAndSurfaces in '..\Source\GLScene.CurvesAndSurfaces.pas',
-  GLScene.Coordinates in '..\Source\GLScene.Coordinates.pas',
-  GLScene.BaseClasses in '..\Source\GLScene.BaseClasses.pas',
   GLScene.AnimationUtils in '..\Source\GLScene.AnimationUtils.pas',
   Formats.X in '..\Source\Formats.X.pas',
   GLScene.TextureFormat in '..\Source\GLScene.TextureFormat.pas',
@@ -268,10 +264,14 @@ contains
   GLScene.XCollection in '..\Source\GLScene.XCollection.pas',
   GLScene.Keyboard in '..\Source\GLScene.Keyboard.pas',
   GLScene.Polynomials in '..\Source\GLScene.Polynomials.pas',
-  GLScene.Color in '..\Source\GLScene.Color.pas',
   GLScene.PipelineTransform in '..\Source\GLScene.PipelineTransform.pas',
   GXS.ScriptBase in '..\Sourcex\GXS.ScriptBase.pas',
   GXS.SmartObjects in '..\Sourcex\GXS.SmartObjects.pas',
-  GXS.CyborgManager in '..\Sourcex\GXS.CyborgManager.pas';
+  GXS.CyborgManager in '..\Sourcex\GXS.CyborgManager.pas',
+  GXS.PersistentClasses in '..\Sourcex\GXS.PersistentClasses.pas',
+  GXS.VectorLists in '..\Sourcex\GXS.VectorLists.pas',
+  GXS.Color in '..\Sourcex\GXS.Color.pas',
+  GXS.BaseClasses in '..\sourcex\GXS.BaseClasses.pas',
+  GXS.Coordinates in '..\Sourcex\GXS.Coordinates.pas';
 
 end.

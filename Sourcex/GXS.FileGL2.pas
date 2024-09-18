@@ -17,7 +17,7 @@ uses
   GXS.Material,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GXS.VectorLists,
 
   Formatx.FileGL2;
 

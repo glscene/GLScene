@@ -18,8 +18,8 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
+  GLS.VectorLists,
+  GLS.PersistentClasses,
 
   GLS.Scene,
   GLS.VectorFileObjects,
@@ -559,7 +559,7 @@ procedure OptimizeMesh(aMeshObject: TGLMeshObject;
 var
   i: Integer;
   fg: TGLFaceGroup;
-  coords, TexCoords, Normals: TGAffineVectorList;
+  coords, TexCoords, Normals: TGLAffineVectorList;
   il: TgIntegerList;
   materialName: String;
 begin
@@ -584,8 +584,8 @@ begin
     begin
       if aMeshObject.FaceGroups.Count = 1 then
         materialName := aMeshObject.FaceGroups[0].materialName;
-      TexCoords := TGAffineVectorList.Create;
-      Normals := TGAffineVectorList.Create;
+      TexCoords := TGLAffineVectorList.Create;
+      Normals := TGLAffineVectorList.Create;
       coords := aMeshObject.ExtractTriangles(TexCoords, Normals);
       try
         il := BuildVectorCountOptimizedIndices(coords, Normals, TexCoords);
@@ -640,15 +640,15 @@ procedure FacesSmooth(aMeshObj: TGLMeshObject;
   InvertNormals: boolean = false);
 Var
   i, J, k, L: Integer;
-  WeldedVertex: TGAffineVectorList;
+  WeldedVertex: TGLAffineVectorList;
   TmpIntegerList: TgIntegerList;
   IndexMap: TStringList;
   n: TAffineVector;
   indicesMap: TgIntegerList;
   Index: Integer;
   FaceList: TgIntegerList;
-  NormalList: TGAffineVectorList;
-  FaceNormalList: TGAffineVectorList;
+  NormalList: TGLAffineVectorList;
+  FaceNormalList: TGLAffineVectorList;
   FaceGroup: TGLFaceGroup;
   fg, FG1: TFGVertexIndexList;
   Threshold: Single;
@@ -680,7 +680,7 @@ begin
   Threshold := aThreshold * Pi / 180.0;
   // build the vectices reference map
   ReferenceMap := TgIntegerList.Create;
-  WeldedVertex := TGAffineVectorList.Create;
+  WeldedVertex := TGLAffineVectorList.Create;
   WeldedVertex.Assign(aMeshObj.Vertices);
   indicesMap := TgIntegerList.Create;
   // first of all, weld the very closed vertices
@@ -706,8 +706,8 @@ begin
   indicesMap.Free;
   // creates a TexPoint list for save face infomation, where s=facegroup index, t=face index
   FaceList := TgIntegerList.Create;
-  NormalList := TGAffineVectorList.Create;
-  FaceNormalList := TGAffineVectorList.Create;
+  NormalList := TGLAffineVectorList.Create;
+  FaceNormalList := TGLAffineVectorList.Create;
   // NormalIndex := TgIntegerList.Create;
   for i := 0 to aMeshObj.FaceGroups.Count - 1 do
   begin

@@ -29,8 +29,8 @@ uses
   GLScene.VectorGeometry,
   GLScene.PipelineTransform,
 
-  GLScene.PersistentClasses,
-  GLScene.VectorLists,
+  GLS.PersistentClasses,
+  GLS.VectorLists,
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.Texture,
@@ -62,10 +62,10 @@ type
     (* Parse the the feedback buffer for polygon data and build
        a mesh into the assigned lists. *)
     procedure BuildMeshFromBuffer(
-      Vertices: TGAffineVectorList = nil;
-      Normals: TGAffineVectorList = nil;
+      Vertices: TGLAffineVectorList = nil;
+      Normals: TGLAffineVectorList = nil;
       Colors: TGVectorList = nil;
-      TexCoords: TGAffineVectorList = nil;
+      TexCoords: TGLAffineVectorList = nil;
       VertexIndices: TgIntegerList = nil);
     // True when there is data in the buffer ready for parsing
     property Buffered: Boolean read FBuffered;
@@ -185,25 +185,25 @@ begin
 end;
 
 procedure TGLFeedback.BuildMeshFromBuffer(
-  Vertices: TGAffineVectorList = nil;
-  Normals: TGAffineVectorList = nil;
+  Vertices: TGLAffineVectorList = nil;
+  Normals: TGLAffineVectorList = nil;
   Colors: TGVectorList = nil;
-  TexCoords: TGAffineVectorList = nil;
+  TexCoords: TGLAffineVectorList = nil;
   VertexIndices: TgIntegerList = nil);
 var
   value: Single;
   i, j, LCount, skip: Integer;
   vertex, color, texcoord: TGLVector;
-  tempVertices, tempNormals, tempTexCoords: TGAffineVectorList;
+  tempVertices, tempNormals, tempTexCoords: TGLAffineVectorList;
   tempColors: TGVectorList;
   tempIndices: TgIntegerList;
   ColorBuffered, TexCoordBuffered: Boolean;
 begin
   Assert(FMode <> fm2D, 'Cannot build mesh from fm2D feedback mode.');
 
-  tempVertices := TGAffineVectorList.Create;
+  tempVertices := TGLAffineVectorList.Create;
   tempColors := TGVectorList.Create;
-  tempTexCoords := TGAffineVectorList.Create;
+  tempTexCoords := TGLAffineVectorList.Create;
 
   ColorBuffered := (FMode = fm3DColor) or
     (FMode = fm3DColorTexture) or

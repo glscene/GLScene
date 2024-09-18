@@ -13,7 +13,7 @@ uses
   ODE.Import,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.VectorFileObjects;
 
@@ -24,8 +24,8 @@ type
   private
     FGeom: PdxGeom;
   public
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure AddToSpace(Space: PdxSpace); virtual;
     procedure AlignCollider; override;
     // The geoms are created through the AddToSpace procedure
@@ -40,8 +40,8 @@ type
     procedure SetRadius(const val: TdReal);
   public
     constructor Create; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure AddToSpace(Space: PdxSpace); override;
     property Radius: TdReal read FRadius write SetRadius;
   end;
@@ -55,8 +55,8 @@ type
     procedure SetLength(const val: Single);
   public
     constructor Create; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure AddToSpace(Space: PdxSpace); override;
     property Radius: Single read FRadius write SetRadius;
     property Length: Single read FLength write SetLength;
@@ -72,8 +72,8 @@ type
     procedure SetBoxDepth(const val: TdReal);
   public
     constructor Create; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure AddToSpace(Space: PdxSpace); override;
     property BoxWidth: TdReal read FBoxWidth write SetBoxWidth;
     property BoxHeight: TdReal read FBoxHeight write SetBoxHeight;
@@ -108,7 +108,7 @@ end;
 // ------------------ TSCODEBase ------------------
 // ------------------
 
-procedure TSCODEBase.WriteToFiler(writer: TgVirtualWriter);
+procedure TSCODEBase.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -117,7 +117,7 @@ begin
   end;
 end;
 
-procedure TSCODEBase.ReadFromFiler(reader: TgVirtualReader);
+procedure TSCODEBase.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -173,7 +173,7 @@ begin
   AlignCollider;
 end;
 
-procedure TSCODESphere.WriteToFiler(writer: TgVirtualWriter);
+procedure TSCODESphere.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -183,7 +183,7 @@ begin
   end;
 end;
 
-procedure TSCODESphere.ReadFromFiler(reader: TgVirtualReader);
+procedure TSCODESphere.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -225,7 +225,7 @@ begin
   AlignCollider;
 end;
 
-procedure TSCODECCylinder.WriteToFiler(writer: TgVirtualWriter);
+procedure TSCODECCylinder.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -236,7 +236,7 @@ begin
   end;
 end;
 
-procedure TSCODECCylinder.ReadFromFiler(reader: TgVirtualReader);
+procedure TSCODECCylinder.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -291,7 +291,7 @@ begin
   AlignCollider;
 end;
 
-procedure TSCODEBox.WriteToFiler(writer: TgVirtualWriter);
+procedure TSCODEBox.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -303,7 +303,7 @@ begin
   end;
 end;
 
-procedure TSCODEBox.ReadFromFiler(reader: TgVirtualReader);
+procedure TSCODEBox.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin

@@ -20,8 +20,8 @@ uses
   GLScene.TextureFormat,
   GLS.CompositeImage,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
 
   GLS.Context,
   GLS.RenderContextInfo,

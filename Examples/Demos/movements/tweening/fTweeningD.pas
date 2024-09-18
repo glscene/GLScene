@@ -20,10 +20,10 @@ uses
   GLS.Scene,
   GLScene.VectorTypes,
   GLS.Objects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.SceneViewer,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Cadencer,
   GLScene.AnimationUtils,
   GLScene.VectorGeometry,

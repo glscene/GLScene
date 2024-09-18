@@ -15,7 +15,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.Strings,
   GLScene.Logger;
 
@@ -70,7 +70,7 @@ type
     file-based one just call these, and stream-based behaviours allow for more
     enhancement (such as other I/O abilities, compression, cacheing, etc.)
     to this class, without the need to rewrite subclasses. *)
-  TGLDataFile = class(TGUpdateAbleObject)
+  TGLDataFile = class(TGLUpdateAbleObject)
   private
     FResourceName: string;
     procedure SetResourceName(const AName: string);

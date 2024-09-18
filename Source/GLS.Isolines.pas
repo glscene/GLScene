@@ -19,12 +19,12 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorTypesExt,
   GLScene.Spline,
-  GLScene.VectorLists,
-  GLScene.Coordinates,
+  GLS.VectorLists,
+  GLS.Coordinates,
 
   GLS.Objects,
   GLS.MultiPolygon,
-  GLScene.Color,
+  GLS.Color,
   GLS.SpaceText,
   GLS.VectorFileObjects;
 
@@ -102,7 +102,7 @@ function GetNextIsoline(var Isoline: TGLIsoline): Boolean;
 
 // Defines contouring segments inside a triangle using elevations
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TGAffineVectorList);
+  ElevationDelta: Single; Segments: TGLAffineVectorList);
 
 //----------------------------------------------------------------------
 implementation
@@ -390,7 +390,7 @@ begin
 end;
 
 procedure TriangleElevationSegments(const p1, p2, p3: TAffineVector;
-  ElevationDelta: Single; Segments: TGAffineVectorList);
+  ElevationDelta: Single; Segments: TGLAffineVectorList);
 
   function SegmentIntersect(const a, b: TAffineVector; e: Single): Integer;
   var

@@ -12,7 +12,7 @@ uses
   Vcl.Dialogs,
 
   GLScene.VectorTypes,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLS.Scene, GLS.Objects,
   GLS.GeomObjects,
@@ -20,7 +20,7 @@ uses
   GLS.MultiPolygon,
   GLS.SceneViewer,
   GLS.Material,
-  GLScene.Coordinates;
+  GLS.Coordinates;
 
 type
   TVektor = record

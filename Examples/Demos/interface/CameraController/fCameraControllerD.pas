@@ -27,10 +27,10 @@ uses
   GLS.Texture,
   GLS.Cadencer,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
   GLScene.VectorTypes,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLS.Navigator,
   GLS.SmoothNavigator,

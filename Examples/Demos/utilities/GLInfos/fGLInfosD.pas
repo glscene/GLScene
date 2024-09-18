@@ -16,7 +16,7 @@ uses
   Vcl.Dialogs,
   Vcl.ExtCtrls,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Scene,
   GLS.SceneViewer,
   GLScene.TextureFormat,
@@ -27,7 +27,7 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Objects,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,

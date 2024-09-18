@@ -30,7 +30,7 @@ uses
   GLS.Context,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLSL.ShaderParameter;
 
 const

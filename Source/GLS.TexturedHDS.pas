@@ -27,7 +27,7 @@ uses
   System.Classes,
 
   GLScene.VectorTypes,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.HeightData,
   GLS.Material;
 

@@ -8,12 +8,12 @@
 #include "fPFXGallaryC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLScene.BaseClasses"
+#pragma link "GLS.BaseClasses"
 #pragma link "GLS.Behaviours"
 #pragma link "GLS.BitmapFont"
 #pragma link "GLS.Blur"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.HUDObjects"
 #pragma link "GLS.Navigator"

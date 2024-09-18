@@ -25,8 +25,8 @@ uses
   GLS.Texture,
   FmGuiSkinEditor,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils, Vcl.ExtCtrls;
 
 type

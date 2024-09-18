@@ -32,7 +32,7 @@ uses
   GLS.ApplicationFileIO,
   GLScene.Utils,
   GLS.Material,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TByteArray = array [0 .. MaxInt div (2 * SizeOf(Byte))] of Byte;
@@ -194,7 +194,7 @@ type
     Though this class can be instantiated, you will usually prefer to subclass
     it in real-world cases, f.i. to add texturing data. *)
 	/// TGLHeightData = class (TObject)
-  TGLHeightData = class(TGUpdateAbleObject)
+  TGLHeightData = class(TGLUpdateAbleObject)
   private
     FUsers: array of TGLHeightDataUser;
     FOwner: TGLHeightDataSource;

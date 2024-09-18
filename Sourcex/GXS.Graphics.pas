@@ -34,12 +34,12 @@ uses
   GLScene.OpenGL4,
 
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.ApplicationFileIO,
   GXS.Context,
   GXS.ImageUtils,
   GLScene.Utils,
-  GLScene.Color,
+  GXS.Color,
   GLScene.TextureFormat,
   GLScene.Strings;
 
@@ -322,7 +322,7 @@ type
   end;
 
   // Stores registered raster file Formatx.
-  TRasterFileFormatsList = class(TgPersistentObjectList)
+  TRasterFileFormatsList = class(TgxPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass: TgxBaseImageClass);

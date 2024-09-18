@@ -9,9 +9,9 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Grids.hpp>
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Collision.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"

@@ -35,7 +35,7 @@ uses
   GLScene.VectorGeometry,
   GLScene.TextureFormat,
   GLScene.Utils,
-  GLScene.Color;
+  GLS.Color;
 
 const
   GLS_VERTEX_ATTR_NUM = 16;

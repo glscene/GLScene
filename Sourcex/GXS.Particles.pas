@@ -15,12 +15,12 @@ uses
   System.SysUtils,
 
   GLScene.XCollection,
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses,
+  GXS.BaseClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.Scene,
   GXS.Context,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GXS.State;
 
@@ -51,7 +51,7 @@ type
   TgxParticles = class(TgxImmaterialSceneObject)
   private
     FCubeSize: Single;
-    FEdgeColor: TGColor;
+    FEdgeColor: TgxColor;
     FVisibleAtRunTime: Boolean;
     particlePool: TList;
     FParticlePoolSize: Integer;
@@ -62,7 +62,7 @@ type
     FOnBeforeRenderParticles, FOnAfterRenderParticles: TDirectRenderEvent;
   protected
     procedure SetCubeSize(const val: Single);
-    procedure SetEdgeColor(const val: TGColor);
+    procedure SetEdgeColor(const val: TgxColor);
     procedure SetVisibleAtRunTime(const val: Boolean);
     procedure SetParticlePoolSize(val: Integer);
     procedure ClearParticlePool;
@@ -73,7 +73,7 @@ type
     procedure BuildList(var ARci: TgxRenderContextInfo); override;
     procedure DoRender(var ARci: TgxRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     (* Request creation of a new particle.
      Particle will be either created or retrieved from the particlePool. *)
     function CreateParticle: TgxBaseSceneObject;
@@ -85,7 +85,7 @@ type
     procedure KillParticles;
   published
     property CubeSize: Single read FCubeSize write SetCubeSize;
-    property EdgeColor: TGColor read FEdgeColor write SetEdgeColor;
+    property EdgeColor: TgxColor read FEdgeColor write SetEdgeColor;
     property VisibleAtRunTime: Boolean read FVisibleAtRunTime write SetVisibleAtRunTime default False;
     (* Size of the particle pool (for storing killed particles).
        Default size is zero, meaning the particlePool is disabled. *)
@@ -120,7 +120,7 @@ begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
   FCubeSize := 1;
-  FEdgeColor := TGColor.Create(Self);
+  FEdgeColor := TgxColor.Create(Self);
   FEdgeColor.Initialize(clrWhite);
   particlePool := TList.Create;
 end;
@@ -238,7 +238,7 @@ begin
     FOnAfterRenderParticles(Self, ARci);
 end;
 
-procedure TgxParticles.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxParticles.DoProgress(const progressTime: TgxProgressTimes);
 var
   i: Integer;
 begin
@@ -259,7 +259,7 @@ begin
   end;
 end;
 
-procedure TgxParticles.SetEdgeColor(const val: TGColor);
+procedure TgxParticles.SetEdgeColor(const val: TgxColor);
 begin
   if val <> FEdgeColor then
   begin

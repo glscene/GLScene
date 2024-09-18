@@ -16,7 +16,7 @@ uses
   GXS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.Texture,
   GXS.Material;
 

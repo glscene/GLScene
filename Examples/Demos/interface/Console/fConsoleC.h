@@ -13,14 +13,14 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 
 #include "GLS.Texture.hpp"
 #include "GLS.BitmapFont.hpp"
 #include "GLS.WindowsFont.hpp"
 #include "GLS.Behaviours.hpp"
 #include "GLS.Console.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 #include "GLS.SimpleNavigation.hpp"
 #include "GLScene.Utils.hpp"
 

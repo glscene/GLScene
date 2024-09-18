@@ -16,15 +16,15 @@ uses
   GLS.OpenGLAdapter,
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorGeometry,
 
   GLS.VectorFileObjects,
-  GLScene.PersistentClasses;
+  GLS.PersistentClasses;
 
 (* Tesselates the polygon outlined by the Vertexes. And adds them to the first
    facegroup of the Mesh. *)
-procedure DoTesselate(Vertexes: TGAffineVectorList; Mesh: TGLBaseMesh;
+procedure DoTesselate(Vertexes: TGLAffineVectorList; Mesh: TGLBaseMesh;
   normal: PAffineVector = nil; invertNormals: Boolean = False);
 
 //---------------------------------------------------------------------------
@@ -90,7 +90,7 @@ begin
   SetVector(PAffineVector(outData)^, coords[0], coords[1], coords[2]);
 end;
 
-procedure DoTesselate(Vertexes: TGAffineVectorList; Mesh: TGLBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
+procedure DoTesselate(Vertexes: TGLAffineVectorList; Mesh: TGLBaseMesh; normal: PAffineVector = nil; invertNormals: Boolean = False);
 var
   Tess: PGLUTesselator;
   i: Integer;

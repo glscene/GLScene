@@ -9,7 +9,7 @@ uses
   System.Classes,
   GLScene.VectorGeometry,
   GLScene.XCollection,
-  GLScene.Coordinates,
+  GXS.Coordinates,
 
   GXS.Scene,
   GXS.Behaviours,
@@ -20,9 +20,9 @@ uses
 type
   TGLUniformGravityEmitter = class(TgxBaseForceFieldEmitter)
   private
-    fGravity: TgCoordinates;
+    fGravity: TgxCoordinates;
   protected
-    procedure SetGravity(const val: TgCoordinates);
+    procedure SetGravity(const val: TgxCoordinates);
   public
     constructor Create(aOwner: TXCollection); override;
     destructor Destroy; override;
@@ -35,7 +35,7 @@ type
     function CalculateForceField(Body: TgxBaseSceneObject)
       : TAffineVector; override;
   published
-    property Gravity: TgCoordinates read fGravity write SetGravity;
+    property Gravity: TgxCoordinates read fGravity write SetGravity;
   end;
 
   TGLRadialGravityEmitter = class(TgxBaseForceFieldEmitter)
@@ -90,7 +90,7 @@ implementation
 constructor TGLUniformGravityEmitter.Create(aOwner: TXCollection);
 begin
   inherited Create(aOwner);
-  fGravity := TgCoordinates.CreateInitialized(Self, nullHmgVector, csVector);
+  fGravity := TgxCoordinates.CreateInitialized(Self, nullHmgVector, csVector);
 end;
 
 destructor TGLUniformGravityEmitter.Destroy;
@@ -140,7 +140,7 @@ begin
   end;
 end;
 
-procedure TGLUniformGravityEmitter.SetGravity(const val: TgCoordinates);
+procedure TGLUniformGravityEmitter.SetGravity(const val: TgxCoordinates);
 begin
   fGravity.Assign(val);
 end;

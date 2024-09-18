@@ -15,7 +15,7 @@ uses
   
   GLScene.OpenGLTokens,
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorTypes,
   GLS.Texture,
   GLScene.VectorGeometry,

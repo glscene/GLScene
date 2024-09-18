@@ -12,10 +12,10 @@
 #pragma link "GLS.FileMD2"
 #pragma link "GLS.ProxyObjects"
 
-#pragma link "GLScene.BaseClasses"
+#pragma link "GLS.BaseClasses"
 #pragma link "GLS.BitmapFont"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.HeightData"
 #pragma link "GLS.HUDObjects"

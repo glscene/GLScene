@@ -23,9 +23,9 @@ uses
   GLS.BitmapFont,
   GLS.Material,
   GLS.Context,
-  GLScene.PersistentClasses,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.PersistentClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
 
@@ -156,7 +156,7 @@ type
       write SetItems; default;
   end;
 
-  TGLGuiLayout = class(TGUpdateAbleComponent)
+  TGLGuiLayout = class(TGLUpdateAbleComponent)
   private
     FBitmapFont: TGLCustomBitmapFont;
     FMaterial: TGLMaterial;
@@ -176,8 +176,8 @@ type
     procedure Clear;
     procedure SaveToStream(Stream: TStream);
     procedure SaveToFile(FN: string);
-    procedure AddGuiComponent(Component: TGUpdateAbleComponent);
-    procedure RemoveGuiComponent(Component: TGUpdateAbleComponent);
+    procedure AddGuiComponent(Component: TGLUpdateAbleComponent);
+    procedure RemoveGuiComponent(Component: TGLUpdateAbleComponent);
     procedure NotifyChange(Sender: TObject); override;
   published
     property BitmapFont: TGLCustomBitmapFont read FBitmapFont write FBitmapFont;
@@ -441,7 +441,7 @@ begin
   end;
 end;
 
-procedure TGLGuiLayout.AddGuiComponent(Component: TGUpdateAbleComponent);
+procedure TGLGuiLayout.AddGuiComponent(Component: TGLUpdateAbleComponent);
 begin
   if FGuiComponentList.IndexOf(Component) < 0 then
   begin
@@ -450,7 +450,7 @@ begin
   end;
 end;
 
-procedure TGLGuiLayout.RemoveGuiComponent(Component: TGUpdateAbleComponent);
+procedure TGLGuiLayout.RemoveGuiComponent(Component: TGLUpdateAbleComponent);
 begin
   FGuiComponentList.Remove(Component);
   RemoveFreeNotification(Component);
@@ -476,10 +476,10 @@ begin
       LComponent.name := LLayout.FGuiComponents[i].name;
     end;
     for i := 0 to FGuiComponentList.Count - 1 do
-      TGUpdateAbleComponent(FGuiComponentList[i]).RemoveFreeNotification(Self);
+      TGLUpdateAbleComponent(FGuiComponentList[i]).RemoveFreeNotification(Self);
     FGuiComponentList.Assign(LLayout.FGuiComponentList);
     for i := 0 to FGuiComponentList.Count - 1 do
-      TGUpdateAbleComponent(FGuiComponentList[i]).FreeNotification(Self);
+      TGLUpdateAbleComponent(FGuiComponentList[i]).FreeNotification(Self);
   end
   else
     inherited; // Assign Error
@@ -503,7 +503,7 @@ var
 begin
   inherited;
   for xc := FGuiComponentList.Count - 1 downto 0 do
-    TGUpdateAbleComponent(FGuiComponentList[xc]).NotifyChange(Self);
+    TGLUpdateAbleComponent(FGuiComponentList[xc]).NotifyChange(Self);
 end;
 
 procedure TGLGuiLayout.LoadFromStream(Stream: TStream);

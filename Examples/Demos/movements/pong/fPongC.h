@@ -10,9 +10,9 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLS.Material.hpp"
 #include "GLS.Objects.hpp"

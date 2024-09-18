@@ -21,11 +21,11 @@ uses
   GLScene.VectorGeometry,
   GLS.Context,
   GLS.Material,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.PipelineTransform,
   GLScene.XCollection,
   GLS.Texture;

@@ -28,9 +28,9 @@ uses
   GLS.TerrainRenderer,
   GLS.AsyncTimer,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.XCollection,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.TextureFormat,
   GLScene.Utils

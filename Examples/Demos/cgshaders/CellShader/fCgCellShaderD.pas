@@ -24,8 +24,8 @@ uses
   GLS.AsyncTimer,
 
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils,
   GLS.FileMD2,
 

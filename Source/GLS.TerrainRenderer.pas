@@ -21,13 +21,13 @@ uses
 
   GLScene.OpenGLTokens,
   GLS.Scene,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.HeightData,
   GLS.Material,
   GLScene.VectorGeometry,
   GLS.Context,
   GLS.ROAMPatch,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.RenderContextInfo,
   GLS.XOpenGL,
   GLScene.Utils,
@@ -67,7 +67,7 @@ type
     FLastTriangleCount: Integer;
     FTilesPerTexture: Single;
     FMaxCLODTriangles, FCLODPrecision: Integer;
-    FBufferVertices: TGAffineVectorList;
+    FBufferVertices: TGLAffineVectorList;
     FBufferTexPoints: TGTexPointList;
     FBufferVertexIndices: TgIntegerList;
     FMaterialLibrary: TGLMaterialLibrary;
@@ -241,7 +241,7 @@ begin
   FMaxCLODTriangles := 65536;
   FCLODPrecision := 100;
   FOcclusionTesselate := totTesselateIfVisible;
-  FBufferVertices := TGAffineVectorList.Create;
+  FBufferVertices := TGLAffineVectorList.Create;
   FBufferTexPoints := TGTexPointList.Create;
   FBufferVertexIndices := TgIntegerList.Create;
   TileManagement := [tmClearUsedFlags, tmMarkUsedTiles, tmReleaseUnusedTiles,

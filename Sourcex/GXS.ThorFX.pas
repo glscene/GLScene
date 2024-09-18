@@ -21,12 +21,12 @@ uses
   GLScene.PipelineTransform,
   GLScene.VectorGeometry,
   GXS.Context,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorTypes,
   GXS.Cadencer,
-  GLScene.Color,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GXS.Color,
+  GXS.BaseClasses,
+  GXS.Coordinates,
   GXS.RenderContextInfo,
   GLScene.Manager,
   GXS.State,
@@ -49,32 +49,32 @@ type
     var y: single; var z: single) of object;
 
   // Thor special effect manager.
-  TgxThorFXManager = class(TGCadenceAbleComponent)
+  TgxThorFXManager = class(TgxCadenceAbleComponent)
   private
     FClients: TList;
     FThorpoints: PThorpointArray;
-    FTarget: TgCoordinates;
+    FTarget: TgxCoordinates;
     FCadencer: TgxCadencer;
     FMaxpoints: integer;
     FGlowSize: single;
     FVibrate: single;
     FWildness: single;
     NP: integer;
-    FInnerColor, FOuterColor, FCoreColor: TGColor;
+    FInnerColor, FOuterColor, FCoreColor: TgxColor;
     FDisabled, FCore, FGlow: boolean;
     FOnCalcPoint: TCalcPointEvent;
   protected
     procedure RegisterClient(aClient: TgxBThorFX);
     procedure DeRegisterClient(aClient: TgxBThorFX);
     procedure DeRegisterAllClients;
-    procedure SetTarget(const val: TgCoordinates);
+    procedure SetTarget(const val: TgxCoordinates);
     procedure SetCadencer(const val: TgxCadencer);
     procedure SetMaxpoints(const val: integer);
     function StoreGlowSize: boolean;
     function StoreVibrate: boolean;
-    procedure SetInnerColor(const val: TGColor);
-    procedure SetOuterColor(const val: TGColor);
-    procedure SetCoreColor(const val: TGColor);
+    procedure SetInnerColor(const val: TgxColor);
+    procedure SetOuterColor(const val: TgxColor);
+    procedure SetCoreColor(const val: TgxColor);
     procedure Notification(AComponent: TComponent;
       Operation: TOperation); override;
     procedure ThorInit;
@@ -83,18 +83,18 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
   published
-    property Target: TgCoordinates read FTarget write SetTarget;
+    property Target: TgxCoordinates read FTarget write SetTarget;
     property Cadencer: TgxCadencer read FCadencer write SetCadencer;
     property Maxpoints: integer read FMaxpoints write SetMaxpoints default 256;
     property GlowSize: single read FGlowSize write FGlowSize
       stored StoreGlowSize;
     property Vibrate: single read FVibrate write FVibrate stored StoreVibrate;
-    property InnerColor: TGColor read FInnerColor write SetInnerColor;
-    property OuterColor: TGColor read FOuterColor write SetOuterColor;
+    property InnerColor: TgxColor read FInnerColor write SetInnerColor;
+    property OuterColor: TgxColor read FOuterColor write SetOuterColor;
     // default clrWhite;
-    property CoreColor: TGColor read FCoreColor write SetCoreColor;
+    property CoreColor: TgxColor read FCoreColor write SetCoreColor;
     // default clrWhite;
     property Disabled: boolean read FDisabled write FDisabled;
     property Core: boolean read FCore write FCore;
@@ -108,13 +108,13 @@ type
   private
     FManager: TgxThorFXManager;
     FManagerName: String; // NOT persistent, temporarily used for persistence
-    FTarget: TgCoordinates;
+    FTarget: TgxCoordinates;
   protected
     procedure SetManager(const val: TgxThorFXManager);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
     procedure Loaded; override;
-    procedure SetTarget(const val: TgCoordinates);
+    procedure SetTarget(const val: TgxCoordinates);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -144,18 +144,18 @@ begin
   inherited Create(AOwner);
   FClients := TList.Create;
   RegisterManager(Self);
-  FTarget := TgCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
+  FTarget := TgxCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
   FTarget.Style := csPoint;
   FMaxpoints := 64;
   FGlowSize := 0.2;
   FVibrate := 0;
   FWildness := 1;
-  FInnerColor := TGColor.Create(Self);
+  FInnerColor := TgxColor.Create(Self);
   FInnerColor.Initialize(clrWhite);
-  FOuterColor := TGColor.Create(Self);
+  FOuterColor := TgxColor.Create(Self);
   FOuterColor.Initialize(clrBlue);
   FOuterColor.Alpha := 0;
-  FCoreColor := TGColor.Create(Self);
+  FCoreColor := TgxColor.Create(Self);
   FCoreColor.Initialize(clrWhite);
   FCore := True;
   FGlow := True;
@@ -204,7 +204,7 @@ begin
   FClients.Clear;
 end;
 
-procedure TgxThorFXManager.SetTarget(const val: TgCoordinates);
+procedure TgxThorFXManager.SetTarget(const val: TgxCoordinates);
 begin
   FTarget.Assign(val);
   ThorInit;
@@ -241,7 +241,7 @@ begin
   Result := (FVibrate <> 1);
 end;
 
-procedure TgxThorFXManager.SetInnerColor(const val: TGColor);
+procedure TgxThorFXManager.SetInnerColor(const val: TgxColor);
 begin
   if FInnerColor <> val then
   begin
@@ -250,7 +250,7 @@ begin
   end;
 end;
 
-procedure TgxThorFXManager.SetOuterColor(const val: TGColor);
+procedure TgxThorFXManager.SetOuterColor(const val: TgxColor);
 begin
   if FOuterColor <> val then
   begin
@@ -259,7 +259,7 @@ begin
   end;
 end;
 
-procedure TgxThorFXManager.SetCoreColor(const val: TGColor);
+procedure TgxThorFXManager.SetCoreColor(const val: TgxColor);
 begin
   if FCoreColor <> val then
   begin
@@ -276,7 +276,7 @@ begin
   inherited;
 end;
 
-procedure TgxThorFXManager.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxThorFXManager.DoProgress(const progressTime: TgxProgressTimes);
 var
   i: integer;
 
@@ -375,7 +375,7 @@ end;
 constructor TgxBThorFX.Create(AOwner: TXCollection);
 begin
   inherited Create(AOwner);
-  FTarget := TgCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
+  FTarget := TgxCoordinates.CreateInitialized(Self, VectorMake(0, 1, 0));
   FTarget.Style := csPoint;
 end;
 
@@ -451,7 +451,7 @@ begin
   inherited Assign(Source);
 end;
 
-procedure TgxBThorFX.SetTarget(const val: TgCoordinates);
+procedure TgxBThorFX.SetTarget(const val: TgxCoordinates);
 begin
   FTarget.Assign(val);
 end;
@@ -480,7 +480,7 @@ var
 
   vx, vy: TVector4f;
   m: integer;
-  Icol, Ocol, Ccol: TGColorVector;
+  Icol, Ocol, Ccol: TgxColorVector;
   Ppos, Ppos2: TAffineVector;
 begin
   if Manager = nil then

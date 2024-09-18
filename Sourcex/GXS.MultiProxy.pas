@@ -12,13 +12,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.Context,
   GXS.Scene,
   GLScene.VectorGeometry,
   GXS.Silhouette,
   GXS.RenderContextInfo,
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GLScene.VectorTypes;
 
 type
@@ -264,8 +264,8 @@ end;
 
 procedure TgxMultiProxyMasters.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TgUpdateAbleComponent) then
-    TgUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TgxUpdateAbleComponent) then
+    TgxUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TgxMultiProxyMasters.EndUpdate;

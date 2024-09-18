@@ -25,8 +25,8 @@
 #pragma link "GLS.TerrainRenderer"
 #pragma link "GLS.Scene"
 #pragma link "GLScene.Keyboard"
-#pragma link "GLScene.BaseClasses"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
 #pragma link "GLS.FileMP3"

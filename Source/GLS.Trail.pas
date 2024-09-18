@@ -23,7 +23,7 @@ uses
   GLS.Objects,
   GLS.Material,
   GLScene.Strings,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 
 const cMaxVerts = 2000;
@@ -75,7 +75,7 @@ type
 
     //EnableUVmapping: boolean; // generate UV's or not
 
-    procedure DoProgress(const progressTime : TGProgressTimes); override;
+    procedure DoProgress(const progressTime : TGLProgressTimes); override;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
 
@@ -138,7 +138,7 @@ begin
    inherited Destroy;
 end;
 
-procedure TGLTrail.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLTrail.DoProgress(const progressTime: TGLProgressTimes);
 begin
   inherited;
   if Enabled and Assigned(TrailObject) then

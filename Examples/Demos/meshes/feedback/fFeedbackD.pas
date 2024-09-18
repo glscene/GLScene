@@ -18,8 +18,8 @@ uses
   GLS.Feedback,
   GLS.GeomObjects,
   GLS.VectorFileObjects,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.Objects;
 
 type

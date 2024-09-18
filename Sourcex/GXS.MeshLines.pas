@@ -15,17 +15,17 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.Spline,
 
   GXS.Scene,
   GXS.Objects,
   GXS.Texture,
   GXS.VectorFileObjects,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.Context,
   GXS.Material,
-  GLScene.Color,
+  GXS.Color,
   GXS.State,
   GXS.Nodes,
   GXS.RenderContextInfo;
@@ -104,7 +104,7 @@ type
   published
   end;
 
-  TLightmapBounds = class(TgCustomCoordinates)
+  TLightmapBounds = class(TgxCustomCoordinates)
   private
     function GetLeft: Single;
     function GetTop: Single;

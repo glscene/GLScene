@@ -18,7 +18,7 @@ uses
   System.Classes,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.GeometryBB,
   GLS.Context;
 
@@ -94,14 +94,14 @@ type
     MeshCount: Integer; // number of meshes currently cut into the Octree
     ResultArray: array of PGLOctreeNode;
     // holds the result nodes of various calls
-    TriangleFiler: TGAffineVectorList;
+    TriangleFiler: TGLAffineVectorList;
     procedure WalkSphereToLeaf(Onode: PGLOctreeNode; const P: TGLVector;
       Radius: Single);
     (*  Initializes the tree from the triangle list.
       All triangles must be contained in the world extent to be properly
       taken into account. *)
     procedure InitializeTree(const AWorldMinExtent, AWorldMaxExtent
-      : TAffineVector; const ATriangles: TGAffineVectorList;
+      : TAffineVector; const ATriangles: TGLAffineVectorList;
       const ATreeDepth: Integer);
     procedure DisposeTree;
     destructor Destroy; override;
@@ -114,13 +114,13 @@ type
     function TriangleIntersect(const V1, V2, V3: TAffineVector): Boolean;
     //  Returns all triangles in the AABB.
     function GetTrianglesFromNodesIntersectingAABB(const ObjAABB: TAABB)
-      : TGAffineVectorList;
+      : TGLAffineVectorList;
     //  Returns all triangles in an arbitrarily placed cube
     function GetTrianglesFromNodesIntersectingCube(const ObjAABB: TAABB;
-      const ObjToSelf, SelfToObj: TGLMatrix): TGAffineVectorList;
+      const ObjToSelf, SelfToObj: TGLMatrix): TGLAffineVectorList;
     //  Checks if an AABB intersects a face on the octree
     function AABBIntersect(const AABB: TAABB; const M1to2, M2to1: TGLMatrix;
-      Triangles: TGAffineVectorList = nil): Boolean;
+      Triangles: TGLAffineVectorList = nil): Boolean;
     // function SphereIntersect(position:TAffineVector; radius:single);
   end;
 
@@ -876,7 +876,7 @@ begin
 end;
 
 procedure TGLOctree.InitializeTree(const AWorldMinExtent, AWorldMaxExtent
-  : TAffineVector; const ATriangles: TGAffineVectorList;
+  : TAffineVector; const ATriangles: TGLAffineVectorList;
   const ATreeDepth: Integer);
 var
   N: Integer;
@@ -887,7 +887,7 @@ begin
 
   // set up the filer data for this mesh
   if TriangleFiler = nil then
-    TriangleFiler := TGAffineVectorList.Create;
+    TriangleFiler := TGLAffineVectorList.Create;
   TriangleFiler.Assign(ATriangles);
 
   New(Newnode);
@@ -1410,9 +1410,9 @@ begin
 end;
 
 function TGLOctree.AABBIntersect(const AABB: TAABB; const M1to2, M2to1: TGLMatrix;
-  Triangles: TGAffineVectorList = nil): Boolean;
+  Triangles: TGLAffineVectorList = nil): Boolean;
 var
-  TriList: TGAffineVectorList;
+  TriList: TGLAffineVectorList;
   I: Integer;
 begin
   // get triangles in nodes intersected by the aabb
@@ -1447,7 +1447,7 @@ begin
 end;
 
 function TGLOctree.GetTrianglesFromNodesIntersectingAABB(const ObjAABB: TAABB)
-  : TGAffineVectorList;
+  : TGLAffineVectorList;
 var
   AABB1: TAABB;
 
@@ -1487,7 +1487,7 @@ begin
   if Assigned(RootNode) then
     HandleNode(RootNode);
 
-  Result := TGAffineVectorList.Create;
+  Result := TGLAffineVectorList.Create;
   TriangleIndices := TgIntegerList.Create;
   try
     // fill the triangles from all nodes in the resultarray to AL
@@ -1511,7 +1511,7 @@ begin
 end;
 
 function TGLOctree.GetTrianglesFromNodesIntersectingCube(const ObjAABB: TAABB;
-  const ObjToSelf, SelfToObj: TGLMatrix): TGAffineVectorList;
+  const ObjToSelf, SelfToObj: TGLMatrix): TGLAffineVectorList;
 var
   AABB1: TAABB;
   M1To2, M2To1: TGLMatrix;
@@ -1554,7 +1554,7 @@ begin
   if Assigned(RootNode) then
     HandleNode(RootNode);
 
-  Result := TGAffineVectorList.Create;
+  Result := TGLAffineVectorList.Create;
   TriangleIndices := TgIntegerList.Create;
   try
     // fill the triangles from all nodes in the resultarray to AL

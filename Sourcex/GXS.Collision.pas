@@ -15,7 +15,7 @@ uses
 
   GLScene.XCollection,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.GeometryBB,
   GLScene.Manager,
   GLScene.VectorTypes,

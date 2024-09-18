@@ -12,7 +12,7 @@ uses
   System.SysUtils,
 
   GLScene.Strings,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.ApplicationFileIO;
 
 Type
@@ -74,7 +74,7 @@ Type
   end;
 
   // List of registered classes
-  TgxArchiveFileFormatsList = class(TgPersistentObjectList)
+  TgxArchiveFileFormatsList = class(TgxPersistentObjectList)
   public
     destructor Destroy; override;
     procedure Add(const Ext, Desc: string; DescID: Integer; AClass:

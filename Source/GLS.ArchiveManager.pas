@@ -14,7 +14,7 @@ uses
   System.SysUtils,
 
   GLS.ApplicationFileIO,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.Strings;
 
 type

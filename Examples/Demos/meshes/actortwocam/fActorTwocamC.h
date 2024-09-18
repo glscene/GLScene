@@ -19,8 +19,8 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.GeomObjects.hpp"
-#include "GLScene.BaseClasses.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLS.Navigator.hpp"
 #include "GLS.SkyDome.hpp"

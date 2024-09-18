@@ -32,12 +32,12 @@ uses
   GLS.SpacePartition,
 
   GLS.Material,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Context,
   GLScene.Utils,
-  GLScene.Coordinates,
-  GLScene.PersistentClasses;
+  GLS.Coordinates,
+  GLS.PersistentClasses;
 
 type
   TFormClothActor = class(TForm)

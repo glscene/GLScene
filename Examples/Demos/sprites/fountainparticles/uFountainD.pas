@@ -19,7 +19,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Scene,
   GLS.Objects,
   GLScene.VectorGeometry,
@@ -166,7 +166,7 @@ type
   public
     procedure DoRender(var rci: TGLRenderContextInfo; renderSelf, renderChildren: Boolean);
       override;
-    // procedure DoProgress( const progressTime : TGProgressTimes ); override;
+    // procedure DoProgress( const progressTime : TGLProgressTimes ); override;
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   published

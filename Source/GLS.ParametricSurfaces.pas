@@ -38,8 +38,8 @@ uses
   GLScene.VectorTypes,
   GLScene.CurvesAndSurfaces,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
+  GLS.VectorLists,
+  GLS.PersistentClasses,
 
   GLS.VectorFileObjects,
   GLS.Texture,
@@ -64,7 +64,7 @@ type
   TMOParametricSurface = class(TGLMeshObject)
   private
     FControlPoints,
-    FWeightedControlPoints: TGAffineVectorList;
+    FWeightedControlPoints: TGLAffineVectorList;
     FKnotsU,
     FKnotsV,
     FWeights: TGSingleList;
@@ -77,7 +77,7 @@ type
     FContinuity: TBSplineContinuity;
     FRenderer: TParametricSurfaceRenderer;
     FBasis: TParametricSurfaceBasis;
-    procedure SetControlPoints(Value: TGAffineVectorList);
+    procedure SetControlPoints(Value: TGLAffineVectorList);
     procedure SetKnotsU(Value: TGSingleList);
     procedure SetKnotsV(Value: TGSingleList);
     procedure SetWeights(Value: TGSingleList);
@@ -98,7 +98,7 @@ type
        generate the mesh data. Fills in Vertices, Normals, etc. *)
     procedure GenerateMesh;
     // Control points define the parametric surface.
-    property ControlPoints: TGAffineVectorList read FControlPoints write SetControlPoints;
+    property ControlPoints: TGLAffineVectorList read FControlPoints write SetControlPoints;
     (* KnotsU and KnotsV are the knot vectors in the U and V direction. Knots
        define the continuity of curves and how control points influence the
        parametric values to build the surface. *)
@@ -148,7 +148,7 @@ type
     FMinU, FMaxU,
     FMinV, FMaxV: Single;
     FTempControlPoints,
-    FTempTexCoords: TGAffineVectorList;
+    FTempTexCoords: TGLAffineVectorList;
   protected
     procedure SetControlPointIndices(const Value: TgIntegerList);
     procedure SetTexCoordIndices(const Value: TgIntegerList);
@@ -181,8 +181,8 @@ implementation
 constructor TMOParametricSurface.Create;
 begin
   inherited;
-  FControlPoints := TGAffineVectorList.Create;
-  FWeightedControlPoints := TGAffineVectorList.Create;
+  FControlPoints := TGLAffineVectorList.Create;
+  FWeightedControlPoints := TGLAffineVectorList.Create;
   FKnotsU := TGSingleList.Create;
   FKnotsV := TGSingleList.Create;
   FWeights := TGSingleList.Create;
@@ -391,7 +391,7 @@ begin
 
 end;
 
-procedure TMOParametricSurface.SetControlPoints(Value: TGAffineVectorList);
+procedure TMOParametricSurface.SetControlPoints(Value: TGLAffineVectorList);
 begin
   FControlPoints.Assign(Value);
 end;
@@ -439,8 +439,8 @@ begin
   inherited;
   FControlPointIndices := TgIntegerList.Create;
   FTexCoordIndices := TgIntegerList.Create;
-  FTempControlPoints := TGAffineVectorList.Create;
-  FTempTexCoords := TGAffineVectorList.Create;
+  FTempControlPoints := TGLAffineVectorList.Create;
+  FTempTexCoords := TGLAffineVectorList.Create;
 
   // Default values
   FCountU := 4;

@@ -21,13 +21,13 @@ uses
 
   GLScene.VectorTypes,
   GLS.ApplicationFileIO,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.Scene,  
   GLS.VectorFileObjects,
-  GLScene.VectorLists,  
+  GLS.VectorLists,  
   GLS.Texture,  
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo, 
   GLS.Material,
   GLScene.Utils;
@@ -168,9 +168,9 @@ type
     procedure ReadFromFiler(reader: TGVirtualReader); override;
     procedure Add(VertexIdx, NormalIdx, TexCoordIdx: Integer);
     procedure BuildList(var mrci: TGLRenderContextInfo); override;
-    procedure AddToTriangles(aList: TGAffineVectorList;
-      aTexCoords: TGAffineVectorList = nil;
-      aNormals: TGAffineVectorList = nil); override;
+    procedure AddToTriangles(aList: TGLAffineVectorList;
+      aTexCoords: TGLAffineVectorList = nil;
+      aNormals: TGLAffineVectorList = nil); override;
     function TriangleCount: Integer; override;
     property Mode: TOBJFGMode read FMode write SetMode;
     property Name: string read FName write FName;
@@ -360,12 +360,12 @@ begin
   end;
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.AddToTriangles(aList: TGAffineVectorList;
-  aTexCoords: TGAffineVectorList = nil;
-  aNormals: TGAffineVectorList = nil);
+procedure TOBJFGVertexNormalTexIndexList.AddToTriangles(aList: TGLAffineVectorList;
+  aTexCoords: TGLAffineVectorList = nil;
+  aNormals: TGLAffineVectorList = nil);
 var
   i, j, n, n0: Integer;
-  vertexList, texCoordList, normalsList: TGAffineVectorList;
+  vertexList, texCoordList, normalsList: TGLAffineVectorList;
 begin
   vertexList := Owner.Owner.Vertices;
   texCoordList := Owner.Owner.TexCoords;

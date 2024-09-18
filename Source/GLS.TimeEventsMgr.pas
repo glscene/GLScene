@@ -15,13 +15,13 @@ uses
   System.SysUtils,
 
   GLS.Cadencer,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TTimeEvent = class;
   TTimeEvents = class;
 
-  TGLTimeEventsMGR = class(TGUpdateAbleComponent)
+  TGLTimeEventsMGR = class(TGLUpdateAbleComponent)
   private
     FCadencer: TGLCadencer;
     FEnabled: boolean;
@@ -35,7 +35,7 @@ type
   public
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
     procedure Reset();
   published
     property Cadencer: TGLCadencer read FCadencer write SetCadencer;
@@ -143,7 +143,7 @@ begin
   FEvents.Assign(val);
 end;
 
-procedure TGLTimeEventsMGR.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLTimeEventsMGR.DoProgress(const progressTime: TGLProgressTimes);
 var
   i: Integer;
 begin

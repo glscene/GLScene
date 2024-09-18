@@ -22,7 +22,7 @@ uses
   GXS.ApplicationFileIO,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.BSP,
   GXS.Texture,
   GXS.Graphics,

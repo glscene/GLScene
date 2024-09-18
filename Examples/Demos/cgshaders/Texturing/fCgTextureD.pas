@@ -29,9 +29,9 @@ uses
   GLS.Graph,
  
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.Utils,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TFormCgTexture = class(TForm)

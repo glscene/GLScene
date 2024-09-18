@@ -21,7 +21,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists;
+  GXS.VectorLists;
 
 type
   TgxSilhouetteStyle = (ssOmni, ssParallel);

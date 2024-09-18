@@ -20,14 +20,14 @@ uses
   GLS.Context,
   GLS.Material,
   GLS.Objects,
-  GLScene.PersistentClasses,
-  GLScene.VectorLists,
+  GLS.PersistentClasses,
+  GLS.VectorLists,
   GLS.RenderContextInfo,
   GLS.XOpenGL;
 
 type
   // Stores row information for a tiled area.
-  TGLTiledAreaRow = class(TGPersistentObject)
+  TGLTiledAreaRow = class(TGLPersistentObject)
   private
     FColMin, FColMax: Integer;
     FData: TgIntegerList;
@@ -53,7 +53,7 @@ type
   (* Stores tile information in a tiled area.
     Each tile stores an integer value with zero the default value,
     assumed as "empty". *)
-  TGLTiledArea = class(TGPersistentObject)
+  TGLTiledArea = class(TGLPersistentObject)
   private
     FRowMin, FRowMax: Integer;
     FRows: TgPersistentObjectList;

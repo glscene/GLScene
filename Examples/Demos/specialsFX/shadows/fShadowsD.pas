@@ -18,7 +18,7 @@ uses
   
   GLScene.VectorTypes, 
   GLScene.VectorGeometry, 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Scene, 
   GLS.Graph, 
   GLS.Objects, 
@@ -31,7 +31,7 @@ uses
   GLS.SceneViewer, 
   GLS.GeomObjects,
   GLS.Material, 
-  GLScene.Coordinates, 
+  GLS.Coordinates, 
   GLS.Behaviours, 
   GLScene.Utils;
 

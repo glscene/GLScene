@@ -9,9 +9,9 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLSL.CustomShader.hpp"
 #include "GLS.GeomObjects.hpp"

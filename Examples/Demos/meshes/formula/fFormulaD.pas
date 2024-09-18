@@ -23,10 +23,10 @@ uses
   GLS.Mesh,
   GLS.SceneViewer,
   GLS.State,
-  GLScene.Color,
+  GLS.Color,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormFormula = class(TForm)

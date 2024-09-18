@@ -22,10 +22,10 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SpaceText.hpp"
 #include "GLS.GeomObjects.hpp"
-#include "GLScene.Color.hpp"
+#include "GLS.Color.hpp"
 
-#include "GLScene.Coordinates.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.BitmapFont.hpp"
 #include "GLS.WindowsFont.hpp"
 #include "GLS.HUDObjects.hpp"

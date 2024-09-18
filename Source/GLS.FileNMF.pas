@@ -16,9 +16,9 @@ uses
 
   GLScene.VectorTypes,
   GLS.VectorFileObjects,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.ApplicationFileIO;
 
 const
@@ -135,12 +135,12 @@ procedure TGLNMFVectorFile.SaveToStream(aStream: TStream);
 var
   i, j: Integer;
   nmf: TFileNMF;
-  Vertices, TempVertices, Normals, TexCoords: TGAffineVectorList;
+  Vertices, TempVertices, Normals, TexCoords: TGLAffineVectorList;
 begin
   nmf := TFileNMF.Create;
-  Vertices := TGAffineVectorList.Create;
-  Normals := TGAffineVectorList.Create;
-  TexCoords := TGAffineVectorList.Create;
+  Vertices := TGLAffineVectorList.Create;
+  Normals := TGLAffineVectorList.Create;
+  TexCoords := TGLAffineVectorList.Create;
   try
     for i := 0 to Owner.MeshObjects.Count - 1 do
     begin

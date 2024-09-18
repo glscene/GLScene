@@ -8,8 +8,8 @@
 #include "fMultiTextureC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLScene.BaseClasses"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
 #pragma link "GLS.Objects"

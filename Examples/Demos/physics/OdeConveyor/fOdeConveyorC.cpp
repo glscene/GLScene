@@ -8,9 +8,9 @@
 #include "fOdeConveyorC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLScene.BaseClasses"
+#pragma link "GLS.BaseClasses"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Objects"
 #pragma link "GLS.ODEManager"

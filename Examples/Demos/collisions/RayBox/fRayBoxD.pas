@@ -26,8 +26,8 @@ uses
   GLScene.VectorGeometry,
 
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormRayBox = class(TForm)

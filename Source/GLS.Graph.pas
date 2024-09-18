@@ -20,21 +20,21 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
-  GLScene.BaseClasses,
+  GLS.VectorLists,
+  GLS.BaseClasses,
 
   GLS.Scene,
   GLS.Context,
   GLS.XOpenGL,
   GLS.Material,
   GLS.Objects,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLS.State;
 
 type
 
-  TGLSamplingScale = class(TGUpdateAbleObject)
+  TGLSamplingScale = class(TGLUpdateAbleObject)
   private
     FMin: Single;
     FMax: Single;

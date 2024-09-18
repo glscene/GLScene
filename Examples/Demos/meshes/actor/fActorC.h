@@ -17,14 +17,14 @@
 
 #include "GLS.Scene.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.FileMD2.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLScene.Utils.hpp"
 
 //---------------------------------------------------------------------------

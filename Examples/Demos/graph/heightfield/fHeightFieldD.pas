@@ -23,9 +23,9 @@ uses
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.SceneViewer,
-  GLScene.Color,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Color,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormHeightField = class(TForm)

@@ -11,11 +11,11 @@ interface
 
 uses
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.VectorFileObjects,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.Objects;
 
 type
@@ -88,7 +88,7 @@ type
     property Items[Index: Integer]: TGLRagdolBone read GetRagdollBone; default;
   end;
 
-  TGLRagdoll = class(TGPersistentObject)
+  TGLRagdoll = class(TGLPersistentObject)
   private
     FOwner: TGLBaseMesh;
     FRootBone: TGLRagdolBone;
@@ -165,14 +165,14 @@ procedure TGLRagdolBone.CreateBoundingBox;
 var
   bone: TGLSkeletonBone;
   i, j: Integer;
-  BoneVertices: TGAffineVectorList;
+  BoneVertices: TGLAffineVectorList;
   BoneVertex, max, min: TAffineVector;
   invMat, mat: TGLMatrix;
 begin
   bone := Ragdoll.Owner.Skeleton.BoneByID(FBoneID);
 
   // Get all vertices weighted to this bone
-  BoneVertices := TGAffineVectorList.Create;
+  BoneVertices := TGLAffineVectorList.Create;
   for i := 0 to Ragdoll.Owner.MeshObjects.Count - 1 do
     with TGLSkeletonMeshObject(Ragdoll.Owner.MeshObjects[i]) do
       for j := 0 to Vertices.Count - 1 do

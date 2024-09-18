@@ -30,13 +30,13 @@ uses
   GXS.MeshUtils,
   GXS.ImageUtils,
   GXS.ApplicationFileIO,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.Scene,
   GXS.VectorFileObjects,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.Texture,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GXS.Material;
 
@@ -163,8 +163,8 @@ type
     procedure Assign(Source: TPersistent); override;
     constructor CreateOwned(aOwner: TgxFaceGroups); override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure Add(VertexIdx, NormalIdx, TexCoordIdx: Integer);
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure AddToTriangles(aList: TgAffineVectorList; aTexCoords: TgAffineVectorList = nil;
@@ -1361,7 +1361,7 @@ begin
     inherited;
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(reader: TgVirtualReader);
+procedure TOBJFGVertexNormalTexIndexList.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1384,7 +1384,7 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(writer: TgVirtualWriter);
+procedure TOBJFGVertexNormalTexIndexList.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do

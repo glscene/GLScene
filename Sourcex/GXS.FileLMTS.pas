@@ -14,9 +14,9 @@ uses
 
   GLScene.VectorTypes,
   GXS.ApplicationFileIO,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.VectorFileObjects,
   GXS.Graphics,
   GXS.Texture,

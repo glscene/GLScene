@@ -8,9 +8,9 @@
 #include <StdCtrls.hpp>
 #include <ExtCtrls.hpp>
 #include <Forms.hpp>
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Material.hpp"

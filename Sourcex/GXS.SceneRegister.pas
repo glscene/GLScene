@@ -41,7 +41,7 @@ uses
 
   GXS.Scene,
   GXS.Context,
-  GLScene.Color,
+  GXS.Color,
   GXS.SceneViewer,
   GXS.ObjectManager;
 
@@ -99,8 +99,8 @@ type
 //    ICustomPropertyListDrawing
     )
   protected
-    function ColorToBorderColor(aColor: TGColorVector;
-      selected: Boolean): TGColor;
+    function ColorToBorderColor(aColor: TgxColorVector;
+      selected: Boolean): TgxColor;
   public
     function GetAttributes: TPropertyAttributes; override;
     procedure GetValues(Proc: TGetStrProc); override;
@@ -306,7 +306,7 @@ uses
 //  FVectorEditor,
 //  FSceneEditor,
 
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GLScene.VectorTypesExt,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
@@ -329,7 +329,7 @@ uses
   GXS.Collision,
   GXS.CompositeImage,
   GXS.Console,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.DCE,
   GXS.DynamicTexture,
   GXS.EParticleMasksManager,
@@ -670,18 +670,18 @@ end;
 procedure TgxColorProperty.Edit;
 var
   colorDialog: TColorDialog;
-  GLScene.Color: TGColor;
+  GXS.Color: TgxColor;
 begin
   colorDialog := TColorDialog.Create(nil);
   try
-    GLScene.Color := TGColor(GetOrdValue);
+    GXS.Color := TgxColor(GetOrdValue);
 {$IFDEF WIN32}
     colorDialog.Options := [cdFullOpen];
 {$ENDIF}
-    colorDialog.Color := ConvertColorVector(GLScene.Color.Color);
+    colorDialog.Color := ConvertColorVector(GXS.Color.Color);
     if colorDialog.Execute then
     begin
-      GLScene.Color.Color := ConvertWinColor(colorDialog.Color);
+      GXS.Color.Color := ConvertWinColor(colorDialog.Color);
       Modified;
     end;
   finally
@@ -701,16 +701,16 @@ end;
 
 function TgxColorProperty.GetValue: string;
 begin
-  Result := ColorManager.GetColorName(TGColor(GetOrdValue).Color);
+  Result := ColorManager.GetColorName(TgxColor(GetOrdValue).Color);
 end;
 
 procedure TgxColorProperty.SetValue(const Value: string);
 begin
-  TGColor(GetOrdValue).Color := ColorManager.GetColor(Value);
+  TgxColor(GetOrdValue).Color := ColorManager.GetColor(Value);
   Modified;
 end;
 
-function TgxColorProperty.ColorToBorderColor(aColor: TGColorVector;
+function TgxColorProperty.ColorToBorderColor(aColor: TgxColorVector;
   selected: Boolean): TColor;
 begin
   if (aColor.X > 0.75) or (aColor.Y > 0.75) or (aColor.Z > 0.75) then
@@ -735,7 +735,7 @@ procedure TgxColorProperty.ListDrawValue(const Value: string; ACanvas: TCanvas;
 var
   vRight: Integer;
   vOldPenColor, vOldBrushColor: TColor;
-  Color: TGColorVector;
+  Color: TgxColorVector;
 begin
   vRight := (ARect.Bottom - ARect.Top) + ARect.Left;
   with ACanvas do
@@ -845,10 +845,10 @@ end;
 
 procedure TgxCoordinatesProperty.Edit;
 var
-  glc: TgCoordinates;
+  glc: TgxCoordinates;
   x, y, z: Single;
 begin
-  glc := TgCoordinates(GetOrdValue);
+  glc := TgxCoordinates(GetOrdValue);
   x := glc.x;
   y := glc.y;
   z := glc.z;
@@ -1342,12 +1342,12 @@ begin
   RegisterPropertiesInCategory(sOpenGLCategoryName, TgxSceneViewer, ['*Render']);
 
   // GXS.Scene
-  RegisterPropertiesInCategory(sOpenGLCategoryName, [TypeInfo(Tgxx.ObjectsSorting), TypeInfo(TgProgressEvent),
+  RegisterPropertiesInCategory(sOpenGLCategoryName, [TypeInfo(Tgxx.ObjectsSorting), TypeInfo(TgxProgressEvent),
     TypeInfo(TgxBehaviours), TypeInfo(TgxEffects), TypeInfo(TDirectRenderEvent), TypeInfo(TgxCameraStyle),
     TypeInfo(TgxOnCustomPerspective), TypeInfo(TgxScene)]);
   RegisterPropertiesInCategory(sLayoutCategoryName, [TypeInfo(Tgxx.ObjectsSorting), TypeInfo(TgxNormalDirection)]);
   RegisterPropertiesInCategory(sVisualCategoryName, [TypeInfo(TgxVisibilityCulling), TypeInfo(TLightStyle),
-    TypeInfo(TGColor), TypeInfo(TgxNormalDirection), TypeInfo(TgxCameraStyle)]);
+    TypeInfo(TgxColor), TypeInfo(TgxNormalDirection), TypeInfo(TgxCameraStyle)]);
   RegisterPropertiesInCategory(sVisualCategoryName, TgxBaseSceneObject,
     ['Rotation', 'Direction', 'Position', 'Up', 'Scale', '*Angle', 'ShowAxes', 'FocalLength']);
   RegisterPropertiesInCategory(sVisualCategoryName, TgxSceneObject, ['Parts']);
@@ -1513,10 +1513,10 @@ begin
   RegisterPropertyEditor(TypeInfo(string), TgxBaseSoundSource, 'SoundName',
     TgxSoundNameProperty);
 
-  RegisterPropertyEditor(TypeInfo(TgCoordinates), nil, '',
+  RegisterPropertyEditor(TypeInfo(TgxCoordinates), nil, '',
     TgxCoordinatesProperty);
 
-  RegisterPropertyEditor(TypeInfo(TGColor), nil, '', TgxColorProperty);
+  RegisterPropertyEditor(TypeInfo(TgxColor), nil, '', TgxColorProperty);
   RegisterPropertyEditor(TypeInfo(TgxMaterial), nil, '', TgxMaterialProperty);
   RegisterComponentEditor(TgxGuiLayout, TgxGUILayoutEditor);
 
@@ -1610,8 +1610,8 @@ SplashScreenServices.AddPluginBitmap(GetGLXceneVersion,
 
 GXS.CrossPlatform.IsDesignTime := True;
 GXS.CrossPlatform.vProjectTargetName := GetProjectTargetName;
-GLScene.Color.vUseDefaultColorSets := True;
-GLScene.Coordinates.vUseDefaultCoordinateSets := True;
+GXS.Color.vUseDefaultColorSets := True;
+GXS.Coordinates.vUseDefaultCoordinateSets := True;
 ReadVideoModes;
 
 with ObjectManager do

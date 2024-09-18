@@ -22,15 +22,15 @@ uses
   GLS.Cadencer,
   GLS.VectorFileObjects,
   GLS.Material,
-  GLScene.Color,
+  GLS.Color,
   GLS.State,
   GLS.SceneViewer,
   GLScene.VectorGeometry,
   GLS.Graph,
   GLS.GeomObjects,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormTriangleBox = class(TForm)

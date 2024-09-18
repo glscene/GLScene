@@ -28,8 +28,8 @@ uses
   GLS.Objects,
   GLScene.VectorGeometry,
   GLS.GeomObjects,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
 
 
   uFountainD, GLS.Material;

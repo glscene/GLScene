@@ -14,14 +14,14 @@ uses
   System.SysUtils,
 
   GLScene.OpenGLTokens,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
 
   GLS.Context,
   GLS.Scene,
   GLS.Silhouette,
   GLS.RenderContextInfo,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorTypes;
 
 type
@@ -260,8 +260,8 @@ end;
 
 procedure TGLMultiProxyMasters.NotifyChange;
 begin
-   if (UpdateCount=0) and (GetOwner<>nil) and (GetOwner is TGUpdateAbleComponent) then
-      TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
+   if (UpdateCount=0) and (GetOwner<>nil) and (GetOwner is TGLUpdateAbleComponent) then
+      TGLUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TGLMultiProxyMasters.EndUpdate;

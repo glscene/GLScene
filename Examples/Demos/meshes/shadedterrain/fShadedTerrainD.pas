@@ -19,12 +19,12 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Keyboard,
   GLScene.XCollection,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
   GLS.Objects,
   GLS.TerrainRenderer,

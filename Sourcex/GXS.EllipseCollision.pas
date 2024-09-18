@@ -12,7 +12,7 @@ interface
 uses
   GLScene.VectorGeometry,
   GXS.Octree,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorTypes;
 
 type

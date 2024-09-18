@@ -26,8 +26,8 @@ uses
   GLS.Objects,
   GLS.AsyncTimer,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.TextureFormat,
   GLScene.Utils,
   GLS.SimpleNavigation;

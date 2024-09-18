@@ -20,8 +20,8 @@ uses
   GLS.VectorFileObjects,
   GLS.Material,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
-  GLScene.Color,
+  GLS.VectorLists,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLScene.VectorTypes;
 
@@ -644,7 +644,7 @@ var
   ns, np, nn: Integer;
   evalPlane: THmgPlane;
   bestEval, eval: Single;
-  vertices: TGAffineVectorList;
+  vertices: TGLAffineVectorList;
 begin
   Result := NullHmgVector;
   bestEval := 1E30;
@@ -689,7 +689,7 @@ procedure TFGBSPNode.EvaluateSplitPlane(const splitPlane: THmgPlane;
 var
   i, n, inci, lookupIdx: Integer;
   a, b, c: Boolean;
-  vertices: TGAffineVectorList;
+  vertices: TGLAffineVectorList;
 const
   // case resolution lookup tables (node's tris unaccounted for)
   cTriangleSplit: array [0 .. 7] of Integer = (0, 1, 1, 1, 1, 1, 1, 0);
@@ -879,7 +879,7 @@ var
 var
   i, i1, i2, i3, se1, se2, se3: Integer;
   e1, e2, e3: Single;
-  vertices: TGAffineVectorList;
+  vertices: TGLAffineVectorList;
   subSplitPlane: THmgPlane;
 begin
   Assert((PositiveSubNodeIndex = 0) and (NegativeSubNodeIndex = 0));

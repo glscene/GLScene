@@ -17,7 +17,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
   GXS.ImageUtils;

@@ -32,12 +32,13 @@ interface
 
 uses
   Winapi.OpenGL,
+
   GLScene.VectorTypes,
   GLScene.CurvesAndSurfaces,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
 
+  GXS.VectorLists,
+  GXS.PersistentClasses,
   GXS.VectorFileObjects,
   GXS.Texture,
   GXS.State,
@@ -76,8 +77,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure Prepare; override;
     procedure Clear; override;
@@ -142,8 +143,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     procedure BuildList(var mrci: TgxRenderContextInfo); override;
     procedure Prepare; override;
     property CountU: Integer read FCountU write FCountU;
@@ -188,7 +189,7 @@ begin
   inherited;
 end;
 
-procedure TMOParametricSurface.WriteToFiler(writer: TgVirtualWriter);
+procedure TMOParametricSurface.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -210,7 +211,7 @@ begin
   end;
 end;
 
-procedure TMOParametricSurface.ReadFromFiler(reader: TgVirtualReader);
+procedure TMOParametricSurface.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -437,7 +438,7 @@ begin
   inherited;
 end;
 
-procedure TFGBezierSurface.WriteToFiler(writer: TgVirtualWriter);
+procedure TFGBezierSurface.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -455,7 +456,7 @@ begin
   end;
 end;
 
-procedure TFGBezierSurface.ReadFromFiler(reader: TgVirtualReader);
+procedure TFGBezierSurface.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin

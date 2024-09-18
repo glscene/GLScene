@@ -27,8 +27,8 @@ uses
   GLS.Graph,
   GLScene.VectorTypes,
   GLS.SceneViewer,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.SimpleNavigation,
   GLScene.Utils;
 

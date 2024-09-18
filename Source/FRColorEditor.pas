@@ -23,7 +23,7 @@ uses
   VCL.Graphics,
    
   GLScene.VectorGeometry, 
-  GLScene.Color, 
+  GLS.Color, 
   GLS.Texture, 
   GLScene.VectorTypes;
 

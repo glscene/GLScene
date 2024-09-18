@@ -27,8 +27,8 @@ uses
   GLS.FileTGA,
   GLScene.XCollection,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils,
   GLS.SimpleNavigation,
 

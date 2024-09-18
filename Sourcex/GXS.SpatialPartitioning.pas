@@ -15,7 +15,7 @@ uses
   GXS.SpacePartition,
 
   GXS.Scene,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.SceneViewer,
 
   GXS.RenderContextInfo,

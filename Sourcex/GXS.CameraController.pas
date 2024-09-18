@@ -28,10 +28,10 @@ uses
   System.Math, 
   System.Contnrs,
   
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.Scene,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.SmoothNavigator, 
   GLScene.VectorTypes;
 

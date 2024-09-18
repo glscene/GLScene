@@ -24,9 +24,9 @@ uses
   GLScene.VectorGeometry,
   GLS.Scene,
   GLS.Context,
-  GLScene.PersistentClasses,
-  GLScene.VectorLists,
-  GLScene.Coordinates,
+  GLS.PersistentClasses,
+  GLS.VectorLists,
+  GLS.Coordinates,
   GLS.Objects,
   GLS.VerletClothify,
   GLS.VectorFileObjects;

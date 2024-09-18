@@ -14,13 +14,13 @@ uses
   System.SysUtils,
 
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorTypes,
   GXS.Texture,
   GLScene.Strings,
   GXS.Cadencer,
   GXS.Context,
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.RenderContextInfo,
   GXS.Material,
   GLScene.TextureFormat,
@@ -49,7 +49,7 @@ type
   TPrecisionSetting = (psFull, psFast);
 
   // Wrapper around a Cg program.
-  TCGxProgram = class(TgUpdateAbleObject)
+  TCGxProgram = class(TgxUpdateAbleObject)
   private
     FCgContext: PcgContext;
     FCode: TStrings; // the Cg program itself

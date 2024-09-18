@@ -11,16 +11,16 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Objects,
   GLS.Texture,
   GLScene.VectorTypes,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLScene.Color,
+  GLS.Color,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLS.FPSMovement;
 

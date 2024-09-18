@@ -13,14 +13,14 @@ uses
 
   GLS.SimpleNavigation,
   GLS.Scene,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.NGDManager,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.Cadencer,
   GLS.SceneViewer,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Objects;
 
 type

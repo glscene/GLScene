@@ -43,11 +43,11 @@ uses
   GLS.Objects,
   GLS.Context,
   GLS.SceneViewer,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLScene.Coordinates,
-  GLScene.PersistentClasses;
+  GLS.Coordinates,
+  GLS.PersistentClasses;
 
 type
   EZBufferException = class(Exception);

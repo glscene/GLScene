@@ -34,7 +34,7 @@ interface
 
 uses
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.Mesh,
   GLS.VectorFileObjects,
   GLScene.VectorTypes,

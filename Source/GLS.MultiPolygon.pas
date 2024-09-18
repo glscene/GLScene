@@ -9,10 +9,10 @@ unit GLS.MultiPolygon;
 
    When the tesselator finds an intersection of edges it wants us to give him some storage
    for this new vertex, and he wants a pointer (see tessCombine). The pointers taken from
-   TGAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
+   TGLAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
    can happen implicitly while adding. The TGLVectorPool keeps all pointers valid until the
    destruction itself.
-   Reactivated the TGLVectorPool object. The GLScene.VectorLists are not suitable for this job.
+   Reactivated the TGLVectorPool object. The GLS.VectorLists are not suitable for this job.
    If anyone feels responsible: it would be fine to have a method ImportFromFile (dxf?) in
    the TGLContour and TGLMultiPolygonBase objects...
 *)
@@ -34,14 +34,14 @@ uses
   GLS.Context,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
+  GLS.VectorLists,
+  GLS.PersistentClasses,
   GLS.Scene,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Nodes,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GLS.BaseClasses,
+  GLS.Coordinates,
   GLS.RenderContextInfo;
 
 type
@@ -97,12 +97,12 @@ type
 
   TGLPolygonList = class(TgPersistentObjectList)
   private
-    FAktList: TGAffineVectorList;
-    function GetList(I: Integer): TGAffineVectorList;
+    FAktList: TGLAffineVectorList;
+    function GetList(I: Integer): TGLAffineVectorList;
   public
     procedure Add;
-    property AktList: TGAffineVectorList read FAktList;
-    property List[I: Integer]: TGAffineVectorList read GetList;
+    property AktList: TGLAffineVectorList read FAktList;
+    property List[I: Integer]: TGLAffineVectorList read GetList;
   end;
 
   (* Multipolygon is defined with multiple contours.
@@ -117,7 +117,7 @@ type
      TGLMultiPolygonBase will take the input contours and let the tesselator
      make an outline from it (this is done in RetreiveOutline). This outline is
      used for Rendering. Only when there are changes in the contours, the
-     outline will be recalculated. The ouline in fact is a list of GLScene.VectorLists. *)
+     outline will be recalculated. The ouline in fact is a list of GLS.VectorLists. *)
   TGLMultiPolygonBase = class(TGLSceneObject)
   private
     FContours: TGLContours;
@@ -237,14 +237,14 @@ end;
 
 procedure TGLPolygonList.Add;
 begin
-  FAktList := TGAffineVectorList.Create;
+  FAktList := TGLAffineVectorList.Create;
   inherited Add(FAktList);
 end;
 
 
-function TGLPolygonList.GetList(i: Integer): TGAffineVectorList;
+function TGLPolygonList.GetList(i: Integer): TGLAffineVectorList;
 begin
-  Result := TGAffineVectorList(Items[i]);
+  Result := TGLAffineVectorList(Items[i]);
 end;
 
 // ------------------

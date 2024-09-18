@@ -18,9 +18,9 @@ uses
   GLScene.VectorGeometry,
   GLS.OpenGLAdapter,
   GLS.Context,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.Spline,
-  GLScene.Coordinates;
+  GLS.Coordinates;
 
 type
   TGLNode = class(TCollectionItem)
@@ -255,8 +255,8 @@ end;
 
 procedure TGLNodes.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGUpdateAbleComponent) then
-    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGLUpdateAbleComponent) then
+    TGLUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TGLNodes.EndUpdate;

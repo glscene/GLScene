@@ -15,7 +15,7 @@ uses
 
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Objects,
   GLS.Texture,
   GLS.SceneViewer,
@@ -25,9 +25,9 @@ uses
   GLS.Cadencer,
 
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.State,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.Utils,
   GLS.File3DS,
   GLS.FileMD2,
@@ -103,7 +103,7 @@ end;
 procedure TFormSubdivide.BUSubdivideClick(Sender: TObject);
 var
   i, j: Integer;
-  tris, norms, tex, buf, morphTris, morphNorms: TGAffineVectorList;
+  tris, norms, tex, buf, morphTris, morphNorms: TGLAffineVectorList;
   indices, texIndices: TGIntegerList;
   firstRemap, subdivideRemap, bufRemap: TGIntegerList;
   t: Int64;
@@ -115,7 +115,7 @@ begin
 
   for i := 0 to GLActor1.MeshObjects.Count - 1 do
   begin
-    tex := TGAffineVectorList.Create;
+    tex := TGLAffineVectorList.Create;
     with GLActor1.MeshObjects[i] do
       tris := ExtractTriangles(tex);
     indices := BuildVectorCountOptimizedIndices(tris);
@@ -134,7 +134,7 @@ begin
     SubdivideTriangles(0, tex, texIndices);
 
     // Re-expand everything
-    buf := TGAffineVectorList.Create;
+    buf := TGLAffineVectorList.Create;
     try
       ConvertIndexedListToList(tris, indices, buf);
       tris.Assign(buf);
@@ -174,7 +174,7 @@ begin
 
         SubdivideTriangles(TrackBar1.Position * 0.1, morphTris, bufRemap, morphNorms);
 
-        buf := TGAffineVectorList.Create;
+        buf := TGLAffineVectorList.Create;
         try
           ConvertIndexedListToList(morphTris, bufRemap, buf);
           morphTris.Assign(buf);

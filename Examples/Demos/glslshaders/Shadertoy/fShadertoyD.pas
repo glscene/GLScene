@@ -13,7 +13,7 @@ uses
 
   GLS.Scene,
   GLScene.VectorTypes,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
@@ -25,7 +25,7 @@ uses
 
   GLS.AsyncTimer,
   GLS.Context,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.HUDObjects,
   GLScene.Utils;
 

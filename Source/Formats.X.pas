@@ -15,8 +15,8 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
+  GLS.VectorLists,
+  GLS.PersistentClasses,
   GLScene.Utils;
 
 type
@@ -47,7 +47,7 @@ type
 
   TDXMaterialList = class;
 
-  TDXMaterial = class(TGPersistentObject)
+  TDXMaterial = class(TGLPersistentObject)
   private
     FDiffuse: TVector4f;
     FSpecPower: Single;
@@ -82,16 +82,16 @@ type
 
   TDXMesh = class(TDXNode)
   private
-    FVertices, FNormals, FTexCoords: TGAffineVectorList;
+    FVertices, FNormals, FTexCoords: TGLAffineVectorList;
     FVertexIndices, FNormalIndices, FMaterialIndices, FVertCountIndices
       : TgIntegerList;
     FMaterialList: TDXMaterialList;
   public
     constructor Create; override;
     destructor Destroy; override;
-    property Vertices: TGAffineVectorList read FVertices;
-    property Normals: TGAffineVectorList read FNormals;
-    property TexCoords: TGAffineVectorList read FTexCoords;
+    property Vertices: TGLAffineVectorList read FVertices;
+    property Normals: TGLAffineVectorList read FNormals;
+    property TexCoords: TGLAffineVectorList read FTexCoords;
     property VertexIndices: TgIntegerList read FVertexIndices;
     property NormalIndices: TgIntegerList read FNormalIndices;
     property MaterialIndices: TgIntegerList read FMaterialIndices;
@@ -338,7 +338,7 @@ var
     Result.Z := 0;
   end;
 
-  procedure ReadMeshVectors(VectorList: TGAffineVectorList);
+  procedure ReadMeshVectors(VectorList: TGLAffineVectorList);
   var
     i, NumVectors: Integer;
   begin
@@ -389,7 +389,7 @@ var
     end;
   end;
 
-  procedure ReadTexCoords(VectorList: TGAffineVectorList);
+  procedure ReadTexCoords(VectorList: TGLAffineVectorList);
   var
     i, NumVectors: Integer;
   begin
@@ -601,9 +601,9 @@ constructor TDXMesh.Create;
 begin
   inherited;
 
-  FVertices := TGAffineVectorList.Create;
-  FNormals := TGAffineVectorList.Create;
-  FTexCoords := TGAffineVectorList.Create;
+  FVertices := TGLAffineVectorList.Create;
+  FNormals := TGLAffineVectorList.Create;
+  FTexCoords := TGLAffineVectorList.Create;
   FVertexIndices := TgIntegerList.Create;
   FNormalIndices := TgIntegerList.Create;
   FMaterialIndices := TgIntegerList.Create;

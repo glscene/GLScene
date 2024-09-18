@@ -19,11 +19,11 @@ uses
   GLS.Behaviours,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLScene.Color,
+  GLS.Color,
 
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.RenderContextInfo;
 
 type

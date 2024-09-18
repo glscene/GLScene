@@ -11,14 +11,14 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Graphics.hpp>
 
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Canvas.hpp"
 #include "GLS.RenderContextInfo.hpp"
 #include "GLS.BitmapFont.hpp"
 #include "GLS.WindowsFont.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 
 //---------------------------------------------------------------------------
 class TFormCanvas : public TForm

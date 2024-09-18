@@ -17,7 +17,7 @@ uses
 
   GLS.Scene,
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.SceneViewer,
   GLS.SkyDome,
   GLS.Objects,
@@ -35,8 +35,8 @@ uses
   GLS.HUDObjects,
 
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.Utils;
 

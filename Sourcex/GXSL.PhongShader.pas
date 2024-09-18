@@ -18,7 +18,7 @@ uses
   GLScene.VectorTypes,
   GXS.Texture, 
   GLScene.VectorGeometry, 
-  GLScene.VectorLists, 
+  GXS.VectorLists, 
   GXS.Context,
   GXS.RenderContextInfo,
   GXSL.AsmShader,

@@ -19,14 +19,14 @@ uses
   GXS.Context,
   GXS.Material,
   GXS.Objects,
-  GLScene.PersistentClasses,
-  GLScene.VectorLists,
+  GXS.PersistentClasses,
+  GXS.VectorLists,
   GXS.RenderContextInfo;
 
 type
 
   { Stores row information for a tiled area. }
-  TgxTiledAreaRow = class(TgPersistentObject)
+  TgxTiledAreaRow = class(TgxPersistentObject)
   private
     FColMin, FColMax: Integer;
     FData: TgIntegerList;
@@ -38,8 +38,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     property Cell[col: Integer]: Integer read GetCell write SetCell; default;
     property ColMin: Integer read FColMin write SetColMin;
     property ColMax: Integer read FColMax write SetColMax;
@@ -52,10 +52,10 @@ type
   { Stores tile information in a tiled area.
     Each tile stores an integer value with zero the default value,
     assumed as "empty". }
-  TgxTiledArea = class(TgPersistentObject)
+  TgxTiledArea = class(TgxPersistentObject)
   private
     FRowMin, FRowMax: Integer;
-    FRows: TgPersistentObjectList;
+    FRows: TgxPersistentObjectList;
   protected
     procedure SetRowMin(const val: Integer);
     procedure SetRowMax(const val: Integer);
@@ -65,8 +65,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     property Tile[col, row: Integer]: Integer read GetTile
       write SetTile; default;
     property row[index: Integer]: TgxTiledAreaRow read GetRow;
@@ -142,7 +142,7 @@ begin
   inherited;
 end;
 
-procedure TgxTiledAreaRow.WriteToFiler(writer: TgVirtualWriter);
+procedure TgxTiledAreaRow.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -153,7 +153,7 @@ begin
   end;
 end;
 
-procedure TgxTiledAreaRow.ReadFromFiler(reader: TgVirtualReader);
+procedure TgxTiledAreaRow.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -297,7 +297,7 @@ end;
 constructor TgxTiledArea.Create;
 begin
   inherited;
-  FRows := TgPersistentObjectList.Create;
+  FRows := TgxPersistentObjectList.Create;
   FRowMax := -1;
 end;
 
@@ -311,7 +311,7 @@ end;
 
 // WriteToFiler
 //
-procedure TgxTiledArea.WriteToFiler(writer: TgVirtualWriter);
+procedure TgxTiledArea.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -324,7 +324,7 @@ end;
 
 // ReadFromFiler
 //
-procedure TgxTiledArea.ReadFromFiler(reader: TgVirtualReader);
+procedure TgxTiledArea.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin

@@ -20,9 +20,9 @@ uses
   GLS.SceneViewer,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Canvas,
   GLS.Texture,
   GLS.RenderContextInfo,

@@ -15,9 +15,9 @@ uses
   System.StrUtils,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLScene.Utils;

@@ -14,8 +14,8 @@
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.BaseClasses.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLSL.CustomShader.hpp"
 #include "GLS.Material.hpp"

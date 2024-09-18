@@ -21,8 +21,8 @@ uses
   GLS.Graph, GLScene.VectorTypes,
   GLScene.VectorGeometry,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
 
   GLS.ODEManager;
 

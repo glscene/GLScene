@@ -19,9 +19,9 @@ uses
   GLS.Scene, 
   GLS.Objects,
   GLS.SceneViewer, 
-  GLScene.Coordinates, 
+  GLS.Coordinates, 
   GLS.SimpleNavigation, 
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TFormSmoking = class(TForm)

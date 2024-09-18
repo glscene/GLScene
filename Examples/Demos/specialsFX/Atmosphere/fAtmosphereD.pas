@@ -12,7 +12,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLScene.VectorGeometry,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
@@ -24,8 +24,8 @@ uses
   GLS.Atmosphere,
   GLS.SimpleNavigation,
   GLS.Behaviours,
-  GLScene.Coordinates,
-  GLScene.Color;
+  GLS.Coordinates,
+  GLS.Color;
 
 type
   TFormAtmosphere = class(TForm)

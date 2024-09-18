@@ -24,7 +24,7 @@ uses
   Vcl.Samples.Spin,
   Vcl.Grids,
   
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.ImageUtils,
   GLS.Gui,
   GLScene.Strings;

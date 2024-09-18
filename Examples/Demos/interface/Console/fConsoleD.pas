@@ -17,14 +17,14 @@ uses
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
 
   GLS.Texture,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.Behaviours,
   GLS.Console,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.SimpleNavigation,
   GLScene.Utils;
 

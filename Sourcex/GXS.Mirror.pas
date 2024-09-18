@@ -19,13 +19,13 @@ uses
   System.Classes,
 
   GLScene.XCollection,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.Scene,
   GLScene.PipelineTransform,
   GLScene.VectorGeometry,
   GXS.Context,
   GXS.Material,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GLScene.VectorTypes;
@@ -142,7 +142,7 @@ var
   oldProxySubObject: Boolean;
   refMat, curMat, ModelMat: TMatrix4f;
   clipPlane: TDoubleHmgPlane;
-  bgColor: TGColorVector;
+  bgColor: TgxColorVector;
   cameraPosBackup, cameraDirectionBackup: TVector4f;
   CurrentBuffer: TgxSceneBuffer;
 begin

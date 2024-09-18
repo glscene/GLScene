@@ -30,10 +30,10 @@ uses
   GLS.Navigator,
   GLS.VerletTypes,
   GLScene.XCollection,
-  GLScene.Color,
+  GLS.Color,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 const
   cMaxWindMag = 8;

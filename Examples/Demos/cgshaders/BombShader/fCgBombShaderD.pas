@@ -25,8 +25,8 @@ uses
   GLS.Graph,
   GLS.Material,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils,
 
   GLS.FileMD2,

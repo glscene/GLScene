@@ -17,8 +17,8 @@ uses
   GLS.Cadencer,
   GLS.AsyncTimer,
   GLS.SceneViewer,
-  GLScene.Coordinates,
-  GLScene.BaseClasses, GLS.SimpleNavigation, GLS.Material;
+  GLS.Coordinates,
+  GLS.BaseClasses, GLS.SimpleNavigation, GLS.Material;
 
 type
   TFormHierarchy = class(TForm)

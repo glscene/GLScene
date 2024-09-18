@@ -1,11 +1,11 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLScene.PersistentClasses;
+unit GXS.PersistentClasses;
 (*
    Base persistence classes.
    The registered class is:
-     [TgPersistentObjectList]
+     [TgxPersistentObjectList]
 
    These classes are used in GLScene but are designed for generic purpose.
    They implement a slightly different persistence mechanism then that of the VCL,
@@ -26,7 +26,7 @@ type
   PObject = ^TObject;
 
   //Virtual layer similar to VCL's TReader (but reusable)
-  TGVirtualReader = class
+  TgxVirtualReader = class
   private
     FStream: TStream;
   public
@@ -46,7 +46,7 @@ type
   end;
 
   //Virtual layer similar to VCL's TWriter (but reusable)
-  TGVirtualWriter = class
+  TgxVirtualWriter = class
   private
     FStream: TStream;
   public
@@ -62,16 +62,16 @@ type
     procedure WriteTStrings(const aStrings: TStrings; storeObjects: Boolean = True);
   end;
 
-  TGVirtualReaderClass = class of TGVirtualReader;
-  TGVirtualWriterClass = class of TGVirtualWriter;
+  TgxVirtualReaderClass = class of TgxVirtualReader;
+  TgxVirtualWriterClass = class of TgxVirtualWriter;
 
   (*Interface for persistent objects.
      This interface does not really allow polymorphic persistence,
      but is rather intended as a way to unify persistence calls for iterators *)
-  IGPersistentObject = interface(IInterface)
+  IgxPersistentObject = interface(IInterface)
   ['{A9A0198A-F11B-4325-A92C-2F24DB41652B}']
-    procedure WriteToFiler(writer: TGVirtualWriter);
-    procedure ReadFromFiler(reader: TGVirtualReader);
+    procedure WriteToFiler(writer: TgxVirtualWriter);
+    procedure ReadFromFiler(reader: TgxVirtualReader);
   end;
 
   (* Base class for persistent objects.
@@ -80,9 +80,9 @@ type
      file or string), assignment and cloning.
      The other requirement being the use of a virtual constructor, which allows
      polymorphic construction (don't forget to register your subclasses).
-     Note that TGPersistentObject implements IUnknown, but does *not* implement
+     Note that TgxPersistentObject implements IUnknown, but does *not* implement
      reference counting *)
-  TGPersistentObject = class(TPersistent, IGPersistentObject)
+  TgxPersistentObject = class(TPersistent, IgxPersistentObject)
   protected
     procedure RaiseFilerException(const archiveVersion: Integer);
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -90,42 +90,42 @@ type
     function _Release: Integer; stdcall;
   public
     constructor Create; virtual;
-    constructor CreateFromFiler(reader: TGVirtualReader);
+    constructor CreateFromFiler(reader: TgxVirtualReader);
     destructor Destroy; override;
     procedure Assign(source: TPersistent); override;
-    function CreateClone: TGPersistentObject; dynamic;
+    function CreateClone: TgxPersistentObject; dynamic;
     class function FileSignature: string; virtual;
-    class function FileVirtualWriter: TGVirtualWriterClass; virtual;
-    class function FileVirtualReader: TGVirtualReaderClass; virtual;
-    procedure WriteToFiler(writer: TGVirtualWriter); dynamic;
-    procedure ReadFromFiler(reader: TGVirtualReader); dynamic;
-    procedure SaveToStream(stream: TStream; writerClass: TGVirtualWriterClass = nil); dynamic;
-    procedure LoadFromStream(stream: TStream; readerClass: TGVirtualReaderClass = nil); dynamic;
-    procedure SaveToFile(const fileName: string; writerClass: TGVirtualWriterClass = nil); dynamic;
-    procedure LoadFromFile(const fileName: string; readerClass: TGVirtualReaderClass = nil); dynamic;
-    function SaveToString(writerClass: TGVirtualWriterClass = nil): string; dynamic;
-    procedure LoadFromString(const data: string; readerClass: TGVirtualReaderClass = nil); dynamic;
+    class function FileVirtualWriter: TgxVirtualWriterClass; virtual;
+    class function FileVirtualReader: TgxVirtualReaderClass; virtual;
+    procedure WriteToFiler(writer: TgxVirtualWriter); dynamic;
+    procedure ReadFromFiler(reader: TgxVirtualReader); dynamic;
+    procedure SaveToStream(stream: TStream; writerClass: TgxVirtualWriterClass = nil); dynamic;
+    procedure LoadFromStream(stream: TStream; readerClass: TgxVirtualReaderClass = nil); dynamic;
+    procedure SaveToFile(const fileName: string; writerClass: TgxVirtualWriterClass = nil); dynamic;
+    procedure LoadFromFile(const fileName: string; readerClass: TgxVirtualReaderClass = nil); dynamic;
+    function SaveToString(writerClass: TgxVirtualWriterClass = nil): string; dynamic;
+    procedure LoadFromString(const data: string; readerClass: TgxVirtualReaderClass = nil); dynamic;
   end;
 
-  TGPersistentObjectClass = class of TGPersistentObject;
+  TgxPersistentObjectClass = class of TgxPersistentObject;
 
-  PGPointerObjectList = ^TGPointerObjectList;
-  TGPointerObjectList = array[0..MaxInt div (2*SizeOf(Pointer))] of TObject;
+  PgxPointerObjectList = ^TgxPointerObjectList;
+  TgxPointerObjectList = array[0..MaxInt div (2*SizeOf(Pointer))] of TObject;
 
-  TGObjectListSortCompare = function(item1, item2: TObject): Integer;
+  TgxObjectListSortCompare = function(item1, item2: TObject): Integer;
 
   (*A persistent Object list.
     Similar to TList but works on TObject items and has facilities for
     persistence of contained data. Unlike the VCL's TObjectList, this one
     does NOT free its objects upon destruction or Clear, use Clean and CleanFree
     for that, and as such can be used for object referral lists too.
-    But only TGPersistentObject items will be streamed appropriately.
+    But only TgxPersistentObject items will be streamed appropriately.
     The list can be used in a stack-like fashion with Push & Pop, and can
     perform basic boolean set operations.
     Note: the IndexOf implementation is up to 3 times faster than that of TList *)
-  TgPersistentObjectList = class(TGPersistentObject)
+  TgxPersistentObjectList = class(TgxPersistentObject)
   private
-    FList: PGPointerObjectList;
+    FList: PgxPointerObjectList;
     FCount: Integer;
     FCapacity: Integer;
     FGrowthDelta: Integer;
@@ -145,9 +145,9 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
-    procedure ReadFromFilerWithEvent(reader: TGVirtualReader;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
+    procedure ReadFromFilerWithEvent(reader: TgxVirtualReader;
       afterSenderObjectCreated: TNotifyEvent);
     function Add(const item: TObject): Integer; inline;
     procedure AddNils(nbVals: Cardinal);
@@ -162,10 +162,10 @@ type
     procedure DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
     function RemoveAndFree(item: TObject): Integer;
     property GrowthDelta: integer read FGrowthDelta write FGrowthDelta;
-    function Expand: TgPersistentObjectList;
+    function Expand: TgxPersistentObjectList;
     property Items[Index: Integer]: TObject read Get write Put; default;
     property Count: Integer read FCount write SetCount;
-    property List: PGPointerObjectList read FList;
+    property List: PgxPointerObjectList read FList;
     property Capacity: Integer read FCapacity write SetCapacity;
     //Makes sure capacity is at least aCapacity.
     procedure RequiredCapacity(aCapacity: Integer);
@@ -186,13 +186,13 @@ type
     procedure Push(item: TObject);
     function Pop: TObject;
     procedure PopAndFree;
-    function AddObjects(const objectList: TgPersistentObjectList): Integer;
-    procedure RemoveObjects(const objectList: TgPersistentObjectList);
-    procedure Sort(compareFunc: TGObjectListSortCompare);
+    function AddObjects(const objectList: TgxPersistentObjectList): Integer;
+    procedure RemoveObjects(const objectList: TgxPersistentObjectList);
+    procedure Sort(compareFunc: TgxObjectListSortCompare);
   end;
 
   //Wraps a TReader-compatible reader.
-  TGBinaryReader = class(TGVirtualReader)
+  TgxBinaryReader = class(TgxVirtualReader)
   protected
     function ReadValue: TValueType;
     function ReadWideString(vType: TValueType): WideString;
@@ -209,7 +209,7 @@ type
   end;
 
   //Wraps a TWriter-compatible writer.
-  TGBinaryWriter = class(TGVirtualWriter)
+  TgxBinaryWriter = class(TgxVirtualWriter)
   protected
     procedure WriteAnsiString(const aString: AnsiString); virtual;
     procedure WriteWideString(const aString: WideString); virtual;
@@ -224,7 +224,7 @@ type
   end;
 
   //Reads object persistence in Text format.
-  TGTextReader = class(TGVirtualReader)
+  TgxTextReader = class(TgxVirtualReader)
   private
     FValueType: string;
     FData: string;
@@ -243,7 +243,7 @@ type
   end;
 
   //Writes object persistence in Text format.
-  TGTextWriter = class(TGVirtualWriter)
+  TgxTextWriter = class(TgxVirtualWriter)
   private
     FIndentLevel: Integer;
   protected
@@ -261,7 +261,7 @@ type
   end;
 
   //TPersistent which has knowledge of its owner.
-  TGOwnedPersistent = class(TPersistent)
+  TgxOwnedPersistent = class(TPersistent)
   private
     FOwner: TPersistent;
   protected
@@ -271,7 +271,7 @@ type
   end;
 
   //TPersistent that inplements IInterface.
-  TGInterfacedPersistent = class(TPersistent, IInterface)
+  TgxInterfacedPersistent = class(TPersistent, IInterface)
   protected
     // Implementing IInterface.
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -280,7 +280,7 @@ type
   end;
 
   //TCollectionItem thet inplements IInterface.
-  TGInterfacedCollectionItem = class(TCollectionItem, IInterface)
+  TgxInterfacedCollectionItem = class(TCollectionItem, IInterface)
   protected
     // Implementing IInterface.
     function QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
@@ -289,11 +289,11 @@ type
   end;
 
   //Triggered when file signature does not match.
-  EInvalidFileSignature = class(Exception)
+  EgxInvalidFileSignature = class(Exception)
   end;
 
   //Usually triggered when a filing error is detected.
-  EFilerException = class(Exception)
+  EgxFilerException = class(Exception)
   end;
 
 procedure RaiseFilerException(aClass: TClass; archiveVersion: Integer);
@@ -316,7 +316,7 @@ const
 
 procedure RaiseFilerException(aClass: TClass; archiveVersion: Integer);
 begin
-  raise EFilerException.Create(aClass.ClassName +
+  raise EgxFilerException.Create(aClass.ClassName +
     strUnknownArchiveVersion + IntToStr(archiveVersion));
 end;
 
@@ -392,20 +392,20 @@ begin
 end;
 
 // ------------------
-// ------------------ TGVirtualReader ------------------
+// ------------------ TgxVirtualReader ------------------
 // ------------------
 
-constructor TGVirtualReader.Create(Stream: TStream);
+constructor TgxVirtualReader.Create(Stream: TStream);
 begin
   FStream := Stream;
 end;
 
-procedure TGVirtualReader.ReadTypeError;
+procedure TgxVirtualReader.ReadTypeError;
 begin
   raise EReadError.CreateFmt('%s, read type error', [ClassName]);
 end;
 
-procedure TGVirtualReader.ReadTStrings(aStrings: TStrings);
+procedure TgxVirtualReader.ReadTStrings(aStrings: TStrings);
 var
   i: Integer;
   objectsStored: Boolean;
@@ -430,15 +430,15 @@ begin
 end;
 
 // ------------------
-// ------------------ TGVirtualWriter ------------------
+// ------------------ TgxVirtualWriter ------------------
 // ------------------
 
-constructor TGVirtualWriter.Create(Stream: TStream);
+constructor TgxVirtualWriter.Create(Stream: TStream);
 begin
   FStream := Stream;
 end;
 
-procedure TGVirtualWriter.WriteTStrings(const aStrings: TStrings;
+procedure TgxVirtualWriter.WriteTStrings(const aStrings: TStrings;
   storeObjects: Boolean = True);
 var
   i: Integer;
@@ -462,26 +462,26 @@ begin
 end;
 
 // ------------------
-// ------------------ TGPersistentObject ------------------
+// ------------------ TgxPersistentObject ------------------
 // ------------------
 
-constructor TGPersistentObject.Create;
+constructor TgxPersistentObject.Create;
 begin
   inherited Create;
 end;
 
-constructor TGPersistentObject.CreateFromFiler(reader: TGVirtualReader);
+constructor TgxPersistentObject.CreateFromFiler(reader: TgxVirtualReader);
 begin
   Create;
   ReadFromFiler(reader);
 end;
 
-destructor TGPersistentObject.Destroy;
+destructor TgxPersistentObject.Destroy;
 begin
   inherited Destroy;
 end;
 
-procedure TGPersistentObject.Assign(source: TPersistent);
+procedure TgxPersistentObject.Assign(source: TPersistent);
 var
   ms: TStringStream; // faster than a TMemoryStream...
 begin
@@ -489,7 +489,7 @@ begin
   begin
     ms := TStringStream.Create('');
     try
-      TGPersistentObject(source).SaveToStream(ms);
+      TgxPersistentObject(source).SaveToStream(ms);
       ms.Position := 0;
       LoadFromStream(ms);
     finally
@@ -500,45 +500,45 @@ begin
     inherited;
 end;
 
-function TGPersistentObject.CreateClone: TGPersistentObject;
+function TgxPersistentObject.CreateClone: TgxPersistentObject;
 begin
-  Result := TGPersistentObjectClass(Self.ClassType).Create;
+  Result := TgxPersistentObjectClass(Self.ClassType).Create;
   Result.Assign(Self);
 end;
 
-class function TGPersistentObject.FileSignature: string;
+class function TgxPersistentObject.FileSignature: string;
 begin
   Result := '';
 end;
 
-class function TGPersistentObject.FileVirtualWriter: TGVirtualWriterClass;
+class function TgxPersistentObject.FileVirtualWriter: TgxVirtualWriterClass;
 begin
-  Result := TGBinaryWriter;
+  Result := TgxBinaryWriter;
 end;
 
-class function TGPersistentObject.FileVirtualReader: TGVirtualReaderClass;
+class function TgxPersistentObject.FileVirtualReader: TgxVirtualReaderClass;
 begin
-  Result := TGBinaryReader;
+  Result := TgxBinaryReader;
 end;
 
-procedure TGPersistentObject.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxPersistentObject.WriteToFiler(writer: TgxVirtualWriter);
 begin
   // nothing
   Assert(Assigned(writer));
 end;
 
-procedure TGPersistentObject.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxPersistentObject.ReadFromFiler(reader: TgxVirtualReader);
 begin
   // nothing
   Assert(Assigned(reader));
 end;
 
-procedure TGPersistentObject.RaiseFilerException(const archiveVersion: Integer);
+procedure TgxPersistentObject.RaiseFilerException(const archiveVersion: Integer);
 begin
-  raise EFilerException.Create(ClassName + strUnknownArchiveVersion + IntToStr(archiveVersion)); //IGNORE
+  raise EgxFilerException.Create(ClassName + strUnknownArchiveVersion + IntToStr(archiveVersion)); //IGNORE
 end;
 
-function TGPersistentObject.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
+function TgxPersistentObject.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
 begin
   if GetInterface(IID, Obj) then
     Result := S_OK
@@ -546,25 +546,25 @@ begin
     Result := E_NOINTERFACE;
 end;
 
-function TGPersistentObject._AddRef: Integer; stdcall;
+function TgxPersistentObject._AddRef: Integer; stdcall;
 begin
   // ignore
   Result := 1;
 end;
 
-function TGPersistentObject._Release: Integer; stdcall;
+function TgxPersistentObject._Release: Integer; stdcall;
 begin
   // ignore
   Result := 0;
 end;
 
-procedure TGPersistentObject.SaveToStream(stream: TStream; writerClass: TGVirtualWriterClass = nil);
+procedure TgxPersistentObject.SaveToStream(stream: TStream; writerClass: TgxVirtualWriterClass = nil);
 var
-  wr: TGVirtualWriter;
+  wr: TgxVirtualWriter;
   fileSig: AnsiString;
 begin
   if writerClass = nil then
-    writerClass := TGBinaryWriter;
+    writerClass := TgxBinaryWriter;
   wr := writerClass.Create(stream);
   try
     if FileSignature <> '' then
@@ -578,13 +578,13 @@ begin
   end;
 end;
 
-procedure TGPersistentObject.LoadFromStream(stream: TStream; readerClass: TGVirtualReaderClass = nil);
+procedure TgxPersistentObject.LoadFromStream(stream: TStream; readerClass: TgxVirtualReaderClass = nil);
 var
-  rd: TGVirtualReader;
+  rd: TgxVirtualReader;
   sig: AnsiString;
 begin
   if readerClass = nil then
-    readerClass := TGBinaryReader;
+    readerClass := TgxBinaryReader;
   rd := readerClass.Create(stream);
   try
     if FileSignature <> '' then
@@ -592,7 +592,7 @@ begin
       SetLength(sig, Length(FileSignature));
       rd.Read(sig[1], Length(FileSignature));
       if sig <> AnsiString(FileSignature) then
-        raise EInvalidFileSignature.Create(strInvalidFileSignature);
+        raise EgxInvalidFileSignature.Create(strInvalidFileSignature);
     end;
     ReadFromFiler(rd);
   finally
@@ -600,7 +600,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObject.SaveToFile(const fileName: string; writerClass: TGVirtualWriterClass = nil);
+procedure TgxPersistentObject.SaveToFile(const fileName: string; writerClass: TgxVirtualWriterClass = nil);
 var
   fs: TStream;
 begin
@@ -614,7 +614,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObject.LoadFromFile(const fileName: string; readerClass: TGVirtualReaderClass = nil);
+procedure TgxPersistentObject.LoadFromFile(const fileName: string; readerClass: TgxVirtualReaderClass = nil);
 var
   fs: TStream;
 begin
@@ -628,7 +628,7 @@ begin
   end;
 end;
 
-function TGPersistentObject.SaveToString(writerClass: TGVirtualWriterClass = nil): string;
+function TgxPersistentObject.SaveToString(writerClass: TgxVirtualWriterClass = nil): string;
 var
   ss: TStringStream;
 begin
@@ -641,7 +641,7 @@ begin
   end;
 end;
 
-procedure TGPersistentObject.LoadFromString(const data: string; readerClass: TGVirtualReaderClass = nil);
+procedure TgxPersistentObject.LoadFromString(const data: string; readerClass: TgxVirtualReaderClass = nil);
 var
   ss: TStringStream;
 begin
@@ -654,22 +654,22 @@ begin
 end;
 
 // ------------------
-// ------------------ TgPersistentObjectList ------------------
+// ------------------ TgxPersistentObjectList ------------------
 // ------------------
 
-constructor TgPersistentObjectList.Create;
+constructor TgxPersistentObjectList.Create;
 begin
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-destructor TgPersistentObjectList.Destroy;
+destructor TgxPersistentObjectList.Destroy;
 begin
   Clear;
   inherited Destroy;
 end;
 
-function TgPersistentObjectList.Add(const item: TObject): Integer;
+function TgxPersistentObjectList.Add(const item: TObject): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -678,7 +678,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TgPersistentObjectList.AddNils(nbVals: Cardinal);
+procedure TgxPersistentObjectList.AddNils(nbVals: Cardinal);
 begin
   if Integer(nbVals) + Count > Capacity then
     SetCapacity(Integer(nbVals) + Count);
@@ -686,7 +686,7 @@ begin
   FCount := FCount + Integer(nbVals);
 end;
 
-function TgPersistentObjectList.AddObjects(const objectList: TgPersistentObjectList): Integer;
+function TgxPersistentObjectList.AddObjects(const objectList: TgxPersistentObjectList): Integer;
 begin
   if Assigned(objectList) then
   begin
@@ -699,7 +699,7 @@ begin
     Result := 0;
 end;
 
-procedure TgPersistentObjectList.RemoveObjects(const objectList: TgPersistentObjectList);
+procedure TgxPersistentObjectList.RemoveObjects(const objectList: TgxPersistentObjectList);
 var
   i: Integer;
 begin
@@ -707,7 +707,7 @@ begin
     Remove(objectList[i]);
 end;
 
-procedure TgPersistentObjectList.Clear;
+procedure TgxPersistentObjectList.Clear;
 begin
   if Assigned(Self) and Assigned(FList) then
   begin
@@ -716,7 +716,7 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.Delete(index: Integer);
+procedure TgxPersistentObjectList.Delete(index: Integer);
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -727,7 +727,7 @@ begin
     System.Move(FList[index + 1], FList[index], (FCount - index) * SizeOf(TObject));
 end;
 
-procedure TgPersistentObjectList.DeleteItems(index: Integer; nbVals: Cardinal);
+procedure TgxPersistentObjectList.DeleteItems(index: Integer; nbVals: Cardinal);
 begin
 {$IFOPT R+}
   Assert(Cardinal(index) < Cardinal(FCount));
@@ -744,10 +744,10 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.Exchange(index1, index2: Integer);
+procedure TgxPersistentObjectList.Exchange(index1, index2: Integer);
 var
   item: TObject;
-  locList: PGPointerObjectList;
+  locList: PgxPointerObjectList;
 begin
 {$IFOPT R+}
   if (Cardinal(Index1) >= Cardinal(FCount)) or
@@ -760,14 +760,14 @@ begin
   locList^[index2] := item;
 end;
 
-function TgPersistentObjectList.Expand: TgPersistentObjectList;
+function TgxPersistentObjectList.Expand: TgxPersistentObjectList;
 begin
   if FCount = FCapacity then
     SetCapacity(FCapacity + FGrowthDelta);
   Result := Self;
 end;
 
-function TgPersistentObjectList.GetFirst: TObject;
+function TgxPersistentObjectList.GetFirst: TObject;
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -776,7 +776,7 @@ begin
   Result := FList^[0];
 end;
 
-procedure TgPersistentObjectList.SetFirst(item: TObject);
+procedure TgxPersistentObjectList.SetFirst(item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -785,12 +785,12 @@ begin
   FList^[0] := item;
 end;
 
-procedure TgPersistentObjectList.Error;
+procedure TgxPersistentObjectList.Error;
 begin
   raise EListError.Create(strListIndexError);
 end;
 
-function TgPersistentObjectList.Get(Index: Integer): TObject;
+function TgxPersistentObjectList.Get(Index: Integer): TObject;
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -801,7 +801,7 @@ end;
 
 // IndexOf
 //
-function TgPersistentObjectList.IndexOf(Item: TObject): Integer;
+function TgxPersistentObjectList.IndexOf(Item: TObject): Integer;
 var
   I: Integer;
 begin
@@ -819,7 +819,7 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.Insert(index: Integer; item: TObject);
+procedure TgxPersistentObjectList.Insert(index: Integer; item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(index) > Cardinal(FCount) then
@@ -834,7 +834,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TgPersistentObjectList.InsertNils(index: Integer; nbVals: Cardinal);
+procedure TgxPersistentObjectList.InsertNils(index: Integer; nbVals: Cardinal);
 var
   nc: Integer;
 begin
@@ -854,7 +854,7 @@ begin
   end;
 end;
 
-function TgPersistentObjectList.GetLast: TObject;
+function TgxPersistentObjectList.GetLast: TObject;
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -863,7 +863,7 @@ begin
   Result := FList^[FCount - 1];
 end;
 
-procedure TgPersistentObjectList.SetLast(item: TObject);
+procedure TgxPersistentObjectList.SetLast(item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(FCount) = 0 then
@@ -872,7 +872,7 @@ begin
   FList^[FCount - 1] := item;
 end;
 
-procedure TgPersistentObjectList.Move(CurIndex, NewIndex: Integer);
+procedure TgxPersistentObjectList.Move(CurIndex, NewIndex: Integer);
 var
   item: Pointer;
 begin
@@ -899,7 +899,7 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.Put(Index: Integer; Item: TObject);
+procedure TgxPersistentObjectList.Put(Index: Integer; Item: TObject);
 begin
 {$IFOPT R+}
   if Cardinal(Index) >= Cardinal(FCount) then
@@ -908,17 +908,17 @@ begin
   FList^[Index] := Item;
 end;
 
-function TgPersistentObjectList.Remove(item: TObject): Integer;
+function TgxPersistentObjectList.Remove(item: TObject): Integer;
 begin
   Result := IndexOf(item);
   if Result >= 0 then
     Delete(Result);
 end;
 
-procedure TgPersistentObjectList.Pack;
+procedure TgxPersistentObjectList.Pack;
 var
   i, j, n: Integer;
-  p: PGPointerObjectList;
+  p: PgxPointerObjectList;
   pk: PObject;
 begin
   p := List;
@@ -945,7 +945,7 @@ begin
   SetCount(n + 1);
 end;
 
-procedure TgPersistentObjectList.SetCapacity(newCapacity: Integer);
+procedure TgxPersistentObjectList.SetCapacity(newCapacity: Integer);
 begin
   if newCapacity <> FCapacity then
   begin
@@ -956,13 +956,13 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.RequiredCapacity(aCapacity: Integer);
+procedure TgxPersistentObjectList.RequiredCapacity(aCapacity: Integer);
 begin
   if FCapacity < aCapacity then
     SetCapacity(aCapacity);
 end;
 
-procedure TgPersistentObjectList.SetCount(newCount: Integer);
+procedure TgxPersistentObjectList.SetCount(newCount: Integer);
 begin
   if newCount > FCapacity then
     SetCapacity(newCount);
@@ -971,7 +971,7 @@ begin
   FCount := NewCount;
 end;
 
-procedure TgPersistentObjectList.DeleteAndFree(index: Integer);
+procedure TgxPersistentObjectList.DeleteAndFree(index: Integer);
 var
   obj: TObject;
 begin
@@ -980,7 +980,7 @@ begin
   obj.Free;
 end;
 
-procedure TgPersistentObjectList.DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
+procedure TgxPersistentObjectList.DeleteAndFreeItems(index: Integer; nbVals: Cardinal);
 var
   i, n: Integer;
 begin
@@ -995,7 +995,7 @@ begin
   DeleteItems(index, nbVals);
 end;
 
-function TgPersistentObjectList.RemoveAndFree(item: TObject): Integer;
+function TgxPersistentObjectList.RemoveAndFree(item: TObject): Integer;
 begin
   Result := IndexOf(item);
   if Result >= 0 then
@@ -1005,7 +1005,7 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.DoClean;
+procedure TgxPersistentObjectList.DoClean;
 var
   i: Integer;
 begin
@@ -1019,13 +1019,13 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.Clean;
+procedure TgxPersistentObjectList.Clean;
 begin
   DoClean;
   Clear;
 end;
 
-procedure TgPersistentObjectList.CleanFree;
+procedure TgxPersistentObjectList.CleanFree;
 begin
   if Self <> nil then
   begin
@@ -1034,7 +1034,7 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.WriteToFiler(writer: TGVirtualWriter);
+procedure TgxPersistentObjectList.WriteToFiler(writer: TgxVirtualWriter);
 (*
    Object List Filer Format :
       Integer (Version)
@@ -1064,9 +1064,9 @@ begin
           WriteBoolean(False);
           WriteInteger(0);
         end
-        else if (FList^[i] is TGPersistentObject) then
+        else if (FList^[i] is TgxPersistentObject) then
         begin
-          // yeah, a TGPersistentObject
+          // yeah, a TgxPersistentObject
           aType := FList^[i].ClassType;
           objId := objTypes.IndexOf(aType);
           if objId < 0 then
@@ -1080,7 +1080,7 @@ begin
             // class already registered
             WriteInteger(objId);
           end;
-          TGPersistentObject(FList^[i]).WriteToFiler(writer);
+          TgxPersistentObject(FList^[i]).WriteToFiler(writer);
         end
         else
         begin
@@ -1096,10 +1096,10 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.ReadFromFilerWithEvent(reader: TGVirtualReader; afterSenderObjectCreated: TNotifyEvent);
+procedure TgxPersistentObjectList.ReadFromFilerWithEvent(reader: TgxVirtualReader; afterSenderObjectCreated: TNotifyEvent);
 var
-  obj: TGPersistentObject;
-  m: TGPersistentObjectClass;
+  obj: TgxPersistentObject;
+  m: TgxPersistentObjectClass;
   version: integer;
   objTypes: TList;
 begin
@@ -1124,7 +1124,7 @@ begin
               Cardinal(vaInt64) + 1 { vaUTF8String }:
               begin
                 // Unknown class, to be registered
-                m := TGPersistentObjectClass(FindClass(ReadString));
+                m := TgxPersistentObjectClass(FindClass(ReadString));
                 objTypes.Add(m);
                 obj := m.Create;
                 if Assigned(afterSenderObjectCreated) then
@@ -1135,7 +1135,7 @@ begin
             Cardinal(vaInt8), Cardinal(vaInt16), Cardinal(vaInt32):
               begin
                 // known class, direct retrieve
-                m := TGPersistentObjectClass(objTypes[ReadInteger]);
+                m := TgxPersistentObjectClass(objTypes[ReadInteger]);
                 obj := m.Create;
                 if Assigned(afterSenderObjectCreated) then
                   afterSenderObjectCreated(obj);
@@ -1155,22 +1155,22 @@ begin
   end;
 end;
 
-procedure TgPersistentObjectList.ReadFromFiler(reader: TGVirtualReader);
+procedure TgxPersistentObjectList.ReadFromFiler(reader: TgxVirtualReader);
 begin
   ReadFromFilerWithEvent(reader, AfterObjectCreatedByReader);
 end;
 
-procedure TgPersistentObjectList.AfterObjectCreatedByReader(Sender: TObject);
+procedure TgxPersistentObjectList.AfterObjectCreatedByReader(Sender: TObject);
 begin
   // nothing
 end;
 
-procedure TgPersistentObjectList.Push(item: TObject);
+procedure TgxPersistentObjectList.Push(item: TObject);
 begin
   Add(item);
 end;
 
-function TgPersistentObjectList.Pop: TObject;
+function TgxPersistentObjectList.Pop: TObject;
 begin
   if FCount > 0 then
   begin
@@ -1181,13 +1181,13 @@ begin
     Result := nil;
 end;
 
-procedure TgPersistentObjectList.PopAndFree;
+procedure TgxPersistentObjectList.PopAndFree;
 begin
   Pop.Free;
 end;
 
-procedure POListQuickSort(SortList: PGPointerObjectList; L, R: Integer;
-  compareFunc: TGObjectListSortCompare);
+procedure POListQuickSort(SortList: PgxPointerObjectList; L, R: Integer;
+  compareFunc: TgxObjectListSortCompare);
 var
   I, J: Integer;
   P, T: TObject;
@@ -1216,22 +1216,22 @@ begin
   until I >= R;
 end;
 
-procedure TgPersistentObjectList.Sort(compareFunc: TGObjectListSortCompare);
+procedure TgxPersistentObjectList.Sort(compareFunc: TgxObjectListSortCompare);
 begin
   if Count > 1 then
     POListQuickSort(FList, 0, Count - 1, compareFunc);
 end;
 
 // ------------------
-// ------------------ TGBinaryReader ------------------
+// ------------------ TgxBinaryReader ------------------
 // ------------------
 
-procedure TGBinaryReader.Read(var Buf; Count: Longint);
+procedure TgxBinaryReader.Read(var Buf; Count: Longint);
 begin
   FStream.Read(Buf, Count);
 end;
 
-function TGBinaryReader.ReadValue: TValueType;
+function TgxBinaryReader.ReadValue: TValueType;
 var
   b: byte;
 begin
@@ -1239,7 +1239,7 @@ begin
   Result := TValueType(b);
 end;
 
-function TGBinaryReader.NextValue: TValueType;
+function TgxBinaryReader.NextValue: TValueType;
 var
   pos: Int64;
 begin
@@ -1248,7 +1248,7 @@ begin
   FStream.Position := pos;
 end;
 
-function TGBinaryReader.ReadInteger: Integer;
+function TgxBinaryReader.ReadInteger: Integer;
 var
   tempShort: ShortInt;
   tempSmallInt: SmallInt;
@@ -1271,7 +1271,7 @@ begin
   end;
 end;
 
-function TGBinaryReader.ReadBoolean: Boolean;
+function TgxBinaryReader.ReadBoolean: Boolean;
 begin
   case ReadValue of
     vaTrue: Result := True;
@@ -1282,7 +1282,7 @@ begin
   end;
 end;
 
-function TGBinaryReader.ReadString: string;
+function TgxBinaryReader.ReadString: string;
 var
   n: Cardinal;
   vType: TValueType;
@@ -1308,7 +1308,7 @@ begin
   Result := string(tempString);
 end;
 
-function TGBinaryReader.ReadWideString(vType: TValueType): WideString;
+function TgxBinaryReader.ReadWideString(vType: TValueType): WideString;
 var
   n: Cardinal;
   utf8buf: AnsiString;
@@ -1335,7 +1335,7 @@ begin
   end;
 end;
 
-function TGBinaryReader.ReadFloat: Extended;
+function TgxBinaryReader.ReadFloat: Extended;
 {$IFDEF WIN64}
 var
    C: TExtended80Rec; // Temporary variable to store 10 bytes floating point number in a Win64 application
@@ -1358,33 +1358,33 @@ begin
   {$ENDIF}
 end;
 
-procedure TGBinaryReader.ReadListBegin;
+procedure TgxBinaryReader.ReadListBegin;
 begin
   if ReadValue <> vaList then
     ReadTypeError;
 end;
 
-procedure TGBinaryReader.ReadListEnd;
+procedure TgxBinaryReader.ReadListEnd;
 begin
   if ReadValue <> vaNull then
     ReadTypeError;
 end;
 
-function TGBinaryReader.EndOfList: Boolean;
+function TgxBinaryReader.EndOfList: Boolean;
 begin
   Result := (NextValue = vaNull);
 end;
 
 // ------------------
-// ------------------ TGBinaryWriter ------------------
+// ------------------ TgxBinaryWriter ------------------
 // ------------------
 
-procedure TGBinaryWriter.Write(const Buf; Count: Longint);
+procedure TgxBinaryWriter.Write(const Buf; Count: Longint);
 begin
   FStream.Write(Buf, Count);
 end;
 
-procedure TGBinaryWriter.WriteInteger(anInteger: Integer);
+procedure TgxBinaryWriter.WriteInteger(anInteger: Integer);
 type
   TIntStruct = packed record
     typ: byte;
@@ -1411,14 +1411,14 @@ begin
   end;
 end;
 
-procedure TGBinaryWriter.WriteBoolean(aBoolean: Boolean);
+procedure TgxBinaryWriter.WriteBoolean(aBoolean: Boolean);
 const
   cBoolToType: array[False..True] of byte = (byte(vaFalse), byte(vaTrue));
 begin
   Write(cBoolToType[aBoolean], 1);
 end;
 
-procedure TGBinaryWriter.WriteAnsiString(const aString: AnsiString);
+procedure TgxBinaryWriter.WriteAnsiString(const aString: AnsiString);
 type
   TStringHeader = packed record
     typ: Byte;
@@ -1443,7 +1443,7 @@ begin
   end;
 end;
 
-procedure TGBinaryWriter.WriteWideString(const aString: WideString);
+procedure TgxBinaryWriter.WriteWideString(const aString: WideString);
 type
   TStringHeader = packed record
     typ: Byte;
@@ -1459,7 +1459,7 @@ begin
     Write(aString[1], sh.length * SizeOf(WideChar));
 end;
 
-procedure TGBinaryWriter.WriteString(const aString: string);
+procedure TgxBinaryWriter.WriteString(const aString: string);
 begin
 {$IFDEF UNICODE}
   // TODO: should really check if the string can be simplified to: vaString / vaLString / vaUTF8String
@@ -1469,7 +1469,7 @@ begin
 {$ENDIF}
 end;
 
-procedure TGBinaryWriter.WriteFloat(const aFloat: Extended);
+procedure TgxBinaryWriter.WriteFloat(const aFloat: Extended);
 type
   TExtendedStruct = packed record
     typ: Byte;
@@ -1493,14 +1493,14 @@ begin
   {$ENDIF}
 end;
 
-procedure TGBinaryWriter.WriteListBegin;
+procedure TgxBinaryWriter.WriteListBegin;
 const
   buf: byte = byte(vaList);
 begin
   Write(buf, 1);
 end;
 
-procedure TGBinaryWriter.WriteListEnd;
+procedure TgxBinaryWriter.WriteListEnd;
 const
   buf: byte = byte(vaNull);
 begin
@@ -1508,10 +1508,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGTextReader ------------------
+// ------------------ TgxTextReader ------------------
 // ------------------
 
-procedure TGTextReader.ReadLine(const requestedType: string = '');
+procedure TgxTextReader.ReadLine(const requestedType: string = '');
 var
   line: string;
   c: Byte;
@@ -1538,11 +1538,11 @@ begin
   end;
   if requestedType <> '' then
     if requestedType <> FValueType then
-      raise EFilerException.Create('Invalid type, expected "'
+      raise EgxFilerException.Create('Invalid type, expected "'
         + requestedType + '", found "FValueType".');
 end;
 
-procedure TGTextReader.Read(var Buf; Count: Longint);
+procedure TgxTextReader.Read(var Buf; Count: Longint);
 
   function HexCharToInt(const c: Char): Integer;
   begin
@@ -1567,7 +1567,7 @@ begin
   end;
 end;
 
-function TGTextReader.NextValue: TValueType;
+function TgxTextReader.NextValue: TValueType;
 var
   p: Int64;
 begin
@@ -1593,19 +1593,19 @@ begin
   Stream.Position := p;
 end;
 
-function TGTextReader.ReadInteger: Integer;
+function TgxTextReader.ReadInteger: Integer;
 begin
   ReadLine(cVTInteger);
   Result := StrToInt(FData);
 end;
 
-function TGTextReader.ReadBoolean: Boolean;
+function TgxTextReader.ReadBoolean: Boolean;
 begin
   ReadLine(cVTBoolean);
   Result := (FData = cTrue);
 end;
 
-function TGTextReader.ReadString: string;
+function TgxTextReader.ReadString: string;
 var
   i: Integer;
 begin
@@ -1626,7 +1626,7 @@ begin
   Assert(FData[i] = '.', 'Invalid stored string.');
 end;
 
-function TGTextReader.ReadFloat: Extended;
+function TgxTextReader.ReadFloat: Extended;
 var
   oldDc: Char;
 begin
@@ -1637,17 +1637,17 @@ begin
   FormatSettings.DecimalSeparator := oldDc;
 end;
 
-procedure TGTextReader.ReadListBegin;
+procedure TgxTextReader.ReadListBegin;
 begin
   ReadLine(cVTListBegin);
 end;
 
-procedure TGTextReader.ReadListEnd;
+procedure TgxTextReader.ReadListEnd;
 begin
   ReadLine(cVTListEnd);
 end;
 
-function TGTextReader.EndOfList: Boolean;
+function TgxTextReader.EndOfList: Boolean;
 var
   p: Int64;
 begin
@@ -1658,20 +1658,20 @@ begin
 end;
 
 // ------------------
-// ------------------ TGTextWriter ------------------
+// ------------------ TgxTextWriter ------------------
 // ------------------
 
-constructor TGTextWriter.Create(aStream: TStream);
+constructor TgxTextWriter.Create(aStream: TStream);
 begin
   inherited;
 end;
 
-destructor TGTextWriter.Destroy;
+destructor TgxTextWriter.Destroy;
 begin
   inherited;
 end;
 
-procedure TGTextWriter.WriteLine(const valueType, data: string);
+procedure TgxTextWriter.WriteLine(const valueType, data: string);
 var
   buf: AnsiString;
 begin
@@ -1680,7 +1680,7 @@ begin
   Stream.Write(buf[1], Length(buf));
 end;
 
-procedure TGTextWriter.Write(const Buf; Count: Longint);
+procedure TgxTextWriter.Write(const Buf; Count: Longint);
 const
   cNibbleToHex: PChar = '0123456789ABCDEF';
 var
@@ -1699,12 +1699,12 @@ begin
   WriteLine(cVTRaw, data);
 end;
 
-procedure TGTextWriter.WriteInteger(anInteger: Integer);
+procedure TgxTextWriter.WriteInteger(anInteger: Integer);
 begin
   WriteLine(cVTInteger, IntToStr(anInteger));
 end;
 
-procedure TGTextWriter.WriteBoolean(aBoolean: Boolean);
+procedure TgxTextWriter.WriteBoolean(aBoolean: Boolean);
 begin
   if aBoolean then
     WriteLine(cVTBoolean, cTrue)
@@ -1712,7 +1712,7 @@ begin
     WriteLine(cVTBoolean, cFalse);
 end;
 
-procedure TGTextWriter.WriteString(const aString: string);
+procedure TgxTextWriter.WriteString(const aString: string);
 var
   i: Integer;
   s: string;
@@ -1726,52 +1726,52 @@ begin
   WriteLine(cVTString, s + '.');
 end;
 
-procedure TGTextWriter.WriteFloat(const aFloat: Extended);
+procedure TgxTextWriter.WriteFloat(const aFloat: Extended);
 begin
   WriteLine(cVTInteger, FloatToStr(aFloat));
 end;
 
-procedure TGTextWriter.WriteListBegin;
+procedure TgxTextWriter.WriteListBegin;
 begin
   WriteLine(cVTListBegin, '');
   Inc(FIndentLevel, 3);
 end;
 
-procedure TGTextWriter.WriteListEnd;
+procedure TgxTextWriter.WriteListEnd;
 begin
   Dec(FIndentLevel, 3);
   WriteLine(cVTListEnd, '');
 end;
 
 // ------------------
-// ------------------ TGOwnedPersistent ------------------
+// ------------------ TgxOwnedPersistent ------------------
 // ------------------
 
-constructor TGOwnedPersistent.Create(AOwner: TPersistent);
+constructor TgxOwnedPersistent.Create(AOwner: TPersistent);
 begin
   FOwner := AOwner;
 end;
 
-function TGOwnedPersistent.GetOwner: TPersistent;
+function TgxOwnedPersistent.GetOwner: TPersistent;
 begin
   Result := FOwner;
 end;
 
 // ------------------
-// ------------------ TGInterfacedPersistent ------------------
+// ------------------ TgxInterfacedPersistent ------------------
 // ------------------
 
-function TGInterfacedPersistent._AddRef: Integer; stdcall;
+function TgxInterfacedPersistent._AddRef: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TGInterfacedPersistent._Release: Integer; stdcall;
+function TgxInterfacedPersistent._Release: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TGInterfacedPersistent.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
+function TgxInterfacedPersistent.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
 begin
   if GetInterface(IID, Obj) then
     Result := S_OK
@@ -1780,21 +1780,21 @@ begin
 end;
 
 // ------------------
-// ------------------ TGInterfacedCollectionItem ------------------
+// ------------------ TgxInterfacedCollectionItem ------------------
 // ------------------
 
 
-function TGInterfacedCollectionItem._AddRef: Integer; stdcall;
+function TgxInterfacedCollectionItem._AddRef: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TGInterfacedCollectionItem._Release: Integer; stdcall;
+function TgxInterfacedCollectionItem._Release: Integer; stdcall;
 begin
   Result := -1; //ignore
 end;
 
-function TGInterfacedCollectionItem.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
+function TgxInterfacedCollectionItem.QueryInterface(const IID: TGUID; out Obj): HResult; stdcall;
 begin
   if GetInterface(IID, Obj) then
     Result := S_OK
@@ -1805,6 +1805,6 @@ end;
 initialization // -------------------------------------------------------------
 
 	// class registrations
-  RegisterClass(TgPersistentObjectList);
+  RegisterClass(TgxPersistentObjectList);
 
 end.

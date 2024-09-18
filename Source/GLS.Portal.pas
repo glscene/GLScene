@@ -18,7 +18,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.Scene,

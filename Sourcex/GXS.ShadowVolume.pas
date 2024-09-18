@@ -22,10 +22,10 @@ uses
   System.SysUtils,
   System.Classes,
 
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.GeometryBB,
 
   GXS.Scene,
@@ -33,7 +33,7 @@ uses
   GXS.Silhouette,
   GXS.State,
   GLScene.PipelineTransform,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo;
 
 type
@@ -110,7 +110,7 @@ type
   // Specifies an individual shadow casting light.
   TgxShadowVolumeLight = class(TgxShadowVolumeCaster)
   private
-    FSilhouettes: TgPersistentObjectList;
+    FSilhouettes: TgxPersistentObjectList;
   protected
     function GetLightSource: TgxLightSource;
     procedure SetLightSource(const ls: TgxLightSource);
@@ -183,7 +183,7 @@ type
     FCapping: TgxShadowVolumeCapping;
     FOptions: TgxShadowVolumeOptions;
     FMode: TgxShadowVolumeMode;
-    FDarkeningColor: TGColor;
+    FDarkeningColor: TgxColor;
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation);  override;
     procedure SetActive(const val: Boolean);
@@ -191,7 +191,7 @@ type
     procedure SetOccluders(const val: TgxShadowVolumeCasters);
     procedure SetOptions(const val: TgxShadowVolumeOptions);
     procedure SetMode(const val: TgxShadowVolumeMode);
-    procedure SetDarkeningColor(const val: TGColor);
+    procedure SetDarkeningColor(const val: TgxColor);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -218,7 +218,7 @@ type
     // Shadow rendering mode.
     property Mode: TgxShadowVolumeMode read FMode write SetMode default svmAccurate;
     // Darkening color used in svmDarkening mode.
-    property DarkeningColor: TGColor read FDarkeningColor write SetDarkeningColor;
+    property DarkeningColor: TgxColor read FDarkeningColor write SetDarkeningColor;
   end;
 
 //-------------------------------------------------------------
@@ -311,7 +311,7 @@ end;
 constructor TgxShadowVolumeLight.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FSilhouettes := TgPersistentObjectList.Create;
+  FSilhouettes := TgxPersistentObjectList.Create;
 end;
 
 destructor TgxShadowVolumeLight.Destroy;
@@ -481,7 +481,7 @@ begin
   FCapping := svcAlways;
   FMode := svmAccurate;
   FOptions := [svoCacheSilhouettes, svoScissorClips];
-  FDarkeningColor := TGColor.CreateInitialized(Self, VectorMake(0, 0, 0, 0.5));
+  FDarkeningColor := TgxColor.CreateInitialized(Self, VectorMake(0, 0, 0, 0.5));
 end;
 
 destructor TgxShadowVolume.Destroy;
@@ -566,7 +566,7 @@ begin
   end;
 end;
 
-procedure TgxShadowVolume.SetDarkeningColor(const val: TGColor);
+procedure TgxShadowVolume.SetDarkeningColor(const val: TgxColor);
 begin
   FDarkeningColor.Assign(val);
 end;

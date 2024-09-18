@@ -8,10 +8,10 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.AsyncTimer"
-#pragma link "GLScene.BaseClasses"
+#pragma link "GLS.BaseClasses"
 #pragma link "GLS.BitmapFont"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.EParticleMasksManager"
 #pragma link "GLS.GeomObjects"

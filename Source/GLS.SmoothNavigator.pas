@@ -29,11 +29,11 @@ uses
   System.Classes,
   
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorTypes, 
   GLS.Navigator,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Screen, 
   GLScene.XCollection;
 

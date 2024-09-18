@@ -33,10 +33,10 @@ uses
 
   GLScene.OpenGL4,
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
-  GLScene.Color,
+  GXS.Coordinates,
+  GXS.Color,
 
   GXS.Scene,
   GXS.XOpenGL,
@@ -132,7 +132,7 @@ type
     FYRes: integer;
     Fsoft: boolean;
     FTolerance: single;
-    FColor: TGColor;
+    FColor: TgxColor;
     SCol: TgxPixel32;
     //stepX, stepY :single;
     FTexturePrepared: Boolean;
@@ -167,7 +167,7 @@ type
     property Optimise: TOptimise read FOptimise write FOptimise;
     property Width: integer read FWidth write SetWidth;
     property Height: integer read FHeight write SetHeight;
-    property Color: TGColor read FColor write FColor;
+    property Color: TgxColor read FColor write FColor;
     //          property Xres        :integer read FXRes write SetXRes;// default 64;
     //          property Yres        :integer read FYRes write SetYRes;// default 64;
     property Soft: Boolean read Fsoft write SetSoft;
@@ -643,7 +643,7 @@ constructor TgxZShadows.Create(AOwner: TComponent);
 begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
-  FColor := TGColor.Create(Self);
+  FColor := TgxColor.Create(Self);
   self.FDataSize := 0;
   self.FXRes := 64;
   self.FYRes := 64;

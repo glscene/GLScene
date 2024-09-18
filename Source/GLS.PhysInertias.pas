@@ -9,13 +9,13 @@ uses
   System.SysUtils,
   System.Classes,
 
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.XCollection,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.PhysManager,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.Strings,
 
   GLS.Scene,
@@ -88,7 +88,7 @@ type
   TGLRigidBodyInertia = class;
 
   (* Stores Inertia Tensor for TGLRigidBodyInertia model *)
-  TGLInertiaTensor = class(TGUpdateAbleObject)
+  TGLInertiaTensor = class(TGLUpdateAbleObject)
   private
     fm11, fm12, fm13, fm21, fm22, fm23, fm31, fm32, fm33: Single;
   public

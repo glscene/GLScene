@@ -31,8 +31,8 @@ uses
 
   GLS.Graphics,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.FileTGA;
 
 type

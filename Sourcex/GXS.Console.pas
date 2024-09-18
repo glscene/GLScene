@@ -45,10 +45,10 @@ uses
   FMX.Graphics,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.Strings,
   GLScene.Utils,
-  GLScene.Coordinates,
+  GXS.Coordinates,
 
   GXS.Scene,
   GXS.Objects,

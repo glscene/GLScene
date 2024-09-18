@@ -27,7 +27,7 @@ uses
 
   GLS.Context,
   GLS.Scene,
-  GLScene.Color,
+  GLS.Color,
   GLS.ImageUtils,
   GLS.ObjectManager,
   GLScene.Strings;
@@ -292,7 +292,7 @@ uses
   GLS.AsyncTimer,
   GLS.Atmosphere,
   GLS.AVIRecorder,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.BitmapFont,
   GLS.Blur,
   GLS.BumpMapHDS,
@@ -301,7 +301,7 @@ uses
   GLS.Collision,
   GLS.CompositeImage,
   GLS.Console,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.DCE,
   GLS.DynamicTexture,
   GLS.EParticleMasksManager,
@@ -1358,7 +1358,7 @@ begin
 
   // GLS.Scene
   RegisterPropertiesInCategory(strOpenGLCategoryName,
-    [TypeInfo(TGLObjectsSorting), TypeInfo(TgProgressEvent),
+    [TypeInfo(TGLObjectsSorting), TypeInfo(TGLProgressEvent),
     TypeInfo(TGLBehaviours), TypeInfo(TGLEffects),
     TypeInfo(TGLDirectRenderEvent), TypeInfo(TGLCameraStyle),
     TypeInfo(TOnCustomPerspective), TypeInfo(TGLScene)]);
@@ -1721,8 +1721,8 @@ initialization // ------------------------------------------------------------
     False, 'MPL 2.0 license', 'VCL version');
   GLScene.Utils.IsDesignTime := True;
   GLScene.Utils.vProjectTargetName := GetProjectTargetName;
-  GLScene.Color.vUseDefaultColorSets := True;
-  GLScene.Coordinates.vUseDefaultCoordinateSets := True;
+  GLS.Color.vUseDefaultColorSets := True;
+  GLS.Coordinates.vUseDefaultCoordinateSets := True;
   ReadVideoModes;
 
 with ObjectManager do

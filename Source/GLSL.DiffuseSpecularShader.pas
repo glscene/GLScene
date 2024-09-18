@@ -31,12 +31,12 @@ uses
   GLScene.OpenGLTokens,
   GLS.Texture,
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLS.Material;
 

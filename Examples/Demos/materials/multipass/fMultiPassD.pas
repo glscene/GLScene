@@ -19,12 +19,12 @@ uses
   GLS.Context,
   GLS.GeomObjects,
   GLS.State,
-  GLScene.Color,
+  GLS.Color,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
  
   GLS.RenderContextInfo,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TFormMultiPass = class(TForm)

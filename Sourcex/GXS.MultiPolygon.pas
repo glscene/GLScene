@@ -7,7 +7,7 @@ unit GXS.MultiPolygon;
 
 (* TODO
 
-  And I reactivated the TgxVectorPool object. The GLScene.VectorLists are not suitable for this job.
+  And I reactivated the TgxVectorPool object. The GXS.VectorLists are not suitable for this job.
   When the tesselator finds an intersection of edges it wants us to give him some storage
   for this new vertex, and he wants a pointer (see tessCombine). The pointers taken from
   TgAffineVectorList become invalid after enlarging the capacity (makes a ReAllocMem), which
@@ -33,14 +33,14 @@ uses
   GXS.Context,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
+  GXS.VectorLists,
+  GXS.PersistentClasses,
   GXS.Scene,
   GXS.Objects,
   GXS.GeomObjects,
   GXS.Nodes,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GXS.BaseClasses,
+  GXS.Coordinates,
   GXS.RenderContextInfo;
 
 type
@@ -94,7 +94,7 @@ type
     procedure GetExtents(var min, max: TAffineVector);
   end;
 
-  TgxPolygonList = class(TgPersistentObjectList)
+  TgxPolygonList = class(TgxPersistentObjectList)
   private
     FAktList: TgAffineVectorList;
     function GetList(I: Integer): TgAffineVectorList;
@@ -116,7 +116,7 @@ type
      TgxMultiPolygonBase will take the input contours and let the tesselator
      make an outline from it (this is done in RetreiveOutline). This outline is
      used for Rendering. Only when there are changes in the contours, the
-     outline will be recalculated. The ouline in fact is a list of GLScene.VectorLists. *)
+     outline will be recalculated. The ouline in fact is a list of GXS.VectorLists. *)
   TgxMultiPolygonBase = class(TgxSceneObject)
   private
     FContours: TgxContours;
@@ -138,7 +138,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
-    procedure AddNode(const i: Integer; const coords: TgCoordinates); overload;
+    procedure AddNode(const i: Integer; const coords: TgxCoordinates); overload;
     procedure AddNode(const i: Integer; const X, Y, Z: Single); overload;
     procedure AddNode(const i: Integer; const value: TVector4f); overload;
     procedure AddNode(const i: Integer; const value: TAffineVector); overload;
@@ -435,7 +435,7 @@ begin
   Path[i].AddNode(x, y, z);
 end;
 
-procedure TgxMultiPolygonBase.AddNode(const i: Integer; const coords: TgCoordinates);
+procedure TgxMultiPolygonBase.AddNode(const i: Integer; const coords: TgxCoordinates);
 begin
   Path[i].AddNode(coords);
 end;

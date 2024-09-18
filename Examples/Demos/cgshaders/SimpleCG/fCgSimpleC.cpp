@@ -7,14 +7,14 @@
 #include "fCgSimpleC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLScene.BaseClasses"
+#pragma link "GLS.BaseClasses"
 #pragma link "Cg.Shader"
 
 #pragma link "GLS.Material"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 #pragma link "GLS.Graph"
 #pragma link "GLS.Objects"
 #pragma link "GLS.VectorFileObjects"

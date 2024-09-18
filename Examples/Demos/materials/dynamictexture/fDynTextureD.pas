@@ -18,8 +18,8 @@ uses
   GLS.Cadencer,
   
   GLS.Material, 
-  GLScene.Coordinates, 
-  GLScene.BaseClasses,
+  GLS.Coordinates, 
+  GLS.BaseClasses,
   GLS.RenderContextInfo, 
   GLS.Context, 
   GLS.DynamicTexture, 

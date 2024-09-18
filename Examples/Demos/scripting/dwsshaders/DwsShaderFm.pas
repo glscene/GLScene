@@ -22,9 +22,9 @@ uses
   GLS.Objects,
   GLS.AsyncTimer,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
  
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.ScriptBase,
 

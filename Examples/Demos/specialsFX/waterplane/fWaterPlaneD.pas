@@ -30,12 +30,12 @@ uses
   GLScene.VectorTypes,
   GLS.State,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
-  GLScene.Color,
+  GLS.Color,
   GLScene.Utils,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TFormWaterPlane = class(TForm)

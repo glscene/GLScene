@@ -20,10 +20,10 @@ uses
   GLS.Scene,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.Keyboard,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.XCollection,
   GLScene.Utils,
 

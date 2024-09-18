@@ -22,9 +22,9 @@ uses
   GLScene.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
-  GLScene.Coordinates,
+  GLS.Coordinates,
  
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.SceneViewer,
   GLScene.VectorGeometry,
   GLScene.XCollection,

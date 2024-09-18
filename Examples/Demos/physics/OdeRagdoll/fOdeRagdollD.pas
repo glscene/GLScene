@@ -31,9 +31,9 @@ uses
   GLS.Ragdoll,
   GLS.Texture,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   ODE.Import,
   GLS.ODERagdoll,
   GLS.FileSMD,

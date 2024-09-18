@@ -11,9 +11,9 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GLScene.Color,
+  GXS.Color,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorTypes;
 
 type

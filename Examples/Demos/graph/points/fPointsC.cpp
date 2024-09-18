@@ -6,9 +6,9 @@
 #include "fPointsC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLScene.BaseClasses"
+#pragma link "GLS.BaseClasses"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
@@ -43,10 +43,10 @@ void __fastcall TFormPoints::GLCadencer1Progress(TObject *Sender, const double d
 {
    int i;
    float f, a, ab, ca, sa;
-   TGAffineVectorList *p;
+   TGLAffineVectorList *p;
    TAffineVector *v;
 
-   p = new TGAffineVectorList;
+   p = new TGLAffineVectorList;
    v = new TAffineVector;
 
    if (CBAnimate->Checked)

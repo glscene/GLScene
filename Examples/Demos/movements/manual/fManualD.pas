@@ -19,8 +19,8 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormManual = class(TForm)

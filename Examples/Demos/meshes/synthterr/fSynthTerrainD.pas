@@ -28,8 +28,8 @@ uses
 
   GLScene.Keyboard,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.XCollection,
 
   GLS.ShadowHDS;

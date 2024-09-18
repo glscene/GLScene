@@ -19,7 +19,7 @@ uses
   GLS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   Formats.VRML,
   GLS.MeshUtils;
 
@@ -35,7 +35,7 @@ type
 implementation
 // ------------------------------------------------------------------
 
-procedure TessellatePolygon(PolyVerts: TGAffineVectorList;
+procedure TessellatePolygon(PolyVerts: TGLAffineVectorList;
   PolyIndices, TriIndices: TgIntegerList);
 
   function IsPolyClockWise: Boolean;
@@ -241,7 +241,7 @@ var
     newfg: TFGVertexIndexList;
     fg: TFGVertexNormalTexIndexList;
     vertices, normals, texcoords, triNormals, newVertices, newNormals,
-      newTexCoords: TGAffineVectorList;
+      newTexCoords: TGLAffineVectorList;
     optimized: TgIntegerList;
     cosAngle: Single;
     normal: TAffineVector;
@@ -260,13 +260,13 @@ var
     if not hasVertices then
       Exit;
 
-    vertices := TGAffineVectorList.Create;
-    normals := TGAffineVectorList.Create;
-    texcoords := TGAffineVectorList.Create;
-    newVertices := TGAffineVectorList.Create;
-    newNormals := TGAffineVectorList.Create;
-    newTexCoords := TGAffineVectorList.Create;
-    triNormals := TGAffineVectorList.Create;
+    vertices := TGLAffineVectorList.Create;
+    normals := TGLAffineVectorList.Create;
+    texcoords := TGLAffineVectorList.Create;
+    newVertices := TGLAffineVectorList.Create;
+    newNormals := TGLAffineVectorList.Create;
+    newTexCoords := TGLAffineVectorList.Create;
+    triNormals := TGLAffineVectorList.Create;
     n[0] := TgIntegerList.Create;
     n[1] := TgIntegerList.Create;
     n[2] := TgIntegerList.Create;

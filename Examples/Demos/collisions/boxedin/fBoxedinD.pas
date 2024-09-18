@@ -24,9 +24,9 @@ uses
   GLS.Navigator,
   GLS.GeomObjects,
 
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.Utils,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.File3DS;
 
 type

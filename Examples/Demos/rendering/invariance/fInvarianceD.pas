@@ -18,8 +18,8 @@ uses
   GLS.Texture,
   GLS.GeomObjects,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils;
 
 type

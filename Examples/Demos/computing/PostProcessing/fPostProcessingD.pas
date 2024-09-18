@@ -16,7 +16,7 @@ uses
 
   GLScene.TextureFormat
   GLS.Scene,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Material,
@@ -24,7 +24,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
  
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.FBORenderer,
   GLS.HUDObjects,
 

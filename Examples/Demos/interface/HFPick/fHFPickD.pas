@@ -20,9 +20,9 @@ uses
   GLScene.VectorTypes,
   GLS.Texture,
   GLS.Objects,
-  GLScene.Color,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Color,
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormHFPick = class(TForm)

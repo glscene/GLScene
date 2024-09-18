@@ -11,7 +11,7 @@
 #pragma package(smart_init)
 #pragma link "GLS.BitmapFont"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.HUDObjects"
@@ -29,7 +29,7 @@
 
 #pragma link "GLS.ThorFX"
 #pragma link "GLS.FireFX"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 #pragma link "GLS.FileWAV"
 #pragma link "GLS.LensFlare"
 #pragma link "GLS.ParticleFX"

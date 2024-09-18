@@ -11,11 +11,11 @@ interface
 
 uses
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
   GXS.State,
   GLScene.PipelineTransform,
-  GLScene.Color;
+  GXS.Color;
 
 type
   TGXDrawState = (dsRendering, dsPicking, dsPrinting);
@@ -77,7 +77,7 @@ type
     gxStates: TgxStateCache;
     PipelineTransformation: TgTransformation;
     rcci: TGXRenderContextClippingInfo;
-    sceneAmbientColor: TGColorVector;
+    sceneAmbientColor: TgxColorVector;
     bufferFaceCull: Boolean;
     bufferLighting: Boolean;
     bufferFog: Boolean;
@@ -87,8 +87,8 @@ type
     ignoreBlendingRequests: Boolean;
     ignoreDepthRequests: Boolean;
     amalgamating: Boolean;
-    lights: TgPersistentObjectList;
-    afterRenderEffects: TgPersistentObjectList;
+    lights: TgxPersistentObjectList;
+    afterRenderEffects: TgxPersistentObjectList;
     currentMaterialLevel: TgxMaterialLevel;
     primitiveMask: TgxMeshPrimitives;
     orderCounter: Integer;

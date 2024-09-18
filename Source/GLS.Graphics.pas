@@ -36,10 +36,10 @@ uses
 
   GLS.State,
   GLS.ApplicationFileIO,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Context,
   GLS.ImageUtils,
-  GLScene.Color,
+  GLS.Color,
   GLScene.Utils,
   GLScene.Logger;
 

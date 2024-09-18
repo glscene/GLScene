@@ -19,22 +19,22 @@ uses
   FMX.Graphics,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.Scene,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GLScene.VectorGeometry,
   GXS.Objects,
   GXS.BitmapFont,
   GXS.Texture,
   GXS.Material,
   GXS.HudObjects,
-  GLScene.Color,
+  GXS.Color,
   GXS.Graphics,
   GXS.Context,
   GXS.State,
   GLScene.Strings,
   GLScene.TextureFormat,
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.RenderContextInfo;
 
 type
@@ -103,7 +103,7 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     procedure DoRender(var ARci: TgxRenderContextInfo;
       ARenderSelf, ARenderChildren: boolean); override;
     procedure Notification(AComponent: TComponent;
@@ -247,7 +247,7 @@ begin
   SetLength(Pixelbuffer, RenderWidth * RenderHeight);
 end;
 
-procedure TgxBlur.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxBlur.DoProgress(const progressTime: TgxProgressTimes);
 begin
   inherited;
   if Self.Visible and (progressTime.newTime - OldTime > FBlurDeltaTime) then

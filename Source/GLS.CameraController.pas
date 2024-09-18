@@ -20,8 +20,8 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
-  GLScene.PersistentClasses,
+  GLS.Coordinates,
+  GLS.PersistentClasses,
 
   GLS.Scene,
   GLS.SmoothNavigator;

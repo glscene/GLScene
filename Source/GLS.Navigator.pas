@@ -24,13 +24,13 @@ uses
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Context,
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses,
+  GLS.BaseClasses,
+  GLS.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Keyboard,
   GLS.HudObjects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Screen,
   GLS.Material,
   GLS.Texture,
@@ -171,7 +171,7 @@ type
     FPosAnimationEnd: TGLVector;
   public
     constructor CreateAsChild(aParentOwner: TGLBaseSceneObject); reintroduce;
-    procedure DoProgress(const pt: TGProgressTimes); override;
+    procedure DoProgress(const pt: TGLProgressTimes); override;
     procedure DoRender(var ARci: TGLRenderContextInfo;
       ARenderSelf, ARenderChildren: boolean); override;
     property SceneViewer: TGLSceneViewer read FViewer write FViewer;
@@ -775,7 +775,7 @@ begin
 
 end;
 
-procedure TGLNaviCube.DoProgress(const pt: TGProgressTimes);
+procedure TGLNaviCube.DoProgress(const pt: TGLProgressTimes);
 const
   tb: array [0 .. 1] of array [0 .. 3] of TGLVector = (((x: 0; Y: 20; z: 1;
     W: 0), (x: 1; Y: 20; z: 0; W: 0), (x: 0; Y: 20; z: - 1; W: 0), (x: - 1;

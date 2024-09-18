@@ -29,7 +29,7 @@ uses
 
   GXS.XOpenGL,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.Strings,

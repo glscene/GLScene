@@ -10,12 +10,12 @@ interface
 {$I GLScene.Defines.inc}
 
 uses
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.State,
   GLScene.PipelineTransform,
-  GLScene.Color;
+  GLS.Color;
 
 type
 

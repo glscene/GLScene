@@ -4,7 +4,7 @@
         <MainSource>GLScene_RT.dpk</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <TargetedPlatforms>1048577</TargetedPlatforms>
+        <TargetedPlatforms>1048579</TargetedPlatforms>
         <AppType>Package</AppType>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>20.1</ProjectVersion>
@@ -187,7 +187,7 @@
         <DCCReference Include="..\Source\GLS.Atmosphere.pas"/>
         <DCCReference Include="..\Source\GLS.ArchiveManager.pas"/>
         <DCCReference Include="..\Source\GLScene.AnimationUtils.pas"/>
-        <DCCReference Include="..\Source\GLScene.BaseClasses.pas"/>
+        <DCCReference Include="..\Source\GLS.BaseClasses.pas"/>
         <DCCReference Include="..\Source\GLS.BaseMeshSilhouette.pas"/>
         <DCCReference Include="..\Source\GLS.Behaviours.pas"/>
         <DCCReference Include="..\Source\GLS.BitmapFont.pas"/>
@@ -197,11 +197,11 @@
         <DCCReference Include="..\Source\GLS.CameraController.pas"/>
         <DCCReference Include="..\Source\GLS.Canvas.pas"/>
         <DCCReference Include="..\Source\GLS.Collision.pas"/>
-        <DCCReference Include="..\Source\GLScene.Color.pas"/>
+        <DCCReference Include="..\Source\GLS.Color.pas"/>
         <DCCReference Include="..\Source\GLS.CompositeImage.pas"/>
         <DCCReference Include="..\Source\GLS.Console.pas"/>
         <DCCReference Include="..\Source\GLS.Context.pas"/>
-        <DCCReference Include="..\Source\GLScene.Coordinates.pas"/>
+        <DCCReference Include="..\Source\GLS.Coordinates.pas"/>
         <DCCReference Include="..\Source\GLS.CyborgManager.pas"/>
         <DCCReference Include="..\Source\GLScene.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Source\GLS.DCE.pas"/>
@@ -332,7 +332,7 @@
         <DCCReference Include="..\Source\GLSL.Shader.pas"/>
         <DCCReference Include="..\Source\GLS.PAKArchive.pas"/>
         <DCCReference Include="..\Source\GLS.ProjectedTextures.pas"/>
-        <DCCReference Include="..\Source\GLScene.PersistentClasses.pas"/>
+        <DCCReference Include="..\Source\GLS.PersistentClasses.pas"/>
         <DCCReference Include="..\Source\GLS.Scene.pas"/>
         <DCCReference Include="..\Source\GLS.SceneForm.pas"/>
         <DCCReference Include="..\Source\GLS.Screen.pas"/>
@@ -380,7 +380,7 @@
         <DCCReference Include="..\Source\GLScene.Strings.pas"/>
         <DCCReference Include="..\Source\GLScene.RandomLib.pas"/>
         <DCCReference Include="..\Source\GLScene.TextureFormat.pas"/>
-        <DCCReference Include="..\Source\GLScene.VectorLists.pas"/>
+        <DCCReference Include="..\Source\GLS.VectorLists.pas"/>
         <DCCReference Include="..\Source\GLScene.VectorGeometry.pas"/>
         <DCCReference Include="..\Source\GLScene.VectorTypes.pas"/>
         <DCCReference Include="..\Source\GLScene.VectorTypesExt.pas"/>
@@ -424,7 +424,7 @@
             </Delphi.Personality>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
+                <Platform value="Win64">True</Platform>
                 <Platform value="Win64x">True</Platform>
             </Platforms>
             <Deployment Version="4">

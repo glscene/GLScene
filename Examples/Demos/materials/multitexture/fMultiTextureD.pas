@@ -22,9 +22,9 @@ uses
   GLS.Texture,
   GLS.SceneViewer,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
  
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.Utils;
 
 type

@@ -16,15 +16,15 @@ uses
   Vcl.Dialogs,
   Vcl.ExtCtrls,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.SceneViewer,
   GLS.Particles,
   GLS.Cadencer,
   GLS.Objects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Behaviours;
 
 type

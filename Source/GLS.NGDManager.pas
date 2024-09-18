@@ -24,18 +24,18 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
-  GLScene.VectorLists, // TGAffineVectorList for Tree
+  GLS.VectorLists, // TGLAffineVectorList for Tree
   GLScene.XCollection, // TXCollection file function
   GLScene.GeometryBB, // For show debug
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses,
+  GLS.BaseClasses,
+  GLS.PersistentClasses,
   GLS.Scene,
   GLScene.Manager,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.VectorFileObjects, // cube cone freeform...
-  GLScene.Color;
+  GLS.Color;
 
 type
   TGLNGDHeightField = record
@@ -1522,7 +1522,7 @@ end;
 function TGLNGDBehaviour.GetTreeCollision: PNewtonCollision;
 var
   meshIndex, triangleIndex: Integer;
-  triangleList: TGAffineVectorList;
+  triangleList: TGLAffineVectorList;
   v: array [0 .. 2] of TAffineVector;
 begin
   if FOwnerBaseSceneObject is TGLBaseMesh then

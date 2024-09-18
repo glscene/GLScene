@@ -20,15 +20,15 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLS.Scene,
-  GLScene.Color,
+  GLS.Color,
   GLS.Material,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.RenderContextInfo, 
   GLS.State, 
   GLS.Context;
 
 type
-  TGLLineSettings = class(TGUpdateAbleObject)
+  TGLLineSettings = class(TGLUpdateAbleObject)
   private
     FColor: TGColor;
     FWidth: Single;

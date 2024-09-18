@@ -28,10 +28,10 @@ uses
   GLS.State,
   GLScene.Utils,
   GLS.Graphics,
-  GLScene.Color,
-  GLScene.BaseClasses,
+  GLS.Color,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLScene.PersistentClasses;
+  GLS.PersistentClasses;
 
 type
 
@@ -106,7 +106,7 @@ type
     dimensions should be close to a power of two, and have at least 1 pixel
     spacing between characters (horizontally and vertically) to avoid artefacts
     when rendering with linear filtering. *)
-  TGLCustomBitmapFont = class(TGUpdateAbleComponent)
+  TGLCustomBitmapFont = class(TGLUpdateAbleComponent)
   private
     FRanges: TGLBitmapFontRanges;
     FGlyphs: TPicture;

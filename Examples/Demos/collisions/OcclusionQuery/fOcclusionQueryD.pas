@@ -23,8 +23,8 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Context;
 

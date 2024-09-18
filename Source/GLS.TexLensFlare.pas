@@ -15,14 +15,14 @@ uses
   System.Classes,
   
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.Objects,
   GLS.Texture,
   GLScene.OpenGLTokens,
   GLS.Context,
   GLS.RenderContextInfo,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.State,
   GLScene.VectorTypes;
 
@@ -54,7 +54,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
   published
     // MaxRadius of the flare.
     property Size: integer read FSize write SetSize default 50;
@@ -302,7 +302,7 @@ begin
 end;
 
 
-procedure TGLTextureLensFlare.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLTextureLensFlare.DoProgress(const progressTime: TGLProgressTimes);
 begin
   FDeltaTime := progressTime.deltaTime;
   inherited;

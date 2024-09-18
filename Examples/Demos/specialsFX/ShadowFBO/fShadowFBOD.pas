@@ -31,9 +31,9 @@ uses
   GLSL.CustomShader,
   GLSL.Shader,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
+  GLS.Coordinates,
  
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
   GLS.VectorFileObjects,

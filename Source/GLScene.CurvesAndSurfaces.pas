@@ -11,25 +11,25 @@ uses
   System.SysUtils,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists;
+  GLS.VectorLists;
 
 type
   TBSplineContinuity = (bscUniformNonPeriodic, bscUniformPeriodic);
 
 function BezierCurvePoint(t: single; n: integer; cp: PAffineVectorArray): TAffineVector;
 function BezierSurfacePoint(s, t: single; m, n: integer; cp: PAffineVectorArray): TAffineVector;
-procedure GenerateBezierCurve(Steps: integer;  ControlPoints, Vertices: TGAffineVectorList);
-procedure GenerateBezierSurface(Steps, Width, Height: integer; ControlPoints, Vertices: TGAffineVectorList);
+procedure GenerateBezierCurve(Steps: integer;  ControlPoints, Vertices: TGLAffineVectorList);
+procedure GenerateBezierSurface(Steps, Width, Height: integer; ControlPoints, Vertices: TGLAffineVectorList);
 
 function BSplinePoint(t: single; n, k: integer; knots: PSingleArray;
   cp: PAffineVectorArray): TAffineVector;
 function BSplineSurfacePoint(s, t: single; m, n, k1, k2: integer;
   uknots, vknots: PSingleArray; cp: PAffineVectorArray): TAffineVector;
 procedure GenerateBSpline(Steps, Order: integer; KnotVector: TGSingleList;
-  ControlPoints, Vertices: TGAffineVectorList);
+  ControlPoints, Vertices: TGLAffineVectorList);
 procedure GenerateBSplineSurface(Steps, UOrder, VOrder, Width, Height: integer;
   UKnotVector, VKnotVector: TGSingleList;
-  ControlPoints, Vertices: TGAffineVectorList);
+  ControlPoints, Vertices: TGLAffineVectorList);
 procedure GenerateKnotVector(KnotVector: TGSingleList;
   NumberOfPoints, Order: integer; Continuity: TBSplineContinuity);
 
@@ -101,7 +101,7 @@ begin
 end;
 
 procedure GenerateBezierCurve(Steps: integer;
-  ControlPoints, Vertices: TGAffineVectorList);
+  ControlPoints, Vertices: TGLAffineVectorList);
 var
   i: integer;
 begin
@@ -112,7 +112,7 @@ begin
 end;
 
 procedure GenerateBezierSurface(Steps, Width, Height: integer;
-  ControlPoints, Vertices: TGAffineVectorList);
+  ControlPoints, Vertices: TGLAffineVectorList);
 var
   i, j: integer;
 begin
@@ -224,7 +224,7 @@ begin
 end;
 
 procedure GenerateBSpline(Steps, Order: integer; KnotVector: TGSingleList;
-  ControlPoints, Vertices: TGAffineVectorList);
+  ControlPoints, Vertices: TGLAffineVectorList);
 var
   i: integer;
 begin
@@ -236,7 +236,7 @@ begin
 end;
 
 procedure GenerateBSplineSurface(Steps, UOrder, VOrder, Width, Height: integer;
-  UKnotVector, VKnotVector: TGSingleList; ControlPoints, Vertices: TGAffineVectorList);
+  UKnotVector, VKnotVector: TGSingleList; ControlPoints, Vertices: TGLAffineVectorList);
 var
   i, j: integer;
 begin

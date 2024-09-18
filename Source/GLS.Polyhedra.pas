@@ -30,12 +30,12 @@ uses
 
   GLScene.VectorGeometry,
   GLS.Scene,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Portal,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
+  GLS.VectorLists,
+  GLS.PersistentClasses,
   GLS.Silhouette,
   GLScene.Strings,
   GLS.Texture,
@@ -46,7 +46,7 @@ uses
   GLScene.GeometryBB,
   GLS.ApplicationFileIO,
   GLS.Context,
-  GLScene.Color;
+  GLS.Color;
 
 
 type

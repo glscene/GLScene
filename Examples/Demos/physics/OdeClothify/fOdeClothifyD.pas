@@ -17,7 +17,7 @@ uses
 
   GLS.Objects,
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.SceneViewer,
   GLS.FileMS3D,
@@ -37,11 +37,11 @@ uses
   GLS.ShadowVolume,
   GLScene.Utils,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.State,
   GLS.Context,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
 
   ODE.Import,
   GLS.ODEUtils;

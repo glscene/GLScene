@@ -19,8 +19,8 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.XCollection,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
 
   GLS.Cadencer,
   GLS.Texture,

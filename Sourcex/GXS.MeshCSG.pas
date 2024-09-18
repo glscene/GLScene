@@ -27,7 +27,7 @@ uses
   GXS.VectorFileObjects,
   GLScene.VectorGeometry, 
   GXS.BSP, 
-  GLScene.VectorLists;
+  GXS.VectorLists;
 
 type
   TCSGOperation = (CSG_Union, CSG_Subtraction, CSG_Intersection);

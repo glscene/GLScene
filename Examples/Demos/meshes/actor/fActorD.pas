@@ -24,8 +24,8 @@ uses
   GLS.FileMD2,
   GLS.GeomObjects,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils;
 
 type

@@ -30,8 +30,8 @@
 #pragma link "GLS.Context"
 #pragma link "GLS.File3DS"
 
-#pragma link "GLScene.BaseClasses"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
 #pragma link "GLS.SimpleNavigation"

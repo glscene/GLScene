@@ -34,8 +34,8 @@ uses
   GLScene.PipelineTransform,
 
   GLS.Scene,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
+  GLS.VectorLists,
+  GLS.PersistentClasses,
   GLS.Silhouette,
   GLS.Texture,
   GLS.Material,
@@ -46,11 +46,11 @@ uses
   GLS.GeomObjects,
   GLS.ApplicationFileIO,
   GLS.Context,
-  GLScene.Color,
+  GLS.Color,
   GLS.Selection,
   GLS.RenderContextInfo,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.VectorFileObjects,
   GLS.SoundManager,
   GLS.SoundFileObjects;
@@ -100,7 +100,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
     procedure LoadFromStream(const Filename: string; aStream: TStream); override;
     procedure SwitchToThinking(anThinking: TGLCyborgThinks; smooth: Boolean = False);
     function CurrentThinking: string;
@@ -185,7 +185,7 @@ begin
   inherited;
 end;
 
-procedure TGLCyborg.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLCyborg.DoProgress(const progressTime: TGLProgressTimes);
 begin
   inherited;
 //

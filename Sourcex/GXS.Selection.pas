@@ -13,10 +13,10 @@ uses
   System.Classes,
 
   GXS.Context,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorGeometry,
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses;
+  GXS.BaseClasses,
+  GXS.PersistentClasses;
 
  const
   MAX_OBJECT_STACK_DEPTH = 512;
@@ -27,7 +27,7 @@ type
 
   TPickRecord = class
   public
-    AObject: TgUpdateAbleComponent;
+    AObject: TgxUpdateAbleComponent;
     SubObjects: TPickSubObjects;
     ZMin, ZMax: Single;
   end;
@@ -36,7 +36,7 @@ type
 
   (* List class for object picking.
      This list is used to store the results of a PickObjects call. *)
-  TgxPickList = class(TgPersistentObjectList)
+  TgxPickList = class(TgxPersistentObjectList)
   private
     function GetFar(aValue: Integer): Single;
     function GetHit(aValue: Integer): TObject;
@@ -179,7 +179,7 @@ var
   newRecord: TPickRecord;
 begin
   newRecord := TPickRecord.Create;
-  newRecord.AObject := TgUpdateAbleComponent(obj);
+  newRecord.AObject := TgxUpdateAbleComponent(obj);
   newRecord.SubObjects := subObj;
   newRecord.zMin := zMin;
   newRecord.zMax := zMax;

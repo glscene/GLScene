@@ -22,7 +22,7 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.Color,
+  GLS.Color,
   GLS.Objects,
   GLScene.VectorGeometry,
   GLS.Material,
@@ -31,12 +31,12 @@ uses
   GLS.BitmapFont,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLScene.GeometryBB,
   GLScene.VectorTypes,
   GLS.Canvas,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Screen,
   GLS.State,
   GLS.Selection;

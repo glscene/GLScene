@@ -21,8 +21,8 @@ uses
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLS.FileTGA,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

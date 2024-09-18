@@ -24,8 +24,8 @@ uses
   GLS.ShadowVolume,
 
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormPong = class(TForm)

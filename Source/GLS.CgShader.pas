@@ -14,13 +14,13 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorTypes,
   GLS.Texture,
   GLScene.Strings,
   GLS.Cadencer,
   GLS.Context,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Material,
   GLScene.TextureFormat,
@@ -49,7 +49,7 @@ type
   TPrecisionSetting = (psFull, psFast);
 
   // Wrapper around a Cg program.
-  TCgProgram = class(TGUpdateAbleObject)
+  TCgProgram = class(TGLUpdateAbleObject)
   private
     FCgContext: PcgContext;
     FCode: TStrings; // the Cg program itself
@@ -186,7 +186,7 @@ type
     procedure DisableTexture;
     // Procedures for setting varying parameters with an array of values.
     procedure SetParameterPointer(Values: TGVectorList); overload;
-    procedure SetParameterPointer(Values: TGAffineVectorList); overload;
+    procedure SetParameterPointer(Values: TGLAffineVectorList); overload;
     procedure EnableClientState;
     procedure DisableClientState;
     // LongName retruns ShaderName.[program type].ProgramName.ParamName.
@@ -943,7 +943,7 @@ begin
   cgGLEnableClientState(FHandle);
 end;
 
-procedure TCgParameter.SetParameterPointer(Values: TGAffineVectorList);
+procedure TCgParameter.SetParameterPointer(Values: TGLAffineVectorList);
 begin
   Assert(FVariability = CG_VARYING);
   cgGLSetParameterPointer(FHandle, 3, GL_FLOAT, 0, Values.List);

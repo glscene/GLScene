@@ -21,12 +21,12 @@ uses
   GLScene.XCollection,
   GLScene.VectorGeometry,
   GLS.Context,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorTypes,
   GLS.Cadencer,
-  GLScene.Color,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.BaseClasses,
+  GLS.Coordinates,
   GLScene.Manager,
   GLS.RenderContextInfo,
   GLS.State,
@@ -48,7 +48,7 @@ type
   (* Fire special effect manager.
     Defines the looks and behaviour of a particle system that can be made
     to look fire-like. *)
-  TGLFireFXManager = class(TGCadenceAbleComponent)
+  TGLFireFXManager = class(TGLCadenceAbleComponent)
   private
     FClients: TList;
     FFireParticles: PGLFireParticleArray;
@@ -97,7 +97,7 @@ type
       const ringVectorX, ringVectorY: TAffineVector; nbParticles: Integer = -1);
     // Current Nb of particles.
     property ParticleCount: Integer read NP;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
   published
     // Adjusts the acceleration direction (abs coordinates).
     property FireDir: TgCoordinates read FFireDir write SetFireDir;
@@ -366,7 +366,7 @@ begin
 end;
 
 
-procedure TGLFireFXManager.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLFireFXManager.DoProgress(const progressTime: TGLProgressTimes);
 var
   i: Integer;
 begin

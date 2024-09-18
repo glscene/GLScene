@@ -18,11 +18,11 @@ uses
   GLS.VectorFileObjects,
   GLS.Material, GLS.Cadencer,
   GLS.ArchiveManager,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.FileMS3D,
   GLS.FileTGA,
   GLS.FileZLIB,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.SceneViewer,
   GLScene.Utils, GLS.SimpleNavigation;
 

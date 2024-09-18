@@ -16,11 +16,11 @@ uses
   GLScene.VectorTypes,
   GLS.NGDManager,
   GLS.Objects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Cadencer,
   GLS.SceneViewer,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLS.SimpleNavigation,
   GLScene.XCollection,

@@ -25,7 +25,7 @@ uses
   GLS.Objects,
   GLS.Scene,
   GLS.MultiPolygon,
-  GLScene.Color,
+  GLS.Color,
   GLScene.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Nodes,
@@ -250,7 +250,7 @@ implementation
 
 uses
   GLScene.Spline,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.XOpenGL;
 
 // ------------------

@@ -22,8 +22,8 @@ uses
   GLS.SceneViewer,
  
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses, GLS.VectorFileObjects;
+  GLS.Coordinates,
+  GLS.BaseClasses, GLS.VectorFileObjects;
 
 type
   TFormMotionBlur2 = class(TForm)

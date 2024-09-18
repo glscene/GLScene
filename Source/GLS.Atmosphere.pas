@@ -26,7 +26,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Context,
   GLScene.Strings,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLS.State;
 

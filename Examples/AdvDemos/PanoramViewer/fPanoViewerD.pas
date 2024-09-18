@@ -18,8 +18,8 @@ uses
   Vcl.ExtDlgs,
   Vcl.Imaging.Jpeg,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLScene.Keyboard,
   GLScene.XCollection,

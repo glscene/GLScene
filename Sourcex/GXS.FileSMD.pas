@@ -12,7 +12,7 @@ uses
   System.SysUtils,
 
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.Utils,
 
   GXS.VectorFileObjects,

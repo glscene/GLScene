@@ -21,7 +21,7 @@ uses
   GLS.ArchiveManager,
   GLS.SceneViewer,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorTypes,
   GLS.Scene,
   GLScene.VectorGeometry,
@@ -29,7 +29,7 @@ uses
   GLS.Material,
   GLS.VectorFileObjects,
   GLS.Objects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Graphics,
   GLS.State,
   GLS.CompositeImage,

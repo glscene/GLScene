@@ -18,9 +18,9 @@ uses
   GLS.Cadencer,
   GLScene.VectorTypes,
   GLS.SceneViewer,
-  GLScene.Color,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Color,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.SimpleNavigation;
 
 type

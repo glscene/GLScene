@@ -20,8 +20,8 @@ uses
   GLS.Texture,
   GLS.Extrusion,
   GLS.SceneViewer,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils;
 
 type

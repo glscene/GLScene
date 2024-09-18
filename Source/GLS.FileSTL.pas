@@ -23,7 +23,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.VectorFileObjects,
   GLScene.Utils;
 
@@ -284,7 +284,7 @@ var
   I: Integer;
   DataFace: TSTLFace;
   Header: TSTLHeader;
-  List: TGAffineVectorList;
+  List: TGLAffineVectorList;
 const
   cHeaderTag = 'STL export';
 begin

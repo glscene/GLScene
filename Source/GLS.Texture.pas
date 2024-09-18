@@ -21,14 +21,14 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Graphics,
   GLS.Context,
   GLS.State,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.PipelineTransform,
   GLS.ImageUtils,
   GLScene.TextureFormat,
@@ -91,7 +91,7 @@ type
 
   TGLTexture = class;
 
-  IGLTextureNotifyAble = interface(IGNotifyAble)
+  IGLTextureNotifyAble = interface(IGLNotifyAble)
     ['{0D9DC0B0-ECE4-4513-A8A1-5AE7022C9426}']
     procedure NotifyTexMapChange(Sender: TObject);
   end;
@@ -133,7 +133,7 @@ type
    a HBitmap (interfacing the actual source).
    SubClasses should be registered using RegisterGLTextureImageClass to allow
    proper persistence and editability in the IDE experts. *)
-  TGLTextureImage = class(TGUpdateAbleObject)
+  TGLTextureImage = class(TGLUpdateAbleObject)
   private
     function GetResourceName: string;
   protected
@@ -371,7 +371,7 @@ type
      the texture map (note that texturing is disabled by default).
      A built-in mechanism (through ImageAlpha) allows auto-generation of an
      Alpha channel for all bitmaps (see TGLTextureImageAlpha). *)
-  TGLTexture = class(TGUpdateAbleObject)
+  TGLTexture = class(TGLUpdateAbleObject)
   private
     FTextureHandle: TGLTextureHandle;
     FSamplerHandle: TGLVirtualHandle;
@@ -649,13 +649,13 @@ type
 
   TGLTextureEx = class(TCollection)
   private
-    FOwner: TGUpdateAbleObject;
+    FOwner: TGLUpdateAbleObject;
   protected
     procedure SetItems(index: Integer; const Value: TGLTextureExItem);
     function GetItems(index: Integer): TGLTextureExItem; inline;
     function GetOwner: TPersistent; override;
   public
-    constructor Create(AOwner: TGUpdateAbleObject);
+    constructor Create(AOwner: TGLUpdateAbleObject);
     procedure NotifyChange(Sender: TObject);
     procedure Apply(var rci: TGLRenderContextInfo);
     procedure UnApply(var rci: TGLRenderContextInfo);
@@ -3140,7 +3140,7 @@ end;
 // --------------- TGLTextureEx ---------------
 // ---------------
 
-constructor TGLTextureEx.Create(AOwner: TGUpdateAbleObject);
+constructor TGLTextureEx.Create(AOwner: TGLUpdateAbleObject);
 begin
   inherited Create(TGLTextureExItem);
 

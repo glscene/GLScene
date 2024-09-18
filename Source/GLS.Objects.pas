@@ -33,16 +33,16 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GLS.PersistentClasses,
+  GLS.BaseClasses,
+  GLS.Coordinates,
   GLScene.Spline,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.PipelineTransform,
   GLS.Scene,
   GLS.Context,
   GLS.Silhouette,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLS.Nodes,
   GLS.XOpenGL,
@@ -233,7 +233,7 @@ type
   (* Point parameters as in ARB_point_parameters.
     Make sure to read the ARB_point_parameters spec if you want to understand
     what each parameter does. *)
-  TGLPointParameters = class(TGUpdateAbleObject)
+  TGLPointParameters = class(TGLUpdateAbleObject)
   private
     FEnabled: Boolean;
     FMinSize, FMaxSize: Single;
@@ -270,7 +270,7 @@ type
     and Colors properties *)
   TGLPoints = class(TGLImmaterialSceneObject)
   private
-    FPositions: TGAffineVectorList;
+    FPositions: TGLAffineVectorList;
     FColors: TGVectorList;
     FSize: Single;
     FStyle: TGLPointStyle;
@@ -281,7 +281,7 @@ type
     procedure SetNoZWrite(const val: Boolean);
     procedure SetStatic(const val: Boolean);
     procedure SetSize(const val: Single);
-    procedure SetPositions(const val: TGAffineVectorList); inline;
+    procedure SetPositions(const val: TGLAffineVectorList); inline;
     procedure SetColors(const val: TGVectorList);
     procedure SetStyle(const val: TGLPointStyle);
     procedure SetPointParameters(const val: TGLPointParameters);
@@ -291,7 +291,7 @@ type
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
     // Points positions.  If empty, a single point is assumed at (0, 0, 0)
-    property Positions: TGAffineVectorList read FPositions write SetPositions;
+    property Positions: TGLAffineVectorList read FPositions write SetPositions;
     (* Defines the points colors:
       if empty, point color will be opaque white
       if contains a single color, all points will use that color
@@ -1582,7 +1582,7 @@ begin
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
   FStyle := psSquare;
   FSize := cDefaultPointSize;
-  FPositions := TGAffineVectorList.Create;
+  FPositions := TGLAffineVectorList.Create;
   FPositions.Add(NullVector);
   FColors := TGVectorList.Create;
   FPointParameters := TGLPointParameters.Create(Self);
@@ -1730,7 +1730,7 @@ begin
   end;
 end;
 
-procedure TGLPoints.SetPositions(const val: TGAffineVectorList);
+procedure TGLPoints.SetPositions(const val: TGLAffineVectorList);
 begin
   FPositions.Assign(val);
   StructureChanged;

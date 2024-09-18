@@ -24,7 +24,7 @@ uses
   GXS.Texture,
   GXS.BitmapFont,
   GXS.RenderContextInfo,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.Utils,
   GLScene.VectorGeometry,
   GXS.ApplicationFileIO,

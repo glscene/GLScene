@@ -32,11 +32,11 @@ uses
   GLScene.XCollection,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GXS.VectorLists,
 
   GXS.Scene,
   GXS.VectorFileObjects,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.Context,
   GXS.State;
@@ -51,14 +51,14 @@ type
     FEnabled: boolean;
     FFaceCount: integer;
     FSpeed: single;
-    FDirection: TgCoordinates;
+    FDirection: TgxCoordinates;
     FMaxSteps: integer;
     FStep: integer;
     procedure SetTriList(Value: TgAffineVectorList);
     procedure SetRotList(Value: TgAffineVectorList);
     procedure SetDirList(Value: TgAffineVectorList);
     procedure SetPosList(Value: TgAffineVectorList);
-    procedure SetDirection(value: TgCoordinates);
+    procedure SetDirection(value: TgxCoordinates);
     procedure SetEnabled(value: boolean);
   protected
     property TriList: TgAffineVectorList read FTriList write SetTriList;
@@ -81,7 +81,7 @@ type
   published
     property MaxSteps: integer read FMaxSteps write FMaxSteps;
     property Speed: single read FSpeed write FSpeed;
-    property Direction: TgCoordinates read FDirection write SetDirection;
+    property Direction: TgxCoordinates read FDirection write SetDirection;
   end;
 
 //--------------------------------------
@@ -100,7 +100,7 @@ begin
   FRotList := TgAffineVectorList.Create;
   FDirList := TgAffineVectorList.Create;
   FPosList := TgAffineVectorList.Create;
-  FDirection := TgCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FDirection := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
 end;
 
 destructor TgxBExplosionFX.Destroy;
@@ -144,7 +144,7 @@ begin
   FPosList.Assign(Value);
 end;
 
-procedure TgxBExplosionFx.SetDirection(Value: TgCoordinates);
+procedure TgxBExplosionFx.SetDirection(Value: TgxCoordinates);
 begin
   Value.Normalize;
   FDirection.Assign(Value);

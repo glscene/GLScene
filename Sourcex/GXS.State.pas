@@ -38,7 +38,7 @@ uses
   GLScene.VectorGeometry,
   GLScene.Utils,
 
-  GLScene.Color;
+  GXS.Color;
 
 const
   VERTEX_ATTR_NUM = 16;

@@ -15,11 +15,11 @@ uses
   System.SysUtils,
 
   GLScene.OpenGLTokens,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorGeometry,
   GLS.ParticleFX,
   GLS.Texture,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLS.Context,
   GLScene.VectorTypes;

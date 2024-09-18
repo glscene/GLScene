@@ -23,9 +23,9 @@ uses
   GLScene.VectorGeometry,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
  
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Material,
   GLS.RenderContextInfo;
 

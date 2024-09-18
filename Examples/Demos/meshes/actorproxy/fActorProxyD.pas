@@ -27,9 +27,9 @@ uses
   GLS.Cadencer,
   GLS.Texture,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
  
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.Utils,
   GLS.FileSMD;
 

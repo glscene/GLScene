@@ -33,11 +33,11 @@ uses
   GLS.ODEManager,
   GLS.Navigator,
   GLS.GeomObjects,
-  GLScene.Color,
+  GLS.Color,
  
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.State,
   GLScene.Utils;
 

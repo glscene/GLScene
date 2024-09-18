@@ -15,10 +15,10 @@ uses
   GLS.Texture,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLScene.Color,
+  GLS.Color,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.SimpleNavigation;
 
 type

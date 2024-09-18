@@ -1,11 +1,11 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLScene.VectorLists;
+unit GLS.VectorLists;
 (*
   Misc. lists of vectors and entities
   The registered classes are:
-    [TGAffineVectorList, TGVectorList, TGTexPointList,
+    [TGLAffineVectorList, TGVectorList, TGTexPointList,
      TGSingleList, TGDoubleList, TG4ByteList, TGLongWordList]
 *)
 interface
@@ -18,20 +18,20 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses;
+  GLS.PersistentClasses;
 
 type
-  TGBaseListOption = (bloExternalMemory, bloSetCountResetsMemory);
-  TGBaseListOptions = set of TGBaseListOption;
+  TGLBaseListOption = (bloExternalMemory, bloSetCountResetsMemory);
+  TGLBaseListOptions = set of TGLBaseListOption;
 
   // Base class for lists, introduces common behaviours
-  TGBaseList = class(TGPersistentObject)
+  TGLBaseList = class(TGLPersistentObject)
   private
     FCount: Integer;
     FCapacity: Integer;
     FGrowthDelta: Integer;
     FBufferItem: PByteArray;
-    FOptions: TGBaseListOptions;
+    FOptions: TGLBaseListOptions;
     FRevision: LongWord;
     FTagString: string;
   protected
@@ -92,7 +92,7 @@ type
   end;
 
   // Base class for vector lists, introduces common behaviours
-  TGBaseVectorList = class(TGBaseList)
+  TGLBaseVectorList = class(TGLBaseList)
   protected
     function GetItemAddress(Index: Integer): PFloatArray; inline;
   public
@@ -101,26 +101,26 @@ type
     procedure GetExtents(out min, max: TAffineVector); virtual;
     function Sum: TAffineVector;
     procedure Normalize; virtual;
-    function MaxSpacing(list2: TGBaseVectorList): Single;
+    function MaxSpacing(list2: TGLBaseVectorList): Single;
     procedure Translate(const delta: TAffineVector); overload; virtual;
-    procedure Translate(const delta: TGBaseVectorList); overload; virtual;
-    procedure TranslateInv(const delta: TGBaseVectorList); overload; virtual;
+    procedure Translate(const delta: TGLBaseVectorList); overload; virtual;
+    procedure TranslateInv(const delta: TGLBaseVectorList); overload; virtual;
     (*Replace content of the list with lerp results between the two given lists.
      Note: you can't Lerp with Self!!! *)
-    procedure Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single); virtual; abstract;
+    procedure Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single); virtual; abstract;
     (* Replace content of the list with angle lerp between the two given lists.
     Note: you can't Lerp with Self!!! *)
-    procedure AngleLerp(const list1, list2: TGBaseVectorList; lerpFactor: Single);
-    procedure AngleCombine(const list1: TGBaseVectorList; intensity: Single);
+    procedure AngleLerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
+    procedure AngleCombine(const list1: TGLBaseVectorList; intensity: Single);
     //Linear combination of Self with another list. Self[i]:=Self[i]+list2[i]*factor
-    procedure Combine(const list2: TGBaseVectorList; factor: Single); virtual;
+    procedure Combine(const list2: TGLBaseVectorList; factor: Single); virtual;
     property ItemAddress[Index: Integer]: PFloatArray read GetItemAddress;
   end;
 
   (*A list of TAffineVector.
    Similar to TList, but using TAffineVector as items.
    The list has stack-like push/pop methods *)
-  TGAffineVectorList = class(TGBaseVectorList)
+  TGLAffineVectorList = class(TGLBaseVectorList)
   private
     FList: PAffineVectorArray;
   protected
@@ -145,7 +145,7 @@ type
     function Add(const xy: PIntegerArray; const Z: Integer): Integer; overload;
     // AddNC (2 ints in array + 1, no capacity check)
     function AddNC(const xy: PIntegerArray; const Z: Integer): Integer; overload;
-    procedure Add(const list: TGAffineVectorList); overload;
+    procedure Add(const list: TGLAffineVectorList); overload;
     procedure Push(const Val: TAffineVector);
     function Pop: TAffineVector;
     procedure Insert(Index: Integer; const item: TAffineVector); inline;
@@ -169,7 +169,7 @@ type
     procedure TransformAsVectors(const matrix: TGLMatrix); overload;
     procedure TransformAsVectors(const matrix: TAffineMatrix); overload;
     procedure Normalize; override;
-    procedure Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single); override;
+    procedure Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single); override;
     procedure Scale(factor: Single); overload;
     procedure Scale(const factors: TAffineVector); overload;
   end;
@@ -177,7 +177,7 @@ type
   (* A list of TGLVectors.
    Similar to TList, but using TGLVector as items.
    The list has stack-like push/pop methods *)
-  TGVectorList = class(TGBaseVectorList)
+  TGVectorList = class(TGLBaseVectorList)
   private
     FList: PVectorArray;
   protected
@@ -202,12 +202,12 @@ type
     procedure Insert(Index: Integer; const item: TGLVector);
     property Items[Index: Integer]: TGLVector read Get write Put; default;
     property List: PVectorArray read FList;
-    procedure Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single); override;
+    procedure Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single); override;
   end;
 
   (* A list of TGLTexPoint. Similar to TList, but using TTexPoint as items.
      The list has stack-like push/pop methods. *)
-  TGTexPointList = class(TGBaseVectorList)
+  TGTexPointList = class(TGLBaseVectorList)
   private
     FList: PTexPointArray;
   protected
@@ -234,12 +234,12 @@ type
     procedure Translate(const delta: TTexPoint);
     procedure ScaleAndTranslate(const scale, delta: TTexPoint); overload;
     procedure ScaleAndTranslate(const scale, delta: TTexPoint; base, nb: Integer); overload;
-    procedure Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single); override;
+    procedure Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single); override;
   end;
 
   (*  A list of Integers. Similar to TList, but using TTexPoint as items.
      The list has stack-like push/pop methods. *)
-  TgIntegerList = class(TGBaseList)
+  TgIntegerList = class(TGLBaseList)
   private
     FList: PIntegerArray;
   protected
@@ -300,7 +300,7 @@ type
 
   (* A list of Single. Similar to TList, but using Single as items.
     The list has stack-like push/pop methods *)
-  TGSingleList = class(TGBaseList)
+  TGSingleList = class(TGLBaseList)
   private
     FList: PGLSingleArrayList;
   protected
@@ -343,7 +343,7 @@ type
 
   (* A list of Double. Similar to TList, but using Double as items.
     The list has stack-like push/pop methods *)
-  TGDoubleList = class(TGBaseList)
+  TGDoubleList = class(TGLBaseList)
   private
     FList: PGLDoubleArrayList;
   protected
@@ -379,7 +379,7 @@ type
   end;
 
   // A list of bytes. Similar to TList, but using Byte as items
-  TGByteList = class(TGBaseList)
+  TGByteList = class(TGLBaseList)
   private
     FList: PByteArray;
   protected
@@ -397,7 +397,7 @@ type
 
   (* A list of TQuaternion. Similar to TList, but using TQuaternion as items.
     The list has stack-like push/pop methods *)
-  TGQuaternionList = class(TGBaseVectorList)
+  TGQuaternionList = class(TGLBaseVectorList)
   private
     FList: PQuaternionArray;
   protected
@@ -418,11 +418,11 @@ type
     property Items[Index: Integer]: TQuaternion read Get write Put; default;
     property List: PQuaternionArray read FList;
     // Lerps corresponding quaternions from both lists using QuaternionSlerp
-    procedure Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single); override;
+    procedure Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single); override;
     (* Multiplies corresponding quaternions after the second quaternion is
       slerped with the IdentityQuaternion using factor. This allows for weighted
       combining of rotation transforms using quaternions *)
-    procedure Combine(const list2: TGBaseVectorList; factor: Single); override;
+    procedure Combine(const list2: TGLBaseVectorList; factor: Single); override;
   end;
 
   // 4 byte union contain access like Integer, Single and four Byte
@@ -439,7 +439,7 @@ type
   PG4ByteArrayList = ^TG4ByteArrayList;
 
   // A list of TG4ByteData
-  TG4ByteList = class(TGBaseList)
+  TG4ByteList = class(TGLBaseList)
   private
     FList: PG4ByteArrayList;
   protected
@@ -470,7 +470,7 @@ type
     property List: PG4ByteArrayList read FList;
   end;
 
-  TGLongWordList = class(TGBaseList)
+  TGLongWordList = class(TGLBaseList)
   private
     FList: PLongWordArray;
   protected
@@ -502,8 +502,8 @@ type
 
 // Sort the refList in ascending order, ordering objList (TList) on the way
 procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TList); overload;
-// Sort the refList in ascending order, ordering objList (TGBaseList) on the way
-procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TGBaseList); overload;
+// Sort the refList in ascending order, ordering objList (TGLBaseList) on the way
+procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TGLBaseList); overload;
 (* Sort the refList in ascending order, ordering objList on the way.
    Use if, and *ONLY* if refList contains only values superior or equal to 1 *)
 procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGSingleList; const objList: TgPersistentObjectList);
@@ -555,7 +555,7 @@ begin
   end;
 end;
 
-procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TGBaseList);
+procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TGLBaseList);
 var
   I, J: Integer;
   P:    Single;
@@ -688,16 +688,16 @@ begin
 end;
 
 // ------------------
-// ------------------ TGBaseList ------------------
+// ------------------ TGLBaseList ------------------
 // ------------------
 
-constructor TGBaseList.Create;
+constructor TGLBaseList.Create;
 begin
   inherited Create;
   FOptions := [bloSetCountResetsMemory];
 end;
 
-destructor TGBaseList.Destroy;
+destructor TGLBaseList.Destroy;
 begin
   Clear;
   if Assigned(FBufferItem) then
@@ -705,27 +705,27 @@ begin
   inherited;
 end;
 
-procedure TGBaseList.Assign(Src: TPersistent);
+procedure TGLBaseList.Assign(Src: TPersistent);
 begin
-  if (Src is TGBaseList) then
+  if (Src is TGLBaseList) then
   begin
-    SetCapacity(TGBaseList(Src).Count);
-    FGrowthDelta := TGBaseList(Src).FGrowthDelta;
+    SetCapacity(TGLBaseList(Src).Count);
+    FGrowthDelta := TGLBaseList(Src).FGrowthDelta;
     FCount := FCapacity;
-    FTagString := TGBaseList(Src).FTagString;
+    FTagString := TGLBaseList(Src).FTagString;
     Inc(FRevision);
   end
   else
     inherited;
 end;
 
-procedure TGBaseList.DefineProperties(AFiler: TFiler);
+procedure TGLBaseList.DefineProperties(AFiler: TFiler);
 begin
   inherited DefineProperties(AFiler);
   AFiler.DefineProperty('Items', ReadItemsData, WriteItemsData, True);
 end;
 
-procedure TGBaseList.ReadItemsData(AReader: TReader);
+procedure TGLBaseList.ReadItemsData(AReader: TReader);
 var
   lData: AnsiString;
   lOutputText: string;
@@ -736,7 +736,7 @@ begin
   LoadFromString(string(lData));
 end;
 
-procedure TGBaseList.WriteItemsData(AWriter: TWriter);
+procedure TGLBaseList.WriteItemsData(AWriter: TWriter);
 var
   lData: AnsiString;
   lOutputText: String;
@@ -747,7 +747,7 @@ begin
   AWriter.WriteString(lOutputText);
 end;
 
-procedure TGBaseList.WriteToFiler(writer: TGVirtualWriter);
+procedure TGLBaseList.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited;
   with writer do
@@ -760,7 +760,7 @@ begin
   end;
 end;
 
-procedure TGBaseList.ReadFromFiler(reader: TGVirtualReader);
+procedure TGLBaseList.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -780,7 +780,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseList.SetCount(Val: Integer);
+procedure TGLBaseList.SetCount(Val: Integer);
 begin
   Assert(Val >= 0);
   if Val > FCapacity then
@@ -791,7 +791,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseList.SetCapacity(newCapacity: Integer);
+procedure TGLBaseList.SetCapacity(newCapacity: Integer);
 begin
   if newCapacity <> FCapacity then
   begin
@@ -806,7 +806,7 @@ begin
   end;
 end;
 
-procedure TGBaseList.AddNulls(nbVals: Cardinal);
+procedure TGLBaseList.AddNulls(nbVals: Cardinal);
 begin
   if Integer(nbVals) + Count > Capacity then
     SetCapacity(Integer(nbVals) + Count);
@@ -815,7 +815,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseList.InsertNulls(Index: Integer; nbVals: Cardinal);
+procedure TGLBaseList.InsertNulls(Index: Integer; nbVals: Cardinal);
 var
   nc: Integer;
 begin
@@ -837,30 +837,30 @@ begin
   end;
 end;
 
-procedure TGBaseList.AdjustCapacityToAtLeast(const size: Integer);
+procedure TGLBaseList.AdjustCapacityToAtLeast(const size: Integer);
 begin
   if Capacity < size then
     Capacity := size;
 end;
 
-function TGBaseList.DataSize: Integer;
+function TGLBaseList.DataSize: Integer;
 begin
   Result := FItemSize * FCount;
 end;
 
-function TGBaseList.BufferItem: PByteArray;
+function TGLBaseList.BufferItem: PByteArray;
 begin
   if not Assigned(FBufferItem) then
     GetMem(FBufferItem, FItemSize);
   Result := FBufferItem;
 end;
 
-function TGBaseList.GetSetCountResetsMemory: Boolean;
+function TGLBaseList.GetSetCountResetsMemory: Boolean;
 begin
   Result := (bloSetCountResetsMemory in FOptions);
 end;
 
-procedure TGBaseList.SetSetCountResetsMemory(const Val: Boolean);
+procedure TGLBaseList.SetSetCountResetsMemory(const Val: Boolean);
 begin
   if Val then
     Include(FOptions, bloSetCountResetsMemory)
@@ -868,7 +868,7 @@ begin
     Exclude(FOptions, bloSetCountResetsMemory);
 end;
 
-procedure TGBaseList.UseMemory(rangeStart: Pointer; rangeCapacity: Integer);
+procedure TGLBaseList.UseMemory(rangeStart: Pointer; rangeCapacity: Integer);
 begin
   rangeCapacity := rangeCapacity div FItemSize;
   if rangeCapacity < FCount then
@@ -885,7 +885,7 @@ begin
   SetCapacity(FCapacity); // notify subclasses
 end;
 
-procedure TGBaseList.Flush;
+procedure TGLBaseList.Flush;
 begin
   if Assigned(Self) then
   begin
@@ -893,7 +893,7 @@ begin
   end;
 end;
 
-procedure TGBaseList.Clear;
+procedure TGLBaseList.Clear;
 begin
   if Assigned(Self) then
   begin
@@ -902,7 +902,7 @@ begin
   end;
 end;
 
-procedure TGBaseList.Delete(Index: Integer);
+procedure TGLBaseList.Delete(Index: Integer);
 begin
 {$IFOPT R+}
     Assert(Cardinal(index) < Cardinal(FCount));
@@ -915,7 +915,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseList.DeleteItems(Index: Integer; nbVals: Cardinal);
+procedure TGLBaseList.DeleteItems(Index: Integer; nbVals: Cardinal);
 begin
 {$IFOPT R+}
     Assert(Cardinal(index) < Cardinal(FCount));
@@ -933,7 +933,7 @@ begin
   end;
 end;
 
-procedure TGBaseList.Exchange(index1, index2: Integer);
+procedure TGLBaseList.Exchange(index1, index2: Integer);
 var
   buf: Integer;
   p:   PIntegerArray;
@@ -957,7 +957,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseList.Move(curIndex, newIndex: Integer);
+procedure TGLBaseList.Move(curIndex, newIndex: Integer);
 begin
   if curIndex <> newIndex then
   begin
@@ -989,7 +989,7 @@ begin
   end;
 end;
 
-procedure TGBaseList.Reverse;
+procedure TGLBaseList.Reverse;
 var
   s, e: Integer;
 begin
@@ -1005,10 +1005,10 @@ begin
 end;
 
 // ------------------
-// ------------------ TGBaseVectorList ------------------
+// ------------------ TGLBaseVectorList ------------------
 // ------------------
 
-procedure TGBaseVectorList.WriteToFiler(writer: TGVirtualWriter);
+procedure TGLBaseVectorList.WriteToFiler(writer: TGVirtualWriter);
 begin
   inherited;
   if Self is TGTexPointList then
@@ -1020,7 +1020,7 @@ begin
   end;
 end;
 
-procedure TGBaseVectorList.ReadFromFiler(reader: TGVirtualReader);
+procedure TGLBaseVectorList.ReadFromFiler(reader: TGVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1037,7 +1037,7 @@ begin
     RaiseFilerException(archiveVersion);
 end;
 
-procedure TGBaseVectorList.GetExtents(out min, max: TAffineVector);
+procedure TGLBaseVectorList.GetExtents(out min, max: TAffineVector);
 var
   I, K: Integer;
   f:    Single;
@@ -1062,7 +1062,7 @@ begin
   end;
 end;
 
-function TGBaseVectorList.Sum: TAffineVector;
+function TGLBaseVectorList.Sum: TAffineVector;
 var
   I: Integer;
 begin
@@ -1071,7 +1071,7 @@ begin
     AddVector(Result, PAffineVector(ItemAddress[I])^);
 end;
 
-procedure TGBaseVectorList.Normalize;
+procedure TGLBaseVectorList.Normalize;
 var
   I: Integer;
 begin
@@ -1080,7 +1080,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGBaseVectorList.MaxSpacing(list2: TGBaseVectorList): Single;
+function TGLBaseVectorList.MaxSpacing(list2: TGLBaseVectorList): Single;
 var
   I: Integer;
   s: Single;
@@ -1096,7 +1096,7 @@ begin
   end;
 end;
 
-procedure TGBaseVectorList.Translate(const delta: TAffineVector);
+procedure TGLBaseVectorList.Translate(const delta: TAffineVector);
 var
   I: Integer;
 begin
@@ -1105,7 +1105,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseVectorList.Translate(const delta: TGBaseVectorList);
+procedure TGLBaseVectorList.Translate(const delta: TGLBaseVectorList);
 var
   I: Integer;
 begin
@@ -1115,7 +1115,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseVectorList.TranslateInv(const delta: TGBaseVectorList);
+procedure TGLBaseVectorList.TranslateInv(const delta: TGLBaseVectorList);
 var
   I: Integer;
 begin
@@ -1125,7 +1125,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseVectorList.AngleLerp(const list1, list2: TGBaseVectorList; lerpFactor: Single);
+procedure TGLBaseVectorList.AngleLerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
 var
   I: Integer;
 begin
@@ -1152,7 +1152,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseVectorList.AngleCombine(const list1: TGBaseVectorList; intensity: Single);
+procedure TGLBaseVectorList.AngleCombine(const list1: TGLBaseVectorList; intensity: Single);
 var
   I: Integer;
 begin
@@ -1164,7 +1164,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGBaseVectorList.Combine(const list2: TGBaseVectorList; factor: Single);
+procedure TGLBaseVectorList.Combine(const list2: TGLBaseVectorList; factor: Single);
 var
   I: Integer;
 begin
@@ -1176,7 +1176,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGBaseVectorList.GetItemAddress(Index: Integer): PFloatArray;
+function TGLBaseVectorList.GetItemAddress(Index: Integer): PFloatArray;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1185,29 +1185,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TGAffineVectorList ------------------
+// ------------------ TGLAffineVectorList ------------------
 // ------------------
 
-constructor TGAffineVectorList.Create;
+constructor TGLAffineVectorList.Create;
 begin
   FItemSize := SizeOf(TAffineVector);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGAffineVectorList.Assign(Src: TPersistent);
+procedure TGLAffineVectorList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGAffineVectorList) then
-      System.Move(TGAffineVectorList(Src).FList^, FList^, FCount * SizeOf(TAffineVector));
+    if (Src is TGLAffineVectorList) then
+      System.Move(TGLAffineVectorList(Src).FList^, FList^, FCount * SizeOf(TAffineVector));
   end
   else
     Clear;
 end;
 
-function TGAffineVectorList.Add(const item: TAffineVector): Integer;
+function TGLAffineVectorList.Add(const item: TAffineVector): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1217,12 +1217,12 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.Add(const item: TGLVector): Integer;
+function TGLAffineVectorList.Add(const item: TGLVector): Integer;
 begin
   Result := Add(PAffineVector(@item)^);
 end;
 
-procedure TGAffineVectorList.Add(const i1, i2: TAffineVector);
+procedure TGLAffineVectorList.Add(const i1, i2: TAffineVector);
 begin
   Inc(FCount, 2);
   while FCount > FCapacity do
@@ -1232,7 +1232,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.Add(const i1, i2, i3: TAffineVector);
+procedure TGLAffineVectorList.Add(const i1, i2, i3: TAffineVector);
 begin
   Inc(FCount, 3);
   while FCount > FCapacity do
@@ -1243,17 +1243,17 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.Add(const item: TVector2f): Integer;
+function TGLAffineVectorList.Add(const item: TVector2f): Integer;
 begin
   Result := Add(AffineVectorMake(item.X, item.Y, 0));
 end;
 
-function TGAffineVectorList.Add(const item: TTexPoint): Integer;
+function TGLAffineVectorList.Add(const item: TTexPoint): Integer;
 begin
   Result := Add(AffineVectorMake(item.S, item.T, 0));
 end;
 
-function TGAffineVectorList.Add(const X, Y: Single): Integer;
+function TGLAffineVectorList.Add(const X, Y: Single): Integer;
 var
   v: PAffineVector;
 begin
@@ -1268,7 +1268,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.Add(const X, Y, Z: Single): Integer;
+function TGLAffineVectorList.Add(const X, Y, Z: Single): Integer;
 var
   v: PAffineVector;
 begin
@@ -1283,7 +1283,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.Add(const X, Y, Z: Integer): Integer;
+function TGLAffineVectorList.Add(const X, Y, Z: Integer): Integer;
 var
   v: PAffineVector;
 begin
@@ -1298,7 +1298,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.AddNC(const X, Y, Z: Integer): Integer;
+function TGLAffineVectorList.AddNC(const X, Y, Z: Integer): Integer;
 var
   v: PAffineVector;
 begin
@@ -1311,7 +1311,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.Add(const xy: PIntegerArray; const Z: Integer): Integer;
+function TGLAffineVectorList.Add(const xy: PIntegerArray; const Z: Integer): Integer;
 var
   v: PAffineVector;
 begin
@@ -1326,7 +1326,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.AddNC(const xy: PIntegerArray; const Z: Integer): Integer;
+function TGLAffineVectorList.AddNC(const xy: PIntegerArray; const Z: Integer): Integer;
 var
   v: PAffineVector;
 begin
@@ -1339,7 +1339,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.Add(const list: TGAffineVectorList);
+procedure TGLAffineVectorList.Add(const list: TGLAffineVectorList);
 begin
   if Assigned(list) and (list.Count > 0) then
   begin
@@ -1351,7 +1351,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.Get(Index: Integer): TAffineVector;
+function TGLAffineVectorList.Get(Index: Integer): TAffineVector;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1359,7 +1359,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGAffineVectorList.Insert(Index: Integer; const Item: TAffineVector);
+procedure TGLAffineVectorList.Insert(Index: Integer; const Item: TAffineVector);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1374,7 +1374,7 @@ begin
   Inc(FRevision);
 end;
 
-function TGAffineVectorList.IndexOf(const item: TAffineVector): Integer;
+function TGLAffineVectorList.IndexOf(const item: TAffineVector): Integer;
 var
   I: Integer;
 begin
@@ -1387,7 +1387,7 @@ begin
     end;
 end;
 
-function TGAffineVectorList.FindOrAdd(const item: TAffineVector): Integer;
+function TGLAffineVectorList.FindOrAdd(const item: TAffineVector): Integer;
 begin
   Result := IndexOf(item);
   if Result < 0 then
@@ -1397,7 +1397,7 @@ begin
   end;
 end;
 
-procedure TGAffineVectorList.Put(Index: Integer; const Item: TAffineVector);
+procedure TGLAffineVectorList.Put(Index: Integer; const Item: TAffineVector);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1406,18 +1406,18 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.SetCapacity(NewCapacity: Integer);
+procedure TGLAffineVectorList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PAffineVectorArray(FBaseList);
 end;
 
-procedure TGAffineVectorList.Push(const Val: TAffineVector);
+procedure TGLAffineVectorList.Push(const Val: TAffineVector);
 begin
   Add(Val);
 end;
 
-function TGAffineVectorList.Pop: TAffineVector;
+function TGLAffineVectorList.Pop: TAffineVector;
 begin
   if FCount > 0 then
   begin
@@ -1429,19 +1429,19 @@ begin
     Result := NullVector;
 end;
 
-procedure TGAffineVectorList.Translate(const delta: TAffineVector);
+procedure TGLAffineVectorList.Translate(const delta: TAffineVector);
 begin
   VectorArrayAdd(FList, delta, Count, FList);
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.Translate(const delta: TAffineVector; base, nb: Integer);
+procedure TGLAffineVectorList.Translate(const delta: TAffineVector; base, nb: Integer);
 begin
   VectorArrayAdd(@FList[base], delta, nb, @FList[base]);
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.TranslateItem(Index: Integer; const delta: TAffineVector);
+procedure TGLAffineVectorList.TranslateItem(Index: Integer; const delta: TAffineVector);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1450,7 +1450,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.TranslateItems(Index: Integer; const delta: TAffineVector; nb: Integer);
+procedure TGLAffineVectorList.TranslateItems(Index: Integer; const delta: TAffineVector; nb: Integer);
 begin
   nb := Index + nb;
 {$IFOPT R+}
@@ -1462,7 +1462,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.CombineItem(Index: Integer; const vector: TAffineVector; const f: Single);
+procedure TGLAffineVectorList.CombineItem(Index: Integer; const vector: TAffineVector; const f: Single);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1471,7 +1471,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.TransformAsPoints(const matrix: TGLMatrix);
+procedure TGLAffineVectorList.TransformAsPoints(const matrix: TGLMatrix);
 var
   I: Integer;
 begin
@@ -1480,7 +1480,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.TransformAsVectors(const matrix: TGLMatrix);
+procedure TGLAffineVectorList.TransformAsVectors(const matrix: TGLMatrix);
 var
   m: TAffineMatrix;
 begin
@@ -1491,7 +1491,7 @@ begin
   end;
 end;
 
-procedure TGAffineVectorList.TransformAsVectors(const matrix: TAffineMatrix);
+procedure TGLAffineVectorList.TransformAsVectors(const matrix: TAffineMatrix);
 var
   I: Integer;
 begin
@@ -1500,26 +1500,26 @@ begin
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.Normalize;
+procedure TGLAffineVectorList.Normalize;
 begin
   NormalizeVectorArray(List, Count);
   Inc(FRevision);
 end;
 
-procedure TGAffineVectorList.Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single);
+procedure TGLAffineVectorList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
 begin
-  if (list1 is TGAffineVectorList) and (list2 is TGAffineVectorList) then
+  if (list1 is TGLAffineVectorList) and (list2 is TGLAffineVectorList) then
   begin
     Assert(list1.Count = list2.Count);
     Capacity := list1.Count;
     FCount := list1.Count;
-    VectorArrayLerp(TGAffineVectorList(list1).List, TGAffineVectorList(list2).List,
+    VectorArrayLerp(TGLAffineVectorList(list1).List, TGLAffineVectorList(list2).List,
       lerpFactor, FCount, List);
     Inc(FRevision);
   end;
 end;
 
-procedure TGAffineVectorList.Scale(factor: Single);
+procedure TGLAffineVectorList.Scale(factor: Single);
 begin
   if (Count > 0) and (factor <> 1) then
   begin
@@ -1528,7 +1528,7 @@ begin
   end;
 end;
 
-procedure TGAffineVectorList.Scale(const factors: TAffineVector);
+procedure TGLAffineVectorList.Scale(const factors: TAffineVector);
 var
   I: Integer;
 begin
@@ -1689,7 +1689,7 @@ begin
     Result := Add(ptItem);
 end;
 
-procedure TGVectorList.Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single);
+procedure TGVectorList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
 begin
   if (list1 is TGVectorList) and (list2 is TGVectorList) then
   begin
@@ -1893,7 +1893,7 @@ begin
   TexPointArrayScaleAndAdd(p, delta, nb, scale, p);
 end;
 
-procedure TGTexPointList.Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single);
+procedure TGTexPointList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
 begin
   if (list1 is TGTexPointList) and (list2 is TGTexPointList) then
   begin
@@ -2893,7 +2893,7 @@ begin
     Result := Add(item);
 end;
 
-procedure TGQuaternionList.Lerp(const list1, list2: TGBaseVectorList; lerpFactor: Single);
+procedure TGQuaternionList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
 var
   I: Integer;
 begin
@@ -2907,7 +2907,7 @@ begin
   end;
 end;
 
-procedure TGQuaternionList.Combine(const list2: TGBaseVectorList; factor: Single);
+procedure TGQuaternionList.Combine(const list2: TGLBaseVectorList; factor: Single);
 
   procedure CombineQuaternion(var q1: TQuaternion; const q2: TQuaternion; factor: Single);
   begin
@@ -3387,7 +3387,7 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-  RegisterClasses([TGAffineVectorList, TGVectorList, TGTexPointList, TGSingleList,
+  RegisterClasses([TGLAffineVectorList, TGVectorList, TGTexPointList, TGSingleList,
                    TGDoubleList, TG4ByteList, TGLongWordList]);
 
 end.

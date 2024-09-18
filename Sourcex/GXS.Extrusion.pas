@@ -27,7 +27,7 @@ uses
 
   GXS.XOpenGL,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorGeometry,
   GLScene.Spline,
 
@@ -35,7 +35,7 @@ uses
   GXS.Objects,
   GXS.Scene,
   GXS.MultiPolygon,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GXS.Nodes,
   GXS.State;
@@ -154,13 +154,13 @@ type
   TgxPipeNode = class(TgxNode)
   private
     FRadiusFactor: Single;
-    FColor: TGColor;
+    FColor: TgxColor;
     FTexCoordT: Single;
   protected
     function GetDisplayName: string; override;
     procedure SetRadiusFactor(const val: Single);
     function StoreRadiusFactor: Boolean;
-    procedure SetColor(const val: TGColor);
+    procedure SetColor(const val: TgxColor);
     procedure ColorChanged(sender: TObject);
     function StoreTexCoordT: Boolean;
   public
@@ -169,7 +169,7 @@ type
     procedure Assign(Source: TPersistent); override;
   published
     property RadiusFactor: Single read FRadiusFactor write SetRadiusFactor stored StoreRadiusFactor;
-    property Color: TGColor read FColor write SetColor;
+    property Color: TgxColor read FColor write SetColor;
     property TexCoordT: Single read FTexCoordT write FTexCoordT stored StoreTexCoordT;
   end;
 
@@ -669,7 +669,7 @@ constructor TgxPipeNode.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
   FRadiusFactor := 1.0;
-  FColor := TGColor.CreateInitialized(Self, clrBlack, ColorChanged);
+  FColor := TgxColor.CreateInitialized(Self, clrBlack, ColorChanged);
   FTexCoordT := 1.0;
 end;
 
@@ -715,7 +715,7 @@ begin
   Result := (FTexCoordT <> 1.0);
 end;
 
-procedure TgxPipeNode.SetColor(const val: TGColor);
+procedure TgxPipeNode.SetColor(const val: TgxColor);
 begin
   FColor.Assign(val);
 end;
@@ -908,7 +908,7 @@ type
 
   TRowData = record
     node: array of TNodeData;
-    Color: TGColorVector;
+    Color: TgxColorVector;
     center: TVector3f;
     textcoordT: Single;
   end;

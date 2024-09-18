@@ -21,7 +21,7 @@ uses
   GXS.Context,
   GXS.State,
   GXS.Texture,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GXS.MultisampleImage,
   GXS.Graphics,
@@ -652,7 +652,7 @@ end;
 procedure TgxFrameBuffer.Render(var rci: TgxRenderContextInfo; baseObject:
   TgxBaseSceneObject);
 var
-  backColor: TGColorVector;
+  backColor: TgxColorVector;
   buffer: TgxSceneBuffer;
 begin
   Bind;

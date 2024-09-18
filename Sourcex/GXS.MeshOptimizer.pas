@@ -14,8 +14,8 @@ uses
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GXS.VectorFileObjects,
-  GLScene.PersistentClasses,
-  GLScene.VectorLists,
+  GXS.PersistentClasses,
+  GXS.VectorLists,
   GXS.MeshUtils;
 
 

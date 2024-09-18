@@ -26,12 +26,12 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.Scene,
   GXS.Texture,
   GLScene.VectorGeometry,
   GXS.Context,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GLScene.TextureFormat,
   GLScene.PipelineTransform,
@@ -50,7 +50,7 @@ type
     FFOV: single;
     FAspect, FBrightness, FAttenuation: single;
     FStyle: TgxslProjectedTexturesStyle;
-    FColor: TGColor;
+    FColor: TgxColor;
     FUseAttenuation, FAllowReverseProjection: boolean;
     FUseQuadraticAttenuation: boolean;
   protected
@@ -76,7 +76,7 @@ type
     // Fall off/ attenuation of the projected texture
     property Attenuation: single read FAttenuation write FAttenuation;
     property Brightness: single read FBrightness write FBrightness;
-    property Color: TGColor read FColor write FColor;
+    property Color: TgxColor read FColor write FColor;
     property UseAttenuation: boolean read FUseAttenuation write SetUseAttenuation;
     property UseQuadraticAttenuation: Boolean read FUseQuadraticAttenuation write SetUseQuadraticAttenuation;
     property AllowReverseProjection: boolean read FAllowReverseProjection write SetAllowReverseProjection;
@@ -132,7 +132,7 @@ type
     FEmitters: TgxslTextureEmitters;
     FUseLightmaps: boolean;
     Shader: TgxProgramHandle;
-    FAmbient: TGColor;
+    FAmbient: TgxColor;
     procedure SetupShader;
   protected
     ShaderChanged: boolean;
@@ -148,7 +148,7 @@ type
     property Emitters: TgxslTextureEmitters read FEmitters write FEmitters;
 
     //Ambient is use if no lightmap..
-    property Ambient: TGColor read fAmbient write fAmbient;
+    property Ambient: TgxColor read fAmbient write fAmbient;
     property UseLightmaps: boolean read FUseLightmaps write SetUseLightmaps;
   end;
 
@@ -170,7 +170,7 @@ begin
   FUseAttenuation := false;
   FAttenuation := 100;
   FBrightness := 1;
-  FColor := TGColor.create(self);
+  FColor := TgxColor.create(self);
   FColor.SetColor(1, 1, 1);
 end;
 
@@ -319,7 +319,7 @@ begin
   FEmitters.FOwner := self;
   FUseLightmaps := false;
   ShaderChanged := true;
-  Ambient := TGColor.Create(self);
+  Ambient := TgxColor.Create(self);
   ambient.SetColor(0.5, 0.5, 0.5, 0.5);
 end;
 

@@ -22,12 +22,12 @@ uses
   GLScene.Strings,
 
   GLS.RenderContextInfo,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Context,
   GLS.Texture,
-  GLScene.Color,
-  GLScene.Coordinates,
-  GLScene.PersistentClasses,
+  GLS.Color,
+  GLS.Coordinates,
+  GLS.PersistentClasses,
   GLS.State,
   GLS.XOpenGL,
   GLS.ApplicationFileIO,
@@ -86,7 +86,7 @@ type
      tracking, as well as setup/application facilities.
      Subclasses are expected to provide implementation for DoInitialize,
      DoApply, DoUnApply and DoFinalize. *)
-  TGLShader = class(TGUpdateAbleComponent)
+  TGLShader = class(TGLUpdateAbleComponent)
   private
     FEnabled: Boolean;
     FLibMatUsers: TList;
@@ -171,7 +171,7 @@ type
      properties that behave like those of most rendering tools.
      You also have control over shininess (governs specular lighting) and
      polygon mode (lines / fill). *)
-  TGLFaceProperties = class(TGUpdateAbleObject)
+  TGLFaceProperties = class(TGLUpdateAbleObject)
   private
     FAmbient, FDiffuse, FSpecular, FEmission: TGColor;
     FShininess: TGLShininess;
@@ -195,7 +195,7 @@ type
     property Specular: TGColor read FSpecular write SetSpecular;
   end;
 
-  TGLDepthProperties = class(TGUpdateAbleObject)
+  TGLDepthProperties = class(TGLUpdateAbleObject)
   private
     FDepthTest: boolean;
     FDepthWrite: boolean;
@@ -245,7 +245,7 @@ type
 
   TGlAlphaFunc = TGLComparisonFunction;
 
-  TGLBlendingParameters = class(TGUpdateAbleObject)
+  TGLBlendingParameters = class(TGLUpdateAbleObject)
   private
     FUseAlphaFunc: Boolean;
     FUseBlendFunc: Boolean;
@@ -318,7 +318,7 @@ type
      TGLLibMaterial (taken for a material library).
      The TGLLibMaterial has more advanced properties (like texture transforms)
      and provides a standard way of sharing definitions and texture maps. *)
-  TGLMaterial = class(TGUpdateAbleObject, IGLMaterialLibrarySupported, IGLTextureNotifyAble)
+  TGLMaterial = class(TGLUpdateAbleObject, IGLMaterialLibrarySupported, IGLTextureNotifyAble)
   private
     FFrontProperties, FBackProperties: TGLFaceProperties;
     FDepthProperties: TGLDepthProperties;
@@ -406,7 +406,7 @@ type
   TGLAbstractLibMaterial = class(
     TCollectionItem,
 	IGLMaterialLibrarySupported,
-	IGNotifyAble)
+	IGLNotifyAble)
   protected
     FUserList: TList;
     FName: TGLLibMaterialName;
@@ -432,10 +432,10 @@ type
     procedure Apply(var ARci: TGLRenderContextInfo); virtual;
     // Restore non-standard material states that were altered
     function UnApply(var ARci: TGLRenderContextInfo): Boolean; virtual;
-    procedure RegisterUser(obj: TGUpdateAbleObject); overload;
-    procedure UnregisterUser(obj: TGUpdateAbleObject); overload;
-    procedure RegisterUser(comp: TGUpdateAbleComponent); overload;
-    procedure UnregisterUser(comp: TGUpdateAbleComponent); overload;
+    procedure RegisterUser(obj: TGLUpdateAbleObject); overload;
+    procedure UnregisterUser(obj: TGLUpdateAbleObject); overload;
+    procedure RegisterUser(comp: TGLUpdateAbleComponent); overload;
+    procedure UnregisterUser(comp: TGLUpdateAbleComponent); overload;
     procedure RegisterUser(libMaterial: TGLLibMaterial); overload;
     procedure UnregisterUser(libMaterial: TGLLibMaterial); overload;
     procedure NotifyUsers;
@@ -554,7 +554,7 @@ type
     procedure DeleteUnusedMaterials;
   end;
 
-  TGLAbstractMaterialLibrary = class(TGCadenceAbleComponent)
+  TGLAbstractMaterialLibrary = class(TGLCadenceAbleComponent)
   protected
     FMaterials: TGLAbstractLibMaterials;
     FLastAppliedMaterial: TGLAbstractLibMaterial;
@@ -1461,9 +1461,9 @@ end;
 
 procedure TGLMaterial.NotifyChange(Sender: TObject);
 var
-  intf: IGNotifyAble;
+  intf: IGLNotifyAble;
 begin
-  if Supports(Owner, IGNotifyAble, intf) then
+  if Supports(Owner, IGLNotifyAble, intf) then
     intf.NotifyChange(Self);
 end;
 
@@ -1610,24 +1610,24 @@ begin
   Result := -1; //ignore
 end;
 
-procedure TGLAbstractLibMaterial.RegisterUser(obj: TGUpdateAbleObject);
+procedure TGLAbstractLibMaterial.RegisterUser(obj: TGLUpdateAbleObject);
 begin
   Assert(FUserList.IndexOf(obj) < 0);
   FUserList.Add(obj);
 end;
 
-procedure TGLAbstractLibMaterial.UnRegisterUser(obj: TGUpdateAbleObject);
+procedure TGLAbstractLibMaterial.UnRegisterUser(obj: TGLUpdateAbleObject);
 begin
   FUserList.Remove(obj);
 end;
 
-procedure TGLAbstractLibMaterial.RegisterUser(comp: TGUpdateAbleComponent);
+procedure TGLAbstractLibMaterial.RegisterUser(comp: TGLUpdateAbleComponent);
 begin
   Assert(FUserList.IndexOf(comp) < 0);
   FUserList.Add(comp);
 end;
 
-procedure TGLAbstractLibMaterial.UnRegisterUser(comp: TGUpdateAbleComponent);
+procedure TGLAbstractLibMaterial.UnRegisterUser(comp: TGLUpdateAbleComponent);
 begin
   FUserList.Remove(comp);
 end;
@@ -1660,10 +1660,10 @@ begin
     for i := 0 to FUserList.Count - 1 do
     begin
       obj := TObject(FUserList[i]);
-      if obj is TGUpdateAbleObject then
-        TGUpdateAbleObject(FUserList[i]).NotifyChange(Self)
-      else if obj is TGUpdateAbleComponent then
-        TGUpdateAbleComponent(FUserList[i]).NotifyChange(Self)
+      if obj is TGLUpdateAbleObject then
+        TGLUpdateAbleObject(FUserList[i]).NotifyChange(Self)
+      else if obj is TGLUpdateAbleComponent then
+        TGLUpdateAbleComponent(FUserList[i]).NotifyChange(Self)
       else
       begin
         Assert(obj is TGLAbstractLibMaterial);
@@ -1936,10 +1936,10 @@ begin
         TGLMaterial(FUserList[i]).NotifyTexMapChange(Self)
       else if obj is TGLLibMaterial then
         TGLLibMaterial(FUserList[i]).NotifyUsersOfTexMapChange
-      else if obj is TGUpdateAbleObject then
-        TGUpdateAbleObject(FUserList[i]).NotifyChange(Self)
-      else if obj is TGUpdateAbleComponent then
-        TGUpdateAbleComponent(FUserList[i]).NotifyChange(Self);
+      else if obj is TGLUpdateAbleObject then
+        TGLUpdateAbleObject(FUserList[i]).NotifyChange(Self)
+      else if obj is TGLUpdateAbleComponent then
+        TGLUpdateAbleComponent(FUserList[i]).NotifyChange(Self);
     end;
   finally
     FNotifying := False;

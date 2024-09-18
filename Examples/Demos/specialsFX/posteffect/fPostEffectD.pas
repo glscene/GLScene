@@ -17,7 +17,7 @@ uses
 
   
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.Texture,
@@ -30,8 +30,8 @@ uses
   GLS.MeshUtils,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.Utils,
   GLS.FileMD2,

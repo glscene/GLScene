@@ -27,7 +27,7 @@ uses
   GXS.Context,
   GXS.RenderContextInfo,
   GXS.Material,
-  GLScene.VectorLists, 
+  GXS.VectorLists, 
   GLScene.TextureFormat,
   GXSL.Parameter;
 

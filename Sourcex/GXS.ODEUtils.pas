@@ -22,11 +22,11 @@ uses
 
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
+  GXS.VectorLists,
+  GXS.PersistentClasses,
   GXS.Scene,
   GXS.Context,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.Objects,
   GXS.VerletClothify,
   GXS.VectorFileObjects;

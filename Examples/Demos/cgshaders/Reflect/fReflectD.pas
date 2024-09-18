@@ -34,10 +34,10 @@ uses
   GLScene.VectorTypes, 
   GLS.GeomObjects, 
   GLS.Material, 
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.Utils,
    
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

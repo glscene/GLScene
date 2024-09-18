@@ -26,13 +26,13 @@ uses
   GLS.Texture,
   GLS.SpacePartition,
 
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.State,
   GLS.SimpleNavigation,
   GLS.Material,
   GLS.Context,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 const
   cBOX_SIZE = 14.2;

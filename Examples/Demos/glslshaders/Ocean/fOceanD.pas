@@ -31,12 +31,12 @@ uses
   GLS.FileDDS,
  
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
   GLScene.TextureFormat,
-  GLScene.Color;
+  GLS.Color;
 
 type
   TForm1 = class(TForm)

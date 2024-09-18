@@ -16,18 +16,18 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorGeometry,
   GLScene.PipelineTransform,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.Manager,
   GLScene.XCollection,
   GLS.Scene,
   GLS.Context,
   GLS.Texture,
   GLS.Objects,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.State,
   GLS.TerrainRenderer,
@@ -444,7 +444,7 @@ type
   TGLODEElementTriMesh = class(TGLODEElementBase)
   private
     FTriMeshData: PdxTriMeshData;
-    FVertices: TGAffineVectorList;
+    FVertices: TGLAffineVectorList;
     FIndices: TgIntegerList;
   protected
     procedure Initialize; override;
@@ -452,7 +452,7 @@ type
     function CalculateMass: TdMass; override;
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
-    procedure SetVertices(const Value: TGAffineVectorList);
+    procedure SetVertices(const Value: TGLAffineVectorList);
     procedure SetIndices(const Value: TgIntegerList);
   public
     constructor Create(AOwner: TXCollection); override;
@@ -461,7 +461,7 @@ type
     class function FriendlyDescription: String; override;
     class function ItemCategory: String; override;
     procedure RefreshTriMeshData;
-    property Vertices: TGAffineVectorList read FVertices write SetVertices;
+    property Vertices: TGLAffineVectorList read FVertices write SetVertices;
     property Indices: TgIntegerList read FIndices write SetIndices;
   end;
 
@@ -811,7 +811,7 @@ type
     FTransform: TGLMatrix;
     FContactResolution: Single;
     FRenderContacts: Boolean;
-    FContactRenderPoints: TGAffineVectorList;
+    FContactRenderPoints: TGLAffineVectorList;
     FPointSize: Single;
     FContactColor: TGColor;
   protected
@@ -3439,7 +3439,7 @@ end;
 constructor TGLODEElementTriMesh.Create(AOwner: TXCollection);
 begin
   inherited;
-  FVertices := TGAffineVectorList.Create;
+  FVertices := TGLAffineVectorList.Create;
   FIndices := TgIntegerList.Create;
 end;
 
@@ -3524,7 +3524,7 @@ begin
   Result := inherited CalculateMass;
 end;
 
-procedure TGLODEElementTriMesh.SetVertices(const Value: TGAffineVectorList);
+procedure TGLODEElementTriMesh.SetVertices(const Value: TGLAffineVectorList);
 begin
   FVertices.Assign(Value);
   RefreshTriMeshData;
@@ -5033,7 +5033,7 @@ begin
   FContactResolution := 1;
 
   FRenderContacts := False;
-  FContactRenderPoints := TGAffineVectorList.Create;
+  FContactRenderPoints := TGLAffineVectorList.Create;
   FContactColor := TGColor.CreateInitialized(Self, clrRed, NotifyChange);
   FPointSize := 3;
 end;

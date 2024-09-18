@@ -13,7 +13,7 @@ uses
   System.Classes,
   System.SysUtils,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO;
 

@@ -24,8 +24,8 @@ uses
   GLScene.VectorGeometry, 
   GLS.Mesh, 
   GLScene.VectorTypes,
-  GLScene.Coordinates, 
-  GLScene.BaseClasses;
+  GLS.Coordinates, 
+  GLS.BaseClasses;
 
 type
   TFormTrails = class(TForm)

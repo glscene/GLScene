@@ -21,8 +21,8 @@ uses
   GLS.SceneViewer,
   GLS.GeomObjects,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses, GLS.SimpleNavigation;
+  GLS.Coordinates,
+  GLS.BaseClasses, GLS.SimpleNavigation;
 
 type
   TFormPointto = class(TForm)

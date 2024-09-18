@@ -15,14 +15,14 @@ uses
   System.SysUtils,
 
   GXS.Cadencer,
-  GLScene.BaseClasses;
+  GXS.BaseClasses;
 
 type
 
   TgxTimeEvent = class;
   TgxTimeEvents = class;
 
-  TgxTimeEventsMGR = class(TgUpdateAbleComponent)
+  TgxTimeEventsMGR = class(TgxUpdateAbleComponent)
   private
     FCadencer: TgxCadencer;
     FEnabled: boolean;
@@ -35,7 +35,7 @@ type
   public
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     procedure Reset();
   published
     property Cadencer: TgxCadencer read FCadencer write SetCadencer;
@@ -139,7 +139,7 @@ begin
   FEvents.Assign(val);
 end;
 
-procedure TgxTimeEventsMGR.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxTimeEventsMGR.DoProgress(const progressTime: TgxProgressTimes);
 var
   i: Integer;
 begin

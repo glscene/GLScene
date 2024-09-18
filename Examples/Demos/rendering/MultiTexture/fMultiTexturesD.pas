@@ -18,8 +18,8 @@ uses
   GLS.Objects,
   GLS.SceneViewer,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLSL.Shader,

@@ -16,10 +16,10 @@
 #include "GLScene.VectorGeometry.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Color.hpp"
+#include "GLS.Color.hpp"
 
-#include "GLScene.Coordinates.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
 //---------------------------------------------------------------------------
 class TFormTentacles : public TForm
 {

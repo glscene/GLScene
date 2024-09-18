@@ -18,12 +18,12 @@ uses
   GLS.VectorFileObjects,
   GLS.VerletTypes,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorGeometry,
   GLS.Texture,
   GLS.RenderContextInfo,
   GLS.State,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Context;
 
 type

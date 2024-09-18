@@ -27,9 +27,9 @@ uses
 
   GLScene.VectorLists,
   GLS.File3DS,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.Utils,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TFormFacevsFace = class(TForm)

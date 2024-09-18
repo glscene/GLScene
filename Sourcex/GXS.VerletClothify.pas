@@ -16,7 +16,7 @@ uses
   System.SysUtils,
 
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorGeometry,
   GXS.VectorFileObjects,
   GXS.VerletTypes,

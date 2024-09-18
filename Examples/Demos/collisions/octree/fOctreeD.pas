@@ -20,9 +20,9 @@ uses
   GLS.Cadencer,
   GLS.GeomObjects,
  
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.Utils,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLScene.VectorLists,
   GLS.File3DS;

@@ -28,7 +28,7 @@ uses
 
   GLScene.VectorGeometry,
   GLScene.Utils,
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.ApplicationFileIO,
   GXS.ImageUtils,
   GXS.Material;
@@ -196,7 +196,7 @@ type
     Though this class can be instantiated, you will usually prefer to subclass
     it in real-world cases, f.i. to add texturing data. *)
   /// TgxHeightData = class (TObject)
-  TgxHeightData = class(TgUpdateAbleObject)
+  TgxHeightData = class(TgxUpdateAbleObject)
   private
     FUsers: array of TgxHeightDataUser;
     FOwner: TgxHeightDataSource;

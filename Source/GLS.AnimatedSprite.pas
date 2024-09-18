@@ -20,10 +20,10 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.XCollection,
   GLS.RenderContextInfo,
-  GLScene.BaseClasses, 
+  GLS.BaseClasses, 
   GLS.Context, 
   GLS.State;
 
@@ -216,7 +216,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
     // Steps the current animation to the next frame
     procedure NextFrame;
   published
@@ -808,7 +808,7 @@ begin
 end;
 {$WARNINGS On}
 
-procedure TGLAnimatedSprite.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLAnimatedSprite.DoProgress(const progressTime: TGLProgressTimes);
 var
   i, intr: Integer;
 begin

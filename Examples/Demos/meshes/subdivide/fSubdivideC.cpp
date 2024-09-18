@@ -6,9 +6,9 @@
 #include "fSubdivideC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLScene.BaseClasses"
+#pragma link "GLS.BaseClasses"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
 #pragma link "GLS.Scene"
@@ -57,7 +57,7 @@ void __fastcall TForm1::BULoadClick(TObject *Sender)
 void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 {
    int i, j;
-   TGAffineVectorList *tris, *norms, *tex, *buf, *morphTris, *morphNorms;
+   TGLAffineVectorList *tris, *norms, *tex, *buf, *morphTris, *morphNorms;
    TGIntegerList *indices, *texIndices;
    TGIntegerList *firstRemap, *subdivideRemap, *bufRemap;
    __int64 t;
@@ -69,7 +69,7 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 
    for (i = 0; i < GLActor1->MeshObjects->Count-1; i++ )
    {
-	  tex = new TGAffineVectorList;
+	  tex = new TGLAffineVectorList;
 	  tris = GLActor1->MeshObjects->Items[i]->ExtractTriangles(tex);
 	  indices = BuildVectorCountOptimizedIndices(tris);
 	  firstRemap = (TGIntegerList *)(indices->CreateClone());
@@ -87,7 +87,7 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 	  SubdivideTriangles(0, tex, texIndices);
 
 	  // Re-expand everything
-	  buf = new TGAffineVectorList;
+	  buf = new TGLAffineVectorList;
 	  try
 	  {
 		 ConvertIndexedListToList(tris, indices, buf);
@@ -126,7 +126,7 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 
 		SubdivideTriangles(TrackBar1->Position*0.1, morphTris, bufRemap, morphNorms);
 
-		buf = new TGAffineVectorList;
+		buf = new TGLAffineVectorList;
 		try
 		{
 		   ConvertIndexedListToList(morphTris, bufRemap, buf);

@@ -43,15 +43,15 @@ uses
   GLScene.Strings,
 
   GLS.Scene,
-  GLScene.PersistentClasses,
-  GLScene.Color,
+  GLS.PersistentClasses,
+  GLS.Color,
   GLS.Objects,
   GLS.Material,
   GLS.GeomObjects,
   GLS.BitmapFont,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.State,
   GLS.Selection;

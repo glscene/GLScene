@@ -13,9 +13,9 @@
 #include <Vcl.ExtDlgs.hpp>
 #include <Vcl.Menus.hpp>
 #include <Vcl.Imaging.jpeg.hpp>
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLS.HUDObjects.hpp"
 #include "GLS.Material.hpp"

@@ -13,8 +13,8 @@ uses
   System.Classes,
   System.SysUtils,
   System.Math,
-  GLScene.PersistentClasses,
-  GLScene.VectorLists,
+  GXS.PersistentClasses,
+  GXS.VectorLists,
   GLScene.VectorGeometry,
   GLScene.VectorTypes;
 
@@ -126,7 +126,7 @@ procedure WeldVertices(vertices: TgAffineVectorList; indicesMap: TgIntegerList;
   If agglomerateLoneTriangles is True, the first of the lists actually contains
   the agglomerated list of the triangles that couldn't be stripified. *)
 function StripifyMesh(indices: TgIntegerList; maxVertexIndex: Integer;
-  agglomerateLoneTriangles: Boolean = False): TgPersistentObjectList;
+  agglomerateLoneTriangles: Boolean = False): TgxPersistentObjectList;
 (* Increases indices coherency wrt vertex caches.
   The indices parameters is understood as vertex indices of a triangles set,
   the triangles are reordered to maximize coherency (vertex reuse) over the
@@ -1022,7 +1022,7 @@ begin
 end;
 
 function StripifyMesh(indices: TgIntegerList; maxVertexIndex: Integer;
-  agglomerateLoneTriangles: Boolean = False): TgPersistentObjectList;
+  agglomerateLoneTriangles: Boolean = False): TgxPersistentObjectList;
 var
   accountedTriangles: array of ByteBool;
   vertexTris: array of TgIntegerList;
@@ -1094,7 +1094,7 @@ var
   loneTriangles: TgIntegerList;
 begin
   Assert((indices.Count mod 3) = 0, 'indices count is not a multiple of 3!');
-  Result := TgPersistentObjectList.Create;
+  Result := TgxPersistentObjectList.Create;
   // direct access and cache vars
   indicesList := indices.list;
   indicesCount := indices.Count;

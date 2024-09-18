@@ -22,9 +22,9 @@ uses
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Material,
-  GLScene.Color,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Color,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.HUDObjects,
   GLS.GeomObjects;
 

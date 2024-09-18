@@ -26,17 +26,17 @@ uses
   GLScene.GeometryBB,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.Strings,
   GXS.Scene,
-  GLScene.Color,
+  GXS.Color,
   GXS.Material,
   GXS.Objects,
   GXS.SceneViewer,
   GXS.GeomObjects,
   GXS.BitmapFont,
   GXS.VectorFileObjects,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.Canvas,
   GXS.Screen,
@@ -265,10 +265,10 @@ type
     FSelAxis: TgxGizmoExAxis;
     fInfoLabelCoordType: TInfoLabelCoordType;
     FReferenceCoordSystem: TgxGizmoExReferenceCoordinateSystem;
-    FBoundingBoxColor: TGColor;
-    FSelectedColor: TGColor;
-    FVisibleInfoLabelsColor: TGColor;
-    FSelectionRegionColor: TGColor;
+    FBoundingBoxColor: TgxColor;
+    FSelectedColor: TgxColor;
+    FVisibleInfoLabelsColor: TgxColor;
+    FSelectionRegionColor: TgxColor;
     FVisibleInfoLabelsColorChanged: Boolean;
     FAutoZoom: Boolean;
     FExcludeObjects: Boolean;
@@ -319,10 +319,10 @@ type
     procedure SetRootObjects(const AValue: TgxBaseSceneObject);
     procedure SetGizmoTmpRoot(const AValue: TgxBaseSceneObject);
     procedure SetGizmoExVisibleInfoLabels(const AValue: TgxGizmoExVisibleInfoLabels);
-    procedure SetBoundingBoxColor(const AValue: TGColor);
-    procedure SetSelectedColor(const AValue: TGColor);
-    procedure SetVisibleInfoLabelsColor(const AValue: TGColor);
-    procedure SetSelectionRegionColor(const AValue: TGColor);
+    procedure SetBoundingBoxColor(const AValue: TgxColor);
+    procedure SetSelectedColor(const AValue: TgxColor);
+    procedure SetVisibleInfoLabelsColor(const AValue: TgxColor);
+    procedure SetSelectionRegionColor(const AValue: TgxColor);
     procedure SetCanChangeWithChildren(AValue: Boolean);
     procedure SetAALines(aValue: Boolean);
     procedure SetInfoLabelCoordType(aValue: TInfoLabelCoordType);
@@ -394,9 +394,9 @@ type
     //--------------------------------------------------------------------
   published
     property Viewer: TgxSceneViewer read FViewer write SetViewer;
-    property BoundingBoxColor: TGColor read FBoundingBoxColor write SetBoundingBoxColor;
-    property SelectedColor: TGColor read FSelectedColor write SetSelectedColor;
-    property SelectionRegionColor: TGColor read FSelectionRegionColor write SetSelectionRegionColor;
+    property BoundingBoxColor: TgxColor read FBoundingBoxColor write SetBoundingBoxColor;
+    property SelectedColor: TgxColor read FSelectedColor write SetSelectedColor;
+    property SelectionRegionColor: TgxColor read FSelectionRegionColor write SetSelectionRegionColor;
     property SelectedObj: TgxBaseSceneObject read GetSelectedObj write SetSelectedObj;
     property SelectedObjects: TgxPickList read GetPickList write SetPickList;
     property OperationMode: TgxGizmoExOperationMode read FOperationMode write SetOperationMode default gomSelect;
@@ -405,7 +405,7 @@ type
     property ExcludeClassname: Boolean read FExcludeClassname write FExcludeClassname;
     property ExcludeClassnameList: TStrings read FExcludeClassnameList write SetExcludeClassnameList;
     property VisibleInfoLabels: TgxGizmoExVisibleInfoLabels read FVisibleVisibleInfoLabels write SetGizmoExVisibleInfoLabels;
-    property VisibleInfoLabelsColor: TGColor read FVisibleInfoLabelsColor write SetVisibleInfoLabelsColor;
+    property VisibleInfoLabelsColor: TgxColor read FVisibleInfoLabelsColor write SetVisibleInfoLabelsColor;
     property AutoZoom: Boolean read FAutoZoom write FAutoZoom default True;
     property AutoZoomFactor: Single read FAutoZoomFactor write SetAutoZoomFactor;
     property ZoomFactor: Single read FZoomFactor write SetZoomFactor;
@@ -705,13 +705,13 @@ begin
   FMoveCoef := 0.1;
   FScaleCoef := 0.1;
 
-  FBoundingBoxColor := TGColor.Create(Self);
+  FBoundingBoxColor := TgxColor.Create(Self);
   FBoundingBoxColor.Color := clrWhite;
-  FSelectionRegionColor := TGColor.Create(Self);
+  FSelectionRegionColor := TgxColor.Create(Self);
   SelectionRegionColor.Color := clrBlack;
-  FSelectedColor := TGColor.Create(Self);
+  FSelectedColor := TgxColor.Create(Self);
   FSelectedColor.Color := clrYellow;
-  FVisibleInfoLabelsColor := TGColor.Create(Self);
+  FVisibleInfoLabelsColor := TgxColor.Create(Self);
   FVisibleInfoLabelsColor.Color := clrYellow;
   FVisibleInfoLabelsColorChanged := False;
 
@@ -2352,7 +2352,7 @@ begin
 
 end;
 
-procedure TgxGizmoEx.SetBoundingBoxColor(const AValue: TGColor);
+procedure TgxGizmoEx.SetBoundingBoxColor(const AValue: TgxColor);
 begin
   if AValue <> FBoundingBoxColor then
   begin
@@ -2361,7 +2361,7 @@ begin
   end;
 end;
 
-procedure TgxGizmoEx.SetSelectedColor(const AValue: TGColor);
+procedure TgxGizmoEx.SetSelectedColor(const AValue: TgxColor);
 begin
   if AValue <> FSelectedColor then
   begin
@@ -2721,7 +2721,7 @@ begin
 end;
 
 
-procedure TgxGizmoEx.SetVisibleInfoLabelsColor(const AValue: TGColor);
+procedure TgxGizmoEx.SetVisibleInfoLabelsColor(const AValue: TgxColor);
 begin
   if AValue <> FSelectedColor then
   begin
@@ -2732,7 +2732,7 @@ begin
   end;
 end;
 
-procedure TgxGizmoEx.SetSelectionRegionColor(const AValue: TGColor);
+procedure TgxGizmoEx.SetSelectionRegionColor(const AValue: TgxColor);
 begin
   if AValue <> FSelectionRegionColor then
   begin

@@ -34,11 +34,11 @@ uses
   GLS.State,
   GLS.Material,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.RenderContextInfo,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.XOpenGL,
   GLS.Context,
   GLScene.VectorTypes,
@@ -53,9 +53,9 @@ type
   private
     FOwner: TGLTree;
     FCount: Integer;
-    FVertices: TGAffineVectorList;
-    FNormals: TGAffineVectorList;
-    FTexCoords: TGAffineVectorList;
+    FVertices: TGLAffineVectorList;
+    FNormals: TGLAffineVectorList;
+    FTexCoords: TGLAffineVectorList;
   public
    constructor Create(AOwner: TGLTree);
     destructor Destroy; override;
@@ -64,9 +64,9 @@ type
     procedure Clear;
     property Owner: TGLTree read FOwner;
     property Count: Integer read FCount;
-    property Vertices: TGAffineVectorList read FVertices;
-    property Normals: TGAffineVectorList read FNormals;
-    property TexCoords: TGAffineVectorList read FTexCoords;
+    property Vertices: TGLAffineVectorList read FVertices;
+    property Normals: TGLAffineVectorList read FNormals;
+    property TexCoords: TGLAffineVectorList read FTexCoords;
   end;
 
   TGLTreeBranch = class
@@ -102,9 +102,9 @@ type
     FOwner: TGLTree;
     FSinList: TGSingleList;
     FCosList: TGSingleList;
-    FVertices: TGAffineVectorList;
-    FNormals: TGAffineVectorList;
-    FTexCoords: TGAffineVectorList;
+    FVertices: TGLAffineVectorList;
+    FNormals: TGLAffineVectorList;
+    FTexCoords: TGLAffineVectorList;
     FIndices: TgIntegerList;
     FRoot: TGLTreeBranch;
     FCount: Integer;
@@ -119,9 +119,9 @@ type
     property Owner: TGLTree read FOwner;
     property SinList: TGSingleList read FSinList;
     property CosList: TGSingleList read FCosList;
-    property Vertices: TGAffineVectorList read FVertices;
-    property Normals: TGAffineVectorList read FNormals;
-    property TexCoords: TGAffineVectorList read FTexCoords;
+    property Vertices: TGLAffineVectorList read FVertices;
+    property Normals: TGLAffineVectorList read FNormals;
+    property TexCoords: TGLAffineVectorList read FTexCoords;
     property Count: Integer read FCount;
   end;
 
@@ -270,9 +270,9 @@ constructor TGLTreeLeaves.Create(AOwner: TGLTree);
 begin
   FOwner := AOwner;
   FCount := 0;
-  FVertices := TGAffineVectorList.Create;
-  FNormals := TGAffineVectorList.Create;
-  FTexCoords := TGAffineVectorList.Create;
+  FVertices := TGLAffineVectorList.Create;
+  FNormals := TGLAffineVectorList.Create;
+  FTexCoords := TGLAffineVectorList.Create;
 end;
 
 destructor TGLTreeLeaves.Destroy;
@@ -615,9 +615,9 @@ begin
   FOwner := AOwner;
   FSinList := TGSingleList.Create;
   FCosList := TGSingleList.Create;
-  FVertices := TGAffineVectorList.Create;
-  FNormals := TGAffineVectorList.Create;
-  FTexCoords := TGAffineVectorList.Create;
+  FVertices := TGLAffineVectorList.Create;
+  FNormals := TGLAffineVectorList.Create;
+  FTexCoords := TGLAffineVectorList.Create;
   FIndices := TgIntegerList.Create;
   FBranchCache := TList.Create;
   FBranchIndices := TgIntegerList.Create;

@@ -13,7 +13,7 @@ uses
   GLS.Scene,
   GLScene.VectorGeometry,
   GLS.Behaviours,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.Strings;
 
 type

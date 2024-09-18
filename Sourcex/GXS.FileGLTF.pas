@@ -14,12 +14,12 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GXS.VectorFileObjects,
   GXS.Texture,
   GXS.ApplicationFileIO,
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.VectorGeometry,
 
   PasGLTF,

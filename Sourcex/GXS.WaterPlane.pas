@@ -21,9 +21,9 @@ uses
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.Utils,
-  GLScene.VectorLists,
-  GLScene.PersistentClasses,
-  GLScene.BaseClasses,
+  GXS.VectorLists,
+  GXS.PersistentClasses,
+  GXS.BaseClasses,
   GXS.Scene,
   GXS.ImageUtils,
   GXS.Context,
@@ -43,7 +43,7 @@ type
   private
     FLocks: packed array of ByteBool;
     FPositions, FVelocity: packed array of Single;
-    FPlaneQuadIndices: TgPersistentObjectList;
+    FPlaneQuadIndices: TgxPersistentObjectList;
     FPlaneQuadTexCoords: TGTexPointList;
     FPlaneQuadVertices: TgAffineVectorList;
     FPlaneQuadNormals: TgAffineVectorList;
@@ -77,7 +77,7 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
     procedure Assign(Source: TPersistent); override;
     function AxisAlignedDimensionsUnscaled: TVector4f; override;
@@ -134,7 +134,7 @@ begin
   FMaximumCatchupIterations := 1;
   FOptions := cDefaultWaterPlaneOptions;
 
-  FPlaneQuadIndices := TgPersistentObjectList.Create;
+  FPlaneQuadIndices := TgxPersistentObjectList.Create;
   FPlaneQuadTexCoords := TGTexPointList.Create;
   FPlaneQuadVertices := TgAffineVectorList.Create;
   FPlaneQuadNormals := TgAffineVectorList.Create;
@@ -154,7 +154,7 @@ begin
   inherited;
 end;
 
-procedure TgxWaterPlane.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxWaterPlane.DoProgress(const progressTime: TgxProgressTimes);
 var
   i: Integer;
 begin

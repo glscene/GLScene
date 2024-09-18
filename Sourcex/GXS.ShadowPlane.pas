@@ -23,7 +23,7 @@ uses
   FMX.Effects,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.Utils,
   GXS.ImageUtils,
@@ -31,7 +31,7 @@ uses
   GLScene.PipelineTransform,
   GXS.Context,
   GXS.Objects,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GLScene.TextureFormat;
@@ -64,14 +64,14 @@ type
     FRendering: Boolean;
     FShadowingObject: TgxBaseSceneObject;
     FShadowedLight: TgxLightSource;
-    FShadowColor: TGColor;
+    FShadowColor: TgxColor;
     FShadowOptions: TShadowPlaneOptions;
     FOnBeginRenderingShadows, FOnEndRenderingShadows: TNotifyEvent;
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure SetShadowingObject(const val: TgxBaseSceneObject);
     procedure SetShadowedLight(const val: TgxLightSource);
-    procedure SetShadowColor(const val: TGColor);
+    procedure SetShadowColor(const val: TgxColor);
     procedure SetShadowOptions(const val: TShadowPlaneOptions);
   public
     constructor Create(AOwner: TComponent); override;
@@ -87,7 +87,7 @@ type
     property ShadowedLight: TgxLightSource read FShadowedLight write SetShadowedLight;
     (* The shadow's color.
        This color is transparently blended to make shadowed area darker. *)
-    property ShadowColor: TGColor read FShadowColor write SetShadowColor;
+    property ShadowColor: TgxColor read FShadowColor write SetShadowColor;
     (* Controls rendering options.
        spoUseStencil: plane area is stenciled, prevents shadowing
           objects to be visible on the sides of the mirror (stencil buffer
@@ -116,12 +116,12 @@ implementation
 
 constructor TgxShadowPlane.Create(AOwner: Tcomponent);
 const
-  cDefaultShadowColor: TGColorVector = (X:0; Y:0; Z:0; W:0.5);
+  cDefaultShadowColor: TgxColorVector = (X:0; Y:0; Z:0; W:0.5);
 begin
   inherited Create(AOwner);
   FShadowOptions := cDefaultShadowPlaneOptions;
   ObjectStyle := ObjectStyle + [osDirectDraw];
-  FShadowColor := TGColor.CreateInitialized(Self, cDefaultShadowColor);
+  FShadowColor := TgxColor.CreateInitialized(Self, cDefaultShadowColor);
 end;
 
 destructor TgxShadowPlane.Destroy;
@@ -319,7 +319,7 @@ begin
 end;
 
 
-procedure TgxShadowPlane.SetShadowColor(const val: TGColor);
+procedure TgxShadowPlane.SetShadowColor(const val: TgxColor);
 begin
   FShadowColor.Assign(val);
 end;

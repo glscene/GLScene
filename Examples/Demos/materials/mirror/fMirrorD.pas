@@ -12,7 +12,7 @@ uses
   Vcl.StdCtrls,
   
   
-  GLScene.BaseClasses, 
+  GLS.BaseClasses, 
   GLS.Scene, 
   GLS.Objects, 
   GLS.Extrusion, 
@@ -20,7 +20,7 @@ uses
   GLS.Cadencer, 
   GLS.SceneViewer, 
   GLS.GeomObjects,
-  GLScene.Coordinates, 
+  GLS.Coordinates, 
  
   GLS.MultiPolygon;
 

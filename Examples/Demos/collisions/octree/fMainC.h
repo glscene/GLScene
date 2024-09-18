@@ -14,8 +14,8 @@
 #include <GLS.VectorFileObjects.hpp>
 #include <GLS.Scene.hpp>
 #include <ExtCtrls.hpp>
-#include "GLScene.BaseClasses.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLScene.Utils.hpp"
 #include "GLS.Scene.hpp"

@@ -20,12 +20,12 @@ uses
   GLS.Objects,
   GLS.Particles,
   GLS.SceneViewer,
-  GLScene.Color,
+  GLS.Color,
   GLS.MultiProxy,
   GLS.Texture,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.VectorGeometry;
 
 type

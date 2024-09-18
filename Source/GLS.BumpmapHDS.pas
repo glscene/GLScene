@@ -24,11 +24,11 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
 
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.HeightData,
   GLS.Graphics,
-  GLScene.Color,
-  GLScene.VectorLists,
+  GLS.Color,
+  GLS.VectorLists,
   GLS.Texture,
   GLS.Material,
   GLScene.Utils;
@@ -108,20 +108,20 @@ type
 
 (*  Some useful methods for setting up bump maps. *)
 procedure CalcObjectSpaceLightVectors(Light : TAffineVector;
-                                      Vertices: TGAffineVectorList;
+                                      Vertices: TGLAffineVectorList;
                                       Colors: TGVectorList);
 procedure SetupTangentSpace(Vertices, Normals, TexCoords,
-                            Tangents, BiNormals : TGAffineVectorList);
+                            Tangents, BiNormals : TGLAffineVectorList);
 procedure CalcTangentSpaceLightVectors(Light : TAffineVector;
                                        Vertices, Normals,
-                                       Tangents, BiNormals : TGAffineVectorList;
+                                       Tangents, BiNormals : TGLAffineVectorList;
                                        Colors: TGVectorList);
 function CreateObjectSpaceNormalMap(Width, Height : Integer;
-                                    HiNormals,HiTexCoords : TGAffineVectorList) : TBitmap;
+                                    HiNormals,HiTexCoords : TGLAffineVectorList) : TBitmap;
 function CreateTangentSpaceNormalMap(Width, Height : Integer;
                                      HiNormals, HiTexCoords,
                                      LoNormals, LoTexCoords,
-                                     Tangents, BiNormals : TGAffineVectorList) : TBitmap;
+                                     Tangents, BiNormals : TGLAffineVectorList) : TBitmap;
 
 
 // ------------------------------------------------------------------
@@ -349,7 +349,7 @@ end;
 
 //----------------- BumpMapping routines ---------------------
 
-procedure CalcObjectSpaceLightVectors(Light: TAffineVector; Vertices: TGAffineVectorList; Colors: TGVectorList);
+procedure CalcObjectSpaceLightVectors(Light: TAffineVector; Vertices: TGLAffineVectorList; Colors: TGVectorList);
 var
   i: Integer;
   vec: TAffineVector;
@@ -362,7 +362,7 @@ begin
   end;
 end;
 
-procedure SetupTangentSpace(Vertices, Normals, TexCoords, Tangents, BiNormals: TGAffineVectorList);
+procedure SetupTangentSpace(Vertices, Normals, TexCoords, Tangents, BiNormals: TGLAffineVectorList);
 var
   i, j: Integer;
   v, n, t: TAffineMatrix;
@@ -455,7 +455,7 @@ begin
 end;
 
 procedure CalcTangentSpaceLightVectors(Light: TAffineVector;
-  Vertices, Normals, Tangents, BiNormals: TGAffineVectorList;
+  Vertices, Normals, Tangents, BiNormals: TGLAffineVectorList;
   Colors: TGVectorList);
 var
   i: Integer;
@@ -601,7 +601,7 @@ begin
 end;
 
 procedure CalcObjectSpaceNormalMap(Width, Height: Integer;
-  NormalMap, Normals, TexCoords: TGAffineVectorList);
+  NormalMap, Normals, TexCoords: TGLAffineVectorList);
 var
   i, X, Y, xs, xe, x1, y1, x2, y2, x3, y3: Integer;
   n, n1, n2, n3: TAffineVector;
@@ -687,12 +687,12 @@ begin
 end;
 
 function CreateObjectSpaceNormalMap(Width, Height: Integer;
-  HiNormals, HiTexCoords: TGAffineVectorList): TBitmap;
+  HiNormals, HiTexCoords: TGLAffineVectorList): TBitmap;
 var
   i: Integer;
-  NormalMap: TGAffineVectorList;
+  NormalMap: TGLAffineVectorList;
 begin
-  NormalMap := TGAffineVectorList.Create;
+  NormalMap := TGLAffineVectorList.Create;
   NormalMap.AddNulls(Width * Height);
   CalcObjectSpaceNormalMap(Width, Height, NormalMap, HiNormals, HiTexCoords);
 
@@ -710,7 +710,7 @@ begin
 end;
 
 function CreateTangentSpaceNormalMap(Width, Height: Integer; HiNormals, HiTexCoords, LoNormals, LoTexCoords, Tangents,
-  BiNormals: TGAffineVectorList): TBitmap;
+  BiNormals: TGLAffineVectorList): TBitmap;
 
   function NormalToTangentSpace(normal: TAffineVector; X, Y, x1, y1, x2, y2, x3, y3: Integer; m1, m2, m3: TAffineMatrix)
     : TAffineVector;
@@ -726,11 +726,11 @@ function CreateTangentSpaceNormalMap(Width, Height: Integer; HiNormals, HiTexCoo
 
 var
   i, X, Y, xs, xe, x1, y1, x2, y2, x3, y3: Integer;
-  NormalMap: TGAffineVectorList;
+  NormalMap: TGLAffineVectorList;
   n: TAffineVector;
   m, m1, m2, m3: TAffineMatrix;
 begin
-  NormalMap := TGAffineVectorList.Create;
+  NormalMap := TGLAffineVectorList.Create;
   NormalMap.AddNulls(Width * Height);
 
   CalcObjectSpaceNormalMap(Width, Height, NormalMap, HiNormals, HiTexCoords);

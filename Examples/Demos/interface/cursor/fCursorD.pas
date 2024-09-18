@@ -20,7 +20,7 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Particles,
   GLS.Texture,
   GLS.Cadencer,
@@ -28,8 +28,8 @@ uses
   GLS.SceneViewer,
  
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils;
 
 type

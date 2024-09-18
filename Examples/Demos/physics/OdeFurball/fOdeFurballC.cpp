@@ -24,8 +24,8 @@
 #pragma package(smart_init)
 //---------------------------------------------------------------------------
 
-#pragma link "GLScene.BaseClasses"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

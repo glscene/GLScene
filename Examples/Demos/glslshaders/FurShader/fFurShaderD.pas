@@ -29,14 +29,14 @@ uses
   GLScene.TextureFormat
   GLS.XOpenGL,
   GLS.Graphics,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Material,
   GLS.Cadencer,
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.Objects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.SceneViewer;
 
 type

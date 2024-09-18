@@ -21,9 +21,9 @@ uses
   GLSL.TextureShaders,
   GLS.HUDObjects,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.Utils;
 
 type

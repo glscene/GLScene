@@ -31,12 +31,12 @@ uses
   System.Math,
 
   GLScene.VectorTypes,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.HeightData,
   GXS.Graphics,
   GLScene.VectorGeometry,
   GXS.Texture,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.Material;
 
 type
@@ -53,8 +53,8 @@ type
   private
     FTileSize: integer;
     FShadowmapLibrary: TgxMaterialLibrary;
-    FLightVector: TgCoordinates;
-    FScale: TgCoordinates;
+    FLightVector: TgxCoordinates;
+    FScale: TgxCoordinates;
     FScaleVec: TVector3f;
     FOnNewTilePrepared: TNewTilePreparedEvent;
     FOnThreadBmp32: TThreadBmp32;
@@ -68,8 +68,8 @@ type
     OwnerHDS: TgxHeightDataSource; // The owner of the tile
   protected
     procedure SetShadowmapLibrary(const val: TgxMaterialLibrary);
-    procedure SetScale(AValue: TgCoordinates);
-    procedure SetLightVector(AValue: TgCoordinates);
+    procedure SetScale(AValue: TgxCoordinates);
+    procedure SetLightVector(AValue: TgxCoordinates);
     procedure SetSoftRange(AValue: cardinal);
     procedure SetDiffuse(AValue: single);
     procedure SetAmbient(AValue: single);
@@ -130,8 +130,8 @@ type
       write FOnThreadBmp32; // WARNING: This runs in a subthread
     property OnNewTilePrepared: TNewTilePreparedEvent read FOnNewTilePrepared
       write FOnNewTilePrepared;
-    property LightVector: TgCoordinates read FLightVector write SetLightVector;
-    property scale: TgCoordinates read FScale write FScale;
+    property LightVector: TgxCoordinates read FLightVector write SetLightVector;
+    property scale: TgxCoordinates read FScale write FScale;
     property ScanDistance: integer read FScanDistance write FScanDistance;
     property SoftRange: cardinal read FSoftRange write SetSoftRange;
     // Shadow height above sufrace for max diffuse light
@@ -148,9 +148,9 @@ implementation
 constructor TgxShadowHDS.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  FLightVector := TgCoordinates.CreateInitialized(Self, VectorMake(1, 0, -1));
+  FLightVector := TgxCoordinates.CreateInitialized(Self, VectorMake(1, 0, -1));
   FLightVector.Style := csVector; // csPoint;
-  FScale := TgCoordinates.CreateInitialized(Self, VectorMake(1, 1, 1));
+  FScale := TgxCoordinates.CreateInitialized(Self, VectorMake(1, 1, 1));
   FScale.Style := csVector; // csPoint;
   FScanDistance := 64;
   FAmbient := 0.25;
@@ -259,7 +259,7 @@ begin
   end;
 end;
 
-procedure TgxShadowHDS.SetLightVector(AValue: TgCoordinates);
+procedure TgxShadowHDS.SetLightVector(AValue: TgxCoordinates);
 begin
   With OwnerHDS.Data.LockList do
     try
@@ -397,7 +397,7 @@ end;
   libMat: TgxLibMaterial;
   bmp32 : TgxBitmap32;
   MatName:string;
-  Hold:TgUpdateAbleObject;
+  Hold:TgxUpdateAbleObject;
   lst:TList;
   begin
 
@@ -407,7 +407,7 @@ end;
   //Uno.Acquire;
   HD:=HeightData;
   MatName:='ShadowHDS_x'+IntToStr(HD.XLeft)+'y'+IntToStr(HD.YTop)+'.'; //name contains xy coordinates of the current tile
-  Hold:=TgUpdateAbleObject.Create(self);
+  Hold:=TgxUpdateAbleObject.Create(self);
 
   LibMat:=FShadowmapLibrary.Materials.GetLibMaterialByName(MatName);   //Check if Tile Texture already exists
   //if assigned(libmat) then LibMat.Name:='Dirty';
@@ -744,7 +744,7 @@ begin
   end;
 end;
 
-procedure TgxShadowHDS.SetScale(AValue: TgCoordinates);
+procedure TgxShadowHDS.SetScale(AValue: TgxCoordinates);
 begin
   with OwnerHDS.Data.LockList do
     try

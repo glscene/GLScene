@@ -13,7 +13,7 @@ uses
   System.Classes,
   System.SysUtils,
   GLScene.Strings,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Context,
   GLScene.Generics,
 
@@ -21,7 +21,7 @@ uses
   CUDA.RunTime;
 
 type
-  TCUDADimensions = class(TGUpdateAbleObject)
+  TCUDADimensions = class(TGLUpdateAbleObject)
   private
     FXYZ: TDim3;
     FMaxXYZ: TDim3;

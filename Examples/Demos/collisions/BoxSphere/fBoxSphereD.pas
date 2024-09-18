@@ -19,7 +19,7 @@ uses
 
   
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
@@ -29,8 +29,8 @@ uses
   GLS.Graph,
   GLS.GeomObjects,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormBoxSphere = class(TForm)

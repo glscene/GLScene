@@ -17,8 +17,8 @@ uses
   GLS.Scene,
   GLScene.VectorGeometry,
   GLScene.XCollection,
-  GLScene.BaseClasses,
-  GLScene.Coordinates;
+  GLS.BaseClasses,
+  GLS.Coordinates;
 
 type
   (*
@@ -33,7 +33,7 @@ type
     linear: linear friction damping.
     quadratic: expresses viscosity
   *)
-  TGLDamping = class(TGUpdateAbleObject)
+  TGLDamping = class(TGLUpdateAbleObject)
   private
     FConstant: single;
     FLinear: single;
@@ -86,7 +86,7 @@ type
     class function FriendlyName: string; override;
     class function FriendlyDescription: string; override;
     class function UniqueItem: boolean; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
     // Adds time-proportionned acceleration to the speed. 
     procedure ApplyTranslationAcceleration(const deltaTime: double;
       const accel: TGLVector);
@@ -140,7 +140,7 @@ type
     class function FriendlyName: string; override;
     class function FriendlyDescription: string; override;
     class function UniqueItem: boolean; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
   published
     property Acceleration: TgCoordinates read FAcceleration write FAcceleration;
   end;
@@ -401,7 +401,7 @@ begin
   Result := True;
 end;
 
-procedure TGLBInertia.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLBInertia.DoProgress(const progressTime: TGLProgressTimes);
 var
   trnVector: TGLVector;
   speed, newSpeed: double;
@@ -579,7 +579,7 @@ begin
   Result := False;
 end;
 
-procedure TGLBAcceleration.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLBAcceleration.DoProgress(const progressTime: TGLProgressTimes);
 var
   i: integer;
   Inertia: TGLBInertia;

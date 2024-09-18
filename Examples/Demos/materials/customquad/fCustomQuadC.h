@@ -16,10 +16,10 @@
 
 #include "GLScene.Utils.hpp"
 #include "JPeg.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Behaviours.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.Material.hpp"
 #include "GLS.Objects.hpp"

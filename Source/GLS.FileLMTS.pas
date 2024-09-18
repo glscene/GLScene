@@ -17,10 +17,10 @@ uses
   GLScene.VectorTypes,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorGeometry,
   GLS.Texture,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Graphics,
   GLS.Material;
 

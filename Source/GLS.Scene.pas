@@ -31,16 +31,16 @@ uses
   GLS.Context,
   GLScene.VectorGeometry,
   GLS.Silhouette,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.PipelineTransform,
   GLS.State,
   GLS.Graphics,
   GLScene.GeometryBB,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.Texture,
-  GLScene.Color,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.BaseClasses,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
   GLScene.TextureFormat,
@@ -180,7 +180,7 @@ type
     FIsCalculating: Boolean;
     FObjectsSorting: TGLObjectsSorting;
     FVisibilityCulling: TGLVisibilityCulling;
-    FOnProgress: TgProgressEvent;
+    FOnProgress: TGLProgressEvent;
     FOnAddedToParent: TNotifyEvent;
     FBehaviours: TGLBehaviours;
     FEffects: TGLEffects;
@@ -466,7 +466,7 @@ type
     procedure MoveChildDown(anIndex: Integer);
     procedure MoveChildFirst(anIndex: Integer);
     procedure MoveChildLast(anIndex: Integer);
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
     procedure MoveTo(newParent: TGLBaseSceneObject); virtual;
     procedure MoveUp;
     procedure MoveDown;
@@ -540,7 +540,7 @@ type
       SetObjectsSorting default osInherited;
     property VisibilityCulling: TGLVisibilityCulling read FVisibilityCulling
       write SetVisibilityCulling default vcInherited;
-    property OnProgress: TgProgressEvent read FOnProgress write FOnProgress;
+    property OnProgress: TGLProgressEvent read FOnProgress write FOnProgress;
     property OnPicked: TNotifyEvent read FOnPicked write FOnPicked;
     property OnAddedToParent: TNotifyEvent read FOnAddedToParent write FOnAddedToParent;
     property Behaviours: TGLBehaviours read GetBehaviours write SetBehaviours stored False;
@@ -580,7 +580,7 @@ type
   public
     constructor Create(aOwner: TXCollection); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); virtual;
+    procedure DoProgress(const progressTime: TGLProgressTimes); virtual;
   end;
 
   (* Ancestor for non-rendering behaviours.
@@ -605,7 +605,7 @@ type
     class function ItemsClass: TXCollectionItemClass; override;
     property Behaviour[index: Integer]: TGLBehaviour read GetBehaviour; default;
     function CanAdd(aClass: TXCollectionItemClass): Boolean; override;
-    procedure DoProgress(const progressTimes: TGProgressTimes); inline;
+    procedure DoProgress(const progressTimes: TGLProgressTimes); inline;
   end;
 
   (* A rendering effect that can be applied to SceneObjects.
@@ -656,7 +656,7 @@ type
     class function ItemsClass: TXCollectionItemClass; override;
     property ObjectEffect[index: Integer]: TGLEffect read GetEffect; default;
     function CanAdd(aClass: TXCollectionItemClass): Boolean; override;
-    procedure DoProgress(const progressTime: TGProgressTimes);
+    procedure DoProgress(const progressTime: TGLProgressTimes);
     procedure RenderPreEffects(var rci: TGLRenderContextInfo); inline;
     //Also take care of registering after effects with the GLSceneViewer.
     procedure RenderPostEffects(var rci: TGLRenderContextInfo); inline;
@@ -1134,7 +1134,7 @@ type
      components), but those are edited with a specific editor (double-click
      on the TGLScene component at design-time to invoke it). To add objects
      at runtime, use the AddNewChild method of TGLBaseSceneObject. *)
-  TGLScene = class(TGUpdateAbleComponent)
+  TGLScene = class(TGLUpdateAbleComponent)
   private
     FUpdateCount: Integer;
     FObjects: TGLSceneRootObject;
@@ -1144,8 +1144,8 @@ type
     FCurrentBuffer: TGLSceneBuffer;
     FObjectsSorting: TGLObjectsSorting;
     FVisibilityCulling: TGLVisibilityCulling;
-    FOnBeforeProgress: TgProgressEvent;
-    FOnProgress: TgProgressEvent;
+    FOnBeforeProgress: TGLProgressEvent;
+    FOnProgress: TGLProgressEvent;
     FCurrentDeltaTime: Double;
     FInitializableObjects: TGLInitializableObjectList;
   protected
@@ -1210,8 +1210,8 @@ type
     // Defines default VisibilityCulling option for scene objects.
     property VisibilityCulling: TGLVisibilityCulling read FVisibilityCulling
       write SetVisibilityCulling default vcNone;
-    property OnBeforeProgress: TgProgressEvent read FOnBeforeProgress write FOnBeforeProgress;
-    property OnProgress: TgProgressEvent read FOnProgress write FOnProgress;
+    property OnBeforeProgress: TGLProgressEvent read FOnBeforeProgress write FOnBeforeProgress;
+    property OnProgress: TGLProgressEvent read FOnProgress write FOnProgress;
   end;
 
   TFogMode = (fmLinear, fmExp, fmExp2);
@@ -1226,7 +1226,7 @@ type
      The fog descibed by this object is a distance-based fog, ie. the "intensity"
      of the fog is given by a formula depending solely on the distance, this
      intensity is used for blending to a fixed color. *)
-  TGLFogEnvironment = class(TGUpdateAbleObject)
+  TGLFogEnvironment = class(TGLUpdateAbleObject)
   private
     FSceneBuffer: TGLSceneBuffer;
     FFogColor: TGColor; // alpha value means the fog density
@@ -1269,7 +1269,7 @@ type
   TGLShadeModel = (smDefault, smSmooth, smFlat);
 
   // Encapsulates a frame/rendering buffer.
-  TGLSceneBuffer = class(TGUpdateAbleObject)
+  TGLSceneBuffer = class(TGLUpdateAbleObject)
   private
     // Internal state
     FRendering: Boolean;
@@ -3449,7 +3449,7 @@ begin
   end;
 end;
 
-procedure TGLBaseSceneObject.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLBaseSceneObject.DoProgress(const progressTime: TGLProgressTimes);
 var
   i: Integer;
 begin
@@ -4103,7 +4103,7 @@ begin
   Result := TGLBaseSceneObject(Owner.Owner);
 end;
 
-procedure TGLBaseBehaviour.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLBaseBehaviour.DoProgress(const progressTime: TGLProgressTimes);
 begin
   // does nothing
 end;
@@ -4146,7 +4146,7 @@ begin
     CanAdd(aClass));
 end;
 
-procedure TGLBehaviours.DoProgress(const progressTimes: TGProgressTimes);
+procedure TGLBehaviours.DoProgress(const progressTimes: TGLProgressTimes);
 var
   i: Integer;
 begin
@@ -4223,7 +4223,7 @@ begin
     CanAdd(aClass));
 end;
 
-procedure TGLEffects.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLEffects.DoProgress(const progressTime: TGLProgressTimes);
 var
   i: Integer;
 begin
@@ -5768,7 +5768,7 @@ end;
 
 procedure TGLScene.Progress(const deltaTime, newTime: Double);
 var
-  pt: TGProgressTimes;
+  pt: TGLProgressTimes;
 begin
   pt.deltaTime := deltaTime;
   pt.newTime := newTime;

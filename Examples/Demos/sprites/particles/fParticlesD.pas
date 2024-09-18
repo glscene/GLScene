@@ -17,13 +17,13 @@ uses
   GLS.Particles,
   GLS.Behaviours,
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Cadencer,
   GLScene.VectorTypes,
   GLS.SceneViewer,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils, GLS.SimpleNavigation;
 
 type

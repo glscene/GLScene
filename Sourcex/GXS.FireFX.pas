@@ -15,16 +15,16 @@ uses
   System.SysUtils,
 
   GLScene.XCollection,
-  GLScene.BaseClasses,
-  GLScene.VectorLists,
+  GXS.BaseClasses,
+  GXS.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Manager,
   GXS.Scene,
   GXS.Context,
   GXS.Cadencer,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GXS.Color,
+  GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.State,
   GLScene.PipelineTransform,
@@ -47,17 +47,17 @@ type
   (* Fire special effect manager.
     Defines the looks and behaviour of a particle system that can be made
     to look fire-like. *)
-  TgxFireFXManager = class(TGCadenceAbleComponent)
+  TgxFireFXManager = class(TgxCadenceAbleComponent)
   private
     FClients: TList;
     FFireParticles: PFireParticleArray;
-    FFireDir, FInitialDir: TgCoordinates;
+    FFireDir, FInitialDir: TgxCoordinates;
     FCadencer: TgxCadencer;
     FMaxParticles, FParticleLife: Integer;
     FParticleSize, FFireDensity, FFireEvaporation: Single;
     FFireCrown, FParticleInterval, IntervalDelta: Single;
     NP: Integer;
-    FInnerColor, FOuterColor: TGColor;
+    FInnerColor, FOuterColor: TgxColor;
     FFireBurst, FFireRadius: Single;
     FDisabled, FPaused, FUseInterval: Boolean;
     FReference: TgxBaseSceneObject;
@@ -66,18 +66,18 @@ type
     procedure RegisterClient(aClient: TgxBFireFX);
     procedure DeRegisterClient(aClient: TgxBFireFX);
     procedure DeRegisterAllClients;
-    procedure SetFireDir(const val: TgCoordinates);
-    procedure SetInitialDir(const val: TgCoordinates);
+    procedure SetFireDir(const val: TgxCoordinates);
+    procedure SetInitialDir(const val: TgxCoordinates);
     procedure SetCadencer(const val: TgxCadencer);
     function StoreParticleSize: Boolean;
-    procedure SetInnerColor(const val: TGColor);
-    procedure SetOuterColor(const val: TGColor);
+    procedure SetInnerColor(const val: TgxColor);
+    procedure SetOuterColor(const val: TgxColor);
     procedure SetReference(const val: TgxBaseSceneObject);
     procedure SetMaxParticles(const val: Integer);
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure CalcFire(deltaTime: Double; ParticleInterval, ParticleLife: Single;
       FireAlpha: Single);
-    procedure AffParticle3d(Color2: TGColorVector; const mat: TMatrix4f);
+    procedure AffParticle3d(Color2: TgxColorVector; const mat: TMatrix4f);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -97,12 +97,12 @@ type
       nbParticles: Integer = -1);
     // Current Nb of particles.
     property ParticleCount: Integer read NP;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
   published
     // Adjusts the acceleration direction (abs coordinates).
-    property FireDir: TgCoordinates read FFireDir write SetFireDir;
+    property FireDir: TgxCoordinates read FFireDir write SetFireDir;
     // Adjusts the initial direction (abs coordinates).
-    property InitialDir: TgCoordinates read FInitialDir write SetInitialDir;
+    property InitialDir: TgxCoordinates read FInitialDir write SetInitialDir;
     // The cadencer that will "drive" the animation of the system.
     property Cadencer: TgxCadencer read FCadencer write SetCadencer;
     // Maximum number of simultaneous particles in the system.
@@ -110,9 +110,9 @@ type
     // Size of the particle, in absolute units.
     property ParticleSize: Single read FParticleSize write FParticleSize stored StoreParticleSize;
     // Inner color of a particle.
-    property InnerColor: TGColor read FInnerColor write SetInnerColor;
+    property InnerColor: TgxColor read FInnerColor write SetInnerColor;
     // Outer color of a particle.
-    property OuterColor: TGColor read FOuterColor write SetOuterColor; // default clrWhite;
+    property OuterColor: TgxColor read FOuterColor write SetOuterColor; // default clrWhite;
     property FireDensity: Single read FFireDensity write FFireDensity;
     property FireEvaporation: Single read FFireEvaporation write FFireEvaporation;
     (* Adjust a crown (circular) radius on which particles are spawned.
@@ -208,13 +208,13 @@ begin
   inherited Create(AOwner);
   FClients := TList.Create;
   RegisterManager(Self);
-  FFireDir := TgCoordinates.CreateInitialized(Self, VectorMake(0, 0.5, 0), csPoint);
-  FInitialDir := TgCoordinates.CreateInitialized(Self, YHmgVector, csPoint);
+  FFireDir := TgxCoordinates.CreateInitialized(Self, VectorMake(0, 0.5, 0), csPoint);
+  FInitialDir := TgxCoordinates.CreateInitialized(Self, YHmgVector, csPoint);
   FMaxParticles := 256;
   FParticleSize := 1.0;
-  FInnerColor := TGColor.Create(Self);
+  FInnerColor := TgxColor.Create(Self);
   FInnerColor.Initialize(clrYellow);
-  FOuterColor := TGColor.Create(Self);
+  FOuterColor := TgxColor.Create(Self);
   FOuterColor.Initialize(clrOrange);
   FFireDensity := 1;
   FFireEvaporation := 0.86;
@@ -273,12 +273,12 @@ begin
   FClients.Clear;
 end;
 
-procedure TgxFireFXManager.SetFireDir(const val: TgCoordinates);
+procedure TgxFireFXManager.SetFireDir(const val: TgxCoordinates);
 begin
   FFireDir.Assign(val);
 end;
 
-procedure TgxFireFXManager.SetInitialDir(const val: TgCoordinates);
+procedure TgxFireFXManager.SetInitialDir(const val: TgxCoordinates);
 begin
   FInitialDir.Assign(val);
 end;
@@ -300,7 +300,7 @@ begin
   Result := (FParticleSize <> 1);
 end;
 
-procedure TgxFireFXManager.SetInnerColor(const val: TGColor);
+procedure TgxFireFXManager.SetInnerColor(const val: TgxColor);
 begin
   if FInnerColor <> val then
   begin
@@ -309,7 +309,7 @@ begin
   end;
 end;
 
-procedure TgxFireFXManager.SetOuterColor(const val: TGColor);
+procedure TgxFireFXManager.SetOuterColor(const val: TgxColor);
 begin
   if FOuterColor <> val then
   begin
@@ -350,7 +350,7 @@ begin
   inherited;
 end;
 
-procedure TgxFireFXManager.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxFireFXManager.DoProgress(const progressTime: TgxProgressTimes);
 var
   i: Integer;
 begin
@@ -506,7 +506,7 @@ begin
   end;
 end;
 
-procedure TgxFireFXManager.AffParticle3d(Color2: TGColorVector; const mat: TMatrix4f);
+procedure TgxFireFXManager.AffParticle3d(Color2: TgxColorVector; const mat: TMatrix4f);
 var
   vx, vy: TVector4f;
   i: Integer;

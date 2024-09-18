@@ -63,8 +63,8 @@ uses
   GLS.HeightData,
   GLS.TerrainRenderer,
   GLS.Texture,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
   GLS.Context;

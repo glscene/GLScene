@@ -20,13 +20,13 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Utils,
-  GLScene.PersistentClasses,
-  GLScene.BaseClasses,
+  GXS.PersistentClasses,
+  GXS.BaseClasses,
   GXS.Scene,
   GXS.Objects,
   GLScene.PipelineTransform,
   GXS.Context,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GXS.State,
   GXS.ImageUtils,
@@ -40,21 +40,21 @@ type
   { The actual gradients between two colors are, of course, calculated by OpenGL.
     The start and end colors of a gradient are stored to represent the color of
     lens flare elements. }
-  TgxFlareGradient = class(TgUpdateAbleObject)
+  TgxFlareGradient = class(TgxUpdateAbleObject)
   private
-    FFromColor: TGColor;
-    FToColor: TGColor;
+    FFromColor: TgxColor;
+    FToColor: TgxColor;
   protected
-    procedure SetFromColor(const val: TGColor);
-    procedure SetToColor(const val: TGColor);
+    procedure SetFromColor(const val: TgxColor);
+    procedure SetToColor(const val: TgxColor);
   public
     constructor Create(AOwner: TPersistent); override;
-    constructor CreateInitialized(AOwner: TPersistent; const fromColor, toColor: TGColorVector);
+    constructor CreateInitialized(AOwner: TPersistent; const fromColor, toColor: TgxColorVector);
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
   published
-    property fromColor: TGColor read FFromColor write SetFromColor;
-    property toColor: TGColor read FToColor write SetToColor;
+    property fromColor: TgxColor read FFromColor write SetFromColor;
+    property toColor: TgxColor read FToColor write SetToColor;
   end;
 
 const
@@ -122,7 +122,7 @@ type
     destructor Destroy; override;
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     { Prepares pre-rendered texture to speed up actual rendering.
       Will use the currently active context as scratch space, and will
       automatically do nothing if things have already been prepared,
@@ -196,11 +196,11 @@ implementation
 constructor TgxFlareGradient.Create(AOwner: TPersistent);
 begin
   inherited;
-  FFromColor := TGColor.Create(Self);
-  FToColor := TGColor.Create(Self);
+  FFromColor := TgxColor.Create(Self);
+  FToColor := TgxColor.Create(Self);
 end;
 
-constructor TgxFlareGradient.CreateInitialized(AOwner: TPersistent; const fromColor, toColor: TGColorVector);
+constructor TgxFlareGradient.CreateInitialized(AOwner: TPersistent; const fromColor, toColor: TgxColorVector);
 begin
   Create(AOwner);
   FFromColor.Initialize(fromColor);
@@ -224,12 +224,12 @@ begin
   inherited;
 end;
 
-procedure TgxFlareGradient.SetFromColor(const val: TGColor);
+procedure TgxFlareGradient.SetFromColor(const val: TgxColor);
 begin
   FFromColor.Assign(val);
 end;
 
-procedure TgxFlareGradient.SetToColor(const val: TGColor);
+procedure TgxFlareGradient.SetToColor(const val: TgxColor);
 begin
   FToColor.Assign(val);
 end;
@@ -647,7 +647,7 @@ begin
     Self.RenderChildren(0, Count - 1, rci);
 end;
 
-procedure TgxLensFlare.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxLensFlare.DoProgress(const progressTime: TgxProgressTimes);
 begin
   inherited;
   FDeltaTime := progressTime.deltaTime;

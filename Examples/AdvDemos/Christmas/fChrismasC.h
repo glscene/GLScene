@@ -14,7 +14,7 @@
 
 #include "GLS.BitmapFont.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLS.GeomObjects.hpp"
 #include "GLS.HUDObjects.hpp"
@@ -34,7 +34,7 @@
 #include "GLS.FileMP3.hpp"
 #include "GLS.ThorFX.hpp"
 #include "GLS.FireFX.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLScene.Utils.hpp"
 #include "GLS.SoundManager.hpp"
 #include "GLS.Sounds.BASS.hpp"

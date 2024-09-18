@@ -14,12 +14,12 @@ uses
   System.SysUtils,
 
   GLS.VectorFileObjects,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.Utils,
   GLS.ApplicationFileIO,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.VectorLists;
+  GLS.VectorLists;
 
 type
 
@@ -28,7 +28,7 @@ type
     FMD5String, FTempString, FBoneNames: TStringList;
     FCurrentPos: Integer;
     FBasePose: TGLSkeletonFrame;
-    FFramePositions: TGAffineVectorList;
+    FFramePositions: TGLAffineVectorList;
     FFrameQuaternions: TGQuaternionList;
     FJointFlags: TgIntegerList;
     FNumFrames, FFirstFrame, FFrameRate, FNumJoints: Integer;
@@ -204,7 +204,7 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
     vnum, wnum, numverts, numweights: Integer;
     VertexWeightID, VertexWeightCount, VertexBoneRef: TgIntegerList;
     VertexWeight: TGSingleList;
-    VertexWeighted: TGAffineVectorList;
+    VertexWeighted: TGLAffineVectorList;
     blendedVert, transformedVert: TAffineVector;
     i, j, k: Integer;
     mat: TGLMatrix;
@@ -213,7 +213,7 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
     VertexWeightCount := TgIntegerList.Create;
     VertexBoneRef := TgIntegerList.Create;
     VertexWeight := TGSingleList.Create;
-    VertexWeighted := TGAffineVectorList.Create;
+    VertexWeighted := TGLAffineVectorList.Create;
 
     numverts := 0;
 
@@ -478,7 +478,7 @@ begin
         if (temp = 'numjoints') then
         begin
           FNumJoints := StrToInt(FTempString[1]);
-          FFramePositions := TGAffineVectorList.Create;
+          FFramePositions := TGLAffineVectorList.Create;
           FFrameQuaternions := TGQuaternionList.Create;
           if Owner.Skeleton.Frames.Count = 0 then
           begin

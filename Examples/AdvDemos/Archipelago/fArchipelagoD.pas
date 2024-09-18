@@ -17,8 +17,8 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
@@ -41,7 +41,7 @@ uses
   GLS.WindowsFont,
   GLS.BitmapFont,
   GLS.RenderContextInfo,
-  GLScene.Color,
+  GLS.Color,
   GLS.VectorFileObjects,
   GLS.Context,
   GLS.State,
@@ -95,8 +95,8 @@ type
     WaterPlane: Boolean;
     WasAboveWater: Boolean;
     HelpOpacity: Single;
-    WakeVertices: TGAffineVectorList;
-    WakeStretch: TGAffineVectorList;
+    WakeVertices: TGLAffineVectorList;
+    WakeStretch: TGLAffineVectorList;
     WakeTime: TGSingleList;
     procedure ResetMousePos;
     function WaterPhase(const px, py: Single): Single;
@@ -547,8 +547,8 @@ var
 begin
   if WakeVertices = nil then
   begin
-    WakeVertices := TGAffineVectorList.Create;
-    WakeStretch := TGAffineVectorList.Create;
+    WakeVertices := TGLAffineVectorList.Create;
+    WakeStretch := TGLAffineVectorList.Create;
     WakeTime := TGSingleList.Create;
   end;
 

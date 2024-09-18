@@ -21,8 +21,8 @@ uses
   GLS.MultiPolygon,
   GLS.SceneViewer,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TFormCutoutStar = class(TForm)

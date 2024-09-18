@@ -7,8 +7,8 @@
 #include "fNutsnBoltsC.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#pragma link "GLScene.BaseClasses"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.BaseClasses"
+#pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Extrusion"
 #pragma link "GLS.GeomObjects"

@@ -22,8 +22,8 @@ uses
   GLS.Texture,
 
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.FileMD2,
   GLScene.Utils, GLS.SimpleNavigation;

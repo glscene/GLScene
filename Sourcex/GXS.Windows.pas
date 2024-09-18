@@ -26,17 +26,17 @@ uses
   GLScene.Strings,
   GLScene.Utils,
 
-  GLScene.PersistentClasses,
-  GLScene.BaseClasses,
+  GXS.PersistentClasses,
+  GXS.BaseClasses,
   GXS.Scene,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GXS.HUDObjects,
   GXS.Material,
   GXS.Context,
   GXS.BitmapFont,
   GXS.WindowsFont,
   GXS.Gui,
-  GLScene.Color,
+  GXS.Color,
   GXS.RenderContextInfo,
   GXS.Objects,
   GXS.State,
@@ -88,7 +88,7 @@ type
     procedure DoChanges; virtual;
     procedure MoveGUI(XRel, YRel: Single);
     procedure PlaceGUI(XPos, YPos: Single);
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     procedure DoRender(var rci: TgxRenderContextInfo; renderSelf, renderChildren:
       Boolean); override;
     procedure InternalRender(var rci: TgxRenderContextInfo; renderSelf,
@@ -184,16 +184,16 @@ type
   TgxBaseFontControl = class(TgxBaseControl)
   private
     FBitmapFont: TgxCustomBitmapFont;
-    FDefaultColor: TGColorVector;
+    FDefaultColor: TgxColorVector;
   protected
     function GetDefaultColor: TColor; 
     procedure SetDefaultColor(value: TColor);  
     procedure SetBitmapFont(NewFont: TgxCustomBitmapFont);
     function GetBitmapFont: TgxCustomBitmapFont;
     procedure WriteTextAt(var rci: TgxRenderContextInfo; const X, Y: Single;
-      const Data: UnicodeString; const Color: TGColorVector); overload;
+      const Data: UnicodeString; const Color: TgxColorVector); overload;
     procedure WriteTextAt(var rci: TgxRenderContextInfo; const X1, Y1, X2, Y2:
-      Single; const Data: UnicodeString; const Color: TGColorVector); overload;
+      Single; const Data: UnicodeString; const Color: TgxColorVector); overload;
     function GetFontHeight: Integer;
   public
     constructor Create(AOwner: TComponent); override;
@@ -225,7 +225,7 @@ type
     FOnKeyUp: TKeyEvent;
     FOnKeyPress: TKeyEvent;
     FShiftState: TShiftState;
-    FFocusedColor: TGColorVector;
+    FFocusedColor: TgxColorVector;
   protected
     procedure InternalKeyPress(var Key: Char); virtual;
     procedure InternalKeyDown(var Key: Word; Shift: TShiftState); virtual;
@@ -351,7 +351,7 @@ type
     Moving: Boolean;
     OldX: Integer;
     OldY: Integer;
-    FTitleColor: TGColorVector;
+    FTitleColor: TgxColorVector;
     FTitleOffset: Single;
   protected
     procedure InternalMouseDown(Shift: TShiftState; Button: TMouseButton; X,
@@ -587,7 +587,7 @@ type
     FColSelect: Boolean;
     FColumns: TStrings;
     FRows: TList;
-    FHeaderColor: TGColorVector;
+    FHeaderColor: TgxColorVector;
     FMarginSize: Integer;
     FColumnSize: Integer;
     FRowHeight: Integer;
@@ -1766,7 +1766,7 @@ begin
 end;
 
 procedure TgxBaseFontControl.WriteTextAt(var rci: TgxRenderContextInfo; const X,
-  Y: Single; const Data: UnicodeString; const Color: TGColorVector);
+  Y: Single; const Data: UnicodeString; const Color: TgxColorVector);
 var
   Position: TVector4f;
 begin
@@ -1781,7 +1781,7 @@ begin
 end;
 
 procedure TgxBaseFontControl.WriteTextAt(var rci: TgxRenderContextInfo; const X1,
-  Y1, X2, Y2: Single; const Data: UnicodeString; const Color: TGColorVector);
+  Y1, X2, Y2: Single; const Data: UnicodeString; const Color: TgxColorVector);
 var
   Position: TVector4f;
 begin
@@ -2326,7 +2326,7 @@ end;
 procedure TgxForm.InternalRender(var rci: TgxRenderContextInfo; renderSelf,
   renderChildren: Boolean);
 var
-  ATitleColor: TGColorVector;
+  ATitleColor: TgxColorVector;
 begin
   if Assigned(FGuiComponent) then
   begin
@@ -2663,7 +2663,7 @@ var
   TexHeight: Integer;
   Material: TgxMaterial;
   LibMaterial: TgxLibMaterial;
-  TextColor: TGColorVector;
+  TextColor: TgxColorVector;
 
 begin
   if Pressed then
@@ -2970,7 +2970,7 @@ procedure TgxLabel.InternalRender(var rci: TgxRenderContextInfo; renderSelf,
 var
   TekstPos: TVector4f;
   Tekst: UnicodeString;
-  TextColor: TGColorVector;
+  TextColor: TgxColorVector;
 begin
   if Assigned(BitmapFont) then
   begin
@@ -3865,7 +3865,7 @@ begin
   inherited;
 end;
 
-procedure TgxBaseComponent.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxBaseComponent.DoProgress(const progressTime: TgxProgressTimes);
 begin
   inherited;
   if FDoChangesOnProgress then

@@ -21,8 +21,8 @@ uses
   GLScene.TextureFormat,
   GXS.Graphics,
   GXS.ImageUtils,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GXS.Color,
+  GXS.Coordinates,
   GXS.Material,
   GXS.State;
 
@@ -93,9 +93,9 @@ type
     infini: Longint;
     done: Boolean;
     NewMat: TgxLibMaterial;
-    tmpcoords: TgCoordinates;
-    tmpcolor: TGColor;
-    tmpcoords4: TgCoordinates4;
+    tmpcoords: TgxCoordinates;
+    tmpcolor: TgxColor;
+    tmpcoords4: TgxCoordinates4;
     tmpstr: string;
     procedure SeTgxShaderItems(const Value: TgxShaderItems);
     procedure SeTgxMaterialLibraryItems(const Value: TgxMaterialLibraryItems);

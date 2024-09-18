@@ -21,14 +21,14 @@ uses
   System.Types,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
 
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.Objects,
   GXS.Scene,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.SpacePartition,
   GLScene.GeometryBB;
@@ -73,7 +73,7 @@ type
     // Simple and less accurate method for friction
     procedure OldApplyFriction(const friction, penetrationDepth: Single);
     // Perform Verlet integration
-    procedure Verlet(const vpt: TGProgressTimes); virtual;
+    procedure Verlet(const vpt: TgxProgressTimes); virtual;
     (* Initlializes the node. For the base class, it just makes sure that
       FOldPosition = FPosition, so that speed is zero *)
     procedure Initialize; dynamic;
@@ -287,7 +287,7 @@ type
     constructor Create(const aOwner: TgxVerletWorld); virtual;
     destructor Destroy; override;
     // Implementation should add force to force resultant for all relevant nodes
-    procedure AddForce(const vpt: TGProgressTimes); virtual; abstract;
+    procedure AddForce(const vpt: TgxProgressTimes); virtual; abstract;
     // Notifies removal of a node
     procedure RemoveNode(const aNode: TgxBaseVerletNode); virtual; abstract;
     property Owner: TgxVerletWorld read FOwner;
@@ -321,7 +321,7 @@ type
   TgxVerletGlobalForce = class(TgxVerletForce)
   public
     procedure RemoveNode(const aNode: TgxBaseVerletNode); override;
-    procedure AddForce(const vpt: TGProgressTimes); override;
+    procedure AddForce(const vpt: TgxProgressTimes); override;
     procedure AddForceToNode(const aNode: TgxBaseVerletNode); virtual; abstract;
   end;
 
@@ -362,9 +362,9 @@ type
     FInertia: Boolean;
     FInertaPauseSteps: Integer;
   protected
-    procedure AccumulateForces(const vpt: TGProgressTimes); virtual;
-    procedure Verlet(const vpt: TGProgressTimes); virtual;
-    procedure SatisfyConstraints(const vpt: TGProgressTimes); virtual;
+    procedure AccumulateForces(const vpt: TgxProgressTimes); virtual;
+    procedure Verlet(const vpt: TgxProgressTimes); virtual;
+    procedure SatisfyConstraints(const vpt: TgxProgressTimes); virtual;
     procedure DoUpdateSpacePartition;
   public
     constructor Create; virtual;
@@ -449,7 +449,7 @@ type
   protected
     procedure SetSlack(const Value: Single);
   public
-    procedure AddForce(const vpt: TGProgressTimes); override;
+    procedure AddForce(const vpt: TgxProgressTimes); override;
     // Must be invoked after adjust node locations or strength
     procedure SetRestLengthToCurrent;
     property Strength: Single read FStrength write FStrength;
@@ -620,7 +620,7 @@ type
   protected
     procedure SetLocation(const Value: TAffineVector); override;
   public
-    procedure Verlet(const vpt: TGProgressTimes); override;
+    procedure Verlet(const vpt: TgxProgressTimes); override;
     property GXBaseSceneObject: TgxBaseSceneObject read FGXBaseSceneObject
       write SetBaseSceneObject;
     property RelativePosition: TAffineVector read FRelativePosition
@@ -672,8 +672,8 @@ type
   private
     FVerletConstraint: TgxVerletConstraint;
   public
-    procedure WriteToFiler(Writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TgVirtualReader); override;
+    procedure WriteToFiler(Writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgxVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); virtual;
     // The verlet constraint is created through the AddToVerletWorld procedure
     property VerletConstraint: TgxVerletConstraint read FVerletConstraint;
@@ -687,8 +687,8 @@ type
     procedure SetRadius(const Val: Single);
   public
     constructor Create; override;
-    procedure WriteToFiler(Writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TgVirtualReader); override;
+    procedure WriteToFiler(Writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgxVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); override;
     procedure AlignCollider; override;
     property Radius: Single read FRadius write SetRadius;
@@ -703,8 +703,8 @@ type
     procedure SetLength(const Val: Single);
   public
     constructor Create; override;
-    procedure WriteToFiler(Writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TgVirtualReader); override;
+    procedure WriteToFiler(Writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TgxVirtualReader); override;
     procedure AddToVerletWorld(VerletWorld: TgxVerletWorld); override;
     procedure AlignCollider; override;
     property Radius: Single read FRadius write SetRadius;
@@ -756,7 +756,7 @@ begin
     FRelativePosition := GXBaseSceneObject.AbsoluteToLocal(Value);
 end;
 
-procedure TgxVerletNode.Verlet(const vpt: TGProgressTimes);
+procedure TgxVerletNode.Verlet(const vpt: TgxProgressTimes);
 begin
   if Assigned(GXBaseSceneObject) and NailedDown then
   begin
@@ -864,7 +864,7 @@ begin
     FInvWeight := 1;
 end;
 
-procedure TgxBaseVerletNode.Verlet(const vpt: TGProgressTimes);
+procedure TgxBaseVerletNode.Verlet(const vpt: TgxProgressTimes);
 var
   newLocation, temp, move, accel: TAffineVector;
 begin
@@ -1253,7 +1253,7 @@ begin
   inherited;
 end;
 
-procedure TgxVerletWorld.AccumulateForces(const vpt: TGProgressTimes);
+procedure TgxVerletWorld.AccumulateForces(const vpt: TgxProgressTimes);
 var
   i: Integer;
 begin
@@ -1401,7 +1401,7 @@ var
   i: Integer;
   ticks: Integer;
   myDeltaTime: Single;
-  vpt: TGProgressTimes;
+  vpt: TgxProgressTimes;
 begin
   ticks := 0;
   myDeltaTime := FMaxDeltaTime;
@@ -1452,7 +1452,7 @@ begin
   end;
 end;
 
-procedure TgxVerletWorld.SatisfyConstraints(const vpt: TGProgressTimes);
+procedure TgxVerletWorld.SatisfyConstraints(const vpt: TgxProgressTimes);
 var
   i, j: Integer;
   Constraint: TgxVerletConstraint;
@@ -1478,7 +1478,7 @@ begin
     DoUpdateSpacePartition; // }
 end;
 
-procedure TgxVerletWorld.Verlet(const vpt: TGProgressTimes);
+procedure TgxVerletWorld.Verlet(const vpt: TgxProgressTimes);
 var
   i: Integer;
 begin
@@ -2610,13 +2610,13 @@ end;
 // ------------------
 // ------------------ TgxVerletSkeletonCollider ------------------
 // ------------------
-procedure TgxVerletSkeletonCollider.WriteToFiler(Writer: TgVirtualWriter);
+procedure TgxVerletSkeletonCollider.WriteToFiler(Writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
 end;
 
-procedure TgxVerletSkeletonCollider.ReadFromFiler(Reader: TgVirtualReader);
+procedure TgxVerletSkeletonCollider.ReadFromFiler(Reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2645,14 +2645,14 @@ begin
   AlignCollider;
 end;
 
-procedure TgxVerletSphere.WriteToFiler(Writer: TgVirtualWriter);
+procedure TgxVerletSphere.WriteToFiler(Writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
   Writer.WriteFloat(FRadius);
 end;
 
-procedure TgxVerletSphere.ReadFromFiler(Reader: TgVirtualReader);
+procedure TgxVerletSphere.ReadFromFiler(Reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -2701,7 +2701,7 @@ begin
   AlignCollider;
 end;
 
-procedure TgxVerletCapsule.WriteToFiler(Writer: TgVirtualWriter);
+procedure TgxVerletCapsule.WriteToFiler(Writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(Writer);
   Writer.WriteInteger(0); // Archive Version 0
@@ -2709,7 +2709,7 @@ begin
   Writer.WriteFloat(FLength);
 end;
 
-procedure TgxVerletCapsule.ReadFromFiler(Reader: TgVirtualReader);
+procedure TgxVerletCapsule.ReadFromFiler(Reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
 begin

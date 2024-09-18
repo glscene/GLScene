@@ -22,7 +22,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.Color,
+  GXS.Color,
   GLScene.TextureFormat,
 
   GXS.Texture,
@@ -58,11 +58,11 @@ type
     FOnGetIntensity: TgxCelShaderGetIntensity;
     FOutlinePass,
       FUnApplyShadeTexture: Boolean;
-    FOutlineColor: TGColor;
+    FOutlineColor: TgxColor;
   protected
     procedure SetCelShaderOptions(const val: TgxCelShaderOptions);
     procedure SetOutlineWidth(const val: Single);
-    procedure SetOutlineColor(const val: TGColor);
+    procedure SetOutlineColor(const val: TgxColor);
     procedure BuildShadeTexture;
     procedure Loaded; override;
     function GenerateVertexProgram: string;
@@ -75,7 +75,7 @@ type
   published
     property CelShaderOptions: TgxCelShaderOptions read FCelShaderOptions write
       SetCelShaderOptions;
-    property OutlineColor: TGColor read FOutlineColor write SetOutlineColor;
+    property OutlineColor: TgxColor read FOutlineColor write SetOutlineColor;
     property OutlineWidth: Single read FOutlineWidth write SetOutlineWidth;
     property OnGetIntensity: TgxCelShaderGetIntensity read FOnGetIntensity write
       FOnGetIntensity;
@@ -103,7 +103,7 @@ begin
     TextureMode := tmModulate;
   end;
 
-  FOutlineColor := TGColor.Create(Self);
+  FOutlineColor := TgxColor.Create(Self);
   FOutlineColor.OnNotifyChange := NotifyChange;
   FOutlineColor.Initialize(clrBlack);
 
@@ -314,7 +314,7 @@ begin
   end;
 end;
 
-procedure TgxCelShader.SetOutlineColor(const val: TGColor);
+procedure TgxCelShader.SetOutlineColor(const val: TgxColor);
 begin
   if val <> FOutlineColor then
   begin

@@ -27,9 +27,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
-  GLScene.Color,
+  GXS.Color,
   GLScene.Strings,
 
   GXS.Scene,

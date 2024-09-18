@@ -12,14 +12,14 @@ uses
 
   GLS.Scene,
   GLS.Objects,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Joystick,
   GLS.GeomObjects,
   GLS.Cadencer,
   GLS.SceneViewer,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

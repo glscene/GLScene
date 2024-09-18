@@ -18,14 +18,14 @@ uses
   GLS.Objects,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Polynomials,
   GLS.Texture,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.GeomObjects,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.Coordinates,
   GLScene.Utils;
 
 type

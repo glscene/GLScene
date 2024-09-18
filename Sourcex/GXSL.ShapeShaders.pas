@@ -18,16 +18,16 @@ uses
 
   GLScene.OpenGLTokens,
   GXS.Scene,
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.State,
   GXS.Context,
   GXS.Graphics,
   GXS.RenderContextInfo,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.TextureFormat,
-  GLScene.Color,
+  GXS.Color,
   GXS.Texture,
   GXS.Material,
   GXSL.Shader,
@@ -62,11 +62,11 @@ type
     FOnGetIntensity: TgxCelShaderGetIntensity;
     FOutlinePass,
       FUnApplyShadeTexture: Boolean;
-    FOutlineColor: TGColor;
+    FOutlineColor: TgxColor;
   protected
     procedure SetCelShaderOptions(const val: TgxCelShaderOptions);
     procedure SetOutlineWidth(const val: Single);
-    procedure SetOutlineColor(const val: TGColor);
+    procedure SetOutlineColor(const val: TgxColor);
     procedure BuildShadeTexture;
     procedure Loaded; override;
     function GenerateVertexProgram: string;
@@ -79,7 +79,7 @@ type
   published
     property CelShaderOptions: TgxCelShaderOptions read FCelShaderOptions write
       SetCelShaderOptions;
-    property OutlineColor: TGColor read FOutlineColor write SetOutlineColor;
+    property OutlineColor: TgxColor read FOutlineColor write SetOutlineColor;
     property OutlineWidth: Single read FOutlineWidth write SetOutlineWidth;
     property OnGetIntensity: TgxCelShaderGetIntensity read FOnGetIntensity write
       FOnGetIntensity;
@@ -102,8 +102,8 @@ type
     FErosionFactor: Single;
     FIntensityFactor1: Single;
     FIntensityFactor2: Single;
-    FSpecularColor : TGColor;
-    FAmbientColor : TGColor;
+    FSpecularColor : TgxColor;
+    FAmbientColor : TgxColor;
     FAmbientFactor : Single;
     FDiffuseFactor : Single;
     FSpecularFactor : Single;
@@ -119,8 +119,8 @@ type
     procedure SetNoiseTexName(const Value: TgxLibMaterialName);
     function GetErosionTexName: TgxLibMaterialName;
     procedure SetErosionTexName(const Value: TgxLibMaterialName);
-    procedure SetAmbientColor(AValue: TGColor);
-    procedure SetSpecularColor(AValue: TGColor);
+    procedure SetAmbientColor(AValue: TgxColor);
+    procedure SetSpecularColor(AValue: TgxColor);
   protected
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
@@ -129,8 +129,8 @@ type
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-//    property Color1: TGColor read FColor1;
-//    property Color2: TGColor read FColor2;
+//    property Color1: TgxColor read FColor1;
+//    property Color2: TgxColor read FColor2;
     property MaterialLibrary: TgxAbstractMaterialLibrary read getMaterialLibrary write SetMaterialLibrary;
     property MainTexture: TgxTexture read FMainTex write SetMainTexTexture;
     property MainTextureName: TgxLibMaterialName read GetMainTexName write SetMainTexName;
@@ -142,8 +142,8 @@ type
     property ErosionScale: Single read FErosionFactor write FErosionFactor;
     property IntensityFactor1: Single read FIntensityFactor1 write FIntensityFactor1;
     property IntensityFactor2: Single read FIntensityFactor2 write FIntensityFactor2;
-    property SpecularColor : TGColor Read FSpecularColor Write setSpecularColor;
-    property AmbientColor : TGColor Read FAmbientColor Write setAmbientColor;
+    property SpecularColor : TgxColor Read FSpecularColor Write setSpecularColor;
+    property AmbientColor : TgxColor Read FAmbientColor Write setAmbientColor;
     property AmbientFactor : Single Read FAmbientFactor Write FAmbientFactor;
     property DiffuseFactor : Single Read FDiffuseFactor Write FDiffuseFactor;
     property SpecularFactor : Single Read FSpecularFactor Write FSpecularFactor;
@@ -182,7 +182,7 @@ type
      Environment mapping and refraction mapping using the fresnel terms *)
   TgxCustomGLSLGlassShader = class(TGXSLCustomShader)
   private
-    FDiffuseColor: TGColor;
+    FDiffuseColor: TgxColor;
     FDepth: Single;
     FMix: Single;
     FAlpha: Single;
@@ -201,7 +201,7 @@ type
     procedure SetRefractionTexTexture(const Value: TgxTexture);
     function GetRefractionTexName: TgxLibMaterialName;
     procedure SetRefractionTexName(const Value: TgxLibMaterialName);
-    procedure SetDiffuseColor(AValue: TGColor);
+    procedure SetDiffuseColor(AValue: TgxColor);
   protected
     procedure DoApply(var rci: TgxRenderContextInfo; Sender: TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
@@ -212,7 +212,7 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    property DiffuseColor: TGColor read FDiffuseColor Write SetDiffuseColor;
+    property DiffuseColor: TgxColor read FDiffuseColor Write SetDiffuseColor;
     property Depth: Single read FDepth write FDepth;
     property Mix: Single read FMix write FMix;
     property Alpha: Single read FAlpha write FAlpha;
@@ -255,33 +255,33 @@ type
   (* Custom class for Gooch Shader *)
   TgxCustomGLSLSimpleGoochShader = class(TGXSLCustomShader)
   private
-    FDiffuseColor : TGColor;
-    FWarmColor : TGColor;
-    FCoolColor : TGColor;
-    FSpecularColor : TGColor;
-    FAmbientColor : TGColor;
+    FDiffuseColor : TgxColor;
+    FWarmColor : TgxColor;
+    FCoolColor : TgxColor;
+    FSpecularColor : TgxColor;
+    FAmbientColor : TgxColor;
     FDiffuseWarm : Single;
     FDiffuseCool : Single;
     FAmbientFactor : Single;
     FDiffuseFactor : Single;
     FSpecularFactor : Single;
     FBlendingMode: TgxBlendingModeEx;
-    procedure SetDiffuseColor(AValue: TGColor);
-    procedure SetAmbientColor(AValue: TGColor);
-    procedure SetSpecularColor(AValue: TGColor);
-    procedure SetWarmColor(AValue: TGColor);
-    procedure SetCoolColor(AValue: TGColor);
+    procedure SetDiffuseColor(AValue: TgxColor);
+    procedure SetAmbientColor(AValue: TgxColor);
+    procedure SetSpecularColor(AValue: TgxColor);
+    procedure SetWarmColor(AValue: TgxColor);
+    procedure SetCoolColor(AValue: TgxColor);
   protected
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-    property DiffuseColor : TGColor read FDiffuseColor Write setDiffuseColor;
-    property WarmColor : TGColor read FWarmColor Write setWarmColor;
-    property CoolColor : TGColor Read FCoolColor Write setCoolColor;
-    property SpecularColor : TGColor Read FSpecularColor Write setSpecularColor;
-    property AmbientColor : TGColor Read FAmbientColor Write setAmbientColor;
+    property DiffuseColor : TgxColor read FDiffuseColor Write setDiffuseColor;
+    property WarmColor : TgxColor read FWarmColor Write setWarmColor;
+    property CoolColor : TgxColor Read FCoolColor Write setCoolColor;
+    property SpecularColor : TgxColor Read FSpecularColor Write setSpecularColor;
+    property AmbientColor : TgxColor Read FAmbientColor Write setAmbientColor;
     property WarmFactor : Single Read FDiffuseWarm Write FDiffuseWarm;
     property CoolFactor : Single Read FDiffuseCool Write FDiffuseCool;
     property AmbientFactor : Single Read FAmbientFactor Write FAmbientFactor;
@@ -318,9 +318,9 @@ type
     FMaxFurLength: Single;
     FFurScale: Single;
     FRandomFurLength : Boolean;
-    FColorScale: TGColor;
-    FAmbient: TGColor;
-    FGravity : TgCoordinates;
+    FColorScale: TgxColor;
+    FAmbient: TgxColor;
+    FGravity : TgxCoordinates;
     FLightIntensity : Single;
     FMainTex  : TgxTexture;
     FNoiseTex : TgxTexture;
@@ -336,9 +336,9 @@ type
     procedure SetNoiseTexName(const Value: TgxLibMaterialName);
     function GetMainTexName: TgxLibMaterialName;
     procedure SetMainTexName(const Value: TgxLibMaterialName);
-    procedure SetGravity(APosition:TgCoordinates);
-    procedure SetAmbient(AValue: TGColor);
-    procedure SetColorScale(AValue: TGColor);
+    procedure SetGravity(APosition:TgxCoordinates);
+    procedure SetAmbient(AValue: TgxColor);
+    procedure SetColorScale(AValue: TgxColor);
   protected
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
@@ -353,8 +353,8 @@ type
     property MaxFurLength: Single read FMaxFurLength write FMaxFurLength;
     property FurDensity: Single read FFurScale write FFurScale;
     property RandomFurLength : Boolean read FRandomFurLength Write FRandomFurLength;
-    property ColorScale: TGColor read FColorScale Write setColorScale;
-    property Ambient: TGColor read FAmbient write setAmbient;
+    property ColorScale: TgxColor read FColorScale Write setColorScale;
+    property Ambient: TgxColor read FAmbient write setAmbient;
     property MaterialLibrary: TgxAbstractMaterialLibrary read getMaterialLibrary write SetMaterialLibrary;
     property MainTexture: TgxTexture read FMainTex write SetMainTexTexture;
     property MainTextureName: TgxLibMaterialName read GetMainTexName write SetMainTexName;
@@ -363,7 +363,7 @@ type
     //property BlendEquation : TBlendEquation read FBlendEquation write FBlendEquation default beMin;
     property BlendSrc  : TgxBlendFunction read FBlendSrc write FBlendSrc default bfSrcColor;
     property BlendDst  : TgxBlendFunction read FBlendDst write FBlendDst default bfOneMinusDstColor;
-    property Gravity : TgCoordinates Read FGravity write setGravity;
+    property Gravity : TgxCoordinates Read FGravity write setGravity;
     property LightIntensity : Single read FLightIntensity Write FLightIntensity;
   end;
 
@@ -409,27 +409,27 @@ type
   (* Custom class for a shader that simulate Lattice *)
   TgxCustomGLSLSimpleLatticeShader = class(TGXSLCustomShader)
   private
-    FLatticeScale: TgCoordinates2;
-    FLatticeThreshold: TgCoordinates2;
-    procedure SetLatticeScale(const Value: TgCoordinates2);
-    procedure SetLatticeThreshold(const Value: TgCoordinates2);
+    FLatticeScale: TgxCoordinates2;
+    FLatticeThreshold: TgxCoordinates2;
+    procedure SetLatticeScale(const Value: TgxCoordinates2);
+    procedure SetLatticeThreshold(const Value: TgxCoordinates2);
   protected
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-    property LatticeScale: TgCoordinates2 read FLatticeScale write SetLatticeScale;
-    property LatticeThreshold: TgCoordinates2 read FLatticeThreshold write SetLatticeThreshold;
+    property LatticeScale: TgxCoordinates2 read FLatticeScale write SetLatticeScale;
+    property LatticeThreshold: TgxCoordinates2 read FLatticeThreshold write SetLatticeThreshold;
   end;
 
 (* Custom class for GLSLLatticeShader.
  A shader that simulate Lattice with Diffuse/Specular and support Texture *)
   TgxCustomGLSLLatticeShader = class(TgxCustomGLSLSimpleLatticeShader)
   private
-    FAmbientColor: TGColor;
-    FDiffuseColor: TGColor;
-    FSpecularColor: TGColor;
+    FAmbientColor: TgxColor;
+    FDiffuseColor: TgxColor;
+    FSpecularColor: TgxColor;
     FMaterialLibrary: TgxAbstractMaterialLibrary;
     FMainTexture: TgxTexture;
     FMainTexName   : TgxLibMaterialName;
@@ -439,9 +439,9 @@ type
     procedure SetMainTexTexture(const Value: TgxTexture);
     function GetMainTexName: TgxLibMaterialName;
     procedure SetMainTexName(const Value: TgxLibMaterialName);
-    procedure SetDiffuseColor(AValue: TGColor);
-    procedure SetAmbientColor(AValue: TGColor);
-    procedure SetSpecularColor(AValue: TGColor);
+    procedure SetDiffuseColor(AValue: TgxColor);
+    procedure SetAmbientColor(AValue: TgxColor);
+    procedure SetSpecularColor(AValue: TgxColor);
   protected
     procedure DoInitialize(var rci : TgxRenderContextInfo; Sender : TObject); override;
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
@@ -450,9 +450,9 @@ type
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-    property DiffuseColor : TGColor read FDiffuseColor Write setDiffuseColor;
-    property SpecularColor : TGColor Read FSpecularColor Write setSpecularColor;
-    property AmbientColor : TGColor Read FAmbientColor Write setAmbientColor;
+    property DiffuseColor : TgxColor read FDiffuseColor Write setDiffuseColor;
+    property SpecularColor : TgxColor Read FSpecularColor Write setSpecularColor;
+    property AmbientColor : TgxColor Read FAmbientColor Write setAmbientColor;
     property MaterialLibrary: TgxAbstractMaterialLibrary read getMaterialLibrary write SetMaterialLibrary;
     property MainTexture: TgxTexture read FMainTexture write SetMainTexTexture;
     property MainTextureName: TgxLibMaterialName read GetMainTexName write SetMainTexName;
@@ -484,9 +484,9 @@ type
   (* Custom class for SEM Shader : Spherical Environment Mapping *)
   TgxCustomGLSLSemShader = class(TGXSLCustomShader)
   private
-    FAmbientColor: TGColor;
-//    FDiffuseColor: TGColor;
-    FSpecularColor: TGColor;
+    FAmbientColor: TgxColor;
+//    FDiffuseColor: TgxColor;
+    FSpecularColor: TgxColor;
     FAmbientFactor : Single;
     FDiffuseFactor : Single;
     FSpecularFactor : Single;
@@ -499,9 +499,9 @@ type
     procedure SetMainTexTexture(const Value: TgxTexture);
     function GetMainTexName: TgxLibMaterialName;
     procedure SetMainTexName(const Value: TgxLibMaterialName);
-    //procedure SetDiffuseColor(AValue: TGColor);
-    procedure SetAmbientColor(AValue: TGColor);
-    procedure SetSpecularColor(AValue: TGColor);
+    //procedure SetDiffuseColor(AValue: TgxColor);
+    procedure SetAmbientColor(AValue: TgxColor);
+    procedure SetSpecularColor(AValue: TgxColor);
   protected
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
@@ -510,9 +510,9 @@ type
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-//    property DiffuseColor : TGColor read FDiffuseColor Write setDiffuseColor;
-    property SpecularColor : TGColor Read FSpecularColor Write setSpecularColor;
-    property AmbientColor : TGColor Read FAmbientColor Write setAmbientColor;
+//    property DiffuseColor : TgxColor read FDiffuseColor Write setDiffuseColor;
+    property SpecularColor : TgxColor Read FSpecularColor Write setSpecularColor;
+    property AmbientColor : TgxColor Read FAmbientColor Write setAmbientColor;
     property AmbientFactor : Single Read FAmbientFactor Write FAmbientFactor;
     property DiffuseFactor : Single Read FDiffuseFactor Write FDiffuseFactor;
     property SpecularFactor : Single Read FSpecularFactor Write FSpecularFactor;
@@ -542,31 +542,31 @@ type
   (* Custom class for Toon Shader *)
   TgxCustomGLSLToonShader = class(TGXSLCustomShader)
   private
-    FHighlightColor : TGColor;
-    FMidColor : TGColor;
-    FLightenShadowColor : TGColor;
-    FDarkenShadowColor : TGColor;
-    FOutlineColor : TGColor;
+    FHighlightColor : TgxColor;
+    FMidColor : TgxColor;
+    FLightenShadowColor : TgxColor;
+    FDarkenShadowColor : TgxColor;
+    FOutlineColor : TgxColor;
     FHighlightSize : Single;
     FMidSize : Single;
     FShadowSize : Single;
     FOutlineWidth : Single;
-    procedure SetHighLightColor(AValue: TGColor);
-    procedure SetMidColor(AValue: TGColor);
-    procedure SetLightenShadowColor(AValue: TGColor);
-    procedure SetDarkenShadowColor(AValue: TGColor);
-    procedure SetOutlineColor(AValue: TGColor);
+    procedure SetHighLightColor(AValue: TgxColor);
+    procedure SetMidColor(AValue: TgxColor);
+    procedure SetLightenShadowColor(AValue: TgxColor);
+    procedure SetDarkenShadowColor(AValue: TgxColor);
+    procedure SetOutlineColor(AValue: TgxColor);
   protected
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-    property HighlightColor : TGColor read FHighlightColor Write setHighlightColor;
-    property MidColor : TGColor read FMidColor Write setMidColor;
-    property LightenShadowColor : TGColor Read FLightenShadowColor Write setLightenShadowColor;
-    property DarkenShadowrColor : TGColor Read FDarkenShadowColor Write setDarkenShadowColor;
-    property OutlinetColor : TGColor Read FOutlineColor Write setOutlineColor;
+    property HighlightColor : TgxColor read FHighlightColor Write setHighlightColor;
+    property MidColor : TgxColor read FMidColor Write setMidColor;
+    property LightenShadowColor : TgxColor Read FLightenShadowColor Write setLightenShadowColor;
+    property DarkenShadowrColor : TgxColor Read FDarkenShadowColor Write setDarkenShadowColor;
+    property OutlinetColor : TgxColor Read FOutlineColor Write setOutlineColor;
     property HighlightSize : Single read FHighlightSize write FHighlightSize;
     property MidSize : Single read FMidSize write FMidSize;
     property ShadowSize : Single read FShadowSize write FShadowSize;
@@ -600,9 +600,9 @@ type
 *)
   TgxCustomGLSLVertexDisplacementShader = class(TGXSLCustomShader)
   private
-    FAmbientColor: TGColor;
-//    FDiffuseColor: TGColor;
-    FSpecularColor: TGColor;
+    FAmbientColor: TgxColor;
+//    FDiffuseColor: TgxColor;
+    FSpecularColor: TgxColor;
     FAmbientFactor : Single;
     FDiffuseFactor : Single;
     FSpecularFactor : Single;
@@ -620,9 +620,9 @@ type
     procedure SetMainTexTexture(const Value: TgxTexture);
     function GetMainTexName: TgxLibMaterialName;
     procedure SetMainTexName(const Value: TgxLibMaterialName);
-    //procedure SetDiffuseColor(AValue: TGColor);
-    procedure SetAmbientColor(AValue: TGColor);
-    procedure SetSpecularColor(AValue: TGColor);
+    //procedure SetDiffuseColor(AValue: TgxColor);
+    procedure SetAmbientColor(AValue: TgxColor);
+    procedure SetSpecularColor(AValue: TgxColor);
   protected
     procedure DoApply(var rci : TgxRenderContextInfo; Sender : TObject); override;
     function DoUnApply(var rci: TgxRenderContextInfo): Boolean; override;
@@ -631,9 +631,9 @@ type
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-//    property DiffuseColor : TGColor read FDiffuseColor Write setDiffuseColor;
-    property SpecularColor : TGColor Read FSpecularColor Write setSpecularColor;
-    property AmbientColor : TGColor Read FAmbientColor Write setAmbientColor;
+//    property DiffuseColor : TgxColor read FDiffuseColor Write setDiffuseColor;
+    property SpecularColor : TgxColor Read FSpecularColor Write setSpecularColor;
+    property AmbientColor : TgxColor Read FAmbientColor Write setAmbientColor;
     property AmbientFactor : Single Read FAmbientFactor Write FAmbientFactor;
     property DiffuseFactor : Single Read FDiffuseFactor Write FDiffuseFactor;
     property SpecularFactor : Single Read FSpecularFactor Write FSpecularFactor;
@@ -695,7 +695,7 @@ begin
     TextureWrap := twNone;
     TextureMode := tmModulate;
   end;
-  FOutlineColor := TGColor.Create(Self);
+  FOutlineColor := TgxColor.Create(Self);
   FOutlineColor.OnNotifyChange := NotifyChange;
   FOutlineColor.Initialize(clrBlack);
   ShaderStyle := ssLowLevel;
@@ -898,7 +898,7 @@ begin
 end;
 
 
-procedure TgxCelShader.SetOutlineColor(const val: TGColor);
+procedure TgxCelShader.SetOutlineColor(const val: TgxColor);
 begin
   if val <> FOutlineColor then
   begin
@@ -1016,9 +1016,9 @@ begin
 
   //setup initial parameters
 
-  FAmbientColor := TGColor.Create(self);
+  FAmbientColor := TgxColor.Create(self);
   FAmbientColor.SetColor(0.2,0.2,0.2,1.0);
-  FSpecularColor := TGColor.Create(self);
+  FSpecularColor := TgxColor.Create(self);
   FSpecularColor.SetColor(0.75,0.75,0.75,1.0);
   FAmbientFactor  := 0.8;
   FDiffuseFactor  :=0.9;
@@ -1147,12 +1147,12 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TgxCustomGLSLSimpleErosionShader.SetAmbientColor(AValue: TGColor);
+procedure TgxCustomGLSLSimpleErosionShader.SetAmbientColor(AValue: TgxColor);
 begin
   FAmbientColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLSimpleErosionShader.SetSpecularColor(AValue: TGColor);
+procedure TgxCustomGLSLSimpleErosionShader.SetSpecularColor(AValue: TgxColor);
 begin
   FSpecularColor.DirectColor := AValue.Color;
 end;
@@ -1303,7 +1303,7 @@ begin
   // FMainTexture.Enabled := True;
 
   // setup initial parameters
-  FDiffuseColor := TGColor.Create(Self);
+  FDiffuseColor := TgxColor.Create(Self);
   FDepth := 0.1;
   FMix := 1.0;
   FAlpha := 1.0;
@@ -1452,7 +1452,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TgxCustomGLSLGlassShader.SetDiffuseColor(AValue: TGColor);
+procedure TgxCustomGLSLGlassShader.SetDiffuseColor(AValue: TgxColor);
 begin
   FDiffuseColor.DirectColor := AValue.Color;
 end;
@@ -1553,15 +1553,15 @@ begin
   end;
 
   // Initial stuff.
-  FDiffuseColor := TGColor.Create(self);
+  FDiffuseColor := TgxColor.Create(self);
   FDiffuseColor.SetColor(0.75,0.75,0.75,1.0);
-  FWarmColor := TGColor.Create(self);
+  FWarmColor := TgxColor.Create(self);
   FWarmColor.SetColor(0.88,0.81,0.49,1.0);
-  FCoolColor := TGColor.Create(self);
+  FCoolColor := TgxColor.Create(self);
   FCoolColor.SetColor(0.58,0.10,0.76,1.0);
-  FAmbientColor := TGColor.Create(self);
+  FAmbientColor := TgxColor.Create(self);
   FAmbientColor.SetColor(0.3,0.3,0.3,1.0);
-  FSpecularColor := TGColor.Create(self);
+  FSpecularColor := TgxColor.Create(self);
   FSpecularColor.SetColor(1.0,1.0,1.0,1.0);
 
   FDiffuseWarm    := 0.55;
@@ -1613,27 +1613,27 @@ begin
   Result := False;
 end;
 
-procedure TgxCustomGLSLSimpleGoochShader.SetDiffuseColor(AValue: TGColor);
+procedure TgxCustomGLSLSimpleGoochShader.SetDiffuseColor(AValue: TgxColor);
 begin
   FDiffuseColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLSimpleGoochShader.SetAmbientColor(AValue: TGColor);
+procedure TgxCustomGLSLSimpleGoochShader.SetAmbientColor(AValue: TgxColor);
 begin
   FAmbientColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLSimpleGoochShader.SetSpecularColor(AValue: TGColor);
+procedure TgxCustomGLSLSimpleGoochShader.SetSpecularColor(AValue: TgxColor);
 begin
   FSpecularColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLSimpleGoochShader.SetWarmColor(AValue: TGColor);
+procedure TgxCustomGLSLSimpleGoochShader.SetWarmColor(AValue: TgxColor);
 begin
   FWarmColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLSimpleGoochShader.SetCoolColor(AValue: TGColor);
+procedure TgxCustomGLSLSimpleGoochShader.SetCoolColor(AValue: TgxColor);
 begin
   FCoolColor.DirectColor := AValue.Color;
 end;
@@ -1756,16 +1756,16 @@ begin
   FRandomFurLength := false;
   FFurScale:=1.0;
 
-  FColorScale := TGColor.Create(Self);
+  FColorScale := TgxColor.Create(Self);
   FColorScale.SetColor(0.2196,0.2201,0.2201,1.0);
 
-  FAmbient := TGColor.Create(Self);
+  FAmbient := TgxColor.Create(Self);
   FAmbient.SetColor(1.0,1.0,1.0,1.0);
 
   // The Blend Funcs are very important for realistic fur rendering it can vary follow your textures
   FBlendSrc := bfOneMinusSrcColor;
   FBlendDst := bfOneMinusSrcAlpha;
-  FGravity := TgCoordinates.Create(self);
+  FGravity := TgxCoordinates.Create(self);
   FGravity.AsAffineVector := AffinevectorMake(0.0,0.0,0.0);
   FLightIntensity := 2.5;
 end;
@@ -1934,17 +1934,17 @@ begin
         end;
   end;
 
-  procedure TgxCustomGLSLFurShader.SetGravity(APosition: TgCoordinates);
+  procedure TgxCustomGLSLFurShader.SetGravity(APosition: TgxCoordinates);
   begin
     FGravity.SetPoint(APosition.DirectX, APosition.DirectY, APosition.DirectZ);
   end;
 
-  procedure TgxCustomGLSLFurShader.SetAmbient(AValue: TGColor);
+  procedure TgxCustomGLSLFurShader.SetAmbient(AValue: TgxColor);
   begin
     FAmbient.DirectColor := AValue.Color;
   end;
 
-  procedure TgxCustomGLSLFurShader.SetColorScale(AValue: TGColor);
+  procedure TgxCustomGLSLFurShader.SetColorScale(AValue: TgxColor);
   begin
     FColorScale.DirectColor := AValue.Color;
   end;
@@ -2040,8 +2040,8 @@ begin
       Add('} ');
     end;
     // Initial stuff.
-    FLatticeScale := TgCoordinates2.Create(self);
-    FLatticeThreshold := TgCoordinates2.Create(self);
+    FLatticeScale := TgxCoordinates2.Create(self);
+    FLatticeThreshold := TgxCoordinates2.Create(self);
 
     FLatticeScale.SetPoint2D(10, 40);
     FLatticeThreshold.SetPoint2D(0.15, 0.3);
@@ -2071,13 +2071,13 @@ begin
   end;
 
   procedure TgxCustomGLSLSimpleLatticeShader.SetLatticeScale
-    (const Value: TgCoordinates2);
+    (const Value: TgxCoordinates2);
   begin
     FLatticeScale.Assign(Value);
   end;
 
   procedure TgxCustomGLSLSimpleLatticeShader.SetLatticeThreshold
-    (const Value: TgCoordinates2);
+    (const Value: TgxCoordinates2);
   begin
     FLatticeThreshold.Assign(Value);
   end;
@@ -2087,9 +2087,9 @@ begin
   constructor TgxCustomGLSLLatticeShader.Create(AOwner: TComponent);
   begin
     inherited;
-    FAmbientColor := TGColor.Create(self);
-    FDiffuseColor := TGColor.Create(self);
-    FSpecularColor := TGColor.Create(self);
+    FAmbientColor := TgxColor.Create(self);
+    FDiffuseColor := TgxColor.Create(self);
+    FSpecularColor := TgxColor.Create(self);
 
     // setup initial parameters
     FAmbientColor.SetColor(0.15, 0.15, 0.15, 1);
@@ -2229,17 +2229,17 @@ begin
     NotifyChange(self);
   end;
 
-  procedure TgxCustomGLSLLatticeShader.SetDiffuseColor(AValue: TGColor);
+  procedure TgxCustomGLSLLatticeShader.SetDiffuseColor(AValue: TgxColor);
   begin
     FDiffuseColor.DirectColor := AValue.Color;
   end;
 
-  procedure TgxCustomGLSLLatticeShader.SetAmbientColor(AValue: TGColor);
+  procedure TgxCustomGLSLLatticeShader.SetAmbientColor(AValue: TgxColor);
   begin
     FAmbientColor.DirectColor := AValue.Color;
   end;
 
-  procedure TgxCustomGLSLLatticeShader.SetSpecularColor(AValue: TGColor);
+  procedure TgxCustomGLSLLatticeShader.SetSpecularColor(AValue: TgxColor);
   begin
     FSpecularColor.DirectColor := AValue.Color;
   end;
@@ -2329,9 +2329,9 @@ begin
       Add('} ');
     end;
 
-    FAmbientColor := TGColor.Create(self);
-    // FDiffuseColor := TGColor.Create(Self);
-    FSpecularColor := TGColor.Create(self);
+    FAmbientColor := TgxColor.Create(self);
+    // FDiffuseColor := TgxColor.Create(Self);
+    FSpecularColor := TgxColor.Create(self);
 
     // setup initial parameters
     FAmbientColor.SetColor(0.15, 0.15, 0.15, 1.0);
@@ -2422,17 +2422,17 @@ begin
     NotifyChange(self);
   end;
 
-  // procedure TgxCustomGLSLSemShader.SetDiffuseColor(AValue: TGColor);
+  // procedure TgxCustomGLSLSemShader.SetDiffuseColor(AValue: TgxColor);
   // begin
   // FDiffuseColor.DirectColor := AValue.Color;
   // end;
 
-  procedure TgxCustomGLSLSemShader.SetAmbientColor(AValue: TGColor);
+  procedure TgxCustomGLSLSemShader.SetAmbientColor(AValue: TgxColor);
   begin
     FAmbientColor.DirectColor := AValue.Color;
   end;
 
-  procedure TgxCustomGLSLSemShader.SetSpecularColor(AValue: TGColor);
+  procedure TgxCustomGLSLSemShader.SetSpecularColor(AValue: TgxColor);
   begin
     FSpecularColor.DirectColor := AValue.Color;
   end;
@@ -2518,15 +2518,15 @@ begin
     Add('} ');
   end;
   // Initial stuff.
-  FHighLightColor := TGColor.Create(self);
+  FHighLightColor := TgxColor.Create(self);
   FHighLightColor.SetColor(0.9,0.9,0.9,1.0);
-  FMidColor := TGColor.Create(self);
+  FMidColor := TgxColor.Create(self);
   FMidColor.SetColor(0.75,0.75,0.75,1.0);
-  FLightenShadowColor := TGColor.Create(self);
+  FLightenShadowColor := TgxColor.Create(self);
   FLightenShadowColor.SetColor(0.5,0.5,0.5,1.0);
-  FDarkenShadowColor := TGColor.Create(self);
+  FDarkenShadowColor := TgxColor.Create(self);
   FDarkenShadowColor.SetColor(0.3,0.3,0.3,1.0);
-  FOutlineColor := TGColor.Create(self);
+  FOutlineColor := TgxColor.Create(self);
   FOutlineColor.SetColor(0,0,0,1.0);
   FHighlightSize := 0.95;
   FMidSize       := 0.50;
@@ -2564,27 +2564,27 @@ begin
   Result := False;
 end;
 
-procedure TgxCustomGLSLToonShader.SetHighlightColor(AValue: TGColor);
+procedure TgxCustomGLSLToonShader.SetHighlightColor(AValue: TgxColor);
 begin
   FHighlightColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLToonShader.SetMidColor(AValue: TGColor);
+procedure TgxCustomGLSLToonShader.SetMidColor(AValue: TgxColor);
 begin
   FMidColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLToonShader.SetLightenShadowColor(AValue: TGColor);
+procedure TgxCustomGLSLToonShader.SetLightenShadowColor(AValue: TgxColor);
 begin
   FLightenShadowColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLToonShader.SetDarkenShadowColor(AValue: TGColor);
+procedure TgxCustomGLSLToonShader.SetDarkenShadowColor(AValue: TgxColor);
 begin
   FDarkenShadowColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLToonShader.SetOutlineColor(AValue: TGColor);
+procedure TgxCustomGLSLToonShader.SetOutlineColor(AValue: TgxColor);
 begin
   FOutlineColor.DirectColor := AValue.Color;
 end;
@@ -2789,9 +2789,9 @@ begin
     Add('} ');
   end;
 
-  FAmbientColor := TGColor.Create(Self);
-  //FDiffuseColor := TGColor.Create(Self);
-  FSpecularColor := TGColor.Create(Self);
+  FAmbientColor := TgxColor.Create(Self);
+  //FDiffuseColor := TgxColor.Create(Self);
+  FSpecularColor := TgxColor.Create(Self);
 
   //setup initial parameters
   FAmbientColor.SetColor(0.15, 0.15, 0.15, 1.0);
@@ -2882,17 +2882,17 @@ begin
 end;
 
 
-//procedure TgxCustomGLSLVertexDisplacementShader.SetDiffuseColor(AValue: TGColor);
+//procedure TgxCustomGLSLVertexDisplacementShader.SetDiffuseColor(AValue: TgxColor);
 //begin
 //  FDiffuseColor.DirectColor := AValue.Color;
 //end;
 
-procedure TgxCustomGLSLVertexDisplacementShader.SetAmbientColor(AValue: TGColor);
+procedure TgxCustomGLSLVertexDisplacementShader.SetAmbientColor(AValue: TgxColor);
 begin
   FAmbientColor.DirectColor := AValue.Color;
 end;
 
-procedure TgxCustomGLSLVertexDisplacementShader.SetSpecularColor(AValue: TGColor);
+procedure TgxCustomGLSLVertexDisplacementShader.SetSpecularColor(AValue: TgxColor);
 begin
   FSpecularColor.DirectColor := AValue.Color;
 end;

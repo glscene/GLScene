@@ -37,9 +37,9 @@ uses
   GLS.Material,
   GLS.Silhouette,
   GLScene.Strings,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.RenderContextInfo,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Context,
   GLScene.VectorTypes,
   GLScene.PipelineTransform;
@@ -335,8 +335,8 @@ end;
 
 procedure TGLMaterialMultiProxyMasters.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGUpdateAbleComponent) then
-    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TGLUpdateAbleComponent) then
+    TGLUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TGLMaterialMultiProxyMasters.EndUpdate;

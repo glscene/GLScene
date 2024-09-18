@@ -22,18 +22,18 @@ uses
   GLScene.Strings,
 
   GXS.XOpenGL,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.ApplicationFileIO,
 
   GXS.Graphics,
   GXS.Context,
   GXS.State,
   GLScene.PipelineTransform,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GXS.Color,
+  GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.ImageUtils,
   GLScene.Utils;
@@ -93,7 +93,7 @@ type
 
   TgxTexture = class;
 
-  IgxTextureNotifyAble = interface(IGNotifyable)
+  IgxTextureNotifyAble = interface(IgxNotifyable)
     ['{0D9DC0B0-ECE4-4513-A8A1-5AE7022C9426}']
     procedure NotifyTexMapChange(Sender: TObject);
   end;
@@ -135,7 +135,7 @@ type
    a HBitmap (interfacing the actual source).
    SubClasses should be registered using RegisterTextureImageClass to allow
    proper persistence and editability in the IDE experts. *)
-  TgxTextureImage = class(TgUpdateAbleObject)
+  TgxTextureImage = class(TgxUpdateAbleObject)
   private
     function GetResourceName: string;
   protected
@@ -373,7 +373,7 @@ type
      the texture map (note that texturing is disabled by default).
      A built-in mechanism (through ImageAlpha) allows auto-generation of an
      Alpha channel for all bitmaps (see TgxTextureImageAlpha). *)
-  TgxTexture = class(TgUpdateAbleObject)
+  TgxTexture = class(TgxUpdateAbleObject)
   private
     FTextureHandle: TgxTextureHandle;
     FSamplerHandle: TgxVirtualHandle;
@@ -388,10 +388,10 @@ type
     FImageBrightness: Single;
     FImageGamma: Single;
     FMappingMode: TgxTextureMappingMode;
-    FMapSCoordinates: TgCoordinates4;
-    FMapTCoordinates: TgCoordinates4;
-    FMapRCoordinates: TgCoordinates4;
-    FMapQCoordinates: TgCoordinates4;
+    FMapSCoordinates: TgxCoordinates4;
+    FMapTCoordinates: TgxCoordinates4;
+    FMapRCoordinates: TgxCoordinates4;
+    FMapQCoordinates: TgxCoordinates4;
     FOnTextureNeeded: TgxTextureNeededEvent;
     FCompression: TgxTextureCompression;
     FRequiredMemorySize: Integer;
@@ -399,8 +399,8 @@ type
     FTexWidth: Integer;
     FTexHeight: Integer;
     FTexDepth: Integer;
-    FEnvColor: TGColor;
-    FBorderColor: TGColor;
+    FEnvColor: TgxColor;
+    FBorderColor: TgxColor;
     FNormalMapScale: Single;
     FTextureWrapS: TglSeparateTextureWrap;
     FTextureWrapT: TglSeparateTextureWrap;
@@ -430,23 +430,23 @@ type
     procedure SetCompression(const val: TgxTextureCompression);
     procedure SetFilteringQuality(const val: TglTextureFilteringQuality);
     procedure SetMappingMode(const val: TgxTextureMappingMode);
-    function GetMappingSCoordinates: TgCoordinates4;
-    procedure SetMappingSCoordinates(const val: TgCoordinates4);
+    function GetMappingSCoordinates: TgxCoordinates4;
+    procedure SetMappingSCoordinates(const val: TgxCoordinates4);
     function StoreMappingSCoordinates: Boolean;
-    function GetMappingTCoordinates: TgCoordinates4;
-    procedure SetMappingTCoordinates(const val: TgCoordinates4);
+    function GetMappingTCoordinates: TgxCoordinates4;
+    procedure SetMappingTCoordinates(const val: TgxCoordinates4);
     function StoreMappingTCoordinates: Boolean;
-    function GetMappingRCoordinates: TgCoordinates4;
-    procedure SetMappingRCoordinates(const val: TgCoordinates4);
+    function GetMappingRCoordinates: TgxCoordinates4;
+    procedure SetMappingRCoordinates(const val: TgxCoordinates4);
     function StoreMappingRCoordinates: Boolean;
-    function GetMappingQCoordinates: TgCoordinates4;
-    procedure SetMappingQCoordinates(const val: TgCoordinates4);
+    function GetMappingQCoordinates: TgxCoordinates4;
+    procedure SetMappingQCoordinates(const val: TgxCoordinates4);
     function StoreMappingQCoordinates: Boolean;
     procedure SetDisabled(AValue: Boolean);
     procedure SetEnabled(const val: Boolean);
     function GetEnabled: Boolean;
-    procedure SetEnvColor(const val: TGColor);
-    procedure SetBorderColor(const val: TGColor);
+    procedure SetEnvColor(const val: TgxColor);
+    procedure SetBorderColor(const val: TgxColor);
     procedure SetNormalMapScale(const val: Single);
     procedure SetTextureCompareMode(const val: TglTextureCompareMode);
     procedure SetTextureCompareFunc(const val: TgxDepthCompareFunc);
@@ -582,18 +582,18 @@ type
     (* Texture mapping coordinates mode for S, T, R and Q axis.
     This property stores the coordinates for automatic texture
     coordinates generation. *)
-    property MappingSCoordinates: TgCoordinates4 read GetMappingSCoordinates
+    property MappingSCoordinates: TgxCoordinates4 read GetMappingSCoordinates
       write SetMappingSCoordinates stored StoreMappingSCoordinates;
-    property MappingTCoordinates: TgCoordinates4 read GetMappingTCoordinates
+    property MappingTCoordinates: TgxCoordinates4 read GetMappingTCoordinates
       write SetMappingTCoordinates stored StoreMappingTCoordinates;
-    property MappingRCoordinates: TgCoordinates4 read GetMappingRCoordinates
+    property MappingRCoordinates: TgxCoordinates4 read GetMappingRCoordinates
       write SetMappingRCoordinates stored StoreMappingRCoordinates;
-    property MappingQCoordinates: TgCoordinates4 read GetMappingQCoordinates
+    property MappingQCoordinates: TgxCoordinates4 read GetMappingQCoordinates
       write SetMappingQCoordinates stored StoreMappingQCoordinates;
     // Texture Environment color.
-    property EnvColor: TGColor read FEnvColor write SetEnvColor;
+    property EnvColor: TgxColor read FEnvColor write SetEnvColor;
     // Texture Border color.
-    property BorderColor: TGColor read FBorderColor write SetBorderColor;
+    property BorderColor: TgxColor read FBorderColor write SetBorderColor;
     // If true, the texture is disabled (not used).
     property Disabled: Boolean read FDisabled write SetDisabled default True;
     (* Normal Map scaling.
@@ -617,7 +617,7 @@ type
   private
     FTexture: TgxTexture;
     FTextureIndex: Integer;
-    FTextureOffset, FTextureScale: TgCoordinates;
+    FTextureOffset, FTextureScale: TgxCoordinates;
     FTextureMatrixIsIdentity: Boolean;
     FTextureMatrix: TMatrix4f;
     FApplied: Boolean;
@@ -630,8 +630,8 @@ type
     function GetOwner: TPersistent; override;
     procedure SetTexture(const Value: TgxTexture);
     procedure SetTextureIndex(const Value: Integer);
-    procedure SetTextureOffset(const Value: TgCoordinates);
-    procedure SetTextureScale(const Value: TgCoordinates);
+    procedure SetTextureOffset(const Value: TgxCoordinates);
+    procedure SetTextureScale(const Value: TgxCoordinates);
     procedure NotifyTexMapChange(Sender: TObject);
     procedure CalculateTextureMatrix;
     procedure OnNotifyChange(Sender: TObject);
@@ -645,19 +645,19 @@ type
   published
     property Texture: TgxTexture read FTexture write SetTexture;
     property TextureIndex: Integer read FTextureIndex write SetTextureIndex;
-    property TextureOffset: TgCoordinates read FTextureOffset write SetTextureOffset;
-    property TextureScale: TgCoordinates read FTextureScale write SetTextureScale;
+    property TextureOffset: TgxCoordinates read FTextureOffset write SetTextureOffset;
+    property TextureScale: TgxCoordinates read FTextureScale write SetTextureScale;
   end;
 
   TgxTextureEx = class(TCollection)
   private
-    FOwner: TgUpdateAbleObject;
+    FOwner: TgxUpdateAbleObject;
   protected
     procedure SetItems(index: Integer; const Value: TgxTextureExItem);
     function GetItems(index: Integer): TgxTextureExItem;
     function GetOwner: TPersistent; override;
   public
-    constructor Create(AOwner: TgUpdateAbleObject);
+    constructor Create(AOwner: TgxUpdateAbleObject);
     procedure NotifyChange(Sender: TObject);
     procedure Apply(var rci: TgxRenderContextInfo);
     procedure UnApply(var rci: TgxRenderContextInfo);
@@ -1758,8 +1758,8 @@ begin
   FSamplerHandle.OnAllocate := OnSamplerAllocate;
   FSamplerHandle.OnDestroy := OnSamplerDestroy;
   FMappingMode := tmmUser;
-  FEnvColor := TGColor.CreateInitialized(Self, clrTransparent);
-  FBorderColor := TGColor.CreateInitialized(Self, clrTransparent);
+  FEnvColor := TgxColor.CreateInitialized(Self, clrTransparent);
+  FBorderColor := TgxColor.CreateInitialized(Self, clrTransparent);
   FNormalMapScale := cDefaultNormalMapScale;
   FTextureCompareMode := tcmNone;
   FTextureCompareFunc := cfLequal;
@@ -2032,13 +2032,13 @@ begin
   Result := not Disabled;
 end;
 
-procedure TgxTexture.SetEnvColor(const val: TGColor);
+procedure TgxTexture.SetEnvColor(const val: TgxColor);
 begin
   FEnvColor.Assign(val);
   NotifyParamsChange;
 end;
 
-procedure TgxTexture.SetBorderColor(const val: TGColor);
+procedure TgxTexture.SetBorderColor(const val: TgxColor);
 begin
   FBorderColor.Assign(val);
   NotifyParamsChange;
@@ -2181,15 +2181,15 @@ begin
   end;
 end;
 
-procedure TgxTexture.SetMappingSCoordinates(const val: TgCoordinates4);
+procedure TgxTexture.SetMappingSCoordinates(const val: TgxCoordinates4);
 begin
   MappingSCoordinates.Assign(val);
 end;
 
-function TgxTexture.GetMappingSCoordinates: TgCoordinates4;
+function TgxTexture.GetMappingSCoordinates: TgxCoordinates4;
 begin
   if not Assigned(FMapSCoordinates) then
-    FMapSCoordinates := TgCoordinates4.CreateInitialized(Self, XHmgVector, csVector);
+    FMapSCoordinates := TgxCoordinates4.CreateInitialized(Self, XHmgVector, csVector);
   Result := FMapSCoordinates;
 end;
 
@@ -2201,15 +2201,15 @@ begin
     Result := false;
 end;
 
-procedure TgxTexture.SetMappingTCoordinates(const val: TgCoordinates4);
+procedure TgxTexture.SetMappingTCoordinates(const val: TgxCoordinates4);
 begin
   MappingTCoordinates.Assign(val);
 end;
 
-function TgxTexture.GetMappingTCoordinates: TgCoordinates4;
+function TgxTexture.GetMappingTCoordinates: TgxCoordinates4;
 begin
   if not Assigned(FMapTCoordinates) then
-    FMapTCoordinates := TgCoordinates4.CreateInitialized(Self, YHmgVector,
+    FMapTCoordinates := TgxCoordinates4.CreateInitialized(Self, YHmgVector,
       csVector);
   Result := FMapTCoordinates;
 end;
@@ -2222,15 +2222,15 @@ begin
     Result := false;
 end;
 
-procedure TgxTexture.SetMappingRCoordinates(const val: TgCoordinates4);
+procedure TgxTexture.SetMappingRCoordinates(const val: TgxCoordinates4);
 begin
   MappingRCoordinates.Assign(val);
 end;
 
-function TgxTexture.GetMappingRCoordinates: TgCoordinates4;
+function TgxTexture.GetMappingRCoordinates: TgxCoordinates4;
 begin
   if not Assigned(FMapRCoordinates) then
-    FMapRCoordinates := TgCoordinates4.CreateInitialized(Self, ZHmgVector,
+    FMapRCoordinates := TgxCoordinates4.CreateInitialized(Self, ZHmgVector,
       csVector);
   Result := FMapRCoordinates;
 end;
@@ -2243,15 +2243,15 @@ begin
     Result := false;
 end;
 
-procedure TgxTexture.SetMappingQCoordinates(const val: TgCoordinates4);
+procedure TgxTexture.SetMappingQCoordinates(const val: TgxCoordinates4);
 begin
   MappingQCoordinates.Assign(val);
 end;
 
-function TgxTexture.GetMappingQCoordinates: TgCoordinates4;
+function TgxTexture.GetMappingQCoordinates: TgxCoordinates4;
 begin
   if not Assigned(FMapQCoordinates) then
-    FMapQCoordinates := TgCoordinates4.CreateInitialized(Self, WHmgVector,
+    FMapQCoordinates := TgxCoordinates4.CreateInitialized(Self, WHmgVector,
       csVector);
   Result := FMapQCoordinates;
 end;
@@ -2975,10 +2975,10 @@ begin
   inherited;
 
   FTexture := TgxTexture.Create(Self);
-  FTextureOffset := TgCoordinates.CreateInitialized(Self, NullHMGVector,
+  FTextureOffset := TgxCoordinates.CreateInitialized(Self, NullHMGVector,
     csPoint);
   FTextureOffset.OnNotifyChange := OnNotifyChange;
-  FTextureScale := TgCoordinates.CreateInitialized(Self, XYZHmgVector,
+  FTextureScale := TgxCoordinates.CreateInitialized(Self, XYZHmgVector,
     csPoint);
   FTextureScale.OnNotifyChange := OnNotifyChange;
 
@@ -3124,13 +3124,13 @@ begin
   end;
 end;
 
-procedure TgxTextureExItem.SetTextureOffset(const Value: TgCoordinates);
+procedure TgxTextureExItem.SetTextureOffset(const Value: TgxCoordinates);
 begin
   FTextureOffset.Assign(Value);
   NotifyChange(Self);
 end;
 
-procedure TgxTextureExItem.SetTextureScale(const Value: TgCoordinates);
+procedure TgxTextureExItem.SetTextureScale(const Value: TgxCoordinates);
 begin
   FTextureScale.Assign(Value);
   NotifyChange(Self);
@@ -3158,7 +3158,7 @@ end;
 // --------------- TgxTextureEx ---------------
 // ---------------
 
-constructor TgxTextureEx.Create(AOwner: TgUpdateAbleObject);
+constructor TgxTextureEx.Create(AOwner: TgxUpdateAbleObject);
 begin
   inherited Create(TgxTextureExItem);
   FOwner := AOwner;

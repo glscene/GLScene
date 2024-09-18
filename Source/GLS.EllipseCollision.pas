@@ -13,7 +13,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.Octree,
-  GLScene.VectorLists;
+  GLS.VectorLists;
 
 type
   // The Ellipsoid collision class
@@ -52,7 +52,7 @@ type
   // Ellipsoid collision FreeForm
   TECFreeForm = record
     OctreeNodes: array of PGLOctreeNode;
-    triangleFiler: ^TGAffineVectorList;
+    triangleFiler: ^TGLAffineVectorList;
     InvertedNormals: Boolean;
     ObjectInfo: TECObjectInfo;
   end;

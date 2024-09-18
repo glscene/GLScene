@@ -20,14 +20,14 @@ uses
   GLScene.XCollection,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.Strings,
 
   GXS.Scene,
   GXS.Context,
   GXS.Material,
   GXS.RenderContextInfo,
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.State;
 
 type
@@ -220,7 +220,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     // Steps the current animation to the next frame
     procedure NextFrame;
   published
@@ -809,7 +809,7 @@ begin
 end;
 {$WARNINGS On}
 
-procedure TgxAnimatedSprite.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxAnimatedSprite.DoProgress(const progressTime: TgxProgressTimes);
 var
   i, intr: Integer;
 begin

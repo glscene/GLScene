@@ -16,10 +16,10 @@ uses
 
   GLScene.OpenGLTokens,
   GLS.Context,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorGeometry,
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses;
+  GLS.BaseClasses,
+  GLS.PersistentClasses;
 
 const
   MAX_OBJECT_STACK_DEPTH = 512;
@@ -29,7 +29,7 @@ type
 
   TPickRecord = class
   public
-    AObject: TGUpdateAbleComponent;
+    AObject: TGLUpdateAbleComponent;
     SubObjects: TPickSubObjects;
     ZMin, ZMax: Single;
   end;
@@ -168,7 +168,7 @@ var
   newRecord: TPickRecord;
 begin
   newRecord := TPickRecord.Create;
-  newRecord.AObject := TGUpdateAbleComponent(obj);
+  newRecord.AObject := TGLUpdateAbleComponent(obj);
   newRecord.SubObjects := subObj;
   newRecord.zMin := zMin;
   newRecord.zMax := zMax;

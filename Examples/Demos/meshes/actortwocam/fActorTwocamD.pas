@@ -19,12 +19,12 @@ uses
 
   GLScene.Keyboard,
   GLScene.VectorTypes,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils,
   GLScene.VectorGeometry,
   GLScene.XCollection,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
 
   GLS.Scene,
   GLS.Objects,

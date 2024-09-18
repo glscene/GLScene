@@ -21,8 +21,8 @@ uses
   GLScene.VectorTypes,
   GLS.SceneViewer,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.AsyncTimer;
 
 type

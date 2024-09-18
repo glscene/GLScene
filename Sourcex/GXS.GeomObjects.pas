@@ -22,7 +22,7 @@ uses
 
   GXS.Scene,
   GXS.State,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorTypes,
   GXS.Silhouette,
 

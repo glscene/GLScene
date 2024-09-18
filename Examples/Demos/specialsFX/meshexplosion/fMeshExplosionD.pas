@@ -20,9 +20,9 @@ uses
   GLS.Cadencer,
   GLS.ExplosionFx,
   GLS.File3DS,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.Utils,
-  GLScene.BaseClasses;
+  GLS.BaseClasses;
 
 type
   TFormMeshExplosion = class(TForm)

@@ -21,12 +21,12 @@ uses
   GXS.XOpenGL,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses,
+  GXS.BaseClasses,
+  GXS.PersistentClasses,
   GLScene.Strings,
   GLScene.TextureFormat,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GXS.Color,
+  GXS.Coordinates,
   GLScene.Utils,
 
   GXS.ApplicationFileIO,
@@ -89,7 +89,7 @@ type
     tracking, as well as setup/application facilities.
     Subclasses are expected to provide implementation for DoInitialize,
     DoApply, DoUnApply and DoFinalize. *)
-  TgxShader = class(TgUpdateAbleComponent)
+  TgxShader = class(TgxUpdateAbleComponent)
   private
     FEnabled: Boolean;
     FLibMatUsers: TList;
@@ -171,15 +171,15 @@ type
     properties that behave like those of most rendering tools.
     You also have control over shininess (governs specular lighting) and
     polygon mode (lines / fill). *)
-  TgxFaceProperties = class(TgUpdateAbleObject)
+  TgxFaceProperties = class(TgxUpdateAbleObject)
   private
-    FAmbient, FDiffuse, FSpecular, FEmission: TGColor;
+    FAmbient, FDiffuse, FSpecular, FEmission: TgxColor;
     FShininess: TgxShininess;
   protected
-    procedure SetAmbient(AValue: TGColor);
-    procedure SetDiffuse(AValue: TGColor);
-    procedure SetEmission(AValue: TGColor);
-    procedure SetSpecular(AValue: TGColor);
+    procedure SetAmbient(AValue: TgxColor);
+    procedure SetDiffuse(AValue: TgxColor);
+    procedure SetEmission(AValue: TgxColor);
+    procedure SetSpecular(AValue: TgxColor);
     procedure SetShininess(AValue: TgxShininess);
   public
     constructor Create(AOwner: TPersistent); override;
@@ -188,14 +188,14 @@ type
     procedure ApplyNoLighting(var rci: TgxRenderContextInfo; AFace: TgxCullFaceMode);
     procedure Assign(Source: TPersistent); override;
   published
-    property Ambient: TGColor read FAmbient write SetAmbient;
-    property Diffuse: TGColor read FDiffuse write SetDiffuse;
-    property Emission: TGColor read FEmission write SetEmission;
+    property Ambient: TgxColor read FAmbient write SetAmbient;
+    property Diffuse: TgxColor read FDiffuse write SetDiffuse;
+    property Emission: TgxColor read FEmission write SetEmission;
     property Shininess: TgxShininess read FShininess write SetShininess default 0;
-    property Specular: TGColor read FSpecular write SetSpecular;
+    property Specular: TgxColor read FSpecular write SetSpecular;
   end;
 
-  TgxDepthProperties = class(TgUpdateAbleObject)
+  TgxDepthProperties = class(TgxUpdateAbleObject)
   private
     FDepthTest: Boolean;
     FDepthWrite: Boolean;
@@ -247,7 +247,7 @@ type
 	like af_GL_NEVER = GL_NEVER in the definition. *)
   TgxAlphaFunc = TgxComparisonFunction;
 
-  TgxBlendingParameters = class(TgUpdateAbleObject)
+  TgxBlendingParameters = class(TgxUpdateAbleObject)
   private
     FUseAlphaFunc: Boolean;
     FUseBlendFunc: Boolean;
@@ -313,7 +313,7 @@ type
     TgxLibMaterial (taken for a material library).
     The TgxLibMaterial has more advanced properties (like texture transforms)
     and provides a standard way of sharing definitions and texture maps *)
-  TgxMaterial = class(TgUpdateAbleObject, IgxMaterialLibrarySupported, IGNotifyable, IgxTextureNotifyAble)
+  TgxMaterial = class(TgxUpdateAbleObject, IgxMaterialLibrarySupported, IgxNotifyable, IgxTextureNotifyAble)
   private
     FFrontProperties, FBackProperties: TgxFaceProperties;
     FDepthProperties: TgxDepthProperties;
@@ -391,7 +391,7 @@ type
     property PolygonMode: TgxPolygonMode read FPolygonMode write SetPolygonMode default pmFill;
   end;
 
-  TgxAbstractLibMaterial = class(TCollectionItem, IgxMaterialLibrarySupported, IGNotifyable)
+  TgxAbstractLibMaterial = class(TCollectionItem, IgxMaterialLibrarySupported, IgxNotifyable)
   protected
     FUserList: TList;
     FName: TgxLibMaterialName;
@@ -416,10 +416,10 @@ type
     procedure Apply(var ARci: TgxRenderContextInfo); virtual; abstract;
     // Restore non-standard material states that were altered
     function UnApply(var ARci: TgxRenderContextInfo): Boolean; virtual; abstract;
-    procedure RegisterUser(Obj: TgUpdateAbleObject); overload;
-    procedure UnRegisterUser(Obj: TgUpdateAbleObject); overload;
-    procedure RegisterUser(comp: TgUpdateAbleComponent); overload;
-    procedure UnRegisterUser(comp: TgUpdateAbleComponent); overload;
+    procedure RegisterUser(Obj: TgxUpdateAbleObject); overload;
+    procedure UnRegisterUser(Obj: TgxUpdateAbleObject); overload;
+    procedure RegisterUser(comp: TgxUpdateAbleComponent); overload;
+    procedure UnRegisterUser(comp: TgxUpdateAbleComponent); overload;
     procedure RegisterUser(libMaterial: TgxLibMaterial); overload;
     procedure UnRegisterUser(libMaterial: TgxLibMaterial); overload;
     procedure NotifyUsers;
@@ -440,7 +440,7 @@ type
   TgxLibMaterial = class(TgxAbstractLibMaterial, IgxTextureNotifyAble)
   private
     FMaterial: TgxMaterial;
-    FTextureOffset, FTextureScale: TgCoordinates;
+    FTextureOffset, FTextureScale: TgxCoordinates;
     FTextureRotate: Single;
     FTextureMatrixIsIdentity: Boolean;
     FTextureOverride: Boolean;
@@ -451,8 +451,8 @@ type
   protected
     procedure Loaded; override;
     procedure SetMaterial(const val: TgxMaterial);
-    procedure SetTextureOffset(const val: TgCoordinates);
-    procedure SetTextureScale(const val: TgCoordinates);
+    procedure SetTextureOffset(const val: TgxCoordinates);
+    procedure SetTextureScale(const val: TgxCoordinates);
     procedure SetTextureMatrix(const Value: TMatrix4f);
     procedure SetTexture2Name(const val: TgxLibMaterialName);
     procedure SetShader(const val: TgxShader);
@@ -479,12 +479,12 @@ type
     property Material: TgxMaterial read FMaterial write SetMaterial;
     (* Texture offset in texture coordinates.
       The offset is applied after scaling. *)
-    property TextureOffset: TgCoordinates read FTextureOffset write SetTextureOffset;
+    property TextureOffset: TgxCoordinates read FTextureOffset write SetTextureOffset;
     (* Texture coordinates scaling.
       Scaling is applied before applying the offset, and is applied
       to the texture coordinates, meaning that a scale factor of (2, 2, 2)
       will make your texture look twice smaller *)
-    property TextureScale: TgCoordinates read FTextureScale write SetTextureScale;
+    property TextureScale: TgxCoordinates read FTextureScale write SetTextureScale;
     property TextureRotate: Single read FTextureRotate write SetTextureRotate stored StoreTextureRotate;
     (* Reference to the second texture.
       The referred LibMaterial *must* be in the same material library.
@@ -533,7 +533,7 @@ type
     procedure DeleteUnusedMaterials;
   end;
 
-  TgxAbstractMaterialLibrary = class(TGCadenceAbleComponent)
+  TgxAbstractMaterialLibrary = class(TgxCadenceAbleComponent)
   protected
     FMaterials: TgxAbstractLibMaterials;
     FLastAppliedMaterial: TgxAbstractLibMaterial;
@@ -575,8 +575,8 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure DestroyHandles;
-    procedure WriteToFiler(writer: TgVirtualWriter);
-    procedure ReadFromFiler(reader: TgVirtualReader);
+    procedure WriteToFiler(writer: TgxVirtualWriter);
+    procedure ReadFromFiler(reader: TgxVirtualReader);
     procedure SaveToStream(aStream: TStream); virtual;
     procedure LoadFromStream(aStream: TStream); virtual;
     procedure AddMaterialsFromStream(aStream: TStream);
@@ -633,10 +633,10 @@ constructor TgxFaceProperties.Create(AOwner: TPersistent);
 begin
   inherited;
   // default colors
-  FAmbient := TGColor.CreateInitialized(Self, clrGray20);
-  FDiffuse := TGColor.CreateInitialized(Self, clrGray80);
-  FEmission := TGColor.Create(Self);
-  FSpecular := TGColor.Create(Self);
+  FAmbient := TgxColor.CreateInitialized(Self, clrGray20);
+  FDiffuse := TgxColor.CreateInitialized(Self, clrGray80);
+  FEmission := TgxColor.Create(Self);
+  FSpecular := TgxColor.Create(Self);
   FShininess := 0;
 end;
 
@@ -675,25 +675,25 @@ begin
   end;
 end;
 
-procedure TgxFaceProperties.SetAmbient(AValue: TGColor);
+procedure TgxFaceProperties.SetAmbient(AValue: TgxColor);
 begin
   FAmbient.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TgxFaceProperties.SetDiffuse(AValue: TGColor);
+procedure TgxFaceProperties.SetDiffuse(AValue: TgxColor);
 begin
   FDiffuse.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TgxFaceProperties.SetEmission(AValue: TGColor);
+procedure TgxFaceProperties.SetEmission(AValue: TgxColor);
 begin
   FEmission.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TgxFaceProperties.SetSpecular(AValue: TGColor);
+procedure TgxFaceProperties.SetSpecular(AValue: TgxColor);
 begin
   FSpecular.DirectColor := AValue.Color;
   NotifyChange(Self);
@@ -1405,9 +1405,9 @@ end;
 
 procedure TgxMaterial.NotifyChange(Sender: TObject);
 var
-  intf: IGNotifyable;
+  intf: IgxNotifyable;
 begin
-  if Supports(Owner, IGNotifyable, intf) then
+  if Supports(Owner, IgxNotifyable, intf) then
     intf.NotifyChange(Self);
 end;
 
@@ -1551,24 +1551,24 @@ begin
   Result := -1; // ignore
 end;
 
-procedure TgxAbstractLibMaterial.RegisterUser(Obj: TgUpdateAbleObject);
+procedure TgxAbstractLibMaterial.RegisterUser(Obj: TgxUpdateAbleObject);
 begin
   Assert(FUserList.IndexOf(Obj) < 0);
   FUserList.Add(Obj);
 end;
 
-procedure TgxAbstractLibMaterial.UnRegisterUser(Obj: TgUpdateAbleObject);
+procedure TgxAbstractLibMaterial.UnRegisterUser(Obj: TgxUpdateAbleObject);
 begin
   FUserList.Remove(Obj);
 end;
 
-procedure TgxAbstractLibMaterial.RegisterUser(comp: TgUpdateAbleComponent);
+procedure TgxAbstractLibMaterial.RegisterUser(comp: TgxUpdateAbleComponent);
 begin
   Assert(FUserList.IndexOf(comp) < 0);
   FUserList.Add(comp);
 end;
 
-procedure TgxAbstractLibMaterial.UnRegisterUser(comp: TgUpdateAbleComponent);
+procedure TgxAbstractLibMaterial.UnRegisterUser(comp: TgxUpdateAbleComponent);
 begin
   FUserList.Remove(comp);
 end;
@@ -1601,10 +1601,10 @@ begin
     for i := 0 to FUserList.Count - 1 do
     begin
       Obj := TObject(FUserList[i]);
-      if Obj is TgUpdateAbleObject then
-        TgUpdateAbleObject(FUserList[i]).NotifyChange(Self)
-      else if Obj is TgUpdateAbleComponent then
-        TgUpdateAbleComponent(FUserList[i]).NotifyChange(Self)
+      if Obj is TgxUpdateAbleObject then
+        TgxUpdateAbleObject(FUserList[i]).NotifyChange(Self)
+      else if Obj is TgxUpdateAbleComponent then
+        TgxUpdateAbleComponent(FUserList[i]).NotifyChange(Self)
       else
       begin
         Assert(Obj is TgxAbstractLibMaterial);
@@ -1680,9 +1680,9 @@ begin
   inherited Create(ACollection);
   FMaterial := TgxMaterial.Create(Self);
   FMaterial.Texture.OnTextureNeeded := DoOnTextureNeeded;
-  FTextureOffset := TgCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FTextureOffset := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
   FTextureOffset.OnNotifyChange := OnNotifyChange;
-  FTextureScale := TgCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
+  FTextureScale := TgxCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
   FTextureScale.OnNotifyChange := OnNotifyChange;
   FTextureRotate := 0;
   FTextureOverride := False;
@@ -1872,10 +1872,10 @@ begin
         TgxMaterial(FUserList[i]).NotifyTexMapChange(Self)
       else if Obj is TgxLibMaterial then
         TgxLibMaterial(FUserList[i]).NotifyUsersOfTexMapChange
-      else if Obj is TgUpdateAbleObject then
-        TgUpdateAbleObject(FUserList[i]).NotifyChange(Self)
-      else if Obj is TgUpdateAbleComponent then
-        TgUpdateAbleComponent(FUserList[i]).NotifyChange(Self);
+      else if Obj is TgxUpdateAbleObject then
+        TgxUpdateAbleObject(FUserList[i]).NotifyChange(Self)
+      else if Obj is TgxUpdateAbleComponent then
+        TgxUpdateAbleComponent(FUserList[i]).NotifyChange(Self);
     end;
   finally
     FNotifying := False;
@@ -1893,13 +1893,13 @@ begin
   FMaterial.Assign(val);
 end;
 
-procedure TgxLibMaterial.SetTextureOffset(const val: TgCoordinates);
+procedure TgxLibMaterial.SetTextureOffset(const val: TgxCoordinates);
 begin
   FTextureOffset.AsVector := val.AsVector;
   CalculateTextureMatrix;
 end;
 
-procedure TgxLibMaterial.SetTextureScale(const val: TgCoordinates);
+procedure TgxLibMaterial.SetTextureScale(const val: TgxCoordinates);
 begin
   FTextureScale.AsVector := val.AsVector;
   CalculateTextureMatrix;
@@ -2323,7 +2323,7 @@ begin
   Result := (FMaterials.Count > 0);
 end;
 
-procedure TgxMaterialLibrary.WriteToFiler(writer: TgVirtualWriter);
+procedure TgxMaterialLibrary.WriteToFiler(writer: TgxVirtualWriter);
 var
   i, j: Integer;
   libMat: TgxLibMaterial;
@@ -2491,7 +2491,7 @@ begin
   end;
 end;
 
-procedure TgxMaterialLibrary.ReadFromFiler(reader: TgVirtualReader);
+procedure TgxMaterialLibrary.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: Integer;
   libMat: TgxLibMaterial;
@@ -2664,9 +2664,9 @@ end;
 
 procedure TgxMaterialLibrary.SaveToStream(aStream: TStream);
 var
-  wr: TGBinaryWriter;
+  wr: TgxBinaryWriter;
 begin
-  wr := TGBinaryWriter.Create(aStream);
+  wr := TgxBinaryWriter.Create(aStream);
   try
     Self.WriteToFiler(wr);
   finally
@@ -2676,9 +2676,9 @@ end;
 
 procedure TgxMaterialLibrary.LoadFromStream(aStream: TStream);
 var
-  rd: TGBinaryReader;
+  rd: TgxBinaryReader;
 begin
-  rd := TGBinaryReader.Create(aStream);
+  rd := TgxBinaryReader.Create(aStream);
   try
     Self.ReadFromFiler(rd);
   finally

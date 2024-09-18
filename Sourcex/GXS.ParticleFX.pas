@@ -25,8 +25,8 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Utils,
-  GLScene.PersistentClasses,
-  GLScene.VectorLists,
+  GXS.PersistentClasses,
+  GXS.VectorLists,
   GLScene.Manager,
   GXS.Scene,
   GXS.ImageUtils,
@@ -35,9 +35,9 @@ uses
   GXS.Cadencer,
   GXS.Graphics,
   GXS.Context,
-  GLScene.Color,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GXS.Color,
+  GXS.BaseClasses,
+  GXS.Coordinates,
   GXS.RenderContextInfo,
   GLScene.PipelineTransform,
   GLScene.XCollection,
@@ -57,7 +57,7 @@ type
      The class implements properties for position, velocity and time, whatever
      you need in excess of that will have to be placed in subclasses (this
      class should remain as compact as possible). *)
-  TgxParticle = class(TgPersistentObject)
+  TgxParticle = class(TgxPersistentObject)
   private
     FID, FTag: Integer;
     FManager: TgxParticleFXManager; // NOT persistent
@@ -73,8 +73,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     property Manager: TgxParticleFXManager read FManager write FManager;
     (* Particle's ID, given at birth.
        ID is a value unique per manager. *)
@@ -107,10 +107,10 @@ type
   (* List of particles.
      This list is managed with particles and performance in mind, make sure to
      check methods doc. *)
-  TgxParticleList = class(TgPersistentObject)
+  TgxParticleList = class(TgxPersistentObject)
   private
     FOwner: TgxParticleFXManager; // NOT persistent
-    FItemList: TgPersistentObjectList;
+    FItemList: TgxPersistentObjectList;
     FDirectList: PGLParticleArray; // NOT persistent
   protected
     function GetItems(index: Integer): TgxParticle;
@@ -119,8 +119,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TgVirtualWriter); override;
-    procedure ReadFromFiler(reader: TgVirtualReader); override;
+    procedure WriteToFiler(writer: TgxVirtualWriter); override;
+    procedure ReadFromFiler(reader: TgxVirtualReader); override;
     // Refers owner manager
     property Owner: TgxParticleFXManager read FOwner write FOwner;
     property Items[index: Integer]: TgxParticle read GetItems write SetItems; default;
@@ -210,7 +210,7 @@ type
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
     procedure NotifyChange(Sender: TObject); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     // Class of particles created by this manager. }
     class function ParticlesClass: TgxParticleClass; virtual;
     // Creates a new particle controlled by the manager.
@@ -356,9 +356,9 @@ type
   // Simple Particles Source.
   TgxSourcePFXEffect = class(TgxParticleFXEffect)
   private
-    FInitialVelocity: TgCoordinates;
-    FInitialPosition: TgCoordinates;
-    FPositionDispersionRange: TgCoordinates;
+    FInitialVelocity: TgxCoordinates;
+    FInitialPosition: TgxCoordinates;
+    FPositionDispersionRange: TgxCoordinates;
     FVelocityDispersion: Single;
     FPositionDispersion: Single;
     FParticleInterval: Single;
@@ -370,9 +370,9 @@ type
     FTimeRemainder: Double;
     FRotationDispersion: Single;
   protected
-    procedure SetInitialVelocity(const val: TgCoordinates);
-    procedure SetInitialPosition(const val: TgCoordinates);
-    procedure SetPositionDispersionRange(const val: TgCoordinates);
+    procedure SetInitialVelocity(const val: TgxCoordinates);
+    procedure SetInitialPosition(const val: TgxCoordinates);
+    procedure SetPositionDispersionRange(const val: TgxCoordinates);
     procedure SetParticleInterval(const val: Single);
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
@@ -382,18 +382,18 @@ type
     destructor Destroy; override;
     class function FriendlyName: string; override;
     class function FriendlyDescription: string; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     // Instantaneously creates nb particles
     procedure Burst(time: Double; nb: Integer);
     procedure RingExplosion(time: Double;
       minInitialSpeed, maxInitialSpeed: Single;
       nbParticles: Integer);
   published
-    property InitialVelocity: TgCoordinates read FInitialVelocity write SetInitialVelocity;
+    property InitialVelocity: TgxCoordinates read FInitialVelocity write SetInitialVelocity;
     property VelocityDispersion: Single read FVelocityDispersion write FVelocityDispersion;
-    property InitialPosition: TgCoordinates read FInitialPosition write SetInitialPosition;
+    property InitialPosition: TgxCoordinates read FInitialPosition write SetInitialPosition;
     property PositionDispersion: Single read FPositionDispersion write FPositionDispersion;
-    property PositionDispersionRange: TgCoordinates read FPositionDispersionRange write SetPositionDispersionRange;
+    property PositionDispersionRange: TgxCoordinates read FPositionDispersionRange write SetPositionDispersionRange;
     property ParticleInterval: Single read FParticleInterval write SetParticleInterval;
     property VelocityMode: TgxSourcePFXVelocityMode read FVelocityMode write FVelocityMode default svmAbsolute;
     property PositionMode: TgxSourcePFXPositionMode read FPositionMode write FPositionMode default spmAbsoluteOffset;
@@ -408,12 +408,12 @@ type
      (simple velocity and const acceleration integration). *)
   TgxDynamicPFXManager = class(TgxParticleFXManager)
   private
-    FAcceleration: TgCoordinates;
+    FAcceleration: TgxCoordinates;
     FFriction: Single;
     FCurrentTime: Double;
     //FRotationCenter: TAffineVector;
   protected
-    procedure SetAcceleration(const val: TgCoordinates);
+    procedure SetAcceleration(const val: TgxCoordinates);
     (* Returns the maximum age for a particle.
        Particles older than that will be killed by DoProgress. *)
     function MaxParticleAge: Single; virtual; abstract;
@@ -421,10 +421,10 @@ type
   public
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
   published
     // Oriented acceleration applied to the particles.
-    property Acceleration: TgCoordinates read FAcceleration write SetAcceleration;
+    property Acceleration: TgxCoordinates read FAcceleration write SetAcceleration;
     (* Friction applied to the particles.
        Friction is applied as a speed scaling factor over 1 second, ie.
        a friction of 0.5 will half speed over 1 second, a friction of 3
@@ -435,8 +435,8 @@ type
 
   TPFXLifeColor = class(TCollectionItem)
   private
-    FColorInner: TGColor;
-    FColorOuter: TGColor;
+    FColorInner: TgxColor;
+    FColorOuter: TgxColor;
     FLifeTime, FInvLifeTime: Single;
     FIntervalRatio: Single;
     FSizeScale: Single;
@@ -445,8 +445,8 @@ type
     FRotateAngle: Single;
   protected
     function GetDisplayName: string; override;
-    procedure SetColorInner(const val: TGColor);
-    procedure SetColorOuter(const val: TGColor);
+    procedure SetColorInner(const val: TgxColor);
+    procedure SetColorOuter(const val: TgxColor);
     procedure SetLifeTime(const val: Single);
     procedure SetSizeScale(const val: Single);
     procedure SetRotateAngle(const Value: Single); // indirectly persistent
@@ -459,8 +459,8 @@ type
     // Stores 1/(LifeTime[Next]-LifeTime[Self])
     property InvIntervalRatio: Single read FIntervalRatio;
   published
-    property ColorInner: TGColor read FColorInner write SetColorInner;
-    property ColorOuter: TGColor read FColorOuter write SetColorOuter;
+    property ColorInner: TgxColor read FColorInner write SetColorInner;
+    property ColorOuter: TgxColor read FColorOuter write SetColorOuter;
     property LifeTime: Single read FLifeTime write SetLifeTime;
     property SizeScale: Single read FSizeScale write SetSizeScale;
     property RotateAngle: Single read FRotateAngle write SetRotateAngle;
@@ -489,19 +489,19 @@ type
     FLifeColorsLookup: TList;
     FLifeRotations: Boolean;
     FLifeScaling: Boolean;
-    FColorInner: TGColor;
-    FColorOuter: TGColor;
+    FColorInner: TgxColor;
+    FColorOuter: TgxColor;
     FParticleSize: Single;
   protected
     procedure SetLifeColors(const val: TPFXLifeColors);
-    procedure SetColorInner(const val: TGColor);
-    procedure SetColorOuter(const val: TGColor);
+    procedure SetColorInner(const val: TgxColor);
+    procedure SetColorOuter(const val: TgxColor);
     procedure InitializeRendering(var rci: TgxRenderContextInfo); override;
     procedure FinalizeRendering(var rci: TgxRenderContextInfo); override;
     function MaxParticleAge: Single; override;
-    procedure ComputeColors(var lifeTime: Single; var inner, outer: TGColorVector);
-    procedure ComputeInnerColor(var lifeTime: Single; var inner: TGColorVector);
-    procedure ComputeOuterColor(var lifeTime: Single; var outer: TGColorVector);
+    procedure ComputeColors(var lifeTime: Single; var inner, outer: TgxColorVector);
+    procedure ComputeInnerColor(var lifeTime: Single; var inner: TgxColorVector);
+    procedure ComputeOuterColor(var lifeTime: Single; var outer: TgxColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
     procedure RotateVertexBuf(buf: TgAffineVectorList; lifeTime: Single;
@@ -510,8 +510,8 @@ type
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
     property ParticleSize: Single read FParticleSize write FParticleSize;
-    property ColorInner: TGColor read FColorInner write SetColorInner;
-    property ColorOuter: TGColor read FColorOuter write SetColorOuter;
+    property ColorInner: TgxColor read FColorInner write SetColorInner;
+    property ColorOuter: TgxColor read FColorOuter write SetColorOuter;
     property LifeColors: TPFXLifeColors read FLifeColors write SetLifeColors;
   published
     property BlendingMode default bmAdditive;
@@ -519,9 +519,9 @@ type
 
   TPFXDirectRenderEvent = procedure(Sender: TObject; aParticle: TgxParticle;
     var rci: TgxRenderContextInfo) of object;
-  TPFXProgressEvent = procedure(Sender: TObject; const progressTime: TGProgressTimes;
+  TPFXProgressEvent = procedure(Sender: TObject; const progressTime: TgxProgressTimes;
     var defaultProgress: Boolean) of object;
-  TPFXParticleProgress = procedure(Sender: TObject; const progressTime: TGProgressTimes;
+  TPFXParticleProgress = procedure(Sender: TObject; const progressTime: TgxProgressTimes;
     aParticle: TgxParticle; var killParticle: Boolean) of object;
   TPFXGetParticleCountEvent = function(Sender: TObject): Integer of object;
 
@@ -549,7 +549,7 @@ type
     procedure EndParticles(var rci: TgxRenderContextInfo); override;
     procedure FinalizeRendering(var rci: TgxRenderContextInfo); override;
   public
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     function ParticleCount: Integer; override;
   published
     property OnInitializeRendering: TDirectRenderEvent read FOnInitializeRendering write FOnInitializeRendering;
@@ -746,7 +746,7 @@ end;
 
 procedure RndVector(const dispersion: TgxSourcePFXDispersionMode;
   var v: TAffineVector; var f: Single;
-  dispersionRange: TgCoordinates);
+  dispersionRange: TgxCoordinates);
 var
   f2, fsq: Single;
   p: TVector4f;
@@ -813,7 +813,7 @@ begin
     FVelocity.V[Index] := aValue;
 end;
 
-procedure TgxParticle.WriteToFiler(writer: TgVirtualWriter);
+procedure TgxParticle.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -827,7 +827,7 @@ begin
 end;
 
 
-procedure TgxParticle.ReadFromFiler(reader: TgVirtualReader);
+procedure TgxParticle.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -852,7 +852,7 @@ end;
 constructor TgxParticleList.Create;
 begin
   inherited Create;
-  FItemList := TgPersistentObjectList.Create;
+  FItemList := TgxPersistentObjectList.Create;
   FitemList.GrowthDelta := 64;
   FDirectList := nil;
 end;
@@ -863,7 +863,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxParticleList.WriteToFiler(writer: TgVirtualWriter);
+procedure TgxParticleList.WriteToFiler(writer: TgxVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -873,7 +873,7 @@ begin
   end;
 end;
 
-procedure TgxParticleList.ReadFromFiler(reader: TgVirtualReader);
+procedure TgxParticleList.ReadFromFiler(reader: TgxVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -974,7 +974,7 @@ begin
     Renderer.StructureChanged;
 end;
 
-procedure TgxParticleFXManager.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxParticleFXManager.DoProgress(const progressTime: TgxProgressTimes);
 begin
   inherited;
   if FAutoFreeWhenEmpty and (FParticles.ItemCount = 0) then
@@ -1523,9 +1523,9 @@ end;
 constructor TgxSourcePFXEffect.Create(aOwner: TXCollection);
 begin
   inherited;
-  FInitialVelocity := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
-  FInitialPosition := TgCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
-  FPositionDispersionRange := TgCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
+  FInitialVelocity := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FInitialPosition := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csPoint);
+  FPositionDispersionRange := TgxCoordinates.CreateInitialized(Self, XYZHmgVector, csPoint);
   FVelocityDispersion := 0;
   FPositionDispersion := 0;
   FParticleInterval := 0.1;
@@ -1610,17 +1610,17 @@ begin
   end;
 end;
 
-procedure TgxSourcePFXEffect.SetInitialVelocity(const val: TgCoordinates);
+procedure TgxSourcePFXEffect.SetInitialVelocity(const val: TgxCoordinates);
 begin
   FInitialVelocity.Assign(val);
 end;
 
-procedure TgxSourcePFXEffect.SetInitialPosition(const val: TgCoordinates);
+procedure TgxSourcePFXEffect.SetInitialPosition(const val: TgxCoordinates);
 begin
   FInitialPosition.Assign(val);
 end;
 
-procedure TgxSourcePFXEffect.SetPositionDispersionRange(const val: TgCoordinates);
+procedure TgxSourcePFXEffect.SetPositionDispersionRange(const val: TgxCoordinates);
 begin
   FPositionDispersionRange.Assign(val);
 end;
@@ -1637,7 +1637,7 @@ begin
   end;
 end;
 
-procedure TgxSourcePFXEffect.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxSourcePFXEffect.DoProgress(const progressTime: TgxProgressTimes);
 var
   n: Integer;
 begin
@@ -1758,8 +1758,8 @@ end;
 constructor TPFXLifeColor.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
-  FColorInner := TGColor.CreateInitialized(Self, NullHmgVector);
-  FColorOuter := TGColor.CreateInitialized(Self, NullHmgVector);
+  FColorInner := TgxColor.CreateInitialized(Self, NullHmgVector);
+  FColorOuter := TgxColor.CreateInitialized(Self, NullHmgVector);
   FLifeTime := 1;
   FInvLifeTime := 1;
   FSizeScale := 1;
@@ -1794,12 +1794,12 @@ begin
       ColorOuter.Red, ColorOuter.Green, ColorOuter.Blue, ColorOuter.Alpha]);
 end;
 
-procedure TPFXLifeColor.SetColorInner(const val: TGColor);
+procedure TPFXLifeColor.SetColorInner(const val: TgxColor);
 begin
   FColorInner.Assign(val);
 end;
 
-procedure TPFXLifeColor.SetColorOuter(const val: TGColor);
+procedure TPFXLifeColor.SetColorOuter(const val: TgxColor);
 begin
   FColorOuter.Assign(val);
 end;
@@ -1915,7 +1915,7 @@ end;
 constructor TgxDynamicPFXManager.Create(aOwner: TComponent);
 begin
   inherited;
-  FAcceleration := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  FAcceleration := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
   FFriction := 1;
 end;
 
@@ -1925,7 +1925,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxDynamicPFXManager.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxDynamicPFXManager.DoProgress(const progressTime: TgxProgressTimes);
 var
   i: Integer;
   curParticle: TgxParticle;
@@ -2003,7 +2003,7 @@ begin
     Particles.Pack;
 end;
 
-procedure TgxDynamicPFXManager.SetAcceleration(const val: TgCoordinates);
+procedure TgxDynamicPFXManager.SetAcceleration(const val: TgxCoordinates);
 begin
   FAcceleration.Assign(val);
 end;
@@ -2016,8 +2016,8 @@ constructor TgxLifeColoredPFXManager.Create(aOwner: TComponent);
 begin
   inherited;
   FLifeColors := TPFXLifeColors.Create(Self);
-  FColorInner := TGColor.CreateInitialized(Self, clrYellow);
-  FColorOuter := TGColor.CreateInitialized(Self, NullHmgVector);
+  FColorInner := TgxColor.CreateInitialized(Self, clrYellow);
+  FColorOuter := TgxColor.CreateInitialized(Self, NullHmgVector);
   with FLifeColors.Add do
   begin
     LifeTime := 3;
@@ -2033,12 +2033,12 @@ begin
   inherited Destroy;
 end;
 
-procedure TgxLifeColoredPFXManager.SetColorInner(const val: TGColor);
+procedure TgxLifeColoredPFXManager.SetColorInner(const val: TgxColor);
 begin
   FColorInner.Assign(val);
 end;
 
-procedure TgxLifeColoredPFXManager.SetColorOuter(const val: TGColor);
+procedure TgxLifeColoredPFXManager.SetColorOuter(const val: TgxColor);
 begin
   FColorOuter.Assign(val);
 end;
@@ -2072,7 +2072,7 @@ begin
   Result := LifeColors.MaxLifeTime;
 end;
 
-procedure TgxLifeColoredPFXManager.ComputeColors(var lifeTime: Single; var inner, outer: TGColorVector);
+procedure TgxLifeColoredPFXManager.ComputeColors(var lifeTime: Single; var inner, outer: TgxColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2118,7 +2118,7 @@ begin
   end;
 end;
 
-procedure TgxLifeColoredPFXManager.ComputeInnerColor(var lifeTime: Single; var inner: TGColorVector);
+procedure TgxLifeColoredPFXManager.ComputeInnerColor(var lifeTime: Single; var inner: TgxColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2161,7 +2161,7 @@ begin
   end;
 end;
 
-procedure TgxLifeColoredPFXManager.ComputeOuterColor(var lifeTime: Single; var outer: TGColorVector);
+procedure TgxLifeColoredPFXManager.ComputeOuterColor(var lifeTime: Single; var outer: TgxColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2323,7 +2323,7 @@ end;
 // ------------------ TgxCustomPFXManager ------------------
 // ------------------
 
-procedure TgxCustomPFXManager.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxCustomPFXManager.DoProgress(const progressTime: TgxProgressTimes);
 var
   i: Integer;
   list: PGLParticleArray;
@@ -2469,7 +2469,7 @@ procedure TgxPolygonPFXManager.RenderParticle(var rci: TgxRenderContextInfo; aPa
 var
   i: Integer;
   lifeTime, sizeScale: Single;
-  inner, outer: TGColorVector;
+  inner, outer: TgxColorVector;
   pos: TAffineVector;
   vertexList: PAffineVectorArray;
 begin
@@ -2706,7 +2706,7 @@ const
     ((S: 0.5; T: 0.5), (S: 0.0; T: 0.5), (S: 0.0; T: 0.0), (S: 0.5; T: 0.0)));
 var
   lifeTime, sizeScale: Single;
-  inner, outer: TGColorVector;
+  inner, outer: TgxColorVector;
   pos: TAffineVector;
   vertexList: PAffineVectorArray;
   i: Integer;

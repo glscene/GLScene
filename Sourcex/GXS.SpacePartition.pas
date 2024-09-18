@@ -27,7 +27,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.GeometryBB,
-  GLScene.PersistentClasses;
+  GXS.PersistentClasses;
 
 const
   COctree_LEAF_TRHESHOLD = 30;
@@ -57,7 +57,7 @@ type
   end;
 
   // Used to store the actual objects in the SpacePartition
-  TSpacePartitionLeaf = class(TgPersistentObject)
+  TSpacePartitionLeaf = class(TgxPersistentObject)
   private
     FSpacePartition: TBaseSpacePartition;
     procedure SetSpacePartition(const Value: TBaseSpacePartition);
@@ -89,7 +89,7 @@ type
   end;
 
   // List for storing space partition leaves
-  TSpacePartitionLeafList = class(TgPersistentObjectList)
+  TSpacePartitionLeafList = class(TgxPersistentObjectList)
   private
     function GetItems(I: Integer): TSpacePartitionLeaf;
     procedure SetItems(I: Integer; const Value: TSpacePartitionLeaf);
@@ -102,7 +102,7 @@ type
   TCullingMode = (CmFineCulling, CmGrossCulling);
 
   // Basic space partition, does not implement any actual space partitioning
-  TBaseSpacePartition = class(TgPersistentObject)
+  TBaseSpacePartition = class(TgxPersistentObject)
   private
     FCullingMode: TCullingMode;
     // Query space for Leaves that intersect a cone, result is returned in QueryResult

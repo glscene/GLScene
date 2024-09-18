@@ -47,8 +47,8 @@ uses
   Vcl.Graphics,
 
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
-  GLScene.Coordinates,
+  GLS.PersistentClasses,
+  GLS.Coordinates,
   GLScene.Strings,
 
   GLS.Scene,

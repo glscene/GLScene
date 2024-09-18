@@ -31,16 +31,16 @@ uses
   GLScene.OpenGLTokens,
   GLS.RenderContextInfo,
   GLScene.PipelineTransform,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.Context,
   GLScene.VectorTypes,
   GLS.Material,
   GLS.Texture,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.Coordinates,
   GLScene.VectorGeometry,
   GLS.Graphics,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.State,
   GLScene.TextureFormat,
   GLScene.XCollection,
@@ -86,8 +86,8 @@ type
     procedure DoOnPrepare(Sender: TGLContext); virtual; abstract;
   public
     destructor Destroy; override;
-    procedure RegisterUser(AUser: TGUpdateAbleObject);
-    procedure UnregisterUser(AUser: TGUpdateAbleObject);
+    procedure RegisterUser(AUser: TGLUpdateAbleObject);
+    procedure UnregisterUser(AUser: TGLUpdateAbleObject);
     function GetUserCount: Integer;
     function GetMaterialLibrary: TGLAbstractMaterialLibrary;
     property MaterialLibrary: TGLMaterialLibraryEx read GetMaterialLibraryEx;
@@ -102,7 +102,7 @@ type
 
   CGLBaseMaterialCollectionItem = class of TGLBaseMaterialCollectionItem;
 
-  TGLLibMaterialProperty = class(TGUpdateAbleObject, IGLMaterialLibrarySupported)
+  TGLLibMaterialProperty = class(TGLUpdateAbleObject, IGLMaterialLibrarySupported)
   protected
     FEnabled: Boolean;
     FNextPassName: TGLLibMaterialName;
@@ -375,7 +375,7 @@ type
 
   (* Swizzle the components of a texture fetches in
         shader or fixed-function pipeline. *)
-  TGLTextureSwizzling = class(TGUpdateAbleObject)
+  TGLTextureSwizzling = class(TGLUpdateAbleObject)
   private
     FSwizzles: TglSwizzleVector;
     function GetSwizzle(AIndex: Integer): TGLTextureSwizzle;
@@ -717,7 +717,7 @@ type
   end;
 
 
-  TGLAbstractShaderUniform = class(TGUpdateAbleObject, IShaderParameter)
+  TGLAbstractShaderUniform = class(TGLUpdateAbleObject, IShaderParameter)
   protected
     FName: string;
     FNameHashCode: Integer;
@@ -1343,19 +1343,19 @@ begin
   FNotifying := True;
   if GetUserCount > 0 then
     for I := 0 to FUserList.Count - 1 do
-      TGUpdateAbleObject(FUserList[I]).NotifyChange(Self);
+      TGLUpdateAbleObject(FUserList[I]).NotifyChange(Self);
   FNotifying := False;
 end;
 
 procedure TGLBaseMaterialCollectionItem.RegisterUser(
-  AUser: TGUpdateAbleObject);
+  AUser: TGLUpdateAbleObject);
 begin
   if not FNotifying and (UserList.IndexOf(AUser) < 0) then
     UserList.Add(AUser);
 end;
 
 procedure TGLBaseMaterialCollectionItem.UnregisterUser(
-  AUser: TGUpdateAbleObject);
+  AUser: TGLUpdateAbleObject);
 begin
   if not FNotifying then
     UserList.Remove(AUser);
@@ -4289,11 +4289,11 @@ end;
 
 procedure TGLLibMaterialProperty.NotifyChange(Sender: TObject);
 var
-  NA: IGNotifyAble;
+  NA: IGLNotifyAble;
 begin
   if Assigned(Owner) then
   begin
-    if Supports(Owner, IGNotifyAble, NA) then
+    if Supports(Owner, IGLNotifyAble, NA) then
       NA.NotifyChange(Self)
   end;
   if Assigned(OnNotifyChange) then

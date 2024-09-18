@@ -23,10 +23,10 @@ uses
   GLSL.MultiMaterialShader,
   GLSL.TextureShaders,
   GLS.Material,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
   GLScene.Utils,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLS.SimpleNavigation;
 
 type

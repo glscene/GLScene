@@ -24,8 +24,8 @@ uses
   GLS.SceneViewer,
   GLS.GeomObjects,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.File3DS,
   GLScene.Utils;
 

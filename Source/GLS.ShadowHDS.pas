@@ -31,13 +31,13 @@ uses
   System.Math,
 
   GLScene.OpenGLTokens,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLS.HeightData,
   GLS.Graphics,
   GLScene.VectorGeometry,
   GLS.Texture,
   GLScene.VectorTypes,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLS.Material;
 
 type
@@ -386,7 +386,7 @@ end;
   libMat: TGLLibMaterial;
   bmp32 : TGLBitmap32;
   MatName:string;
-  Hold:TGUpdateAbleObject;
+  Hold:TGLUpdateAbleObject;
   lst:TList;
   begin
 
@@ -396,7 +396,7 @@ end;
   //Uno.Acquire;
   HD:=HeightData;
   MatName:='ShadowHDS_x'+IntToStr(HD.XLeft)+'y'+IntToStr(HD.YTop)+'.'; //name contains xy coordinates of the current tile
-  Hold:=TGUpdateAbleObject.Create(self);
+  Hold:=TGLUpdateAbleObject.Create(self);
 
   LibMat:=FShadowmapLibrary.Materials.GetLibMaterialByName(MatName);   //Check if Tile Texture already exists
   //if assigned(libmat) then LibMat.Name:='Dirty';

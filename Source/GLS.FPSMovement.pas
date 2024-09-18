@@ -18,18 +18,18 @@ uses
   Vcl.Graphics,
 
   GLScene.OpenGLTokens,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.VectorTypes,
   GLS.Context,
   GLScene.VectorGeometry,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.XCollection,
   GLS.GeomObjects,
   GLS.Navigator,
   GLS.RenderContextInfo,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.Manager,
   GLS.State;
 
@@ -146,7 +146,7 @@ type
     Velocity: TGLVector;
     constructor Create(aOwner: TXCollection); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
     class function FriendlyName: string; override;
     procedure TurnHorizontal(Angle: single);
     procedure TurnVertical(Angle: single);
@@ -793,7 +793,7 @@ begin
   Manager.Navigator.MovingObject := prevObj;
 end;
 
-procedure TGLBFPSMovement.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLBFPSMovement.DoProgress(const progressTime: TGLProgressTimes);
 var
   newPosition: TGLVector;
   CollisionState: TGLCollisionState;

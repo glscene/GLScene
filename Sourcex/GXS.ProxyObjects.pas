@@ -15,8 +15,8 @@ uses
   System.SysUtils,
 
   GLScene.XCollection,
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses,
+  GXS.BaseClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.Strings,
@@ -139,7 +139,7 @@ type
     FEndFrame: Integer;
     FLastFrame: Integer;
     FCurrentFrameDelta: Single;
-    FCurrentTime: TGProgressTimes;
+    FCurrentTime: TgxProgressTimes;
     FAnimation: TgxActorAnimationName;
     FTempLibMaterialName: string;
     FMasterLibMaterial: TgxLibMaterial;
@@ -147,7 +147,7 @@ type
     FBonesMatrices: TStringList;
     FStoreBonesMatrix: boolean;
     FStoredBoneNames: TStrings;
-    FOnBeforeRender: TgProgressEvent;
+    FOnBeforeRender: TgxProgressEvent;
     FAnimationMode: TgxActorProxyAnimationMode;
     procedure SetAnimation(const Value: TgxActorAnimationName);
     procedure SetMasterActorObject(const Value: TgxActor);
@@ -159,7 +159,7 @@ type
     function GetMaterialLibrary: TgxAbstractMaterialLibrary;
     procedure SetStoreBonesMatrix(const Value: boolean);
     procedure SetStoredBoneNames(const Value: TStrings);
-    procedure SetOnBeforeRender(const Value: TgProgressEvent);
+    procedure SetOnBeforeRender(const Value: TgxProgressEvent);
   protected
     procedure DoStoreBonesMatrices;
       // stores matrices of bones of the current frame rendered
@@ -170,12 +170,12 @@ type
       override;
     procedure DoRender(var ARci: TgxRenderContextInfo;
       ARenderSelf, ARenderChildren: Boolean); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     property CurrentFrame: Integer read FCurrentFrame;
     property StartFrame: Integer read FStartFrame;
     property EndFrame: Integer read FEndFrame;
     property CurrentFrameDelta: Single read FCurrentFrameDelta;
-    property CurrentTime: TGProgressTimes read FCurrentTime;
+    property CurrentTime: TgxProgressTimes read FCurrentTime;
     (*
      Gets the Bones Matrix in the current animation frame.
      (since the masterobject is shared between all proxies,
@@ -224,7 +224,7 @@ type
       SetStoredBoneNames;
     (* Event allowing to apply extra transformations (f.ex: bone rotations) to the referenced
        Actor on order to have the proxy render these changes.  *)
-    property OnBeforeRender: TgProgressEvent read FOnBeforeRender write
+    property OnBeforeRender: TgxProgressEvent read FOnBeforeRender write
       SetOnBeforeRender;
   end;
 
@@ -443,7 +443,7 @@ begin
   inherited;
 end;
 
-procedure TgxActorProxy.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxActorProxy.DoProgress(const progressTime: TgxProgressTimes);
 begin
   inherited;
   FCurrentTime := progressTime;
@@ -777,7 +777,7 @@ begin
   end;
 end;
 
-procedure TgxActorProxy.SetOnBeforeRender(const Value: TgProgressEvent);
+procedure TgxActorProxy.SetOnBeforeRender(const Value: TgxProgressEvent);
 begin
   FOnBeforeRender := Value;
 end;

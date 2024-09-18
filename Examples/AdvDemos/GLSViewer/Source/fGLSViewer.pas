@@ -40,9 +40,9 @@ uses
   GLScene.VectorLists,
   GLScene.Keyboard,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
+  GLS.PersistentClasses,
   GLScene.TextureFormat,
   GLScene.XCollection,
 
@@ -56,7 +56,7 @@ uses
   GLS.Cadencer,
   GLS.State,
   GLS.RenderContextInfo,
-  GLScene.Color,
+  GLS.Color,
   GLS.Graphics,
   GLS.MeshUtils,
   GLS.AsyncTimer,
@@ -874,7 +874,7 @@ end;
 
 procedure TFormGLSViewer.acConvertToIndexedTrianglesExecute(Sender: TObject);
 var
-  v: TGAffineVectorList;
+  v: TGLAffineVectorList;
   I: TGIntegerList;
   m: TGLMeshObject;
   fg: TFGVertexIndexList;
@@ -910,7 +910,7 @@ var
   I: Integer;
   mo: TGLMeshObject;
   fg: TFGVertexIndexList;
-  strips: TGPersistentObjectList;
+  strips: TGLPersistentObjectList;
 begin
   acConvertToTriangles.Execute;
   mo := ffObject.MeshObjects[0];

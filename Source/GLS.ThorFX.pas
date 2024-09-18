@@ -21,12 +21,12 @@ uses
   GLScene.XCollection,
   GLScene.VectorGeometry,
   GLS.Context,
-  GLScene.VectorLists,
+  GLS.VectorLists,
   GLScene.VectorTypes,
   GLS.Cadencer,
-  GLScene.Color,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.BaseClasses,
+  GLS.Coordinates,
   GLS.RenderContextInfo,
   GLScene.PipelineTransform,
   GLScene.Manager,
@@ -50,7 +50,7 @@ type
     var y: single; var z: single) of object;
 
   // Thor special effect manager.
-  TGLThorFXManager = class(TGCadenceAbleComponent)
+  TGLThorFXManager = class(TGLCadenceAbleComponent)
   private
     FClients: TList;
     FThorpoints: PThorpointArray;
@@ -84,7 +84,7 @@ type
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
   published
     property Target: TgCoordinates read FTarget write SetTarget;
     property Cadencer: TGLCadencer read FCadencer write SetCadencer;
@@ -272,7 +272,7 @@ begin
   inherited;
 end;
 
-procedure TGLThorFXManager.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLThorFXManager.DoProgress(const progressTime: TGLProgressTimes);
 var
   i: integer;
 

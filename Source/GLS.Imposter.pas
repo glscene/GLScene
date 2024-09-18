@@ -22,13 +22,13 @@ uses
   GLS.Context,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLScene.PipelineTransform,
   GLS.Graphics,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.State,
   GLScene.TextureFormat,
   GLScene.Utils;
@@ -111,7 +111,7 @@ type
   TImposterReference = (irCenter, irTop, irBottom);
 
   // Abstract ImposterBuilder class.
-  TGLImposterBuilder = class(TGUpdateAbleComponent)
+  TGLImposterBuilder = class(TGLUpdateAbleComponent)
   private
     FBackColor: TGColor;
     FBuildOffset: TgCoordinates;
@@ -841,8 +841,8 @@ end;
 procedure TGLStaticImposterBuilderCoronas.NotifyChange;
 begin
   if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is
-    TGUpdateAbleComponent) then
-    TGUpdateAbleComponent(GetOwner).NotifyChange(Self);
+    TGLUpdateAbleComponent) then
+    TGLUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TGLStaticImposterBuilderCoronas.EndUpdate;

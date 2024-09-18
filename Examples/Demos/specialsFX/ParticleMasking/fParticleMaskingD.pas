@@ -31,8 +31,8 @@ uses
   GLS.AsyncTimer,
  
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 const
 

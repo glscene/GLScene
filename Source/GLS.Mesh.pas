@@ -29,8 +29,8 @@ uses
   GLS.Context,
   GLS.Scene,
   GLS.State,
-  GLScene.Color,
-  GLScene.BaseClasses,
+  GLS.Color,
+  GLS.BaseClasses,
   GLS.RenderContextInfo;
 
 type
@@ -61,7 +61,7 @@ type
 
   (* Stores an interlaced vertex list for direct use in OpenGL.
     Locking (hardware passthrough) is supported, see "Locked" property for details. *)
-  TGLVertexList = class(TGUpdateAbleObject)
+  TGLVertexList = class(TGLUpdateAbleObject)
   private
     FValues: PGLVertexDataArray;
     FCount: Integer;

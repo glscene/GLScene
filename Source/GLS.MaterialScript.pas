@@ -20,8 +20,8 @@ uses
   GLScene.TextureFormat,
   GLS.Graphics,
   GLScene.Utils,
-  GLScene.Color,
-  GLScene.Coordinates,
+  GLS.Color,
+  GLS.Coordinates,
   GLS.Material,
   GLS.State;
 

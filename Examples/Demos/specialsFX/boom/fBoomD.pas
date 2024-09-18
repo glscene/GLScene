@@ -22,8 +22,8 @@ uses
   GLScene.VectorGeometry,
   GLS.SceneViewer,
  
-  GLScene.Coordinates,
-  GLScene.BaseClasses;
+  GLS.Coordinates,
+  GLS.BaseClasses;
 
 type
   TForm1 = class(TForm)

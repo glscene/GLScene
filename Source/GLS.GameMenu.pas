@@ -16,12 +16,12 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GLScene.Coordinates,
+  GLS.Coordinates,
 
   GLS.Scene,
   GLS.Material,
   GLS.BitmapFont,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLS.Canvas,
   GLS.Context;

@@ -28,7 +28,7 @@ uses
   FMX.Edit,
   FMX.Controls3D,
 
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.Gui,
   GXS.Texture,
   GXS.Material;

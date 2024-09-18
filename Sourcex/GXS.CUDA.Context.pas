@@ -15,12 +15,12 @@ uses
 
   GLScene.Strings,
   GLScene.Generics,
-  GLScene.BaseClasses,
+  GXS.BaseClasses,
   GXS.Context;
 
 type
 
-  TCUDADimensions = class(TgUpdateAbleObject)
+  TCUDADimensions = class(TgxUpdateAbleObject)
   private
     FXYZ: TDim3;
     FMaxXYZ: TDim3;

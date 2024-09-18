@@ -17,8 +17,8 @@ uses
   Vcl.StdCtrls,
 
   GLScene.VectorTypes,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Keyboard,
   GLScene.VectorGeometry,
   GLScene.TextureFormat,

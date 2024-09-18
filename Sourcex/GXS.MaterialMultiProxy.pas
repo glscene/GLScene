@@ -30,8 +30,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.BaseClasses,
-  GLScene.PersistentClasses,
+  GXS.BaseClasses,
+  GXS.PersistentClasses,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Strings,
@@ -48,7 +48,7 @@ type
   TgxMaterialMultiProxy = class;
 
   // MasterObject description for a MultiProxy object.
-  TgxMaterialMultiProxyMaster = class(TGInterfacedCollectionItem, IgxMaterialLibrarySupported)
+  TgxMaterialMultiProxyMaster = class(TgxInterfacedCollectionItem, IgxMaterialLibrarySupported)
   private
     FMasterObject: TgxBaseSceneObject;
     FMasterLibMaterial: TgxLibMaterial;
@@ -335,8 +335,8 @@ end;
 
 procedure TgxMaterialMultiProxyMasters.NotifyChange;
 begin
-  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TgUpdateAbleComponent) then
-    TgUpdateAbleComponent(GetOwner).NotifyChange(Self);
+  if (UpdateCount = 0) and (GetOwner <> nil) and (GetOwner is TgxUpdateAbleComponent) then
+    TgxUpdateAbleComponent(GetOwner).NotifyChange(Self);
 end;
 
 procedure TgxMaterialMultiProxyMasters.EndUpdate;

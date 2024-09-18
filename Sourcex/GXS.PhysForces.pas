@@ -11,7 +11,7 @@ uses
   GLScene.VectorTypes,
   GLScene.XCollection,
   GLScene.VectorGeometry,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GLScene.Strings,
   
   GXS.Scene,
@@ -27,8 +27,8 @@ type
   private
     fObject1: TgxBaseSceneObject;
     fObject2: TgxBaseSceneObject;
-    fposition1: TgCoordinates;
-    fposition2: TgCoordinates;
+    fposition1: TgxCoordinates;
+    fposition2: TgxCoordinates;
     object1Name: String;
     object2Name: String;
     // fOnCustomForce: TOnCustomForce;
@@ -52,14 +52,14 @@ type
     class function UniqueItem: Boolean; override;
     procedure SetObject1(const val: TgxBaseSceneObject);
     procedure SetObject2(const val: TgxBaseSceneObject);
-    procedure SetPosition1(const val: TgCoordinates);
-    procedure SetPosition2(const val: TgCoordinates);
+    procedure SetPosition1(const val: TgxCoordinates);
+    procedure SetPosition2(const val: TgxCoordinates);
     function CalculateForce(): TAffineVector; virtual;
   published
     property Object1: TgxBaseSceneObject read fObject1 write SetObject1;
     property Object2: TgxBaseSceneObject read fObject2 write SetObject2;
-    property Position1: TgCoordinates read fposition1 write SetPosition1;
-    property Position2: TgCoordinates read fposition2 write SetPosition2;
+    property Position1: TgxCoordinates read fposition1 write SetPosition1;
+    property Position2: TgxCoordinates read fposition2 write SetPosition2;
     // property OnCustomForce:TOnCustomForce read fOnCustomForce write fOnCustomForce;
   end;
 
@@ -109,8 +109,8 @@ uses
 constructor TgxForce.Create(aOwner: TXCollection);
 begin
   inherited; // Create(aOwner)
-  fposition1 := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
-  fposition2 := TgCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  fposition1 := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
+  fposition2 := TgxCoordinates.CreateInitialized(Self, NullHmgVector, csVector);
   // fObject1:=TgxBaseSceneObject.Create(Self);
   // fObject2:=TgxBaseSceneObject.Create(Self);
 end;
@@ -153,12 +153,12 @@ begin
    Write('Object2 does not have an inertia behaviour');
 end;
 
-procedure TgxForce.SetPosition1(const val: TgCoordinates);
+procedure TgxForce.SetPosition1(const val: TgxCoordinates);
 begin
   fposition1.Assign(val); // DB101
 end;
 
-procedure TgxForce.SetPosition2(const val: TgCoordinates);
+procedure TgxForce.SetPosition2(const val: TgxCoordinates);
 begin
   fposition2.Assign(val);
 end;

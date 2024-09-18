@@ -26,10 +26,10 @@ uses
   GLS.SceneViewer,
   GLS.SpaceText,
   GLS.GeomObjects,
-  GLScene.Color,
+  GLS.Color,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects;

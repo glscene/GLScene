@@ -11,9 +11,9 @@
 #include <Vcl.Grids.hpp>
 
 #include "GLS.Scene.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.Coordinates.hpp"
+#include "GLS.Coordinates.hpp"
 
 #include "GLS.Material.hpp"
 #include "GLS.Objects.hpp"

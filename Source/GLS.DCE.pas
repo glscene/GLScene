@@ -32,11 +32,11 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.BaseClasses,
-  GLScene.Coordinates,
+  GLS.BaseClasses,
+  GLS.Coordinates,
   GLScene.Manager,
   GLScene.XCollection,
-  GLScene.VectorLists,
+  GLS.VectorLists,
 
   GLS.Scene,
   GLS.VectorFileObjects,
@@ -222,7 +222,7 @@ type
     procedure Move(deltaS: TAffineVector; deltaTime: Double);
     procedure MoveTo(Position: TAffineVector; Amount: single);
     procedure DoMove(deltaTime: Double);
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TGLProgressTimes); override;
     // Runtime only
     property Speed: TAffineVector read FSpeed write FSpeed;
     property InGround: Boolean read FInGround;
@@ -1160,7 +1160,7 @@ begin
   FAbsAccel := NullVector;
 end;
 
-procedure TGLDCEDynamic.DoProgress(const progressTime: TGProgressTimes);
+procedure TGLDCEDynamic.DoProgress(const progressTime: TGLProgressTimes);
 begin
   inherited DoProgress(progressTime);
   Assert(Assigned(Manager), 'DCE Manager not assigned to behaviour.');

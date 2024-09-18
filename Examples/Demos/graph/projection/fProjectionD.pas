@@ -19,8 +19,8 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   GLScene.VectorTypes,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.GeomObjects,
   GLS.Graph;
 

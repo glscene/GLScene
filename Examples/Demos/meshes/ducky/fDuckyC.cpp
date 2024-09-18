@@ -26,7 +26,7 @@ __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 
   // { Translate FreeForm based on the first mesh object's average
   // control point. Quick and dirty ... or maybe just dirty :P }
-  TGAffineVectorList *cp =
+  TGLAffineVectorList *cp =
 	((TMOParametricSurface *) (GLActor1->MeshObjects->Items[0]))->ControlPoints;
   GLActor1->Position->Translate(VectorNegate(VectorScale(cp->Sum(),1.0/cp->Count)));
 

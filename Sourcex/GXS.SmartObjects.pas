@@ -27,15 +27,15 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GLScene.PersistentClasses,
+  GXS.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypesExt,
-  GLScene.VectorLists,
-  GLScene.BaseClasses,
+  GXS.VectorLists,
+  GXS.BaseClasses,
   GLScene.PipelineTransform,
-  GLScene.Coordinates,
+  GXS.Coordinates,
   GLScene.GeometryBB,
-  GLScene.Color,
+  GXS.Color,
   GLScene.Strings,
 
   GXS.Scene,
@@ -69,7 +69,7 @@ type
   TgxCyborgThinks = class(TCollection);
 
   // A list of thinking periods for TgxCyborgThinkMode
-  TgxCyborgThinksList = class(TgPersistentObjectList);
+  TgxCyborgThinksList = class(TgxPersistentObjectList);
 
 const
   cDefaultCyborgOptions = [coCollide];
@@ -99,7 +99,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TgxRenderContextInfo); override;
-    procedure DoProgress(const progressTime: TGProgressTimes); override;
+    procedure DoProgress(const progressTime: TgxProgressTimes); override;
     procedure LoadFromStream(const Filename: string; aStream: TStream); override;
     procedure SwitchToThinking(anThinking: TgxCyborgThinks; smooth: Boolean = False);
     function CurrentThinking: string;
@@ -182,7 +182,7 @@ begin
   inherited;
 end;
 
-procedure TgxCyborg.DoProgress(const progressTime: TGProgressTimes);
+procedure TgxCyborg.DoProgress(const progressTime: TgxProgressTimes);
 begin
   inherited;
 //

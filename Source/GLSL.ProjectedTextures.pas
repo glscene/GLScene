@@ -29,11 +29,11 @@ uses
 
   GLScene.PipelineTransform,
   GLS.Scene,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Texture,
   GLScene.VectorGeometry,
   GLS.Context,
-  GLScene.Color,
+  GLS.Color,
   GLS.RenderContextInfo,
   GLScene.TextureFormat,
   GLScene.VectorTypes;

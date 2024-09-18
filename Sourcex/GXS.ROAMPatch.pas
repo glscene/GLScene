@@ -16,7 +16,7 @@ uses
   GLScene.VectorTypes,
   GXS.XOpenGL,
   GLScene.VectorGeometry,
-  GLScene.VectorLists,
+  GXS.VectorLists,
   GLScene.Strings,
   GXS.HeightData,
   GXS.Isolines,

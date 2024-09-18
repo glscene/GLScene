@@ -16,7 +16,7 @@ uses
 
   GLS.Scene,
   GLS.Objects,
-  GLScene.PersistentClasses,
+  GLS.PersistentClasses,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.DCE,
@@ -28,7 +28,7 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects,
-  GLScene.Coordinates,
+  GLS.Coordinates,
   GLScene.VectorGeometry,
   GLS.FileMD2,
   GLS.File3DS,
@@ -39,7 +39,7 @@ uses
   GLS.ProxyObjects,
   GLS.State,
   GLScene.Utils,
-  GLScene.BaseClasses,
+  GLS.BaseClasses,
   GLScene.VectorTypes;
 
 type

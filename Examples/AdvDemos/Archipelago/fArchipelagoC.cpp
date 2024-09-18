@@ -9,10 +9,10 @@
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-#pragma link "GLScene.BaseClasses"
+#pragma link "GLS.BaseClasses"
 #pragma link "GLS.BitmapFont"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.Coordinates"
+#pragma link "GLS.Coordinates"
 #pragma link "GLS.HeightData"
 #pragma link "GLS.HeightTileFileHDS"
 
@@ -470,8 +470,8 @@ void __fastcall TForm1::DOWakeProgress(TObject *Sender, const double deltaTime,
 	TGLVector sbp, sbr;
 
 	if (WakeVertices == NULL) {
-		WakeVertices = new TGAffineVectorList();
-		WakeStretch = new TGAffineVectorList();
+		WakeVertices = new TGLAffineVectorList();
+		WakeStretch = new TGLAffineVectorList();
 		WakeTime = new TGSingleList();
 	}
 

@@ -17,8 +17,8 @@ uses
 
   GLS.OpenGLAdapter,
   GLScene.OpenGLTokens,
-  GLScene.PersistentClasses,
-  GLScene.Coordinates,
+  GLS.PersistentClasses,
+  GLS.Coordinates,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.Context,

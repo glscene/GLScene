@@ -22,8 +22,8 @@ uses
   GLS.SceneViewer,
   GLS.GeomObjects,
 
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
   GLScene.Utils;

@@ -18,8 +18,8 @@ uses
   GLS.MaterialScript,
   GLS.Cadencer,
   GLS.Material,
-  GLScene.Coordinates,
-  GLScene.BaseClasses,
+  GLS.Coordinates,
+  GLS.BaseClasses,
   GLScene.Utils,
   GLS.SimpleNavigation;
 

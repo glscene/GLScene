@@ -27,8 +27,8 @@
 #include "GLScene.Keyboard.hpp"
 
 #include "GLS.Material.hpp"
-#include "GLScene.Coordinates.hpp"
-#include "GLScene.BaseClasses.hpp"
+#include "GLS.Coordinates.hpp"
+#include "GLS.BaseClasses.hpp"
 #include "GLScene.Utils.hpp"
 
 //---------------------------------------------------------------------------

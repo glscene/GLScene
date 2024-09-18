@@ -36,14 +36,14 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GLScene.Color,
+  GXS.Color,
   GXS.Texture,
   GXS.Material,
   GXS.Scene,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GXS.ParticleFX,
-  GLScene.Coordinates;
+  GXS.Coordinates;
 
 type
 
@@ -55,8 +55,8 @@ type
   TgxEParticleMask = class(TCollectionItem, IgxMaterialLibrarySupported)
   private
     FName: string;
-    FScale: TgCoordinates;
-    FPosition: TgCoordinates;
+    FScale: TgxCoordinates;
+    FPosition: TgxCoordinates;
     FYMask: TgxLibMaterialName;
     FZMask: TgxLibMaterialName;
     FXMask: TgxLibMaterialName;
@@ -102,8 +102,8 @@ type
       TgxEProjectedParticleMask; Depth: Integer);
   published
     // scales and positions
-    property Scale: TgCoordinates read FScale write FScale;
-    property Position: TgCoordinates read FPosition write FPosition;
+    property Scale: TgxCoordinates read FScale write FScale;
+    property Position: TgxCoordinates read FPosition write FPosition;
     // the reference name of the particle mask
     property Name: string read FName write SetName;
     property MaterialLibrary: TgxMaterialLibrary read FMaterialLibrary write
@@ -224,8 +224,8 @@ begin
 
   FName := 'ParticleMask' + IntToStr(ID);
 
-  FScale := TgCoordinates.CreateInitialized(Self, XYZHMGVector, csPoint);
-  FPosition := TgCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
+  FScale := TgxCoordinates.CreateInitialized(Self, XYZHMGVector, csPoint);
+  FPosition := TgxCoordinates.CreateInitialized(Self, NullHmgPoint, csPoint);
   FMaterialLibrary := nil;
 
   FMaskColor := TColorRec.White;
