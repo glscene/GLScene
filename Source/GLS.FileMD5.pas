@@ -29,8 +29,8 @@ type
     FCurrentPos: Integer;
     FBasePose: TGLSkeletonFrame;
     FFramePositions: TGLAffineVectorList;
-    FFrameQuaternions: TGQuaternionList;
-    FJointFlags: TgIntegerList;
+    FFrameQuaternions: TGLQuaternionList;
+    FJointFlags: TGLIntegerList;
     FNumFrames, FFirstFrame, FFrameRate, FNumJoints: Integer;
     function ReadLine: String;
   public
@@ -202,17 +202,17 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
     mesh: TGLSkeletonMeshObject;
     fg: TFGVertexIndexList;
     vnum, wnum, numverts, numweights: Integer;
-    VertexWeightID, VertexWeightCount, VertexBoneRef: TgIntegerList;
-    VertexWeight: TGSingleList;
+    VertexWeightID, VertexWeightCount, VertexBoneRef: TGLIntegerList;
+    VertexWeight: TGLSingleList;
     VertexWeighted: TGLAffineVectorList;
     blendedVert, transformedVert: TAffineVector;
     i, j, k: Integer;
     mat: TGLMatrix;
   begin
-    VertexWeightID := TgIntegerList.Create;
-    VertexWeightCount := TgIntegerList.Create;
-    VertexBoneRef := TgIntegerList.Create;
-    VertexWeight := TGSingleList.Create;
+    VertexWeightID := TGLIntegerList.Create;
+    VertexWeightCount := TGLIntegerList.Create;
+    VertexBoneRef := TGLIntegerList.Create;
+    VertexWeight := TGLSingleList.Create;
     VertexWeighted := TGLAffineVectorList.Create;
 
     numverts := 0;
@@ -332,7 +332,7 @@ procedure TGLMD5VectorFile.LoadFromStream(aStream: TStream);
   begin
     if not Assigned(FJointFlags) then
     begin
-      FJointFlags := TgIntegerList.Create;
+      FJointFlags := TGLIntegerList.Create;
       Assert(Owner.Skeleton.Frames.Count > 0,
         'The md5mesh file must be loaded before md5anim files!');
       FJointFlags.Count := Owner.Skeleton.Frames[0].Position.Count;
@@ -479,7 +479,7 @@ begin
         begin
           FNumJoints := StrToInt(FTempString[1]);
           FFramePositions := TGLAffineVectorList.Create;
-          FFrameQuaternions := TGQuaternionList.Create;
+          FFrameQuaternions := TGLQuaternionList.Create;
           if Owner.Skeleton.Frames.Count = 0 then
           begin
             FBasePose := TGLSkeletonFrame.CreateOwned(Owner.Skeleton.Frames);

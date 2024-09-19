@@ -61,7 +61,7 @@ type
     FVibrate: single;
     FWildness: single;
     NP: integer;
-    FInnerColor, FOuterColor, FCoreColor: TGColor;
+    FInnerColor, FOuterColor, FCoreColor: TGLColor;
     FDisabled, FCore, FGlow: boolean;
     FOnCalcPoint: TCalcPointEvent;
   protected
@@ -73,9 +73,9 @@ type
     procedure SetMaxpoints(const val: integer);
     function StoreGlowSize: boolean;
     function StoreVibrate: boolean;
-    procedure SetInnerColor(const val: TGColor);
-    procedure SetOuterColor(const val: TGColor);
-    procedure SetCoreColor(const val: TGColor);
+    procedure SetInnerColor(const val: TGLColor);
+    procedure SetOuterColor(const val: TGLColor);
+    procedure SetCoreColor(const val: TGLColor);
     procedure Notification(AComponent: TComponent;
       Operation: TOperation); override;
     procedure ThorInit;
@@ -91,9 +91,9 @@ type
     property Maxpoints: integer read FMaxpoints write SetMaxpoints default 256;
     property GlowSize: single read FGlowSize write FGlowSize stored StoreGlowSize;
     property Vibrate: single read FVibrate write FVibrate stored StoreVibrate;
-    property InnerColor: TGColor read FInnerColor write SetInnerColor;
-    property OuterColor: TGColor read FOuterColor write SetOuterColor; // default clrWhite;
-    property CoreColor: TGColor read FCoreColor write SetCoreColor; // default clrWhite;
+    property InnerColor: TGLColor read FInnerColor write SetInnerColor;
+    property OuterColor: TGLColor read FOuterColor write SetOuterColor; // default clrWhite;
+    property CoreColor: TGLColor read FCoreColor write SetCoreColor; // default clrWhite;
     property Disabled: boolean read FDisabled write FDisabled;
     property Core: boolean read FCore write FCore;
     property Glow: boolean read FGlow write FGlow;
@@ -147,12 +147,12 @@ begin
   FGlowSize := 0.2;
   FVibrate := 0;
   FWildness := 1;
-  FInnerColor := TGColor.Create(Self);
+  FInnerColor := TGLColor.Create(Self);
   FInnerColor.Initialize(clrWhite);
-  FOuterColor := TGColor.Create(Self);
+  FOuterColor := TGLColor.Create(Self);
   FOuterColor.Initialize(clrBlue);
   FOuterColor.Alpha := 0;
-  FCoreColor := TGColor.Create(Self);
+  FCoreColor := TGLColor.Create(Self);
   FCoreColor.Initialize(clrWhite);
   FCore := True;
   FGlow := True;
@@ -238,7 +238,7 @@ begin
   Result := (FVibrate <> 1);
 end;
 
-procedure TGLThorFXManager.SetInnerColor(const val: TGColor);
+procedure TGLThorFXManager.SetInnerColor(const val: TGLColor);
 begin
   if FInnerColor <> val then
   begin
@@ -247,7 +247,7 @@ begin
   end;
 end;
 
-procedure TGLThorFXManager.SetOuterColor(const val: TGColor);
+procedure TGLThorFXManager.SetOuterColor(const val: TGLColor);
 begin
   if FOuterColor <> val then
   begin
@@ -256,7 +256,7 @@ begin
   end;
 end;
 
-procedure TGLThorFXManager.SetCoreColor(const val: TGColor);
+procedure TGLThorFXManager.SetCoreColor(const val: TGLColor);
 begin
   if FCoreColor <> val then
   begin
@@ -464,14 +464,14 @@ var
   i: integer;
   // absPos :TGLVector;
   InnerColor: TGLVector;
-  distList: TGSingleList;
+  distList: TGLSingleList;
   objList: TList;
   fp: PThorpoint;
   mat: TGLMatrix;
 
   vx, vy: TGLVector;
   m: integer;
-  Icol, Ocol, Ccol: TGColorVector;
+  Icol, Ocol, Ccol: TGLColorVector;
   Ppos, Ppos2: TAffineVector;
 begin
   if Manager = nil then
@@ -493,7 +493,7 @@ begin
 
   if N > 1 then
   begin
-    distList := TGSingleList.Create;
+    distList := TGLSingleList.Create;
     objList := TList.Create;
     for i := 0 to N - 1 do
     begin

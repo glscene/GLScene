@@ -53,7 +53,7 @@ procedure TGLNurbsVectorFile.LoadFromStream(stream: TStream);
   end;
 
   function ReadSingleArray(sl: TStrings; idx: Integer;
-    list: TGSingleList): Integer;
+    list: TGLSingleList): Integer;
   var
     k: Integer;
     buf: String;

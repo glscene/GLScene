@@ -63,7 +63,7 @@ type
 
   THiddenLineShader = class(TGLShader)
   private
-    BackgroundColor, LineColor: TGColorVector;
+    BackgroundColor, LineColor: TGLColorVector;
     PassCount: Integer;
   public
     procedure DoApply(var rci: TGLRenderContextInfo; Sender: TObject); override;
@@ -72,7 +72,7 @@ type
 
   TOutLineShader = class(TGLShader)
   private
-    BackgroundColor, LineColor: TGColorVector;
+    BackgroundColor, LineColor: TGLColorVector;
     OutlineSmooth, Lighting: Boolean;
     OutlineWidth, Oldlinewidth: Single;
     PassCount: Integer;

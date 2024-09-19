@@ -100,10 +100,10 @@ type
       Use the NullVector, NullHmgVector or NullTexPoint constants for
       params you don't want to set. *)
     procedure AddVertex(const aVertex: TVertex; const aNormal: TAffineVector;
-      const aColor: TGColorVector; const aTexPoint: TTexPoint); overload;
+      const aColor: TGLColorVector; const aTexPoint: TTexPoint); overload;
     //  Adds a vertex to the list, no texturing version.  
     procedure AddVertex(const vertex: TVertex; const normal: TAffineVector;
-      const color: TGColorVector); overload;
+      const color: TGLColorVector); overload;
     //  Adds a vertex to the list, no texturing, not color version.  
     procedure AddVertex(const vertex: TVertex; const normal: TAffineVector); overload;
     //  Duplicates the vertex of given index and adds it at the end of the list. 
@@ -417,7 +417,7 @@ begin
 end;
 
 procedure TGLVertexList.AddVertex(const aVertex: TVertex;
-  const aNormal: TAffineVector; const aColor: TGColorVector;
+  const aNormal: TAffineVector; const aColor: TGLColorVector;
   const aTexPoint: TTexPoint);
 begin
   if FCount = FCapacity then
@@ -435,7 +435,7 @@ begin
 end;
 
 procedure TGLVertexList.AddVertex(const vertex: TVertex;
-  const normal: TAffineVector; const color: TGColorVector);
+  const normal: TAffineVector; const color: TGLColorVector);
 begin
   AddVertex(vertex, normal, color, NullTexPoint);
 end;

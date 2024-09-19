@@ -37,8 +37,8 @@ type
     FFont: TGLCustomBitmapFont;
     FMarginVert, FMarginHorz, FSpacing: Integer;
     FMenuScale: TGLGameMenuScale;
-    FBackColor: TGColor;
-    FInactiveColor, FActiveColor, FDisabledColor: TGColor;
+    FBackColor: TGLColor;
+    FInactiveColor, FActiveColor, FDisabledColor: TGLColor;
     FMaterialLibrary: TGLMaterialLibrary;
     FTitleMaterialName: TGLLibMaterialName;
     FTitleWidth, FTitleHeight: Integer;
@@ -53,10 +53,10 @@ type
     procedure SetMarginVert(AValue: Integer);
     procedure SetSpacing(AValue: Integer);
     procedure SetFont(AValue: TGLCustomBitmapFont);
-    procedure SetBackColor(AValue: TGColor);
-    procedure SetInactiveColor(AValue: TGColor);
-    procedure SetActiveColor(AValue: TGColor);
-    procedure SetDisabledColor(AValue: TGColor);
+    procedure SetBackColor(AValue: TGLColor);
+    procedure SetInactiveColor(AValue: TGLColor);
+    procedure SetActiveColor(AValue: TGLColor);
+    procedure SetDisabledColor(AValue: TGLColor);
     function GetEnabled(AIndex: Integer): Boolean;
     procedure SetEnabled(AIndex: Integer; AValue: Boolean);
     procedure SetItems(AValue: TStrings);
@@ -87,10 +87,10 @@ type
     property TitleMaterialName: string read FTitleMaterialName write SetTitleMaterialName;
     property TitleWidth: Integer read FTitleWidth write SetTitleWidth default 0;
     property TitleHeight: Integer read FTitleHeight write SetTitleHeight default 0;
-    property BackColor: TGColor read FBackColor write SetBackColor;
-    property InactiveColor: TGColor read FInactiveColor write SetInactiveColor;
-    property ActiveColor: TGColor read FActiveColor write SetActiveColor;
-    property DisabledColor: TGColor read FDisabledColor write SetDisabledColor;
+    property BackColor: TGLColor read FBackColor write SetBackColor;
+    property InactiveColor: TGLColor read FInactiveColor write SetInactiveColor;
+    property ActiveColor: TGLColor read FActiveColor write SetActiveColor;
+    property DisabledColor: TGLColor read FDisabledColor write SetDisabledColor;
     property Items: TStrings read FItems write SetItems;
     property Selected: Integer read FSelected write SetSelected default -1;
     property OnSelectedChanged: TNotifyEvent read FOnSelectedChanged write FOnSelectedChanged;
@@ -130,10 +130,10 @@ begin
   FMarginVert := 16;
   FSpacing := 16;
   FMenuScale := gmsNormal;
-  FBackColor := TGColor.CreateInitialized(Self, clrTransparent, NotifyChange);
-  FInactiveColor := TGColor.CreateInitialized(Self, clrGray75, NotifyChange);
-  FActiveColor := TGColor.CreateInitialized(Self, clrWhite, NotifyChange);
-  FDisabledColor := TGColor.CreateInitialized(Self, clrGray60, NotifyChange);
+  FBackColor := TGLColor.CreateInitialized(Self, clrTransparent, NotifyChange);
+  FInactiveColor := TGLColor.CreateInitialized(Self, clrGray75, NotifyChange);
+  FActiveColor := TGLColor.CreateInitialized(Self, clrWhite, NotifyChange);
+  FDisabledColor := TGLColor.CreateInitialized(Self, clrGray60, NotifyChange);
 end;
 
 destructor TGLGameMenu.Destroy;
@@ -164,7 +164,7 @@ var
   canvas: TGLCanvas;
   buffer: TGLSceneBuffer;
   i, w, h, tw, Y: Integer;
-  color: TGColorVector;
+  color: TGLColorVector;
   libMat: TGLLibMaterial;
 begin
   if Font = nil then
@@ -327,22 +327,22 @@ begin
     FFont.FreeNotification(Self);
 end;
 
-procedure TGLGameMenu.SetBackColor(AValue: TGColor);
+procedure TGLGameMenu.SetBackColor(AValue: TGLColor);
 begin
   FBackColor.Assign(AValue);
 end;
 
-procedure TGLGameMenu.SetInactiveColor(AValue: TGColor);
+procedure TGLGameMenu.SetInactiveColor(AValue: TGLColor);
 begin
   FInactiveColor.Assign(AValue);
 end;
 
-procedure TGLGameMenu.SetActiveColor(AValue: TGColor);
+procedure TGLGameMenu.SetActiveColor(AValue: TGLColor);
 begin
   FActiveColor.Assign(AValue);
 end;
 
-procedure TGLGameMenu.SetDisabledColor(AValue: TGColor);
+procedure TGLGameMenu.SetDisabledColor(AValue: TGLColor);
 begin
   FDisabledColor.Assign(AValue);
 end;

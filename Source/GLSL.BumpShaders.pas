@@ -128,9 +128,9 @@ type
   // One Light shaders.
   TGLCustomGLSLBumpShaderAM = class(TGLBaseCustomGLSLBumpShaderMT)
   private
-    FAmbientColor: TGColor;
-    FDiffuseColor: TGColor;
-    FSpecularColor: TGColor;
+    FAmbientColor: TGLColor;
+    FDiffuseColor: TGLColor;
+    FSpecularColor: TGLColor;
     function GetAlpha: Single;
     procedure SetAlpha(const Value: Single);
   protected
@@ -139,9 +139,9 @@ type
   public
     constructor Create(AOwner : TComponent); override;
     destructor Destroy; override;
-    property AmbientColor: TGColor read FAmbientColor;
-    property DiffuseColor: TGColor read FDiffuseColor;
-    property SpecularColor: TGColor read FSpecularColor;
+    property AmbientColor: TGLColor read FAmbientColor;
+    property DiffuseColor: TGLColor read FDiffuseColor;
+    property SpecularColor: TGLColor read FSpecularColor;
     property Alpha: Single read GetAlpha write SetAlpha;
   end;
 
@@ -316,7 +316,7 @@ type
   private
     FVertexProgramHandle: TGLARBVertexProgramHandle;
     FFragmentProgramHandle: TGLARBFragmentProgramHandle;
-    FLightIDs: TgIntegerList;
+    FLightIDs: TGLIntegerList;
     FLightsEnabled: Integer;
     FBumpMethod: TBumpMethod;
     FBumpSpace: TBumpSpace;
@@ -853,9 +853,9 @@ constructor TGLCustomGLSLBumpShaderAM.Create(AOwner: TComponent);
 begin
   inherited;
 
-  FAmbientColor := TGColor.Create(Self);
-  FDiffuseColor := TGColor.Create(Self);
-  FSpecularColor := TGColor.Create(Self);
+  FAmbientColor := TGLColor.Create(Self);
+  FDiffuseColor := TGLColor.Create(Self);
+  FSpecularColor := TGLColor.Create(Self);
 
   // Setup initial parameters.
   FAmbientColor.SetColor(0.15, 0.15, 0.15, 1);
@@ -1189,7 +1189,7 @@ end;
 constructor TGLBumpShader.Create(AOwner: TComponent);
 begin
   inherited;
-  FLightIDs := TgIntegerList.Create;
+  FLightIDs := TGLIntegerList.Create;
   FBumpMethod := bmDot3TexCombiner;
   FBumpSpace := bsObject;
   FBumpOptions := [];
@@ -1664,7 +1664,7 @@ end;
 procedure TGLBumpShader.DoApply(var rci: TGLRenderContextInfo; Sender: TObject);
 var
   maxTextures, i: Integer;
-  ambient, LMaterialAmbient: TGColorVector;
+  ambient, LMaterialAmbient: TGLColorVector;
   success: Boolean;
 begin
   if (csDesigning in ComponentState) and not DesignTimeEnabled then

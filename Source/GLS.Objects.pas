@@ -75,13 +75,13 @@ type
   TGLDummyCube = class(TGLCameraInvariantObject)
   private
     FCubeSize: TGLFloat;
-    FEdgeColor: TGColor;
+    FEdgeColor: TGLColor;
     FVisibleAtRunTime, FAmalgamate: Boolean;
     FGroupList: TGLListHandle;
     FOnVisibilityDetermination: TGLVisibilityDeterminationEvent;
   protected
     procedure SetCubeSize(const val: TGLFloat); inline;
-    procedure SetEdgeColor(const val: TGColor); inline;
+    procedure SetEdgeColor(const val: TGLColor); inline;
     procedure SetVisibleAtRunTime(const val: Boolean); inline;
     procedure SetAmalgamate(const val: Boolean); inline;
   public
@@ -99,7 +99,7 @@ type
     function BarycenterAbsolutePosition: TGLVector; override;
   published
     property CubeSize: TGLFloat read FCubeSize write SetCubeSize;
-    property EdgeColor: TGColor read FEdgeColor write SetEdgeColor;
+    property EdgeColor: TGLColor read FEdgeColor write SetEdgeColor;
     (* If true the dummycube's edges will be visible at runtime.
       The default behaviour of the dummycube is to be visible at design-time
       only, and invisible at runtime. *)
@@ -322,13 +322,13 @@ type
   // Available spline modes for a TLine.
   TGLLineSplineMode = (lsmLines, lsmCubicSpline, lsmBezierSpline, lsmNURBSCurve,
     lsmSegments, lsmLoop);
-  // Specialized Node for use in a TGLLines objects. Adds a Color property (TGColor) }
+  // Specialized Node for use in a TGLLines objects. Adds a Color property (TGLColor) }
 
   TGLLinesNode = class(TGLNode)
   private
-    FColor: TGColor;
+    FColor: TGLColor;
   protected
-    procedure SetColor(const val: TGColor);
+    procedure SetColor(const val: TGLColor);
     procedure OnColorChange(Sender: TObject);
     function StoreColor: Boolean;
   public
@@ -339,7 +339,7 @@ type
     (* The node color.
       Can also defined the line color (interpolated between nodes) if
       loUseNodeColorForLines is set (in TGLLines). *)
-    property Color: TGColor read FColor write SetColor stored StoreColor;
+    property Color: TGLColor read FColor write SetColor stored StoreColor;
   end;
 
   (* Specialized collection for Nodes in a TGLLines objects. Stores TGLLinesNode items *)
@@ -352,12 +352,12 @@ type
   (* Base class for line objects. Introduces line style properties (width, color...) *)
   TGLLineBase = class(TGLImmaterialSceneObject)
   private
-    FLineColor: TGColor;
+    FLineColor: TGLColor;
     FLinePattern: TGLushort;
     FLineWidth: Single;
     FAntiAliased: Boolean;
   protected
-    procedure SetLineColor(const Value: TGColor);
+    procedure SetLineColor(const Value: TGLColor);
     procedure SetLinePattern(const Value: TGLushort);
     procedure SetLineWidth(const val: Single);
     function StoreLineWidth: Boolean; inline;
@@ -378,7 +378,7 @@ type
     property AntiAliased: Boolean read FAntiAliased write SetAntiAliased
       default False;
     // Default color of the lines.
-    property LineColor: TGColor read FLineColor write SetLineColor;
+    property LineColor: TGLColor read FLineColor write SetLineColor;
     (* Bitwise line pattern.
       For instance $FFFF (65535) is a white line (stipple disabled), $0000
       is a black line, $CCCC is the stipple used in axes and dummycube, etc. *)
@@ -395,18 +395,18 @@ type
   private
     FNodes: TGLLinesNodes;
     FNodesAspect: TGLLineNodesAspect;
-    FNodeColor: TGColor;
+    FNodeColor: TGLColor;
     FNodeSize: Single;
-    FOldNodeColor: TGColorVector;
+    FOldNodeColor: TGLColorVector;
   protected
     procedure SetNodesAspect(const Value: TGLLineNodesAspect);
-    procedure SetNodeColor(const Value: TGColor);
+    procedure SetNodeColor(const Value: TGLColor);
     procedure OnNodeColorChanged(Sender: TObject);
     procedure SetNodes(const aNodes: TGLLinesNodes);
     procedure SetNodeSize(const val: Single);
     function StoreNodeSize: Boolean;
     procedure DrawNode(var rci: TGLRenderContextInfo; X, Y, Z: Single;
-      Color: TGColor);
+      Color: TGLColor);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -418,7 +418,7 @@ type
     procedure AddNode(const Value: TAffineVector); overload;
   published
     // Default color for nodes. lnaInvisible and lnaAxes ignore this setting
-    property NodeColor: TGColor read FNodeColor write SetNodeColor;
+    property NodeColor: TGLColor read FNodeColor write SetNodeColor;
     // The nodes list.
     property Nodes: TGLLinesNodes read FNodes write SetNodes;
     (* Default aspect of line nodes.
@@ -447,7 +447,7 @@ type
     FOptions: TGLLinesOptions;
     FNURBSOrder: Integer;
     FNURBSTolerance: Single;
-    FNURBSKnots: TGSingleList;
+    FNURBSKnots: TGLSingleList;
   protected
     procedure SetSplineMode(const val: TGLLineSplineMode);
     procedure SetDivision(const Value: Integer);
@@ -459,7 +459,7 @@ type
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
     procedure BuildList(var rci: TGLRenderContextInfo); override;
-    property NURBSKnots: TGSingleList read FNURBSKnots;
+    property NURBSKnots: TGLSingleList read FNURBSKnots;
     property NURBSOrder: Integer read FNURBSOrder write SetNURBSOrder;
     property NURBSTolerance: Single read FNURBSTolerance
       write SetNURBSTolerance;
@@ -682,7 +682,7 @@ type
 
 // Issues for a unit-size cube stippled wireframe
 procedure CubeWireframeBuildList(var rci: TGLRenderContextInfo; Size: TGLFloat;
-  Stipple: Boolean; const Color: TGColorVector);
+  Stipple: Boolean; const Color: TGLColorVector);
 
 const
   TangentAttributeName: PAnsiChar = 'Tangent';
@@ -693,7 +693,7 @@ implementation
 // -------------------------------------------------------------
 
 procedure CubeWireframeBuildList(var rci: TGLRenderContextInfo; Size: TGLFloat;
-  Stipple: Boolean; const Color: TGColorVector);
+  Stipple: Boolean; const Color: TGLColorVector);
 var
   mi, ma: Single;
 begin
@@ -753,7 +753,7 @@ begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw];
   FCubeSize := 1;
-  FEdgeColor := TGColor.Create(Self);
+  FEdgeColor := TGLColor.Create(Self);
   FEdgeColor.Initialize(clrWhite);
   FGroupList := TGLListHandle.Create;
   CamInvarianceMode := cimNone;
@@ -859,7 +859,7 @@ begin
   end;
 end;
 
-procedure TGLDummyCube.SetEdgeColor(const val: TGColor);
+procedure TGLDummyCube.SetEdgeColor(const val: TGLColor);
 begin
   if val <> FEdgeColor then
   begin
@@ -1763,7 +1763,7 @@ end;
 constructor TGLLineBase.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  FLineColor := TGColor.Create(Self);
+  FLineColor := TGLColor.Create(Self);
   FLineColor.Initialize(clrWhite);
   FLinePattern := $FFFF;
   FAntiAliased := False;
@@ -1783,7 +1783,7 @@ begin
   inherited;
 end;
 
-procedure TGLLineBase.SetLineColor(const Value: TGColor);
+procedure TGLLineBase.SetLineColor(const Value: TGLColor);
 begin
   FLineColor.Color := Value.Color;
   StructureChanged;
@@ -1880,7 +1880,7 @@ end;
 constructor TGLLinesNode.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
-  FColor := TGColor.Create(Self);
+  FColor := TGLColor.Create(Self);
   FColor.Initialize((TGLLinesNodes(Collection).GetOwner as TGLLines)
     .NodeColor.Color);
   FColor.OnNotifyChange := OnColorChange;
@@ -1899,7 +1899,7 @@ begin
   inherited;
 end;
 
-procedure TGLLinesNode.SetColor(const val: TGColor);
+procedure TGLLinesNode.SetColor(const val: TGLColor);
 begin
   FColor.Assign(val);
 end;
@@ -1938,7 +1938,7 @@ constructor TGLNodedLines.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   FNodes := TGLLinesNodes.Create(Self);
-  FNodeColor := TGColor.Create(Self);
+  FNodeColor := TGLColor.Create(Self);
   FNodeColor.Initialize(clrBlue);
   FNodeColor.OnNotifyChange := OnNodeColorChanged;
   FOldNodeColor := clrBlue;
@@ -1962,7 +1962,7 @@ begin
   end;
 end;
 
-procedure TGLNodedLines.SetNodeColor(const Value: TGColor);
+procedure TGLNodedLines.SetNodeColor(const Value: TGLColor);
 begin
   FNodeColor.Color := Value.Color;
   StructureChanged;
@@ -2013,7 +2013,7 @@ begin
 end;
 
 procedure TGLNodedLines.DrawNode(var rci: TGLRenderContextInfo; X, Y, Z: Single;
-  Color: TGColor);
+  Color: TGLColor);
 begin
   gl.PushMatrix;
   gl.Translatef(X, Y, Z);
@@ -2086,7 +2086,7 @@ begin
   inherited Create(AOwner);
   FDivision := 10;
   FSplineMode := lsmLines;
-  FNURBSKnots := TGSingleList.Create;
+  FNURBSKnots := TGLSingleList.Create;
   FNURBSOrder := 0;
   FNURBSTolerance := 50;
 end;

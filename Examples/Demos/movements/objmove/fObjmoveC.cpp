@@ -22,7 +22,7 @@
 #pragma resource "*.dfm"
 TFormObjmove *FormObjmove;
 
-const TGColorVector
+const TGLColorVector
   SelectionColor[]  = {0.243, 0.243, 0.243, 1.000};
 
 

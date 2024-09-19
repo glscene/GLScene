@@ -472,7 +472,7 @@ void __fastcall TForm1::DOWakeProgress(TObject *Sender, const double deltaTime,
 	if (WakeVertices == NULL) {
 		WakeVertices = new TGLAffineVectorList();
 		WakeStretch = new TGLAffineVectorList();
-		WakeTime = new TGSingleList();
+		WakeTime = new TGLSingleList();
 	}
 
 	// enlarge current vertices

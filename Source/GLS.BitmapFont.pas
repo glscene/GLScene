@@ -189,13 +189,13 @@ type
        Enable states are also possibly altered. *)
     procedure RenderString(var ARci: TGLRenderContextInfo;
       const aText: UnicodeString; aAlignment: TAlignment;
-      aLayout: TTextLayout; const aColor: TGColorVector;
+      aLayout: TTextLayout; const aColor: TGLColorVector;
       aPosition: PGLVector = nil; aReverseY: boolean = False); overload; virtual;
     (* A simpler canvas-style TextOut helper for RenderString.
        The rendering is reversed along Y by default, to allow direct use
        with TGLCanvas *)
     procedure TextOut(var rci: TGLRenderContextInfo; X, Y: Single;
-      const Text: UnicodeString; const Color: TGColorVector); overload;
+      const Text: UnicodeString; const Color: TGLColorVector); overload;
     procedure TextOut(var rci: TGLRenderContextInfo; X, Y: Single;
       const Text: UnicodeString; const Color: TColor); overload;
     function TextWidth(const Text: UnicodeString): Integer;
@@ -245,14 +245,14 @@ type
     FText: UnicodeString;
     FAlignment: TAlignment;
     FLayout: TTextLayout;
-    FModulateColor: TGColor;
+    FModulateColor: TGLColor;
     FOptions: TGLFlatTextOptions;
   protected
     procedure SetBitmapFont(const val: TGLCustomBitmapFont);
     procedure SetText(const val: UnicodeString);
     procedure SetAlignment(const val: TAlignment);
     procedure SetLayout(const val: TTextLayout);
-    procedure SetModulateColor(const val: TGColor);
+    procedure SetModulateColor(const val: TGLColor);
     procedure SetOptions(const val: TGLFlatTextOptions);
     procedure Notification(AComponent: TComponent;
       Operation: TOperation); override;
@@ -279,7 +279,7 @@ type
       Possible values : tlTop, tlCenter, tlBottom *)
     property Layout: TTextLayout read FLayout write SetLayout;
     // Color modulation, can be used for fade in/out too.
-    property ModulateColor: TGColor read FModulateColor write SetModulateColor;
+    property ModulateColor: TGLColor read FModulateColor write SetModulateColor;
     (* Flat text options.
        ftoTwoSided : when set the text will be visible from its two
        sides even if faceculling is on (at the scene-level). *)
@@ -832,7 +832,7 @@ end;
 
 procedure TGLCustomBitmapFont.RenderString(var ARci: TGLRenderContextInfo;
   const aText: UnicodeString; aAlignment: TAlignment; aLayout: TTextLayout;
-  const aColor: TGColorVector; aPosition: PGLVector = nil;
+  const aColor: TGLColorVector; aPosition: PGLVector = nil;
   aReverseY: boolean = False);
 
   function AlignmentAdjustement(p: Integer): Single;
@@ -964,7 +964,7 @@ begin
 end;
 
 procedure TGLCustomBitmapFont.TextOut(var rci: TGLRenderContextInfo; X, Y: Single;
-  const Text: UnicodeString; const Color: TGColorVector);
+  const Text: UnicodeString; const Color: TGLColorVector);
 var
   V: TGLVector;
 begin
@@ -1148,7 +1148,7 @@ constructor TGLFlatText.Create(AOwner: TComponent);
 begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
-  FModulateColor := TGColor.CreateInitialized(Self, clrWhite);
+  FModulateColor := TGLColor.CreateInitialized(Self, clrWhite);
 end;
 
 destructor TGLFlatText.Destroy;
@@ -1200,7 +1200,7 @@ begin
   StructureChanged;
 end;
 
-procedure TGLFlatText.SetModulateColor(const val: TGColor);
+procedure TGLFlatText.SetModulateColor(const val: TGLColor);
 begin
   FModulateColor.Assign(val);
 end;

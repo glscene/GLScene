@@ -42,8 +42,8 @@ const
    private
      FLocks: packed array of ByteBool;
      FPositions, FVelocity: packed array of Single;
-     FPlaneQuadIndices: TgPersistentObjectList;
-     FPlaneQuadTexCoords: TGTexPointList;
+     FPlaneQuadIndices: TGLPersistentObjectList;
+     FPlaneQuadTexCoords: TGLTexPointList;
      FPlaneQuadVertices: TGLAffineVectorList;
      FPlaneQuadNormals: TGLAffineVectorList;
      FActive: Boolean;
@@ -132,8 +132,8 @@ begin
   FMaximumCatchupIterations := 1;
   FOptions := cDefaultWaterPlaneOptions;
 
-  FPlaneQuadIndices := TgPersistentObjectList.Create;
-  FPlaneQuadTexCoords := TGTexPointList.Create;
+  FPlaneQuadIndices := TGLPersistentObjectList.Create;
+  FPlaneQuadTexCoords := TGLTexPointList.Create;
   FPlaneQuadVertices := TGLAffineVectorList.Create;
   FPlaneQuadNormals := TGLAffineVectorList.Create;
   FMask := TPicture.Create;
@@ -274,7 +274,7 @@ var
   i, j, ij, resSqr: Integer;
   maskBmp: TBitmap;
   scanLine: PIntegerArray;
-  il: TgIntegerList;
+  il: TGLIntegerList;
   locked: Boolean;
 begin
   resSqr := FResolution * FResolution;
@@ -307,7 +307,7 @@ begin
   FPlaneQuadIndices.Clean;
   for j := 0 to Resolution - 2 do
   begin
-    il := TgIntegerList.Create;
+    il := TGLIntegerList.Create;
     for i := 0 to Resolution - 1 do
     begin
       ij := i + j * Resolution;
@@ -324,7 +324,7 @@ begin
       else if il.Count > 0 then
       begin
         FPlaneQuadIndices.Add(il);
-        il := TgIntegerList.Create;
+        il := TGLIntegerList.Create;
       end;
     end;
     if il.Count > 0 then
@@ -434,7 +434,7 @@ end;
 procedure TGLWaterPlane.BuildList(var rci: TGLRenderContextInfo);
 var
   i: Integer;
-  il: TgIntegerList;
+  il: TGLIntegerList;
 begin
   gl.PushClientAttrib(GL_CLIENT_VERTEX_ARRAY_BIT);
 
@@ -455,7 +455,7 @@ begin
 
   for i := 0 to FPlaneQuadIndices.Count - 1 do
   begin
-    il := TgIntegerList(FPlaneQuadIndices[i]);
+    il := TGLIntegerList(FPlaneQuadIndices[i]);
     gl.DrawElements(GL_QUAD_STRIP, il.Count, GL_UNSIGNED_INT, il.List);
   end;
 

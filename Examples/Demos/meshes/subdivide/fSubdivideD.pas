@@ -104,8 +104,8 @@ procedure TFormSubdivide.BUSubdivideClick(Sender: TObject);
 var
   i, j: Integer;
   tris, norms, tex, buf, morphTris, morphNorms: TGLAffineVectorList;
-  indices, texIndices: TGIntegerList;
-  firstRemap, subdivideRemap, bufRemap: TGIntegerList;
+  indices, texIndices: TGLIntegerList;
+  firstRemap, subdivideRemap, bufRemap: TGLIntegerList;
   t: Int64;
 begin
   BUSubdivide.Enabled := False;
@@ -119,7 +119,7 @@ begin
     with GLActor1.MeshObjects[i] do
       tris := ExtractTriangles(tex);
     indices := BuildVectorCountOptimizedIndices(tris);
-    firstRemap := TGIntegerList(indices.CreateClone);
+    firstRemap := TGLIntegerList(indices.CreateClone);
     RemapAndCleanupReferences(tris, indices);
 
     norms := BuildNormals(tris, indices);
@@ -151,7 +151,7 @@ begin
     // Pack & Optimize the expanded stuff
     indices.Free;
     indices := BuildVectorCountOptimizedIndices(tris, norms, tex);
-    subdivideRemap := TGIntegerList(indices.CreateClone);
+    subdivideRemap := TGLIntegerList(indices.CreateClone);
     RemapReferences(norms, indices);
     RemapReferences(tex, indices);
     RemapAndCleanupReferences(tris, indices);
@@ -161,7 +161,7 @@ begin
     with GLActor1.MeshObjects[i] as TGLMorphableMeshObject do
     begin
 
-      bufRemap := TGIntegerList.Create;
+      bufRemap := TGLIntegerList.Create;
       for j := 0 to MorphTargets.Count - 1 do
       begin
         MorphTo(j);

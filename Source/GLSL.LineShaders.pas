@@ -30,12 +30,12 @@ uses
 type
   TGLLineSettings = class(TGLUpdateAbleObject)
   private
-    FColor: TGColor;
+    FColor: TGLColor;
     FWidth: Single;
     FPattern: TGLushort;
     FForceMaterial: Boolean;
     procedure SetPattern(const value: TGLushort);
-    procedure SetColor(const v: TGColor);
+    procedure SetColor(const v: TGLColor);
     procedure SetWidth(const Value: Single);
     procedure SetForceMaterial(v: boolean);
   public
@@ -45,7 +45,7 @@ type
     procedure UnApply(var rci: TGLRenderContextInfo);
   published
     property Width: Single read FWidth write SetWidth;
-    property Color: TGColor read FColor write SetColor;
+    property Color: TGLColor read FColor write SetColor;
     property Pattern: TGLushort read FPattern write SetPattern default $FFFF;
     (* Set ForceMaterial to true to enforce the application of the line settings
        for objects that sets their own color, line width and pattern. *)
@@ -58,14 +58,14 @@ type
     FPassCount: integer;
     FLineSmooth: Boolean;
     FSolid: Boolean;
-    FBackGroundColor: TGColor;
+    FBackGroundColor: TGLColor;
     FFrontLine: TGLLineSettings;
     FBackLine: TGLLineSettings;
     FLighting: Boolean;
     FShadeModel: TGLShadeModel;
     procedure SetlineSmooth(v: boolean);
     procedure SetSolid(v: boolean);
-    procedure SetBackgroundColor(AColor: TGColor);
+    procedure SetBackgroundColor(AColor: TGLColor);
     procedure SetLighting(v: boolean);
     procedure SetShadeModel(const val: TGLShadeModel);
   protected
@@ -83,7 +83,7 @@ type
     // Solid controls if you can see through the front-line wireframe.
     property Solid: Boolean read FSolid write SetSolid default false;
     // Color used for solid fill.
-    property BackgroundColor: TGColor read FBackgroundColor write
+    property BackgroundColor: TGLColor read FBackgroundColor write
       SetBackgroundColor;
     // When Solid is True, determines if lighting or background color is used.
     property SurfaceLit: Boolean read FLighting write SetLighting default true;
@@ -95,7 +95,7 @@ type
   TGLOutlineShader = class(TGLShader)
   private
     FPassCount: integer;
-    FLineColor: TGColor;
+    FLineColor: TGLColor;
     FOutlineSmooth: Boolean;
     FOutlineWidth: Single;
     procedure SetOutlineWidth(v: single);
@@ -107,7 +107,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
   published
-    property LineColor: TGColor read FLineColor write FLineColor;
+    property LineColor: TGLColor read FLineColor write FLineColor;
     // Line smoothing control
     property LineSmooth: Boolean read FOutlineSmooth write SetOutlineSmooth
       default false;
@@ -130,7 +130,7 @@ uses
 constructor TGLLineSettings.Create(AOwner: TPersistent);
 begin
   inherited;
-  FColor := TGColor.Create(Self);
+  FColor := TGLColor.Create(Self);
   FColor.Initialize(clrGray20);
   FWidth := 2;
   Pattern := $FFFF;
@@ -153,7 +153,7 @@ begin
   end;
 end;
 
-procedure TGLLineSettings.SetColor(const v: TGColor);
+procedure TGLLineSettings.SetColor(const v: TGLColor);
 begin
   FColor.Color := v.Color;
   NotifyChange(Self);
@@ -217,7 +217,7 @@ begin
   FBackLine := TGLLineSettings.Create(self);
   FSolid := false;
 
-  FBackgroundColor := TGColor.Create(Self);
+  FBackgroundColor := TGLColor.Create(Self);
   FBackgroundColor.Initialize(clrBtnFace);
 
   FLineSmooth := False;
@@ -342,7 +342,7 @@ begin
 end;
 
 
-procedure TGLHiddenLineShader.SetBackgroundColor(AColor: TGColor);
+procedure TGLHiddenLineShader.SetBackgroundColor(AColor: TGLColor);
 begin
   FBackgroundColor.Color := AColor.Color;
   NotifyChange(Self);
@@ -398,7 +398,7 @@ begin
   inherited;
   FOutlineSmooth := False;
   FOutLineWidth := 2;
-  FLineColor := TGColor.CreateInitialized(Self, clrBlack);
+  FLineColor := TGLColor.CreateInitialized(Self, clrBlack);
   ShaderStyle := ssLowLevel;
 end;
 

@@ -802,14 +802,14 @@ var
   norm, tex, light: Boolean;
   lmt: array [0..2] of TAffineVector;
   subID: Integer;
-  vi: TgIntegerList;
+  vi: TGLIntegerList;
 begin
   norm := aASEMesh.HasNormals;
   tex := aASEMesh.TextChannelsCount > 0;
   light := tex and (aASEMesh.TextChannelsCount > 1);
   subID := -1;
 
-  vi := TgIntegerList.Create;
+  vi := TGLIntegerList.Create;
   if tex or norm then begin
     // here used NOT optimized storage
 

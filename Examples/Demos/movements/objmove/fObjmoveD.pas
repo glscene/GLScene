@@ -80,7 +80,7 @@ type
   end;
 
 const
-  SelectionColor: TGColorVector = (X : 0.243; Y : 0.243; Z: 0.243; W : 1.000);
+  SelectionColor: TGLColorVector = (X : 0.243; Y : 0.243; Z: 0.243; W : 1.000);
 
 var
   FormObjmove: TFormObjmove;

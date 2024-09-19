@@ -97,7 +97,7 @@ type
     HelpOpacity: Single;
     WakeVertices: TGLAffineVectorList;
     WakeStretch: TGLAffineVectorList;
-    WakeTime: TGSingleList;
+    WakeTime: TGLSingleList;
     procedure ResetMousePos;
     function WaterPhase(const px, py: Single): Single;
     function WaterHeight(const px, py: Single): Single;
@@ -549,7 +549,7 @@ begin
   begin
     WakeVertices := TGLAffineVectorList.Create;
     WakeStretch := TGLAffineVectorList.Create;
-    WakeTime := TGSingleList.Create;
+    WakeTime := TGLSingleList.Create;
   end;
 
   // enlarge current vertices

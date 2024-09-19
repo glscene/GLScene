@@ -397,8 +397,8 @@ type
     FTexWidth: Integer;
     FTexHeight: Integer;
     FTexDepth: Integer;
-    FEnvColor: TGColor;
-    FBorderColor: TGColor;
+    FEnvColor: TGLColor;
+    FBorderColor: TGLColor;
     FNormalMapScale: Single;
     FTextureWrapS: TGLSeparateTextureWrap;
     FTextureWrapT: TGLSeparateTextureWrap;
@@ -443,8 +443,8 @@ type
     procedure SetDisabled(AValue: Boolean);
     procedure SetEnabled(const val: Boolean);
     function GetEnabled: Boolean; inline;
-    procedure SetEnvColor(const val: TGColor);
-    procedure SetBorderColor(const val: TGColor);
+    procedure SetEnvColor(const val: TGLColor);
+    procedure SetBorderColor(const val: TGLColor);
     procedure SetNormalMapScale(const val: Single);
     procedure SetTextureCompareMode(const val: TGLTextureCompareMode);
     procedure SetTextureCompareFunc(const val: TGLDepthCompareFunc);
@@ -589,9 +589,9 @@ type
     property MappingQCoordinates: TGLCoordinates4 read GetMappingQCoordinates
       write SetMappingQCoordinates stored StoreMappingQCoordinates;
     // Texture Environment color
-    property EnvColor: TGColor read FEnvColor write SetEnvColor;
+    property EnvColor: TGLColor read FEnvColor write SetEnvColor;
     // Texture Border color
-    property BorderColor: TGColor read FBorderColor write SetBorderColor;
+    property BorderColor: TGLColor read FBorderColor write SetBorderColor;
     // If true, the texture is disabled (not used)
     property Disabled: Boolean read FDisabled write SetDisabled default True;
     (* Normal Map scaling.
@@ -1756,8 +1756,8 @@ begin
   FSamplerHandle.OnAllocate := OnSamplerAllocate;
   FSamplerHandle.OnDestroy := OnSamplerDestroy;
   FMappingMode := tmmUser;
-  FEnvColor := TGColor.CreateInitialized(Self, clrTransparent);
-  FBorderColor := TGColor.CreateInitialized(Self, clrTransparent);
+  FEnvColor := TGLColor.CreateInitialized(Self, clrTransparent);
+  FBorderColor := TGLColor.CreateInitialized(Self, clrTransparent);
   FNormalMapScale := cDefaultNormalMapScale;
   FTextureCompareMode := tcmNone;
   FTextureCompareFunc := cfLequal;
@@ -2030,13 +2030,13 @@ begin
   Result := not Disabled;
 end;
 
-procedure TGLTexture.SetEnvColor(const val: TGColor);
+procedure TGLTexture.SetEnvColor(const val: TGLColor);
 begin
   FEnvColor.Assign(val);
   NotifyParamsChange;
 end;
 
-procedure TGLTexture.SetBorderColor(const val: TGColor);
+procedure TGLTexture.SetBorderColor(const val: TGLColor);
 begin
   FBorderColor.Assign(val);
   NotifyParamsChange;

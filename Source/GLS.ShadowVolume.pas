@@ -119,7 +119,7 @@ type
   // Specifies an individual shadow casting light.
   TGLShadowVolumeLight = class(TGLShadowVolumeCaster)
   private
-    FSilhouettes: TgPersistentObjectList;
+    FSilhouettes: TGLPersistentObjectList;
   protected
     function GetLightSource: TGLLightSource;
     procedure SetLightSource(const ls: TGLLightSource);
@@ -198,7 +198,7 @@ type
     FCapping: TGLShadowVolumeCapping;
     FOptions: TGLShadowVolumeOptions;
     FMode: TGLShadowVolumeMode;
-    FDarkeningColor: TGColor;
+    FDarkeningColor: TGLColor;
   protected
     procedure Notification(AComponent: TComponent; Operation: TOperation); override;
     procedure SetActive(const val: Boolean);
@@ -206,7 +206,7 @@ type
     procedure SetOccluders(const val: TGLShadowVolumeCasters);
     procedure SetOptions(const val: TGLShadowVolumeOptions);
     procedure SetMode(const val: TGLShadowVolumeMode);
-    procedure SetDarkeningColor(const val: TGColor);
+    procedure SetDarkeningColor(const val: TGLColor);
   public
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -233,7 +233,7 @@ type
     // Shadow rendering mode.
     property Mode: TGLShadowVolumeMode read FMode write SetMode default svmAccurate;
     // Darkening color used in svmDarkening mode.
-    property DarkeningColor: TGColor read FDarkeningColor write SetDarkeningColor;
+    property DarkeningColor: TGLColor read FDarkeningColor write SetDarkeningColor;
   end;
 
 //-------------------------------------------------------------
@@ -326,7 +326,7 @@ end;
 constructor TGLShadowVolumeLight.Create(ACollection: TCollection);
 begin
   inherited Create(ACollection);
-  FSilhouettes := TgPersistentObjectList.Create;
+  FSilhouettes := TGLPersistentObjectList.Create;
 end;
 
 destructor TGLShadowVolumeLight.Destroy;
@@ -496,7 +496,7 @@ begin
   FCapping := svcAlways;
   FMode := svmAccurate;
   FOptions := [svoCacheSilhouettes, svoScissorClips];
-  FDarkeningColor := TGColor.CreateInitialized(Self, VectorMake(0, 0, 0, 0.5));
+  FDarkeningColor := TGLColor.CreateInitialized(Self, VectorMake(0, 0, 0, 0.5));
 end;
 
 destructor TGLShadowVolume.Destroy;
@@ -581,7 +581,7 @@ begin
   end;
 end;
 
-procedure TGLShadowVolume.SetDarkeningColor(const val: TGColor);
+procedure TGLShadowVolume.SetDarkeningColor(const val: TGLColor);
 begin
   FDarkeningColor.Assign(val);
 end;

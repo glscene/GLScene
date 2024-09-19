@@ -141,7 +141,7 @@ var
   oldProxySubObject: Boolean;
   refMat, curMat, ModelMat: TGLMatrix;
   clipPlane: TDoubleHmgPlane;
-  bgColor: TGColorVector;
+  bgColor: TGLColorVector;
   cameraPosBackup, cameraDirectionBackup: TGLVector;
   CurrentBuffer: TGLSceneBuffer;
 begin

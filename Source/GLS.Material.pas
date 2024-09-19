@@ -173,13 +173,13 @@ type
      polygon mode (lines / fill). *)
   TGLFaceProperties = class(TGLUpdateAbleObject)
   private
-    FAmbient, FDiffuse, FSpecular, FEmission: TGColor;
+    FAmbient, FDiffuse, FSpecular, FEmission: TGLColor;
     FShininess: TGLShininess;
   protected
-    procedure SetAmbient(AValue: TGColor);
-    procedure SetDiffuse(AValue: TGColor);
-    procedure SetEmission(AValue: TGColor);
-    procedure SetSpecular(AValue: TGColor);
+    procedure SetAmbient(AValue: TGLColor);
+    procedure SetDiffuse(AValue: TGLColor);
+    procedure SetEmission(AValue: TGLColor);
+    procedure SetSpecular(AValue: TGLColor);
     procedure SetShininess(AValue: TGLShininess);
   public
     constructor Create(AOwner: TPersistent); override;
@@ -188,11 +188,11 @@ type
     procedure ApplyNoLighting(var rci: TGLRenderContextInfo; aFace: TGLCullFaceMode); inline;
     procedure Assign(Source: TPersistent); override;
   published
-    property Ambient: TGColor read FAmbient write SetAmbient;
-    property Diffuse: TGColor read FDiffuse write SetDiffuse;
-    property Emission: TGColor read FEmission write SetEmission;
+    property Ambient: TGLColor read FAmbient write SetAmbient;
+    property Diffuse: TGLColor read FDiffuse write SetDiffuse;
+    property Emission: TGLColor read FEmission write SetEmission;
     property Shininess: TGLShininess read FShininess write SetShininess default 0;
-    property Specular: TGColor read FSpecular write SetSpecular;
+    property Specular: TGLColor read FSpecular write SetSpecular;
   end;
 
   TGLDepthProperties = class(TGLUpdateAbleObject)
@@ -597,8 +597,8 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     procedure DestroyHandles;
-    procedure WriteToFiler(writer: TGVirtualWriter);
-    procedure ReadFromFiler(reader: TGVirtualReader);
+    procedure WriteToFiler(writer: TGLVirtualWriter);
+    procedure ReadFromFiler(reader: TGLVirtualReader);
     procedure SaveToStream(aStream: TStream); virtual;
     procedure LoadFromStream(aStream: TStream); virtual;
     procedure AddMaterialsFromStream(aStream: TStream);
@@ -681,10 +681,10 @@ constructor TGLFaceProperties.Create(aOwner: TPersistent);
 begin
   inherited;
   // OpenGL default colors
-  FAmbient := TGColor.CreateInitialized(Self, clrGray20);
-  FDiffuse := TGColor.CreateInitialized(Self, clrGray80);
-  FEmission := TGColor.Create(Self);
-  FSpecular := TGColor.Create(Self);
+  FAmbient := TGLColor.CreateInitialized(Self, clrGray20);
+  FDiffuse := TGLColor.CreateInitialized(Self, clrGray80);
+  FEmission := TGLColor.Create(Self);
+  FSpecular := TGLColor.Create(Self);
   FShininess := 0;
 end;
 
@@ -726,25 +726,25 @@ begin
   end;
 end;
 
-procedure TGLFaceProperties.SetAmbient(AValue: TGColor);
+procedure TGLFaceProperties.SetAmbient(AValue: TGLColor);
 begin
   FAmbient.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TGLFaceProperties.SetDiffuse(AValue: TGColor);
+procedure TGLFaceProperties.SetDiffuse(AValue: TGLColor);
 begin
   FDiffuse.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TGLFaceProperties.SetEmission(AValue: TGColor);
+procedure TGLFaceProperties.SetEmission(AValue: TGLColor);
 begin
   FEmission.DirectColor := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TGLFaceProperties.SetSpecular(AValue: TGColor);
+procedure TGLFaceProperties.SetSpecular(AValue: TGLColor);
 begin
   FSpecular.DirectColor := AValue.Color;
   NotifyChange(Self);
@@ -2405,7 +2405,7 @@ begin
   Result := (FMaterials.Count > 0);
 end;
 
-procedure TGLMaterialLibrary.WriteToFiler(writer: TGVirtualWriter);
+procedure TGLMaterialLibrary.WriteToFiler(writer: TGLVirtualWriter);
 var
   i, j: Integer;
   libMat: TGLLibMaterial;
@@ -2575,7 +2575,7 @@ begin
   end;
 end;
 
-procedure TGLMaterialLibrary.ReadFromFiler(reader: TGVirtualReader);
+procedure TGLMaterialLibrary.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
   libMat: TGLLibMaterial;
@@ -2747,9 +2747,9 @@ end;
 
 procedure TGLMaterialLibrary.SaveToStream(aStream: TStream);
 var
-  wr: TGBinaryWriter;
+  wr: TGLBinaryWriter;
 begin
-  wr := TGBinaryWriter.Create(aStream);
+  wr := TGLBinaryWriter.Create(aStream);
   try
     Self.WriteToFiler(wr);
   finally
@@ -2759,9 +2759,9 @@ end;
 
 procedure TGLMaterialLibrary.LoadFromStream(aStream: TStream);
 var
-  rd: TGBinaryReader;
+  rd: TGLBinaryReader;
 begin
-  rd := TGBinaryReader.Create(aStream);
+  rd := TGLBinaryReader.Create(aStream);
   try
     Self.ReadFromFiler(rd);
   finally

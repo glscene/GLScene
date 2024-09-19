@@ -79,8 +79,8 @@ type
     FBranchID: Integer;
     FParentID: Integer;
     FMatrix: TGLMatrix;
-    FLower: TgIntegerList;
-    FUpper: TgIntegerList;
+    FLower: TGLIntegerList;
+    FUpper: TGLIntegerList;
     FCentralLeader: Boolean;
     procedure BuildBranch(branchNoise: TGLTreeBranchNoise;
       const matrix: TGLMatrix; TexCoordY, Twist: Single; Level: Integer);
@@ -93,23 +93,23 @@ type
     property Right: TGLTreeBranch read FRight;
     property Parent: TGLTreeBranch read FParent;
     property matrix: TGLMatrix read FMatrix;
-    property Lower: TgIntegerList read FLower;
-    property Upper: TgIntegerList read FUpper;
+    property Lower: TGLIntegerList read FLower;
+    property Upper: TGLIntegerList read FUpper;
   end;
 
   TGLTreeBranches = class
   private
     FOwner: TGLTree;
-    FSinList: TGSingleList;
-    FCosList: TGSingleList;
+    FSinList: TGLSingleList;
+    FCosList: TGLSingleList;
     FVertices: TGLAffineVectorList;
     FNormals: TGLAffineVectorList;
     FTexCoords: TGLAffineVectorList;
-    FIndices: TgIntegerList;
+    FIndices: TGLIntegerList;
     FRoot: TGLTreeBranch;
     FCount: Integer;
     FBranchCache: TList;
-    FBranchIndices: TgIntegerList;
+    FBranchIndices: TGLIntegerList;
     procedure BuildBranches;
   public
     constructor Create(AOwner: TGLTree);
@@ -117,8 +117,8 @@ type
     procedure BuildList(var rci: TGLRenderContextInfo);
     procedure Clear;
     property Owner: TGLTree read FOwner;
-    property SinList: TGSingleList read FSinList;
-    property CosList: TGSingleList read FCosList;
+    property SinList: TGLSingleList read FSinList;
+    property CosList: TGLSingleList read FCosList;
     property Vertices: TGLAffineVectorList read FVertices;
     property Normals: TGLAffineVectorList read FNormals;
     property TexCoords: TGLAffineVectorList read FTexCoords;
@@ -371,8 +371,8 @@ constructor TGLTreeBranch.Create(AOwner: TGLTreeBranches;
 begin
   FOwner := AOwner;
   FParent := AParent;
-  FUpper := TgIntegerList.Create;
-  FLower := TgIntegerList.Create;
+  FUpper := TGLIntegerList.Create;
+  FLower := TGLIntegerList.Create;
   FCentralLeader := False;
 
   // Skeletal construction helpers
@@ -613,14 +613,14 @@ end;
 constructor TGLTreeBranches.Create(AOwner: TGLTree);
 begin
   FOwner := AOwner;
-  FSinList := TGSingleList.Create;
-  FCosList := TGSingleList.Create;
+  FSinList := TGLSingleList.Create;
+  FCosList := TGLSingleList.Create;
   FVertices := TGLAffineVectorList.Create;
   FNormals := TGLAffineVectorList.Create;
   FTexCoords := TGLAffineVectorList.Create;
-  FIndices := TgIntegerList.Create;
+  FIndices := TGLIntegerList.Create;
   FBranchCache := TList.Create;
-  FBranchIndices := TgIntegerList.Create;
+  FBranchIndices := TGLIntegerList.Create;
   FCount := 0;
 end;
 

@@ -73,16 +73,16 @@ type
       IGLMaterialLibrarySupported)
   private
     FNameHashKey: Integer;
-    FUserList: TgPersistentObjectList;
+    FUserList: TGLPersistentObjectList;
     FDefferedInit: Boolean;
     FNotifying: Boolean;
     FIsValid: Boolean;
-    function GetUserList: TgPersistentObjectList;
+    function GetUserList: TGLPersistentObjectList;
     function GetMaterialLibraryEx: TGLMaterialLibraryEx;
   protected
     procedure SetName(const AValue: TGLMaterialComponentName); override;
     procedure NotifyChange(Sender: TObject); virtual;
-    property UserList: TgPersistentObjectList read GetUserList;
+    property UserList: TGLPersistentObjectList read GetUserList;
     procedure DoOnPrepare(Sender: TGLContext); virtual; abstract;
   public
     destructor Destroy; override;
@@ -132,7 +132,7 @@ type
     FLODBias: Integer;
     FLODBiasFract: Single;
     FWrap: array[0..2] of TGLSeparateTextureWrap;
-    FBorderColor: TGColor;
+    FBorderColor: TGLColor;
     FCompareMode: TGLTextureCompareMode;
     FCompareFunc: TGLDepthFunction;
     FDecodeSRGB: Boolean;
@@ -142,7 +142,7 @@ type
     procedure SetFilteringQuality(AValue: TGLTextureFilteringQuality);
     function GetWrap(Index: Integer): TGLSeparateTextureWrap;
     procedure SetWrap(Index: Integer; AValue: TGLSeparateTextureWrap);
-    procedure SetBorderColor(const AValue: TGColor);
+    procedure SetBorderColor(const AValue: TGLColor);
     procedure SetCompareMode(AValue: TGLTextureCompareMode);
     procedure SetCompareFunc(AValue: TGLDepthFunction);
     procedure SetDecodeSRGB(AValue: Boolean);
@@ -175,7 +175,7 @@ type
     property WrapZ: TGLSeparateTextureWrap index 2 read GetWrap write SetWrap
       default twRepeat;
     // Texture border color.
-    property BorderColor: TGColor read FBorderColor
+    property BorderColor: TGLColor read FBorderColor
       write SetBorderColor;
     // Compare mode and function for depth texture
     property CompareMode: TGLTextureCompareMode read FCompareMode
@@ -409,7 +409,7 @@ type
     FTextureOverride: Boolean;
     FTextureMatrix: TGLMatrix;
     FMappingMode: TGLTextureMappingMode;
-    FEnvColor: TGColor;
+    FEnvColor: TGLColor;
     FMapSCoordinates: TGLCoordinates4;
     FMapTCoordinates: TGLCoordinates4;
     FMapRCoordinates: TGLCoordinates4;
@@ -443,7 +443,7 @@ type
     function StoreMappingQCoordinates: Boolean;
     procedure SetSwizzling(const AValue: TGLTextureSwizzling);
     function StoreSwizzling: Boolean;
-    procedure SetEnvColor(const AValue: TGColor);
+    procedure SetEnvColor(const AValue: TGLColor);
     procedure CalculateTextureMatrix;
     procedure ApplyMappingMode;
     procedure UnApplyMappingMode;
@@ -478,7 +478,7 @@ type
     property TextureRotate: Single read FTextureRotate write
       SetTextureRotate stored StoreTextureRotate;
     // Texture Environment color.
-    property EnvColor: TGColor read FEnvColor write SetEnvColor;
+    property EnvColor: TGLColor read FEnvColor write SetEnvColor;
     (* Texture coordinates mapping mode.
     This property controls automatic texture coordinates generation. *)
     property MappingMode: TGLTextureMappingMode read FMappingMode write
@@ -892,12 +892,12 @@ type
     FShaders: array[TGLShaderType] of TGLShaderEx;
     FIsValid: Boolean;
     FInfoLog: string;
-    FUniforms: TgPersistentObjectList;
+    FUniforms: TGLPersistentObjectList;
     FAutoFill: Boolean;
     function GetLibShaderName(AType: TGLShaderType): string;
     procedure SetLibShaderName(AType: TGLShaderType; const AValue: string);
     function GetUniform(const AName: string): IShaderParameter;
-    class procedure ReleaseUniforms(AList: TgPersistentObjectList);
+    class procedure ReleaseUniforms(AList: TGLPersistentObjectList);
     property LibVertexShaderName: TGLMaterialComponentName index shtVertex
       read GetLibShaderName write SetLibShaderName;
     property LibFragmentShaderName: TGLMaterialComponentName index shtFragment
@@ -1324,11 +1324,11 @@ begin
     Result := 0;
 end;
 
-function TGLBaseMaterialCollectionItem.GetUserList: TgPersistentObjectList;
+function TGLBaseMaterialCollectionItem.GetUserList: TGLPersistentObjectList;
 begin
   if FUserList = nil then
   begin
-    FUserList := TgPersistentObjectList.Create;
+    FUserList := TGLPersistentObjectList.Create;
     FNotifying := False;
   end;
   Result := FUserList;
@@ -2479,7 +2479,7 @@ begin
   FWrap[0] := twRepeat;
   FWrap[1] := twRepeat;
   FWrap[2] := twRepeat;
-  FBorderColor := TGColor.CreateInitialized(Self, clrTransparent);
+  FBorderColor := TGLColor.CreateInitialized(Self, clrTransparent);
   FCompareMode := tcmNone;
   FCompareFunc := cfLequal;
   FDecodeSRGB := True;
@@ -2589,7 +2589,7 @@ begin
       FWrap[0] := TGLSeparateTextureWrap(ReadInteger);
       FWrap[1] := TGLSeparateTextureWrap(ReadInteger);
       FWrap[2] := TGLSeparateTextureWrap(ReadInteger);
-      Read(FBorderColor.AsAddress^, SizeOf(TGColorVector));
+      Read(FBorderColor.AsAddress^, SizeOf(TGLColorVector));
       FCompareMode := TGLTextureCompareMode(ReadInteger);
       FCompareFunc := TGLDepthFunction(ReadInteger);
       FDecodeSRGB := ReadBoolean;
@@ -2599,7 +2599,7 @@ begin
   end;
 end;
 
-procedure TGLTextureSampler.SetBorderColor(const AValue: TGColor);
+procedure TGLTextureSampler.SetBorderColor(const AValue: TGLColor);
 begin
   FBorderColor.Assign(AValue);
   NotifyChange(Self);
@@ -2700,7 +2700,7 @@ begin
     WriteInteger(Integer(FWrap[0]));
     WriteInteger(Integer(FWrap[1]));
     WriteInteger(Integer(FWrap[2]));
-    Write(FBorderColor.AsAddress^, SizeOf(TGColorVector));
+    Write(FBorderColor.AsAddress^, SizeOf(TGLColorVector));
     WriteInteger(Integer(FCompareMode));
     WriteInteger(Integer(FCompareFunc));
     WriteBoolean(FDecodeSRGB);
@@ -3674,7 +3674,7 @@ begin
   FTextureMatrix := IdentityHmgMatrix;
   FEnabled := False;
   FSwizzling := TGLTextureSwizzling.Create(Self);
-  FEnvColor := TGColor.CreateInitialized(Self, clrTransparent);
+  FEnvColor := TGLColor.CreateInitialized(Self, clrTransparent);
 end;
 
 destructor TGLTextureProperties.Destroy;
@@ -3986,7 +3986,7 @@ begin
 end;
 
 procedure TGLTextureProperties.SetEnvColor(const AValue:
-  TGColor);
+  TGLColor);
 begin
   FEnvColor.Assign(AValue);
   NotifyChange(Self);
@@ -4418,7 +4418,7 @@ begin
   FHandle := TGLProgramHandle.Create;
   FHandle.OnPrapare := DoOnPrepare;
   FEnabled := False;
-  FUniforms := TgPersistentObjectList.Create;
+  FUniforms := TGLPersistentObjectList.Create;
   FAutoFill := True;
 end;
 
@@ -4447,7 +4447,7 @@ end;
 procedure TGLBaseShaderModel.DoOnPrepare(Sender: TGLContext);
 var
   T: TGLShaderType;
-  LUniforms: TgPersistentObjectList;
+  LUniforms: TGLPersistentObjectList;
   LUniform, LUniform2: TGLShaderUniform;
   ID: Cardinal;
   I, J, C: Integer;
@@ -4537,7 +4537,7 @@ begin
               end;
 
               // Get uniforms
-              LUniforms := TgPersistentObjectList.Create;
+              LUniforms := TGLPersistentObjectList.Create;
 
               gl.GetProgramiv(ID, GL_ACTIVE_UNIFORMS, @C);
               for I := 0 to C - 1 do
@@ -4826,7 +4826,7 @@ begin
 end;
 
 class procedure TGLBaseShaderModel.ReleaseUniforms(
-  AList: TgPersistentObjectList);
+  AList: TGLPersistentObjectList);
 var
   I: Integer;
 begin

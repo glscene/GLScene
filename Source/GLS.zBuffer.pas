@@ -132,7 +132,7 @@ type
     FYRes: integer;
     Fsoft: boolean;
     FTolerance: single;
-    FColor: TGColor;
+    FColor: TGLColor;
     SCol: TGLPixel32;
     //stepX, stepY :single;
     FTexturePrepared: Boolean;
@@ -166,7 +166,7 @@ type
     property Optimise: TOptimise read FOptimise write FOptimise;
     property Width: integer read FWidth write SetWidth;
     property Height: integer read FHeight write SetHeight;
-    property Color: TGColor read FColor write FColor;
+    property Color: TGLColor read FColor write FColor;
     //          property Xres        :integer read FXRes write SetXRes;// default 64;
     //          property Yres        :integer read FYRes write SetYRes;// default 64;
     property Soft: Boolean read Fsoft write SetSoft;
@@ -650,7 +650,7 @@ constructor TGLZShadows.Create(AOwner: TComponent);
 begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
-  FColor := TGColor.Create(Self);
+  FColor := TGLColor.Create(Self);
   self.FDataSize := 0;
   self.FXRes := 64;
   self.FYRes := 64;

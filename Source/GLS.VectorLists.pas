@@ -5,8 +5,8 @@ unit GLS.VectorLists;
 (*
   Misc. lists of vectors and entities
   The registered classes are:
-    [TGLAffineVectorList, TGLVectorList, TGTexPointList,
-     TGSingleList, TGDoubleList, TG4ByteList, TGLongWordList]
+    [TGLAffineVectorList, TGLVectorList, TGLTexPointList,
+     TGLSingleList, TGLDoubleList, TGL4ByteList, TGLLongWordList]
 *)
 interface
 
@@ -55,8 +55,8 @@ type
     constructor Create; override;
     destructor Destroy; override;
     procedure Assign(Src: TPersistent); override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure AddNulls(nbVals: Cardinal);
     procedure InsertNulls(Index: Integer; nbVals: Cardinal);
     procedure AdjustCapacityToAtLeast(const size: Integer);
@@ -96,8 +96,8 @@ type
   protected
     function GetItemAddress(Index: Integer): PFloatArray; inline;
   public
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     procedure GetExtents(out min, max: TAffineVector); virtual;
     function Sum: TAffineVector;
     procedure Normalize; virtual;
@@ -207,7 +207,7 @@ type
 
   (* A list of TGLTexPoint. Similar to TList, but using TTexPoint as items.
      The list has stack-like push/pop methods. *)
-  TGTexPointList = class(TGLBaseVectorList)
+  TGLTexPointList = class(TGLBaseVectorList)
   private
     FList: PTexPointArray;
   protected
@@ -239,7 +239,7 @@ type
 
   (*  A list of Integers. Similar to TList, but using TTexPoint as items.
      The list has stack-like push/pop methods. *)
-  TgIntegerList = class(TGLBaseList)
+  TGLIntegerList = class(TGLBaseList)
   private
     FList: PIntegerArray;
   protected
@@ -253,7 +253,7 @@ type
     function AddNC(const item: Integer): Integer; overload; inline;
     procedure Add(const i1, i2: Integer); overload; inline;
     procedure Add(const i1, i2, i3: Integer); overload; inline;
-    procedure Add(const AList: TgIntegerList); overload; inline;
+    procedure Add(const AList: TGLIntegerList); overload; inline;
     procedure Push(const Val: Integer); inline;
     function Pop: Integer; inline;
     procedure Insert(Index: Integer; const item: Integer); inline;
@@ -266,7 +266,7 @@ type
     // Add n integers at the address starting at (and including) first
     procedure AddIntegers(const First: PInteger; n: Integer); overload;
     // Add all integers from aList into the list
-    procedure AddIntegers(const aList: TgIntegerList); overload;
+    procedure AddIntegers(const aList: TGLIntegerList); overload;
     // Add all integers from anArray into the list
     procedure AddIntegers(const anArray: array of Integer); overload;
     // Returns the minimum integer item, zero if list is empty
@@ -300,7 +300,7 @@ type
 
   (* A list of Single. Similar to TList, but using Single as items.
     The list has stack-like push/pop methods *)
-  TGSingleList = class(TGLBaseList)
+  TGLSingleList = class(TGLBaseList)
   private
     FList: PGLSingleArrayList;
   protected
@@ -325,7 +325,7 @@ type
     (* Adds to each item the corresponding item in the delta list.
        Performs 'Items[i]:=Items[i]+delta[i]'.
        If both lists don't have the same item count, an exception is raised *)
-    procedure Offset(const delta: TGSingleList); overload;
+    procedure Offset(const delta: TGLSingleList); overload;
     // Multiplies all items by factor
     procedure Scale(factor: Single);
     // Square all items
@@ -343,7 +343,7 @@ type
 
   (* A list of Double. Similar to TList, but using Double as items.
     The list has stack-like push/pop methods *)
-  TGDoubleList = class(TGLBaseList)
+  TGLDoubleList = class(TGLBaseList)
   private
     FList: PGLDoubleArrayList;
   protected
@@ -365,7 +365,7 @@ type
     (* Adds to each item the corresponding item in the delta list.
       Performs 'Items[i] := Items[i] + delta[i]'.
       If both lists don't have the same item count, an exception is raised *)
-    procedure Offset(const delta: TGDoubleList); overload;
+    procedure Offset(const delta: TGLDoubleList); overload;
     // Multiplies all items by factor
     procedure Scale(factor: Double);
     // Square all items
@@ -379,7 +379,7 @@ type
   end;
 
   // A list of bytes. Similar to TList, but using Byte as items
-  TGByteList = class(TGLBaseList)
+  TGLByteList = class(TGLBaseList)
   private
     FList: PByteArray;
   protected
@@ -397,7 +397,7 @@ type
 
   (* A list of TQuaternion. Similar to TList, but using TQuaternion as items.
     The list has stack-like push/pop methods *)
-  TGQuaternionList = class(TGLBaseVectorList)
+  TGLQuaternionList = class(TGLBaseVectorList)
   private
     FList: PQuaternionArray;
   protected
@@ -426,7 +426,7 @@ type
   end;
 
   // 4 byte union contain access like Integer, Single and four Byte
-	TG4ByteData = packed record
+	TGL4ByteData = packed record
     case Byte of
     0 : (Bytes : record Value : array[0..3] of Byte; end);
     1 : (Int   : record Value : Integer; end);
@@ -435,21 +435,21 @@ type
     4 : (Word  : record Value : array[0..1] of Word; end);
   end;
 
-  TG4ByteArrayList = array[0..MaxInt shr 4] of TG4ByteData;
-  PG4ByteArrayList = ^TG4ByteArrayList;
+  TGL4ByteArrayList = array[0..MaxInt shr 4] of TGL4ByteData;
+  PG4ByteArrayList = ^TGL4ByteArrayList;
 
-  // A list of TG4ByteData
-  TG4ByteList = class(TGLBaseList)
+  // A list of TGL4ByteData
+  TGL4ByteList = class(TGLBaseList)
   private
     FList: PG4ByteArrayList;
   protected
-    function  Get(Index: Integer): TG4ByteData;
-    procedure Put(Index: Integer; const item: TG4ByteData);
+    function  Get(Index: Integer): TGL4ByteData;
+    procedure Put(Index: Integer; const item: TGL4ByteData);
     procedure SetCapacity(NewCapacity: Integer); override;
   public
     constructor Create; override;
     procedure Assign(Src: TPersistent); override;
-    function  Add(const item: TG4ByteData): Integer; overload;
+    function  Add(const item: TGL4ByteData): Integer; overload;
     procedure Add(const i1: Single); overload;
     procedure Add(const i1, i2: Single); overload;
     procedure Add(const i1, i2, i3: Single); overload;
@@ -462,15 +462,15 @@ type
     procedure Add(const i1, i2: Cardinal); overload;
     procedure Add(const i1, i2, i3: Cardinal); overload;
     procedure Add(const i1, i2, i3, i4: Cardinal); overload;
-    procedure Add(const AList: TG4ByteList); overload;
-    procedure Push(const Val: TG4ByteData);
-    function  Pop: TG4ByteData;
-    procedure Insert(Index: Integer; const item: TG4ByteData);
-    property Items[Index: Integer]: TG4ByteData read Get write Put; default;
+    procedure Add(const AList: TGL4ByteList); overload;
+    procedure Push(const Val: TGL4ByteData);
+    function  Pop: TGL4ByteData;
+    procedure Insert(Index: Integer; const item: TGL4ByteData);
+    property Items[Index: Integer]: TGL4ByteData read Get write Put; default;
     property List: PG4ByteArrayList read FList;
   end;
 
-  TGLongWordList = class(TGLBaseList)
+  TGLLongWordList = class(TGLBaseList)
   private
     FList: PLongWordArray;
   protected
@@ -484,7 +484,7 @@ type
     function AddNC(const item: LongWord): Integer; overload;
     procedure Add(const i1, i2: LongWord); overload;
     procedure Add(const i1, i2, i3: LongWord); overload;
-    procedure Add(const AList: TGLongWordList); overload;
+    procedure Add(const AList: TGLLongWordList); overload;
     procedure Push(const Val: LongWord);
     function Pop: LongWord;
     procedure Insert(Index: Integer; const item: LongWord);
@@ -495,18 +495,18 @@ type
     // Add n integers at the address starting at (and including) first
     procedure AddLongWords(const First: PLongWord; n: Integer); overload;
     // Add all integers from aList into the list
-    procedure AddLongWords(const aList: TGLongWordList); overload;
+    procedure AddLongWords(const aList: TGLLongWordList); overload;
     // Add all integers from anArray into the list
     procedure AddLongWords(const anArray: array of LongWord); overload;
   end;
 
 // Sort the refList in ascending order, ordering objList (TList) on the way
-procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TList); overload;
+procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGLSingleList; objList: TList); overload;
 // Sort the refList in ascending order, ordering objList (TGLBaseList) on the way
-procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TGLBaseList); overload;
+procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGLSingleList; objList: TGLBaseList); overload;
 (* Sort the refList in ascending order, ordering objList on the way.
    Use if, and *ONLY* if refList contains only values superior or equal to 1 *)
-procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGSingleList; const objList: TgPersistentObjectList);
+procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGLSingleList; const objList: TGLPersistentObjectList);
 
 
 implementation // ------------------------------------------------------------
@@ -514,7 +514,7 @@ implementation // ------------------------------------------------------------
 const
   cDefaultListGrowthDelta = 16;
 
-procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TList);
+procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGLSingleList; objList: TList);
 var
   I, J: Integer;
   P:    Single;
@@ -555,7 +555,7 @@ begin
   end;
 end;
 
-procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGSingleList; objList: TGLBaseList);
+procedure QuickSortLists(startIndex, endIndex: Integer; refList: TGLSingleList; objList: TGLBaseList);
 var
   I, J: Integer;
   P:    Single;
@@ -619,7 +619,7 @@ begin
   end;
 end;
 
-procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGSingleList; const objList: TgPersistentObjectList);
+procedure FastQuickSortLists(startIndex, endIndex: Integer; const refList: TGLSingleList; const objList: TGLPersistentObjectList);
 var
   ppl:      PIntegerArray;
   oTemp:    Pointer;
@@ -747,7 +747,7 @@ begin
   AWriter.WriteString(lOutputText);
 end;
 
-procedure TGLBaseList.WriteToFiler(writer: TGVirtualWriter);
+procedure TGLBaseList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited;
   with writer do
@@ -760,7 +760,7 @@ begin
   end;
 end;
 
-procedure TGLBaseList.ReadFromFiler(reader: TGVirtualReader);
+procedure TGLBaseList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
@@ -1008,10 +1008,10 @@ end;
 // ------------------ TGLBaseVectorList ------------------
 // ------------------
 
-procedure TGLBaseVectorList.WriteToFiler(writer: TGVirtualWriter);
+procedure TGLBaseVectorList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited;
-  if Self is TGTexPointList then
+  if Self is TGLTexPointList then
     exit;
   with writer do
   begin
@@ -1020,12 +1020,12 @@ begin
   end;
 end;
 
-procedure TGLBaseVectorList.ReadFromFiler(reader: TGVirtualReader);
+procedure TGLBaseVectorList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: Integer;
 begin
   inherited;
-  if Self is TGTexPointList then
+  if Self is TGLTexPointList then
     exit;
   archiveVersion := reader.ReadInteger;
   if archiveVersion = 0 then
@@ -1702,29 +1702,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TGTexPointList ------------------
+// ------------------ TGLTexPointList ------------------
 // ------------------
 
-constructor TGTexPointList.Create;
+constructor TGLTexPointList.Create;
 begin
   FItemSize := SizeOf(TTexPoint);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGTexPointList.Assign(Src: TPersistent);
+procedure TGLTexPointList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGTexPointList) then
-      System.Move(TGTexPointList(Src).FList^, FList^, FCount * SizeOf(TTexPoint));
+    if (Src is TGLTexPointList) then
+      System.Move(TGLTexPointList(Src).FList^, FList^, FCount * SizeOf(TTexPoint));
   end
   else
     Clear;
 end;
 
-function TGTexPointList.IndexOf(const item: TTexpoint): Integer;
+function TGLTexPointList.IndexOf(const item: TTexpoint): Integer;
 var
   I: Integer;
 begin
@@ -1737,14 +1737,14 @@ begin
     end;
 end;
 
-function TGTexPointList.FindOrAdd(const item: TTexPoint): Integer;
+function TGLTexPointList.FindOrAdd(const item: TTexPoint): Integer;
 begin
   Result := IndexOf(item);
   if Result < 0 then
     Result := Add(item);
 end;
 
-function TGTexPointList.Add(const item: TTexPoint): Integer;
+function TGLTexPointList.Add(const item: TTexPoint): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1753,7 +1753,7 @@ begin
   Inc(FCount);
 end;
 
-function TGTexPointList.Add(const item: TVector2f): Integer;
+function TGLTexPointList.Add(const item: TVector2f): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1762,7 +1762,7 @@ begin
   Inc(FCount);
 end;
 
-function TGTexPointList.Add(const texS, Text: Single): Integer;
+function TGLTexPointList.Add(const texS, Text: Single): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1775,7 +1775,7 @@ begin
   Inc(FCount);
 end;
 
-function TGTexPointList.Add(const texS, Text: Integer): Integer;
+function TGLTexPointList.Add(const texS, Text: Integer): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1788,7 +1788,7 @@ begin
   Inc(FCount);
 end;
 
-function TGTexPointList.AddNC(const texS, Text: Integer): Integer;
+function TGLTexPointList.AddNC(const texS, Text: Integer): Integer;
 begin
   Result := FCount;
   with FList^[Result] do
@@ -1799,7 +1799,7 @@ begin
   Inc(FCount);
 end;
 
-function TGTexPointList.Add(const texST: PIntegerArray): Integer;
+function TGLTexPointList.Add(const texST: PIntegerArray): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1812,7 +1812,7 @@ begin
   Inc(FCount);
 end;
 
-function TGTexPointList.AddNC(const texST: PIntegerArray): Integer;
+function TGLTexPointList.AddNC(const texST: PIntegerArray): Integer;
 begin
   Result := FCount;
   with FList^[Result] do
@@ -1823,7 +1823,7 @@ begin
   Inc(FCount);
 end;
 
-function TGTexPointList.Get(Index: Integer): TTexPoint;
+function TGLTexPointList.Get(Index: Integer): TTexPoint;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1831,7 +1831,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGTexPointList.Insert(Index: Integer; const Item: TTexPoint);
+procedure TGLTexPointList.Insert(Index: Integer; const Item: TTexPoint);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1845,7 +1845,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGTexPointList.Put(Index: Integer; const Item: TTexPoint);
+procedure TGLTexPointList.Put(Index: Integer; const Item: TTexPoint);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1853,18 +1853,18 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TGTexPointList.SetCapacity(NewCapacity: Integer);
+procedure TGLTexPointList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PTexPointArray(FBaseList);
 end;
 
-procedure TGTexPointList.Push(const Val: TTexPoint);
+procedure TGLTexPointList.Push(const Val: TTexPoint);
 begin
   Add(Val);
 end;
 
-function TGTexPointList.Pop: TTexPoint;
+function TGLTexPointList.Pop: TTexPoint;
 begin
   if FCount > 0 then
   begin
@@ -1875,17 +1875,17 @@ begin
     Result := NullTexPoint;
 end;
 
-procedure TGTexPointList.Translate(const delta: TTexPoint);
+procedure TGLTexPointList.Translate(const delta: TTexPoint);
 begin
   TexPointArrayAdd(List, delta, FCount, FList);
 end;
 
-procedure TGTexPointList.ScaleAndTranslate(const scale, delta: TTexPoint);
+procedure TGLTexPointList.ScaleAndTranslate(const scale, delta: TTexPoint);
 begin
   TexPointArrayScaleAndAdd(FList, delta, FCount, scale, FList);
 end;
 
-procedure TGTexPointList.ScaleAndTranslate(const scale, delta: TTexPoint; base, nb: Integer);
+procedure TGLTexPointList.ScaleAndTranslate(const scale, delta: TTexPoint; base, nb: Integer);
 var
   p: PTexPointArray;
 begin
@@ -1893,42 +1893,42 @@ begin
   TexPointArrayScaleAndAdd(p, delta, nb, scale, p);
 end;
 
-procedure TGTexPointList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
+procedure TGLTexPointList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
 begin
-  if (list1 is TGTexPointList) and (list2 is TGTexPointList) then
+  if (list1 is TGLTexPointList) and (list2 is TGLTexPointList) then
   begin
     Assert(list1.Count = list2.Count);
     Capacity := list1.Count;
     FCount := list1.Count;
-    VectorArrayLerp(TGTexPointList(list1).List, TGTexPointList(list2).List,
+    VectorArrayLerp(TGLTexPointList(list1).List, TGLTexPointList(list2).List,
       lerpFactor, FCount, List);
   end;
 end;
 
 // ------------------
-// ------------------ TgIntegerList ------------------
+// ------------------ TGLIntegerList ------------------
 // ------------------
 
-constructor TgIntegerList.Create;
+constructor TGLIntegerList.Create;
 begin
   FItemSize := SizeOf(Integer);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TgIntegerList.Assign(Src: TPersistent);
+procedure TGLIntegerList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TgIntegerList) then
-      System.Move(TgIntegerList(Src).FList^, FList^, FCount * SizeOf(Integer));
+    if (Src is TGLIntegerList) then
+      System.Move(TGLIntegerList(Src).FList^, FList^, FCount * SizeOf(Integer));
   end
   else
     Clear;
 end;
 
-function TgIntegerList.Add(const item: Integer): Integer;
+function TGLIntegerList.Add(const item: Integer): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -1937,14 +1937,14 @@ begin
   Inc(FCount);
 end;
 
-function TgIntegerList.AddNC(const item: Integer): Integer;
+function TGLIntegerList.AddNC(const item: Integer): Integer;
 begin
   Result := FCount;
   FList^[Result] := Item;
   Inc(FCount);
 end;
 
-procedure TgIntegerList.Add(const i1, i2: Integer);
+procedure TGLIntegerList.Add(const i1, i2: Integer);
 var
   tmpList : PIntegerArray;
 begin
@@ -1956,7 +1956,7 @@ begin
   tmpList^[1] := i2;
 end;
 
-procedure TgIntegerList.Add(const i1, i2, i3: Integer);
+procedure TGLIntegerList.Add(const i1, i2, i3: Integer);
 var
   tmpList : PIntegerArray;
 begin
@@ -1969,7 +1969,7 @@ begin
   tmpList^[2] := i3;
 end;
 
-procedure TgIntegerList.Add(const AList: TgIntegerList);
+procedure TGLIntegerList.Add(const AList: TGLIntegerList);
 begin
   if Assigned(AList) and (AList.Count > 0) then
   begin
@@ -1980,7 +1980,7 @@ begin
   end;
 end;
 
-function TgIntegerList.Get(Index: Integer): Integer;
+function TGLIntegerList.Get(Index: Integer): Integer;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -1988,7 +1988,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TgIntegerList.Insert(Index: Integer; const Item: Integer);
+procedure TGLIntegerList.Insert(Index: Integer; const Item: Integer);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2001,7 +2001,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TgIntegerList.Remove(const item: Integer);
+procedure TGLIntegerList.Remove(const item: Integer);
 var
   I: Integer;
 begin
@@ -2016,7 +2016,7 @@ begin
   end;
 end;
 
-procedure TgIntegerList.Put(Index: Integer; const Item: Integer);
+procedure TGLIntegerList.Put(Index: Integer; const Item: Integer);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2024,18 +2024,18 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TgIntegerList.SetCapacity(NewCapacity: Integer);
+procedure TGLIntegerList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PIntegerArray(FBaseList);
 end;
 
-procedure TgIntegerList.Push(const Val: Integer);
+procedure TGLIntegerList.Push(const Val: Integer);
 begin
   Add(Val);
 end;
 
-function TgIntegerList.Pop: Integer;
+function TGLIntegerList.Pop: Integer;
 begin
   if FCount > 0 then
   begin
@@ -2046,7 +2046,7 @@ begin
     Result := 0;
 end;
 
-procedure TgIntegerList.AddSerie(aBase, aDelta, aCount: Integer);
+procedure TGLIntegerList.AddSerie(aBase, aDelta, aCount: Integer);
 var
   tmpList : PInteger;
   I:    Integer;
@@ -2064,7 +2064,7 @@ begin
   FCount := Count + aCount;
 end;
 
-procedure TgIntegerList.AddIntegers(const First: PInteger; n: Integer);
+procedure TGLIntegerList.AddIntegers(const First: PInteger; n: Integer);
 begin
   if n < 1 then
     Exit;
@@ -2073,14 +2073,14 @@ begin
   FCount := FCount + n;
 end;
 
-procedure TgIntegerList.AddIntegers(const aList: TgIntegerList);
+procedure TGLIntegerList.AddIntegers(const aList: TGLIntegerList);
 begin
   if not Assigned(aList) then
     Exit;
   AddIntegers(@aList.List[0], aList.Count);
 end;
 
-procedure TgIntegerList.AddIntegers(const anArray: array of Integer);
+procedure TGLIntegerList.AddIntegers(const anArray: array of Integer);
 var
   n: Integer;
 begin
@@ -2101,12 +2101,12 @@ begin
   end;
 end;
 
-function TgIntegerList.IndexOf(item: Integer): Integer; register;
+function TGLIntegerList.IndexOf(item: Integer): Integer; register;
 begin
   Result := IntegerSearch(item, FList, FCount);
 end;
 
-function TgIntegerList.MinInteger: Integer;
+function TGLIntegerList.MinInteger: Integer;
 var
   I: Integer;
   locList: PIntegerVector;
@@ -2123,7 +2123,7 @@ begin
     Result := 0;
 end;
 
-function TgIntegerList.MaxInteger: Integer;
+function TGLIntegerList.MaxInteger: Integer;
 var
   I: Integer;
   locList: PIntegerVector;
@@ -2169,13 +2169,13 @@ begin
   until I >= right;
 end;
 
-procedure TgIntegerList.Sort;
+procedure TGLIntegerList.Sort;
 begin
   if (FList <> nil) and (Count > 1) then
     IntegerQuickSort(FList, 0, Count - 1);
 end;
 
-procedure TgIntegerList.SortAndRemoveDuplicates;
+procedure TGLIntegerList.SortAndRemoveDuplicates;
 var
   I, J, lastVal: Integer;
   localList:     PIntegerArray;
@@ -2199,14 +2199,14 @@ begin
   end;
 end;
 
-function TgIntegerList.BinarySearch(const Value: Integer): Integer;
+function TGLIntegerList.BinarySearch(const Value: Integer): Integer;
 var
   found: Boolean;
 begin
   Result := BinarySearch(Value, False, found);
 end;
 
-function TgIntegerList.BinarySearch(const Value: Integer; returnBestFit: Boolean; var found: Boolean): Integer;
+function TGLIntegerList.BinarySearch(const Value: Integer; returnBestFit: Boolean; var found: Boolean): Integer;
 var
   Index:   Integer;
   min, max, mid: Integer;
@@ -2258,7 +2258,7 @@ begin
     Result := Index;
 end;
 
-function TgIntegerList.AddSorted(const Value: Integer; const ignoreDuplicates: Boolean = False): Integer;
+function TGLIntegerList.AddSorted(const Value: Integer; const ignoreDuplicates: Boolean = False): Integer;
 var
   Index: Integer;
   found: Boolean;
@@ -2273,7 +2273,7 @@ begin
   end;
 end;
 
-procedure TgIntegerList.RemoveSorted(const Value: Integer);
+procedure TGLIntegerList.RemoveSorted(const Value: Integer);
 var
   Index: Integer;
 begin
@@ -2282,7 +2282,7 @@ begin
     Delete(Index);
 end;
 
-procedure TgIntegerList.Offset(delta: Integer);
+procedure TGLIntegerList.Offset(delta: Integer);
 var
   I: Integer;
   locList: PIntegerArray;
@@ -2292,7 +2292,7 @@ begin
     locList^[I] := locList^[I] + delta;
 end;
 
-procedure TgIntegerList.Offset(delta: Integer; const base, nb: Integer);
+procedure TGLIntegerList.Offset(delta: Integer; const base, nb: Integer);
 var
   I: Integer;
   locList: PIntegerArray;
@@ -2303,29 +2303,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TGSingleList ------------------
+// ------------------ TGLSingleList ------------------
 // ------------------
 
-constructor TGSingleList.Create;
+constructor TGLSingleList.Create;
 begin
   FItemSize := SizeOf(Single);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGSingleList.Assign(Src: TPersistent);
+procedure TGLSingleList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGSingleList) then
-      System.Move(TGSingleList(Src).FList^, FList^, FCount * SizeOf(Single));
+    if (Src is TGLSingleList) then
+      System.Move(TGLSingleList(Src).FList^, FList^, FCount * SizeOf(Single));
   end
   else
     Clear;
 end;
 
-function TGSingleList.Add(const item: Single): Integer;
+function TGLSingleList.Add(const item: Single): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -2334,7 +2334,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGSingleList.Add(const i1, i2: Single);
+procedure TGLSingleList.Add(const i1, i2: Single);
 var
   tmpList : PSingleArray;
 begin
@@ -2346,7 +2346,7 @@ begin
   tmpList^[1] := i2;
 end;
 
-procedure TGSingleList.AddSingles(const First: PSingle; n: Integer);
+procedure TGLSingleList.AddSingles(const First: PSingle; n: Integer);
 begin
   if n < 1 then
     Exit;
@@ -2355,7 +2355,7 @@ begin
   FCount := FCount + n;
 end;
 
-procedure TGSingleList.AddSingles(const anArray: array of Single);
+procedure TGLSingleList.AddSingles(const anArray: array of Single);
 var
   n: Integer;
 begin
@@ -2364,7 +2364,7 @@ begin
     AddSingles(@anArray[0], n);
 end;
 
-function TGSingleList.Get(Index: Integer): Single;
+function TGLSingleList.Get(Index: Integer): Single;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2372,7 +2372,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGSingleList.Insert(Index: Integer; const Item: Single);
+procedure TGLSingleList.Insert(Index: Integer; const Item: Single);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2386,7 +2386,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGSingleList.Put(Index: Integer; const Item: Single);
+procedure TGLSingleList.Put(Index: Integer; const Item: Single);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2394,18 +2394,18 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TGSingleList.SetCapacity(NewCapacity: Integer);
+procedure TGLSingleList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PGLSingleArrayList(FBaseList);
 end;
 
-procedure TGSingleList.Push(const Val: Single);
+procedure TGLSingleList.Push(const Val: Single);
 begin
   Add(Val);
 end;
 
-function TGSingleList.Pop: Single;
+function TGLSingleList.Pop: Single;
 begin
   if FCount > 0 then
   begin
@@ -2416,7 +2416,7 @@ begin
     Result := 0;
 end;
 
-procedure TGSingleList.AddSerie(aBase, aDelta: Single; aCount: Integer);
+procedure TGLSingleList.AddSerie(aBase, aDelta: Single; aCount: Integer);
 var
   tmpList : PSingle;
   I:    Integer;
@@ -2434,12 +2434,12 @@ begin
   FCount := Count + aCount;
 end;
 
-procedure TGSingleList.Offset(delta: Single);
+procedure TGLSingleList.Offset(delta: Single);
 begin
   OffsetFloatArray(PFloatVector(FList), FCount, delta);
 end;
 
-procedure TGSingleList.Offset(const delta: TGSingleList);
+procedure TGLSingleList.Offset(const delta: TGLSingleList);
 begin
   if FCount = delta.FCount then
     OffsetFloatArray(PFloatVector(FList), PFloatVector(delta.FList), FCount)
@@ -2447,12 +2447,12 @@ begin
     raise Exception.Create('SingleList count do not match');
 end;
 
-procedure TGSingleList.Scale(factor: Single);
+procedure TGLSingleList.Scale(factor: Single);
 begin
   ScaleFloatArray(PFloatVector(FList), FCount, factor);
 end;
 
-procedure TGSingleList.Sqr;
+procedure TGLSingleList.Sqr;
 var
   I: Integer;
   locList: PGLSingleArrayList;
@@ -2462,7 +2462,7 @@ begin
     locList^[I] := locList^[I] * locList^[I];
 end;
 
-procedure TGSingleList.Sqrt;
+procedure TGLSingleList.Sqrt;
 var
   I: Integer;
   locList: PGLSingleArrayList;
@@ -2472,7 +2472,7 @@ begin
     locList^[I] := System.Sqrt(locList^[I]);
 end;
 
-function TGSingleList.Sum: Single;
+function TGLSingleList.Sum: Single;
 var
   i: Integer;
 begin
@@ -2481,7 +2481,7 @@ begin
     Result := Result + FList^[i];
 end;
 
-function TGSingleList.Min: Single;
+function TGLSingleList.Min: Single;
 var
   I: Integer;
   locList: PGLSingleArrayList;
@@ -2498,7 +2498,7 @@ begin
     Result := 0;
 end;
 
-function TGSingleList.Max: Single;
+function TGLSingleList.Max: Single;
 var
   I: Integer;
   locList: PGLSingleArrayList;
@@ -2516,29 +2516,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TGByteList ------------------
+// ------------------ TGLByteList ------------------
 // ------------------
 
-constructor TGByteList.Create;
+constructor TGLByteList.Create;
 begin
   FItemSize := SizeOf(Byte);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGByteList.Assign(Src: TPersistent);
+procedure TGLByteList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGByteList) then
-      System.Move(TGByteList(Src).FList^, FList^, FCount * SizeOf(Byte));
+    if (Src is TGLByteList) then
+      System.Move(TGLByteList(Src).FList^, FList^, FCount * SizeOf(Byte));
   end
   else
     Clear;
 end;
 
-function TGByteList.Add(const item: Byte): Integer;
+function TGLByteList.Add(const item: Byte): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -2547,7 +2547,7 @@ begin
   Inc(FCount);
 end;
 
-function TGByteList.Get(Index: Integer): Byte;
+function TGLByteList.Get(Index: Integer): Byte;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2555,7 +2555,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGByteList.Insert(Index: Integer; const Item: Byte);
+procedure TGLByteList.Insert(Index: Integer; const Item: Byte);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2569,7 +2569,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGByteList.Put(Index: Integer; const Item: Byte);
+procedure TGLByteList.Put(Index: Integer; const Item: Byte);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2577,36 +2577,36 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TGByteList.SetCapacity(NewCapacity: Integer);
+procedure TGLByteList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PByteArray(FBaseList);
 end;
 
 // ------------------
-// ------------------ TGDoubleList ------------------
+// ------------------ TGLDoubleList ------------------
 // ------------------
 
-constructor TGDoubleList.Create;
+constructor TGLDoubleList.Create;
 begin
   FItemSize := SizeOf(Double);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGDoubleList.Assign(Src: TPersistent);
+procedure TGLDoubleList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGDoubleList) then
-      System.Move(TGDoubleList(Src).FList^, FList^, FCount * SizeOf(Double));
+    if (Src is TGLDoubleList) then
+      System.Move(TGLDoubleList(Src).FList^, FList^, FCount * SizeOf(Double));
   end
   else
     Clear;
 end;
 
-function TGDoubleList.Add(const item: Double): Integer;
+function TGLDoubleList.Add(const item: Double): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -2615,7 +2615,7 @@ begin
   Inc(FCount);
 end;
 
-function TGDoubleList.Get(Index: Integer): Double;
+function TGLDoubleList.Get(Index: Integer): Double;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2623,7 +2623,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGDoubleList.Insert(Index: Integer; const Item: Double);
+procedure TGLDoubleList.Insert(Index: Integer; const Item: Double);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2637,7 +2637,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGDoubleList.Put(Index: Integer; const Item: Double);
+procedure TGLDoubleList.Put(Index: Integer; const Item: Double);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2645,18 +2645,18 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TGDoubleList.SetCapacity(NewCapacity: Integer);
+procedure TGLDoubleList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PGLDoubleArrayList(FBaseList);
 end;
 
-procedure TGDoubleList.Push(const Val: Double);
+procedure TGLDoubleList.Push(const Val: Double);
 begin
   Add(Val);
 end;
 
-function TGDoubleList.Pop: Double;
+function TGLDoubleList.Pop: Double;
 begin
   if FCount > 0 then
   begin
@@ -2667,7 +2667,7 @@ begin
     Result := 0;
 end;
 
-procedure TGDoubleList.AddSerie(aBase, aDelta: Double; aCount: Integer);
+procedure TGLDoubleList.AddSerie(aBase, aDelta: Double; aCount: Integer);
 var
   tmpList: PDouble;
   I:    Integer;
@@ -2685,7 +2685,7 @@ begin
   FCount := Count + aCount;
 end;
 
-procedure TGDoubleList.Offset(delta: Double);
+procedure TGLDoubleList.Offset(delta: Double);
 var
   I: Integer;
 begin
@@ -2693,7 +2693,7 @@ begin
     FList^[I] := FList^[I] + delta;
 end;
 
-procedure TGDoubleList.Offset(const delta: TGDoubleList);
+procedure TGLDoubleList.Offset(const delta: TGLDoubleList);
 var
   I: Integer;
 begin
@@ -2704,7 +2704,7 @@ begin
     raise Exception.Create('DoubleList count do not match');
 end;
 
-procedure TGDoubleList.Scale(factor: Double);
+procedure TGLDoubleList.Scale(factor: Double);
 var
   I: Integer;
 begin
@@ -2712,7 +2712,7 @@ begin
     FList^[I] := FList^[I] * factor;
 end;
 
-procedure TGDoubleList.Sqr;
+procedure TGLDoubleList.Sqr;
 var
   I: Integer;
   locList: PGLDoubleArrayList;
@@ -2722,7 +2722,7 @@ begin
     locList^[I] := locList^[I] * locList^[I];
 end;
 
-procedure TGDoubleList.Sqrt;
+procedure TGLDoubleList.Sqrt;
 var
   I: Integer;
   locList: PGLDoubleArrayList;
@@ -2732,7 +2732,7 @@ begin
     locList^[I] := System.Sqrt(locList^[I]);
 end;
 
-function TGDoubleList.Sum: Double;
+function TGLDoubleList.Sum: Double;
 var
   i: Integer;
 begin
@@ -2741,7 +2741,7 @@ begin
     Result := Result + FList^[i];
 end;
 
-function TGDoubleList.Min: Single;
+function TGLDoubleList.Min: Single;
 var
   I: Integer;
   locList: PGLDoubleArrayList;
@@ -2758,7 +2758,7 @@ begin
     Result := 0;
 end;
 
-function TGDoubleList.Max: Single;
+function TGLDoubleList.Max: Single;
 var
   I: Integer;
   locList: PGLDoubleArrayList;
@@ -2776,29 +2776,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TGQuaternionList ------------------
+// ------------------ TGLQuaternionList ------------------
 // ------------------
 
-constructor TGQuaternionList.Create;
+constructor TGLQuaternionList.Create;
 begin
   FItemSize := SizeOf(TQuaternion);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGQuaternionList.Assign(Src: TPersistent);
+procedure TGLQuaternionList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGQuaternionList) then
-      System.Move(TGQuaternionList(Src).FList^, FList^, FCount * SizeOf(TQuaternion));
+    if (Src is TGLQuaternionList) then
+      System.Move(TGLQuaternionList(Src).FList^, FList^, FCount * SizeOf(TQuaternion));
   end
   else
     Clear;
 end;
 
-function TGQuaternionList.Add(const item: TQuaternion): Integer;
+function TGLQuaternionList.Add(const item: TQuaternion): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -2807,17 +2807,17 @@ begin
   Inc(FCount);
 end;
 
-function TGQuaternionList.Add(const item: TAffineVector; w: Single): Integer;
+function TGLQuaternionList.Add(const item: TAffineVector; w: Single): Integer;
 begin
   Result := Add(QuaternionMake([item.X, item.Y, item.Z], w));
 end;
 
-function TGQuaternionList.Add(const X, Y, Z, w: Single): Integer;
+function TGLQuaternionList.Add(const X, Y, Z, w: Single): Integer;
 begin
   Result := Add(QuaternionMake([X, Y, Z], w));
 end;
 
-function TGQuaternionList.Get(Index: Integer): TQuaternion;
+function TGLQuaternionList.Get(Index: Integer): TQuaternion;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2825,7 +2825,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGQuaternionList.Insert(Index: Integer; const Item: TQuaternion);
+procedure TGLQuaternionList.Insert(Index: Integer; const Item: TQuaternion);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2839,7 +2839,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGQuaternionList.Put(Index: Integer; const Item: TQuaternion);
+procedure TGLQuaternionList.Put(Index: Integer; const Item: TQuaternion);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -2847,18 +2847,18 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TGQuaternionList.SetCapacity(NewCapacity: Integer);
+procedure TGLQuaternionList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PQuaternionArray(FBaseList);
 end;
 
-procedure TGQuaternionList.Push(const Val: TQuaternion);
+procedure TGLQuaternionList.Push(const Val: TQuaternion);
 begin
   Add(Val);
 end;
 
-function TGQuaternionList.Pop: TQuaternion;
+function TGLQuaternionList.Pop: TQuaternion;
 begin
   if FCount > 0 then
   begin
@@ -2869,7 +2869,7 @@ begin
     Result := IdentityQuaternion;
 end;
 
-function TGQuaternionList.IndexOf(const item: TQuaternion): Integer;
+function TGLQuaternionList.IndexOf(const item: TQuaternion): Integer;
 var
   I: Integer;
   curItem: PQuaternion;
@@ -2886,28 +2886,28 @@ begin
   Result := -1;
 end;
 
-function TGQuaternionList.FindOrAdd(const item: TQuaternion): Integer;
+function TGLQuaternionList.FindOrAdd(const item: TQuaternion): Integer;
 begin
   Result := IndexOf(item);
   if Result < 0 then
     Result := Add(item);
 end;
 
-procedure TGQuaternionList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
+procedure TGLQuaternionList.Lerp(const list1, list2: TGLBaseVectorList; lerpFactor: Single);
 var
   I: Integer;
 begin
-  if (list1 is TGQuaternionList) and (list2 is TGQuaternionList) then
+  if (list1 is TGLQuaternionList) and (list2 is TGLQuaternionList) then
   begin
     Assert(list1.Count = list2.Count);
     Capacity := list1.Count;
     FCount := list1.Count;
     for I := 0 to FCount - 1 do
-      Put(I, QuaternionSlerp(TGQuaternionList(list1)[I], TGQuaternionList(list2)[I], lerpFactor));
+      Put(I, QuaternionSlerp(TGLQuaternionList(list1)[I], TGLQuaternionList(list2)[I], lerpFactor));
   end;
 end;
 
-procedure TGQuaternionList.Combine(const list2: TGLBaseVectorList; factor: Single);
+procedure TGLQuaternionList.Combine(const list2: TGLBaseVectorList; factor: Single);
 
   procedure CombineQuaternion(var q1: TQuaternion; const q2: TQuaternion; factor: Single);
   begin
@@ -2918,7 +2918,7 @@ var
   I: Integer;
 begin
   Assert(list2.Count >= Count);
-  if list2 is TGQuaternionList then
+  if list2 is TGLQuaternionList then
   begin
     for I := 0 to Count - 1 do
     begin
@@ -2932,29 +2932,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TG4ByteList ------------------
+// ------------------ TGL4ByteList ------------------
 // ------------------
 
-constructor TG4ByteList.Create;
+constructor TGL4ByteList.Create;
 begin
-  FItemSize := SizeOf(TG4ByteList);
+  FItemSize := SizeOf(TGL4ByteList);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TG4ByteList.Assign(Src: TPersistent);
+procedure TGL4ByteList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TG4ByteList) then
-      System.Move(TG4ByteList(Src).FList^, FList^, FCount * SizeOf(TG4ByteData));
+    if (Src is TGL4ByteList) then
+      System.Move(TGL4ByteList(Src).FList^, FList^, FCount * SizeOf(TGL4ByteData));
   end
   else
     Clear;
 end;
 
-function TG4ByteList.Add(const item: TG4ByteData): Integer;
+function TGL4ByteList.Add(const item: TGL4ByteData): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -2964,7 +2964,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TG4ByteList.Add(const i1: Single);
+procedure TGL4ByteList.Add(const i1: Single);
 var
   tmpList: PSingle;
 begin
@@ -2976,7 +2976,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TG4ByteList.Add(const i1, i2: Single);
+procedure TGL4ByteList.Add(const i1, i2: Single);
 var
   tmpList: PSingleArray;
 begin
@@ -2990,7 +2990,7 @@ begin
 end;
 
 
-procedure TG4ByteList.Add(const i1, i2, i3: Single);
+procedure TGL4ByteList.Add(const i1, i2, i3: Single);
 var
   tmpList: PSingleArray;
 begin
@@ -3005,7 +3005,7 @@ begin
 end;
 
 
-procedure TG4ByteList.Add(const i1, i2, i3, i4: Single);
+procedure TGL4ByteList.Add(const i1, i2, i3, i4: Single);
 var
   tmpList: PSingleArray;
 begin
@@ -3020,7 +3020,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TG4ByteList.Add(const i1: Integer);
+procedure TGL4ByteList.Add(const i1: Integer);
 var
   tmpList: PInteger;
 begin
@@ -3032,7 +3032,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TG4ByteList.Add(const i1, i2: Integer);
+procedure TGL4ByteList.Add(const i1, i2: Integer);
 var
   tmpList: PIntegerArray;
 begin
@@ -3046,7 +3046,7 @@ begin
 end;
 
 
-procedure TG4ByteList.Add(const i1, i2, i3: Integer);
+procedure TGL4ByteList.Add(const i1, i2, i3: Integer);
 var
   tmpList: PIntegerArray;
 begin
@@ -3061,7 +3061,7 @@ begin
 end;
 
 
-procedure TG4ByteList.Add(const i1, i2, i3, i4: Integer);
+procedure TGL4ByteList.Add(const i1, i2, i3, i4: Integer);
 var
   tmpList: PIntegerArray;
 begin
@@ -3076,7 +3076,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TG4ByteList.Add(const i1: Cardinal);
+procedure TGL4ByteList.Add(const i1: Cardinal);
 var
   tmpList: PLongWord;
 begin
@@ -3088,7 +3088,7 @@ begin
   Inc(FRevision);
 end;
 
-procedure TG4ByteList.Add(const i1, i2: Cardinal);
+procedure TGL4ByteList.Add(const i1, i2: Cardinal);
 var
   tmpList: PLongWordArray;
 begin
@@ -3102,7 +3102,7 @@ begin
 end;
 
 
-procedure TG4ByteList.Add(const i1, i2, i3: Cardinal);
+procedure TGL4ByteList.Add(const i1, i2, i3: Cardinal);
 var
   tmpList: PLongWordArray;
 begin
@@ -3117,7 +3117,7 @@ begin
 end;
 
 
-procedure TG4ByteList.Add(const i1, i2, i3, i4: Cardinal);
+procedure TGL4ByteList.Add(const i1, i2, i3, i4: Cardinal);
 var
   tmpList: PLongWordArray;
 begin
@@ -3132,19 +3132,19 @@ begin
   Inc(FRevision);
 end;
 
-procedure TG4ByteList.Add(const AList: TG4ByteList);
+procedure TGL4ByteList.Add(const AList: TGL4ByteList);
 begin
   if Assigned(AList) and (AList.Count > 0) then
   begin
     if Count + AList.Count > Capacity then
       Capacity := Count + AList.Count;
-    System.Move(AList.FList[0], FList[Count], AList.Count * SizeOf(TG4ByteData));
+    System.Move(AList.FList[0], FList[Count], AList.Count * SizeOf(TGL4ByteData));
     Inc(FCount, AList.Count);
     Inc(FRevision);
   end;
 end;
 
-function TG4ByteList.Get(Index: Integer): TG4ByteData;
+function TGL4ByteList.Get(Index: Integer): TGL4ByteData;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -3152,7 +3152,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TG4ByteList.Insert(Index: Integer; const Item: TG4ByteData);
+procedure TGL4ByteList.Insert(Index: Integer; const Item: TGL4ByteData);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -3161,13 +3161,13 @@ begin
     SetCapacity(FCapacity + FGrowthDelta);
   if Index < FCount then
     System.Move(FList[Index], FList[Index + 1],
-      (FCount - Index) * SizeOf(TG4ByteData));
+      (FCount - Index) * SizeOf(TGL4ByteData));
   FList^[Index] := Item;
   Inc(FCount);
   Inc(FRevision);
 end;
 
-procedure TG4ByteList.Put(Index: Integer; const Item: TG4ByteData);
+procedure TGL4ByteList.Put(Index: Integer; const Item: TGL4ByteData);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -3176,20 +3176,20 @@ begin
   INc(FRevision);
 end;
 
-procedure TG4ByteList.SetCapacity(NewCapacity: Integer);
+procedure TGL4ByteList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PG4ByteArrayList(FBaseList);
 end;
 
-procedure TG4ByteList.Push(const Val: TG4ByteData);
+procedure TGL4ByteList.Push(const Val: TGL4ByteData);
 begin
   Add(Val);
 end;
 
-function TG4ByteList.Pop: TG4ByteData;
+function TGL4ByteList.Pop: TGL4ByteData;
 const
-  Zero : TG4ByteData = ( Int: (Value:0) );
+  Zero : TGL4ByteData = ( Int: (Value:0) );
 begin
   if FCount > 0 then
   begin
@@ -3201,29 +3201,29 @@ begin
 end;
 
 // ------------------
-// ------------------ TGLongWordList ------------------
+// ------------------ TGLLongWordList ------------------
 // ------------------
 
-constructor TGLongWordList.Create;
+constructor TGLLongWordList.Create;
 begin
   FItemSize := SizeOf(LongWord);
   inherited Create;
   FGrowthDelta := cDefaultListGrowthDelta;
 end;
 
-procedure TGLongWordList.Assign(Src: TPersistent);
+procedure TGLLongWordList.Assign(Src: TPersistent);
 begin
   if Assigned(Src) then
   begin
     inherited;
-    if (Src is TGLongWordList) then
-      System.Move(TGLongWordList(Src).FList^, FList^, FCount * SizeOf(LongWord));
+    if (Src is TGLLongWordList) then
+      System.Move(TGLLongWordList(Src).FList^, FList^, FCount * SizeOf(LongWord));
   end
   else
     Clear;
 end;
 
-function TGLongWordList.Add(const item: LongWord): Integer;
+function TGLLongWordList.Add(const item: LongWord): Integer;
 begin
   Result := FCount;
   if Result = FCapacity then
@@ -3232,14 +3232,14 @@ begin
   Inc(FCount);
 end;
 
-function TGLongWordList.AddNC(const item: LongWord): Integer;
+function TGLLongWordList.AddNC(const item: LongWord): Integer;
 begin
   Result := FCount;
   FList^[Result] := Item;
   Inc(FCount);
 end;
 
-procedure TGLongWordList.Add(const i1, i2: LongWord);
+procedure TGLLongWordList.Add(const i1, i2: LongWord);
 var
   tmpList : PLongWordArray;
 begin
@@ -3251,7 +3251,7 @@ begin
   tmpList^[1] := i2;
 end;
 
-procedure TGLongWordList.Add(const i1, i2, i3: LongWord);
+procedure TGLLongWordList.Add(const i1, i2, i3: LongWord);
 var
   tmpList : PLongWordArray;
 begin
@@ -3264,7 +3264,7 @@ begin
   tmpList^[2] := i3;
 end;
 
-procedure TGLongWordList.Add(const AList: TGLongWordList);
+procedure TGLLongWordList.Add(const AList: TGLLongWordList);
 begin
   if Assigned(AList) and (AList.Count > 0) then
   begin
@@ -3275,7 +3275,7 @@ begin
   end;
 end;
 
-function TGLongWordList.Get(Index: Integer): LongWord;
+function TGLLongWordList.Get(Index: Integer): LongWord;
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -3283,7 +3283,7 @@ begin
   Result := FList^[Index];
 end;
 
-procedure TGLongWordList.Insert(Index: Integer; const Item: LongWord);
+procedure TGLLongWordList.Insert(Index: Integer; const Item: LongWord);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -3296,7 +3296,7 @@ begin
   Inc(FCount);
 end;
 
-procedure TGLongWordList.Remove(const item: LongWord);
+procedure TGLLongWordList.Remove(const item: LongWord);
 var
   I: Integer;
 begin
@@ -3311,7 +3311,7 @@ begin
   end;
 end;
 
-procedure TGLongWordList.Put(Index: Integer; const Item: LongWord);
+procedure TGLLongWordList.Put(Index: Integer; const Item: LongWord);
 begin
 {$IFOPT R+}
     Assert(Cardinal(Index) < Cardinal(FCount));
@@ -3319,18 +3319,18 @@ begin
   FList^[Index] := Item;
 end;
 
-procedure TGLongWordList.SetCapacity(NewCapacity: Integer);
+procedure TGLLongWordList.SetCapacity(NewCapacity: Integer);
 begin
   inherited;
   FList := PLongWordArray(FBaseList);
 end;
 
-procedure TGLongWordList.Push(const Val: LongWord);
+procedure TGLLongWordList.Push(const Val: LongWord);
 begin
   Add(Val);
 end;
 
-function TGLongWordList.Pop: LongWord;
+function TGLLongWordList.Pop: LongWord;
 begin
   if FCount > 0 then
   begin
@@ -3341,7 +3341,7 @@ begin
     Result := 0;
 end;
 
-procedure TGLongWordList.AddLongWords(const First: PLongWord; n: Integer);
+procedure TGLLongWordList.AddLongWords(const First: PLongWord; n: Integer);
 begin
   if n < 1 then
     Exit;
@@ -3350,14 +3350,14 @@ begin
   FCount := FCount + n;
 end;
 
-procedure TGLongWordList.AddLongWords(const aList: TGLongWordList);
+procedure TGLLongWordList.AddLongWords(const aList: TGLLongWordList);
 begin
   if not Assigned(aList) then
     Exit;
   AddLongWords(@aList.List[0], aList.Count);
 end;
 
-procedure TGLongWordList.AddLongWords(const anArray: array of LongWord);
+procedure TGLLongWordList.AddLongWords(const anArray: array of LongWord);
 var
   n: Integer;
 begin
@@ -3378,7 +3378,7 @@ begin
   end;
 end;
 
-function TGLongWordList.IndexOf(item: Integer): LongWord; register;
+function TGLLongWordList.IndexOf(item: Integer): LongWord; register;
 begin
   Result := LongWordSearch(item, FList, FCount);
 end;
@@ -3387,8 +3387,8 @@ end;
 initialization
 // ------------------------------------------------------------------
 
-  RegisterClasses([TGLAffineVectorList, TGLVectorList, TGTexPointList, TGSingleList,
-                   TGDoubleList, TG4ByteList, TGLongWordList]);
+  RegisterClasses([TGLAffineVectorList, TGLVectorList, TGLTexPointList, TGLSingleList,
+                   TGLDoubleList, TGL4ByteList, TGLLongWordList]);
 
 end.
 

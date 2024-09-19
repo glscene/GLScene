@@ -113,9 +113,9 @@ type
   // Abstract ImposterBuilder class.
   TGLImposterBuilder = class(TGLUpdateAbleComponent)
   private
-    FBackColor: TGColor;
+    FBackColor: TGLColor;
     FBuildOffset: TGLCoordinates;
-    FImposterRegister: TgPersistentObjectList;
+    FImposterRegister: TGLPersistentObjectList;
     FRenderPoint: TGLRenderPoint;
     FImposterOptions: TImposterOptions;
     FAlphaTreshold: Single;
@@ -125,11 +125,11 @@ type
   protected
     procedure SetRenderPoint(AValue: TGLRenderPoint);
     procedure RenderPointFreed(Sender: TObject);
-    procedure SetBackColor(AValue: TGColor);
+    procedure SetBackColor(AValue: TGLColor);
     procedure SetBuildOffset(AValue: TGLCoordinates);
     procedure SetImposterReference(AValue: TImposterReference);
     procedure InitializeImpostorTexture(const TextureSize: TPoint);
-    property ImposterRegister: TgPersistentObjectList read FImposterRegister;
+    property ImposterRegister: TGLPersistentObjectList read FImposterRegister;
     procedure UnregisterImposter(imposter: TImposter);
     function CreateNewImposter: TImposter; virtual;
     procedure PrepareImposters(Sender: TObject; var rci: TGLRenderContextInfo);
@@ -163,7 +163,7 @@ type
     (* Background color for impostor rendering.
        Typically, you'll want to leave the alpha channel to zero, and pick
        as RGB as color that matches the impostor'ed objects edge colors most.*)
-    property BackColor: TGColor read FBackColor write SetBackColor;
+    property BackColor: TGLColor read FBackColor write SetBackColor;
     (* Offset applied to the impostor'ed object during imposter construction.
        Can be used to manually tune the centering of objects. *)
     property BuildOffset: TGLCoordinates read FBuildOffset write SetBuildOffset;
@@ -547,8 +547,8 @@ end;
 constructor TGLImposterBuilder.Create(AOwner: TComponent);
 begin
   inherited;
-  FImposterRegister := TgPersistentObjectList.Create;
-  FBackColor := TGColor.CreateInitialized(Self, clrTransparent);
+  FImposterRegister := TGLPersistentObjectList.Create;
+  FBackColor := TGLColor.CreateInitialized(Self, clrTransparent);
   FBuildOffset := TGLCoordinates.CreateInitialized(Self, NullHmgPoint, CsPoint);
   FImposterOptions := cDefaultImposterOptions;
   FAlphaTreshold := 0.5;
@@ -713,7 +713,7 @@ begin
   FRenderPoint := nil;
 end;
 
-procedure TGLImposterBuilder.SetBackColor(AValue: TGColor);
+procedure TGLImposterBuilder.SetBackColor(AValue: TGLColor);
 begin
   FBackColor.Assign(AValue);
 end;

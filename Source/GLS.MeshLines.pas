@@ -149,8 +149,8 @@ type
       Tolerance: Single = 1): Boolean;
     function PointNearSegment(const StartNode, EndNode: TGLLineNode;
       const X, Z: Single; LineWidth: Single; Tolerance: Single = 1): Boolean;
-    procedure StitchStrips(idx: TgIntegerList);
-    procedure AddStitchMarker(idx: TgIntegerList);
+    procedure StitchStrips(idx: TGLIntegerList);
+    procedure AddStitchMarker(idx: TGLIntegerList);
     procedure SetShowNodes(const Value: Boolean);
     procedure SetNoZWrite(const Value: Boolean);
     procedure SetLightmapIndex(const Value: Integer);
@@ -806,7 +806,7 @@ begin
   result := sqrt(sqr(xt - X) + sqr(yt - Z)) <= lDist;
 end;
 
-procedure TGLMeshLines.StitchStrips(idx: TgIntegerList);
+procedure TGLMeshLines.StitchStrips(idx: TGLIntegerList);
 var
   i: Integer;
   i0, i1, i2: Integer;
@@ -826,7 +826,7 @@ begin
   end;
 end;
 
-procedure TGLMeshLines.AddStitchMarker(idx: TgIntegerList);
+procedure TGLMeshLines.AddStitchMarker(idx: TGLIntegerList);
 begin
   idx.Add(-1);
   idx.Add(-2);

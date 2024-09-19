@@ -74,7 +74,7 @@ type
       write SetColorComponent stored False;
   end;
 
-  PGColorEntry = ^TgxColorEntry;
+  PgxColorEntry = ^TgxColorEntry;
   TgxColorEntry = record
     Name: String;
     Color: TgxColorVector;
@@ -826,7 +826,7 @@ end;
 procedure TgxColorManager.AddColor(const aName: String;
   const aColor: TgxColorVector);
 var
-  newEntry: PGColorEntry;
+  newEntry: PgxColorEntry;
 begin
   New(newEntry);
   if newEntry = nil then

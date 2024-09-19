@@ -64,7 +64,7 @@ type
     FOnCustomCollision: TGLODECustomCollisionEvent;
     FNumContactJoints,
 	FMaxContacts: Integer;
-    FODEBehaviours: TgPersistentObjectList;
+    FODEBehaviours: TGLPersistentObjectList;
     FRFContactList: TList;
     FIterations: Integer;
     FSolver: TGLODESolverMethod;
@@ -75,7 +75,7 @@ type
 	FVisibleAtRunTime: Boolean;
     FGeomColorDynD,
   	FGeomColorDynE,
-	FGeomColorStat: TGColor;
+	FGeomColorStat: TGLColor;
   protected
     procedure Loaded; override;
     procedure CalcContact(Object1, Object2: TObject; var Contact: TdContact);
@@ -92,11 +92,11 @@ type
     procedure RenderPointFreed(Sender: TObject);
     procedure SetVisible(const Value: Boolean);
     procedure SetVisibleAtRunTime(const Value: Boolean);
-    procedure SetGeomColorDynE(const Value: TGColor);
+    procedure SetGeomColorDynE(const Value: TGLColor);
     procedure GeomColorChangeDynE(Sender: TObject);
-    procedure SetGeomColorDynD(const Value: TGColor);
+    procedure SetGeomColorDynD(const Value: TGLColor);
     procedure GeomColorChangeDynD(Sender: TObject);
-    procedure SetGeomColorStat(const Value: TGColor);
+    procedure SetGeomColorStat(const Value: TGLColor);
     procedure GeomColorChangeStat(Sender: TObject);
     property ODEBehaviours[index: Integer]: TGLODEBehaviour read GetODEBehaviour;
   public
@@ -118,9 +118,9 @@ type
     property RenderPoint: TGLRenderPoint read FRenderPoint write SetRenderPoint;
     property Visible: Boolean read FVisible write SetVisible;
     property VisibleAtRunTime: Boolean read FVisibleAtRunTime write SetVisibleAtRunTime;
-    property GeomColorDynD: TGColor read FGeomColorDynD write SetGeomColorDynD;
-    property GeomColorDynE: TGColor read FGeomColorDynE write SetGeomColorDynE;
-    property GeomColorStat: TGColor read FGeomColorStat write SetGeomColorStat;
+    property GeomColorDynD: TGLColor read FGeomColorDynD write SetGeomColorDynD;
+    property GeomColorDynE: TGLColor read FGeomColorDynE write SetGeomColorDynE;
+    property GeomColorStat: TGLColor read FGeomColorStat write SetGeomColorStat;
   end;
 
   TGLODECollisionSurface = class(TPersistent)
@@ -445,7 +445,7 @@ type
   private
     FTriMeshData: PdxTriMeshData;
     FVertices: TGLAffineVectorList;
-    FIndices: TgIntegerList;
+    FIndices: TGLIntegerList;
   protected
     procedure Initialize; override;
     procedure Finalize; override;
@@ -453,7 +453,7 @@ type
     procedure WriteToFiler(writer: TWriter); override;
     procedure ReadFromFiler(reader: TReader); override;
     procedure SetVertices(const Value: TGLAffineVectorList);
-    procedure SetIndices(const Value: TgIntegerList);
+    procedure SetIndices(const Value: TGLIntegerList);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -462,7 +462,7 @@ type
     class function ItemCategory: String; override;
     procedure RefreshTriMeshData;
     property Vertices: TGLAffineVectorList read FVertices write SetVertices;
-    property Indices: TgIntegerList read FIndices write SetIndices;
+    property Indices: TGLIntegerList read FIndices write SetIndices;
   end;
 
   // ODE plane implementation
@@ -813,7 +813,7 @@ type
     FRenderContacts: Boolean;
     FContactRenderPoints: TGLAffineVectorList;
     FPointSize: Single;
-    FContactColor: TGColor;
+    FContactColor: TGLColor;
   protected
     procedure Initialize; override;
     procedure Finalize; override;
@@ -835,7 +835,7 @@ type
     procedure SetContactResolution(const Value: Single);
     procedure SetRenderContacts(const Value: Boolean);
     procedure SetPointSize(const Value: Single);
-    procedure SetContactColor(const Value: TGColor);
+    procedure SetContactColor(const Value: TGLColor);
   public
     constructor Create(AOwner: TXCollection); override;
     destructor Destroy; override;
@@ -853,7 +853,7 @@ type
     //  Contact point rendering size (in pixels).
     property PointSize: Single read FPointSize write SetPointSize;
     //  Contact point rendering color.
-    property ContactColor: TGColor read FContactColor write SetContactColor;
+    property ContactColor: TGLColor read FContactColor write SetContactColor;
   end;
 
   (* Add this behaviour to a TGLHeightField or TGLTerrainRenderer to enable
@@ -1294,7 +1294,7 @@ begin
 
   inherited;
 
-  FODEBehaviours:= TgPersistentObjectList.Create;
+  FODEBehaviours:= TGLPersistentObjectList.Create;
   FRFContactList:= TList.Create;
 
   FGravity:= TGLCoordinates.CreateInitialized(Self, NullHmgPoint, csVector);
@@ -1313,9 +1313,9 @@ begin
     FContactGroup := dJointGroupCreate(100);
   end;
 
-  FGeomColorDynD := TGColor.CreateInitialized(Self, clrRed, GeomColorChangeDynD);
-  FGeomColorDynE := TGColor.CreateInitialized(Self, clrLime, GeomColorChangeDynE);
-  FGeomColorStat := TGColor.CreateInitialized(Self, clrBlue, GeomColorChangeStat);
+  FGeomColorDynD := TGLColor.CreateInitialized(Self, clrRed, GeomColorChangeDynD);
+  FGeomColorDynE := TGLColor.CreateInitialized(Self, clrLime, GeomColorChangeDynE);
+  FGeomColorStat := TGLColor.CreateInitialized(Self, clrBlue, GeomColorChangeStat);
 
   RegisterManager(Self);
 end;
@@ -1629,7 +1629,7 @@ begin
   end;
 end;
 
-procedure TGLODEManager.SetGeomColorDynD(const Value: TGColor);
+procedure TGLODEManager.SetGeomColorDynD(const Value: TGLColor);
 begin
   FGeomColorDynD.Assign(Value);
   NotifyChange(Self);
@@ -1640,7 +1640,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGLODEManager.SetGeomColorDynE(const Value: TGColor);
+procedure TGLODEManager.SetGeomColorDynE(const Value: TGLColor);
 begin
   FGeomColorDynE.Assign(Value);
   NotifyChange(Self);
@@ -1651,7 +1651,7 @@ begin
   NotifyChange(Self);
 end;
 
-procedure TGLODEManager.SetGeomColorStat(const Value: TGColor);
+procedure TGLODEManager.SetGeomColorStat(const Value: TGLColor);
 begin
   FGeomColorStat.Assign(Value);
   NotifyChange(Self);
@@ -3440,7 +3440,7 @@ constructor TGLODEElementTriMesh.Create(AOwner: TXCollection);
 begin
   inherited;
   FVertices := TGLAffineVectorList.Create;
-  FIndices := TgIntegerList.Create;
+  FIndices := TGLIntegerList.Create;
 end;
 
 destructor TGLODEElementTriMesh.Destroy;
@@ -3530,7 +3530,7 @@ begin
   RefreshTriMeshData;
 end;
 
-procedure TGLODEElementTriMesh.SetIndices(const Value: TgIntegerList);
+procedure TGLODEElementTriMesh.SetIndices(const Value: TGLIntegerList);
 begin
   FIndices.Assign(Value);
   RefreshTriMeshData;
@@ -5034,7 +5034,7 @@ begin
 
   FRenderContacts := False;
   FContactRenderPoints := TGLAffineVectorList.Create;
-  FContactColor := TGColor.CreateInitialized(Self, clrRed, NotifyChange);
+  FContactColor := TGLColor.CreateInitialized(Self, clrRed, NotifyChange);
   FPointSize := 3;
 end;
 
@@ -5225,7 +5225,7 @@ begin
   end;
 end;
 
-procedure TGLODECustomCollider.SetContactColor(const Value: TGColor);
+procedure TGLODECustomCollider.SetContactColor(const Value: TGLColor);
 begin
   FContactColor.Assign(Value);
 end;

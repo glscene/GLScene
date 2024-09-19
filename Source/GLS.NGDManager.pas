@@ -101,18 +101,18 @@ type
   TGLNGDDebugOption = class(TPersistent)
   strict private
     FManager: TGLNGDManager;
-    FGeomColorDyn: TGColor; // Green
-    FGeomColorStat: TGColor; // Red
-    FAABBColor: TGColor; // Yellow
-    FAABBColorSleep: TGColor; // Orange
-    FCenterOfMassColor: TGColor; // Purple dot
-    FContactColor: TGColor; // White
-    FJointAxisColor: TGColor; // Blue
-    FJointPivotColor: TGColor; // Aquamarine
-    FForceColor: TGColor; // Black
-    FAppliedForceColor: TGColor; // Silver
-    FAppliedVelocityColor: TGColor; // Lime
-    FCustomColor: TGColor; // Aqua
+    FGeomColorDyn: TGLColor; // Green
+    FGeomColorStat: TGLColor; // Red
+    FAABBColor: TGLColor; // Yellow
+    FAABBColorSleep: TGLColor; // Orange
+    FCenterOfMassColor: TGLColor; // Purple dot
+    FContactColor: TGLColor; // White
+    FJointAxisColor: TGLColor; // Blue
+    FJointPivotColor: TGLColor; // Aquamarine
+    FForceColor: TGLColor; // Black
+    FAppliedForceColor: TGLColor; // Silver
+    FAppliedVelocityColor: TGLColor; // Lime
+    FCustomColor: TGLColor; // Aqua
     FDotAxisSize: Single; // 1
     FManagerDebugs: TGLNGDManagerDebugs; // Default All false
     procedure SetManagerDebugs(const Value: TGLNGDManagerDebugs);
@@ -122,18 +122,18 @@ type
     constructor Create(AOwner: TComponent);
     destructor Destroy; override;
   published
-    property GeomColorDyn: TGColor read FGeomColorDyn write FGeomColorDyn;
-    property GeomColorStat: TGColor read FGeomColorStat write FGeomColorStat;
-    property AABBColor: TGColor read FAABBColor write FAABBColor;
-    property AABBColorSleep: TGColor read FAABBColorSleep write FAABBColorSleep;
-    property CenterOfMassColor: TGColor read FCenterOfMassColor write FCenterOfMassColor;
-    property ContactColor: TGColor read FContactColor write FContactColor;
-    property JointAxisColor: TGColor read FJointAxisColor write FJointAxisColor;
-    property JointPivotColor: TGColor read FJointPivotColor write FJointPivotColor;
-    property ForceColor: TGColor read FForceColor write FForceColor;
-    property AppliedForceColor: TGColor read FAppliedForceColor write FAppliedForceColor;
-    property AppliedVelocityColor: TGColor read FAppliedVelocityColor write FAppliedVelocityColor;
-    property CustomColor: TGColor read FCustomColor write FCustomColor;
+    property GeomColorDyn: TGLColor read FGeomColorDyn write FGeomColorDyn;
+    property GeomColorStat: TGLColor read FGeomColorStat write FGeomColorStat;
+    property AABBColor: TGLColor read FAABBColor write FAABBColor;
+    property AABBColorSleep: TGLColor read FAABBColorSleep write FAABBColorSleep;
+    property CenterOfMassColor: TGLColor read FCenterOfMassColor write FCenterOfMassColor;
+    property ContactColor: TGLColor read FContactColor write FContactColor;
+    property JointAxisColor: TGLColor read FJointAxisColor write FJointAxisColor;
+    property JointPivotColor: TGLColor read FJointPivotColor write FJointPivotColor;
+    property ForceColor: TGLColor read FForceColor write FForceColor;
+    property AppliedForceColor: TGLColor read FAppliedForceColor write FAppliedForceColor;
+    property AppliedVelocityColor: TGLColor read FAppliedVelocityColor write FAppliedVelocityColor;
+    property CustomColor: TGLColor read FCustomColor write FCustomColor;
     property NGDManagerDebugs: TGLNGDManagerDebugs read FManagerDebugs write SetManagerDebugs
       default [];
     property DotAxisSize: Single read FDotAxisSize write SetDotAxisSize stored StoredDotAxis;
@@ -159,7 +159,7 @@ type
   private
     FNewtonWorld: PNewtonWorld;
     FNGDBehaviours: TGLNGDBehaviourList;
-    FCurrentColor: TGColor;
+    FCurrentColor: TGLColor;
   protected
     procedure Loaded; override;
     procedure SetVisible(const Value: Boolean);
@@ -662,20 +662,20 @@ begin
   FManager := AOwner as TGLNGDManager;
   with FManager do
   begin
-    FGeomColorDyn := TGColor.CreateInitialized(self, clrGreen, NotifyChange);
-    FGeomColorStat := TGColor.CreateInitialized(self, clrRed, NotifyChange);
-    FAABBColor := TGColor.CreateInitialized(self, clrYellow, NotifyChange);
-    FAABBColorSleep := TGColor.CreateInitialized(self, clrOrange, NotifyChange);
-    FCenterOfMassColor := TGColor.CreateInitialized(self, clrPurple, NotifyChange);
-    FContactColor := TGColor.CreateInitialized(self, clrWhite, NotifyChange);
-    FJointAxisColor := TGColor.CreateInitialized(self, clrBlue, NotifyChange);
-    FJointPivotColor := TGColor.CreateInitialized(self, clrAquamarine, NotifyChange);
+    FGeomColorDyn := TGLColor.CreateInitialized(self, clrGreen, NotifyChange);
+    FGeomColorStat := TGLColor.CreateInitialized(self, clrRed, NotifyChange);
+    FAABBColor := TGLColor.CreateInitialized(self, clrYellow, NotifyChange);
+    FAABBColorSleep := TGLColor.CreateInitialized(self, clrOrange, NotifyChange);
+    FCenterOfMassColor := TGLColor.CreateInitialized(self, clrPurple, NotifyChange);
+    FContactColor := TGLColor.CreateInitialized(self, clrWhite, NotifyChange);
+    FJointAxisColor := TGLColor.CreateInitialized(self, clrBlue, NotifyChange);
+    FJointPivotColor := TGLColor.CreateInitialized(self, clrAquamarine, NotifyChange);
 
-    FForceColor := TGColor.CreateInitialized(self, clrBlack, NotifyChange);
-    FAppliedForceColor := TGColor.CreateInitialized(self, clrSilver, NotifyChange);
-    FAppliedVelocityColor := TGColor.CreateInitialized(self, clrLime, NotifyChange);
+    FForceColor := TGLColor.CreateInitialized(self, clrBlack, NotifyChange);
+    FAppliedForceColor := TGLColor.CreateInitialized(self, clrSilver, NotifyChange);
+    FAppliedVelocityColor := TGLColor.CreateInitialized(self, clrLime, NotifyChange);
 
-    FCustomColor := TGColor.CreateInitialized(self, clrAqua, NotifyChange);
+    FCustomColor := TGLColor.CreateInitialized(self, clrAqua, NotifyChange);
   end;
   FDotAxisSize := 1;
   FManagerDebugs := [];

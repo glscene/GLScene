@@ -62,8 +62,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); virtual;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); virtual; abstract;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TGLFile3DSScaleAnimationKeys = class(TGLFile3DSAnimationKeys)
@@ -73,8 +73,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TGLFile3DSRotationAnimationKeys = class(TGLFile3DSAnimationKeys)
@@ -84,8 +84,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TGLFile3DSPositionAnimationKeys = class(TGLFile3DSAnimationKeys)
@@ -95,8 +95,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TGLFile3DSColorAnimationKeys = class(TGLFile3DSAnimationKeys)
@@ -106,8 +106,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TTGLFile3DSPositionAnimationKeys = class(TGLFile3DSAnimationKeys)
@@ -117,8 +117,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TGLFile3DSSpotLightCutOffAnimationKeys = class(TGLFile3DSAnimationKeys)
@@ -128,8 +128,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TGLFile3DSLightHotSpotAnimationKeys = class(TGLFile3DSAnimationKeys)
@@ -139,8 +139,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TGLFile3DSRollAnimationKeys = class(TGLFile3DSAnimationKeys)
@@ -150,8 +150,8 @@ type
     procedure LoadData(const ANumKeys: Integer; const Keys: PKeyHeaderList; const AData: Pointer); override;
     procedure Apply(var DataTransf: TGLFile3DSAnimationData; const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
   end;
 
   TGLFile3DSAnimationKeyList = class(TGLPersistentObject)
@@ -163,8 +163,8 @@ type
     procedure AddKeys(const AItem: TGLFile3DSAnimationKeys);
     procedure ClearKeys;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
     destructor Destroy; override;
   end;
 
@@ -188,8 +188,8 @@ type
     procedure GetExtents(out min, max: TAffineVector); override;
     function ExtractTriangles(texCoords: TGLAffineVectorList = nil; normals: TGLAffineVectorList = nil): TGLAffineVectorList;
       override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
     procedure Assign(Source: TPersistent); override;
     constructor Create; override;
     destructor Destroy; override;
@@ -216,8 +216,8 @@ type
     procedure LoadAnimation(const AData: Pointer); override;
     procedure SetFrame(const AFrame: real); override;
     procedure Assign(Source: TPersistent); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
     destructor Destroy; override;
   end;
 
@@ -240,8 +240,8 @@ type
     procedure LoadData(Owner: TGLBaseMesh; AData: PCamera3DS);
     procedure LoadAnimation(const AData: Pointer); override;
     procedure SetFrame(const AFrame: real); override;
-    procedure WriteToFiler(Writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(Reader: TGVirtualReader); override;
+    procedure WriteToFiler(Writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(Reader: TGLVirtualReader); override;
     destructor Destroy; override;
   end;
 
@@ -504,14 +504,14 @@ begin
     inherited Assign(Source);
 end;
 
-procedure TGLFile3DSAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   Writer.WriteInteger(FNumKeys);
   if FNumKeys > 0 then
     Writer.Write(FKeys[0], FNumKeys * SizeOf(TKeyHeader3DS));
 end;
 
-procedure TGLFile3DSAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   FNumKeys := Reader.ReadInteger;
   SetLength(FKeys, FNumKeys);
@@ -567,7 +567,7 @@ begin
     FScale[I] := (Source as TGLFile3DSScaleAnimationKeys).FScale[I];
 end;
 
-procedure TGLFile3DSScaleAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSScaleAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   inherited;
 
@@ -575,7 +575,7 @@ begin
     Writer.Write(FScale[0], FNumKeys * SizeOf(TPoint3DS));
 end;
 
-procedure TGLFile3DSScaleAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSScaleAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -642,7 +642,7 @@ begin
     FRot[I] := (Source as TGLFile3DSRotationAnimationKeys).FRot[I];
 end;
 
-procedure TGLFile3DSRotationAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSRotationAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   inherited;
 
@@ -650,7 +650,7 @@ begin
     Writer.Write(FRot[0], FNumKeys * SizeOf(TKFRotKey3DS));
 end;
 
-procedure TGLFile3DSRotationAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSRotationAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -694,7 +694,7 @@ begin
     FPos[I] := (Source as TGLFile3DSPositionAnimationKeys).FPos[I];
 end;
 
-procedure TGLFile3DSPositionAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSPositionAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   inherited;
 
@@ -702,7 +702,7 @@ begin
     Writer.Write(FPos[0], FNumKeys * SizeOf(TPoint3DS));
 end;
 
-procedure TGLFile3DSPositionAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSPositionAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -739,7 +739,7 @@ begin
     FCol[I] := (Source as TGLFile3DSColorAnimationKeys).FCol[I];
 end;
 
-procedure TGLFile3DSColorAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSColorAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   inherited;
 
@@ -747,7 +747,7 @@ begin
     Writer.Write(FCol[0], FNumKeys * SizeOf(TFColor3DS));
 end;
 
-procedure TGLFile3DSColorAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSColorAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -791,7 +791,7 @@ begin
     FTPos[I] := (Source as TTGLFile3DSPositionAnimationKeys).FTPos[I];
 end;
 
-procedure TTGLFile3DSPositionAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TTGLFile3DSPositionAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   inherited;
 
@@ -799,7 +799,7 @@ begin
     Writer.Write(FTPos[0], FNumKeys * SizeOf(TPoint3DS));
 end;
 
-procedure TTGLFile3DSPositionAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TTGLFile3DSPositionAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -837,7 +837,7 @@ begin
     FFall[I] := (Source as TGLFile3DSSpotLightCutOffAnimationKeys).FFall[I];
 end;
 
-procedure TGLFile3DSSpotLightCutOffAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSSpotLightCutOffAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   inherited;
 
@@ -845,7 +845,7 @@ begin
     Writer.Write(FFall[0], FNumKeys * SizeOf(Single));
 end;
 
-procedure TGLFile3DSSpotLightCutOffAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSSpotLightCutOffAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -883,7 +883,7 @@ begin
     FHot[I] := (Source as TGLFile3DSLightHotSpotAnimationKeys).FHot[I];
 end;
 
-procedure TGLFile3DSLightHotSpotAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSLightHotSpotAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   inherited;
 
@@ -891,7 +891,7 @@ begin
     Writer.Write(FHot[0], FNumKeys * SizeOf(Single));
 end;
 
-procedure TGLFile3DSLightHotSpotAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSLightHotSpotAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -928,7 +928,7 @@ begin
     FRoll[I] := (Source as TGLFile3DSRollAnimationKeys).FRoll[I];
 end;
 
-procedure TGLFile3DSRollAnimationKeys.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSRollAnimationKeys.WriteToFiler(Writer: TGLVirtualWriter);
 begin
   inherited;
 
@@ -936,7 +936,7 @@ begin
     Writer.Write(FRoll[0], FNumKeys * SizeOf(Single));
 end;
 
-procedure TGLFile3DSRollAnimationKeys.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSRollAnimationKeys.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -992,7 +992,7 @@ begin
     inherited Assign(Source);
 end;
 
-procedure TGLFile3DSAnimationKeyList.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSAnimationKeyList.WriteToFiler(Writer: TGLVirtualWriter);
 var
   I: Integer;
   Val: TGLFile3DSAnimKeysClassType;
@@ -1006,7 +1006,7 @@ begin
   end;
 end;
 
-procedure TGLFile3DSAnimationKeyList.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSAnimationKeyList.ReadFromFiler(Reader: TGLVirtualReader);
 var
   I, cnt: Integer;
   Val: TGLFile3DSAnimKeysClassType;
@@ -1117,7 +1117,7 @@ begin
   end;
 end;
 
-procedure TGLFile3DSDummyObject.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSDummyObject.WriteToFiler(Writer: TGLVirtualWriter);
 var
   str: string;
 begin
@@ -1132,7 +1132,7 @@ begin
   FAnimList.WriteToFiler(Writer);
 end;
 
-procedure TGLFile3DSDummyObject.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSDummyObject.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -1297,7 +1297,7 @@ begin
     FLightSrc.Assign((Source as TGLFile3DSOmniLightObject).FLightSrc);
 end;
 
-procedure TGLFile3DSOmniLightObject.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSOmniLightObject.WriteToFiler(Writer: TGLVirtualWriter);
 var
   str: string;
 begin
@@ -1310,7 +1310,7 @@ begin
   Writer.WriteString(str);
 end;
 
-procedure TGLFile3DSOmniLightObject.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSOmniLightObject.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 
@@ -1449,7 +1449,7 @@ begin
   FTargetObj.Position.SetPoint(FAnimTransf.TargetPos);
 end;
 
-procedure TGLFile3DSCameraObject.WriteToFiler(Writer: TGVirtualWriter);
+procedure TGLFile3DSCameraObject.WriteToFiler(Writer: TGLVirtualWriter);
 var
   str: string;
 begin
@@ -1462,7 +1462,7 @@ begin
   Writer.WriteString(str);
 end;
 
-procedure TGLFile3DSCameraObject.ReadFromFiler(Reader: TGVirtualReader);
+procedure TGLFile3DSCameraObject.ReadFromFiler(Reader: TGLVirtualReader);
 begin
   inherited;
 

@@ -313,8 +313,8 @@ type
   // Hidden line shader (specific implem for the viewer, *not* generic)
   THiddenLineShader = class(TGLShader)
   private
-    LinesColor: TGColorVector;
-    BackgroundColor: TGColorVector;
+    LinesColor: TGLColorVector;
+    BackgroundColor: TGLColorVector;
     PassCount: Integer;
   public
     procedure DoApply(var rci: TGLRenderContextInfo; Sender: TObject); override;
@@ -875,7 +875,7 @@ end;
 procedure TFormGLSViewer.acConvertToIndexedTrianglesExecute(Sender: TObject);
 var
   v: TGLAffineVectorList;
-  I: TGIntegerList;
+  I: TGLIntegerList;
   m: TGLMeshObject;
   fg: TFGVertexIndexList;
 begin
@@ -910,7 +910,7 @@ var
   I: Integer;
   mo: TGLMeshObject;
   fg: TFGVertexIndexList;
-  strips: TGPersistentObjectList;
+  strips: TGLPersistentObjectList;
 begin
   acConvertToTriangles.Execute;
   mo := ffObject.MeshObjects[0];
@@ -921,7 +921,7 @@ begin
     for I := 0 to strips.Count - 1 do
     begin
       fg := TFGVertexIndexList.CreateOwned(mo.FaceGroups);
-      fg.VertexIndices := (strips[I] as TGIntegerList);
+      fg.VertexIndices := (strips[I] as TGLIntegerList);
       if I = 0 then
         fg.Mode := fgmmTriangles
       else

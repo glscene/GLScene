@@ -81,14 +81,14 @@ type
     FRotation: Single;
     FAlignment: TAlignment;
     FLayout: TTextLayout;
-    FModulateColor: TGColor;
+    FModulateColor: TGLColor;
   protected
     procedure SetBitmapFont(const val: TGLCustomBitmapFont);
     procedure SetText(const val: UnicodeString);
     procedure SetRotation(const val: Single);
     procedure SetAlignment(const val: TAlignment);
     procedure SetLayout(const val: TTextLayout);
-    procedure SetModulateColor(const val: TGColor);
+    procedure SetModulateColor(const val: TGLColor);
     procedure Notification(AComponent: TComponent;
       Operation: TOperation); override;
     procedure RenderTextAtPosition(const X, Y, Z: Single;
@@ -122,7 +122,7 @@ type
       Possible values : tlTop, tlCenter, tlBottom *)
     property Layout: TTextLayout read FLayout write SetLayout default tlTop;
     // Color modulation, can be used for fade in/out too.
-    property ModulateColor: TGColor read FModulateColor write SetModulateColor;
+    property ModulateColor: TGLColor read FModulateColor write SetModulateColor;
   end;
 
   (* Position (X, Y and X) is in absolute coordinates. This component converts
@@ -295,7 +295,7 @@ constructor TGLHUDText.Create(AOwner: TComponent);
 begin
   inherited;
   ObjectStyle := ObjectStyle + [osDirectDraw, osNoVisibilityCulling];
-  FModulateColor := TGColor.CreateInitialized(Self, clrWhite);
+  FModulateColor := TGLColor.CreateInitialized(Self, clrWhite);
 end;
 
 
@@ -354,7 +354,7 @@ begin
   StructureChanged;
 end;
 
-procedure TGLHUDText.SetModulateColor(const val: TGColor);
+procedure TGLHUDText.SetModulateColor(const val: TGLColor);
 begin
   FModulateColor.Assign(val);
 end;

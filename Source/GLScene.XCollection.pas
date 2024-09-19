@@ -31,7 +31,7 @@ type
     methods if you add data in a subclass !
     Subclasses must be registered using the RegisterXCollectionItemClass
     function for proper operation *)
-  TXCollectionItem = class(TGInterfacedPersistent)
+  TXCollectionItem = class(TGLInterfacedPersistent)
   private
     FOwner: TXCollection;
     FName: string;

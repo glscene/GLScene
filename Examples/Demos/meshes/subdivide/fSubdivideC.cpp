@@ -58,8 +58,8 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 {
    int i, j;
    TGLAffineVectorList *tris, *norms, *tex, *buf, *morphTris, *morphNorms;
-   TGIntegerList *indices, *texIndices;
-   TGIntegerList *firstRemap, *subdivideRemap, *bufRemap;
+   TGLIntegerList *indices, *texIndices;
+   TGLIntegerList *firstRemap, *subdivideRemap, *bufRemap;
    __int64 t;
 
    BUSubdivide->Enabled = false;
@@ -72,7 +72,7 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 	  tex = new TGLAffineVectorList;
 	  tris = GLActor1->MeshObjects->Items[i]->ExtractTriangles(tex);
 	  indices = BuildVectorCountOptimizedIndices(tris);
-	  firstRemap = (TGIntegerList *)(indices->CreateClone());
+	  firstRemap = (TGLIntegerList *)(indices->CreateClone());
 	  RemapAndCleanupReferences(tris, indices);
 
 	  norms = BuildNormals(tris, indices);
@@ -106,14 +106,14 @@ void __fastcall TForm1::BUSubdivideClick(TObject *Sender)
 	  // Pack & Optimize the expanded stuff
 	  indices->Free();
 	  indices = BuildVectorCountOptimizedIndices(tris, norms, tex);
-	  subdivideRemap = (TGIntegerList *)(indices->CreateClone());
+	  subdivideRemap = (TGLIntegerList *)(indices->CreateClone());
 	  RemapReferences(norms, indices);
 	  RemapReferences(tex, indices);
 	  RemapAndCleanupReferences(tris, indices);
 
 	  IncreaseCoherency(indices, 13);
 
-	  bufRemap = new TGIntegerList;
+	  bufRemap = new TGLIntegerList;
 	 for (j = 0; j < GLActor1->MeshObjects->MorphTargetCount()-1; j++)
 	 {
 		GLActor1->MeshObjects->MorphTo(j);

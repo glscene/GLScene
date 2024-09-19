@@ -63,7 +63,7 @@ private:	// User declarations
 	void __fastcall AddTriangle(const TAffineVector p1,
 						  const TAffineVector p2,
 						  const TAffineVector p3,
-						  const TGColorVector color);
+						  const TGLColorVector color);
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };

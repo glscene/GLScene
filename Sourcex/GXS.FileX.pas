@@ -21,7 +21,7 @@ uses
   GXS.VectorLists,
   GXS.Material,
 
-  Formats.X;
+  Formatx.X;
 
 type
   TgxXVectorFile = class(TgxVectorFile)

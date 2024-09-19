@@ -97,7 +97,7 @@ public:		// User declarations
 
 	TGLAffineVectorList *WakeVertices;
 	TGLAffineVectorList *WakeStretch;
-	TGSingleList *WakeTime;
+	TGLSingleList *WakeTime;
 	void ResetMousePos(void);
 	float WaterPhase(const float px, const float py);
 	float WaterHeight(const float px, const float py);

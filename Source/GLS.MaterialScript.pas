@@ -96,7 +96,7 @@ type
     Done: Boolean;
     NewMat: TGLLibMaterial;
     TmpCoords: TGLCoordinates;
-    TmpColor: TGColor;
+    TmpColor: TGLColor;
     TmpCoords4: TGLCoordinates4;
     TmpStr: string;
     procedure SeTGLShaderItems(const Value: TGLShaderItems);

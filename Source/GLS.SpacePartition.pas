@@ -109,7 +109,7 @@ type
   end;
 
   // List for storing space partition leaves
-  TGLSpacePartitionLeafList = class(TgPersistentObjectList)
+  TGLSpacePartitionLeafList = class(TGLPersistentObjectList)
   private
     function GetItems(I: Integer): TGLSpacePartitionLeaf;
     procedure SetItems(I: Integer; const Value: TGLSpacePartitionLeaf);

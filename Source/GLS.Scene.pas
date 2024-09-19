@@ -172,7 +172,7 @@ type
     FBoundingBoxPersonalUnscaled: THmgBoundingBox;
     FBoundingBoxOfChildren: THmgBoundingBox;
     FBoundingBoxIncludingChildren: THmgBoundingBox;
-    FChildren: TgPersistentObjectList; // created on 1st use
+    FChildren: TGLPersistentObjectList; // created on 1st use
     FVisible: Boolean;
     FUpdateCount: Integer;
     FShowAxes: Boolean;
@@ -189,8 +189,8 @@ type
     FTagObject: TObject;
     FTagFloat: Single;
 
-    objList: TgPersistentObjectList;
-    distList: TGSingleList;
+    objList: TGLPersistentObjectList;
+    distList: TGLSingleList;
     ///  FOriginalFiler: TFiler;   //used to allow persistent events in behaviours & effects
     (* If somebody could look at DefineProperties, ReadBehaviours, ReadEffects
      and verify code is safe to use then it could be uncommented *)
@@ -904,12 +904,12 @@ type
     FSpotExponent, FSpotCutOff: Single;
     FConstAttenuation, FLinearAttenuation, FQuadraticAttenuation: Single;
     FShining: Boolean;
-    FAmbient, FDiffuse, FSpecular: TGColor;
+    FAmbient, FDiffuse, FSpecular: TGLColor;
     FLightStyle: TGLLightStyle;
   protected
-    procedure SetAmbient(AValue: TGColor);
-    procedure SetDiffuse(AValue: TGColor);
-    procedure SetSpecular(AValue: TGColor);
+    procedure SetAmbient(AValue: TGLColor);
+    procedure SetDiffuse(AValue: TGLColor);
+    procedure SetSpecular(AValue: TGLColor);
     procedure SetConstAttenuation(AValue: Single);
     procedure SetLinearAttenuation(AValue: Single);
     procedure SetQuadraticAttenuation(AValue: Single);
@@ -933,10 +933,10 @@ type
     property LightID: Cardinal read FLightID;
     function Attenuated: Boolean;
   published
-    property Ambient: TGColor read FAmbient write SetAmbient;
+    property Ambient: TGLColor read FAmbient write SetAmbient;
     property ConstAttenuation: Single read FConstAttenuation write
       SetConstAttenuation;
-    property Diffuse: TGColor read FDiffuse write SetDiffuse;
+    property Diffuse: TGLColor read FDiffuse write SetDiffuse;
     property LinearAttenuation: Single read FLinearAttenuation write
       SetLinearAttenuation;
     property QuadraticAttenuation: Single read FQuadraticAttenuation write
@@ -944,7 +944,7 @@ type
     property Position;
     property LightStyle: TGLLightStyle read FLightStyle write SetLightStyle default lsSpot;
     property Shining: Boolean read FShining write SetShining default True;
-    property Specular: TGColor read FSpecular write SetSpecular;
+    property Specular: TGLColor read FSpecular write SetSpecular;
     property SpotCutOff: Single read FSpotCutOff write SetSpotCutOff;
     property SpotDirection: TGLCoordinates read FSpotDirection write
       SetSpotDirection;
@@ -1139,7 +1139,7 @@ type
     FUpdateCount: Integer;
     FObjects: TGLSceneRootObject;
     FBaseContext: TGLContext; //reference, not owned!
-    FLights, FBuffers: TgPersistentObjectList;
+    FLights, FBuffers: TGLPersistentObjectList;
     FCurrentGLCamera: TGLCamera;
     FCurrentBuffer: TGLSceneBuffer;
     FObjectsSorting: TGLObjectsSorting;
@@ -1195,7 +1195,7 @@ type
     // Load the scene from a text files. See LoadFromFile for details.
     procedure LoadFromTextFile(const fileName: string);
     property CurrentGLCamera: TGLCamera read FCurrentGLCamera;
-    property Lights: TgPersistentObjectList read FLights;
+    property Lights: TGLPersistentObjectList read FLights;
     property Objects: TGLSceneRootObject read FObjects;
     property CurrentBuffer: TGLSceneBuffer read FCurrentBuffer;
     (* List of objects that request to be initialized when rendering context is active.
@@ -1229,12 +1229,12 @@ type
   TGLFogEnvironment = class(TGLUpdateAbleObject)
   private
     FSceneBuffer: TGLSceneBuffer;
-    FFogColor: TGColor; // alpha value means the fog density
+    FFogColor: TGLColor; // alpha value means the fog density
     FFogStart, FFogEnd: Single;
     FFogMode: TFogMode;
     FFogDistance: TFogDistance;
   protected
-    procedure SetFogColor(Value: TGColor);
+    procedure SetFogColor(Value: TGLColor);
     procedure SetFogStart(Value: Single);
     procedure SetFogEnd(Value: Single);
     procedure SetFogMode(Value: TFogMode);
@@ -1247,7 +1247,7 @@ type
     function IsAtDefaultValues: Boolean;
   published
     // Color of the fog when it is at 100% intensity.
-    property FogColor: TGColor read FFogColor write SetFogColor;
+    property FogColor: TGLColor read FFogColor write SetFogColor;
     // Minimum distance for fog, what is closer is not affected.
     property FogStart: Single read FFogStart write SetFogStart;
     // Maximum distance for fog, what is farther is at 100% fog intensity.
@@ -1274,7 +1274,7 @@ type
     // Internal state
     FRendering: Boolean;
     FRenderingContext: TGLContext;
-    FAfterRenderEffects: TgPersistentObjectList;
+    FAfterRenderEffects: TGLPersistentObjectList;
     FViewMatrixStack: array of TGLMatrix;
     FProjectionMatrixStack: array of TGLMatrix;
     FBaseProjectionMatrix: TGLMatrix;
@@ -1286,7 +1286,7 @@ type
     FDepthTest: Boolean;
     FBackgroundColor: TColor;
     FBackgroundAlpha: Single;
-    FAmbientColor: TGColor;
+    FAmbientColor: TGLColor;
     FAntiAliasing: TGLAntiAliasing;
     FDepthPrecision: TGLDepthPrecision;
     FColorDepth: TGLColorDepth;
@@ -1321,7 +1321,7 @@ type
   protected
     procedure SetBackgroundColor(AColor: TColor);
     procedure SetBackgroundAlpha(alpha: Single);
-    procedure SetAmbientColor(AColor: TGColor);
+    procedure SetAmbientColor(AColor: TGLColor);
     function GetLimit(Which: TGLLimitType): Integer;
     procedure SetCamera(ACamera: TGLCamera);
     procedure SetContextOptions(Options: TGLContextOptions);
@@ -1564,7 +1564,7 @@ type
     (* Scene ambient color vector.
        This ambient color is defined independantly from all lightsources,
        which can have their own ambient components. *)
-    property AmbientColor: TGColor read FAmbientColor write SetAmbientColor;
+    property AmbientColor: TGLColor read FAmbientColor write SetAmbientColor;
     (* Context options allows to setup specifics of the rendering context.
        Not all contexts support all options. *)
     property ContextOptions: TGLContextOptions read FContextOptions write
@@ -1887,14 +1887,14 @@ begin
   FPickable := True;
   FObjectsSorting := osInherited;
   FVisibilityCulling := vcInherited;
-  FChildren := TgPersistentObjectList.Create;
+  FChildren := TGLPersistentObjectList.Create;
 
   fBBChanges := [oBBcChild, oBBcStructure];
   FBoundingBoxPersonalUnscaled := NullBoundingBox;
   FBoundingBoxOfChildren := NullBoundingBox;
   FBoundingBoxIncludingChildren := NullBoundingBox;
-  distList := TGSingleList.Create;
-  objList := TgPersistentObjectList.Create;
+  distList := TGLSingleList.Create;
+  objList := TGLPersistentObjectList.Create;
 end;
 
 constructor TGLBaseSceneObject.CreateAsChild(aParentOwner: TGLBaseSceneObject);
@@ -3249,7 +3249,7 @@ end;
 procedure TGLBaseSceneObject.RecTransformationChanged;
 var
   i: Integer;
-  list: PGPointerObjectList;
+  list: PGLPointerObjectList;
   matSet: TGLObjectChanges;
 begin
   matSet := [ocAbsoluteMatrix, ocInvAbsoluteMatrix];
@@ -3742,7 +3742,7 @@ procedure TGLBaseSceneObject.RenderChildren(firstChildIndex, lastChildIndex:
 var
   i: Integer;
 
-  plist: PGPointerObjectList;
+  plist: PGLPointerObjectList;
   obj: TGLBaseSceneObject;
   oldSorting: TGLObjectsSorting;
   oldCulling: TGLVisibilityCulling;
@@ -5436,10 +5436,10 @@ begin
   FSpotCutOff := 180;
   FSpotExponent := 0;
   FLightStyle := lsSpot;
-  FAmbient := TGColor.Create(Self);
-  FDiffuse := TGColor.Create(Self);
+  FAmbient := TGLColor.Create(Self);
+  FDiffuse := TGLColor.Create(Self);
   FDiffuse.Initialize(clrWhite);
-  FSpecular := TGColor.Create(Self);
+  FSpecular := TGLColor.Create(Self);
 end;
 
 destructor TGLLightSource.Destroy;
@@ -5524,19 +5524,19 @@ begin
   end;
 end;
 
-procedure TGLLightSource.SetAmbient(AValue: TGColor);
+procedure TGLLightSource.SetAmbient(AValue: TGLColor);
 begin
   FAmbient.Color := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TGLLightSource.SetDiffuse(AValue: TGColor);
+procedure TGLLightSource.SetDiffuse(AValue: TGLColor);
 begin
   FDiffuse.Color := AValue.Color;
   NotifyChange(Self);
 end;
 
-procedure TGLLightSource.SetSpecular(AValue: TGColor);
+procedure TGLLightSource.SetSpecular(AValue: TGLColor);
 begin
   FSpecular.Color := AValue.Color;
   NotifyChange(Self);
@@ -5586,7 +5586,7 @@ begin
   FCurrentBuffer := nil;
   FObjects := TGLSceneRootObject.Create(Self);
   FObjects.Name := 'ObjectRoot';
-  FLights := TgPersistentObjectList.Create;
+  FLights := TGLPersistentObjectList.Create;
   FObjectsSorting := osRenderBlendedLast;
   FVisibilityCulling := vcNone;
   // actual maximum number of lights is stored in TGLSceneViewer
@@ -5666,7 +5666,7 @@ end;
 procedure TGLScene.AddBuffer(aBuffer: TGLSceneBuffer);
 begin
   if not Assigned(FBuffers) then
-    FBuffers := TgPersistentObjectList.Create;
+    FBuffers := TGLPersistentObjectList.Create;
   if FBuffers.IndexOf(aBuffer) < 0 then
   begin
     FBuffers.Add(aBuffer);
@@ -6042,7 +6042,7 @@ constructor TGLFogEnvironment.Create(AOwner: TPersistent);
 begin
   inherited;
   FSceneBuffer := (AOwner as TGLSceneBuffer);
-  FFogColor := TGColor.CreateInitialized(Self, clrBlack);
+  FFogColor := TGLColor.CreateInitialized(Self, clrBlack);
   FFogMode := fmLinear;
   FFogStart := 10;
   FFogEnd := 1000;
@@ -6055,7 +6055,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLFogEnvironment.SetFogColor(Value: TGColor);
+procedure TGLFogEnvironment.SetFogColor(Value: TGLColor);
 begin
   if Assigned(Value) then
   begin
@@ -6190,7 +6190,7 @@ begin
   FFogEnvironment := TGLFogEnvironment.Create(Self);
   FBackgroundColor := clBtnFace;
   FBackgroundAlpha := 1;
-  FAmbientColor := TGColor.CreateInitialized(Self, clrGray20);
+  FAmbientColor := TGLColor.CreateInitialized(Self, clrGray20);
   FDepthTest := True;
   FFaceCulling := True;
   FLighting := True;
@@ -6200,7 +6200,7 @@ begin
   FShadeModel := smDefault;
   FFogEnable := False;
   FLayer := clMainPlane;
-  FAfterRenderEffects := TgPersistentObjectList.Create;
+  FAfterRenderEffects := TGLPersistentObjectList.Create;
   FContextOptions := [roDoubleBuffer, roRenderToWindow, roDebugContext];
   ResetPerformanceMonitor;
 end;
@@ -7480,7 +7480,7 @@ begin
   end;
 end;
 
-procedure TGLSceneBuffer.SetAmbientColor(AColor: TGColor);
+procedure TGLSceneBuffer.SetAmbientColor(AColor: TGLColor);
 begin
   FAmbientColor.Assign(AColor);
 end;

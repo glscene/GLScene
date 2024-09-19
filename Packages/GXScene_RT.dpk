@@ -242,7 +242,7 @@ contains
   GLScene.GeometryBB in '..\Source\GLScene.GeometryBB.pas',
   GXS.CurvesAndSurfaces in '..\Sourcex\GXS.CurvesAndSurfaces.pas',
   GLScene.AnimationUtils in '..\Source\GLScene.AnimationUtils.pas',
-  Formats.X in '..\Source\Formats.X.pas',
+  Formatx.X in '..\Sourcex\Formatx.X.pas',
   GLScene.TextureFormat in '..\Source\GLScene.TextureFormat.pas',
   Formats.DXTC in '..\Source\Formats.DXTC.pas',
   Formats.GL2 in '..\Source\Formats.GL2.pas',

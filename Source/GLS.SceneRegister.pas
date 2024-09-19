@@ -84,7 +84,7 @@ type
   TGLColorProperty = class(TClassProperty, ICustomPropertyDrawing,
     ICustomPropertyListDrawing)
   protected
-    function ColorToBorderColor(aColor: TGColorVector; selected: Boolean): TColor;
+    function ColorToBorderColor(aColor: TGLColorVector; selected: Boolean): TColor;
   public
     function GetAttributes: TPropertyAttributes; override;
     procedure GetValues(Proc: TGetStrProc); override;
@@ -647,11 +647,11 @@ end;
 procedure TGLColorProperty.Edit;
 var
   colorDialog: TColorDialog;
-  GLColor: TGColor;
+  GLColor: TGLColor;
 begin
   colorDialog := TColorDialog.Create(nil);
   try
-    GLColor := TGColor(GetOrdValue);
+    GLColor := TGLColor(GetOrdValue);
     colorDialog.Options := [cdFullOpen];
     colorDialog.Color := ConvertColorVector(GLColor.Color);
     if colorDialog.Execute then
@@ -676,16 +676,16 @@ end;
 
 function TGLColorProperty.GetValue: string;
 begin
-  Result := ColorManager.GetColorName(TGColor(GetOrdValue).Color);
+  Result := ColorManager.GetColorName(TGLColor(GetOrdValue).Color);
 end;
 
 procedure TGLColorProperty.SetValue(const Value: string);
 begin
-  TGColor(GetOrdValue).Color := ColorManager.GetColor(Value);
+  TGLColor(GetOrdValue).Color := ColorManager.GetColor(Value);
   Modified;
 end;
 
-function TGLColorProperty.ColorToBorderColor(aColor: TGColorVector; selected: Boolean): TColor;
+function TGLColorProperty.ColorToBorderColor(aColor: TGLColorVector; selected: Boolean): TColor;
 begin
   if (aColor.X > 0.75) or (aColor.Y > 0.75) or (aColor.Z > 0.75) then
     Result := clBlack
@@ -709,7 +709,7 @@ procedure TGLColorProperty.ListDrawValue(const Value: string; ACanvas: TCanvas;
 var
   vRight: Integer;
   vOldPenColor, vOldBrushColor: TColor;
-  Color: TGColorVector;
+  Color: TGLColorVector;
 begin
   vRight := (ARect.Bottom - ARect.Top) + ARect.Left;
   with ACanvas do
@@ -1365,7 +1365,7 @@ begin
   RegisterPropertiesInCategory(strLayoutCategoryName,
     [TypeInfo(TGLObjectsSorting), TypeInfo(TGLNormalDirection)]);
   RegisterPropertiesInCategory(strVisualCategoryName,
-    [TypeInfo(TGLVisibilityCulling), TypeInfo(TGLLightStyle), TypeInfo(TGColor),
+    [TypeInfo(TGLVisibilityCulling), TypeInfo(TGLLightStyle), TypeInfo(TGLColor),
     TypeInfo(TGLNormalDirection), TypeInfo(TGLCameraStyle)]);
   RegisterPropertiesInCategory(strVisualCategoryName, TGLBaseSceneObject,
     ['Rotation', 'Direction', 'Position', 'Up', 'Scale', '*Angle', 'ShowAxes', 'FocalLength']);
@@ -1589,7 +1589,7 @@ begin
   RegisterPropertyEditor(TypeInfo(TGLSoundFile), TGLSoundSample, '', TGLSoundFileProperty);
   RegisterPropertyEditor(TypeInfo(string), TGLBaseSoundSource, 'SoundName', TGLSoundNameProperty);
   RegisterPropertyEditor(TypeInfo(TGLCoordinates), nil, '', TGLCoordinatesProperty);
-  RegisterPropertyEditor(TypeInfo(TGColor), nil, '', TGLColorProperty);
+  RegisterPropertyEditor(TypeInfo(TGLColor), nil, '', TGLColorProperty);
   RegisterPropertyEditor(TypeInfo(TGLMaterial), nil, '', TGLMaterialProperty);
   RegisterComponentEditor(TGLGuiLayout, TGLGUILayoutEditor);
 

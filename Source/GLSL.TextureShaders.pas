@@ -43,7 +43,7 @@ uses
 type
   TGLTextureSharingShader = class;
 
-  TGLTextureSharingShaderMaterial = class(TGInterfacedCollectionItem, IGLMaterialLibrarySupported)
+  TGLTextureSharingShaderMaterial = class(TGLInterfacedCollectionItem, IGLMaterialLibrarySupported)
   private
     FTextureMatrix: TGLMatrix;
     FNeedToUpdateTextureMatrix: Boolean;
@@ -52,18 +52,18 @@ type
     FTexOffset: TGLCoordinates2;
     FTexScale: TGLCoordinates2;
     FBlendingMode: TGLBlendingMode;
-    FSpecular: TGColor;
-    FAmbient: TGColor;
-    FDiffuse: TGColor;
-    FEmission: TGColor;
+    FSpecular: TGLColor;
+    FAmbient: TGLColor;
+    FDiffuse: TGLColor;
+    FEmission: TGLColor;
     FShininess: TGLShininess;
     FMaterialLibrary: TGLMaterialLibrary;
     FLibMaterialName: TGLLibMaterialName;
-    procedure SetAmbient(const Value: TGColor);
-    procedure SetDiffuse(const Value: TGColor);
-    procedure SetEmission(const Value: TGColor);
+    procedure SetAmbient(const Value: TGLColor);
+    procedure SetDiffuse(const Value: TGLColor);
+    procedure SetEmission(const Value: TGLColor);
     procedure SetShininess(const Value: TGLShininess);
-    procedure SetSpecular(const Value: TGColor);
+    procedure SetSpecular(const Value: TGLColor);
     procedure SetMaterialLibrary(const Value: TGLMaterialLibrary);
     procedure SetLibMaterialName(const Value: TGLLibMaterialName);
     procedure SetBlendingMode(const Value: TGLBlendingMode);
@@ -91,10 +91,10 @@ type
     property TexOffset: TGLCoordinates2 read FTexOffset write SetTexOffset;
     property TexScale: TGLCoordinates2 read FTexScale write SetTexScale;
     property BlendingMode: TGLBlendingMode read FBlendingMode write SetBlendingMode;
-    property Emission: TGColor read FEmission write SetEmission;
-    property Ambient: TGColor read FAmbient write SetAmbient;
-    property Diffuse: TGColor read FDiffuse write SetDiffuse;
-    property Specular: TGColor read FSpecular write SetSpecular;
+    property Emission: TGLColor read FEmission write SetEmission;
+    property Ambient: TGLColor read FAmbient write SetAmbient;
+    property Diffuse: TGLColor read FDiffuse write SetDiffuse;
+    property Specular: TGLColor read FSpecular write SetSpecular;
     property Shininess: TGLShininess read FShininess write SetShininess;
     property MaterialLibrary: TGLMaterialLibrary read FMaterialLibrary write SetMaterialLibrary;
     property LibMaterialName: TGLLibMaterialName read FLibMaterialName write SetLibMaterialName;
@@ -331,13 +331,13 @@ end;
 constructor TGLTextureSharingShaderMaterial.Create(Collection: TCollection);
 begin
   inherited;
-  FSpecular := TGColor.Create(Self);
+  FSpecular := TGLColor.Create(Self);
   FSpecular.OnNotifyChange := OtherNotifychange;
-  FAmbient := TGColor.Create(Self);
+  FAmbient := TGLColor.Create(Self);
   FAmbient.OnNotifyChange := OtherNotifychange;
-  FDiffuse := TGColor.Create(Self);
+  FDiffuse := TGLColor.Create(Self);
   FDiffuse.OnNotifyChange := OtherNotifychange;
-  FEmission := TGColor.Create(Self);
+  FEmission := TGLColor.Create(Self);
   FEmission.OnNotifyChange := OtherNotifychange;
 
   FTexOffset := TGLCoordinates2.CreateInitialized(Self, NullHmgVector, csPoint2d);
@@ -412,7 +412,7 @@ begin
   GetTextureSharingShader.NotifyChange(Self);
 end;
 
-procedure TGLTextureSharingShaderMaterial.SetAmbient(const Value: TGColor);
+procedure TGLTextureSharingShaderMaterial.SetAmbient(const Value: TGLColor);
 begin
   FAmbient.Assign(Value);
 end;
@@ -422,12 +422,12 @@ begin
   FBlendingMode := Value;
 end;
 
-procedure TGLTextureSharingShaderMaterial.SetDiffuse(const Value: TGColor);
+procedure TGLTextureSharingShaderMaterial.SetDiffuse(const Value: TGLColor);
 begin
   FDiffuse.Assign(Value);
 end;
 
-procedure TGLTextureSharingShaderMaterial.SetEmission(const Value: TGColor);
+procedure TGLTextureSharingShaderMaterial.SetEmission(const Value: TGLColor);
 begin
   FEmission.Assign(Value);
 end;
@@ -477,7 +477,7 @@ begin
   FShininess := Value;
 end;
 
-procedure TGLTextureSharingShaderMaterial.SetSpecular(const Value: TGColor);
+procedure TGLTextureSharingShaderMaterial.SetSpecular(const Value: TGLColor);
 begin
   FSpecular.Assign(Value);
 end;

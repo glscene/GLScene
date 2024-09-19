@@ -107,7 +107,7 @@ type
   TGLBaseRandomHDS = class;
 
   // Function type to use for topography-based texture
-  TOnDrawTexture = function(const Sender: TGLBaseRandomHDS; x, y: integer; z: double; Normal: TGLVector): TGColorVector of object;
+  TOnDrawTexture = function(const Sender: TGLBaseRandomHDS; x, y: integer; z: double; Normal: TGLVector): TGLColorVector of object;
 
   TSingleClamp = procedure(var x, y: single) of object;
   TIntegerClamp = procedure(var x, y: integer) of object;
@@ -130,7 +130,7 @@ type
     FLighting: boolean;
     FLightDirection: TGLVector;
     FTerrainRenderer: TGLTerrainRenderer;
-    FLightColor: TGColorVector;
+    FLightColor: TGLColorVector;
     FShadows: boolean;
     FSea: boolean;
     FSeaLevel: single;
@@ -144,13 +144,13 @@ type
     FPrimerLandscape: boolean;
     FLandTileInfo: TLandTileInfo;
     FOnDrawTexture: TOnDrawTexture;
-    function OnDrawTextureDefault(const Sender: TGLBaseRandomHDS; x, y: integer; z: double; Normal: TGLVector): TGColorVector;
+    function OnDrawTextureDefault(const Sender: TGLBaseRandomHDS; x, y: integer; z: double; Normal: TGLVector): TGLColorVector;
     procedure SetSeed(const Value: integer);
     procedure SetMaterialName(const Value: string);
     procedure SetLighting(const Value: boolean);
     procedure SetLightDirection(const Value: TGLVector);
     procedure SetTerrainRenderer(const Value: TGLTerrainRenderer); virtual; abstract;
-    procedure SetLightColor(const Value: TGColorVector);
+    procedure SetLightColor(const Value: TGLColorVector);
     procedure SetShadows(const Value: boolean);
     procedure SetSea(const Value: boolean);
     procedure SetSeaLevel(const Value: single);
@@ -176,7 +176,7 @@ type
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
     // Usually white, but you can generate e.g.sunset ambiance by setting it to red
-    property LightColor: TGColorVector read FLightColor write SetLightColor;
+    property LightColor: TGLColorVector read FLightColor write SetLightColor;
     // Light is parallel (sun light)
     property LightDirection: TGLVector read FLightDirection write SetLightDirection;
     (* This function must be supplied by the user. Here he/she can define which
@@ -273,7 +273,7 @@ type
     procedure BuildNormals;
     (* For every pixel of the texture, computes slope and interpolated height and
       sends these information to a user-supplied function (OnDrawTexture), whose
-      result is a TGColorVector. If no OnDrawTexture is supplied, a basic default
+      result is a TGLColorVector. If no OnDrawTexture is supplied, a basic default
       texture will be used. *)
     procedure BuildTexture;
     // Fill the heightfield with "Empty" values (-999)
@@ -576,14 +576,14 @@ type
 
 (* Texture functions *)
 function LoadJPGtexture(const JpgName: string): tBitmap;
-function NoisyColor(const Color: tColor; const Noise: single = 0.05): TGColorVector;
-function TextureGreen(const x, y: integer): TGColorVector;
-function TextureBlue(const x, y: integer): TGColorVector;
-function TextureSand(const x, y: integer): TGColorVector;
-function TextureBrownSoil(const x, y: integer): TGColorVector;
-function TextureDarkGreen(const x, y: integer): TGColorVector;
-function TextureDarkGray(const x, y: integer): TGColorVector;
-function TextureWhite(const x, y: integer): TGColorVector;
+function NoisyColor(const Color: tColor; const Noise: single = 0.05): TGLColorVector;
+function TextureGreen(const x, y: integer): TGLColorVector;
+function TextureBlue(const x, y: integer): TGLColorVector;
+function TextureSand(const x, y: integer): TGLColorVector;
+function TextureBrownSoil(const x, y: integer): TGLColorVector;
+function TextureDarkGreen(const x, y: integer): TGLColorVector;
+function TextureDarkGray(const x, y: integer): TGLColorVector;
+function TextureWhite(const x, y: integer): TGLColorVector;
 
 (* Random HDS functions *)
 (* Fractal algorithm based on the middle-point displacement method. It is built in
@@ -627,7 +627,7 @@ begin
   Jpg.Free;
 end;
 
-function NoisyColor(const Color: tColor; const Noise: single = 0.05): TGColorVector;
+function NoisyColor(const Color: tColor; const Noise: single = 0.05): TGLColorVector;
 var
   r: single;
 begin
@@ -636,37 +636,37 @@ begin
   AddVector(Result, r);
 end;
 
-function TextureSand(const x, y: integer): TGColorVector;
+function TextureSand(const x, y: integer): TGLColorVector;
 begin
   Result := NoisyColor($0071D8FF);
 end;
 
-function TextureBrownSoil(const x, y: integer): TGColorVector;
+function TextureBrownSoil(const x, y: integer): TGLColorVector;
 begin
   Result := NoisyColor($00008BBF);
 end;
 
-function TextureDarkGreen(const x, y: integer): TGColorVector;
+function TextureDarkGreen(const x, y: integer): TGLColorVector;
 begin
   Result := NoisyColor($00004000);
 end;
 
-function TextureDarkGray(const x, y: integer): TGColorVector;
+function TextureDarkGray(const x, y: integer): TGLColorVector;
 begin
   Result := NoisyColor(clDkGray);
 end;
 
-function TextureWhite(const x, y: integer): TGColorVector;
+function TextureWhite(const x, y: integer): TGLColorVector;
 begin
   Result := NoisyColor(clWhite);
 end;
 
-function TextureBlue(const x, y: integer): TGColorVector;
+function TextureBlue(const x, y: integer): TGLColorVector;
 begin
   Result := NoisyColor(clBlue);
 end;
 
-function TextureGreen(const x, y: integer): TGColorVector;
+function TextureGreen(const x, y: integer): TGLColorVector;
 begin
   Result := NoisyColor(clGreen);
 end;
@@ -734,7 +734,7 @@ begin
 end;
 
 function TGLBaseRandomHDS.OnDrawTextureDefault(const Sender: TGLBaseRandomHDS; x, y: integer; z: double; Normal: TGLVector)
-  : TGColorVector;
+  : TGLColorVector;
 begin
   if z > Sender.SeaLevel * VSF then
     Result := TextureGreen(x, y)
@@ -777,7 +777,7 @@ begin
   FLandTileInfo := Value;
 end;
 
-procedure TGLBaseRandomHDS.SetLightColor(const Value: TGColorVector);
+procedure TGLBaseRandomHDS.SetLightColor(const Value: TGLColorVector);
 begin
   FLightColor := Value;
 end;
@@ -1123,7 +1123,7 @@ var
     Result := RGB((r1 + r2) div 2, (g1 + g2) div 2, (b1 + b2) div 2);
   end;
 
-  procedure MakeRGBTriple(const Color: TGColorVector; var RGBTriple: TRGBTriple);
+  procedure MakeRGBTriple(const Color: TGLColorVector; var RGBTriple: TRGBTriple);
   begin
     with RGBTriple do
     begin
@@ -1136,8 +1136,8 @@ var
   function ComputePixel(const x, y: integer): TRGBTriple;
   var
     i, j: integer;
-    Shade: TGColorVector;
-    Cover: TGColorVector;
+    Shade: TGLColorVector;
+    Cover: TGLColorVector;
     z: double;
   begin
     i := (x0 + x) div TextureScale;
@@ -1251,8 +1251,8 @@ end; // *)
   Mat	:TGLLibMaterial;
   x,y	:integer;
   i,j	:integer;
-  Shade	:TGColorVector;
-  Cover	:TGColorVector;
+  Shade	:TGLColorVector;
+  Cover	:TGLColorVector;
   z		:double;
   begin
   if not fTextureCreated then CreateTexture;

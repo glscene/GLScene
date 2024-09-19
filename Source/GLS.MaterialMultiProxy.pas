@@ -48,7 +48,7 @@ type
   TGLMaterialMultiProxy = class;
 
   {MasterObject description for a MultiProxy object. }
-  TGLMaterialMultiProxyMaster = class(TGInterfacedCollectionItem, IGLMaterialLibrarySupported)
+  TGLMaterialMultiProxyMaster = class(TGLInterfacedCollectionItem, IGLMaterialLibrarySupported)
   private
     FMasterObject: TGLBaseSceneObject;
     FMasterLibMaterial: TGLLibMaterial;

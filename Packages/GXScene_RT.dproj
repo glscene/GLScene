@@ -391,7 +391,7 @@
         <DCCReference Include="..\Source\GLScene.GeometryBB.pas"/>
         <DCCReference Include="..\Sourcex\GXS.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Source\GLScene.AnimationUtils.pas"/>
-        <DCCReference Include="..\Source\Formats.X.pas"/>
+        <DCCReference Include="..\Sourcex\Formatx.X.pas"/>
         <DCCReference Include="..\Source\GLScene.TextureFormat.pas"/>
         <DCCReference Include="..\Source\Formats.DXTC.pas"/>
         <DCCReference Include="..\Source\Formats.GL2.pas"/>

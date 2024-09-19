@@ -149,13 +149,13 @@ type
   TGLPipeNode = class(TGLNode)
   private
     FRadiusFactor: Single;
-    FColor: TGColor;
+    FColor: TGLColor;
     FTexCoordT: Single;
   protected
     function GetDisplayName: string; override;
     procedure SetRadiusFactor(const val: Single);
     function StoreRadiusFactor: Boolean;
-    procedure SetColor(const val: TGColor);
+    procedure SetColor(const val: TGLColor);
     procedure ColorChanged(sender: TObject);
     function StoreTexCoordT: Boolean;
   public
@@ -165,7 +165,7 @@ type
   published
     property RadiusFactor: Single read FRadiusFactor write SetRadiusFactor stored
       StoreRadiusFactor;
-    property Color: TGColor read FColor write SetColor;
+    property Color: TGLColor read FColor write SetColor;
     property TexCoordT: Single read FTexCoordT write FTexCoordT stored
       StoreTexCoordT;
   end;
@@ -687,7 +687,7 @@ constructor TGLPipeNode.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
   FRadiusFactor := 1.0;
-  FColor := TGColor.CreateInitialized(Self, clrBlack, ColorChanged);
+  FColor := TGLColor.CreateInitialized(Self, clrBlack, ColorChanged);
   FTexCoordT := 1.0;
 end;
 
@@ -735,7 +735,7 @@ begin
   Result := (FTexCoordT <> 1.0);
 end;
 
-procedure TGLPipeNode.SetColor(const val: TGColor);
+procedure TGLPipeNode.SetColor(const val: TGLColor);
 begin
   FColor.Assign(val);
 end;
@@ -928,7 +928,7 @@ type
   end;
   TRowData = record
     node: array of TNodeData;
-    color: TGColorVector;
+    color: TGLColorVector;
     center: TVector3f;
     textcoordT: Single;
   end;

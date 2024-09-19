@@ -71,8 +71,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     property Manager: TGLParticleFXManager read FManager write FManager;
     // Particle's ID, given at birth. ID is a value unique per manager.
     property ID: Integer read FID;
@@ -106,7 +106,7 @@ type
   TGLParticleList = class(TGLPersistentObject)
   private
     FOwner: TGLParticleFXManager; // NOT persistent
-    FItemList: TgPersistentObjectList;
+    FItemList: TGLPersistentObjectList;
     FDirectList: PGLParticleArray; // NOT persistent
   protected
     function GetItems(index: Integer): TGLParticle;
@@ -115,8 +115,8 @@ type
   public
     constructor Create; override;
     destructor Destroy; override;
-    procedure WriteToFiler(writer: TGVirtualWriter); override;
-    procedure ReadFromFiler(reader: TGVirtualReader); override;
+    procedure WriteToFiler(writer: TGLVirtualWriter); override;
+    procedure ReadFromFiler(reader: TGLVirtualReader); override;
     // Refers owner manager
     property Owner: TGLParticleFXManager read FOwner write FOwner;
     property Items[index: Integer]: TGLParticle read GetItems write SetItems; default;
@@ -430,8 +430,8 @@ type
 
   TPFXLifeColor = class(TCollectionItem)
   private
-    FColorInner: TGColor;
-    FColorOuter: TGColor;
+    FColorInner: TGLColor;
+    FColorOuter: TGLColor;
     FLifeTime, FInvLifeTime: Single;
     FIntervalRatio: Single;
     FSizeScale: Single;
@@ -440,8 +440,8 @@ type
     FRotateAngle: Single;
   protected
     function GetDisplayName: string; override;
-    procedure SetColorInner(const val: TGColor);
-    procedure SetColorOuter(const val: TGColor);
+    procedure SetColorInner(const val: TGLColor);
+    procedure SetColorOuter(const val: TGLColor);
     procedure SetLifeTime(const val: Single);
     procedure SetSizeScale(const val: Single);
     procedure SetRotateAngle(const Value: Single); // indirectly persistent
@@ -454,8 +454,8 @@ type
     // Stores 1/(LifeTime[Next]-LifeTime[Self])
     property InvIntervalRatio: Single read FIntervalRatio;
   published
-    property ColorInner: TGColor read FColorInner write SetColorInner;
-    property ColorOuter: TGColor read FColorOuter write SetColorOuter;
+    property ColorInner: TGLColor read FColorInner write SetColorInner;
+    property ColorOuter: TGLColor read FColorOuter write SetColorOuter;
     property LifeTime: Single read FLifeTime write SetLifeTime;
     property SizeScale: Single read FSizeScale write SetSizeScale;
     property RotateAngle: Single read FRotateAngle write SetRotateAngle;
@@ -484,19 +484,19 @@ type
     FLifeColorsLookup: TList;
     FLifeRotations: Boolean;
     FLifeScaling: Boolean;
-    FColorInner: TGColor;
-    FColorOuter: TGColor;
+    FColorInner: TGLColor;
+    FColorOuter: TGLColor;
     FParticleSize: Single;
   protected
     procedure SetLifeColors(const val: TPFXLifeColors);
-    procedure SetColorInner(const val: TGColor);
-    procedure SetColorOuter(const val: TGColor);
+    procedure SetColorInner(const val: TGLColor);
+    procedure SetColorOuter(const val: TGLColor);
     procedure InitializeRendering(var rci: TGLRenderContextInfo); override;
     procedure FinalizeRendering(var rci: TGLRenderContextInfo); override;
     function MaxParticleAge: Single; override;
-    procedure ComputeColors(var lifeTime: Single; var inner, outer: TGColorVector);
-    procedure ComputeInnerColor(var lifeTime: Single; var inner: TGColorVector);
-    procedure ComputeOuterColor(var lifeTime: Single; var outer: TGColorVector);
+    procedure ComputeColors(var lifeTime: Single; var inner, outer: TGLColorVector);
+    procedure ComputeInnerColor(var lifeTime: Single; var inner: TGLColorVector);
+    procedure ComputeOuterColor(var lifeTime: Single; var outer: TGLColorVector);
     function ComputeSizeScale(var lifeTime: Single; var sizeScale: Single): Boolean;
     function ComputeRotateAngle(var lifeTime, rotateAngle: Single): Boolean;
     procedure RotateVertexBuf(buf: TGLAffineVectorList; lifeTime: Single;
@@ -505,8 +505,8 @@ type
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
     property ParticleSize: Single read FParticleSize write FParticleSize;
-    property ColorInner: TGColor read FColorInner write SetColorInner;
-    property ColorOuter: TGColor read FColorOuter write SetColorOuter;
+    property ColorInner: TGLColor read FColorInner write SetColorInner;
+    property ColorOuter: TGLColor read FColorOuter write SetColorOuter;
     property LifeColors: TPFXLifeColors read FLifeColors write SetLifeColors;
   published
     property BlendingMode default bmAdditive;
@@ -814,7 +814,7 @@ begin
     FVelocity.V[Index] := aValue;
 end;
 
-procedure TGLParticle.WriteToFiler(writer: TGVirtualWriter);
+procedure TGLParticle.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -827,7 +827,7 @@ begin
   end;
 end;
 
-procedure TGLParticle.ReadFromFiler(reader: TGVirtualReader);
+procedure TGLParticle.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -852,7 +852,7 @@ end;
 constructor TGLParticleList.Create;
 begin
   inherited Create;
-  FItemList := TgPersistentObjectList.Create;
+  FItemList := TGLPersistentObjectList.Create;
   FitemList.GrowthDelta := 64;
   FDirectList := nil;
 end;
@@ -863,7 +863,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLParticleList.WriteToFiler(writer: TGVirtualWriter);
+procedure TGLParticleList.WriteToFiler(writer: TGLVirtualWriter);
 begin
   inherited WriteToFiler(writer);
   with writer do
@@ -873,7 +873,7 @@ begin
   end;
 end;
 
-procedure TGLParticleList.ReadFromFiler(reader: TGVirtualReader);
+procedure TGLParticleList.ReadFromFiler(reader: TGLVirtualReader);
 var
   archiveVersion: integer;
 begin
@@ -1737,8 +1737,8 @@ end;
 constructor TPFXLifeColor.Create(Collection: TCollection);
 begin
   inherited Create(Collection);
-  FColorInner := TGColor.CreateInitialized(Self, NullHmgVector);
-  FColorOuter := TGColor.CreateInitialized(Self, NullHmgVector);
+  FColorInner := TGLColor.CreateInitialized(Self, NullHmgVector);
+  FColorOuter := TGLColor.CreateInitialized(Self, NullHmgVector);
   FLifeTime := 1;
   FInvLifeTime := 1;
   FSizeScale := 1;
@@ -1773,12 +1773,12 @@ begin
       ColorOuter.Red, ColorOuter.Green, ColorOuter.Blue, ColorOuter.Alpha]);
 end;
 
-procedure TPFXLifeColor.SetColorInner(const val: TGColor);
+procedure TPFXLifeColor.SetColorInner(const val: TGLColor);
 begin
   FColorInner.Assign(val);
 end;
 
-procedure TPFXLifeColor.SetColorOuter(const val: TGColor);
+procedure TPFXLifeColor.SetColorOuter(const val: TGLColor);
 begin
   FColorOuter.Assign(val);
 end;
@@ -1995,8 +1995,8 @@ constructor TGLLifeColoredPFXManager.Create(aOwner: TComponent);
 begin
   inherited;
   FLifeColors := TPFXLifeColors.Create(Self);
-  FColorInner := TGColor.CreateInitialized(Self, clrYellow);
-  FColorOuter := TGColor.CreateInitialized(Self, NullHmgVector);
+  FColorInner := TGLColor.CreateInitialized(Self, clrYellow);
+  FColorOuter := TGLColor.CreateInitialized(Self, NullHmgVector);
   with FLifeColors.Add do
   begin
     LifeTime := 3;
@@ -2012,12 +2012,12 @@ begin
   inherited Destroy;
 end;
 
-procedure TGLLifeColoredPFXManager.SetColorInner(const val: TGColor);
+procedure TGLLifeColoredPFXManager.SetColorInner(const val: TGLColor);
 begin
   FColorInner.Assign(val);
 end;
 
-procedure TGLLifeColoredPFXManager.SetColorOuter(const val: TGColor);
+procedure TGLLifeColoredPFXManager.SetColorOuter(const val: TGLColor);
 begin
   FColorOuter.Assign(val);
 end;
@@ -2051,7 +2051,7 @@ begin
   Result := LifeColors.MaxLifeTime;
 end;
 
-procedure TGLLifeColoredPFXManager.ComputeColors(var lifeTime: Single; var inner, outer: TGColorVector);
+procedure TGLLifeColoredPFXManager.ComputeColors(var lifeTime: Single; var inner, outer: TGLColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2097,7 +2097,7 @@ begin
   end;
 end;
 
-procedure TGLLifeColoredPFXManager.ComputeInnerColor(var lifeTime: Single; var inner: TGColorVector);
+procedure TGLLifeColoredPFXManager.ComputeInnerColor(var lifeTime: Single; var inner: TGLColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2140,7 +2140,7 @@ begin
   end;
 end;
 
-procedure TGLLifeColoredPFXManager.ComputeOuterColor(var lifeTime: Single; var outer: TGColorVector);
+procedure TGLLifeColoredPFXManager.ComputeOuterColor(var lifeTime: Single; var outer: TGLColorVector);
 var
   i, k, n: Integer;
   f: Single;
@@ -2448,7 +2448,7 @@ procedure TGLPolygonPFXManager.RenderParticle(var rci: TGLRenderContextInfo; aPa
 var
   i: Integer;
   lifeTime, sizeScale: Single;
-  inner, outer: TGColorVector;
+  inner, outer: TGLColorVector;
   pos: TAffineVector;
   vertexList: PAffineVectorArray;
 begin
@@ -2683,7 +2683,7 @@ const
     ((S: 0.5; T: 0.5), (S: 0.0; T: 0.5), (S: 0.0; T: 0.0), (S: 0.5; T: 0.0)));
 var
   lifeTime, sizeScale: Single;
-  inner, outer: TGColorVector;
+  inner, outer: TGLColorVector;
   pos: TAffineVector;
   vertexList: PAffineVectorArray;
   i: Integer;

@@ -25,12 +25,12 @@ function BSplinePoint(t: single; n, k: integer; knots: PSingleArray;
   cp: PAffineVectorArray): TAffineVector;
 function BSplineSurfacePoint(s, t: single; m, n, k1, k2: integer;
   uknots, vknots: PSingleArray; cp: PAffineVectorArray): TAffineVector;
-procedure GenerateBSpline(Steps, Order: integer; KnotVector: TGSingleList;
+procedure GenerateBSpline(Steps, Order: integer; KnotVector: TGLSingleList;
   ControlPoints, Vertices: TGLAffineVectorList);
 procedure GenerateBSplineSurface(Steps, UOrder, VOrder, Width, Height: integer;
-  UKnotVector, VKnotVector: TGSingleList;
+  UKnotVector, VKnotVector: TGLSingleList;
   ControlPoints, Vertices: TGLAffineVectorList);
-procedure GenerateKnotVector(KnotVector: TGSingleList;
+procedure GenerateKnotVector(KnotVector: TGLSingleList;
   NumberOfPoints, Order: integer; Continuity: TBSplineContinuity);
 
 implementation // -----------------------------------------------------------
@@ -223,7 +223,7 @@ begin
   end;
 end;
 
-procedure GenerateBSpline(Steps, Order: integer; KnotVector: TGSingleList;
+procedure GenerateBSpline(Steps, Order: integer; KnotVector: TGLSingleList;
   ControlPoints, Vertices: TGLAffineVectorList);
 var
   i: integer;
@@ -236,7 +236,7 @@ begin
 end;
 
 procedure GenerateBSplineSurface(Steps, UOrder, VOrder, Width, Height: integer;
-  UKnotVector, VKnotVector: TGSingleList; ControlPoints, Vertices: TGLAffineVectorList);
+  UKnotVector, VKnotVector: TGLSingleList; ControlPoints, Vertices: TGLAffineVectorList);
 var
   i, j: integer;
 begin
@@ -249,7 +249,7 @@ begin
         @UKnotVector.List[0], @VKnotVector.List[0], ControlPoints.List);
 end;
 
-procedure GenerateKnotVector(KnotVector: TGSingleList;
+procedure GenerateKnotVector(KnotVector: TGLSingleList;
   NumberOfPoints, Order: integer; Continuity: TBSplineContinuity);
 var
   i, n, k: integer;

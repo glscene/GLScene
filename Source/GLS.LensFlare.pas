@@ -45,20 +45,20 @@ type
      lens flare elements. *)
   TGLFlareGradient = class(TGLUpdateAbleObject)
   private
-    FFromColor: TGColor;
-    FToColor: TGColor;
+    FFromColor: TGLColor;
+    FToColor: TGLColor;
   protected
-    procedure SetFromColor(const val: TGColor);
-    procedure SetToColor(const val: TGColor);
+    procedure SetFromColor(const val: TGLColor);
+    procedure SetToColor(const val: TGLColor);
   public
     constructor Create(AOwner: TPersistent); override;
     constructor CreateInitialized(AOwner: TPersistent;
-      const fromColor, toColor: TGColorVector);
+      const fromColor, toColor: TGLColorVector);
     destructor Destroy; override;
     procedure Assign(Source: TPersistent); override;
   published
-    property FromColor: TGColor read FFromColor write SetFromColor;
-    property ToColor: TGColor read FToColor write SetToColor;
+    property FromColor: TGLColor read FFromColor write SetFromColor;
+    property ToColor: TGLColor read FToColor write SetToColor;
   end;
 
 const
@@ -203,12 +203,12 @@ implementation
 constructor TGLFlareGradient.Create(AOwner: TPersistent);
 begin
   inherited;
-  FFromColor := TGColor.Create(Self);
-  FToColor := TGColor.Create(Self);
+  FFromColor := TGLColor.Create(Self);
+  FToColor := TGLColor.Create(Self);
 end;
 
 constructor TGLFlareGradient.CreateInitialized(AOwner: TPersistent;
-  const fromColor, toColor: TGColorVector);
+  const fromColor, toColor: TGLColorVector);
 begin
   Create(AOwner);
   FFromColor.Initialize(fromColor);
@@ -232,12 +232,12 @@ begin
   inherited;
 end;
 
-procedure TGLFlareGradient.SetFromColor(const val: TGColor);
+procedure TGLFlareGradient.SetFromColor(const val: TGLColor);
 begin
   FFromColor.Assign(val);
 end;
 
-procedure TGLFlareGradient.SetToColor(const val: TGColor);
+procedure TGLFlareGradient.SetToColor(const val: TGLColor);
 begin
   FToColor.Assign(val);
 end;
