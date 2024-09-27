@@ -7,6 +7,10 @@
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
+
+#include "GLScene.Utils.hpp"
+#include "GLScene.Keyboard.hpp"
+
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
@@ -19,10 +23,8 @@
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Keyboard.hpp"
 #include "JPeg.hpp"
 #include "GLS.FileJPEG.hpp"
-#include "GLScene.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TFormSkybox : public TForm

@@ -123,6 +123,8 @@ type
     procedure miConstBoundariesClick(Sender: TObject);
     procedure Hide1Click(Sender: TObject);
     procedure Show1Click(Sender: TObject);
+    procedure SkyDomeProgress(Sender: TObject; const DeltaTime,
+      NewTime: Double);
   public
     ConstellationsAlpha: Single;
     TimeMultiplier: Single;

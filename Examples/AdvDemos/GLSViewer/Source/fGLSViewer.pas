@@ -1088,13 +1088,12 @@ end;
 procedure TFormGLSViewer.acPointsExecute(Sender: TObject);
 var
   I: Integer;
-  Color: TVector3f;
+  Color: TVector4f;
   NumPoints: Integer;
   X, Y, Z: Single;
 
 begin
   NumPoints := 10000;
-  Points := TGLPoints(dcWorld.AddNewChild(TGLPoints));
   Points.Size := 5.0;
   Points.Style := psSmooth;
   for I := 0 to NumPoints - 1 do
@@ -1108,37 +1107,9 @@ begin
     Color.X := Random();
     Color.Y := Random();
     Color.Z := Random();
-    Points.Colors.AddPoint(Color);
-  end;
-//  dcWorld.Remove(GLPoints, False);
-end;
-
-(*
-procedure TMainForm.acDeletePoints(Sender: TObject);
-var
-  I: Integer;
-  Color: TVector3f;
-  NumPoints: Integer;
-  X, Y, Z: Single;
-
-begin
-  NumPoints := 10000;
-  Points := TGLPoints(dcWorld.AddNewChild(TGLPoints));
-  for I := 0 to NumPoints - 1 do
-  begin
-    Color.X := Random();
-    Color.Y := Random();
-    Color.Z := Random();
-
-    X := Random(100) - 50;
-    Y := Random(100) - 50;
-    Z := Random(100) - 50;
-
-    Points.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
-    // Fill array of GLPoints
+    Points.Colors.AddPoint(Color.X, Color.Y, 0);
   end;
 end;
-*)
 
 procedure TFormGLSViewer.acFileExitExecute(Sender: TObject);
 begin

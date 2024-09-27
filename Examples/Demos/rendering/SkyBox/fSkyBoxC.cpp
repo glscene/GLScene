@@ -10,6 +10,8 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
+#pragma link "GLScene.Utils"
+
 #pragma link "GLS.LensFlare"
 #pragma link "GLS.Material"
 #pragma link "GLS.Navigator"
@@ -18,7 +20,6 @@
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.SkyDome"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLScene.Utils"
 #pragma resource "*.dfm"
 TFormSkybox *FormSkybox;
 

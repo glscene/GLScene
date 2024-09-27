@@ -152,8 +152,8 @@ object FormGLSViewer: TFormGLSViewer
         Text = 'Model'
         Width = 40
       end>
-    ExplicitTop = 459
-    ExplicitWidth = 699
+    ExplicitTop = 658
+    ExplicitWidth = 1072
   end
   object snViewer: TGLSceneViewer
     Left = 273
@@ -181,7 +181,6 @@ object FormGLSViewer: TFormGLSViewer
     Height = 29
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 699
     object atbTools: TActionToolBar
       Left = 357
       Top = 2
@@ -264,7 +263,6 @@ object FormGLSViewer: TFormGLSViewer
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     Spacing = 0
-    ExplicitWidth = 699
   end
   object PanelLeft: TPanel
     Left = 0
@@ -273,6 +271,7 @@ object FormGLSViewer: TFormGLSViewer
     Height = 627
     Align = alLeft
     TabOrder = 4
+    ExplicitHeight = 602
     object tvScene: TTreeView
       Left = 1
       Top = 1
@@ -481,9 +480,6 @@ object FormGLSViewer: TFormGLSViewer
         6D0070007500740069006E0067000000410000005E0000005E000000FFFFFFFF
         FFFFFFFF0000000000000000000000000001114300550044004100470065006E
         006500720061007400650064004D00650073006800}
-      ExplicitLeft = -4
-      ExplicitTop = 3
-      ExplicitWidth = 151
     end
   end
   object Scene: TGLScene

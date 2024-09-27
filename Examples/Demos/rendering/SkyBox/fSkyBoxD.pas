@@ -16,6 +16,7 @@ uses
 
   GLS.Scene,
   GLScene.VectorTypes,
+  GLScene.Keyboard,
   GLS.Texture,
   GLS.SkyDome,
 
@@ -68,7 +69,7 @@ type
 var
   FormSkybox: TFormSkybox;
 
-implementation
+implementation  //-------------------------------------------------------------
 
 {$R *.dfm}
 
