@@ -16,10 +16,11 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GLScene.XCollection,
   GLScene.VectorTypes,
-  GXS.Context,
   GLScene.VectorGeometry,
+  GLScene.Manager,
+
+  GXS.Context,
   GXS.Scene,
   GXS.Coordinates,
   GXS.VectorFileObjects,
@@ -28,7 +29,7 @@ uses
   GXS.Navigator,
   GXS.RenderContextInfo,
   GXS.BaseClasses,
-  GLScene.Manager,
+  GXS.XCollection,
   GXS.State;
 
 type

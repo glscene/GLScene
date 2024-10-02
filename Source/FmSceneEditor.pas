@@ -35,7 +35,7 @@ uses
   GLS.SceneViewer,
   GLScene.Strings,
   FmInfo,
-  GLScene.XCollection,
+  GLS.XCollection,
 
   GLScene.Utils,
   GLS.SceneRegister;

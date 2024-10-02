@@ -18,10 +18,10 @@ uses
   GLScene.OpenGLTokens,
   GLScene.VectorGeometry,
   GLS.Scene,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.VectorLists,
   GLS.VectorFileObjects,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLScene.Manager;
 
 type

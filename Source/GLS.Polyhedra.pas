@@ -43,7 +43,7 @@ uses
   GLS.Mesh,
   GLScene.Logger,
   GLS.Octree,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.ApplicationFileIO,
   GLS.Context,
   GLS.Color;

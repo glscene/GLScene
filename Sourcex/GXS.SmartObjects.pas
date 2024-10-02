@@ -27,16 +27,17 @@ uses
 
   GLScene.OpenGLTokens,
   GLScene.VectorTypes,
-  GXS.PersistentClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypesExt,
-  GXS.VectorLists,
-  GXS.BaseClasses,
   GLScene.PipelineTransform,
-  GXS.Coordinates,
-  GLScene.GeometryBB,
-  GXS.Color,
   GLScene.Strings,
+
+  GXS.BaseClasses,
+  GXS.PersistentClasses,
+  GXS.VectorLists,
+  GXS.Coordinates,
+  GXS.GeometryBB,
+  GXS.Color,
 
   GXS.Scene,
   GXS.Silhouette,

@@ -30,7 +30,7 @@ uses
   GLS.File3DS,
   GLScene.VectorGeometry,
   GLS.Material,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.Utils;
 
 type

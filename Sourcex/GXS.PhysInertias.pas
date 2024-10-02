@@ -9,7 +9,7 @@ uses
   System.SysUtils,
   System.Classes,
 
-  GLScene.XCollection,
+  GXS.XCollection,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
   GLScene.Strings,

@@ -29,7 +29,7 @@ uses
   GLS.ShadowPlane,
   GLS.Navigator,
   GLS.VerletTypes,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.Color,
  
   GLS.Coordinates,

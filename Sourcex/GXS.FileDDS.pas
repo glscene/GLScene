@@ -19,12 +19,13 @@ uses
   GLScene.VectorGeometry,
   GLScene.RGBE,
   GLScene.Strings,
+  GLScene.TextureFormat,
+  
   GXS.ApplicationFileIO,
-
   GXS.Context,
   GXS.Graphics,
-  GLScene.TextureFormat,
-  Formats.DXTC;
+  
+  Formatx.DXTC;
 
 type
 

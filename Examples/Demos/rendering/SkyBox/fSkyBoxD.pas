@@ -23,7 +23,7 @@ uses
   GLS.Cadencer,
   GLS.Navigator,
   GLS.SceneViewer,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.LensFlare,
   GLS.Objects,
   GLS.Material,

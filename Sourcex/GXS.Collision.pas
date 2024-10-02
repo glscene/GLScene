@@ -13,13 +13,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.XCollection,
+  GXS.XCollection,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
-  GLScene.GeometryBB,
   GLScene.Manager,
   GLScene.VectorTypes,
 
+  GXS.VectorLists,
+  GXS.GeometryBB,
   GXS.Scene,
   GXS.VectorFileObjects;
 

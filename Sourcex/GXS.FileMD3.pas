@@ -17,7 +17,7 @@ uses
   GXS.Material,
   GXS.Texture,
 
-  Formats.MD3;
+  Formatx.MD3;
 
 type
 

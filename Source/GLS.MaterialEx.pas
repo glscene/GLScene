@@ -43,7 +43,7 @@ uses
   GLS.PersistentClasses,
   GLS.State,
   GLScene.TextureFormat,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.TextureCombiners,
   GLSL.ShaderParameter,
   GLS.ApplicationFileIO,

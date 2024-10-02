@@ -16,7 +16,7 @@ uses
   System.Math,
 
 
-  GLScene.XCollection,
+  GXS.XCollection,
   GXS.Scene,
   GLScene.PipelineTransform,
   GLScene.VectorGeometry,

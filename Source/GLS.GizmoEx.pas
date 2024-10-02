@@ -33,7 +33,7 @@ uses
   GLS.VectorFileObjects,
   GLS.Coordinates,
   GLS.RenderContextInfo,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLScene.VectorTypes,
   GLS.Canvas,
   GLS.PersistentClasses,

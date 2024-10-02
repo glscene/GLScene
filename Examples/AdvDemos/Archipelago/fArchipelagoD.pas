@@ -22,7 +22,7 @@ uses
   GLS.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.TextureFormat,
   GLScene.Keyboard,
   GLScene.Utils,

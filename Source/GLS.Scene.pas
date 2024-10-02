@@ -24,18 +24,22 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
 
-  GLScene.OpenGLTokens,
-  GLS.XOpenGL,
-  GLScene.XCollection,
-  GLScene.Strings,
-  GLS.Context,
+  GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.OpenGLTokens,
+  GLS.XCollection,
+  GLScene.Strings,
+  GLScene.PipelineTransform,
+  GLScene.TextureFormat,
+  GLScene.Utils,
+  GLScene.Logger,
+
+  GLS.Context,
   GLS.Silhouette,
   GLS.PersistentClasses,
-  GLScene.PipelineTransform,
   GLS.State,
   GLS.Graphics,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.VectorLists,
   GLS.Texture,
   GLS.Color,
@@ -43,13 +47,10 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLScene.TextureFormat,
+  GLS.XOpenGL,
   GLS.Selection,
-  GLScene.VectorTypes,
   GLS.ApplicationFileIO,
-  GLScene.Utils,
-  GLS.ImageUtils,
-  GLScene.Logger;
+  GLS.ImageUtils;
 
 type
   // Defines which features are taken from the master object.

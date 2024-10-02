@@ -17,7 +17,7 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.XCollection,
+  GXS.XCollection,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GXS.PersistentClasses,

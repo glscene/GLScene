@@ -20,7 +20,7 @@ uses
   GLS.Scene,
   GLScene.VectorTypes,
   GLScene.Keyboard,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses,

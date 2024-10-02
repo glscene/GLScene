@@ -21,7 +21,7 @@ uses
   GLS.TerrainRenderer,
   GLS.Objects,
   GLS.HeightData,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.Cadencer,
   GLS.Texture,
   GLS.HUDObjects,

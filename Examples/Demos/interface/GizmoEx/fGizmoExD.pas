@@ -22,7 +22,7 @@ uses
   GLS.Objects,
   GLScene.VectorTypes,
   GLS.SceneViewer,
-  GLScene.XCollection,
+  GLS.XCollection,
 
   GLScene.Utils,
   GLS.GizmoEx,

@@ -26,7 +26,8 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.GeometryBB,
+
+  GXS.GeometryBB,
   GXS.PersistentClasses;
 
 const

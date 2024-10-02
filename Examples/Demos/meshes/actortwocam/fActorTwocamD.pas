@@ -23,7 +23,7 @@ uses
   GLS.BaseClasses,
   GLScene.Utils,
   GLScene.VectorGeometry,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.PersistentClasses,
 
   GLS.Scene,
@@ -135,7 +135,7 @@ var
   moving: String;
   boost: Single;
 begin
-  // This function uses asynchronous keyboard check (see GLScene.XCollection.pas)
+  // This function uses asynchronous keyboard check (see GLS.XCollection.pas)
   if IsKeyDown(VK_ESCAPE) then
     Close;
   if IsKeyDown('A') then

@@ -19,7 +19,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLS.VectorLists,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.Context;
 
 type

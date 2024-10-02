@@ -26,9 +26,9 @@ uses
   GLS.VerletTypes,
   GLS.VerletClothify,
   GLS.ShadowVolume,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.VectorGeometry,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.SpacePartition,
 
   GLS.Material,

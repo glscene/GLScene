@@ -18,7 +18,7 @@ uses
 
   System.Classes,
 
-  GLScene.XCollection,
+  GXS.XCollection,
   GXS.PersistentClasses,
   GXS.Scene,
   GLScene.PipelineTransform,

@@ -26,13 +26,13 @@ uses
   GLScene.VectorTypes,
   GXS.Silhouette,
 
-  GLScene.GeometryBB,
   GLScene.VectorGeometry,
   GLScene.Polynomials,
   GXS.VectorFileObjects,
   GLScene.PipelineTransform,
   GXS.Material,
   GXS.Texture,
+  GXS.GeometryBB,
 
 
   GXS.Context,

@@ -26,7 +26,7 @@ uses
   GXS.State,
   GXS.ImageUtils,
 
-  Formats.OCT;
+  Formatx.OCT;
 
 type
 

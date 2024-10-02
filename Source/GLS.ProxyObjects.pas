@@ -17,7 +17,7 @@ uses
 
   GLScene.OpenGLTokens,
   GLS.Scene,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.PipelineTransform,
   GLScene.VectorGeometry,
   GLS.Texture,

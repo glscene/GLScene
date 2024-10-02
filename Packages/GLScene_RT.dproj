@@ -258,7 +258,7 @@
         <DCCReference Include="..\Source\GLScene.Keyboard.pas"/>
         <DCCReference Include="..\Source\GLS.GameMenu.pas"/>
         <DCCReference Include="..\Source\GLS.GeomObjects.pas"/>
-        <DCCReference Include="..\Source\GLScene.GeometryBB.pas"/>
+        <DCCReference Include="..\Source\GLS.GeometryBB.pas"/>
         <DCCReference Include="..\Source\GLScene.Generics.pas"/>
         <DCCReference Include="..\Source\GLS.Gizmo.pas"/>
         <DCCReference Include="..\Source\GLS.GizmoEx.pas"/>
@@ -369,7 +369,7 @@
         <DCCReference Include="..\Source\GLS.zBuffer.pas"/>
         <DCCReference Include="..\Source\GLS.Silhouette.pas"/>
         <DCCReference Include="..\Source\GLS.ScriptBase.pas"/>
-        <DCCReference Include="..\Source\GLScene.XCollection.pas"/>
+        <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
         <DCCReference Include="..\Source\GLS.InitOpenGL.pas"/>
         <DCCReference Include="..\Source\GLScene.OpenGLTokens.pas"/>

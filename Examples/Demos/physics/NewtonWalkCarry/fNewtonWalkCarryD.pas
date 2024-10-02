@@ -33,7 +33,7 @@ uses
   GLS.Coordinates,
   GLS.File3DS,
   GLS.Navigator,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.VectorTypes,
   GLS.Color,
   GLS.HUDObjects,

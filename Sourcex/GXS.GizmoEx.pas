@@ -23,11 +23,13 @@ uses
   System.Math,
   FMX.TextLayout,
 
-  GLScene.GeometryBB,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.PersistentClasses,
+  GLScene.PipelineTransform,
   GLScene.Strings,
+
+  GXS.PersistentClasses,
+  GXS.GeometryBB,
   GXS.Scene,
   GXS.Color,
   GXS.Material,
@@ -41,7 +43,6 @@ uses
   GXS.Canvas,
   GXS.Screen,
   GXS.State,
-  GLScene.PipelineTransform,
   GXS.Selection,
   GXS.ImageUtils,
   GXS.Context;

@@ -30,8 +30,8 @@ uses
   GXS.RenderContextInfo,
   GXS.Material,
 
-  Formats.m3DS,
-  Formats.m3DSTypes;
+  Formatx.m3DS,
+  Formatx.m3DSTypes;
 
 type
 

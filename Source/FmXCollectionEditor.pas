@@ -30,7 +30,7 @@ uses
   GLS.Scene,
   GLS.Behaviours,
   GLS.MaterialEx,
-  GLScene.XCollection;
+  GLS.XCollection;
 
 type
   TXCollectionEditorForm = class(TForm)

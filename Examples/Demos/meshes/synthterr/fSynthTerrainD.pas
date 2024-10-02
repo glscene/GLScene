@@ -30,7 +30,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.XCollection,
+  GLS.XCollection,
 
   GLS.ShadowHDS;
 

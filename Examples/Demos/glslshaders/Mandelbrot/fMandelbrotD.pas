@@ -23,7 +23,7 @@ uses
   GLS.Cadencer,
   GLS.Scene,
   GLS.Context,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.Utils,
   GLS.FileTGA,
   GLS.HUDObjects,

@@ -31,7 +31,7 @@ uses
   GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.SpacePartition,
-  GLScene.GeometryBB;
+  GXS.GeometryBB;
 
 const
   G_DRAG = 0.0001;

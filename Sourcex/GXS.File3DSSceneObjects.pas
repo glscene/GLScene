@@ -14,10 +14,11 @@ uses
   System.Math,
 
   GLScene.VectorGeometry,
+  GLScene.VectorTypes,
+
   GXS.Context,
   GXS.Scene,
   GXS.VectorFileObjects,
-  GLScene.VectorTypes,
   GXS.PersistentClasses,
   GXS.Coordinates,
   GXS.RenderContextInfo,
@@ -91,9 +92,7 @@ type
 var
   vFile3DSSceneObjects_RenderCameraAndLights: Boolean = False;
 
-//===============================================================
-implementation
-//===============================================================
+implementation //------------------------------------------------------------
 
 function MakeRotationQuaternion(const axis: TAffineVector; angle: Single): TQuaternion;
 var

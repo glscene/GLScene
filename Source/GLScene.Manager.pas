@@ -20,9 +20,7 @@ procedure DeRegisterManager(aManager: TComponent);
 function FindManager(classType: TComponentClass; const managerName: String)
   : TComponent;
 
-// ------------------------------------------------------
-implementation
-// ------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 var
   vManagers: TList;

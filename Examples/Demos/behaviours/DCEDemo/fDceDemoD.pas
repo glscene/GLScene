@@ -35,7 +35,7 @@ uses
   GLS.Context,
   GLS.EllipseCollision,
   GLS.RenderContextInfo,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.ProxyObjects,
   GLS.State,
   GLScene.Utils,

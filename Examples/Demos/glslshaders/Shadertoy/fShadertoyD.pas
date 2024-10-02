@@ -17,7 +17,7 @@ uses
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.RenderContextInfo,
   GLS.OpenGLAdapter,
   GLScene.TextureFormat,

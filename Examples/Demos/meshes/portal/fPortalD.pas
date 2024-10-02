@@ -24,7 +24,7 @@ uses
   GLScene.Keyboard,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.Utils,
 
   GLS.Texture,

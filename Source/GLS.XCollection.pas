@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLScene.XCollection;
+unit GLS.XCollection;
 
 (* A polymorphism-enabled TCollection-like set of classes *)
 
@@ -15,8 +15,9 @@ uses
   System.Classes,
   System.SysUtils,
   System.Types,
-  GLScene.Strings,
-  GLS.PersistentClasses
+  GLS.PersistentClasses,
+  GLScene.Strings
+
 {$IFDEF DEBUG_XCOLLECTION}, System.TypInfo {$ENDIF};
 
 type

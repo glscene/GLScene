@@ -31,7 +31,7 @@ uses
   GXS.Material,
   GLScene.TextureFormat,
 
-  Formats.Q3BSP;
+  Formatx.Q3BSP;
 
 type
 

@@ -21,7 +21,7 @@ uses
   GLS.SceneViewer,
   GLS.SkyDome,
   GLS.Objects,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.HeightData,
   GLS.TerrainRenderer,
   GLS.Texture,
@@ -30,7 +30,7 @@ uses
   GLS.SpacePartition,
   GLScene.VectorGeometry,
   GLS.BitmapFont,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.WindowsFont,
   GLS.HUDObjects,
 

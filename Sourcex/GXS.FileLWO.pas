@@ -13,6 +13,7 @@ uses
   System.SysUtils,
   System.Classes,
   System.Math,
+  
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GXS.VectorLists,
@@ -20,7 +21,7 @@ uses
   GXS.Material,
   GXS.VectorFileObjects,
 
-  Formats.LWO;
+  Formatx.LWO;
 
 type
   TgxLWOVectorFile = class(TgxVectorFile)

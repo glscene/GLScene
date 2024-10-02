@@ -25,7 +25,7 @@ uses
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.VectorLists,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.GeomObjects,
   GLS.Navigator,
   GLS.RenderContextInfo,

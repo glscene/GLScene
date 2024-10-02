@@ -116,16 +116,14 @@ begin
   GLPoints1.Style := psRound;
   for I := 0 to NumPoints - 1 do
   begin
-    Color.X := Random();
-    Color.Y := Random();
-    Color.Z := Random();
-
     X := Random(10) - 5;
     Y := Random(10) - 5;
     Z := Random(10) - 5;
-
     GLPoints1.Positions.Add(X * 0.05, Y * 0.05, Z * 0.05);
-    // Fill array of GLPoints
+	
+	Color.X := Random();
+    Color.Y := Random();
+    Color.Z := Random();
     GLPoints1.Colors.AddPoint(Color);
   end;
 //  dcWorld.Remove(GLPoints1, False);

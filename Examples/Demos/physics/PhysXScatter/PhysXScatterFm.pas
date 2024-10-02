@@ -21,7 +21,7 @@ uses
   GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.Color,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLS.GeomObjects,

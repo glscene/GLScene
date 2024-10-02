@@ -14,7 +14,7 @@ interface
 
 uses
   System.Classes,
-  GLScene.XCollection;
+  GXS.XCollection;
 
 type
   TgxScriptState = (ssUncompiled, // The script has yet to be compiled.

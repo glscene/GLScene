@@ -23,7 +23,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.Keyboard,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.Coordinates,
 
   GLS.Objects,

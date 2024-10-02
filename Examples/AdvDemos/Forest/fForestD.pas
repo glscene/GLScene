@@ -19,7 +19,7 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.BaseClasses,

@@ -21,7 +21,7 @@ uses
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.VectorFileObjects,
   GLS.RenderContextInfo,
   GLScene.Utils,

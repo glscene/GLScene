@@ -29,7 +29,7 @@ uses
   GLS.AsyncTimer,
   GLS.Material,
   GLS.Coordinates,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLScene.TextureFormat,

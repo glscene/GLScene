@@ -22,17 +22,18 @@ uses
   System.SysUtils,
   System.Classes,
 
-  GXS.VectorLists,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
+  GLScene.PipelineTransform,
+
+  GXS.VectorLists,
   GXS.PersistentClasses,
-  GLScene.GeometryBB,
+  GXS.GeometryBB,
 
   GXS.Scene,
   GXS.Context,
   GXS.Silhouette,
   GXS.State,
-  GLScene.PipelineTransform,
   GXS.Color,
   GXS.RenderContextInfo;
 

@@ -26,7 +26,7 @@ uses
   System.Types,
   System.Classes,
 
-  GLScene.XCollection,
+  GXS.XCollection,
   GLScene.VectorTypes,
   GXS.Navigator,
   GLScene.VectorGeometry,

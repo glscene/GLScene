@@ -35,7 +35,7 @@ uses
   GLS.SimpleNavigation,
   GLS.State,
   GLS.Context,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.MultiSampleImage;
 
 type

@@ -10,7 +10,7 @@ uses
   System.Classes,
 
   GLS.PersistentClasses,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.BaseClasses,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,

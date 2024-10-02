@@ -31,7 +31,7 @@ uses
   GLS.Cadencer,
   GLS.ShadowPlane,
   GLS.File3DS,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.SpacePartition,
   GLS.GeomObjects,
   GLS.ShadowVolume,

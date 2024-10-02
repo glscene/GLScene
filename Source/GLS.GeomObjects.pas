@@ -32,7 +32,7 @@ uses
   GLS.PersistentClasses,
   GLS.VectorLists,
   GLS.Silhouette,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.VectorFileObjects,
   GLS.Material,
   GLS.Texture,

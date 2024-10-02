@@ -44,7 +44,7 @@ uses
   GLS.BaseClasses,
   GLS.PersistentClasses,
   GLScene.TextureFormat,
-  GLScene.XCollection,
+  GLS.XCollection,
 
   GLS.Material,
   GLS.Scene,

@@ -13,15 +13,15 @@ uses
 
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GXS.VectorLists,
   GLScene.TextureFormat,
 
   GXS.ApplicationFileIO,
+  GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.Texture,
   GXS.Material,
 
-  Formats.B3D;
+  Formatx.B3D;
 
 type
   TgxB3DVectorFile = class(TgxVectorFile)
@@ -30,11 +30,9 @@ type
     procedure LoadFromStream(AStream: TStream); override;
   end;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // -------------------------------------------------------------
 
-// ------------------------------ TgxB3DVectorFile ------------------------------
+// ------------------------------ TgxB3DVectorFile ----------------------------
 class function TgxB3DVectorFile.Capabilities: TDataFileCapabilities;
 begin
   Result := [DfcRead];

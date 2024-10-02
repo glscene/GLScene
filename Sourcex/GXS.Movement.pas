@@ -20,7 +20,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.XCollection,
+  GXS.XCollection,
   GXS.PersistentClasses,
   GXS.BaseClasses,
   GLScene.VectorTypes,

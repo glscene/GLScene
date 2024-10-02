@@ -11,13 +11,12 @@ uses
   Winapi.OpenGL,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.GeometryBB,
-  GXS.SpacePartition,
 
+  GXS.GeometryBB,
+  GXS.SpacePartition,
   GXS.Scene,
   GXS.Coordinates,
   GXS.SceneViewer,
-
   GXS.RenderContextInfo,
   GXS.State;
 

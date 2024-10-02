@@ -22,7 +22,7 @@ uses
   GLS.SceneViewer,
   GLScene.VectorGeometry,
   GLScene.VectorTypes,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.Texture,
   GLS.SpacePartition,
 

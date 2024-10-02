@@ -24,10 +24,9 @@ uses
   FMX.Dialogs,
 
   GLScene.OpenGLTokens,
-  GLScene.XCollection,
+  GXS.XCollection,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.GeometryBB,
   GLScene.TextureFormat,
   GLScene.Strings,
   GLScene.Utils,
@@ -35,6 +34,7 @@ uses
 
   GXS.BaseClasses,
   GXS.Coordinates,
+  GXS.GeometryBB,
   GXS.VectorLists,
   GXS.Color,
   GXS.XOpenGL,

@@ -36,7 +36,7 @@ uses
   GLSL.CustomShader,
   GLSL.Shader,
   GLScene.Utils,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.SoundManager,
   GLS.Sounds.BASS,
   GLS.FileWAV,

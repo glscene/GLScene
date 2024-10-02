@@ -27,7 +27,7 @@ uses
   GLS.Coordinates,
   GLScene.VectorGeometry,
   GLS.VectorLists,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
 
   GLS.Objects,
   GLS.Scene,

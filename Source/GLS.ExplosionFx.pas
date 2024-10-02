@@ -32,7 +32,7 @@ uses
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.VectorLists,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.Context,

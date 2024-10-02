@@ -1,7 +1,7 @@
 //
 // The graphics engine GLScene https://github.com/glscene
 //
-unit GLScene.GeometryBB;
+unit GLS.GeometryBB;
 
 (* Calculations and manipulations on Bounding Boxes *)
 
@@ -13,8 +13,8 @@ uses
   System.SysUtils,
 
   GLScene.VectorGeometry,
-  GLS.VectorLists,
-  GLScene.VectorTypes;
+  GLScene.VectorTypes,
+  GLS.VectorLists;
 
 type
   //  Structure for storing Bounding Boxes 
@@ -205,7 +205,7 @@ const
   CDirPlan: TDirPlan = (0, 0, 1, 1, 2, 2);
 
 implementation // -------------------------------------------------------------
- 
+
 // ------------------------------------------------------------------------------
 // ----------------- BB functions -------------------------------------------
 // ------------------------------------------------------------------------------

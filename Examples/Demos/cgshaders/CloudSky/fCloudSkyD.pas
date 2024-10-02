@@ -25,7 +25,7 @@ uses
   GLS.SkyDome,
   GLS.Texture,
   GLS.FileTGA,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,

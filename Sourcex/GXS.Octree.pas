@@ -17,7 +17,7 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GXS.VectorLists,
-  GLScene.GeometryBB,
+  GXS.GeometryBB,
   GXS.Context;
 
 type

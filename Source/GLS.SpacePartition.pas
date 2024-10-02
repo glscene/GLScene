@@ -41,7 +41,7 @@ uses
   GLS.Coordinates,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.Context,
   GLS.RenderContextInfo,
   GLS.SceneViewer,

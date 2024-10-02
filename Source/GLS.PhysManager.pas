@@ -11,7 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.VectorGeometry,
   GLS.Scene,
   GLS.PhysForces,

@@ -27,7 +27,7 @@ uses
   GLS.BaseClasses,
   GLS.SceneViewer,
   GLScene.VectorGeometry,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.SimpleNavigation;
 
 type

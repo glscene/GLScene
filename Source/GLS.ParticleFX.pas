@@ -28,7 +28,7 @@ uses
   GLScene.VectorTypes,
   GLS.PersistentClasses,
   GLScene.VectorGeometry,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.Material,
   GLS.Cadencer,
   GLS.VectorLists,

@@ -35,7 +35,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Coordinates,
   GLS.Screen, 
-  GLScene.XCollection;
+  GLS.XCollection;
 
 type
 

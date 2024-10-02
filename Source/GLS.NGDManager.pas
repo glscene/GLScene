@@ -25,8 +25,8 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
   GLS.VectorLists, // TGLAffineVectorList for Tree
-  GLScene.XCollection, // TXCollection file function
-  GLScene.GeometryBB, // For show debug
+  GLS.XCollection, // TXCollection file function
+  GLS.GeometryBB, // For show debug
   GLS.BaseClasses,
   GLS.PersistentClasses,
   GLS.Scene,

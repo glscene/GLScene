@@ -21,7 +21,7 @@ uses
   GLScene.VectorGeometry,
   GLS.Material,
   GLS.PersistentClasses,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.RenderContextInfo,
   GLS.BaseClasses, 
   GLS.Context, 

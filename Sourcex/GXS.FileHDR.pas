@@ -17,12 +17,13 @@ uses
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
   GLScene.RGBE,
+  GLScene.TextureFormat,
   GLScene.Strings,
+
   GXS.ApplicationFileIO,
 
   GXS.Context,
-  GXS.Graphics,
-  GLScene.TextureFormat;
+  GXS.Graphics;
 
 type
 

@@ -12,13 +12,13 @@ uses
   System.SysUtils,
 
   GLScene.VectorTypes,
-  GXS.VectorLists,
+  GLScene.VectorGeometry,
   GLScene.Utils,
 
+  GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.Texture,
   GXS.ApplicationFileIO,
-  GLScene.VectorGeometry,
   GXS.Material,
   GXS.ImageUtils;
 

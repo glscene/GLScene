@@ -17,7 +17,7 @@ uses
   DesignIntf,
   DesignEditors,
   }
-  GLScene.XCollection;
+  GXS.XCollection;
 
 type
   TPropertyAttribute = (paValueList, paSubProperties, paDialog, paMultiSelect,

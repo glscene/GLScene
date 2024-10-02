@@ -23,21 +23,22 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GXS.XOpenGL,
   GLScene.VectorTypes,
+  GLScene.VectorGeometry,
   GLScene.Strings,
+
   GXS.Context,
   GXS.MeshUtils,
   GXS.ImageUtils,
   GXS.ApplicationFileIO,
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
   GXS.Scene,
   GXS.VectorFileObjects,
   GXS.VectorLists,
   GXS.Texture,
   GXS.Color,
   GXS.RenderContextInfo,
+  GXS.XOpenGL,
   GXS.Material;
 
 const

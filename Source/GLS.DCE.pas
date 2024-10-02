@@ -35,7 +35,7 @@ uses
   GLS.BaseClasses,
   GLS.Coordinates,
   GLScene.Manager,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.VectorLists,
 
   GLS.Scene,

@@ -36,7 +36,7 @@ uses
   GLS.PersistentClasses,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLScene.Utils,
 
   GLS.Scene,

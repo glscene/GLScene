@@ -30,7 +30,7 @@ uses
   GLScene.TextureFormat,
   GXS.FileDDS,
 
-  Formats.DXTC;
+  Formatx.DXTC;
 
 
 type

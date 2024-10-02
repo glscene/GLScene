@@ -20,7 +20,7 @@ uses
 
   GXS.VectorFileObjects,
   GXS.Material,
-  Formats.MD3;
+  Formatx.MD3;
 
 type
   (* This class is used to extract the tag transform information

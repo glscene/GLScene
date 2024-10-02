@@ -21,7 +21,7 @@ uses
   GLScene.OpenGLTokens,
   GLS.PersistentClasses,
   GLScene.VectorGeometry,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.Spline,
   GLS.BaseClasses,
 

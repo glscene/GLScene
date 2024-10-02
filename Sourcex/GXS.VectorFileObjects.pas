@@ -24,10 +24,10 @@ uses
   GLScene.VectorGeometry,
   GLScene.Strings,
   GLScene.Utils,
-  GLScene.GeometryBB,
   GLScene.TextureFormat,
 
   GXS.BaseClasses,
+  GXS.GeometryBB,
   GXS.VectorLists,
   GXS.PersistentClasses,
   GXS.Coordinates,

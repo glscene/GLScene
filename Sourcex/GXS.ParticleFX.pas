@@ -40,7 +40,7 @@ uses
   GXS.Coordinates,
   GXS.RenderContextInfo,
   GLScene.PipelineTransform,
-  GLScene.XCollection,
+  GXS.XCollection,
   GLScene.TextureFormat;
 
 const

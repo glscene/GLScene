@@ -41,7 +41,7 @@ uses
   GLS.Material,
   GLS.Mesh,
   GLS.Octree,
-  GLScene.GeometryBB,
+  GLS.GeometryBB,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.ApplicationFileIO,

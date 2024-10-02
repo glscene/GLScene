@@ -18,7 +18,7 @@ uses
   GLScene.Keyboard,
   GLScene.VectorTypes,
   GLScene.VectorGeometry,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLS.Coordinates,
   GLS.BaseClasses,
 

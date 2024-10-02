@@ -1,7 +1,7 @@
 //
 // The graphics engine GXScene https://github.com/glscene
 //
-unit GLScene.XCollectionRegister;
+unit GXS.XCollectionRegister;
 
 (* Register TXCollection property editor *)
 (* TODO *)
@@ -16,7 +16,7 @@ uses
 ///  DesignEditors,
 ///  DesignIntf,
 
-    GLScene.XCollection,
+    GXS.XCollection,
     FMxXCollectionEditor;
 
 type

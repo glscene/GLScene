@@ -29,7 +29,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.FileMD2,
-  GLScene.XCollection,
+  GLS.XCollection,
   GLScene.Utils,
   GLSL.ShapeShaders;
 

@@ -11,7 +11,7 @@ interface
 
 uses
   System.Classes,
-  GLScene.XCollection,
+  GLS.XCollection,
 
   DesignEditors,
   DesignIntf;
