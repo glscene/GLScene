@@ -15,7 +15,7 @@ unit GXS.MeshCSG;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils, 
@@ -23,9 +23,9 @@ uses
   System.Math,
   
   GXS.Scene, 
-  GLScene.VectorTypes, 
+  Stage.VectorTypes, 
   GXS.VectorFileObjects,
-  GLScene.VectorGeometry, 
+  Stage.VectorGeometry, 
   GXS.BSP, 
   GXS.VectorLists;
 

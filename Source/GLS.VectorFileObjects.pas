@@ -1,5 +1,5 @@
 ﻿//
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.VectorFileObjects;
 (*
@@ -16,7 +16,7 @@ unit GLS.VectorFileObjects;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,21 +27,21 @@ uses
   System.Math,
   VCL.Consts,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorTypesExt,
-  GLScene.TextureFormat,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorTypesExt,
+  Stage.TextureFormat,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.GeometryBB,
-  GLScene.Utils,
+  Stage.Utils,
 
   GLS.Scene,
   GLS.Silhouette,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
@@ -49,7 +49,7 @@ uses
   GLS.ApplicationFileIO,
   GLS.Context,
   GLS.Color,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.Selection,
   GLS.XOpenGL,
   GLS.MeshUtils,

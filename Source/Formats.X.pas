@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.X;
 
@@ -7,17 +7,17 @@ unit Formats.X;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TDXNode = class;

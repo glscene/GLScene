@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.CgShader;
 
@@ -12,18 +12,18 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
   GLS.VectorLists,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Texture,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.Cadencer,
   GLS.Context,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
 
   Cg.Import,
   Cg.GL;

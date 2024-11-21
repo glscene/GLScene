@@ -19,13 +19,13 @@ uses
 
   GLS.Scene,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
-  GLScene.Keyboard,
+  Stage.Keyboard,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.XCollection,
-  GLScene.Utils,
+  Stage.Utils,
 
   GLS.Texture,
   GLS.VectorFileObjects,

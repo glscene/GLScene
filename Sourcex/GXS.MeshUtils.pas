@@ -7,7 +7,7 @@ unit GXS.MeshUtils;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -15,8 +15,8 @@ uses
   System.Math,
   GXS.PersistentClasses,
   GXS.VectorLists,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes;
+  Stage.VectorGeometry,
+  Stage.VectorTypes;
 
 (* Converts a triangle strips into a triangle list.
   Vertices are added to list, based on the content of strip. Both non-indexed

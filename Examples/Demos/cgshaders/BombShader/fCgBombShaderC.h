@@ -27,7 +27,7 @@
 #include "JPeg.hpp"
 #include "GLS.FileMD2.hpp"
 #include "GLS.File3DS.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 
 
 //---------------------------------------------------------------------------

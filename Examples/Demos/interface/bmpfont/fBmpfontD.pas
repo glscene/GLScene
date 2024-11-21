@@ -13,7 +13,7 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.HUDObjects,
   GLS.Objects,
   GLS.Cadencer,
@@ -21,7 +21,7 @@ uses
   GLS.GeomObjects,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.SceneViewer;
 
 type

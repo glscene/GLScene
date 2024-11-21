@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FRTextureEdit;
 
@@ -8,7 +8,7 @@ unit FRTextureEdit;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes, 
@@ -19,7 +19,7 @@ uses
   VCL.Buttons, 
   VCL.Controls,
   GLS.Graphics, 
-  GLScene.TextureFormat, 
+  Stage.TextureFormat, 
   GLS.Texture, 
   GLS.State, 
   GLS.TextureImageEditors;

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileLMTS;
 
@@ -7,18 +7,18 @@ unit GLS.FileLMTS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   Vcl.Graphics,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.PersistentClasses,
   GLS.Graphics,
@@ -107,7 +107,7 @@ implementation
 //---------------------------------------------------
 
 uses
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 // ------------------
 // ------------------ TGLLMTSVectorFile ------------------
@@ -685,9 +685,7 @@ begin
   setlength(Matinfo, 0);
 end;
 
-//-----------------------------------------------
-initialization
-//-----------------------------------------------
+initialization //-------------------------------------------------------------
 
 RegisterVectorFileFormat('lmts', 'Pulsar Studio LMTS File Format',
   TGLLMTSVectorFile);

@@ -14,7 +14,7 @@ uses
   System.Classes,
   FMX.Graphics,
 
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
 
   GXS.Graphics,
   GXS.Texture,

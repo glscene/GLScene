@@ -19,14 +19,14 @@ uses
   GLS.SceneViewer,
   GLS.Objects,
   GLS.Cadencer,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.GeomObjects,
  
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormShadowPlane = class(TForm)

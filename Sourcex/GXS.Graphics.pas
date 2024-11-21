@@ -12,7 +12,7 @@ unit GXS.Graphics;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -31,17 +31,17 @@ uses
   GR32,
 {$ENDIF}
 
-  GLScene.OpenGL4,
+  Stage.OpenGL4,
+  Stage.VectorGeometry,
+  Stage.Utils,
+  Stage.TextureFormat,
+  Stage.Strings,
 
-  GLScene.VectorGeometry,
   GXS.PersistentClasses,
   GXS.ApplicationFileIO,
   GXS.Context,
   GXS.ImageUtils,
-  GLScene.Utils,
-  GXS.Color,
-  GLScene.TextureFormat,
-  GLScene.Strings;
+  GXS.Color;
 
 type
   TgxPixel24 = packed record

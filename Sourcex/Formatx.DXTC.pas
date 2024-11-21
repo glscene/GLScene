@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit Formatx.DXTC;
 
@@ -10,7 +10,7 @@ unit Formatx.DXTC;
 
 interface
 
-{.$I GLScene.Defines.inc}
+{.$I Stage.Defines.inc}
 
 {$Z4}  // Minimum enum size = dword
 
@@ -18,8 +18,7 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.SysUtils,
-
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 const
   DDSD_CAPS = $00000001;

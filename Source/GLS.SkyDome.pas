@@ -1,5 +1,5 @@
 ﻿//
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.SkyDome;
 
@@ -7,7 +7,7 @@ unit GLS.SkyDome;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,9 +16,9 @@ uses
   System.UITypes,
   System.Math,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Scene,
   GLS.Graphics,
   GLS.Color,

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FBORenderer;
 
@@ -7,7 +7,7 @@ unit GLS.FBORenderer;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,13 +15,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
-  GLScene.TextureFormat,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.TextureFormat,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
 
   GLS.PersistentClasses,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.Scene,
   GLS.Texture,
   GLS.Context,
@@ -30,7 +30,7 @@ uses
   GLS.RenderContextInfo,
   GLS.State,
   GLS.MultiSampleImage,
-  GLScene.Logger;
+  Stage.Logger;
 
 const
   MaxColorAttachments = 32;

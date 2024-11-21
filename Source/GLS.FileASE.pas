@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileASE;
 
@@ -7,19 +7,19 @@ unit GLS.FileASE;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLScene.VectorTypes, 
-  GLScene.VectorGeometry, 
+  Stage.VectorTypes, 
+  Stage.VectorGeometry, 
   GLS.VectorLists,
   GLS.Texture,
   GLS.Material,
-  GLScene.Utils;
+  Stage.Utils;
 
 const
   GL_ASE_MAX_TEXURE_CHANNELS = 12; // maximum texture channels

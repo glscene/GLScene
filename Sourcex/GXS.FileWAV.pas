@@ -7,7 +7,7 @@ unit GXS.FileWAV;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.MMSystem,

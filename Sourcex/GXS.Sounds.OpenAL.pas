@@ -28,9 +28,9 @@ uses
 
   OpenAL.Import, //al, alut, alTypes
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Coordinates,
   GXS.SoundManager,
   GXS.SoundFileObjects;

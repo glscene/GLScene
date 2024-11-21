@@ -20,8 +20,8 @@ uses
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.VectorGeometry,
-  GLScene.Keyboard,
+  Stage.VectorGeometry,
+  Stage.Keyboard,
   GLS.XCollection,
 
   GLS.Scene,
@@ -30,7 +30,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Material,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TForm1 = class(TForm)

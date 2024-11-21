@@ -16,7 +16,7 @@ unit GXS.OutlineShader;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,7 +28,7 @@ uses
   GXS.RenderContextInfo,
   GXS.Context,
   GXS.State,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
 

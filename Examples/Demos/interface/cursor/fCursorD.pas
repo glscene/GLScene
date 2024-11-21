@@ -19,7 +19,7 @@ uses
 
   GLS.Scene,
   GLS.Objects,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
   GLS.Particles,
   GLS.Texture,
@@ -30,7 +30,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormCursor = class(TForm)

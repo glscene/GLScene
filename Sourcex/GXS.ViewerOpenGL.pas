@@ -7,7 +7,7 @@ unit GXS.ViewerOpenGL;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,8 +24,8 @@ uses
   FMX.Controls,
   FMX.Graphics,
 
-  GLScene.OpenGL4, // GL_ARB_framebuffer_object or GL_EXT_framebuffer_blit
-  GLScene.TextureFormat,
+  Stage.OpenGL4, // GL_ARB_framebuffer_object or GL_EXT_framebuffer_blit
+  Stage.TextureFormat,
 
   GXS.Scene,
   GXS.Context,

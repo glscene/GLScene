@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Atmosphere;
 
@@ -11,21 +11,21 @@ unit GLS.Atmosphere;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.SysUtils,
   System.Classes,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Context,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State;

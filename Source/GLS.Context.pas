@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Context;
 
@@ -7,7 +7,7 @@ unit GLS.Context;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,17 +25,17 @@ uses
   GLS.Generics,
 {$ENDIF}
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
+  Stage.Strings,
+  Stage.VectorTypes,
 
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.OpenGLAdapter,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.State,
   GLS.XOpenGL,
-  GLScene.Logger;
+  Stage.Logger;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Console;
 (*
@@ -37,7 +37,7 @@ unit GLS.Console;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -46,10 +46,10 @@ uses
   System.TypInfo,
   Vcl.Graphics,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
   GLS.Coordinates,
-  GLScene.Strings,
+  Stage.Strings,
 
   GLS.Scene,
   GLS.Objects,
@@ -59,7 +59,7 @@ uses
   GLS.Context,
   GLS.ImageUtils,
   GLS.Texture,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Material;
 
 const

@@ -18,8 +18,8 @@ uses
   System.SysUtils,
 
   GXS.Context,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.Texture,
   GXSL.CustomShader,
   GXS.RenderContextInfo;

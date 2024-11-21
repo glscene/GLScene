@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.PerlinPFX;
 
@@ -7,18 +7,18 @@ unit GLS.PerlinPFX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.Math,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.ParticleFX,
   GLS.Graphics,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry;
+  Stage.VectorTypes,
+  Stage.VectorGeometry;
 
 
 const

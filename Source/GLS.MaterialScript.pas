@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.MaterialScript;
@@ -8,18 +8,18 @@ unit GLS.MaterialScript;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils,
   System.Classes,
   VCL.StdCtrls,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Texture,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.Graphics,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Color,
   GLS.Coordinates,
   GLS.Material,

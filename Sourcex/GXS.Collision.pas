@@ -7,16 +7,16 @@ unit GXS.Collision;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GXS.XCollection,
-  GLScene.VectorGeometry,
-  GLScene.Manager,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Manager,
+  Stage.VectorTypes,
 
   GXS.VectorLists,
   GXS.GeometryBB,

@@ -20,7 +20,7 @@ unit GXS.MultiPolygon;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,10 +29,10 @@ uses
   System.SysUtils,
 
   GXS.XOpenGL,
-  GLScene.Spline,
+  Stage.Spline,
   GXS.Context,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.PersistentClasses,
   GXS.Scene,

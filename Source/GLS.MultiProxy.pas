@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.MultiProxy;
 
@@ -7,22 +7,22 @@ unit GLS.MultiProxy;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
 
   GLS.Context,
   GLS.Scene,
   GLS.Silhouette,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.MaterialMultiProxy;
@@ -24,7 +24,7 @@ unit GLS.MaterialMultiProxy;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,17 +32,17 @@ uses
   System.SysUtils,
   
   GLS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.Material,
   GLS.Silhouette,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.PersistentClasses,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.Context,
-  GLScene.VectorTypes,
-  GLScene.PipelineTransform;
+  Stage.VectorTypes,
+  Stage.PipelineTransform;
 
 type
   TGLMaterialMultiProxy = class;

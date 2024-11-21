@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.GizmoEx;
 
@@ -11,7 +11,7 @@ unit GLS.GizmoEx;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,9 +24,9 @@ uses
   GLS.Scene,
   GLS.Color,
   GLS.Objects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Material,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.GeomObjects,
   GLS.BitmapFont,
   GLS.SceneViewer,
@@ -34,7 +34,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.GeometryBB,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Canvas,
   GLS.PersistentClasses,
   GLS.Screen,
@@ -464,9 +464,9 @@ implementation
 
 uses
   GLS.Context,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
 
-  GLScene.OpenGLTokens;
+  Stage.OpenGLTokens;
 
 procedure RotateAroundArbitraryAxis(const anObject: TGLBaseSceneObject; const Axis, Origin: TAffineVector; const angle: Single);
 var

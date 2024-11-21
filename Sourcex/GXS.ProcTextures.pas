@@ -13,12 +13,12 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.Strings,
 
   GXS.Texture,
   GXS.Graphics,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 const
   GRADIENT_TABLE_SIZE = 256;

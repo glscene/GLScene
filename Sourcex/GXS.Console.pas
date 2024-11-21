@@ -33,7 +33,7 @@ unit GXS.Console;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -44,10 +44,10 @@ uses
   System.UIConsts,
   FMX.Graphics,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.PersistentClasses,
-  GLScene.Strings,
-  GLScene.Utils,
+  Stage.Strings,
+  Stage.Utils,
   GXS.Coordinates,
 
   GXS.Scene,

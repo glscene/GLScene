@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FPSMovement;
 
@@ -7,7 +7,7 @@ unit GLS.FPSMovement;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,11 +17,11 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Coordinates,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Context,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.VectorLists,
@@ -30,7 +30,7 @@ uses
   GLS.Navigator,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
-  GLScene.Manager,
+  Stage.Manager,
   GLS.State;
 
 type

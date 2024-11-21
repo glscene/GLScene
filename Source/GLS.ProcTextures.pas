@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.ProcTextures;
@@ -15,8 +15,8 @@ uses
   
   GLS.Texture,
   GLS.Graphics,
-  GLScene.TextureFormat,
-  GLScene.VectorGeometry;
+  Stage.TextureFormat,
+  Stage.VectorGeometry;
 
 const
   GRADIENT_TABLE_SIZE = 256;

@@ -22,8 +22,8 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SmoothNavigator.hpp"
-#include "GLScene.Keyboard.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Keyboard.hpp"
+#include "Stage.Utils.hpp"
 
 
 //---------------------------------------------------------------------------

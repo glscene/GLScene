@@ -15,7 +15,7 @@ uses
 
   GLS.Objects,
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SceneViewer,
   GLS.SkyDome,
   GLS.Cadencer,

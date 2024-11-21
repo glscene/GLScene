@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileMD3;
 
@@ -13,7 +13,7 @@ uses
   GLS.VectorFileObjects, 
   GLS.Material, 
   GLS.ApplicationFileIO,
-  GLScene.VectorGeometry, 
+  Stage.VectorGeometry, 
   Formats.MD3,
   GLS.Texture;
 

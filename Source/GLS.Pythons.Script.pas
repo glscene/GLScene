@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Pythons.Script;
 (*
@@ -14,7 +14,7 @@ uses
 
   GLS.XCollection,
   GLS.ScriptBase,
-  GLScene.Manager,
+  Stage.Manager,
 
   Python.Engine;  // should be in ..\source dir!
 

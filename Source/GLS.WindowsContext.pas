@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.WindowsContext;
 
@@ -7,7 +7,7 @@ unit GLS.WindowsContext;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,15 +18,15 @@ uses
   System.Classes,
   Vcl.Forms,
 
-  GLScene.VectorTypes,
-  GLScene.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.Context,
   GLS.State,
-  GLScene.Logger,
-  GLScene.Strings,
-  GLScene.VectorGeometry;
+  Stage.Logger,
+  Stage.Strings,
+  Stage.VectorGeometry;
 
 type
   // A context driver for standard Windows OpenGL (via MS OpenGL).

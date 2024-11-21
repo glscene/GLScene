@@ -7,7 +7,7 @@ unit GXS.FPSMovement;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,9 +16,9 @@ uses
   System.UITypes,
   FMX.Graphics,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Manager,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Manager,
 
   GXS.Context,
   GXS.Scene,

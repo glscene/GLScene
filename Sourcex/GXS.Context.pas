@@ -10,7 +10,7 @@ unit GXS.Context;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,13 +27,14 @@ uses
   FMX.Types,
   FMX.Dialogs,
 
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Strings,
+  Stage.PipelineTransform,
+  Stage.TextureFormat,
+
  // GXS.OpenGLx,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
-  GXS.State,
-  GLScene.PipelineTransform,
-  GLScene.TextureFormat;
+  GXS.State;
 
 // Buffer ID's for Multiple-Render-Targets (using GL_ATI_draw_buffers)
 const

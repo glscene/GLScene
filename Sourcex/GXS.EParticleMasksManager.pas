@@ -27,7 +27,7 @@ unit GXS.EParticleMasksManager;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -40,8 +40,8 @@ uses
   GXS.Texture,
   GXS.Material,
   GXS.Scene,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.ParticleFX,
   GXS.Coordinates;
 

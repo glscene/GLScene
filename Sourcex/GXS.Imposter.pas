@@ -7,7 +7,7 @@ unit GXS.Imposter;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,9 +18,9 @@ uses
 
   GXS.Scene,
   GXS.Context,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Utils,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Utils,
   GXS.PersistentClasses,
   GXS.Graphics,
   GXS.Color,
@@ -28,8 +28,8 @@ uses
   GXS.Coordinates,
   GXS.BaseClasses,
   GXS.State,
-  GLScene.PipelineTransform,
-  GLScene.TextureFormat,
+  Stage.PipelineTransform,
+  Stage.TextureFormat,
   GXS.ImageUtils;
 
 type

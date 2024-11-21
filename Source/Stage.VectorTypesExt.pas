@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.VectorTypesExt;
+unit Stage.VectorTypesExt;
 
 interface
 
@@ -12,7 +12,7 @@ uses
   System.Rtti,
   System.Math,
   System.Math.Vectors,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
   // Extended may be replaced with BigDecimals

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ApplicationFileIO;
 (*
@@ -8,7 +8,7 @@ unit GLS.ApplicationFileIO;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -16,8 +16,8 @@ uses
   System.SysUtils,
 
   GLS.BaseClasses,
-  GLScene.Strings,
-  GLScene.Logger;
+  Stage.Strings,
+  Stage.Logger;
 
 const
   GLS_RC_DDS_Type = RT_RCDATA;

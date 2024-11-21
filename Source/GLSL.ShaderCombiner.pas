@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLSL.ShaderCombiner;
 
@@ -14,15 +14,15 @@ unit GLSL.ShaderCombiner;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
 
   GLS.Material,
   GLS.Scene,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.Strings,
   GLS.RenderContextInfo;
 
 type

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.zBuffer;
 
@@ -24,7 +24,7 @@ unit GLS.zBuffer;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,10 +32,10 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
-  GLScene.TextureFormat,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
+  Stage.TextureFormat,
+  Stage.VectorTypes,
 
   GLS.XOpenGL,
   GLS.Scene,

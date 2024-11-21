@@ -24,8 +24,8 @@ uses
   GR32,
 
   GLS.HeightTileFileHDS,
-  GLScene.VectorGeometry,
-  GLScene.Utils;
+  Stage.VectorGeometry,
+  Stage.Utils;
 
 type
   TViewerForm = class(TForm)

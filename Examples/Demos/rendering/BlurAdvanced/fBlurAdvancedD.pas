@@ -28,7 +28,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormBlurAdvanced = class(TForm)

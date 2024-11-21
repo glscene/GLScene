@@ -16,6 +16,10 @@ uses
   Vcl.StdCtrls,
 
 
+  Stage.VectorGeometry,
+  Stage.KeyBoard,
+  Stage.Utils,
+
   GLS.Scene,
   GLS.Texture,
   GLS.Cadencer,
@@ -30,13 +34,11 @@ uses
   GLS.VectorLists,
   GLS.Octree,
   GLS.File3DS,
-  GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.Material,
   GLS.Coordinates,
   GLS.SimpleNavigation,
-  GLS.BaseClasses,
-  GLScene.Utils;
+  GLS.BaseClasses;
 
 type
   TFormFPSMovement = class(TForm)

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Canvas;
 (*
@@ -9,7 +9,7 @@ unit GLS.Canvas;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,9 +18,9 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Color,
   GLS.Context,
   GLS.State;

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLSL.ShaderParameter;
@@ -8,17 +8,17 @@ unit GLSL.ShaderParameter;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 {$M-}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
-  GLScene.Strings,
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes, 
-  GLScene.TextureFormat, 
+  Stage.Strings,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes, 
+  Stage.TextureFormat, 
   GLS.RenderContextInfo;
 
 type

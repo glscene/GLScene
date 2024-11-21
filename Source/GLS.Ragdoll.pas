@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Ragdoll;
 
@@ -7,13 +7,13 @@ unit GLS.Ragdoll;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   GLS.Scene,
   GLS.PersistentClasses,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.VectorFileObjects,
   GLS.VectorLists,
   GLS.Objects;

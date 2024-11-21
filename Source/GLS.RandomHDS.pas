@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.RandomHDS;
 
@@ -56,10 +56,10 @@ uses
   Vcl.Imaging.jpeg,
   Vcl.Forms,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.HeightData,
   GLS.TerrainRenderer,
   GLS.Texture,
@@ -2615,7 +2615,7 @@ end;
 procedure TGLFractalArchipelago.fOnCreateDefaultTile(heightData: TGLHeightData);
 var
   x, y: integer;
-  rasterLine: GLScene.VectorGeometry.PSingleArray;
+  rasterLine: Stage.VectorGeometry.PSingleArray;
   oldType: TGLHeightDataType;
 begin
   with heightData do

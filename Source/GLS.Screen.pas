@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Screen;
 
@@ -13,7 +13,7 @@ uses
   System.SysUtils,
   VCL.Forms,
 
-  GLScene.VectorGeometry;
+  Stage.VectorGeometry;
 
 const
   MaxVideoModes = 200;

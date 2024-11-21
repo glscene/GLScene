@@ -20,7 +20,7 @@ uses
   GXS.GXS.XCollection, 
   GXS.ScriptDws, 
   GXS.BaseClasses, 
-  GLScene.Manager;
+  Stage.Manager;
 
 type
   { A DelphiWebScript enabled behaviour. This behaviour also calls

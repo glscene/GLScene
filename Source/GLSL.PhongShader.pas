@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLSL.PhongShader;
 
@@ -7,7 +7,7 @@ unit GLSL.PhongShader;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,10 +16,10 @@ uses
   System.SysUtils,
 
   GLS.Texture,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.VectorLists,
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Context,
   GLSL.AsmShader,
   GLS.RenderContextInfo,

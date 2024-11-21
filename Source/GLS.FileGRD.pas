@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileGRD;
 
@@ -7,18 +7,18 @@ unit GLS.FileGRD;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
   GLS.Graph,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   (* The GRD file represents ascii grid formats in 2D/3D.

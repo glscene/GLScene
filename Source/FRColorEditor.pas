@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FRColorEditor;
 
@@ -7,7 +7,7 @@ unit FRColorEditor;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   WinApi.Windows, 
@@ -22,10 +22,10 @@ uses
   VCL.Controls, 
   VCL.Graphics,
    
-  GLScene.VectorGeometry, 
+  Stage.VectorGeometry, 
   GLS.Color, 
   GLS.Texture, 
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
   TRColorEditor = class(TFrame)

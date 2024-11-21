@@ -57,10 +57,10 @@ uses
 ///  Fmx.Imaging.jpeg,
   Fmx.Forms,
 
-  GLScene.OpenGL4,
+  Stage.OpenGL4,
   GXS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.HeightData,
   GXS.TerrainRenderer,
   GXS.Texture,

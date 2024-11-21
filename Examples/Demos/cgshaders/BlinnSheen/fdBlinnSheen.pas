@@ -18,12 +18,12 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Texture,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
   GLS.AsyncTimer,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Material,
   GLS.Coordinates,
 
@@ -33,7 +33,7 @@ uses
   GLS.FileTGA,
   GLS.File3DS,
   GLS.PersistentClasses,
-  GLScene.Utils,
+  Stage.Utils,
 
   Cg.GL,
   GLS.CgShader;

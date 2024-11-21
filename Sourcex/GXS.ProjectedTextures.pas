@@ -7,18 +7,18 @@ unit GXS.ProjectedTextures;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
 
   GXS.XOpenGL,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Scene,
   GXS.PersistentClasses,
   GXS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.RenderContextInfo,
   GXS.State,
   GXS.Context;

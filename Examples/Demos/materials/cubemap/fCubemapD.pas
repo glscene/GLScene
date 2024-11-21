@@ -17,7 +17,7 @@ uses
   GLS.Texture,
   GLS.FileDDS,
   GLS.Context,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.GeomObjects;

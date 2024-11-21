@@ -18,8 +18,8 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.ShadowPlane,
-  GLS.Graph, GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  GLS.Graph, Stage.VectorTypes,
+  Stage.VectorGeometry,
  
   GLS.Coordinates,
   GLS.BaseClasses,

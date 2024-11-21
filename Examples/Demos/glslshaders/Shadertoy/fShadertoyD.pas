@@ -12,7 +12,7 @@ uses
   Vcl.Forms,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.BaseClasses,
   GLS.Objects,
   GLS.Cadencer,
@@ -20,14 +20,14 @@ uses
   GLS.XCollection,
   GLS.RenderContextInfo,
   GLS.OpenGLAdapter,
-  GLScene.TextureFormat,
-  GLScene.VectorGeometry,
+  Stage.TextureFormat,
+  Stage.VectorGeometry,
 
   GLS.AsyncTimer,
   GLS.Context,
   GLS.Coordinates,
   GLS.HUDObjects,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormEiffie = class(TForm)

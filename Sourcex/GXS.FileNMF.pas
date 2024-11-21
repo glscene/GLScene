@@ -10,9 +10,9 @@ interface
 uses
   System.Classes,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.VectorFileObjects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.ApplicationFileIO;
 

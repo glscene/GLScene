@@ -30,10 +30,10 @@ uses
   
   GXS.PersistentClasses,
   GXS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Coordinates,
   GXS.SmoothNavigator, 
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

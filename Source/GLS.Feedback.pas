@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Feedback;
 
@@ -17,17 +17,17 @@ unit GLS.Feedback;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.PipelineTransform,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.PipelineTransform,
 
   GLS.PersistentClasses,
   GLS.VectorLists,

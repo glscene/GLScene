@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ODEUtils;
 
@@ -19,9 +19,9 @@ uses
   System.Classes,
 
   ODE.Import,
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Scene,
   GLS.Context,
   GLS.PersistentClasses,

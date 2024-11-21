@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ProjectedTextures;
 
@@ -7,18 +7,18 @@ unit GLS.ProjectedTextures;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.PersistentClasses,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.State,
   GLS.Material;

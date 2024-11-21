@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLSL.ProjectedTextures;
@@ -21,22 +21,22 @@ unit GLSL.ProjectedTextures;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Context,
   GLS.Color,
   GLS.RenderContextInfo,
-  GLScene.TextureFormat,
-  GLScene.VectorTypes;
+  Stage.TextureFormat,
+  Stage.VectorTypes;
 
 type
   TGLSLProjectedTexturesStyle = (ptsLight, ptsShadow);

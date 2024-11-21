@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.Cadencer,
@@ -27,7 +27,7 @@ uses
   GLS.VerletClothify,
   GLS.ShadowVolume,
   GLS.XCollection,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.GeometryBB,
   GLS.SpacePartition,
 
@@ -35,7 +35,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Context,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Coordinates,
   GLS.PersistentClasses;
 

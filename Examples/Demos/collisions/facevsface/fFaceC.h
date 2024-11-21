@@ -18,7 +18,7 @@
 #include "GLS.SpaceText.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "GLS.File3DS.hpp"
 
 

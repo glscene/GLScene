@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Navigator;
 
@@ -7,7 +7,7 @@ unit GLS.Navigator;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -19,6 +19,11 @@ uses
   Vcl.Graphics,
   Vcl.Forms,
 
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+  Stage.TextureFormat,
+
   GLS.Scene,
   GLS.SceneViewer,
   GLS.Objects,
@@ -26,15 +31,11 @@ uses
   GLS.Context,
   GLS.BaseClasses,
   GLS.PersistentClasses,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Keyboard,
   GLS.HudObjects,
   GLS.Coordinates,
   GLS.Screen,
   GLS.Material,
   GLS.Texture,
-  GLScene.TextureFormat,
   GLS.RenderContextInfo;
 
 type

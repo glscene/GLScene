@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.CUDA.Context;
 
@@ -7,15 +7,15 @@ unit GLS.CUDA.Context;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.BaseClasses,
   GLS.Context,
-  GLScene.Generics,
+  Stage.Generics,
 
   CUDA.Import,
   CUDA.RunTime;

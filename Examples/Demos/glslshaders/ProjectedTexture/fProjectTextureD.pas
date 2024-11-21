@@ -14,7 +14,7 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.SceneViewer,
@@ -22,11 +22,11 @@ uses
   GLS.VectorFileObjects,
   GLS.ShadowVolume,
   GLS.GeomObjects,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.FileLMTS,
   GLS.Context,
-  GLScene.VectorGeometry,
-  GLScene.PipelineTransform,
+  Stage.VectorGeometry,
+  Stage.PipelineTransform,
   GLSL.ProjectedTextures,
 
   GLS.Graphics,

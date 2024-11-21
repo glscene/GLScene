@@ -7,7 +7,7 @@ unit GXS.ProxyObjects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,16 +17,16 @@ uses
   GXS.XCollection,
   GXS.BaseClasses,
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.Strings,
   GXS.Scene,
   GXS.Texture,
   GXS.VectorFileObjects,
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.Context,
-  GLScene.PipelineTransform;
+  Stage.PipelineTransform;
 
 type
   EProxyException = class(Exception);

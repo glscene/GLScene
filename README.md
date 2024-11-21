@@ -5,8 +5,7 @@ freeforms, verlets and virtual intelligent actors.<br>
 Includes additional components for creating mesh objects with materials, shaders, animations, <br> 
 and developing graphics applications with physics. 
 ### How to install
-1. Download a zip archive of the last release or clone repository:<br>
-git clone https://github.com/glscene/GLScene.git<br>
+1. Download a zip archive of the last release or clone the repository
 2. Run ...GLScene/External/_setupDLL.cmd as admin to include dynamic libraries
 3. Configure the IDE settings and paths to sources
 4. Open GLScene.groupproj, compile and install components

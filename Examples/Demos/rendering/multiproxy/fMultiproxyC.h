@@ -18,7 +18,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Texture.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

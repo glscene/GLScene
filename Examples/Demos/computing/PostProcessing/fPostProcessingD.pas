@@ -14,7 +14,7 @@ uses
   Vcl.Dialogs,
   Vcl.ComCtrls,
 
-  GLScene.TextureFormat
+  Stage.TextureFormat
   GLS.Scene,
   GLS.Coordinates,
   GLS.Objects,
@@ -38,7 +38,7 @@ uses
   GLS.Context,
   GLSL.CustomShader,
   GLSL.Shader,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Texture;
 
 type

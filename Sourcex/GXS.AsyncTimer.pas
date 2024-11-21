@@ -8,13 +8,13 @@ unit GXS.AsyncTimer;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.SyncObjs,
-  GLScene.Utils;
+  Stage.Utils;
 
 const
   cDEFAULT_TIMER_INTERVAL = 1000;

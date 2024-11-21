@@ -13,11 +13,14 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls,
 
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.Keyboard,
+  Stage.Utils,
+
   GLS.XCollection,
-  GLScene.VectorGeometry,
   GLS.Scene,
   GLS.VectorFileObjects,
-  GLScene.VectorTypes,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Cadencer,
@@ -25,7 +28,6 @@ uses
   GLS.GeomObjects,
 
   GLS.Coordinates,
-  GLScene.Utils,
   GLS.BaseClasses,
   GLS.File3DS;
 

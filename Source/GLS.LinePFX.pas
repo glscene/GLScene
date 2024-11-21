@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.LinePFX;
 
@@ -7,22 +7,22 @@ unit GLS.LinePFX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.ParticleFX,
   GLS.Texture,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.Context,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

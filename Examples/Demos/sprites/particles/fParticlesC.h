@@ -8,7 +8,7 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <GLS.SceneViewer.hpp>
-#include <GLScene.VectorGeometry.hpp>
+#include <Stage.VectorGeometry.hpp>
 #include <GLS.Behaviours.hpp>
 #include <GLS.Cadencer.hpp>
 #include <GLS.Particles.hpp>

@@ -20,7 +20,7 @@
 #include "GLS.WaterPlane.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Objects.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "GLSL.UserShader.hpp"
 
 #pragma hdrstop

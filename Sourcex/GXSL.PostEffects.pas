@@ -7,7 +7,7 @@ unit GXSL.PostEffects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,8 +15,8 @@ uses
   System.SysUtils,
 
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.Strings,
   GXS.Scene,
   GXS.Texture,
   GXS.Graphics,
@@ -24,7 +24,7 @@ uses
   GXS.Context,
   GXS.RenderContextInfo,
   GXS.Material,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   EGLPostShaderHolderException = class(Exception);

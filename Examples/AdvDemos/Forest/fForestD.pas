@@ -17,14 +17,14 @@ uses
   Vcl.Imaging.Jpeg,
   Vcl.ExtCtrls,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.XCollection,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.BaseClasses,
-  GLScene.TextureFormat,
-  GLScene.Keyboard,
+  Stage.TextureFormat,
+  Stage.Keyboard,
 
   GLS.SceneViewer,
   GLS.Cadencer,
@@ -41,7 +41,7 @@ uses
   GLS.ParticleFX,
   GLS.Graphics,
   GLS.XOpenGL,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.TextureCombiners,
   GLS.Material,
   GLS.Coordinates,
@@ -52,7 +52,7 @@ uses
   GLS.Screen,
   GLS.State,
   GLS.FileTGA,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TForm1 = class(TForm)

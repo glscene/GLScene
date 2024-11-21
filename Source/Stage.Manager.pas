@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.Manager;
+unit Stage.Manager;
 (*
   Managers are used to manage many different kinds of clients in GLScene.
   They are registered so that when clients are loaded, the client can
@@ -9,7 +9,7 @@ unit GLScene.Manager;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,

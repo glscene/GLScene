@@ -1,20 +1,20 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.PipelineTransform;
+unit Stage.PipelineTransform;
 
 (* Pipeline transformations *)
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Logger;
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Logger;
 
 const
   MAX_MATRIX_STACK_DEPTH = 128;

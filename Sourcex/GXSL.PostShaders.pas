@@ -7,21 +7,21 @@ unit GXSL.PostShaders;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
 
   GXS.Texture,
   GXS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.Context,
   GXS.Material,
   GXSL.Shader,
   GXSL.CustomShader,
   GXS.RenderContextInfo,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 // Custom class for GLSLxPostBlurShader. A shader that blurs the entire scene }
 type

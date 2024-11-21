@@ -7,7 +7,7 @@ unit GXS.VerletClothify;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,9 +15,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorFileObjects,
   GXS.VerletTypes,
   GXS.Texture,

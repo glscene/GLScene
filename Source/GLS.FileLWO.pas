@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileLWO;
 
@@ -7,7 +7,7 @@ unit GLS.FileLWO;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -36,10 +36,10 @@ implementation
 //============================================
 
 uses
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.Material,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
   PVector3f = ^TVector3f;

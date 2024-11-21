@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.RandomLib;
+unit Stage.RandomLib;
 (*
   Some of the code is translated from:
   RANLIB - Library of Fortran Routines for Random Number Generation

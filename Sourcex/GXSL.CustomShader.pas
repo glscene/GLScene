@@ -18,17 +18,17 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.Texture, 
   GXS.Cadencer, 
   GXS.Scene,
-  GLScene.Strings, 
+  Stage.Strings, 
   GXS.Context,
   GXS.RenderContextInfo,
   GXS.Material,
   GXS.VectorLists, 
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GXSL.Parameter;
 
 const

@@ -1,182 +1,120 @@
 object FormQuakeActor: TFormQuakeActor
   Left = 0
   Top = 0
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'Quake Actor'
-  ClientHeight = 739
-  ClientWidth = 1248
+  ClientHeight = 422
+  ClientWidth = 709
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 168
-  TextHeight = 23
+  TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1248
-    Height = 128
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 709
+    Height = 73
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 1370
     object Label1: TLabel
-      Left = 28
-      Top = 28
-      Width = 127
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 16
+      Top = 16
+      Width = 72
+      Height = 13
       Caption = 'Legs Animation'
     end
     object Label2: TLabel
-      Left = 350
-      Top = 28
-      Width = 135
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 200
+      Top = 16
+      Width = 77
+      Height = 13
       Caption = 'Torso Animaiton'
     end
     object Label3: TLabel
-      Left = 665
-      Top = 14
-      Width = 124
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 380
+      Top = 8
+      Width = 71
+      Height = 13
       Caption = 'Torso direction'
     end
     object Label4: TLabel
-      Left = 868
-      Top = 14
-      Width = 44
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 496
+      Top = 8
+      Width = 25
+      Height = 13
       Caption = 'Head'
     end
     object Label5: TLabel
-      Left = 1078
-      Top = 35
-      Width = 35
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 616
+      Top = 20
+      Width = 19
+      Height = 13
       Caption = 'Skin'
     end
     object ComboBox1: TComboBox
-      Left = 28
-      Top = 56
-      Width = 296
-      Height = 31
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 16
+      Top = 32
+      Width = 169
+      Height = 21
       Style = csDropDownList
       TabOrder = 0
       OnChange = ComboBox1Change
     end
     object ComboBox2: TComboBox
-      Left = 350
-      Top = 56
-      Width = 254
-      Height = 31
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 200
+      Top = 32
+      Width = 145
+      Height = 21
       Style = csDropDownList
       TabOrder = 1
       OnChange = ComboBox2Change
     end
     object TrackBar1: TTrackBar
-      Left = 651
-      Top = 42
-      Width = 191
-      Height = 37
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 372
+      Top = 24
+      Width = 109
+      Height = 21
       Max = 90
       Min = -90
       TabOrder = 2
-      ThumbLength = 35
     end
     object TrackBar2: TTrackBar
-      Left = 651
-      Top = 84
-      Width = 191
-      Height = 37
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 372
+      Top = 48
+      Width = 109
+      Height = 21
       Max = 90
       Min = -90
       TabOrder = 3
-      ThumbLength = 35
     end
     object TrackBar3: TTrackBar
-      Left = 854
-      Top = 42
-      Width = 191
-      Height = 37
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 488
+      Top = 24
+      Width = 109
+      Height = 21
       Max = 90
       Min = -90
       TabOrder = 4
-      ThumbLength = 35
     end
     object TrackBar4: TTrackBar
-      Left = 854
-      Top = 84
-      Width = 191
-      Height = 37
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 488
+      Top = 48
+      Width = 109
+      Height = 21
       Max = 90
       Min = -90
       TabOrder = 5
-      ThumbLength = 35
     end
     object ComboSkin: TComboBox
-      Left = 1071
-      Top = 63
-      Width = 149
-      Height = 31
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 612
+      Top = 36
+      Width = 85
+      Height = 21
       TabOrder = 6
       Text = 'Default'
       OnChange = ComboSkinChange
@@ -188,17 +126,13 @@ object FormQuakeActor: TFormQuakeActor
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 128
-    Width = 1248
-    Height = 611
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 73
+    Width = 709
+    Height = 349
     Camera = GLCamera1
     Buffer.BackgroundColor = clSkyBlue
     Buffer.ContextOptions = [roDoubleBuffer, roStencilBuffer, roRenderToWindow]
-    FieldOfView = 74.741561889648440000
+    FieldOfView = 47.138473510742190000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown

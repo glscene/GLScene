@@ -13,21 +13,21 @@ unit GXS.VerletTypes;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.PersistentClasses,
 
   GXS.BaseClasses,
   GXS.Objects,
   GXS.Scene,
   GXS.Coordinates,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.SpacePartition,

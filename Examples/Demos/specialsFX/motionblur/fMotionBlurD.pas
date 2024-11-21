@@ -12,7 +12,7 @@ uses
   Vcl.Controls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Context,
   GLS.SceneViewer,
   GLS.Cadencer,
@@ -20,7 +20,7 @@ uses
   GLS.Texture,
   GLS.HUDObjects,
   GLS.GeomObjects,
-  GLScene.Utils,
+  Stage.Utils,
  
   GLS.Coordinates,
   GLS.BaseClasses, GLS.VectorFileObjects;

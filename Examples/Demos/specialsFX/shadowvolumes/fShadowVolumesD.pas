@@ -23,16 +23,16 @@ uses
   GLS.VectorLists,
   GLS.FileSMD,
   GLS.Texture,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.GeomObjects,
   GLS.Silhouette,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Material,
   GLS.Coordinates,
 
   GLS.SimpleNavigation,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormShadowVolumes = class(TForm)

@@ -11,9 +11,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.TextureFormat,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.TextureFormat,
 
   GXS.ApplicationFileIO,
   GXS.VectorLists,

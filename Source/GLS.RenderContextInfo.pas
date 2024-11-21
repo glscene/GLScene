@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.RenderContextInfo;
 
@@ -7,14 +7,14 @@ unit GLS.RenderContextInfo;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   GLS.PersistentClasses,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.State,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.Color;
 
 type

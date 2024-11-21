@@ -16,15 +16,15 @@ uses
   GLS.Objects,
   GLS.Particles,
   GLS.Behaviours,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.PersistentClasses,
   GLS.Cadencer,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SceneViewer,
  
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils, GLS.SimpleNavigation;
+  Stage.Utils, GLS.SimpleNavigation;
 
 type
   TFormParticles = class(TForm)

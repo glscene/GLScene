@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.BaseMeshSilhouette;
 
@@ -7,11 +7,11 @@ unit GLS.BaseMeshSilhouette;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes, 
-  GLScene.VectorGeometry, 
+  Stage.VectorGeometry, 
   GLS.VectorLists, 
   GLS.VectorFileObjects, 
   GLS.Silhouette;

@@ -16,22 +16,24 @@ uses
   Vcl.ComCtrls,
   Vcl.Imaging.Jpeg,
 
-  ODE.Import,
-  GLS.ODEUtils,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
+  Stage.Keyboard,
+  Stage.VectorGeometry,
+
   GLS.SceneViewer,
   GLS.Scene,
   GLS.Objects,
   GLS.Cadencer,
   GLS.Texture,
   GLS.Extrusion,
-  GLScene.VectorGeometry,
+  ODE.Import,
+  GLS.ODEUtils,
   GLS.ShadowPlane,
   GLS.Navigator,
   GLS.VerletTypes,
   GLS.XCollection,
   GLS.Color,
- 
+
   GLS.Coordinates,
   GLS.BaseClasses;
 

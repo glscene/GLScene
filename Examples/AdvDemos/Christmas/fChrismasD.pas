@@ -25,12 +25,12 @@ uses
   GLS.Cadencer,
   GLS.SkyDome,
   GLS.ParticleFX,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.LensFlare,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.ScreenSaver,
   GLS.ShadowPlane,
   GLS.File3DS,
@@ -44,7 +44,7 @@ uses
   BASS.Import,
   GLS.FireFX,
   GLS.FileWAV,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TMain = class(TForm)

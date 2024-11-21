@@ -13,8 +13,8 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
 
   GXS.Context,
   GXS.Scene,

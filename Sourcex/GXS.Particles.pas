@@ -7,7 +7,7 @@ unit GXS.Particles;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,7 +17,7 @@ uses
   GXS.XCollection,
   GXS.BaseClasses,
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Scene,
   GXS.Context,
   GXS.Color,

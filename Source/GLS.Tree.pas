@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Tree;
 
@@ -21,7 +21,7 @@ unit GLS.Tree;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -29,11 +29,11 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.State,
   GLS.Material,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
@@ -41,8 +41,8 @@ uses
   GLS.PersistentClasses,
   GLS.XOpenGL,
   GLS.Context,
-  GLScene.VectorTypes,
-  GLScene.Utils;
+  Stage.VectorTypes,
+  Stage.Utils;
 
 type
   TGLTree = class;

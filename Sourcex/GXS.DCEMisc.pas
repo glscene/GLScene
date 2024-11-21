@@ -7,19 +7,19 @@ unit GXS.DCEMisc;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   GXS.Coordinates,
   GXS.VectorFileObjects,
   GXS.EllipseCollision,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.Scene,
   GXS.TerrainRenderer,
   GXS.ProxyObjects,
   GXS.MultiProxy,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 //Calculate and set the collision range
 procedure ECSetCollisionRange(var MovePack: TECMovePack);

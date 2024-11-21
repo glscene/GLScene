@@ -20,7 +20,7 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.File3DS"
 #pragma link "GLS.FileJPEG"
-#pragma link "GLScene.Utils"
+#pragma link "Stage.Utils"
 
 #pragma resource "*.dfm"
 TForm1 *Form1;

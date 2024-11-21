@@ -7,7 +7,7 @@ unit GXS.FBO;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   FMX.Dialogs,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Scene,
   GXS.Context,
   GXS.State,
@@ -25,7 +25,7 @@ uses
   GXS.RenderContextInfo,
   GXS.MultisampleImage,
   GXS.Graphics,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 
 const

@@ -8,6 +8,9 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
+#include "Stage.VectorGeometry.hpp"
+#include "Stage.Polynomials.hpp"
+
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
@@ -16,8 +19,6 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.VectorGeometry.hpp"
-#include "GLS.Polynomials.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

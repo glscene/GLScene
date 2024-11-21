@@ -7,7 +7,7 @@ unit GXS.FileDDS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,15 +16,15 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.VectorGeometry,
-  GLScene.RGBE,
-  GLScene.Strings,
-  GLScene.TextureFormat,
-  
+  Stage.VectorGeometry,
+  Stage.RGBE,
+  Stage.Strings,
+  Stage.TextureFormat,
+
   GXS.ApplicationFileIO,
   GXS.Context,
   GXS.Graphics,
-  
+
   Formatx.DXTC;
 
 type

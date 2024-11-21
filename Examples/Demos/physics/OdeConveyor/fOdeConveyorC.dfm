@@ -1,36 +1,27 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'ODE Conveyor'
-  ClientHeight = 739
-  ClientWidth = 991
+  ClientHeight = 422
+  ClientWidth = 562
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 168
-  TextHeight = 23
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
-    Left = 338
+    Left = 193
     Top = 0
-    Width = 653
-    Height = 739
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 369
+    Height = 422
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 162.586807250976600000
+    FieldOfView = 149.673782348632800000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -38,193 +29,124 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 338
-    Height = 739
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 193
+    Height = 422
     Align = alLeft
     Caption = ' '
     TabOrder = 1
     object Label1: TLabel
-      Left = 28
-      Top = 95
-      Width = 170
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 16
+      Top = 54
+      Width = 100
+      Height = 13
       Caption = 'Conveyor belt speed'
     end
     object Label2: TLabel
-      Left = 28
-      Top = 207
-      Width = 154
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 16
+      Top = 118
+      Width = 90
+      Height = 13
       Caption = 'Friction Coefficient'
     end
     object FrictionFeedback: TLabel
-      Left = 124
-      Top = 245
-      Width = 14
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 71
+      Top = 140
+      Width = 8
+      Height = 13
       Caption = '='
     end
     object Label3: TLabel
-      Left = 28
-      Top = 305
-      Width = 155
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 16
+      Top = 174
+      Width = 91
+      Height = 13
       Caption = 'Conveyor direction'
     end
     object Label4: TLabel
-      Left = 32
-      Top = 357
-      Width = 11
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 18
+      Top = 204
+      Width = 6
+      Height = 13
       Caption = 'X'
     end
     object Label5: TLabel
-      Left = 32
-      Top = 404
-      Width = 11
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 18
+      Top = 231
+      Width = 6
+      Height = 13
       Caption = 'Y'
     end
     object Label6: TLabel
-      Left = 32
-      Top = 452
-      Width = 11
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 18
+      Top = 258
+      Width = 6
+      Height = 13
       Caption = 'Z'
     end
     object NormZ: TLabel
-      Left = 149
-      Top = 453
-      Width = 11
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 85
+      Top = 259
+      Width = 6
+      Height = 13
       Caption = 'Z'
     end
     object NormY: TLabel
-      Left = 149
-      Top = 406
-      Width = 11
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 85
+      Top = 232
+      Width = 6
+      Height = 13
       Caption = 'Y'
     end
     object NormX: TLabel
-      Left = 149
-      Top = 359
-      Width = 11
-      Height = 23
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 85
+      Top = 205
+      Width = 6
+      Height = 13
       Caption = 'X'
     end
     object TrackBarMotionSpeed: TTrackBar
-      Left = 14
-      Top = 128
-      Width = 313
-      Height = 79
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 8
+      Top = 73
+      Width = 179
+      Height = 45
       Max = 20
       TabOrder = 0
-      ThumbLength = 35
       OnChange = TrackBarMotionSpeedChange
     end
     object Friction: TEdit
-      Left = 28
-      Top = 240
-      Width = 86
-      Height = 31
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 16
+      Top = 137
+      Width = 49
+      Height = 21
       TabOrder = 1
       OnChange = FrictionChange
     end
     object FDirX: TEdit
-      Left = 53
-      Top = 352
-      Width = 85
-      Height = 31
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 30
+      Top = 201
+      Width = 49
+      Height = 21
       TabOrder = 2
     end
     object FDirY: TEdit
-      Left = 53
-      Top = 399
-      Width = 85
-      Height = 31
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 30
+      Top = 228
+      Width = 49
+      Height = 21
       TabOrder = 3
     end
     object FDirZ: TEdit
-      Left = 53
-      Top = 446
-      Width = 85
-      Height = 31
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 30
+      Top = 255
+      Width = 49
+      Height = 21
       TabOrder = 4
     end
     object AddODECube: TButton
-      Left = 28
-      Top = 14
-      Width = 158
-      Height = 44
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 16
+      Top = 8
+      Width = 90
+      Height = 25
       Caption = 'Add Cube'
       TabOrder = 5
       OnClick = AddODECubeClick

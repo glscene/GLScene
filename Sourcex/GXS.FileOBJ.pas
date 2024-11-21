@@ -14,7 +14,7 @@ unit GXS.FileOBJ;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,9 +23,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Strings,
 
   GXS.Context,
   GXS.MeshUtils,

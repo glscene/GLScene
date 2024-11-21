@@ -1,46 +1,35 @@
 object FormDCE: TFormDCE
   Left = 192
   Top = 114
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'GLScene Dynamic Collision Engine'
-  ClientHeight = 1104
-  ClientWidth = 1572
+  ClientHeight = 606
+  ClientWidth = 890
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
   Position = poScreenCenter
   OnKeyDown = FormKeyDown
   OnShow = FormShow
-  PixelsPerInch = 168
-  TextHeight = 24
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 1572
-    Height = 1104
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 890
+    Height = 606
     Camera = GLCamera1
     Buffer.FogEnvironment.FogStart = 50.000000000000000000
     Buffer.FogEnvironment.FogEnd = 250.000000000000000000
     Buffer.BackgroundColor = clBlack
     Buffer.FogEnable = True
-    FieldOfView = 169.648574829101600000
+    FieldOfView = 161.259384155273400000
     PenAsTouch = False
     Align = alClient
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitLeft = -10
-    ExplicitTop = 10
   end
   object GLScene1: TGLScene
     Left = 24

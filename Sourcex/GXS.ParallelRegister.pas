@@ -19,7 +19,7 @@ uses
   STREDIT,
   }
 
-  GLScene.Strings;
+  Stage.Strings;
 
 procedure Register;
 

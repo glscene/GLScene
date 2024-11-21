@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLSL.PostEffects;
@@ -8,26 +8,26 @@ unit GLSL.PostEffects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.State,
   GLS.Context,
   GLS.PersistentClasses,
   GLS.Texture,
   GLS.Graphics,
-  GLScene.Strings,
+  Stage.Strings,
   GLSL.CustomShader,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Material,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   EGLPostShaderHolderException = class(Exception);

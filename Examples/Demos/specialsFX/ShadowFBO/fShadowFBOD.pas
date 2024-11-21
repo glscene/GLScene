@@ -16,9 +16,9 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Context,
   GLS.Objects,
   GLS.HUDObjects,
@@ -30,20 +30,20 @@ uses
   GLS.Cadencer,
   GLSL.CustomShader,
   GLSL.Shader,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Coordinates,
  
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
   GLS.VectorFileObjects,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.FileMD2,
   Formats.DDSImage,
   GLS.FileOBJ,
   GLS.Graphics,
   GLS.State,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormShadowFBO = class(TForm)

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.GameMenu;
 
@@ -7,15 +7,15 @@ unit GLS.GameMenu;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
   GLS.Coordinates,
 
   GLS.Scene,

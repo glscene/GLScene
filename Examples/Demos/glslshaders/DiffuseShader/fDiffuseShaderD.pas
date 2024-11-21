@@ -18,9 +18,9 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Graph,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Context,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.GeomObjects,
   GLS.VectorFileObjects,
 
@@ -32,7 +32,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.FileMD2,
   GLS.FileMS3D,
   GLS.File3DS;

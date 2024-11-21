@@ -13,7 +13,7 @@ unit GXS.Perlin;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -21,7 +21,7 @@ uses
   System.Math,
   FMX.Graphics,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.ImageUtils,
   GXS.HeightData;
 

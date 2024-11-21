@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit Formatx.LWO;
 (*
@@ -210,7 +210,7 @@ uses
   System.SysUtils,
   System.IOUtils,
   System.Math,
-  GLScene.VectorGeometry;
+  Stage.VectorGeometry;
 
 type
 

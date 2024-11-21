@@ -15,8 +15,10 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
@@ -30,7 +32,7 @@ uses
   GLS.BaseClasses,
   GLS.FileMD2,
   GLS.XCollection,
-  GLScene.Utils,
+  Stage.Utils,
   GLSL.ShapeShaders;
 
 type

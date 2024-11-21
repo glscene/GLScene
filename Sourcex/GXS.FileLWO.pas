@@ -7,15 +7,15 @@ unit GXS.FileLWO;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils,
   System.Classes,
   System.Math,
   
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.Texture,
   GXS.Material,

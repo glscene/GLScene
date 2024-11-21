@@ -13,7 +13,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Extrusion.hpp"
 #include "GLS.Cadencer.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Color.hpp"

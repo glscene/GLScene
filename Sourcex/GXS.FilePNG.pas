@@ -5,7 +5,7 @@ unit GXS.FilePNG;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
 
   GXS.Context,
   GXS.Graphics,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GXS.ApplicationFileIO;
 
 type

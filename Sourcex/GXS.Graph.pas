@@ -7,17 +7,17 @@ unit GXS.Graph;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGL4,
+  Stage.OpenGL4,
   GXS.XOpenGL,
   GXS.Scene,
   GXS.Context,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Material,
   GXS.Objects,
   GXS.VectorLists,
@@ -25,7 +25,7 @@ uses
   GXS.BaseClasses,
   GXS.RenderContextInfo,
   GXS.State,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

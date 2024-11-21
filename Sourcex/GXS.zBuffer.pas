@@ -24,17 +24,17 @@ unit GXS.zBuffer;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGL4,
-  GLScene.VectorTypes,
+  Stage.OpenGL4,
+  Stage.VectorTypes,
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Coordinates,
   GXS.Color,
 
@@ -46,7 +46,7 @@ uses
   GXS.SceneViewer,
   GXS.RenderContextInfo,
   GXS.State,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 
 type

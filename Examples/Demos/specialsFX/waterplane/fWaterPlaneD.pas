@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
 
 
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
  
   GLS.Scene,
   GLS.Objects,
@@ -25,16 +25,16 @@ uses
   GLS.Texture,
   GLSL.UserShader,
   GLS.Context,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Graph,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.State,
   GLS.Material,
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
   GLS.Color,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.BaseClasses;
 
 type

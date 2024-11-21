@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Isosurface;
 (*
@@ -27,18 +27,18 @@ unit GLS.Isosurface;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 // uncomment next line to memorize vertex Density value to further use
 // (i.e. mesh color generation)
 {.$Define UseDensity}
 
 uses
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.Mesh,
   GLS.VectorFileObjects,
-  GLScene.VectorTypes,
-  GLScene.VectorTypesExt;
+  Stage.VectorTypes,
+  Stage.VectorTypesExt;
 
 const
   ALLOC_SIZE = 65536;

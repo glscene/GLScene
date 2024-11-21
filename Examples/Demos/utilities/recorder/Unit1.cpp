@@ -13,7 +13,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLAVIRecorder"
-#pragma link "GLScene.Keyboard"
+#pragma link "Stage.Keyboard"
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Coordinates"
 

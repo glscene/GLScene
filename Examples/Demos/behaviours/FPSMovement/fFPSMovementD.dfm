@@ -27,8 +27,6 @@ object FormFPSMovement: TFormFPSMovement
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 728
-    ExplicitHeight = 502
   end
   object GLScene1: TGLScene
     Left = 40

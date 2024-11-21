@@ -16,7 +16,7 @@ uses
   Vcl.Imaging.Jpeg,
   
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.VectorFileObjects,
@@ -27,10 +27,10 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Context,
   GLS.FileOBJ,
-  GLScene.Utils,
+  Stage.Utils,
   GLSL.BumpShaders;
 
 type

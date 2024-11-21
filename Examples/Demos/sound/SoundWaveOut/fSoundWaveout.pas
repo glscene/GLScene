@@ -15,8 +15,8 @@ uses
   GLS.Cadencer,
   GLS.Objects,
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.SoundManager,
   GLS.Sounds.WaveOut,
   GLS.SceneViewer,
@@ -26,7 +26,7 @@ uses
   GLS.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormSoundWaveout = class(TForm)

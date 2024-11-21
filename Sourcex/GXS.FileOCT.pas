@@ -8,15 +8,15 @@ unit GXS.FileOCT;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils,
   System.Classes,
   FMX.Graphics,
 
-  GLScene.VectorGeometry,
-  GLScene.TextureFormat,
+  Stage.VectorGeometry,
+  Stage.TextureFormat,
 
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,

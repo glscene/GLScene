@@ -11,7 +11,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.BaseClasses,
   GLS.Scene,
   GLS.Objects,

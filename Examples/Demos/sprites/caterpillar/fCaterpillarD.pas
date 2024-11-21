@@ -13,17 +13,17 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.PersistentClasses,
   GLS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
 
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.ProcTextures,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.SimpleNavigation,
   GLS.Cadencer,
   GLS.SceneViewer;

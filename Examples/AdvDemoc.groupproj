@@ -12,9 +12,6 @@
         <Projects Include="AdvDemos\Christmas\ChristmasC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="AdvDemos\Earth\EarthC.cbproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="AdvDemos\GLSViewer\GLSViewerC.cbproj">
             <Dependencies/>
         </Projects>
@@ -28,6 +25,12 @@
             <Dependencies/>
         </Projects>
         <Projects Include="AdvDemos\TexCombine\TexCombineC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="AdvDemos\Archipelago\Splitter\SplitterD.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="AdvDemos\Archipelago\Splitter\SplitterC.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -64,15 +67,6 @@
     </Target>
     <Target Name="ChristmasC:Make">
         <MSBuild Projects="AdvDemos\Christmas\ChristmasC.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="EarthC">
-        <MSBuild Projects="AdvDemos\Earth\EarthC.cbproj"/>
-    </Target>
-    <Target Name="EarthC:Clean">
-        <MSBuild Projects="AdvDemos\Earth\EarthC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="EarthC:Make">
-        <MSBuild Projects="AdvDemos\Earth\EarthC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="GLSViewerC">
         <MSBuild Projects="AdvDemos\GLSViewer\GLSViewerC.cbproj"/>
@@ -119,14 +113,32 @@
     <Target Name="TexCombineC:Make">
         <MSBuild Projects="AdvDemos\TexCombine\TexCombineC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="SplitterD">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj"/>
+    </Target>
+    <Target Name="SplitterD:Clean">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SplitterD:Make">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SplitterC">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterC.cbproj"/>
+    </Target>
+    <Target Name="SplitterC:Clean">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SplitterC:Make">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterC.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ActorMS3dC;ArchipelagoC;ChristmasC;EarthC;GLSViewerC;IntensityMeshC;PanoViewerC;QuakeActorC;TexCombineC"/>
+        <CallTarget Targets="ActorMS3dC;ArchipelagoC;ChristmasC;GLSViewerC;IntensityMeshC;PanoViewerC;QuakeActorC;TexCombineC;SplitterD;SplitterC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ActorMS3dC:Clean;ArchipelagoC:Clean;ChristmasC:Clean;EarthC:Clean;GLSViewerC:Clean;IntensityMeshC:Clean;PanoViewerC:Clean;QuakeActorC:Clean;TexCombineC:Clean"/>
+        <CallTarget Targets="ActorMS3dC:Clean;ArchipelagoC:Clean;ChristmasC:Clean;GLSViewerC:Clean;IntensityMeshC:Clean;PanoViewerC:Clean;QuakeActorC:Clean;TexCombineC:Clean;SplitterD:Clean;SplitterC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ActorMS3dC:Make;ArchipelagoC:Make;ChristmasC:Make;EarthC:Make;GLSViewerC:Make;IntensityMeshC:Make;PanoViewerC:Make;QuakeActorC:Make;TexCombineC:Make"/>
+        <CallTarget Targets="ActorMS3dC:Make;ArchipelagoC:Make;ChristmasC:Make;GLSViewerC:Make;IntensityMeshC:Make;PanoViewerC:Make;QuakeActorC:Make;TexCombineC:Make;SplitterD:Make;SplitterC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

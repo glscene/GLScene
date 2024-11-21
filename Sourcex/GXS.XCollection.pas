@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit GXS.XCollection;
 
@@ -9,14 +9,14 @@ unit GXS.XCollection;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
   GXS.PersistentClasses,
-  GLScene.Strings
+  Stage.Strings
 
 {$IFDEF DEBUG_XCOLLECTION}, System.TypInfo {$ENDIF};
 

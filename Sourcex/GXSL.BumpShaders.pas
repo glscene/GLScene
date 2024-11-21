@@ -35,14 +35,14 @@ uses
   System.SysUtils,
 
   GXS.Context,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.VectorLists,
 
   GXS.Texture,
   GXS.Scene,
   GXS.Cadencer,
-  GLScene.Strings,
+  Stage.Strings,
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.Material,
@@ -51,7 +51,7 @@ uses
 
   GXSL.CustomShader,
   GXSL.Shader,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   TBumpMethod = (bmDot3TexCombiner, bmBasicARBFP);

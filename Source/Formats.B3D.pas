@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.B3D;
 
@@ -7,15 +7,15 @@ unit Formats.B3D;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 {$R-}
 
 uses
   System.Classes, 
   System.SysUtils,
    
-  GLScene.VectorGeometry, 
-  GLScene.VectorTypes, 
+  Stage.VectorGeometry, 
+  Stage.VectorTypes, 
   GLS.VectorLists;
 
 

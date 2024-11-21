@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit FmXCollectionEditor;
@@ -8,7 +8,7 @@ unit FmXCollectionEditor;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -26,7 +26,7 @@ uses
 
   DesignIntf,
 
-  GLScene.Strings,
+  Stage.Strings,
   GLS.Scene,
   GLS.Behaviours,
   GLS.MaterialEx,

@@ -10,7 +10,6 @@ interface
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
-  GLScene.OpenGL4, // WGL_EXT_swap_control
 
   Winapi.Windows,
   WinApi.Messages,
@@ -22,6 +21,8 @@ uses
   FMX.Controls,
   FMX.Dialogs.Win,
   FMX.Viewport3D,
+
+  Stage.OpenGL4, // WGL_EXT_swap_control
 
   GXS.Scene,
   GXS.Context,

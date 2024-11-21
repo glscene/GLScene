@@ -4,7 +4,7 @@
 
 unit GXS.FilePGM;
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 interface
 
@@ -12,7 +12,7 @@ uses
   System.Classes, System.SysUtils,
   Winapi.OpenGL, Winapi.OpenGLext,
 
-  GXS.Context, GXS.Graphics, GLScene.TextureFormat,
+  GXS.Context, GXS.Graphics, Stage.TextureFormat,
   GXS.ApplicationFileIO;
 
 type

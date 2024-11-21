@@ -16,7 +16,7 @@ uses
   Vcl.ExtCtrls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorFileObjects,
   GLS.VectorLists,
   GLS.SceneViewer,
@@ -24,19 +24,19 @@ uses
   GLS.Texture,
   GLSL.UserShader,
   GLS.HUDObjects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Context,
   GLS.Objects,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.Graphics,
   GLS.State,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   TFormIntensutyMesh = class(TForm)

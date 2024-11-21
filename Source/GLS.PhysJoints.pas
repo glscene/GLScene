@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.PhysJoints;
 
@@ -12,8 +12,8 @@ interface
 
 uses
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry;
+  Stage.VectorTypes,
+  Stage.VectorGeometry;
 
 type
 

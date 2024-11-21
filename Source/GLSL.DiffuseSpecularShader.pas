@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLSL.DiffuseSpecularShader;
 
@@ -22,18 +22,18 @@ unit GLSL.DiffuseSpecularShader;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Texture,
   GLS.Scene,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
   GLS.Color,

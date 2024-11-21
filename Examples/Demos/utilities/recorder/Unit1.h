@@ -14,7 +14,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Keyboard.hpp"
+#include "Stage.Keyboard.hpp"
 
 #ifndef Unit1H
 #define Unit1H

@@ -7,17 +7,17 @@ unit Formats.VRML;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.VectorLists,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TVRMLNode = class

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit Formatx.m3DSUtils;
 
@@ -11,7 +11,7 @@ unit Formatx.m3DSUtils;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 {$R-}
 
 uses
@@ -21,7 +21,7 @@ uses
   Formatx.m3DSTypes,
   Formatx.m3DSConst,
 
-  GLScene.Strings;
+  Stage.Strings;
 
 // functions to retrieve global settings of a specific 3DS database
 function GetAtmosphere(const Source: TFile3DS; var DB: TDatabase3DS): TAtmosphere3DS;

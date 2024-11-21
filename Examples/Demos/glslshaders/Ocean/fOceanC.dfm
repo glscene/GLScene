@@ -1,37 +1,29 @@
-object Form1: TForm1
+object FormOcean: TFormOcean
   Left = 0
   Top = 0
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'GLSL Ocean'
-  ClientHeight = 695
-  ClientWidth = 992
+  ClientHeight = 397
+  ClientWidth = 562
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 168
-  TextHeight = 23
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 992
-    Height = 695
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 562
+    Height = 397
     Camera = GLCamera
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.BackgroundColor = clBlack
     Buffer.FaceCulling = False
     Buffer.Lighting = False
-    FieldOfView = 170.131668090820300000
+    FieldOfView = 162.811462402343800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -74,7 +66,6 @@ object Form1: TForm1
       YSamplingScale.Min = -100.000000000000000000
       YSamplingScale.Max = 100.000000000000000000
       YSamplingScale.Step = 2.000000000000000000
-      OnGetHeight = GLHeightField1GetHeight
     end
     object GLSphere2: TGLSphere
       Material.MaterialLibrary = MatLib

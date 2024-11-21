@@ -12,7 +12,7 @@ unit GXS.MultisampleImage;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,7 +22,7 @@ uses
   GXS.Context,
   GXS.Texture,
   GXS.Graphics,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
 

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FireFX;
 
@@ -7,7 +7,7 @@ unit GLS.FireFX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,22 +15,22 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.XCollection,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Context,
   GLS.VectorLists,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Cadencer,
   GLS.Color,
   GLS.BaseClasses,
   GLS.Coordinates,
-  GLScene.Manager,
+  Stage.Manager,
   GLS.RenderContextInfo,
   GLS.State,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   PGLFireParticle = ^TGLFireParticle;

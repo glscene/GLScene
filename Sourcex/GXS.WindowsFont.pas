@@ -7,7 +7,7 @@ unit GXS.WindowsFont;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,10 +25,10 @@ uses
   GXS.BitmapFont,
   GXS.RenderContextInfo,
   GXS.VectorLists,
-  GLScene.Utils,
-  GLScene.VectorGeometry,
+  Stage.Utils,
+  Stage.VectorGeometry,
   GXS.ApplicationFileIO,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

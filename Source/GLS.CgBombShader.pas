@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.CgBombShader;
 
@@ -14,10 +14,10 @@ uses
   GLS.Texture,
   GLS.Cadencer,
   GLS.Context,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.Material,
   GLS.RenderContextInfo,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.State,
 
   Cg.GL,

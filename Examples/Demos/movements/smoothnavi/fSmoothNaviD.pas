@@ -12,11 +12,11 @@ uses
   Vcl.ExtCtrls, 
   Vcl.StdCtrls,
 
-  GLScene.Keyboard,
+  Stage.Keyboard,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.XCollection,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
 
   GLS.Cadencer,
   GLS.SceneViewer,

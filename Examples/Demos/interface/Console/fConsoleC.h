@@ -22,7 +22,7 @@
 #include "GLS.Console.hpp"
 #include "GLS.Coordinates.hpp"
 #include "GLS.SimpleNavigation.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

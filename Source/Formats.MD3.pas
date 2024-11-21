@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.MD3;
 
@@ -9,7 +9,7 @@ interface
 
 uses
   System.Classes,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
   // Quake3 MD3 structure types

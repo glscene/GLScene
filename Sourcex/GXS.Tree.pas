@@ -19,7 +19,7 @@ unit GXS.Tree;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,11 +28,11 @@ uses
   System.Math,
 
   GXS.XOpenGL,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.ApplicationFileIO,
-  GLScene.VectorTypes,
-  GLScene.Strings,
+  Stage.VectorTypes,
+  Stage.Strings,
   GXS.State,
   GXS.Scene,
   GXS.VectorFileObjects,

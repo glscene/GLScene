@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ROAMPatch;
 
@@ -7,22 +7,22 @@ unit GLS.ROAMPatch;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.SysUtils,
   
-  GLScene.OpenGLTokens, 
+  Stage.OpenGLTokens, 
   GLS.XOpenGL, 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.HeightData, 
   GLS.VectorLists, 
   GLS.Context,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Isolines,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
 

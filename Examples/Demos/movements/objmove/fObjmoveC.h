@@ -17,7 +17,7 @@
 #include "GLS.Graph.hpp"
 #include "GLS.Collision.hpp"
 #include "GLS.Texture.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SpaceText.hpp"

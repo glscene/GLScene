@@ -1,40 +1,31 @@
 object Form1: TForm1
   Left = 332
   Top = 110
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'Actor MS3D Animation'
-  ClientHeight = 1194
-  ClientWidth = 1666
+  ClientHeight = 682
+  ClientWidth = 947
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 168
-  TextHeight = 23
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 114
-    Width = 1666
-    Height = 1080
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 65
+    Width = 947
+    Height = 617
     Camera = GLCamera1
     Buffer.BackgroundColor = 3618615
     Buffer.AmbientColor.Color = {0000803F0000803F0000803F0000803F}
     Buffer.AntiAliasing = aa4xHQ
     Buffer.ShadeModel = smSmooth
-    FieldOfView = 154.942382812500000000
+    FieldOfView = 137.490020751953100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -42,62 +33,59 @@ object Form1: TForm1
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1666
-    Height = 114
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 947
+    Height = 65
     Align = alTop
     TabOrder = 1
+    ExplicitWidth = 939
     object Button2: TButton
-      Left = 655
-      Top = 23
-      Width = 164
-      Height = 54
-      Margins.Left = 7
-      Margins.Top = 7
-      Margins.Right = 7
-      Margins.Bottom = 7
+      Left = 374
+      Top = 13
+      Width = 94
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Next Frame'
       TabOrder = 0
       OnClick = Button2Click
     end
     object btnStartStop: TButton
-      Left = 28
-      Top = 23
-      Width = 165
-      Height = 54
-      Margins.Left = 7
-      Margins.Top = 7
-      Margins.Right = 7
-      Margins.Bottom = 7
+      Left = 16
+      Top = 13
+      Width = 94
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Start'
       TabOrder = 1
       OnClick = btnStartStopClick
     end
     object Button4: TButton
-      Left = 1897
-      Top = 23
-      Width = 165
-      Height = 54
-      Margins.Left = 7
-      Margins.Top = 7
-      Margins.Right = 7
-      Margins.Bottom = 7
+      Left = 1084
+      Top = 13
+      Width = 94
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Previous'
       TabOrder = 2
       OnClick = Button4Click
     end
     object aniBox: TComboBox
-      Left = 228
-      Top = 26
-      Width = 386
-      Height = 31
-      Margins.Left = 7
-      Margins.Top = 7
-      Margins.Right = 7
-      Margins.Bottom = 7
+      Left = 130
+      Top = 15
+      Width = 221
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Style = csDropDownList
       TabOrder = 3
       OnSelect = aniBoxSelect
@@ -111,17 +99,17 @@ object Form1: TForm1
         'Sit')
     end
     object aniPos: TTrackBar
-      Left = 849
-      Top = 26
-      Width = 1034
-      Height = 63
-      Margins.Left = 7
-      Margins.Top = 7
-      Margins.Right = 7
-      Margins.Bottom = 7
+      Left = 485
+      Top = 15
+      Width = 591
+      Height = 36
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Enabled = False
       TabOrder = 4
-      ThumbLength = 44
+      ThumbLength = 25
       OnChange = aniPosChange
     end
   end

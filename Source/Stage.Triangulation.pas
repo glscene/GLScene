@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.Triangulation;
+unit Stage.Triangulation;
 (*
   Classes and methods for triangulation of scatter points.
 *)
@@ -10,7 +10,7 @@ interface
 uses
   System.Classes,
   System.Types,
-  GLScene.VectorGeometry;
+  Stage.VectorGeometry;
 
 // Set these as applicable
 const

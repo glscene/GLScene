@@ -16,8 +16,8 @@ uses
   Vcl.Imaging.JPeg,
 
   
-  GLScene.VectorTypes, 
-  GLScene.VectorGeometry, 
+  Stage.VectorTypes, 
+  Stage.VectorGeometry, 
   GLS.BaseClasses,
   GLS.Scene, 
   GLS.Graph, 
@@ -33,7 +33,7 @@ uses
   GLS.Material, 
   GLS.Coordinates, 
   GLS.Behaviours, 
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormShadows = class(TForm)

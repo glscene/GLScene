@@ -10,7 +10,7 @@ unit GXS.SoundFileObjects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,

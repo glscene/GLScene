@@ -15,7 +15,6 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-
   GLS.Scene,
   GLS.SceneViewer,
   GLS.BitmapFont,
@@ -26,7 +25,7 @@ uses
   GLS.Canvas,
   GLS.Texture,
   GLS.RenderContextInfo,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormCanvas = class(TForm)
@@ -64,7 +63,7 @@ type
 var
   FormCanvas: TFormCanvas;
 
-implementation
+implementation // ----------------------------------------------------------
 
 {$R *.dfm}
 
@@ -83,7 +82,7 @@ const
   cNbTextOuts = 20000;
   cNbArcs = 20000;
 
-//-----------------------------------------------------------------
+  // -----------------------------------------------------------------
 
 procedure TFormCanvas.BULinesClick(Sender: TObject);
 begin
@@ -92,7 +91,7 @@ begin
 end;
 
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 procedure TFormCanvas.BUEllipsesClick(Sender: TObject);
 begin
@@ -100,7 +99,7 @@ begin
   Bench;
 end;
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 procedure TFormCanvas.BUArcClick(Sender: TObject);
 begin
@@ -108,7 +107,7 @@ begin
   Bench;
 end;
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 procedure TFormCanvas.BURectsClick(Sender: TObject);
 begin
@@ -116,7 +115,7 @@ begin
   Bench;
 end;
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 procedure TFormCanvas.BUPointsClick(Sender: TObject);
 begin
@@ -124,7 +123,7 @@ begin
   Bench;
 end;
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 procedure TFormCanvas.BUTextOutClick(Sender: TObject);
 begin
@@ -132,7 +131,7 @@ begin
   Bench;
 end;
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 procedure TFormCanvas.Bench;
 var
@@ -159,7 +158,7 @@ begin
   lbGDI.Caption := Format('GDI: %.1f msec', [StopPrecisionTimer(t) * 1000]);
 end;
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 procedure TFormCanvas.GLDirectOpenGL1Render(Sender: TObject;
   var rci: TGLRenderContextInfo);
@@ -225,7 +224,7 @@ begin
   GLCanvas.Free;
 end;
 
-//-----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 procedure TFormCanvas.PaintTheBox;
 var
@@ -246,7 +245,7 @@ begin
         begin
           for i := 1 to cNbLines do
           begin
-            Pen.color := Random(256 * 256 * 256);
+            Pen.Color := Random(256 * 256 * 256);
             MoveTo(Random(256), Random(256));
             LineTo(Random(256), Random(256));
           end;
@@ -255,7 +254,7 @@ begin
         begin
           for i := 1 to cNbEllipses do
           begin
-            Pen.color := Random(256 * 256 * 256);
+            Pen.Color := Random(256 * 256 * 256);
             Ellipse(Random(256), Random(256), Random(256), Random(256));
           end;
         end;
@@ -264,7 +263,7 @@ begin
           Brush.Style := bsSolid;
           for i := 1 to cNbRects do
           begin
-            Brush.color := Random(256 * 256 * 256);
+            Brush.Color := Random(256 * 256 * 256);
             r := Rect(Random(256), Random(256), Random(256), Random(256));
             FillRect(r);
           end;
@@ -281,7 +280,7 @@ begin
           Font := WindowsBitmapFont.Font;
           for i := 1 to cNbTextOuts do
           begin
-            Font.color := Random(256 * 256 * 256);
+            Font.Color := Random(256 * 256 * 256);
             x := Random(256);
             y := Random(256);
             TextOut(x, y, 'Hello');
@@ -291,7 +290,7 @@ begin
         begin
           for i := 1 to cNbEllipses do
           begin
-            Pen.color := Random(256 * 256 * 256);
+            Pen.Color := Random(256 * 256 * 256);
             Arc(Random(256), Random(256), Random(256), Random(256), Random(256),
               Random(256), Random(256), Random(256))
           end;

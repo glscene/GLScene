@@ -14,11 +14,11 @@ uses
 
   GXS.PersistentClasses,
   GXS.BaseClasses,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.VectorLists,
-  GLScene.Strings,
-  GLScene.Utils,
+  Stage.Strings,
+  Stage.Utils,
 
   GXS.Context,
   GXS.Graphics,

@@ -21,16 +21,16 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.Behaviours,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.ThorFX,
   GLS.SkyDome,
   GLS.Graph,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SceneViewer,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.SimpleNavigation,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormThor = class(TForm)

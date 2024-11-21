@@ -7,7 +7,7 @@ unit GXS.FileMS3D;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -15,11 +15,11 @@ uses
   System.Math,
 
   GXS.VectorFileObjects,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Material,
   GXS.Color,
   GXS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.ApplicationFileIO;
 

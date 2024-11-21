@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.File3DPDF;
 
@@ -14,13 +14,13 @@ uses
   System.SysUtils,
   System.StrUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   (* The IDTF vector file (Intermediate Data Text File).

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Scene;
 
@@ -11,7 +11,7 @@ unit GLS.Scene;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -24,15 +24,15 @@ uses
   Vcl.Graphics,
   Vcl.Controls,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.OpenGLTokens,
   GLS.XCollection,
-  GLScene.Strings,
-  GLScene.PipelineTransform,
-  GLScene.TextureFormat,
-  GLScene.Utils,
-  GLScene.Logger,
+  Stage.Strings,
+  Stage.PipelineTransform,
+  Stage.TextureFormat,
+  Stage.Utils,
+  Stage.Logger,
 
   GLS.Context,
   GLS.Silhouette,
@@ -534,7 +534,7 @@ type
     property Direction: TGLCoordinates read FDirection write SetDirection;
     property Up: TGLCoordinates read FUp write SetUp;
     property Scale: TGLCoordinates read FScaling write SetScaling;
-    property Scene: TGLScene read FScene;
+    property Scene: TGLScene read FScene;     // Scene
     property Visible: Boolean read FVisible write SetVisible default True;
     property Pickable: Boolean read FPickable write SetPickable default True;
     property ObjectsSorting: TGLObjectsSorting read FObjectsSorting write

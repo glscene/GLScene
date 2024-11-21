@@ -8,9 +8,9 @@ unit GXS.Ragdoll;
 interface
 
 uses
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.Scene,
   GXS.Objects,

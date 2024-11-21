@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.TexturedHDS;
 (*
@@ -20,13 +20,13 @@ unit GLS.TexturedHDS;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
   System.Classes,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Coordinates,
   GLS.HeightData,
   GLS.Material;

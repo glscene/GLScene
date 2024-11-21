@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileGLTF;
 
@@ -15,11 +15,11 @@ uses
   GLS.VectorFileObjects,
   GLS.Texture,
   GLS.ApplicationFileIO,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Material,
-  GLScene.Utils,
+  Stage.Utils,
   PasGLTF;
 
 type

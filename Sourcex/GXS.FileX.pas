@@ -7,16 +7,16 @@ unit GXS.FileX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Texture,
   GXS.VectorLists,
   GXS.Material,

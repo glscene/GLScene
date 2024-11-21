@@ -12,8 +12,12 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+  Stage.Utils,
+
   GLS.Scene,
-  GLScene.VectorTypes,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Objects,
@@ -22,16 +26,14 @@ uses
   GLS.NGDManager,
   GLS.SimpleNavigation,
   GLS.SceneViewer,
- 
+
   GLS.BaseClasses,
   GLS.VectorFileObjects,
   GLS.GeomObjects,
   GLS.HUDObjects,
   GLS.File3DS,
-  GLScene.VectorGeometry,
   GLS.Material,
-  GLS.XCollection,
-  GLScene.Utils;
+  GLS.XCollection;
 
 type
   TFormNewtonWalkShoot = class(TForm)

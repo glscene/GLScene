@@ -3107,7 +3107,7 @@ constructor Create;
         Offset: int64;
         fs: TFileStream;
         fi: TEmbeddedFileInfo;
-        filename: AnsiString;
+        Filename: TFileName;
         // change from FilenameString to AnsiString, JR - 2010-04-10
       begin
         // "ggassemble" will search for this GUI and replace the trailing #0s by a pointer

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.PhysForces;
 
@@ -8,13 +8,13 @@ interface
 uses
   System.Classes,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.XCollection,
   GLS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Behaviours,
   GLS.Coordinates,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
   TGLForce = class;

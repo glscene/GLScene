@@ -20,7 +20,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.ShadowPlane.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

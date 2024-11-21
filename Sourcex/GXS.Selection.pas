@@ -5,7 +5,7 @@ unit GXS.Selection;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -14,7 +14,7 @@ uses
 
   GXS.Context,
   GXS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.BaseClasses,
   GXS.PersistentClasses;
 

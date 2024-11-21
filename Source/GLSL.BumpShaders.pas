@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLSL.BumpShaders;
 
@@ -34,26 +34,26 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Material,
   GLS.Graphics,
   GLS.VectorLists,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
 
   GLS.Texture,
   GLS.Scene,
   GLS.Context,
   GLS.Cadencer,
-  GLScene.Strings,
+  Stage.Strings,
   GLSL.Shader,
   GLSL.CustomShader,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TBumpMethod = (bmDot3TexCombiner, bmBasicARBFP);

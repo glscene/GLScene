@@ -11,8 +11,8 @@ uses
   Vcl.Graphics,
   Vcl.Dialogs,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Scene,
   GLS.Objects,
   GLS.VectorFileObjects,
@@ -24,7 +24,7 @@ uses
   GLS.FileZLIB,
   GLS.Coordinates,
   GLS.SceneViewer,
-  GLScene.Utils, GLS.SimpleNavigation;
+  Stage.Utils, GLS.SimpleNavigation;
 
 type
 

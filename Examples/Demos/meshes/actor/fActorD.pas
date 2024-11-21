@@ -19,14 +19,14 @@ uses
   GLS.VectorFileObjects,
   GLS.Scene,
   GLS.Objects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.SceneViewer,
   GLS.FileMD2,
   GLS.GeomObjects,
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormActor = class(TForm)

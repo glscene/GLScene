@@ -7,7 +7,7 @@ unit GXS.Cadencer;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,

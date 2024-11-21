@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit GXS.PhysInertias;
 
@@ -10,9 +10,9 @@ uses
   System.Classes,
 
   GXS.XCollection,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.Strings,
 
   GXS.Coordinates,
   GXS.BaseClasses,
@@ -1005,7 +1005,7 @@ procedure TgxRigidBodyInertia.DoProgress(const progressTime : TProgressTimes);
   begin
   UndampedLinearMomentum:=VectorLength(LinearMomentum);
   DampedLinearMomentum:=TranslationDamping.Calculate(UndampedLinearMomentum,deltaTime);
-  {   if GLScene.VectorGeometry.vSIMD=1 then
+  {   if Stage.VectorGeometry.vSIMD=1 then
   //  RigidBody.LinearMomentum:=VectorScale(VectorNormalize(RigidBody.LinearMomentum),DampedLinearMomentum)
   else
   }        begin

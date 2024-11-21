@@ -13,9 +13,9 @@ uses
   Vcl.Dialogs,
   Vcl.Imaging.Jpeg,
 
-  GLScene.TextureFormat,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.TextureFormat,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.Context,
   GLS.State,
   GLS.Color,
@@ -39,10 +39,10 @@ uses
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.XCollection,
-  GLScene.Keyboard,
+  Stage.Keyboard,
   GLS.CompositeImage,
 
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormTransparAdv = class(TForm)

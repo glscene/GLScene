@@ -18,7 +18,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

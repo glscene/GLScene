@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ParticleFX;
 (*
@@ -11,7 +11,7 @@ unit GLS.ParticleFX;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,14 +20,14 @@ uses
   System.Types,
   System.Math,
   
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
-  GLScene.Utils,
-  GLScene.PipelineTransform,
+  Stage.Utils,
+  Stage.PipelineTransform,
   GLS.State,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.XCollection,
   GLS.Material,
   GLS.Cadencer,
@@ -38,8 +38,8 @@ uses
   GLS.BaseClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
-  GLScene.Manager,
-  GLScene.TextureFormat;
+  Stage.Manager,
+  Stage.TextureFormat;
 
 const
   cPFXNbRegions = 128; // number of distance regions

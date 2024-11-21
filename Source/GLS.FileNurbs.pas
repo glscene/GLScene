@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileNurbs;
 
@@ -11,13 +11,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorFileObjects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.ApplicationFileIO,
   GLS.ParametricSurfaces,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
 

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Windows;
 
@@ -7,7 +7,7 @@ unit GLS.Windows;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,21 +19,21 @@ uses
   Vcl.Controls,
   Vcl.Graphics,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.PersistentClasses,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.Coordinates,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.State,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Scene,
   GLS.HudObjects,
   GLS.Material,
   GLS.Context,
   GLS.BitmapFont,
   GLS.WindowsFont,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Gui,
   GLS.Color,
   GLS.ImageUtils,

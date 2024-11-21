@@ -15,9 +15,9 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.VectorTypes,
-  GLScene.Spline,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.Spline,
+  Stage.VectorGeometry,
   GXS.Context,
   GXS.XOpenGL,
   GXS.BaseClasses,

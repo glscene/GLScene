@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FRMaterialPreview;
 
@@ -7,7 +7,7 @@ unit FRMaterialPreview;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -19,7 +19,7 @@ uses
   Vcl.Controls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.HUDObjects,

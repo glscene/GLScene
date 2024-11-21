@@ -24,7 +24,7 @@ uses
   GXS.CUDA.Compiler,
   GXS.CUDA.FFTPlan,
   GXS.CUDA.Graphics,
-  GLScene.Strings;
+  Stage.Strings;
 
 procedure Register;
 

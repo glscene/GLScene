@@ -21,9 +21,6 @@
         <Projects Include="HTFUtils\HTFViewerD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="HTFUtils\HTFPackD.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="joystick\JoystickD.dproj">
             <Dependencies/>
         </Projects>
@@ -37,6 +34,9 @@
             <Dependencies/>
         </Projects>
         <Projects Include="ScreenSaver\ScreenSaverC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="HTFUtils\HTFPackD.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -101,15 +101,6 @@
     <Target Name="HTFViewerD:Make">
         <MSBuild Projects="HTFUtils\HTFViewerD.dproj" Targets="Make"/>
     </Target>
-    <Target Name="HTFPackD">
-        <MSBuild Projects="HTFUtils\HTFPackD.dproj"/>
-    </Target>
-    <Target Name="HTFPackD:Clean">
-        <MSBuild Projects="HTFUtils\HTFPackD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="HTFPackD:Make">
-        <MSBuild Projects="HTFUtils\HTFPackD.dproj" Targets="Make"/>
-    </Target>
     <Target Name="JoystickD">
         <MSBuild Projects="joystick\JoystickD.dproj"/>
     </Target>
@@ -155,14 +146,23 @@
     <Target Name="ScreenSaverC:Make">
         <MSBuild Projects="ScreenSaver\ScreenSaverC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="HTFPackD">
+        <MSBuild Projects="HTFUtils\HTFPackD.dproj"/>
+    </Target>
+    <Target Name="HTFPackD:Clean">
+        <MSBuild Projects="HTFUtils\HTFPackD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HTFPackD:Make">
+        <MSBuild Projects="HTFUtils\HTFPackD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ArchiverD;ArchiveEditD;FontgenD;FontgenC;GLInfosD;HTFViewerD;HTFPackD;JoystickD;KeymapD;RecorderD;ScreenSaverD;ScreenSaverC"/>
+        <CallTarget Targets="ArchiverD;ArchiveEditD;FontgenD;FontgenC;GLInfosD;HTFViewerD;JoystickD;KeymapD;RecorderD;ScreenSaverD;ScreenSaverC;HTFPackD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ArchiverD:Clean;ArchiveEditD:Clean;FontgenD:Clean;FontgenC:Clean;GLInfosD:Clean;HTFViewerD:Clean;HTFPackD:Clean;JoystickD:Clean;KeymapD:Clean;RecorderD:Clean;ScreenSaverD:Clean;ScreenSaverC:Clean"/>
+        <CallTarget Targets="ArchiverD:Clean;ArchiveEditD:Clean;FontgenD:Clean;FontgenC:Clean;GLInfosD:Clean;HTFViewerD:Clean;JoystickD:Clean;KeymapD:Clean;RecorderD:Clean;ScreenSaverD:Clean;ScreenSaverC:Clean;HTFPackD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ArchiverD:Make;ArchiveEditD:Make;FontgenD:Make;FontgenC:Make;GLInfosD:Make;HTFViewerD:Make;HTFPackD:Make;JoystickD:Make;KeymapD:Make;RecorderD:Make;ScreenSaverD:Make;ScreenSaverC:Make"/>
+        <CallTarget Targets="ArchiverD:Make;ArchiveEditD:Make;FontgenD:Make;FontgenC:Make;GLInfosD:Make;HTFViewerD:Make;JoystickD:Make;KeymapD:Make;RecorderD:Make;ScreenSaverD:Make;ScreenSaverC:Make;HTFPackD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

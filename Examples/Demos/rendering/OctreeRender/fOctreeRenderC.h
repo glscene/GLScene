@@ -20,8 +20,8 @@
 
 #include "GLS.SpacePartition.hpp"
 #include "GLS.Context.hpp"
-#include "GLScene.VectorGeometry.hpp"
-#include "GLScene.OpenGLTokens.hpp"
+#include "Stage.VectorGeometry.hpp"
+#include "Stage.OpenGLTokens.hpp"
 
 
 //---------------------------------------------------------------------------

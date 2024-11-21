@@ -15,11 +15,11 @@ uses
   Vcl.Imaging.jpeg,
   Vcl.Imaging.pngimage,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
-  GLScene.Utils,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.Utils,
 
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.VectorLists,
   GLS.Cadencer,
   GLS.SceneViewer,

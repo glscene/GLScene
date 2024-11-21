@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.SpacePartition;
 
@@ -28,7 +28,7 @@ unit GLS.SpacePartition;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -36,11 +36,11 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.Coordinates,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.GeometryBB,
   GLS.Context,
   GLS.RenderContextInfo,

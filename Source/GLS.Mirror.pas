@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Mirror;
 (*
@@ -9,24 +9,24 @@ unit GLS.Mirror;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Context,
   GLS.Material,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.XCollection,
   GLS.Texture;
 

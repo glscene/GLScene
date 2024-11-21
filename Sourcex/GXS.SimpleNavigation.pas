@@ -12,7 +12,7 @@ unit GXS.SimpleNavigation;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -24,10 +24,10 @@ uses
   FMX.Controls,
   FMX.ExtCtrls,
   FMX.Types,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Scene,
   GXS.SceneViewer,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
 

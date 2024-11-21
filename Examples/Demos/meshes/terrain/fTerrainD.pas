@@ -18,10 +18,10 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.Keyboard,
+  Stage.VectorTypes,
+  Stage.Keyboard,
   GLS.XCollection,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses,
 
@@ -40,7 +40,7 @@ uses
   GLS.Material,
   GLS.State,
   GLS.FileMP3,
-  GLScene.Utils,
+  Stage.Utils,
 
   GLS.HUDObjects;
 

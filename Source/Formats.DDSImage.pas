@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.DDSImage;
 (*
@@ -14,7 +14,7 @@ unit Formats.DDSImage;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -22,13 +22,13 @@ uses
   System.SysUtils,
   Vcl.Graphics,
 
-  GLScene.VectorTypes,
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
   GLS.Graphics,
   GLS.Context,
   GLS.FileDDS,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   TDDSImage = class(TBitmap)

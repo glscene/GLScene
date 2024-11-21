@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.NGDRagdoll;
 
@@ -10,8 +10,8 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.VectorFileObjects,
   NGD.Import;
 

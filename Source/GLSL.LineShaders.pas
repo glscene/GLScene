@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLSL.LineShaders;
 
@@ -11,14 +11,14 @@ unit GLSL.LineShaders;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
   GLS.Scene,
   GLS.Color,
   GLS.Material,
@@ -120,7 +120,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 // ------------------
 // ------------------ TGLLineSettings ------------------

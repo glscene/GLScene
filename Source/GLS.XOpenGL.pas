@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.XOpenGL;
 
@@ -19,8 +19,8 @@ interface
 uses
   Winapi.OpenGLext,
 
-  GLScene.VectorTypes,
-  GLScene.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.OpenGLTokens,
   GLS.State;
 
 type

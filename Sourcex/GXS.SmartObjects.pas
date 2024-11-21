@@ -1,5 +1,5 @@
 ﻿//
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit GXS.SmartObjects;
 
@@ -15,7 +15,7 @@ unit GXS.SmartObjects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -25,12 +25,12 @@ uses
   System.Types,
   System.Math,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypesExt,
-  GLScene.PipelineTransform,
-  GLScene.Strings,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypesExt,
+  Stage.PipelineTransform,
+  Stage.Strings,
 
   GXS.BaseClasses,
   GXS.PersistentClasses,

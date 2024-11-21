@@ -20,7 +20,7 @@ uses
   GLS.Texture,
   GLS.SceneViewer,
   GLS.MeshUtils,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.Cadencer,
 
@@ -28,7 +28,7 @@ uses
   GLS.Coordinates,
   GLS.State,
   GLS.BaseClasses,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.File3DS,
   GLS.FileMD2,
   GLS.FileSMD;

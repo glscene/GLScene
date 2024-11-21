@@ -15,7 +15,7 @@ uses
   Vcl.Imaging.Jpeg,
   
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.HUDObjects,
@@ -64,7 +64,7 @@ implementation
 {$R *.DFM}
 
 uses
-  GLScene.TextureFormat, GLScene.Utils;
+  Stage.TextureFormat, Stage.Utils;
 
 procedure TFormTexFormat.FormCreate(Sender: TObject);
 var

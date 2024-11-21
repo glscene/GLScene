@@ -1,32 +1,31 @@
 object FormGameMenu: TFormGameMenu
   Left = 192
   Top = 114
+  Margins.Left = 2
+  Margins.Top = 2
+  Margins.Right = 2
+  Margins.Bottom = 2
   Caption = 'Game Menu'
-  ClientHeight = 561
-  ClientWidth = 698
+  ClientHeight = 449
+  ClientWidth = 557
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyPress = FormKeyPress
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 698
-    Height = 528
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 557
+    Height = 422
     Camera = GLCamera1
     Buffer.BackgroundColor = clGray
-    FieldOfView = 158.551101684570300000
+    FieldOfView = 153.337402343750000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -35,36 +34,24 @@ object FormGameMenu: TFormGameMenu
   end
   object MainPanel: TPanel
     Left = 0
-    Top = 528
-    Width = 698
-    Height = 33
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 422
+    Width = 557
+    Height = 27
     Align = alBottom
     TabOrder = 1
     OnResize = MainPanelResize
     object Label1: TLabel
-      Left = 180
-      Top = 8
-      Width = 282
-      Height = 16
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 144
+      Top = 6
+      Width = 234
+      Height = 13
       Caption = 'Press "W" or "S" to navigate or "Enter" to select '
     end
     object ShowTitleCheckbox: TCheckBox
-      Left = 10
-      Top = 8
-      Width = 101
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 8
+      Top = 6
+      Width = 81
+      Height = 17
       Caption = 'Show Title'
       Checked = True
       State = cbChecked

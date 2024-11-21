@@ -7,7 +7,7 @@ unit GXSL.PhongShader;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,9 +15,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Texture, 
-  GLScene.VectorGeometry, 
+  Stage.VectorGeometry, 
   GXS.VectorLists, 
   GXS.Context,
   GXS.RenderContextInfo,

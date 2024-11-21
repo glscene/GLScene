@@ -17,20 +17,20 @@ uses
 
   
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SceneViewer,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.ProxyObjects,
   GLS.GeomObjects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.Texture,
   GLS.Material,
   GLS.Coordinates,
  
   GLS.BaseClasses,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.FileSMD;
 
 type

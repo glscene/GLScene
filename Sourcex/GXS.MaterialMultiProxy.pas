@@ -23,7 +23,7 @@ unit GXS.MaterialMultiProxy;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -32,16 +32,16 @@ uses
 
   GXS.BaseClasses,
   GXS.PersistentClasses,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Strings,
   GXS.Texture,
   GXS.Material,
   GXS.Silhouette,
   GXS.Scene,
   GXS.RenderContextInfo,
   GXS.Context,
-  GLScene.PipelineTransform;
+  Stage.PipelineTransform;
 
 type
 

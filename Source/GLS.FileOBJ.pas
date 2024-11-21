@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileOBJ;
 (*
@@ -9,7 +9,7 @@ unit GLS.FileOBJ;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 {.$DEFINE STATS} // Define to display statistics after loading.
 
@@ -19,10 +19,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Scene,  
   GLS.VectorFileObjects,
   GLS.VectorLists,  
@@ -30,7 +30,7 @@ uses
   GLS.Color,
   GLS.RenderContextInfo, 
   GLS.Material,
-  GLScene.Utils;
+  Stage.Utils;
 
 const
   // Load input data in chunks of BufSize Bytes. 
@@ -101,8 +101,8 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLScene.Strings,
-  GLScene.OpenGLTokens,
+  Stage.Strings,
+  Stage.OpenGLTokens,
   GLS.XOpenGL,
   GLS.Context,
   GLS.MeshUtils;

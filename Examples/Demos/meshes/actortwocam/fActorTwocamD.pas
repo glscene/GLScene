@@ -17,12 +17,12 @@ uses
   Vcl.StdCtrls,
   Vcl.Graphics,
 
-  GLScene.Keyboard,
-  GLScene.VectorTypes,
+  Stage.Keyboard,
+  Stage.VectorTypes,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils,
-  GLScene.VectorGeometry,
+  Stage.Utils,
+  Stage.VectorGeometry,
   GLS.XCollection,
   GLS.PersistentClasses,
 

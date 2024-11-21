@@ -10,12 +10,12 @@ unit GXS.Octree;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.GeometryBB,
   GXS.Context;

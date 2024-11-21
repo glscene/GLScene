@@ -7,7 +7,7 @@ unit GXS.WinContext;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -18,12 +18,13 @@ uses
   FMX.Dialogs,
   FMX.Platform.Win,
 
-  GLScene.OpenGL4,
 
   GXS.Context,
   GXS.State,
-  GLScene.Strings,
-  GLScene.VectorGeometry;
+
+  Stage.OpenGL4,
+  Stage.Strings,
+  Stage.VectorGeometry;
 
 type
   // A context driver for standard Windows OpenGL

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileGTS;
 
@@ -7,12 +7,12 @@ unit GLS.FileGTS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO;
@@ -39,7 +39,7 @@ uses
 {$IFDEF Unicode}
   Sysutils,
 {$ENDIF}
-  GLScene.Utils;
+  Stage.Utils;
 
 // ------------------
 // ------------------ TGLGTSVectorFile ------------------

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.BaseClasses;
 
@@ -11,7 +11,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.Strings,
+  Stage.Strings,
   GLS.PersistentClasses;
 
 type

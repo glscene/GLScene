@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FilePNG;
 
@@ -7,7 +7,7 @@ unit GLS.FilePNG;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,12 +15,12 @@ uses
   System.SysUtils,
   VCL.Imaging.pngimage,
 
-  GLScene.OpenGLTokens,
-  GLScene.Strings,
+  Stage.OpenGLTokens,
+  Stage.Strings,
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
 

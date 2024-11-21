@@ -18,7 +18,7 @@ unit GXS.Feedback;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,17 +28,17 @@ uses
   System.SysUtils,
 
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
-  GLScene.VectorTypes,
-  GLScene.Strings,
+  Stage.VectorTypes,
+  Stage.Strings,
   GXS.Scene,
   GXS.VectorFileObjects,
   GXS.Texture,
   GXS.RenderContextInfo,
   GXS.Context,
   GXS.State,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GXS.MeshUtils;
 
 type

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.DXTC;
 
@@ -19,7 +19,7 @@ uses
   Winapi.OpenGLext,
   System.SysUtils,
 
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 const
   DDSD_CAPS = $00000001;

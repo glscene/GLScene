@@ -14,7 +14,7 @@ uses
   Vcl.Menus,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.HUDObjects,
   GLS.Objects,
   GLS.Cadencer,
@@ -29,7 +29,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormGuiPaint = class(TForm)

@@ -23,7 +23,7 @@
 #include "GLSL.Shader.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

@@ -17,12 +17,12 @@ uses
   
   GLS.Cadencer,
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SceneViewer,
   GLS.Texture,
   GLS.FileTGA,
   GLS.Objects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.ProjectedTextures,
   GLS.HUDObjects,
  
@@ -30,7 +30,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.SimpleNavigation,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormProjTextures = class(TForm)

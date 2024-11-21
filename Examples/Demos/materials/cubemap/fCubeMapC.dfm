@@ -1,37 +1,28 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'Cube Map'
-  ClientHeight = 711
-  ClientWidth = 1001
+  ClientHeight = 406
+  ClientWidth = 572
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 168
-  TextHeight = 23
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 1001
-    Height = 711
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 572
+    Height = 406
     Camera = GLCamera1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 99.679176330566410000
+    FieldOfView = 68.169807434082030000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -39,14 +30,10 @@ object Form1: TForm1
     TabOrder = 0
   end
   object btnApply: TButton
-    Left = 420
-    Top = 28
-    Width = 184
-    Height = 44
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 240
+    Top = 16
+    Width = 105
+    Height = 25
     Caption = 'Apply Cube Map'
     TabOrder = 1
     OnClick = btnApplyClick
@@ -64,9 +51,17 @@ object Form1: TForm1
       SpotCutOff = 180.000000000000000000
     end
     object Teapot1: TGLTeapot
+      Material.Texture.ImageClassName = 'TGLCompositeImage'
+      Material.Texture.Image.Width = 256
+      Material.Texture.Image.Height = 256
+      Material.Texture.Image.Depth = 0
       Material.Texture.TextureMode = tmReplace
     end
     object Plane1: TGLPlane
+      Material.Texture.ImageClassName = 'TGLCompositeImage'
+      Material.Texture.Image.Width = 256
+      Material.Texture.Image.Height = 256
+      Material.Texture.Image.Depth = 0
       Position.Coordinates = {0000000000000000000000BF0000803F}
       Up.Coordinates = {0000803F000000000000008000000000}
       Height = 1.000000000000000000

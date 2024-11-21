@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit Formatx.X;
 
@@ -7,15 +7,15 @@ unit Formatx.X;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Utils,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Utils,
 
   GXS.VectorLists,
   GXS.PersistentClasses;

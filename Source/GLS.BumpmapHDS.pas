@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.BumpmapHDS;
 
@@ -11,7 +11,7 @@ unit GLS.BumpmapHDS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -20,9 +20,9 @@ uses
   System.UITypes,
   Vcl.Graphics,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
 
   GLS.Coordinates,
   GLS.HeightData,
@@ -31,7 +31,7 @@ uses
   GLS.VectorLists,
   GLS.Texture,
   GLS.Material,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
 

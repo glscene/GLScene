@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.m3DSTypes;
 
@@ -16,7 +16,7 @@ unit Formats.m3DSTypes;
 
 interface
 
-{.$I GLS.inc}
+{.$I Stage.Defines.inc}
 
 uses
    System.Classes, // for TStringList

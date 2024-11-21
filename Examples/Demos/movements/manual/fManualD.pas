@@ -14,7 +14,7 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,

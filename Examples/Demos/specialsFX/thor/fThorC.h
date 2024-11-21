@@ -24,7 +24,7 @@
 #include "GLS.SkyDome.hpp"
 #include "GLS.ThorFX.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "JPeg.hpp"
 
 //---------------------------------------------------------------------------

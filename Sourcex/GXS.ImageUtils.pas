@@ -15,7 +15,7 @@ unit GXS.ImageUtils;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -32,10 +32,10 @@ uses
   FMX.Graphics,
   FMX.Consts,
 
-  GLScene.Strings,
-  GLScene.VectorGeometry,
-  GLScene.Utils,
-  GLScene.TextureFormat;
+  Stage.Strings,
+  Stage.VectorGeometry,
+  Stage.Utils,
+  Stage.TextureFormat;
 
 var
   vImageScaleFilterWidth: Integer = 5; // Relative sample radius for filtering
@@ -5307,7 +5307,7 @@ end;
 
 function InputDlg(const aCaption, aPrompt, aDefault: string): string;
 begin
-  Result := InputBox(aCaption, aPrompt, aDefault);
+  Result := InputBox(aCaption, aPrompt, aDefault); // Use FMX.DialogService
 end;
 
 function SavePictureDialog(var aFileName: string;

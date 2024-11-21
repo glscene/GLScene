@@ -19,13 +19,13 @@ uses
   GLS.Texture,
   GLS.Objects,
   GLS.Context,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.GeomObjects,
   GLS.Cadencer,
   GLSL.UserShader,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Graph,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SkyDome,
   GLS.VectorLists,
   GLS.FileDDS,
@@ -35,7 +35,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.SimpleNavigation,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.Color;
 
 type
@@ -225,14 +225,14 @@ procedure TForm1.DOOceanPlaneRender(Sender: TObject;
   var rci: TGLRenderContextInfo);
 var
   x, y: Integer;
-  v: TGTexPointList;
+  v: TGLTexPointList;
   cont: Boolean;
 begin
   GLUserShader1DoApply(Self, rci);
   gl.EnableClientState(GL_VERTEX_ARRAY);
   if not Assigned(vbo) then
   begin
-    v := TGTexPointList.Create;
+    v := TGLTexPointList.Create;
     v.Capacity := Sqr(cExtent + 1);
     y := -cExtent;
     while y < cExtent do

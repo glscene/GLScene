@@ -7,7 +7,7 @@
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
-        <ProjectVersion>20.1</ProjectVersion>
+        <ProjectVersion>20.2</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">MandelbrotD</ProjectName>
     </PropertyGroup>
@@ -153,26 +153,11 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>
-            <Deployment Version="4">
-                <DeployFile LocalName="..\..\..\..\Assets\Shader\Mandelbrot.frag" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\..\..\Assets\Shader\Mandelbrot.vert" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+            <Deployment Version="5">
+                <DeployFile LocalName="..\..\..\..\Assets\Shader\Mandelbrot.frag" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="..\..\..\..\Assets\Shader\Mandelbrot.vert" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="MandelbrotD.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="MandelbrotD.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>MandelbrotD.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="MandelbrotD.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="Shaders\Mandelbrot.frag" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="Shaders\Mandelbrot.vert" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="\MandelbrotD.exe" Configuration="Debug" Class="ProjectOutput"/>
@@ -186,16 +171,6 @@
                     </Platform>
                     <Platform Name="Win32">
                         <Operation>0</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="AndroidClasses">
-                    <Platform Name="Android">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>64</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>64</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidFileProvider">

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ShadowPlane;
 
@@ -12,28 +12,28 @@ unit GLS.ShadowPlane;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.Types,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.PersistentClasses,
-  GLScene.PipelineTransform,
-  GLScene.VectorTypes,
+  Stage.PipelineTransform,
+  Stage.VectorTypes,
   GLS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Objects,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.Context,
   GLS.Material,
   GLS.Texture,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TShadowPlaneOption = (spoUseStencil, spoScissor, spoTransparent, spoIgnoreZ);

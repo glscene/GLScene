@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.MeshUtils;
 
@@ -7,7 +7,7 @@ unit GLS.MeshUtils;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -16,8 +16,8 @@ uses
 
   GLS.PersistentClasses,
   GLS.VectorLists,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes;
+  Stage.VectorGeometry,
+  Stage.VectorTypes;
 
 (* 
   Converts a triangle strips into a triangle list.

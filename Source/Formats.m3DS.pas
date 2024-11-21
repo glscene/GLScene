@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.m3DS;
 
@@ -17,7 +17,7 @@ unit Formats.m3DS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 {$ALIGN ON}
 {$MINENUMSIZE 4}

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit GXS.Coordinates;
 (*
@@ -9,15 +9,15 @@ unit GXS.Coordinates;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Math,
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
 
   GXS.BaseClasses;
 
@@ -488,12 +488,12 @@ end;
 
 function TgxCustomCoordinates.VectorLength: Single;
 begin
-  Result := GLScene.VectorGeometry.VectorLength(FCoords);
+  Result := Stage.VectorGeometry.VectorLength(FCoords);
 end;
 
 function TgxCustomCoordinates.VectorNorm: Single;
 begin
-  Result := GLScene.VectorGeometry.VectorNorm(FCoords);
+  Result := Stage.VectorGeometry.VectorNorm(FCoords);
 end;
 
 function TgxCustomCoordinates.MaxXYZ: Single;
@@ -509,28 +509,28 @@ end;
 procedure TgxCustomCoordinates.SetVector(const X, Y: Single; Z: Single = 0);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLScene.VectorGeometry.SetVector(FCoords, X, Y, Z);
+  Stage.VectorGeometry.SetVector(FCoords, X, Y, Z);
   NotifyChange(Self);
 end;
 
 procedure TgxCustomCoordinates.SetVector(const V: TAffineVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLScene.VectorGeometry.SetVector(FCoords, V);
+  Stage.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
 procedure TgxCustomCoordinates.SetVector(const V: TGLVector);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLScene.VectorGeometry.SetVector(FCoords, V);
+  Stage.VectorGeometry.SetVector(FCoords, V);
   NotifyChange(Self);
 end;
 
 procedure TgxCustomCoordinates.SetVector(const X, Y, Z, W: Single);
 begin
   Assert(FStyle = csVector, csVectorHelp);
-  GLScene.VectorGeometry.SetVector(FCoords, X, Y, Z, W);
+  Stage.VectorGeometry.SetVector(FCoords, X, Y, Z, W);
   NotifyChange(Self);
 end;
 
@@ -584,7 +584,7 @@ end;
 procedure TgxCustomCoordinates.SetPoint2D(const X, Y: Single);
 begin
   Assert(FStyle = CsPoint2D, CsPoint2DHelp);
-  GLScene.VectorGeometry.MakeVector(FCoords, X, Y, 0);
+  Stage.VectorGeometry.MakeVector(FCoords, X, Y, 0);
   NotifyChange(Self);
 end;
 
@@ -666,7 +666,7 @@ end;
 
 function TgxCustomCoordinates.GetAsAffineVector: TAffineVector;
 begin
-  GLScene.VectorGeometry.SetVector(Result, FCoords);
+  Stage.VectorGeometry.SetVector(Result, FCoords);
 end;
 
 function TgxCustomCoordinates.GetAsPoint2D: TVector2f;

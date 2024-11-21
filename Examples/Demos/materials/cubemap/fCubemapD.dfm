@@ -1,36 +1,27 @@
 object FormCubeMap: TFormCubeMap
   Left = 135
   Top = 85
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'Cube Map'
-  ClientHeight = 739
-  ClientWidth = 1036
+  ClientHeight = 422
+  ClientWidth = 587
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnShow = FormShow
-  PixelsPerInch = 168
-  TextHeight = 24
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 1036
-    Height = 739
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 587
+    Height = 422
     Camera = GLCamera1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 101.853157043457000000
+    FieldOfView = 70.239997863769530000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -38,14 +29,10 @@ object FormCubeMap: TFormCubeMap
     TabOrder = 0
   end
   object btnApply: TButton
-    Left = 406
-    Top = 28
-    Width = 229
-    Height = 44
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 232
+    Top = 16
+    Width = 131
+    Height = 25
     Caption = 'Apply Cube Map'
     TabOrder = 1
     OnClick = btnApplyClick

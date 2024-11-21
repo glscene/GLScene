@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.Keyboard;
+unit Stage.Keyboard;
 (*
   Provides on demand state of any key on the keyboard as well as a set of
   utility functions for working with virtual key codes.
@@ -13,7 +13,7 @@ unit GLScene.Keyboard;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,

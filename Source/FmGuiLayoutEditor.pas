@@ -1,11 +1,11 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FmGuiLayoutEditor;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -27,7 +27,7 @@ uses
   GLS.BaseClasses,
   GLS.ImageUtils,
   GLS.Gui,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
   TGLLayoutEditorForm = class(TForm)
@@ -109,7 +109,7 @@ implementation
 {$R *.dfm}
 
 uses
-  GLScene.Utils;
+  Stage.Utils;
 
 var
   vGUILayoutEditorForm: TGLLayoutEditorForm;

@@ -5,7 +5,7 @@ unit GXSL.Parameter;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 {$M-}
 
 uses
@@ -13,8 +13,8 @@ uses
   Winapi.OpenGLext,
   System.Classes,
 
-  GLScene.VectorTypes,
-  GLScene.TextureFormat,
+  Stage.VectorTypes,
+  Stage.TextureFormat,
   GXS.RenderContextInfo;
 
 type

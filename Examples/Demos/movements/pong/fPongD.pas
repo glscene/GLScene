@@ -13,10 +13,10 @@ uses
   Vcl.Dialogs,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.SpaceText,

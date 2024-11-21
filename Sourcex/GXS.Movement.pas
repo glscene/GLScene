@@ -12,7 +12,7 @@ unit GXS.Movement;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,14 +23,14 @@ uses
   GXS.XCollection,
   GXS.PersistentClasses,
   GXS.BaseClasses,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Spline,
-  GLScene.Strings,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Spline,
+  Stage.Strings,
 
   GXS.Scene,
   GXS.Objects,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
 

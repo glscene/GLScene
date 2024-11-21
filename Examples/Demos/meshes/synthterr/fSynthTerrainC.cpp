@@ -10,7 +10,7 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
-#pragma link "GLScene.VectorGeometry"
+#pragma link "Stage.VectorGeometry"
 
 #pragma link "GLS.HeightData"
 #pragma link "GLS.Material"
@@ -84,7 +84,7 @@ void __fastcall TForm1::FormCreate(TObject* Sender)
 void __fastcall TForm1::GLCustomHDSStartPreparingData(TGLHeightData* HeightData)
 {
 	int x, y;
-	Glscene::Vectorgeometry::PByteArray rasterLine;
+	Stage::Vectorgeometry::PByteArray rasterLine;
 	TGLHeightDataType oldType;
 	Byte b;
 	float d, dy;
@@ -140,7 +140,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(
     if (Shift.Contains(ssLeft)) {
         GLCamera1->MoveAroundTarget(my - Y, mx - X);
         mx = X;
-        my = Y;
+		my = Y;
     }
 }
 //---------------------------------------------------------------------------

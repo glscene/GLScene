@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.AsyncTimer;
 (*
@@ -8,14 +8,14 @@ unit GLS.AsyncTimer;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.SyncObjs,
    
-  GLScene.Utils;
+  Stage.Utils;
 
 
 const

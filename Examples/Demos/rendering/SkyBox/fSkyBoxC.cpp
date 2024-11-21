@@ -10,7 +10,7 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
-#pragma link "GLScene.Utils"
+#pragma link "Stage.Utils"
 
 #pragma link "GLS.LensFlare"
 #pragma link "GLS.Material"

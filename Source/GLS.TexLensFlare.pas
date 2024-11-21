@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.TexLensFlare;
@@ -8,7 +8,7 @@ unit GLS.TexLensFlare;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,15 +16,15 @@ uses
   
   GLS.Scene,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Objects,
   GLS.Texture,
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Context,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.State,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

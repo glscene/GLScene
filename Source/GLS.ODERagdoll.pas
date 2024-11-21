@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ODERagdoll;
 
@@ -8,8 +8,8 @@ unit GLS.ODERagdoll;
 interface
 
 uses
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Ragdoll,
   GLS.Scene,
   GLS.Objects,

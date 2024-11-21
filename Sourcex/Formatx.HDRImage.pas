@@ -8,7 +8,7 @@ unit Formatx.HDRImage;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,7 +17,7 @@ uses
   System.SysUtils,
   FMX.Graphics,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Graphics;
 
 type
@@ -35,7 +35,7 @@ implementation
 
 uses
   GXS.FileHDR,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 // ------------------
 // ------------------ THDRImage ------------------

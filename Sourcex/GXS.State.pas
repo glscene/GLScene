@@ -22,7 +22,7 @@ unit GXS.State;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 { .$DEFINE USE_CACHE_MISS_CHECK }
 
 uses
@@ -32,11 +32,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.Strings,
-  GLScene.TextureFormat,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Utils,
+  Stage.Strings,
+  Stage.TextureFormat,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Utils,
 
   GXS.Color;
 

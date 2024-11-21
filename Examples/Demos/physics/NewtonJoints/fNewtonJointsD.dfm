@@ -1,35 +1,26 @@
 object FormNewtonJoints: TFormNewtonJoints
   Left = 0
   Top = 0
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'Newton Joints'
-  ClientHeight = 721
-  ClientWidth = 1129
+  ClientHeight = 412
+  ClientWidth = 641
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 168
-  TextHeight = 23
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 1129
-    Height = 721
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 641
+    Height = 412
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 164.207336425781300000
+    FieldOfView = 152.714172363281300000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -41,7 +32,476 @@ object FormNewtonJoints: TFormNewtonJoints
     Top = 16
     object GLLines1: TGLLines
       Pickable = False
-      Nodes = <>
+      Nodes = <
+        item
+          Y = -1.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -4.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -4.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -4.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -4.000000000000000000
+          Y = 6.000000000000000000
+        end
+        item
+          X = -4.000000000000000000
+        end
+        item
+          X = -4.000000000000000000
+          Y = 3.000000000000000000
+          Z = 1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -4.000000000000000000
+          Y = 3.000000000000000000
+          Z = -1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -4.000000000000000000
+          Y = 4.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -4.000000000000000000
+          Y = 2.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -3.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -5.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = -1.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -2.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -2.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -2.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -2.000000000000000000
+          Y = 6.000000000000000000
+        end
+        item
+          X = -2.000000000000000000
+        end
+        item
+          X = -2.000000000000000000
+          Y = 3.000000000000000000
+          Z = 1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -2.000000000000000000
+          Y = 3.000000000000000000
+          Z = -1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -2.000000000000000000
+          Y = 4.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -2.000000000000000000
+          Y = 2.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -1.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -3.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = -1.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          Y = 3.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          Y = 6.000000000000000000
+        end
+        item
+        end
+        item
+          Y = 3.000000000000000000
+          Z = 1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = 3.000000000000000000
+          Z = -1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = 4.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = 2.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 1.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -1.000000000000000000
+          Y = 3.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = -1.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 2.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 2.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 2.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 2.000000000000000000
+          Y = 9.000000000000000000
+        end
+        item
+          X = 2.000000000000000000
+          Y = 3.000000000000000000
+        end
+        item
+          X = 2.000000000000000000
+          Y = 6.000000000000000000
+          Z = 1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 2.000000000000000000
+          Y = 6.000000000000000000
+          Z = -1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 2.000000000000000000
+          Y = 7.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 2.000000000000000000
+          Y = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 3.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 1.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = -1.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 6.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 6.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 6.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 6.000000000000000000
+          Y = 9.000000000000000000
+        end
+        item
+          X = 6.000000000000000000
+          Y = 3.000000000000000000
+        end
+        item
+          X = 6.000000000000000000
+          Y = 6.000000000000000000
+          Z = 1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 6.000000000000000000
+          Y = 6.000000000000000000
+          Z = -1.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 6.000000000000000000
+          Y = 7.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 6.000000000000000000
+          Y = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 7.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 5.000000000000000000
+          Y = 6.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = -1.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -5.000000000000000000
+          Y = 1.000000000000000000
+          Z = 7.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -5.000000000000000000
+          Y = 1.000000000000000000
+          Z = 7.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -5.000000000000000000
+          Y = 1.000000000000000000
+          Z = 7.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = -3.000000000000000000
+          Y = 3.000000000000000000
+          Z = 7.000000000000000000
+        end
+        item
+          X = -7.000000000000000000
+          Y = -1.000000000000000000
+          Z = 7.000000000000000000
+        end
+        item
+          X = -5.000000000000000000
+          Y = -1.000000000000000000
+          Z = 9.000000000000000000
+        end
+        item
+          X = -5.000000000000000000
+          Y = 3.000000000000000000
+          Z = 5.000000000000000000
+        end
+        item
+          X = -5.000000000000000000
+          Y = 1.000000000000000000
+          Z = 8.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -5.000000000000000000
+          Y = 1.000000000000000000
+          Z = 6.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -5.000000000000000000
+          Y = 2.000000000000000000
+          Z = 7.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -5.000000000000000000
+          Z = 7.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -4.000000000000000000
+          Y = 1.000000000000000000
+          Z = 7.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -6.000000000000000000
+          Y = 1.000000000000000000
+          Z = 7.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = -1.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          Y = 3.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          Y = 3.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          Y = 1.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          Y = 3.000000000000000000
+          Z = 6.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = 3.000000000000000000
+          Z = 4.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = 4.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = 2.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 1.000000000000000000
+          Y = 3.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = -1.000000000000000000
+          Y = 3.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          Y = -1.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 5.000000000000000000
+          Y = 4.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 5.000000000000000000
+          Y = 4.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 5.000000000000000000
+          Y = 2.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {000000000000803F0000803F0000803F}
+        end
+        item
+          X = 5.000000000000000000
+          Y = 4.000000000000000000
+          Z = 6.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 5.000000000000000000
+          Y = 4.000000000000000000
+          Z = 4.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 5.000000000000000000
+          Y = 5.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 5.000000000000000000
+          Y = 3.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 6.000000000000000000
+          Y = 4.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end
+        item
+          X = 4.000000000000000000
+          Y = 4.000000000000000000
+          Z = 5.000000000000000000
+          Color.Color = {EBE0E03EE4DB5B3F9A93133F0000803F}
+        end>
       NodesAspect = lnaInvisible
       SplineMode = lsmSegments
       Options = [loUseNodeColorForLines]

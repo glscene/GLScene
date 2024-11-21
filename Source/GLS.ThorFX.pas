@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ThorFX;
 
@@ -7,7 +7,7 @@ unit GLS.ThorFX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,22 +16,22 @@ uses
   System.Types,
   System.Math,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.XCollection,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Context,
   GLS.VectorLists,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Cadencer,
   GLS.Color,
   GLS.BaseClasses,
   GLS.Coordinates,
   GLS.RenderContextInfo,
-  GLScene.PipelineTransform,
-  GLScene.Manager,
+  Stage.PipelineTransform,
+  Stage.Manager,
   GLS.State,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   PThorpoint = ^TThorpoint;

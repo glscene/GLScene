@@ -7,14 +7,14 @@ unit GXS.FileGRD;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
   GXS.Graph;

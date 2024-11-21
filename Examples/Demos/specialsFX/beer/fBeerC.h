@@ -22,7 +22,7 @@
 #include "GLS.File3DS.hpp"
 #include "GLS.FileJPEG.hpp"
 #include "Jpeg.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 
 
 //---------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Particles;
 
@@ -7,19 +7,19 @@ unit GLS.Particles;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Scene,
   GLS.XCollection,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
-  GLScene.OpenGLTokens,
+  Stage.VectorGeometry,
+  Stage.OpenGLTokens,
   GLS.Context,
   GLS.Color,
   GLS.BaseClasses,

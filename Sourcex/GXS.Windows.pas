@@ -7,7 +7,7 @@ unit GXS.Windows;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,10 +21,10 @@ uses
   FMX.Graphics,
   FMX.Types,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
-  GLScene.Utils,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Strings,
+  Stage.Utils,
 
   GXS.PersistentClasses,
   GXS.BaseClasses,

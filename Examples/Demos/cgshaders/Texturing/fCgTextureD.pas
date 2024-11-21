@@ -20,17 +20,17 @@ uses
   GLS.CgShader,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.Graph,
  
   GLS.Material,
   GLS.Coordinates,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.BaseClasses;
 
 type

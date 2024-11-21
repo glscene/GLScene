@@ -23,7 +23,7 @@ uses
   DwsFunctions, 
   DwsHelperFunc, 
   GXS.Scene, 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Coordinates;
 
 type
@@ -781,7 +781,7 @@ begin
   FUnitName:='GXScene';
   with FDependencies do begin
     Add('Classes');
-    Add('GLScene.VectorGeometry');
+    Add('Stage.VectorGeometry');
   end;
 end;
 

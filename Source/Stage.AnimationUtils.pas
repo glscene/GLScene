@@ -1,21 +1,21 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.AnimationUtils;
+unit Stage.AnimationUtils;
 
 (* Main purpose is to give an easy way to create a linear interpolation *)
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils,
   System.Classes,
   System.Math,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry;
+  Stage.VectorTypes,
+  Stage.VectorGeometry;
 
 type
   TEaseType=

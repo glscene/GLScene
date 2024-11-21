@@ -1,11 +1,11 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FilePGM;
 
 (* PGM image loader *)
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 interface
 
@@ -16,8 +16,8 @@ uses
 
   GLS.Context,
   GLS.Graphics,
-  GLScene.TextureFormat,
-  GLScene.Strings,
+  Stage.TextureFormat,
+  Stage.Strings,
   GLS.ApplicationFileIO,
 
   CUDA.Utility;

@@ -13,7 +13,7 @@
 
 #include "GLS.BumpMapHDS.hpp"
 #include "GLS.LensFlare.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.Texture.hpp"
@@ -27,7 +27,7 @@
 
 #include "GLS.Material.hpp"
 
-#include "GLScene.Keyboard.hpp"
+#include "Stage.Keyboard.hpp"
 #include <jpeg.hpp>
 #include "GLSL.TextureShaders.hpp"             // Pascal unit
 

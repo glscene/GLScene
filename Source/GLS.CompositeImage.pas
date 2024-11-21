@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.CompositeImage;
 
@@ -14,10 +14,10 @@ uses
   System.Classes,
   
   GLS.Context, 
-  GLScene.OpenGLTokens, 
+  Stage.OpenGLTokens, 
   GLS.Graphics, 
   GLS.Texture, 
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
 

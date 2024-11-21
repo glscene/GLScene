@@ -7,20 +7,20 @@ unit GXS.WaterPlane;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
-  GLScene.OpenGL4,  // GL_EXT_compiled_vertex_array
+  Stage.OpenGL4,  // GL_EXT_compiled_vertex_array
   System.Classes,
   FMX.Objects,
   FMX.Types,
   FMX.Graphics,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
-  GLScene.Utils,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.Utils,
   GXS.VectorLists,
   GXS.PersistentClasses,
   GXS.BaseClasses,

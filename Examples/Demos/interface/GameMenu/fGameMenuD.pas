@@ -16,9 +16,12 @@ uses
   Vcl.Imaging.Jpeg,
 
   
+  Stage.VectorTypes,
+  Stage.Keyboard,
+  Stage.Utils,
+
   GLS.Scene,
   GLS.Objects,
-  GLScene.VectorTypes,
   GLS.SceneViewer,
   GLS.GeomObjects,
   GLS.BitmapFont,
@@ -27,11 +30,10 @@ uses
   GLS.Cadencer,
   GLS.Texture,
   GLS.XCollection,
- 
+
   GLS.Material,
   GLS.Coordinates,
-  GLS.BaseClasses,
-  GLScene.Utils;
+  GLS.BaseClasses;
 
 type
   TFormGameMenu = class(TForm)

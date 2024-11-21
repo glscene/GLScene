@@ -13,10 +13,10 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.SceneViewer,
   GLS.GeomObjects,
   GLS.SoundManager,
@@ -30,7 +30,7 @@ uses
 
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils
+  Stage.Utils
   ;
 
 type

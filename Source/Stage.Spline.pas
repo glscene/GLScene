@@ -1,15 +1,15 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.Spline;
+unit Stage.Spline;
 
 (* Cubic spline interpolation functions *)
 
 interface
 
 uses
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry;
+  Stage.VectorTypes,
+  Stage.VectorGeometry;
 
 
 type

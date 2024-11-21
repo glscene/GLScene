@@ -18,9 +18,9 @@ uses
   GXS.VectorFileObjects,
   GXS.Texture,
   GXS.ApplicationFileIO,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
 
   PasGLTF,
   GXS.Material;

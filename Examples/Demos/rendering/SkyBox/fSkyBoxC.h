@@ -8,8 +8,8 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 
-#include "GLScene.Utils.hpp"
-#include "GLScene.Keyboard.hpp"
+#include "Stage.Utils.hpp"
+#include "Stage.Keyboard.hpp"
 
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"

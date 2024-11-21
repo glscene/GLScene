@@ -54,7 +54,7 @@ implementation
 uses
   GLS.Context,
   GLS.State,
-  GLScene.Utils;
+  Stage.Utils;
 
 procedure TFormCustomQuad.FormCreate(Sender: TObject);
 begin

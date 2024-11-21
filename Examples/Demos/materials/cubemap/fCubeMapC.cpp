@@ -49,21 +49,16 @@ void __fastcall TForm1::btnApplyClick(TObject* Sender)
 
     // Load all 6 texture map components of the cube map
     // The 'PX', 'NX', etc. refer to 'positive X', 'negative X', etc.
-    // and follow the RenderMan specs/conventions
-    Image->Picture[CmtPX]->LoadFromFile("cm_left.jpg");
-    Image->Picture[CmtNX]->LoadFromFile("cm_right.jpg");
-    Image->Picture[CmtPY]->LoadFromFile("cm_top.jpg");
-    Image->Picture[CmtNY]->LoadFromFile("cm_bottom.jpg");
-    Image->Picture[CmtPZ]->LoadFromFile("cm_back.jpg");
-    Image->Picture[CmtNZ]->LoadFromFile("cm_front.jpg");
-    // Select reflection cube map environment mapping
-    // This is the mode you'll most commonly use with cube maps, normal cube
-    // map generation is also supported (used for diffuse environment lighting)
-    Teapot1->Material->Texture->MappingMode = tmmCubeMapReflection;
-    // That's all folks, let us see the thing!
-    Teapot1->Material->Texture->Disabled = false;
-
+	// and follow the RenderMan specs/conventions
     // apply .dds cubemaps to next objects
+    DDStex(Teapot1->Material->Texture, "skybox.dds");
+	// Select reflection cube map environment mapping
+	// This is the mode you'll most commonly use with cube maps, normal cube
+	// map generation is also supported (used for diffuse environment lighting)
+	Teapot1->Material->Texture->MappingMode = tmmCubeMapReflection;
+	// That's all folks, let us see the thing!
+	Teapot1->Material->Texture->Disabled = false;
+	// apply .dds cubemaps to next objects
     DDStex(Plane1->Material->Texture, "skybox.dds");
     Plane1->Material->Texture->MappingMode = tmmEyeLinear;
 

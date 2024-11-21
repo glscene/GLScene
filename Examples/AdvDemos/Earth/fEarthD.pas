@@ -20,8 +20,8 @@ uses
   Vcl.Menus,
   Vcl.ComCtrls,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Material,
   GLS.Cadencer,
   GLS.LensFlare,
@@ -34,9 +34,9 @@ uses
   GLS.RenderContextInfo,
   GLS.Color,
   GLS.State,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Context,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLSL.TextureShaders,
   GLS.BaseClasses,
   GLS.PersistentClasses,
@@ -123,8 +123,6 @@ type
     procedure miConstBoundariesClick(Sender: TObject);
     procedure Hide1Click(Sender: TObject);
     procedure Show1Click(Sender: TObject);
-    procedure SkyDomeProgress(Sender: TObject; const DeltaTime,
-      NewTime: Double);
   public
     ConstellationsAlpha: Single;
     TimeMultiplier: Single;

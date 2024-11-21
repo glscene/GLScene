@@ -14,13 +14,13 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene.VectorTypes,
-  GLScene.Keyboard,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.Keyboard,
+  Stage.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.XCollection,
-  GLScene.Utils,
+  Stage.Utils,
 
   GLS.SceneViewer,
   GLS.Scene,

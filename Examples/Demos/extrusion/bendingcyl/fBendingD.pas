@@ -17,7 +17,7 @@ uses
   GLS.Objects,
   GLS.Extrusion,
   GLS.Cadencer,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.SceneViewer,
 
   GLS.Coordinates,
@@ -51,7 +51,7 @@ type
 var
   FormBendingCyl: TFormBendingCyl;
 
-implementation
+implementation  //------------------------------------------------------------
 
 {$R *.DFM}
 

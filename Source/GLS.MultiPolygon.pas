@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.MultiPolygon;
 
@@ -19,7 +19,7 @@ unit GLS.MultiPolygon;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -27,13 +27,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.OpenGLAdapter,
-  GLScene.Spline,
+  Stage.Spline,
   GLS.XOpenGL,
   GLS.Context,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Scene,
@@ -179,7 +179,7 @@ type
     FPageSize: Integer; // number of entries per page
     FArrSize: Integer; // size of one page
     FUsedEntries: Integer; // used entries in actual page
-    FAktArray: GLScene.VectorGeometry.PByteArray; // pointer to actual page
+    FAktArray: Stage.VectorGeometry.PByteArray; // pointer to actual page
     procedure CreatePage; // creates new page
   public
     constructor Create(APageSize, AEntrySize: Integer);

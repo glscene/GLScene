@@ -7,7 +7,7 @@ unit GXS.FullScreenViewer;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Messages,

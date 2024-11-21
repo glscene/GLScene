@@ -244,9 +244,7 @@ void __fastcall TForm1::GLCadencerProgress(TObject *Sender,
 
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::Timer1Timer(TObject *Sender) {
-	HTFPS->Text = Format("%.1f FPS - %d - %d",
-		ARRAYOFCONST((GLSceneViewer->FramesPerSecond(),
-		TerrainRenderer->LastTriangleCount, WaterPolyCount)));
+	HTFPS->Text = GLSceneViewer->FramesPerSecondText(0) + ", " + TerrainRenderer->LastTriangleCount + ", " + WaterPolyCount;
 	GLSceneViewer->ResetPerformanceMonitor();
 }
 

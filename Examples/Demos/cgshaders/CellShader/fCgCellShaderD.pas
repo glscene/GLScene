@@ -14,8 +14,8 @@ uses
   Cg.GL,
 
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Objects,
   GLS.Cadencer,
   GLS.Texture,
@@ -26,7 +26,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.FileMD2,
 
   GLS.CgShader;

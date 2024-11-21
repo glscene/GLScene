@@ -11,7 +11,7 @@ unit GXS.HiddenLineShader;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,

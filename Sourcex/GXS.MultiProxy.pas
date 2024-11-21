@@ -15,11 +15,11 @@ uses
   GXS.PersistentClasses,
   GXS.Context,
   GXS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Silhouette,
   GXS.RenderContextInfo,
   GXS.BaseClasses,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

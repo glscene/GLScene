@@ -21,9 +21,9 @@ uses
   GLS.SceneViewer,
   GLS.Trail,
   GLS.Texture, 
-  GLScene.VectorGeometry, 
+  Stage.VectorGeometry, 
   GLS.Mesh, 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Coordinates, 
   GLS.BaseClasses;
 

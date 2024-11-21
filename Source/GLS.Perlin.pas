@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Perlin;
 (*
@@ -11,7 +11,7 @@ unit GLS.Perlin;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -19,7 +19,7 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.HeightData;
 
 type

@@ -18,13 +18,15 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
+  Stage.Keyboard,
+  Stage.Utils,
+
   GLS.SceneViewer,
   GLS.Texture,
   GLS.Cadencer,
   GLS.Scene,
   GLS.Context,
   GLS.XCollection,
-  GLScene.Utils,
   GLS.FileTGA,
   GLS.HUDObjects,
   GLS.BitmapFont,

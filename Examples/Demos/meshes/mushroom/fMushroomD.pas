@@ -13,8 +13,8 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.Scene,
   GLS.VectorFileObjects,
@@ -27,7 +27,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.File3DS,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormMushroom = class(TForm)

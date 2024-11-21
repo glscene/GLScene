@@ -15,9 +15,9 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  GLScene.Keyboard,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.Keyboard,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.XCollection,
   GLS.Coordinates,
   GLS.BaseClasses,
@@ -35,7 +35,7 @@ uses
   GLS.Material,
   GLS.FireFX,
   GLS.GeomObjects,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TForm1 = class(TForm)

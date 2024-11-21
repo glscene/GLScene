@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FullScreenViewer;
 
@@ -7,7 +7,7 @@ unit GLS.FullScreenViewer;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -18,8 +18,8 @@ uses
   VCL.Controls,
   VCL.Menus,
 
-  GLScene.OpenGLTokens,
-  GLScene.Utils,
+  Stage.OpenGLTokens,
+  Stage.Utils,
   GLS.Context,
   GLS.ImageUtils,
   GLS.Scene,

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLSL.PostShaders;
@@ -18,23 +18,23 @@ unit GLSL.PostShaders;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Texture,
   GLS.Scene,
   GLS.State,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.RenderContextInfo,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.Context,
   GLS.Material,
   GLSL.Shader,
   GLSL.CustomShader,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
   // Custom class for GLSLPostBlurShader. A shader that blurs the entire scene

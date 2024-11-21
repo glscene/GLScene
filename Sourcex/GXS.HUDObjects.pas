@@ -7,7 +7,7 @@ unit GXS.HUDObjects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,11 +16,11 @@ uses
   System.Classes,
 
   GXS.XOpenGL,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.PersistentClasses,
   GXS.Scene,
   GXS.Coordinates,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Objects,
   GXS.BitmapFont,
   GXS.ImageUtils,

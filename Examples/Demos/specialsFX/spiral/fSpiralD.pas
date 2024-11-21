@@ -15,12 +15,12 @@ uses
 
   GLS.Scene,
   GLS.Objects,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.ParticleFX,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Behaviours,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
 
   GLS.FullScreenViewer,
   GLS.Coordinates,

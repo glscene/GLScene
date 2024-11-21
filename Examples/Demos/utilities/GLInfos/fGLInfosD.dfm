@@ -1,18 +1,14 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   BorderStyle = bsNone
   Caption = 'GLScene OpenGL Information'
-  ClientHeight = 999
-  ClientWidth = 1041
+  ClientHeight = 571
+  ClientWidth = 595
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   KeyPreview = True
@@ -21,21 +17,16 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnResize = FormResize
   OnShow = FormShow
-  PixelsPerInch = 168
-  TextHeight = 23
+  TextHeight = 13
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 1041
-    Height = 999
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 595
+    Height = 571
     Camera = Camera1
     Buffer.BackgroundColor = clBlack
     Buffer.Lighting = False
-    FieldOfView = 168.567459106445300000
+    FieldOfView = 160.132904052734400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -21961,7 +21952,7 @@ object MainForm: TMainForm
           0000000000000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000000000000000
-          0000000000000000}
+          00000000000000000000000000000000000000000000}
       end>
     Left = 320
     Top = 24

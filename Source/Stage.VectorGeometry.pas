@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.VectorGeometry;
+unit Stage.VectorGeometry;
 
 (*
   Base classes and structures.
@@ -30,7 +30,7 @@ uses
   System.Types,
   System.Math,
 
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 const
   cMaxArray = (MaxInt shr 4);

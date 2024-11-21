@@ -11,6 +11,7 @@
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Coordinates"
 
+#pragma link "Stage.OpenGLTokens"
 #pragma link "GLS.Graph"
 #pragma link "GLS.Material"
 #pragma link "GLS.Objects"
@@ -19,18 +20,17 @@
 #pragma link "GLS.SkyDome"
 #pragma link "GLSL.UserShader"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLS.OpenGLTokens"
 #pragma link "GLS.OpenGLAdapter"
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormOcean *FormOcean;
 
 // ---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
+__fastcall TFormOcean::TFormOcean(TComponent* Owner) : TForm(Owner) {
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender) {
+void __fastcall TFormOcean::FormCreate(TObject *Sender) {
 
 	Path = GetCurrentAssetPath();
 	// Loading noise texture
@@ -55,7 +55,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::DOInitializeRender(TObject *Sender,
+void __fastcall TFormOcean::DOInitializeRender(TObject *Sender,
 	TGLRenderContextInfo &rci) {
 	if (!((GL_SHADER_OBJECT_ARB) && (GL_VERTEX_PROGRAM_ARB) &&
 		(GL_VERTEX_SHADER_ARB) && (GL_FRAGMENT_SHADER_ARB))) {
@@ -100,7 +100,7 @@ void __fastcall TForm1::DOInitializeRender(TObject *Sender,
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLUserShader1DoApply(TObject *Sender,
+void __fastcall TFormOcean::GLUserShader1DoApply(TObject *Sender,
 	TGLRenderContextInfo &rci)
 
 {
@@ -114,13 +114,13 @@ void __fastcall TForm1::GLUserShader1DoApply(TObject *Sender,
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLUserShader1DoUnApply(TObject *Sender, int Pass,
+void __fastcall TFormOcean::GLUserShader1DoUnApply(TObject *Sender, int Pass,
 	TGLRenderContextInfo &rci, bool &Continue) {
 	programObject->EndUseProgramObject();
 }
 // ---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender,
+void __fastcall TFormOcean::GLSceneViewer1MouseMove(TObject *Sender,
 	TShiftState Shift, int X, int Y) {
 	if (Shift.Contains(ssLeft)) {
 		GLCamera->MoveAroundTarget(my - Y, mx - X);
@@ -130,7 +130,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender,
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender,
+void __fastcall TFormOcean::GLCadencer1Progress(TObject *Sender,
 	const double deltaTime, const double newTime) {
 	if ((dmx != 0) || (dmy != 0)) {
 		GLCamera->MoveAroundTarget(dmy * 0.3, dmx * 0.3);
@@ -141,14 +141,14 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender,
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender,
+void __fastcall TFormOcean::GLSceneViewer1MouseDown(TObject *Sender,
 	TMouseButton Button, TShiftState Shift, int X, int Y) {
 	mx = X;
 	my = Y;
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLHeightField1GetHeight(const float x, const float y,
+void __fastcall TFormOcean::GLHeightField1GetHeight(const float x, const float y,
 	float &z, TVector4f &color, TTexPoint &texPoint) {
 	z = 0;
 }
@@ -158,12 +158,12 @@ const int cExtent = 200;
 TGLVBOArrayBufferHandle *vbo;
 int nbVerts;
 
-void __fastcall TForm1::DOOceanPlaneRender(TObject *Sender,
+void __fastcall TFormOcean::DOOceanPlaneRender(TObject *Sender,
 	TGLRenderContextInfo &rci)
 
 {
 	int x, y;
-	TGTexPointList *v;
+	TGLTexPointList *v;
 	bool cont;
 	TGLExtensionsAndEntryPoints *GL;
 
@@ -172,7 +172,7 @@ void __fastcall TForm1::DOOceanPlaneRender(TObject *Sender,
 	GL->EnableClientState(GL_VERTEX_ARRAY);
 
 	if (!vbo) {
-		v = new TGTexPointList;
+		v = new TGLTexPointList;
 
 		v->Capacity = (cExtent + 1) * (cExtent + 1);
 		y = -cExtent;
@@ -210,7 +210,7 @@ void __fastcall TForm1::DOOceanPlaneRender(TObject *Sender,
 }
 
 // ---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1BeforeRender(TObject *Sender) {
+void __fastcall TFormOcean::GLSceneViewer1BeforeRender(TObject *Sender) {
 	///  GLMemoryViewer1->Buffer->RenderingContext->ShareLists(GLSceneViewer1->Buffer->RenderingContext);
 	///  GLMemoryViewer1->BeforeRender = NULL;
 }

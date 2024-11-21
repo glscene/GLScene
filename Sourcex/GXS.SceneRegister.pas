@@ -8,7 +8,7 @@ unit GXS.SceneRegister;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -36,8 +36,8 @@ uses
   DesignMenus,
 *)
 
-  GLScene.Strings,
-  GLScene.Utils,
+  Stage.Strings,
+  Stage.Utils,
 
   GXS.Scene,
   GXS.Context,
@@ -307,9 +307,9 @@ uses
 //  FSceneEditor,
 
   GXS.BaseClasses,
-  GLScene.VectorTypesExt,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypesExt,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.ApplicationFileIO,
 
   GLXL.AsmShader,

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.WaterPlane;
@@ -12,23 +12,23 @@ unit GLS.WaterPlane;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   Vcl.Graphics,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
   GLS.Scene,
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLS.Context,
   GLS.RenderContextInfo,
-  GLScene.VectorTypes,
-  GLScene.Utils;
+  Stage.VectorTypes,
+  Stage.Utils;
 
 type
    TGLWaterPlaneOption = (wpoTextured);

@@ -26,7 +26,7 @@ uses
   GLS.BaseClasses,
   GLS.RenderContextInfo,
   GLS.FileMD2,
-  GLScene.Utils, GLS.SimpleNavigation;
+  Stage.Utils, GLS.SimpleNavigation;
 
 type
   TFormCulling = class(TForm)

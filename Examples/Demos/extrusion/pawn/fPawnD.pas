@@ -22,7 +22,7 @@ uses
   GLS.SceneViewer,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormPawn = class(TForm)

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ShadowVolume;
 
@@ -12,29 +12,29 @@ unit GLS.ShadowVolume;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Context,
   GLS.Silhouette,
   GLS.PersistentClasses,
   GLS.Coordinates,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.GeometryBB,
   GLS.Color,
   GLS.Selection,
   GLS.RenderContextInfo,
   GLS.VectorLists,
   GLS.State,
-  GLScene.VectorTypes,
-  GLScene.Logger;
+  Stage.VectorTypes,
+  Stage.Logger;
 
 
 type

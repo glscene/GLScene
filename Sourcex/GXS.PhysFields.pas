@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit GXS.PhysFields;
 
@@ -7,7 +7,7 @@ interface
 
 uses
   System.Classes,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.XCollection,
   GXS.Coordinates,
 

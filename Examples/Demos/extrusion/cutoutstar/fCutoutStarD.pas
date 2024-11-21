@@ -17,7 +17,7 @@ uses
   GLS.Cadencer,
   GLS.Scene,
   GLS.Extrusion,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.MultiPolygon,
   GLS.SceneViewer,
  

@@ -10,7 +10,7 @@ unit GXS.VectorFileObjects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,11 +20,11 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
-  GLScene.Utils,
-  GLScene.TextureFormat,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Strings,
+  Stage.Utils,
+  Stage.TextureFormat,
 
   GXS.BaseClasses,
   GXS.GeometryBB,

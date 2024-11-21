@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit Formatx.Q3BSP;
 
@@ -10,7 +10,7 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 const
   FACE_POLYGON = 1;

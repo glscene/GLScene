@@ -5,17 +5,17 @@ unit GXS.FileLMTS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   FMX.Graphics,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.ApplicationFileIO,
   GXS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.PersistentClasses,
   GXS.VectorFileObjects,
   GXS.Graphics,
@@ -106,7 +106,7 @@ implementation
 //====================================================================
 
 uses
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 // ------------------
 // ------------------ TgxLMTSVectorFile ------------------

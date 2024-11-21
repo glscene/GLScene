@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Isolines;
 
@@ -7,7 +7,7 @@ unit GLS.Isolines;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils, 
@@ -15,10 +15,10 @@ uses
   System.Math,
   System.Generics.Collections,
 
-  GLScene.VectorGeometry, 
-  GLScene.VectorTypes,
-  GLScene.VectorTypesExt,
-  GLScene.Spline,
+  Stage.VectorGeometry, 
+  Stage.VectorTypes,
+  Stage.VectorTypesExt,
+  Stage.Spline,
   GLS.VectorLists,
   GLS.Coordinates,
 

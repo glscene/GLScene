@@ -7,7 +7,7 @@ unit GXS.TexLensFlare;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,7 +15,7 @@ uses
   System.Classes,
 
   GXS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.PersistentClasses,
   GXS.Objects,
   GXS.Texture,
@@ -23,7 +23,7 @@ uses
   GXS.RenderContextInfo,
   GXS.BaseClasses,
   GXS.State,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

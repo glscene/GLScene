@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.NGDManager;
 
@@ -22,15 +22,15 @@ uses
   /// NGD.Joints,            // old joints
   /// Physics.NewtonImport,      // new version 4.0
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
+  Stage.VectorTypes,
+  Stage.VectorGeometry, // PGLVector TGLVector TGLMatrix PGLMatrix NullHmgVector...
   GLS.VectorLists, // TGLAffineVectorList for Tree
   GLS.XCollection, // TXCollection file function
   GLS.GeometryBB, // For show debug
   GLS.BaseClasses,
   GLS.PersistentClasses,
   GLS.Scene,
-  GLScene.Manager,
+  Stage.Manager,
   GLS.Coordinates,
   GLS.Objects,
   GLS.GeomObjects,

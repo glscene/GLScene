@@ -11,6 +11,7 @@
 #include <ExtCtrls.hpp>
 
 
+#include "Stage.Keyboard.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Cadencer.hpp"
@@ -23,14 +24,13 @@
 #include "GLS.Texture.hpp"
 #include "GLS.Objects.hpp"
 #include "GLS.BaseClasses.hpp"
-#include "GLScene.Keyboard.hpp"
 #include "GLS.Coordinates.hpp"
 
 #include "GLS.VerletTypes.hpp"
 
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormFurBall : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -79,7 +79,7 @@ __published:	// IDE-managed Components
 private:	// User declarations
   int mX, mY;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormFurBall(TComponent* Owner);
 
   PdxBody odeFurBallBody;
   PdxGeom odeFurBallGeom;
@@ -102,6 +102,6 @@ public:		// User declarations
 
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormFurBall *FormFurBall;
 //---------------------------------------------------------------------------
 #endif

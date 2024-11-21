@@ -30,8 +30,8 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.State,
-  GLScene.VectorGeometry,
-  GLScene.Utils;
+  Stage.VectorGeometry,
+  Stage.Utils;
 
 type
   TFormCsg = class(TForm)

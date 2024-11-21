@@ -9,7 +9,7 @@
 #include <Forms.hpp>
 #include <ComCtrls.hpp>
 #include <ExtCtrls.hpp>
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.BaseClasses.hpp"
 #include <GLS.GeomObjects.hpp>
@@ -20,7 +20,7 @@
 #include <GLS.VectorFileObjects.hpp>
 #include "GLS.Coordinates.hpp"
 
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.SceneViewer.hpp"hpp"
 

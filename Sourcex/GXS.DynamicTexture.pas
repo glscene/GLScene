@@ -10,7 +10,7 @@ unit GXS.DynamicTexture;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,12 +19,12 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.Strings,
 
   GXS.Context,
   GXS.Texture,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GXS.Graphics;
 
 type

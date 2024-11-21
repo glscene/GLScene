@@ -22,9 +22,9 @@ uses
   GLS.SceneViewer,
 
   GLS.BaseClasses,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.SimpleNavigation,
   GLS.Material,
   GLS.VectorFileObjects,
@@ -49,7 +49,7 @@ uses
   GLS.FilePNG,
   GLS.FileDDS,
 
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TForm1 = class(TForm)

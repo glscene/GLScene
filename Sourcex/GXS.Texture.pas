@@ -7,7 +7,7 @@ unit GXS.Texture;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,25 +18,25 @@ uses
   FMX.Graphics,
   FMX.Objects,
 
-  GLScene.TextureFormat,
-  GLScene.Strings,
+  Stage.TextureFormat,
+  Stage.Strings,
 
   GXS.XOpenGL,
   GXS.PersistentClasses,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.BaseClasses,
   GXS.ApplicationFileIO,
 
   GXS.Graphics,
   GXS.Context,
   GXS.State,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GXS.Color,
   GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.ImageUtils,
-  GLScene.Utils;
+  Stage.Utils;
 
 const
   cDefaultNormalMapScale = 0.125;

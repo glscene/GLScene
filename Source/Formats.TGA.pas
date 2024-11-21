@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.TGA;
 
@@ -14,11 +14,11 @@ uses
   Winapi.OpenGLext,
   System.Classes,
   System.SysUtils,
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Context,
   GLS.Graphics,
   GLS.ApplicationFileIO,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
 

@@ -7,13 +7,14 @@ unit GXS.FilePLY;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.Utils,
+  Stage.Utils,
+  GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
   GXS.ImageUtils;

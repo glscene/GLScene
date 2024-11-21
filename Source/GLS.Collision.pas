@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Collision;
 
@@ -7,22 +7,23 @@ unit GLS.Collision;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLScene.VectorTypes,
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
+  Stage.Manager,
+
   GLS.Scene,
   GLS.XCollection,
   GLS.VectorLists,
   GLS.VectorFileObjects,
-  GLS.GeometryBB,
-  GLScene.Manager;
+  GLS.GeometryBB;
 
 type
 

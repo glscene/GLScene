@@ -80,7 +80,6 @@ void __fastcall TForm1::FormCloseQuery(TObject *Sender, bool &CanClose) {
 // ---------------------------------------------------------------------------
 void __fastcall TForm1::Timer1Timer(TObject *Sender) {
 	// standard FPS
-	LabelFPS->Caption =
-		Format("%.1f FPS", ARRAYOFCONST((GLSceneViewer1->FramesPerSecond())));
+	LabelFPS->Caption = GLSceneViewer1->FramesPerSecondText();
 }
 // ---------------------------------------------------------------------------

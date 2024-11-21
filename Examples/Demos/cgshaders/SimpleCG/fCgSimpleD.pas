@@ -19,12 +19,12 @@ uses
   Cg.Shader,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Texture,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.VectorFileObjects,
   GLS.File3DS,
@@ -33,7 +33,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormCgSimple = class(TForm)

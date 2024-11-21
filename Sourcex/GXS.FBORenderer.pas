@@ -7,7 +7,7 @@ unit GXS.FBORenderer;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,7 +18,7 @@ uses
   FMX.Dialogs,
 
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Scene,
   GXS.Texture,
   GXS.Context,
@@ -27,9 +27,9 @@ uses
   GXS.Material,
   GXS.RenderContextInfo,
   GXS.State,
-  GLScene.PipelineTransform,
-  GLScene.TextureFormat,
-  GLScene.VectorTypes,
+  Stage.PipelineTransform,
+  Stage.TextureFormat,
+  Stage.VectorTypes,
   GXS.MultisampleImage;
 
 type

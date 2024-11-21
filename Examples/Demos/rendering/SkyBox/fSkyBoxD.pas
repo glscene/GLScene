@@ -15,8 +15,8 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.Keyboard,
+  Stage.VectorTypes,
+  Stage.Keyboard,
   GLS.Texture,
   GLS.SkyDome,
 
@@ -30,7 +30,7 @@ uses
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.SimpleNavigation,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormSkybox = class(TForm)

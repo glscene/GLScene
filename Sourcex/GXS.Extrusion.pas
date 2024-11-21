@@ -15,7 +15,7 @@ unit GXS.Extrusion;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -26,10 +26,10 @@ uses
   System.Math,
 
   GXS.XOpenGL,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.VectorLists,
-  GLScene.VectorGeometry,
-  GLScene.Spline,
+  Stage.VectorGeometry,
+  Stage.Spline,
 
   GXS.Context,
   GXS.Objects,

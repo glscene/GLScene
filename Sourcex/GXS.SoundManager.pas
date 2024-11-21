@@ -7,21 +7,21 @@ unit GXS.SoundManager;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.BaseClasses,
   GXS.XCollection,
   GXS.SoundFileObjects,
   GXS.Scene,
   GXS.Cadencer,
-  GLScene.Utils,
+  Stage.Utils,
   GXS.ImageUtils;
 
 type

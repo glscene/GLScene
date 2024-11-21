@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.GeomObjects;
 
@@ -13,7 +13,7 @@ unit GLS.GeomObjects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,11 +21,11 @@ uses
   System.Classes,
 
   GLS.OpenGLAdapter,
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.PipelineTransform,
-  GLScene.Polynomials,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.PipelineTransform,
+  Stage.Polynomials,
 
   GLS.Scene,
   GLS.State,

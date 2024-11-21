@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.GL2;
 (*
@@ -12,8 +12,8 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes;
+  Stage.VectorGeometry,
+  Stage.VectorTypes;
 
 type
   TGLMHeader = record

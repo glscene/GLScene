@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.SmoothNavigator;
@@ -22,7 +22,7 @@ unit GLS.SmoothNavigator;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -30,9 +30,9 @@ uses
   
   GLS.Scene,
   GLS.PersistentClasses,
-  GLScene.VectorTypes, 
+  Stage.VectorTypes, 
   GLS.Navigator,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Coordinates,
   GLS.Screen, 
   GLS.XCollection;
@@ -725,7 +725,7 @@ begin
 
     if (Abs(FinalPitch) > FCutOff) or (Abs(FinalTurn) > FCutOff) then
     begin
-      MovingObject.AbsolutePosition := GLScene.VectorGeometry.MoveObjectAround(
+      MovingObject.AbsolutePosition := Stage.VectorGeometry.MoveObjectAround(
         MovingObject.AbsolutePosition, lUp, AObject.AbsolutePosition, FinalPitch, FinalTurn);
       Result := True;
     end;

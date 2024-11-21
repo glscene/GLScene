@@ -16,7 +16,7 @@ unit GXS.HeightTileFile;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,

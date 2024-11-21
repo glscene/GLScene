@@ -19,7 +19,7 @@
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "GLS.FileMD2.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "Cg.GL.hpp"
 #include "GLS.CgShader.hpp"
 #include <Vcl.ComCtrls.hpp>

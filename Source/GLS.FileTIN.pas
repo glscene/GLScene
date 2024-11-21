@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileTIN;
 
@@ -7,18 +7,18 @@ unit GLS.FileTIN;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypesExt,
-  GLScene.Utils;
+  Stage.VectorGeometry,
+  Stage.VectorTypesExt,
+  Stage.Utils;
 
 
 type

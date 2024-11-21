@@ -29,9 +29,9 @@ uses
   GLS.Material,
   GLS.Coordinates,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.BaseClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Navigator,
   GLS.SmoothNavigator,
   GLS.Graph;

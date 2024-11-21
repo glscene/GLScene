@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Movement;
 
@@ -11,24 +11,24 @@ unit GLS.Movement;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
-  GLScene.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.OpenGLTokens,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.XCollection,
-  GLScene.Spline,
+  Stage.Spline,
   GLS.BaseClasses,
 
   GLS.Scene,
   GLS.Objects,
-  GLScene.Strings,
-  GLScene.Utils;
+  Stage.Strings,
+  Stage.Utils;
 
 type
 

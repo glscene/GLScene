@@ -16,7 +16,7 @@ uses
   GLS.Color,
   GLS.Context,
   GLS.Texture,
-  GLScene.Utils,
+  Stage.Utils,
 
   GLS.SDL.Context,
   SDL.Import;

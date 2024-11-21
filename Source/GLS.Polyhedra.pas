@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Polyhedra;
 
@@ -12,7 +12,7 @@ unit GLS.Polyhedra;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,12 +23,12 @@ uses
   System.Math,
   VCL.Consts,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorTypesExt,
-  GLScene.TextureFormat,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorTypesExt,
+  Stage.TextureFormat,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Scene,
   GLS.BaseClasses,
   GLS.Objects,
@@ -37,11 +37,11 @@ uses
   GLS.VectorLists,
   GLS.PersistentClasses,
   GLS.Silhouette,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.Texture,
   GLS.Material,
   GLS.Mesh,
-  GLScene.Logger,
+  Stage.Logger,
   GLS.Octree,
   GLS.GeometryBB,
   GLS.ApplicationFileIO,

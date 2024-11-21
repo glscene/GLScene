@@ -5,17 +5,17 @@ unit GXS.FileJPEG;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.Strings,
   GXS.Context,
   GXS.Graphics,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GXS.ApplicationFileIO;
 
 type

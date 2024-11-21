@@ -18,7 +18,7 @@
 #include "GLS.SceneViewer.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.SkyDome.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 
 #include "GLS.Atmosphere.hpp"
 #include "GLS.SimpleNavigation.hpp"

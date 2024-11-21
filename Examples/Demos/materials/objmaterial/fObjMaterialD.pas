@@ -24,9 +24,9 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SimpleNavigation,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Mesh;
 
 type

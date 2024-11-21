@@ -1,5 +1,5 @@
 ﻿//
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Extrusion;
 (*
@@ -12,7 +12,7 @@ unit GLS.Extrusion;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -20,17 +20,17 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Context,
   GLS.Objects,
   GLS.Scene,
   GLS.MultiPolygon,
   GLS.Color,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.RenderContextInfo,
   GLS.Nodes,
   GLS.State,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 
@@ -249,7 +249,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLScene.Spline,
+  Stage.Spline,
   GLS.VectorLists,
   GLS.XOpenGL;
 

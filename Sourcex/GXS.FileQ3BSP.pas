@@ -11,7 +11,7 @@ unit GXS.FileQ3BSP;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -20,8 +20,8 @@ uses
 
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.VectorLists,
   GXS.BSP,
   GXS.Texture,
@@ -29,7 +29,7 @@ uses
   GXS.State,
   GXS.ImageUtils,
   GXS.Material,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
 
   Formatx.Q3BSP;
 

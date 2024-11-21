@@ -13,10 +13,10 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
-  GLScene.Strings,
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.TextureFormat,
+  Stage.Strings,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.TextureFormat,
   GXS.RenderContextInfo;
 
 type

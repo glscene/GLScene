@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Color;
 
@@ -7,7 +7,7 @@ unit GLS.Color;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -15,9 +15,9 @@ uses
   System.Classes,
   System.UITypes,  // Colors
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Utils,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Utils,
 
   GLS.PersistentClasses,
   GLS.BaseClasses;

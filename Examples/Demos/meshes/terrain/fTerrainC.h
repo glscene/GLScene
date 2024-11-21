@@ -12,7 +12,7 @@
 #include <GIFImg.hpp>
 
 #include "GLS.LensFlare.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 #include "GLS.Sounds.BASS.hpp"
 #include "GLS.SoundManager.hpp"
 #include "GLS.SceneViewer.hpp"
@@ -31,7 +31,7 @@
 #include "GLS.Material.hpp"
 #include "GLS.FileMP3.hpp"
 #include "Jpeg.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "GLS.SoundManager.hpp"
 
 //---------------------------------------------------------------------------

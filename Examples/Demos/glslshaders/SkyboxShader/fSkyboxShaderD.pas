@@ -9,15 +9,15 @@ uses
   Vcl.Forms,
   Vcl.Controls,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.GeomObjects,
   GLS.Texture,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.CompositeImage,
   GLS.Material,
   GLS.Coordinates,
@@ -25,7 +25,7 @@ uses
 
   GLS.Context,
   GLS.RenderContextInfo,
-  GLScene.Utils,
+  Stage.Utils,
 
   GLS.FileDDS;
 

@@ -16,7 +16,11 @@ uses
   Vcl.StdCtrls,
   Vcl.Imaging.Jpeg,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+  Stage.Utils,
+
   GLS.Scene,
   GLS.TerrainRenderer,
   GLS.Objects,
@@ -28,18 +32,16 @@ uses
   GLS.BitmapFont,
   GLS.SkyDome,
   GLS.SceneViewer,
-  GLScene.VectorGeometry,
   GLS.LensFlare,
   GLS.ODEManager,
   GLS.Navigator,
   GLS.GeomObjects,
   GLS.Color,
- 
+
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.State,
-  GLScene.Utils;
+  GLS.State;
 
 type
   TFormOdeTerrain = class(TForm)

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.BitmapFont;
 
@@ -7,7 +7,7 @@ unit GLS.BitmapFont;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpengL,
@@ -17,16 +17,16 @@ uses
   Vcl.Graphics,
   Vcl.StdCtrls,
   
-  GLScene.OpenGLTokens,
-  GLScene.TextureFormat,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.TextureFormat,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
 
   GLS.Scene,
   GLS.Context,
   GLS.Texture,
   GLS.State,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Graphics,
   GLS.Color,
   GLS.BaseClasses,

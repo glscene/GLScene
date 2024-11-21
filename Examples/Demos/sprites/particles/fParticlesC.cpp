@@ -8,7 +8,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.SceneViewer"
-#pragma link "GLScene.VectorGeometry"
+#pragma link "Stage.VectorGeometry"
 #pragma link "GLS.Behaviours"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Particles"
@@ -79,7 +79,7 @@ void __fastcall TFormStars::Sprite1Progress(TObject * Sender,
 void __fastcall TFormStars::Timer1Timer(TObject * Sender)
 {
   // every timer, we create a particle at a random position
-  TGCoordinates *c = ((TGLSprite *) GLParticles1->CreateParticle())->Position;
+  TGLCoordinates *c = ((TGLSprite *) GLParticles1->CreateParticle())->Position;
   c->X = 3 * (random() - 0.5);
   c->Y = 3 * (random() - 0.5);
   c->Z = 3 * (random() - 0.5);

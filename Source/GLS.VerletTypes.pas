@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.VerletTypes;
 (*
@@ -14,18 +14,18 @@ unit GLS.VerletTypes;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLS.Coordinates,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.GeometryBB,
 

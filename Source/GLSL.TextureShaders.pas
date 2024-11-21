@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLSL.TextureShaders;
 
@@ -21,16 +21,16 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.Context,
   GLS.Texture,
   GLS.TextureCombiners,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Color,
   GLS.Material,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.VectorFileObjects,
   GLS.XOpenGL,
   GLS.State,
@@ -38,7 +38,7 @@ uses
   GLS.Coordinates,
   GLS.RenderContextInfo,
   GLS.ImageUtils,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TGLTextureSharingShader = class;

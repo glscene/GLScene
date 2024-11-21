@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.TextureFormat;
+unit Stage.TextureFormat;
 
 (* Texture formats and functions *)
 
@@ -11,8 +11,8 @@ uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
 
-  GLScene.OpenGLTokens,
-  GLScene.Strings;
+  Stage.OpenGLTokens,
+  Stage.Strings;
 
 type
   // Texture addressing rules

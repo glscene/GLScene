@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.MeshBSP;
 
@@ -10,7 +10,7 @@ unit GLS.MeshBSP;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -19,11 +19,11 @@ uses
 
   GLS.VectorFileObjects,
   GLS.Material,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.Color,
   GLS.RenderContextInfo,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

@@ -15,8 +15,8 @@ uses
   Winapi.OpenGL,
   System.Classes,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
   GXS.Scene,
   GXS.Color,
   GXS.Material,
@@ -118,7 +118,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 // ------------------
 // ------------------ TgxLineSettings ------------------

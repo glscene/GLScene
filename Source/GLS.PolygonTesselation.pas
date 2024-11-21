@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.PolygonTesselation;
 
@@ -7,17 +7,17 @@ unit GLS.PolygonTesselation;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.SysUtils,
 
   GLS.OpenGLAdapter,
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
   GLS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
 
   GLS.VectorFileObjects,
   GLS.PersistentClasses;

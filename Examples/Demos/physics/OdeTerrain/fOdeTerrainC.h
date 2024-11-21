@@ -25,9 +25,9 @@
 #include "GLS.SkyDome.hpp"
 #include "GLS.TerrainRenderer.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "JPeg.hpp"
-#include "GLScene.Keyboard.hpp"
+#include "Stage.Keyboard.hpp"
 #include "GLS.ODEManager.hpp"
 
 //---------------------------------------------------------------------------

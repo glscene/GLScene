@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.CameraController;
 
@@ -18,8 +18,8 @@ uses
   System.Contnrs,
   System.Types,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Coordinates,
   GLS.PersistentClasses,
 

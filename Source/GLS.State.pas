@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.State;
 (*  Tools for managing an application-side cache of OpenGL state. *)
@@ -21,7 +21,7 @@ unit GLS.State;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 { .$DEFINE USE_CACHE_MISS_CHECK }
 
 uses
@@ -30,11 +30,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.TextureFormat,
-  GLScene.Utils,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.TextureFormat,
+  Stage.Utils,
   GLS.Color;
 
 const

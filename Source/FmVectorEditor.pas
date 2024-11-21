@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FmVectorEditor;
 
@@ -7,7 +7,7 @@ unit FmVectorEditor;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -21,9 +21,9 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
-  GLScene.VectorGeometry,
-  GLScene.Utils,
-  GLScene.VectorTypes;
+  Stage.VectorGeometry,
+  Stage.Utils,
+  Stage.VectorTypes;
 
 type
   TGLVectorEditorForm = class(TForm)

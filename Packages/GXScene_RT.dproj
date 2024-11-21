@@ -7,7 +7,7 @@
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Package</AppType>
         <FrameworkType>FMX</FrameworkType>
-        <ProjectVersion>20.1</ProjectVersion>
+        <ProjectVersion>20.2</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">GXScene_RT</ProjectName>
     </PropertyGroup>
@@ -373,8 +373,6 @@
         <DCCReference Include="..\SourceX\GXSL.ShapeShaders.pas"/>
         <DCCReference Include="..\SourceX\GXSL.LineShaders.pas"/>
         <DCCReference Include="..\SourceX\GXSL.MultiMaterialShader.pas"/>
-        <DCCReference Include="..\Source\GLScene.RedBlackTree.pas"/>
-        <DCCReference Include="..\Source\GLScene.OpenGL4.pas"/>
         <DCCReference Include="..\Sourcex\GXS.ScriptBase.pas"/>
         <DCCReference Include="..\Sourcex\GXS.SmartObjects.pas"/>
         <DCCReference Include="..\Sourcex\GXS.CyborgManager.pas"/>
@@ -384,24 +382,26 @@
         <DCCReference Include="..\Sourcex\GXS.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Sourcex\GXS.GeometryBB.pas"/>
         <DCCReference Include="..\Sourcex\GXS.XCollection.pas"/>
-        <DCCReference Include="..\Source\GLScene.AnimationUtils.pas"/>
-        <DCCReference Include="..\Source\GLScene.Generics.pas"/>
-        <DCCReference Include="..\Source\GLScene.Keyboard.pas"/>
-        <DCCReference Include="..\Source\GLScene.Logger.pas"/>
-        <DCCReference Include="..\Source\GLScene.Manager.pas"/>
-        <DCCReference Include="..\Source\GLScene.OpenGLTokens.pas"/>
-        <DCCReference Include="..\Source\GLScene.PipelineTransform.pas"/>
-        <DCCReference Include="..\Source\GLScene.Polynomials.pas"/>
-        <DCCReference Include="..\Source\GLScene.RandomLib.pas"/>
-        <DCCReference Include="..\Source\GLScene.RGBE.pas"/>
-        <DCCReference Include="..\Source\GLScene.Spline.pas"/>
-        <DCCReference Include="..\Source\GLScene.Strings.pas"/>
-        <DCCReference Include="..\Source\GLScene.TextureFormat.pas"/>
-        <DCCReference Include="..\Source\GLScene.Triangulation.pas"/>
-        <DCCReference Include="..\Source\GLScene.Utils.pas"/>
-        <DCCReference Include="..\Source\GLScene.VectorGeometry.pas"/>
-        <DCCReference Include="..\Source\GLScene.VectorTypes.pas"/>
-        <DCCReference Include="..\Source\GLScene.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Source\Stage.AnimationUtils.pas"/>
+        <DCCReference Include="..\Source\Stage.Generics.pas"/>
+        <DCCReference Include="..\Source\Stage.Keyboard.pas"/>
+        <DCCReference Include="..\Source\Stage.Logger.pas"/>
+        <DCCReference Include="..\Source\Stage.Manager.pas"/>
+        <DCCReference Include="..\Source\Stage.OpenGLTokens.pas"/>
+        <DCCReference Include="..\Source\Stage.PipelineTransform.pas"/>
+        <DCCReference Include="..\Source\Stage.Polynomials.pas"/>
+        <DCCReference Include="..\Source\Stage.RandomLib.pas"/>
+        <DCCReference Include="..\Source\Stage.RGBE.pas"/>
+        <DCCReference Include="..\Source\Stage.Spline.pas"/>
+        <DCCReference Include="..\Source\Stage.RedBlackTree.pas"/>
+        <DCCReference Include="..\Source\Stage.OpenGL4.pas"/>
+        <DCCReference Include="..\Source\Stage.Strings.pas"/>
+        <DCCReference Include="..\Source\Stage.TextureFormat.pas"/>
+        <DCCReference Include="..\Source\Stage.Triangulation.pas"/>
+        <DCCReference Include="..\Source\Stage.Utils.pas"/>
+        <DCCReference Include="..\Source\Stage.VectorTypes.pas"/>
+        <DCCReference Include="..\Source\Stage.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Source\Stage.VectorGeometry.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.DXTC.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.VFW.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.m3DS.pas"/>
@@ -454,7 +454,7 @@
                 <Platform value="Win64">True</Platform>
                 <Platform value="Win64x">False</Platform>
             </Platforms>
-            <Deployment Version="4">
+            <Deployment Version="5">
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
@@ -475,28 +475,13 @@
                 <DeployFile LocalName="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GXScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\Win64\GXScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GXScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win64">
-                        <RemoteName>GXScene_RT.bpl</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GXScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Win32">
                         <Operation>0</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="AndroidClasses">
-                    <Platform Name="Android">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>64</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>64</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidFileProvider">

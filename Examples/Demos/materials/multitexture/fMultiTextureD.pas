@@ -17,7 +17,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Texture,
   GLS.SceneViewer,
@@ -25,7 +25,7 @@ uses
   GLS.Coordinates,
  
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormMultiTexture = class(TForm)

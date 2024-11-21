@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.MaterialEx;
 
@@ -18,7 +18,7 @@ unit GLS.MaterialEx;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,30 +28,30 @@ uses
   System.Math,
   Vcl.Graphics,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.RenderContextInfo,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.BaseClasses,
   GLS.Context,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Material,
   GLS.Texture,
   GLS.Color,
   GLS.Coordinates,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Graphics,
   GLS.PersistentClasses,
   GLS.State,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.XCollection,
   GLS.TextureCombiners,
   GLSL.ShaderParameter,
   GLS.ApplicationFileIO,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.ImageUtils,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.XOpenGL,
-  GLScene.Logger;
+  Stage.Logger;
 
 type
 

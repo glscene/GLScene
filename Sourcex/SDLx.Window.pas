@@ -14,7 +14,7 @@ unit SDLx.Window;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -22,9 +22,9 @@ uses
   System.SyncObjs,
 
   GXS.OpenGL,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Context,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   SDL.Import;
 
 type

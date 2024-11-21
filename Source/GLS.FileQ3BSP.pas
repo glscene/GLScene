@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileQ3BSP;
 
@@ -11,7 +11,7 @@ unit GLS.FileQ3BSP;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -20,17 +20,17 @@ uses
 
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.VectorLists,
   Formats.Q3BSP,
   GLS.MeshBSP,
   GLS.Texture,
   GLS.Graphics,
   GLS.State,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Material,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
 

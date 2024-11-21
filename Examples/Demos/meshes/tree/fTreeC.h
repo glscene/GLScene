@@ -28,7 +28,7 @@
 
 #include "GLS.Material.hpp"
 #include "GLS.FileTGA.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 
 
 //---------------------------------------------------------------------------

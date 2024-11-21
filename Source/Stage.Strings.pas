@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.Strings;
+unit Stage.Strings;
 
 (*
   String constants that are used for internationalization

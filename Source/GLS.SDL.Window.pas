@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.SDL.Window;
 
@@ -19,10 +19,10 @@ uses
   System.SysUtils,
   System.SyncObjs,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
   GLS.OpenGLAdapter,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.State,
   GLS.Context,
   SDL.Import;

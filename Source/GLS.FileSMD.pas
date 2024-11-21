@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileSMD;
 
@@ -16,11 +16,11 @@ uses
   GLS.Texture,
   GLS.PersistentClasses,
   GLS.ApplicationFileIO,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Material,
-  GLScene.Strings,
-  GLScene.Utils;
+  Stage.Strings,
+  Stage.Utils;
 
 type
   (* The SMD vector file is Half-life's skeleton format.

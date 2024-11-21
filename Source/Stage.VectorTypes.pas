@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.VectorTypes;
+unit Stage.VectorTypes;
 
 (*
    Defines base vector types for use in VectorGeometry unit

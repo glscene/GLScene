@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.TextureCombiners;
@@ -8,7 +8,7 @@ unit GLS.TextureCombiners;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
   System.SysUtils,
   System.Classes,
    
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Context;
 
 

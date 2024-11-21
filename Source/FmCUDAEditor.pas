@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FmCUDAEditor;
 
@@ -7,7 +7,7 @@ unit FmCUDAEditor;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows, 
@@ -27,7 +27,7 @@ uses
   Vcl.ToolWin,
   DesignIntf,
   VCLEditors,
-  GLScene.Strings,
+  Stage.Strings,
 
   GLS.CUDA.APIComps,
   GLS.CUDA.FFTPlan,

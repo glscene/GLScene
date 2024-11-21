@@ -14,19 +14,19 @@ uses
   Vcl.ExtCtrls,
   Vcl.ComCtrls,
 
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Polynomials,
   GLS.Scene,
   GLS.Objects,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
   GLS.BaseClasses,
-  GLS.Polynomials,
   GLS.Texture,
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.GeomObjects,
   GLS.Color,
   GLS.Coordinates,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormRayCast = class(TForm)

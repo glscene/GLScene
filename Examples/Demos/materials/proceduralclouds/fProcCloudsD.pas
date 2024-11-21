@@ -24,11 +24,11 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.ProcTextures,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.Coordinates,
   GLS.BaseClasses,
 
-  GLScene.Utils
+  Stage.Utils
   ;
 
 type

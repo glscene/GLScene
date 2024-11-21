@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.EParticleMasksManager;
 
@@ -24,7 +24,7 @@ unit GLS.EParticleMasksManager;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -33,8 +33,8 @@ uses
   System.Math,
   VCL.Graphics,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
 
   GLS.Texture,
   GLS.Material,

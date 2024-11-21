@@ -16,11 +16,11 @@ uses
   Vcl.ComCtrls,
   Vcl.Grids,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Scene,
   GLS.Objects,
   GLS.SceneViewer,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.SpaceText,
   GLS.Collision,
   GLS.VectorFileObjects,
@@ -28,7 +28,7 @@ uses
   GLS.VectorLists,
   GLS.File3DS,
   GLS.Coordinates,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.BaseClasses;
 
 type

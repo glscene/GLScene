@@ -24,12 +24,12 @@
 #include "GLS.GameMenu.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Texture.hpp"
-#include "GLScene.Keyboard.hpp"
+#include "Stage.Keyboard.hpp"
 
 #include "GLS.Material.hpp"
 #include "GLS.Coordinates.hpp"
 #include "GLS.BaseClasses.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

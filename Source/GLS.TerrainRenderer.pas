@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.TerrainRenderer;
 
@@ -11,7 +11,7 @@ unit GLS.TerrainRenderer;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,19 +19,19 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.Coordinates,
   GLS.HeightData,
   GLS.Material,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Context,
   GLS.ROAMPatch,
   GLS.VectorLists,
   GLS.RenderContextInfo,
   GLS.XOpenGL,
-  GLScene.Utils,
-  GLScene.VectorTypes,
+  Stage.Utils,
+  Stage.VectorTypes,
   GLS.Texture;
 
 const

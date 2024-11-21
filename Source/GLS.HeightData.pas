@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.HeightData;
 
@@ -19,7 +19,7 @@ unit GLS.HeightData;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows, // to CreateMonochromeBitmap
@@ -28,9 +28,9 @@ uses
   System.Types,
   Vcl.Graphics,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.ApplicationFileIO,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Material,
   GLS.BaseClasses;
 

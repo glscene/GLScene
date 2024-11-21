@@ -35,7 +35,7 @@
 #include "GLS.ThorFX.hpp"
 #include "GLS.FireFX.hpp"
 #include "GLS.BaseClasses.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "GLS.SoundManager.hpp"
 #include "GLS.Sounds.BASS.hpp"
 

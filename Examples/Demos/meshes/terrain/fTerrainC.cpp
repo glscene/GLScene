@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
 #include <vcl.h>
-#include <GLScene.Keyboard.hpp>
+#include <Stage.Keyboard.hpp>
 #include <stdlib.h>
 
 #pragma hdrstop
@@ -11,7 +11,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GLS.LensFlare"
-#pragma link "GLScene.VectorGeometry"
+#pragma link "Stage.VectorGeometry"
 #pragma link "GLS.Sounds.BASS"
 #pragma link "GLS.SoundManager"
 #pragma link "GLS.SceneViewer"
@@ -24,7 +24,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.TerrainRenderer"
 #pragma link "GLS.Scene"
-#pragma link "GLScene.Keyboard"
+#pragma link "Stage.Keyboard"
 #pragma link "GLS.BaseClasses"
 #pragma link "GLS.Coordinates"
 
@@ -93,32 +93,32 @@ void __fastcall TForm1::GLCadencer1Progress(
         speed = 5 * deltaTime;
     else
         speed = deltaTime;
-    TGCoordinates* c = GLCamera1->Position;
-    if (IsKeyDown(VK_UP))
-        DummyCube1->Translate(c->Z * speed, 0, -c->X * speed);
-    if (IsKeyDown(VK_DOWN))
-        DummyCube1->Translate(-c->Z * speed, 0, c->X * speed);
-    if (IsKeyDown(VK_LEFT))
-        DummyCube1->Translate(-c->X * speed, 0, -c->Z * speed);
-    if (IsKeyDown(VK_RIGHT))
-        DummyCube1->Translate(c->X * speed, 0, c->Z * speed);
-    if (IsKeyDown(VK_PRIOR))
-        FCamHeight = FCamHeight + 10 * speed;
-    if (IsKeyDown(VK_NEXT))
-        FCamHeight = FCamHeight - 10 * speed;
-    if (IsKeyDown(VK_ESCAPE))
-        Close();
+	TGLCoordinates* c = GLCamera1->Position;
+	if (IsKeyDown(VK_UP))
+		DummyCube1->Translate(c->Z * speed, 0, -c->X * speed);
+	if (IsKeyDown(VK_DOWN))
+		DummyCube1->Translate(-c->Z * speed, 0, c->X * speed);
+	if (IsKeyDown(VK_LEFT))
+		DummyCube1->Translate(-c->X * speed, 0, -c->Z * speed);
+	if (IsKeyDown(VK_RIGHT))
+		DummyCube1->Translate(c->X * speed, 0, c->Z * speed);
+	if (IsKeyDown(VK_PRIOR))
+		FCamHeight = FCamHeight + 10 * speed;
+	if (IsKeyDown(VK_NEXT))
+		FCamHeight = FCamHeight - 10 * speed;
+	if (IsKeyDown(VK_ESCAPE))
+		Close();
 
-    // don't drop through terrain!
-    DummyCube1->Position->Y =
-        TerrainRenderer1->InterpolatedHeight(DummyCube1->Position->AsVector) +
-        FCamHeight;
+	// don't drop through terrain!
+	DummyCube1->Position->Y =
+		TerrainRenderer1->InterpolatedHeight(DummyCube1->Position->AsVector) +
+		FCamHeight;
 }
 
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::GLSceneViewer1MouseDown(
-    TObject* Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
+	TObject* Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
     my = Y;
     mx = X;
@@ -307,21 +307,21 @@ void __fastcall TForm1::TISoundTimer(TObject* Sender)
         // wolf howl at some distance, at ground level
         wolfPos = GLCamera1->AbsolutePosition;
         SinCosine(
-            random() * Glscene::Vectorgeometry::c2PI, 100 + random(1000), s, c);
-        wolfPos.X = wolfPos.X + c;
-        wolfPos.Z = wolfPos.Z + s;
-        wolfPos.Y = TerrainRenderer1->InterpolatedHeight(wolfPos);
-        DCSound->Position->AsVector = wolfPos;
-        be = GetOrCreateSoundEmitter(DCSound);
-        be->Source->SoundLibrary = GLSoundLibrary;
-        be->Source->SoundName = GLSoundLibrary->Samples->Items[1]->Name;
-        be->Source->MinDistance = 100;
-        be->Source->MaxDistance = 4000;
-        be->Playing = True;
-    }
-    TISound->Enabled = False;
-    TISound->Interval = 10000 + random(10000);
-    TISound->Enabled = True;
+			random() * Stage::Vectorgeometry::c2PI, 100 + random(1000), s, c);
+		wolfPos.X = wolfPos.X + c;
+		wolfPos.Z = wolfPos.Z + s;
+		wolfPos.Y = TerrainRenderer1->InterpolatedHeight(wolfPos);
+		DCSound->Position->AsVector = wolfPos;
+		be = GetOrCreateSoundEmitter(DCSound);
+		be->Source->SoundLibrary = GLSoundLibrary;
+		be->Source->SoundName = GLSoundLibrary->Samples->Items[1]->Name;
+		be->Source->MinDistance = 100;
+		be->Source->MaxDistance = 4000;
+		be->Playing = True;
+	}
+	TISound->Enabled = False;
+	TISound->Interval = 10000 + random(10000);
+	TISound->Enabled = True;
 }
 
 //---------------------------------------------------------------------------

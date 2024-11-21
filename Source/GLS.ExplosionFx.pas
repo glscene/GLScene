@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ExplosionFx;
 
@@ -21,14 +21,14 @@ unit GLS.ExplosionFx;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.Scene,
   GLS.VectorFileObjects,
   GLS.VectorLists,

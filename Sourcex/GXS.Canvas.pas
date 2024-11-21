@@ -11,7 +11,7 @@ unit GXS.Canvas;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -21,10 +21,10 @@ uses
   System.Math,
   FMX.Graphics,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Color,
   GXS.Context,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.State;
 
 type

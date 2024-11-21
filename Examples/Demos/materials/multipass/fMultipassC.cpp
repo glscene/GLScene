@@ -36,7 +36,7 @@
 #pragma link "GLS.Coordinates"
 
 #pragma link "GLS.Material"
-#pragma link "GLScene.OpenGLTokens"
+#pragma link "Stage.OpenGLTokens"
 
 #pragma resource "*.dfm"
 TForm1* Form1;

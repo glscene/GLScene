@@ -13,11 +13,11 @@ uses
   System.Math,
   System.Generics.Collections,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
-  GLScene.VectorTypes,
-  GLScene.VectorTypesExt,
-  GLScene.Spline,
+  Stage.VectorTypes,
+  Stage.VectorTypesExt,
+  Stage.Spline,
 
   GXS.Objects,
   GXS.MultiPolygon,

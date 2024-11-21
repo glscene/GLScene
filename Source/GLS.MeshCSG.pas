@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.MeshCSG;
 
@@ -12,7 +12,7 @@ unit GLS.MeshCSG;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils,
@@ -20,9 +20,9 @@ uses
   System.Math,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorFileObjects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.MeshBSP,
   GLS.VectorLists;
 

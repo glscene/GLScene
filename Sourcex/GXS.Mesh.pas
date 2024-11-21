@@ -13,20 +13,21 @@ unit GXS.Mesh;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
-  GLScene.OpenGL4, // wglAllocateMemoryNV
 
   System.Classes,
   System.SysUtils,
 
+  Stage.OpenGL4, // wglAllocateMemoryNV
+  Stage.VectorTypes,
+  Stage.Strings,
+  Stage.VectorGeometry,
+
   GXS.BaseClasses,
-  GLScene.VectorTypes,
-  GLScene.Strings,
-  GLScene.VectorGeometry,
   GXS.Color,
 
   GXS.State,

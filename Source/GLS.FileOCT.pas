@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileOCT;
 
@@ -10,7 +10,7 @@ unit GLS.FileOCT;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -21,9 +21,9 @@ uses
   GLS.Material,
   GLS.Graphics,
   GLS.State,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.VectorFileObjects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.ApplicationFileIO,
   Formats.OCT;
 

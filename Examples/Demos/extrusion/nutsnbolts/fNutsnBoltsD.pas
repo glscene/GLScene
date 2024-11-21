@@ -19,7 +19,7 @@ uses
   GLS.Objects,
   GLS.Extrusion,
   GLS.SceneViewer,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.GeomObjects,
  
   GLS.Coordinates,

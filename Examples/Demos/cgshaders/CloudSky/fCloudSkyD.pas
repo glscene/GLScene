@@ -16,12 +16,15 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+  Stage.Utils,
+
   GLS.Scene,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.AsyncTimer,
   GLS.Cadencer,
-  GLScene.VectorGeometry,
   GLS.SkyDome,
   GLS.Texture,
   GLS.FileTGA,
@@ -29,7 +32,6 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils,
   GLS.SimpleNavigation,
 
   GLS.CgShader;

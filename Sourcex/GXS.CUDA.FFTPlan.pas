@@ -15,7 +15,7 @@ uses
 
   GXS.CUDA.API,
   GXS.CUDA.Context,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
 

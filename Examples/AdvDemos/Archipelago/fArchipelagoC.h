@@ -32,8 +32,8 @@
 #include "GLS.TerrainRenderer.hpp"
 
 #include "GLS.VectorLists.hpp"
-#include "GLScene.VectorTypes.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorTypes.hpp"
+#include "Stage.VectorGeometry.hpp"
 #include "GLS.VectorFileObjects.hpp"
 #include "GLS.WindowsFont.hpp"
 
@@ -42,10 +42,10 @@
 #include "GLS.RoamPatch.hpp"
 #include "GLS.RenderContextInfo.hpp"
 
-#include "GLScene.Keyboard.hpp"
+#include "Stage.Keyboard.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.State.hpp"
-#include "GLScene.TextureFormat.hpp"
+#include "Stage.TextureFormat.hpp"
 #include "GLS.File3DS.hpp"
 
 //---------------------------------------------------------------------------

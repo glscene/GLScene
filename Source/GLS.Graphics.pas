@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Graphics;
 (*
@@ -12,7 +12,7 @@ unit GLS.Graphics;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -28,11 +28,11 @@ uses
 
   {$IFDEF USE_GRAPHICS32} GR32, {$ENDIF}
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.TextureFormat,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.TextureFormat,
+  Stage.VectorGeometry,
+  Stage.Strings,
 
   GLS.State,
   GLS.ApplicationFileIO,
@@ -40,8 +40,8 @@ uses
   GLS.Context,
   GLS.ImageUtils,
   GLS.Color,
-  GLScene.Utils,
-  GLScene.Logger;
+  Stage.Utils,
+  Stage.Logger;
 
 {$DEFINE PRF_HACK_PASSES}
 

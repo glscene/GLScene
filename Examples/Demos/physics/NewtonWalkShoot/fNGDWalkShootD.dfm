@@ -74,17 +74,7 @@ object FormNewtonWalkShoot: TFormNewtonWalkShoot
     end
     object GLLines1: TGLLines
       Pickable = False
-      Nodes = <
-        item
-        end
-        item
-          Y = 1.000000000000000000
-        end
-        item
-        end
-        item
-          X = 1.000000000000000000
-        end>
+      Nodes = <>
       NodesAspect = lnaInvisible
       SplineMode = lsmSegments
       Options = [loUseNodeColorForLines]

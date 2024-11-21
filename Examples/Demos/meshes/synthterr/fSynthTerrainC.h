@@ -12,7 +12,7 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.ExtCtrls.hpp>
 
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
@@ -24,7 +24,7 @@
 #include "GLS.HeightData.hpp"
 #include "GLS.SceneViewer.hpp"
 #include "Jpeg.hpp"
-#include "GLScene.Keyboard.hpp"
+#include "Stage.Keyboard.hpp"
 
 
 

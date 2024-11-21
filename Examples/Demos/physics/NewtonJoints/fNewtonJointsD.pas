@@ -12,8 +12,11 @@ uses
   Vcl.Dialogs,
   Vcl.Controls,
 
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+
   GLS.Scene,
-  GLScene.VectorTypes,
   GLS.NGDManager,
   GLS.Objects,
   GLS.Coordinates,
@@ -21,7 +24,6 @@ uses
   GLS.SceneViewer,
 
   GLS.BaseClasses,
-  GLScene.VectorGeometry,
   GLS.SimpleNavigation,
   GLS.XCollection,
   GLS.GeomObjects,

@@ -7,7 +7,7 @@ unit GXS.FileMP3;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,

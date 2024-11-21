@@ -12,6 +12,9 @@
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
 
+#include "Stage.TextureFormat.hpp"
+#include "Stage.OpenGLTokens.hpp"
+#include "Stage.Utils.hpp"
 #include "GLS.Graph.hpp"
 #include "GLS.Material.hpp"
 #include "GLS.Objects.hpp"
@@ -20,19 +23,16 @@
 #include "GLS.SkyDome.hpp"
 #include "GLSL.UserShader.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.TextureFormat.hpp"
 #include "GLS.Color.hpp"
-#include "GLScene.OpenGLTokens.hpp"
 #include "GLS.OpenGLAdapter.hpp"
 #include "GLS.Context.hpp"
 #include "GLS.RenderContextInfo.hpp"
 #include "GLS.State.hpp"
-#include "GLScene.Utils.hpp"
 #include "GLS.FileTGA.hpp"
 
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormOcean : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -71,9 +71,9 @@ private:	// User declarations
 	TGLProgramHandle *programObject;
 public:		// User declarations
     TFileName Path;
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormOcean(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormOcean *FormOcean;
 //---------------------------------------------------------------------------
 #endif

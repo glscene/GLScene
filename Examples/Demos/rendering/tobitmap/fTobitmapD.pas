@@ -14,7 +14,7 @@ uses
   Vcl.Imaging.Jpeg,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Cadencer,
   GLS.Objects,
   GLS.SceneViewer,
@@ -23,7 +23,7 @@ uses
  
   GLS.Coordinates,
   GLS.Graphics,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.BaseClasses;
 
 type

@@ -13,7 +13,7 @@ unit GXS.GeomObjects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
@@ -23,13 +23,13 @@ uses
   GXS.Scene,
   GXS.State,
   GXS.PersistentClasses,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Silhouette,
 
-  GLScene.VectorGeometry,
-  GLScene.Polynomials,
+  Stage.VectorGeometry,
+  Stage.Polynomials,
   GXS.VectorFileObjects,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GXS.Material,
   GXS.Texture,
   GXS.GeometryBB,

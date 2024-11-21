@@ -17,8 +17,8 @@ uses
 
   GXS.XOpenGL,
   GXS.XCollection,
-  GLScene.VectorGeometry,
-  GLScene.Manager,
+  Stage.VectorGeometry,
+  Stage.Manager,
 
   GXS.Scene,
   GXS.Texture,
@@ -29,7 +29,7 @@ uses
   GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.State,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.TerrainRenderer,
   GXS.Graph,
 

@@ -11,10 +11,10 @@ uses
   System.Classes,
   System.SysUtils,
   GXS.VectorFileObjects,
-  GLScene.Utils,
+  Stage.Utils,
   GXS.ApplicationFileIO,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.VectorLists;
 
 type

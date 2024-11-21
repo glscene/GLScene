@@ -24,19 +24,19 @@ unit GXS.DCE;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GXS.XCollection,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.BaseClasses,
-  GLScene.Manager,
-  GLScene.VectorTypes,
-  GLScene.Strings,
+  Stage.Manager,
+  Stage.VectorTypes,
+  Stage.Strings,
   GXS.Coordinates,
 
   GXS.Scene,

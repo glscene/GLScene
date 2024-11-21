@@ -57,6 +57,7 @@ attrib -R "AdvDemos/Q3Demo/Model/animation.cfg"
 
 rem  - some apps may load/save resources in RES files
 del *.res /s 
+del sk4d.dll /s
 
 echo---------------------------------------------------------
 echo delete debug and Platform directories with all subdirectories and files 

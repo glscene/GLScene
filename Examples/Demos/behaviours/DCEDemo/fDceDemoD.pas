@@ -14,6 +14,11 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.KeyBoard,
+  Stage.Utils,
+
   GLS.Scene,
   GLS.Objects,
   GLS.PersistentClasses,
@@ -29,7 +34,6 @@ uses
   GLS.WindowsFont,
   GLS.HUDObjects,
   GLS.Coordinates,
-  GLScene.VectorGeometry,
   GLS.FileMD2,
   GLS.File3DS,
   GLS.Context,
@@ -38,9 +42,7 @@ uses
   GLS.XCollection,
   GLS.ProxyObjects,
   GLS.State,
-  GLScene.Utils,
-  GLS.BaseClasses,
-  GLScene.VectorTypes;
+  GLS.BaseClasses;
 
 type
   TFormDCE = class(TForm)

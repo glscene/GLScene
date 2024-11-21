@@ -24,17 +24,17 @@ uses
   GLS.XCollection,
   GLS.VectorFileObjects,
   GLS.RenderContextInfo,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.FileDDS,
   GLS.Context,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.AsyncTimer,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.Material,
   GLS.CompositeImage,
   GLS.VectorLists,
-  GLScene.VectorTypes, GLS.SimpleNavigation;
+  Stage.VectorTypes, GLS.SimpleNavigation;
 
 type
 

@@ -15,15 +15,16 @@ uses
 
   NGD.Import,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
+  Stage.VectorTypes,
+  Stage.VectorGeometry, // PVector4f TVector4f TMatrix4f PMatrix4f NullHmgVector...
+  Stage.Manager,
+
   GXS.VectorLists, // TgxAffineVectorList for Tree
   GXS.XCollection, // TXCollection file function
-  GLScene.GeometryBB,
+  GXS.GeometryBB,
   GXS.BaseClasses,
   GXS.PersistentClasses,
   GXS.Scene,
-  GLScene.Manager,
   GXS.Coordinates,
   GXS.Objects,
   GXS.GeomObjects,

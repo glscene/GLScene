@@ -13,7 +13,7 @@ unit GXS.Atmosphere;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,13 +23,13 @@ uses
   GXS.Scene,
   GXS.Objects,
   GXS.Cadencer,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Context,
-  GLScene.Strings,
+  Stage.Strings,
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.State,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
    EGLAtmosphereException = class(Exception);

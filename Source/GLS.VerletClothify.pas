@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.VerletClothify;
 
@@ -7,19 +7,19 @@ unit GLS.VerletClothify;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.VectorFileObjects,
   GLS.VerletTypes,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.RenderContextInfo,
   GLS.State,

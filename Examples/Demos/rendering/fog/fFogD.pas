@@ -17,7 +17,7 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Cadencer,
   GLS.SceneViewer,
@@ -25,7 +25,7 @@ uses
 
   GLS.Material,
   GLS.Coordinates,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.BaseClasses;
 
 type

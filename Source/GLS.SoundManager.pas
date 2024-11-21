@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.SoundManager;
 
@@ -12,19 +12,19 @@ uses
   System.SysUtils,
   System.Types,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SoundFileObjects,
   GLS.Scene,
   GLS.XCollection,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.BaseClasses,
   GLS.FileMP3,
   GLS.FileWAV,
   GLS.ImageUtils,
-  GLScene.Utils;
+  Stage.Utils;
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 type
 

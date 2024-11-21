@@ -7,7 +7,7 @@ unit GXS.GameMenu;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,7 +16,7 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Scene,
   GXS.Coordinates,
   GXS.Material,

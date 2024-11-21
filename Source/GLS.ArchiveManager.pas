@@ -1,11 +1,11 @@
 ﻿//
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ArchiveManager;
 
 (* Archive manager -  the class to work with archives *)
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 interface
 
@@ -15,7 +15,7 @@ uses
 
   GLS.ApplicationFileIO,
   GLS.PersistentClasses,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
 

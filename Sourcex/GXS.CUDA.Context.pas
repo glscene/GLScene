@@ -13,8 +13,8 @@ uses
   CUDA.Import,
   CUDA.RunTime,
 
-  GLScene.Strings,
-  GLScene.Generics,
+  Stage.Strings,
+  Stage.Generics,
   GXS.BaseClasses,
   GXS.Context;
 

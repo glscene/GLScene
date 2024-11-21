@@ -13,7 +13,7 @@ unit GXS.ParticleFX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -22,12 +22,12 @@ uses
   System.Types,
   System.Math,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Utils,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Utils,
   GXS.PersistentClasses,
   GXS.VectorLists,
-  GLScene.Manager,
+  Stage.Manager,
   GXS.Scene,
   GXS.ImageUtils,
   GXS.State,
@@ -39,9 +39,9 @@ uses
   GXS.BaseClasses,
   GXS.Coordinates,
   GXS.RenderContextInfo,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GXS.XCollection,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 const
   cPFXNbRegions = 128; // number of distance regions

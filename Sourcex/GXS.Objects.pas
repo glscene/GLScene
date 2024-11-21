@@ -21,7 +21,7 @@ unit GXS.Objects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -34,10 +34,10 @@ uses
   GXS.XOpenGL,
   GXS.BaseClasses,
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.VectorLists,
-  GLScene.Strings,
+  Stage.Strings,
 
   GXS.Scene,
   GXS.Context,
@@ -45,7 +45,7 @@ uses
   GXS.Color,
   GXS.RenderContextInfo,
   GXS.Nodes,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GXS.Coordinates;
 
 const
@@ -664,7 +664,7 @@ implementation
 // -------------------------------------------------------------
 
 uses
-  GLScene.Spline,
+  Stage.Spline,
   GXS.State;
 
 procedure CubeWireframeBuildList(var rci: TgxRenderContextInfo; Size: Single;

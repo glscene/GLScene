@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.SpaceText;
 
@@ -15,7 +15,7 @@ unit GLS.SpaceText;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 {$IFDEF UNIX}{$MESSAGE Error 'Unit not supported'} {$ENDIF}
 
 uses
@@ -30,13 +30,13 @@ uses
   VCL.Graphics,
   VCL.Controls,
 
-  GLScene.VectorTypes,
-  GLScene.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.Texture,
   GLS.Context,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorGeometry,
+  Stage.Strings,
   GLS.RenderContextInfo,
   GLS.State;
 

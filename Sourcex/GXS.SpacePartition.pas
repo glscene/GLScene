@@ -17,15 +17,15 @@ unit GXS.SpacePartition;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Math,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
 
   GXS.GeometryBB,
   GXS.PersistentClasses;

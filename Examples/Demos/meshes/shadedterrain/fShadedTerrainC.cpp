@@ -89,7 +89,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
   else
 	speed = deltaTime;
 
-  TGCoordinates *p = GLCamera1->Position;
+  TGLCoordinates *p = GLCamera1->Position;
   if(IsKeyDown(VK_UP))
 	DummyCube1->Translate(-p->X * speed, 0, -p->Z * speed);
   if(IsKeyDown(VK_DOWN))
@@ -99,23 +99,23 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
   if(IsKeyDown(VK_RIGHT))
 	DummyCube1->Translate(p->Z * speed, 0, -p->X * speed);
   if(IsKeyDown(VK_PRIOR))
-    FCamHeight = FCamHeight + 10 * speed;
+	FCamHeight = FCamHeight + 10 * speed;
   if(IsKeyDown(VK_NEXT))
-    FCamHeight = FCamHeight - 10 * speed;
+	FCamHeight = FCamHeight - 10 * speed;
   if(IsKeyDown(VK_ESCAPE))
-    Close();
+	Close();
 
   // don't drop through terrain!
   DummyCube1->Position->Y =
-    TerrainRenderer1->InterpolatedHeight(DummyCube1->Position->AsVector) +
-    FCamHeight;
+	TerrainRenderer1->InterpolatedHeight(DummyCube1->Position->AsVector) +
+	FCamHeight;
 }
 
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::GLSceneViewer1MouseDown(TObject * Sender,
-                                                TMouseButton Button,
-                                                TShiftState Shift, int X, int Y)
+												TMouseButton Button,
+												TShiftState Shift, int X, int Y)
 {
   GLSceneViewer1->SetFocus();
   mx = X;

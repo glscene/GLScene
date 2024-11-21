@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.SimpleNavigation;
@@ -13,7 +13,7 @@ unit GLS.SimpleNavigation;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -26,10 +26,10 @@ uses
   VCL.ExtCtrls,
 
   GLS.SceneForm,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Scene,
   GLS.SceneViewer,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
 

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Nodes;
 
@@ -7,19 +7,19 @@ unit GLS.Nodes;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.OpenGLAdapter,
   GLS.Context,
   GLS.BaseClasses,
-  GLScene.Spline,
+  Stage.Spline,
   GLS.Coordinates;
 
 type

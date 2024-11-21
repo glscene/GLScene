@@ -24,7 +24,7 @@ uses
   GLS.Coordinates,
 
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormTexCombine = class(TForm)

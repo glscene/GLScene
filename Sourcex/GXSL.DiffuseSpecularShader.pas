@@ -21,16 +21,16 @@ unit GXSL.DiffuseSpecularShader;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Color,
-  GLScene.Strings,
+  Stage.Strings,
 
   GXS.Scene,
   GXSL.CustomShader,

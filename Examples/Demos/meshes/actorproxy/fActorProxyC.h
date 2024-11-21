@@ -19,7 +19,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.GeomObjects.hpp"
 #include "GLS.ProxyObjects.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.VectorGeometry.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Texture.hpp"
 #include "GLS.Material.hpp"
@@ -27,7 +27,7 @@
 
 #include "GLS.BaseClasses.hpp"
 #include "GLS.FileSMD.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "GLS.BaseClasses.hpp"
 
 //---------------------------------------------------------------------------

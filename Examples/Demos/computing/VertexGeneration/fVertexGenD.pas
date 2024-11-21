@@ -12,9 +12,9 @@ uses
   Vcl.Dialogs,
 
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.PipelineTransform,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.PipelineTransform,
   GLS.Cadencer,
   GLS.SceneViewer,
  

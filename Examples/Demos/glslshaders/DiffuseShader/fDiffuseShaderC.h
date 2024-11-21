@@ -28,7 +28,7 @@
 #include "GLS.FileMD2.hpp"
 #include "GLS.File3DS.hpp"
 #include "GLS.FileMS3D.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "GLSL.DiffuseSpecularShader.hpp"
 
 //---------------------------------------------------------------------------

@@ -7,17 +7,17 @@
 
 #include "fOdeFurballC.h"
 
+#pragma link "Stage.VectorGeometry"
+#pragma link "Stage.Keyboard"
 #pragma link "GLS.ODEManager"
 #pragma link "GLS.Navigator"
 #pragma link "GLS.ShadowPlane"
-#pragma link "GLScene.VectorGeometry"
 #pragma link "GLS.Extrusion"
 #pragma link "GLS.Texture"
 #pragma link "GLS.Cadencer"
 #pragma link "GLS.Objects"
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLScene.Keyboard"
 #pragma link "GLS.VerletTypes"
 
 //---------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 #pragma link "GLS.Coordinates"
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormFurBall *FormFurBall;
 
 
 //---------------------------------------------------------------------------
@@ -69,14 +69,14 @@ void __cdecl nearCallback(void *data, PdxGeom o1, PdxGeom o2)
   {
 	for(i = 0; i <= numc - 1; i++)
 	{
-	  c = dJointCreateContact(Form1->world, Form1->contactgroup, &contact[i]);
+	  c = dJointCreateContact(FormFurBall->world, FormFurBall->contactgroup, &contact[i]);
 	  dJointAttach(c, b1, b2);
 	}
   }
 }
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormFurBall::TFormFurBall(TComponent* Owner)
 	: TForm(Owner)
 {
 }
@@ -84,7 +84,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 const float cOffset = 0.03;
 
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormFurBall::FormCreate(TObject *Sender)
 {
   Show();
 
@@ -121,7 +121,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+void __fastcall TFormFurBall::FormClose(TObject *Sender, TCloseAction &Action)
 {
   GLCadencer1->Enabled = false;
   dJointGroupDestroy(contactgroup);
@@ -134,7 +134,7 @@ void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 //---------------------------------------------------------------------------
 double angle = 0;
 
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormFurBall::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
   const float cTIME_STEP = 0.01;
@@ -194,7 +194,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::DC_LightHolderProgress(TObject *Sender, const double deltaTime,
+void __fastcall TFormFurBall::DC_LightHolderProgress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
   DC_LightHolder->Roll(deltaTime*M_PI*2*8);
@@ -202,7 +202,7 @@ void __fastcall TForm1::DC_LightHolderProgress(TObject *Sender, const double del
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormFurBall::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
 		  int X, int Y)
 {
   if (Shift.Contains(ssLeft))
@@ -216,7 +216,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 const int cRadiusMultiplier = 5, cSegmentCount = 4, cHairCount =
   200, cRootDepth = 4;
 
-void __fastcall TForm1::CreateRandomHair()
+void __fastcall TFormFurBall::CreateRandomHair()
 {
   int i;
   TAffineVector Dir;
@@ -258,7 +258,7 @@ void __fastcall TForm1::CreateRandomHair()
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CreateFur()
+void __fastcall TFormFurBall::CreateFur()
 {
   TGLVerletHair *Hair;
   int i;
@@ -278,7 +278,7 @@ void __fastcall TForm1::CreateFur()
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CreateBall()
+void __fastcall TFormFurBall::CreateBall()
 {
   TdMass m;
 
@@ -307,7 +307,7 @@ void __fastcall TForm1::CreateBall()
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CheckBox_FurGravityClick(TObject *Sender)
+void __fastcall TFormFurBall::CheckBox_FurGravityClick(TObject *Sender)
 {
   if(!CheckBox_FurGravity->Checked)
 	delete Gravity;
@@ -320,7 +320,7 @@ void __fastcall TForm1::CheckBox_FurGravityClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 const float cMaxWindMag = 8;
-void __fastcall TForm1::CheckBox_WindResistenceClick(TObject *Sender)
+void __fastcall TFormFurBall::CheckBox_WindResistenceClick(TObject *Sender)
 {
   if(!CheckBox_WindResistence->Checked)
 	delete AirResistance;
@@ -339,7 +339,7 @@ void __fastcall TForm1::CheckBox_WindResistenceClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::TrackBar_WindForceChange(TObject *Sender)
+void __fastcall TFormFurBall::TrackBar_WindForceChange(TObject *Sender)
 {
   if(AirResistance)
 	AirResistance->WindMagnitude =
@@ -348,7 +348,7 @@ void __fastcall TForm1::TrackBar_WindForceChange(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CheckBox_BaldClick(TObject *Sender)
+void __fastcall TFormFurBall::CheckBox_BaldClick(TObject *Sender)
 {
   for(int i = 0; i <= HairList->Count - 1; i++)
   {
@@ -366,14 +366,14 @@ void __fastcall TForm1::CheckBox_BaldClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormFurBall::Timer1Timer(TObject *Sender)
 {
   Label_FPS->Caption = GLSceneViewer1->FramesPerSecondText(1);
   GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CheckBox_ShadowsClick(TObject *Sender)
+void __fastcall TFormFurBall::CheckBox_ShadowsClick(TObject *Sender)
 {
   TGLLightSource *light;
 
@@ -390,14 +390,14 @@ void __fastcall TForm1::CheckBox_ShadowsClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::CheckBox_InertiaClick(TObject *Sender)
+void __fastcall TFormFurBall::CheckBox_InertiaClick(TObject *Sender)
 {
   VerletWorld->Inertia = CheckBox_Inertia->Checked;
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
+void __fastcall TFormFurBall::FormMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
 		  TPoint &MousePos, bool &Handled)
 {
  GLCamera1-> AdjustDistanceToTarget(Power(1.1, WheelDelta / 120.0));

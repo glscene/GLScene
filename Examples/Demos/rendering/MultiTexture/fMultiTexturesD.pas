@@ -13,11 +13,14 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
 
-  
+
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+  Stage.VectorTypes,
+
   GLS.Scene,
   GLS.Objects,
   GLS.SceneViewer,
- 
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.BitmapFont,
@@ -29,8 +32,6 @@ uses
   GLS.HUDObjects,
   GLS.GeomObjects,
   GLS.FBORenderer,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
   GLS.Texture,
   GLS.SimpleNavigation,
   GLS.State,

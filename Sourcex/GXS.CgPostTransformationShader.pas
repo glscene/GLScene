@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit GXS.CgPostTransformationShader;
 (*
@@ -18,7 +18,7 @@ uses
   GXS.Context,
   GXS.Scene,
   GXS.RenderContextInfo,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
 
   GXSL.CustomShader,
 

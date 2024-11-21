@@ -15,7 +15,7 @@
 #pragma link "GLS.Objects"
 #pragma link "GLS.ODEManager"
 #pragma link "GLS.Scene"
-#pragma link "GLScene.Utils"
+#pragma link "Stage.Utils"
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
@@ -78,7 +78,7 @@ void __fastcall TForm1::FrictionChange(TObject *Sender)
   TGLODEStatic *AODEStatic;
   AODEStatic = (TGLODEStatic*)(ConveyorBelt1->Behaviours->Items[0]);
   AODEStatic->Surface->Mu =
-  	Glscene::Utils::StrToFloatDef(Friction->Text, GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Mu);
+  	Stage::Utils::StrToFloatDef(Friction->Text, GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Mu);
   FrictionFeedback->Caption = Format("µs = %.2f", ARRAYOFCONST((GetOrCreateOdeStatic(ConveyorBelt1)->Surface->Mu)));
 }
 

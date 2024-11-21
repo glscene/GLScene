@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Sounds.OpenAL;
 (*
@@ -18,7 +18,7 @@ unit GLS.Sounds.OpenAL;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -26,9 +26,9 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Scene,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Coordinates,
   GLS.SoundManager,
   GLS.SoundFileObjects;

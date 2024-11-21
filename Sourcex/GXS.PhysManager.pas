@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit GXS.PhysManager;
 
@@ -12,7 +12,7 @@ uses
   System.SysUtils,
 
   GXS.XCollection,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Scene,
   GXS.PhysForces,
   GXS.Behaviours;

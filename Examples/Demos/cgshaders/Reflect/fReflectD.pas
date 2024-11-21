@@ -26,16 +26,16 @@ uses
   GLS.SceneViewer,
   GLS.Texture,
   GLS.CgShader,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.VectorFileObjects, 
   GLS.File3DS,
   GLS.Graph, 
-  GLScene.VectorTypes, 
+  Stage.VectorTypes, 
   GLS.GeomObjects, 
   GLS.Material, 
   GLS.Coordinates,
-  GLScene.Utils,
+  Stage.Utils,
    
   GLS.BaseClasses;
 

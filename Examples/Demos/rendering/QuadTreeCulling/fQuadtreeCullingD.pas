@@ -15,8 +15,12 @@ uses
   Vcl.StdCtrls,
   Vcl.ComCtrls,
 
+  Stage.VectorTypes,
+  Stage.Keyboard,
+  Stage.VectorGeometry,
+  Stage.Utils,
+
   GLS.Scene,
-  GLScene.VectorTypes,
   GLS.PersistentClasses,
   GLS.SceneViewer,
   GLS.SkyDome,
@@ -28,7 +32,6 @@ uses
   GLS.Cadencer,
   GLS.Navigator,
   GLS.SpacePartition,
-  GLScene.VectorGeometry,
   GLS.BitmapFont,
   GLS.GeometryBB,
   GLS.WindowsFont,
@@ -37,8 +40,7 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLS.RenderContextInfo,
-  GLScene.Utils;
+  GLS.RenderContextInfo;
 
 type
   TfrmQuadtreeVisCulling = class(TForm)
@@ -127,10 +129,11 @@ begin
     if IsKeyDown(VK_ESCAPE) then
       Close;
   end;
-  with GLCamera1.Position do
-    Y := GLTerrainRenderer1.InterpolatedHeight(AsVector) + 80 + FCamHeight;
+
+  GLCamera1.Position.Y := GLTerrainRenderer1.InterpolatedHeight(GLCamera1.Position.AsVector)
+     + 80 + FCamHeight;
   GLHUDText1.Text := cullingMode + 'visible tree count: ' +
-    inttostr(visiblecount) + ' / Total:' + inttostr(treecount) + #13#10 +
+    IntToStr(visiblecount) + ' / Total:' + IntToStr(treecount) + #13#10 +
     ' Press ''W A S D'' to navigate, ''E'' - up, ''C'' - down' + #13#10 +
     ' Press ''Q'' to Show Quadtree, ''X'' - Advanced frustum' + #13#10 +
     ' Press ''V'' to Change quadtree query visible or visiblity culling' +
@@ -219,14 +222,14 @@ begin
 
   GLScene1.BeginUpdate;
   for i := 0 to trees.Count - 1 do
-    trees.Children[i].visible := false;
+    trees.Children[i].Visible := false;
 
   // Query the Quadtree for objects that intersect the frustum
   if cbUseExtendedFrustum.Checked then
     SpacePartition.QueryFrustumEx(ExtendedFrustumMakeFromSceneViewer
-      (rci.rcci.frustum, GLSceneViewer1))
+      (rci.rcci.Frustum, GLSceneViewer1))
   else
-    SpacePartition.QueryFrustum(rci.rcci.frustum);
+    SpacePartition.QueryFrustum(rci.rcci.Frustum);
 
   visiblecount := SpacePartition.QueryResult.Count;
 

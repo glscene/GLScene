@@ -22,11 +22,11 @@ uses
   GLS.FileTGA,
   GLS.VectorLists,
   VectorTypes,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Context,
   GLS.FileOBJ,
-  GLScene.VectorGeometry,
-  GLScene.TextureFormat
+  Stage.VectorGeometry,
+  Stage.TextureFormat
   GLS.XOpenGL,
   GLS.Graphics,
   GLS.BaseClasses,

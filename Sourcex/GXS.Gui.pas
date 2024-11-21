@@ -7,7 +7,7 @@ unit GXS.Gui;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,13 +16,13 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Scene,
   GXS.BitmapFont,
   GXS.Material,
   GXS.Context,
   GXS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Coordinates,
   GXS.BaseClasses;
 

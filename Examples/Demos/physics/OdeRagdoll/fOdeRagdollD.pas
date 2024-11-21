@@ -15,14 +15,17 @@ uses
   Vcl.ExtCtrls,
   Vcl.ComCtrls,
 
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+  Stage.Utils,
+
   GLS.Scene,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Cadencer,
   GLS.ShadowPlane,
-  GLScene.VectorGeometry,
   GLS.GeomObjects,
-  GLScene.VectorTypes,
   GLS.BitmapFont,
   GLS.WindowsFont,
   GLS.HUDObjects,
@@ -32,13 +35,11 @@ uses
   GLS.Texture,
   GLS.Material,
   GLS.Coordinates,
-
   GLS.BaseClasses,
   ODE.Import,
   GLS.ODERagdoll,
   GLS.FileSMD,
-  GLS.ODEUtils,
-  GLScene.Utils;
+  GLS.ODEUtils;
 
 
 //Physic World ODE

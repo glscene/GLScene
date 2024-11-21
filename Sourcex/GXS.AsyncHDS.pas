@@ -18,7 +18,7 @@ unit GXS.AsyncHDS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,

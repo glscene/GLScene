@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FmInfo;
 
@@ -7,7 +7,7 @@ unit FmInfo;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -24,12 +24,12 @@ uses
   Vcl.Menus,
   Vcl.Imaging.jpeg,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.OpenGLAdapter,
   GLS.Scene,
   GLS.SceneViewer,
   GLS.Context,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
 

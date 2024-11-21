@@ -13,7 +13,7 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
 
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
   GLS.Cadencer,
   GLS.Texture,
   GLS.SceneViewer,
@@ -27,7 +27,7 @@ uses
 
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLScene.Utils,
+  Stage.Utils,
 
   CG.Import,
   CG.GL;

@@ -310,10 +310,10 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 	s = "Manual";
   else
 	s = "Automatic";
+
   GLHUDText1->Text = Format("FPS: %.1f - Dynamics: %d - Statics: %d - Step mode: %s",
 	 ARRAYOFCONST((GLSceneViewer1->FramesPerSecond(),GLDCEManager1->DynamicCount,GLDCEManager1->StaticCount,s)));
   GLSceneViewer1->ResetPerformanceMonitor();
-
 }
 //---------------------------------------------------------------------------
 

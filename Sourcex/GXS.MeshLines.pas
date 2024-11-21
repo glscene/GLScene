@@ -13,10 +13,10 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.VectorLists,
-  GLScene.Spline,
+  Stage.Spline,
 
   GXS.Scene,
   GXS.Objects,

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FmShaderUniformEditor;
 
@@ -7,7 +7,7 @@ unit FmShaderUniformEditor;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils,
@@ -20,10 +20,10 @@ uses
   VCL.StdCtrls,
   VCL.ExtCtrls,
   VCL.Buttons,
-  GLScene.Strings,
+  Stage.Strings,
   GLSL.ShaderParameter,
-  GLScene.TextureFormat,
-  GLScene.VectorGeometry;
+  Stage.TextureFormat,
+  Stage.VectorGeometry;
 
 type
   TGLShaderUniformEditor = class(TForm)

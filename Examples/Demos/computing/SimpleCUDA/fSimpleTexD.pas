@@ -14,7 +14,7 @@ uses
   Vcl.Dialogs,
   Vcl.StdCtrls,
 
-  GLScene.Utils,
+  Stage.Utils,
   GLS.FilePGM,
 
   CUDA.Context,
@@ -23,7 +23,7 @@ uses
   CUDA.Utility,
 
   GLS.Graphics,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   TForm1 = class(TForm)

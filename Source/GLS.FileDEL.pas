@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileDEL;
 (*
@@ -8,19 +8,19 @@ unit GLS.FileDEL;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
-  GLScene.VectorTypesExt,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorTypesExt,
+  Stage.VectorGeometry,
 
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,
-  GLScene.Utils;
+  Stage.Utils;
 
 
 type

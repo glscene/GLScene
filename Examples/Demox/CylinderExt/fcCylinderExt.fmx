@@ -1,7 +1,7 @@
 object FormCylinderExt: TFormCylinderExt
   Left = 0
   Top = 0
-  Caption = #1062#1080#1083#1080#1085#1076#1088' '#1101#1082#1089#1090#1077#1085#1076
+  Caption = #1069#1082#1089#1094#1080#1083#1080#1085#1076#1088
   ClientHeight = 480
   ClientWidth = 640
   Position = ScreenCenter

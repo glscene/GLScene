@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ObjectManager;
 
@@ -15,7 +15,7 @@ unit GLS.ObjectManager;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -26,7 +26,7 @@ uses
 
   GLS.Scene,
   GLS.ImageUtils,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   PSceneObjectEntry = ^TGLSceneObjectEntry;

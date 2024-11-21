@@ -32,9 +32,9 @@ uses
   GLS.BaseClasses,
   GLS.Texture,
   GLS.Graphics,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.State,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TTTBMain = class(TForm)

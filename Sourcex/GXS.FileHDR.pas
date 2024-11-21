@@ -14,11 +14,11 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.RGBE,
-  GLScene.TextureFormat,
-  GLScene.Strings,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.RGBE,
+  Stage.TextureFormat,
+  Stage.Strings,
 
   GXS.ApplicationFileIO,
 

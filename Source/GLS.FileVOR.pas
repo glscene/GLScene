@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileVOR;
 (*
@@ -13,11 +13,11 @@ uses
   System.SysUtils,
   GLS.ApplicationFileIO,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.VectorFileObjects,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TVORHeader = packed record

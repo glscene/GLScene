@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.SceneRegister;
 (*
@@ -7,7 +7,7 @@ unit GLS.SceneRegister;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   WinApi.Windows,
@@ -30,7 +30,7 @@ uses
   GLS.Color,
   GLS.ImageUtils,
   GLS.ObjectManager,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
   TGLLibMaterialNameProperty = class(TStringProperty)
@@ -284,7 +284,7 @@ uses
   FmSceneEditor,
 
   GLS.ApplicationFileIO,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.ScriptBase,
 
   GLS.AnimatedSprite,
@@ -350,7 +350,7 @@ uses
   GLS.ArchiveManager,
   GLS.Memo,
   GLS.SmoothNavigator,
-  GLScene.Utils,
+  Stage.Utils,
   GLSL.AsmShader,
   GLSL.BumpShaders,
   GLSL.ShapeShaders,
@@ -429,7 +429,7 @@ uses
   GLS.Joystick,
   GLS.ScreenSaver,
   GLS.FullScreenViewer,
-  GLScene.Logger;
+  Stage.Logger;
 
 var
   vObjectManager: TGLObjectManager;
@@ -1719,8 +1719,8 @@ initialization // ------------------------------------------------------------
 
   SplashScreenServices.AddPluginBitmap(GetGLSceneVersion, LoadBitmap(HInstance, 'TGLScene'),
     False, 'MPL 2.0 license', 'VCL version');
-  GLScene.Utils.IsDesignTime := True;
-  GLScene.Utils.vProjectTargetName := GetProjectTargetName;
+  Stage.Utils.IsDesignTime := True;
+  Stage.Utils.vProjectTargetName := GetProjectTargetName;
   GLS.Color.vUseDefaultColorSets := True;
   GLS.Coordinates.vUseDefaultCoordinateSets := True;
   ReadVideoModes;

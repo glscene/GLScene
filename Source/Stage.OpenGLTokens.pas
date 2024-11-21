@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.OpenGLTokens;
+unit Stage.OpenGLTokens;
 
 (* OpenGL tokens *)
 
@@ -16,7 +16,7 @@ uses
   Winapi.OpenGLext,
   System.SysUtils,
 
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 
 // ===========  OpenGL types  ============

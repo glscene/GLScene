@@ -1,48 +1,35 @@
 object FormCutoutstar: TFormCutoutstar
   Left = 0
   Top = 0
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'Cutout Star'
-  ClientHeight = 775
-  ClientWidth = 1145
+  ClientHeight = 443
+  ClientWidth = 650
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 168
-  TextHeight = 23
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 1145
-    Height = 775
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 650
+    Height = 443
     Camera = GLCamera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 158.091873168945300000
+    FieldOfView = 142.587753295898400000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
   end
   object PanelFPS: TPanel
-    Left = 434
-    Top = 14
-    Width = 156
-    Height = 44
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 248
+    Top = 8
+    Width = 89
+    Height = 25
     Caption = 'FPS'
     TabOrder = 1
   end

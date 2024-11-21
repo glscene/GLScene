@@ -18,15 +18,15 @@ uses
   Vcl.Samples.Spin,
   
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.Coordinates,
   GLS.SceneViewer,
 
   GLS.BaseClasses,
   GLS.Cadencer,
-  GLScene.AnimationUtils,
-  GLScene.VectorGeometry,
+  Stage.AnimationUtils,
+  Stage.VectorGeometry,
   GLS.BitmapFont,
   GLS.WindowsFont;
 

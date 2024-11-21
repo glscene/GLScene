@@ -16,6 +16,11 @@ uses
   Vcl.ExtCtrls,
   Vcl.Imaging.Jpeg,
 
+  Stage.VectorGeometry,
+  Stage.Keyboard,
+  Stage.VectorTypes,
+  Stage.Utils,
+
   GLS.Scene,
   GLS.PersistentClasses,
   GLS.Material,
@@ -24,7 +29,6 @@ uses
 
   GLS.VectorFileObjects,
   GLS.Octree,
-  GLScene.VectorGeometry,
   GLS.GeomObjects,
   GLS.BaseClasses,
   GLS.BitmapFont,
@@ -34,11 +38,9 @@ uses
   GLS.File3DS,
   GLS.Navigator,
   GLS.XCollection,
-  GLScene.VectorTypes,
   GLS.Color,
   GLS.HUDObjects,
   GLS.Texture,
-  GLScene.Utils,
   GLS.NGDManager;
 
 type

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Gizmo;
 
@@ -31,16 +31,16 @@ unit GLS.Gizmo;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   Vcl.StdCtrls,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Strings,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Strings,
 
   GLS.Scene,
   GLS.PersistentClasses,

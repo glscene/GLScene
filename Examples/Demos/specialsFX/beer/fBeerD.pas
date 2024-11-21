@@ -19,13 +19,13 @@ uses
   GLS.File3DS,
   GLS.Cadencer,
   GLS.GeomObjects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.ShadowPlane,
   GLS.ParticleFX,
   GLS.PerlinPFX,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormBeer = class(TForm)

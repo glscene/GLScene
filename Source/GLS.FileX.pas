@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileX;
 
@@ -7,15 +7,15 @@ unit GLS.FileX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.VectorLists,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
 
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,

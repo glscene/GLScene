@@ -16,18 +16,18 @@ uses
   
   GLS.Scene,
   GLS.Objects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.Behaviours,
   GLS.Graph,
   GLS.Movement,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SceneViewer,
   GLS.ImageUtils,
  
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.SimpleNavigation;
 
 type

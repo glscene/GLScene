@@ -1,13 +1,13 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.Utils;
+unit Stage.Utils;
 
 (* Miscellaneous support utilities & classes *)
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -15,8 +15,8 @@ uses
   System.Classes,
   System.SysUtils,
   System.UITypes,
-  GLScene.VectorGeometry,
-  GLScene.Strings;
+  Stage.VectorGeometry,
+  Stage.Strings;
 
 type
   THalfFloat = type Word;

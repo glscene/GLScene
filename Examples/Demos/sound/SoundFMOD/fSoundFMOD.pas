@@ -14,7 +14,7 @@ uses
 
   GLS.Cadencer,
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.SoundManager,
   GLS.Sounds.FMOD,
@@ -25,8 +25,8 @@ uses
   GLS.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
-  GLScene.VectorGeometry,
-  GLScene.Utils;
+  Stage.VectorGeometry,
+  Stage.Utils;
 
 type
   TFormSoundFMOD = class(TForm)

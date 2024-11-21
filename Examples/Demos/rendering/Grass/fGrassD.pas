@@ -22,7 +22,7 @@ uses
   GLS.Cadencer,
   GLS.SceneViewer,
   GLS.Navigator,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.HeightData,
   GLS.TerrainRenderer,
@@ -32,8 +32,9 @@ uses
   GLS.XCollection,
   GLS.BaseClasses,
   GLS.RenderContextInfo,
-  GLScene.TextureFormat,
-  GLScene.Utils
+  Stage.TextureFormat,
+  Stage.Keyboard,
+  Stage.Utils
   ;
 
 type

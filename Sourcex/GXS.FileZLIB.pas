@@ -4,7 +4,7 @@
 
 unit GXS.FileZLIB;
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 interface
 

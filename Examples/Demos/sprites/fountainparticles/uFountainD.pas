@@ -22,9 +22,9 @@ uses
   GLS.PersistentClasses,
   GLS.Scene,
   GLS.Objects,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Texture,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.RenderContextInfo;
 
 const

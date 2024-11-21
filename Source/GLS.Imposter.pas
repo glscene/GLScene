@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Imposter;
 
@@ -7,7 +7,7 @@ unit GLS.Imposter;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,21 +17,21 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.Context,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.PersistentClasses,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.Graphics,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.State,
-  GLScene.TextureFormat,
-  GLScene.Utils;
+  Stage.TextureFormat,
+  Stage.Utils;
 
 type
   (* Imposter rendering options.

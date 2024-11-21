@@ -7,7 +7,7 @@ unit Formatx.TGA;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,11 +16,11 @@ uses
   System.SysUtils,
 
   GXS.ApplicationFileIO,
-  GLScene.Strings,
+  Stage.Strings,
 
   GXS.Context,
   GXS.Graphics,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
 

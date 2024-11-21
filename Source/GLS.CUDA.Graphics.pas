@@ -1,5 +1,5 @@
 ﻿//
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.CUDA.Graphics;
 
@@ -7,7 +7,7 @@ unit GLS.CUDA.Graphics;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -23,8 +23,8 @@ uses
   GLS.Scene,
   GLS.Graphics,
   GLS.Material,
-  GLScene.Strings,
-  GLScene.TextureFormat,
+  Stage.Strings,
+  Stage.TextureFormat,
   GLS.Texture,
   GLSL.Shader,
   GLSL.ShaderParameter,

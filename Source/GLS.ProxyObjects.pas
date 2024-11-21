@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.ProxyObjects;
@@ -8,27 +8,27 @@ unit GLS.ProxyObjects;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
   GLS.XCollection,
-  GLScene.PipelineTransform,
-  GLScene.VectorGeometry,
+  Stage.PipelineTransform,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.VectorFileObjects,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.RenderContextInfo,
   GLS.BaseClasses,
   GLS.Material,
   GLS.Context,
   GLS.PersistentClasses,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
   EGLProxyException = class(Exception);

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ShadowHDS;
 
@@ -30,13 +30,13 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.VectorLists,
   GLS.HeightData,
   GLS.Graphics,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Texture,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Coordinates,
   GLS.Material;
 

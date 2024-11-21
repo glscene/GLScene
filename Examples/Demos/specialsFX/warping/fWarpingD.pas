@@ -18,12 +18,12 @@ uses
   GLS.Graphics,
   GLS.Graph,
   GLS.Objects,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.SceneViewer,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormWarping = class(TForm)

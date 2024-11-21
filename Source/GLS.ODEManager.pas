@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ODEManager;
 
@@ -14,13 +14,13 @@ uses
   System.Math,
   System.Types,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
   GLS.VectorLists,
-  GLScene.VectorGeometry,
-  GLScene.PipelineTransform,
+  Stage.VectorGeometry,
+  Stage.PipelineTransform,
   GLS.PersistentClasses,
-  GLScene.Manager,
+  Stage.Manager,
   GLS.XCollection,
   GLS.Scene,
   GLS.Context,

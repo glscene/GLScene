@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileHDR;
 
@@ -7,7 +7,7 @@ unit GLS.FileHDR;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,11 +15,11 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLScene.OpenGLTokens,
-  GLScene.TextureFormat,
-  GLScene.RGBE,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.OpenGLTokens,
+  Stage.TextureFormat,
+  Stage.RGBE,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
 
   GLS.Context,
   GLS.ApplicationFileIO,

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.LensFlare;
 
@@ -10,7 +10,7 @@ unit GLS.LensFlare;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,21 +19,21 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.PersistentClasses,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.BaseClasses,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
 
   GLS.Scene,
-  GLScene.PipelineTransform,
+  Stage.PipelineTransform,
   GLS.Objects,
   GLS.Context,
   GLS.Color,
   GLS.RenderContextInfo,
   GLS.State,
-  GLScene.Utils,
-  GLScene.TextureFormat;
+  Stage.Utils,
+  Stage.TextureFormat;
 
 type
 

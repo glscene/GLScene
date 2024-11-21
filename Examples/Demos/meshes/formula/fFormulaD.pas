@@ -16,8 +16,8 @@ uses
   
   GLS.Scene,
   GLS.Objects,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Texture,
   GLS.Cadencer,
   GLS.Mesh,

@@ -22,9 +22,9 @@
 #include "GLS.Coordinates.hpp"
 #include "GLS.Material.hpp"
 
-#include "GLScene.Keyboard.hpp"
+#include "Stage.Keyboard.hpp"
 #include "GLS.FileJPEG.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 
 //---------------------------------------------------------------------------
 class TForm1 : public TForm

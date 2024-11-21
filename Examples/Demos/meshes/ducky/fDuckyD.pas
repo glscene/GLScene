@@ -16,13 +16,13 @@ uses
 
   
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.SceneViewer,
   GLS.ParametricSurfaces,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.Texture,
  
@@ -31,7 +31,7 @@ uses
   GLS.State,
   GLS.BaseClasses,
   GLS.FileNurbs,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormDucky = class(TForm)

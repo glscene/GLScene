@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Material;
 
@@ -7,7 +7,7 @@ unit GLS.Material;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -15,11 +15,11 @@ uses
   System.Types,
   Vcl.Graphics,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.TextureFormat,
-  GLScene.Strings,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.TextureFormat,
+  Stage.Strings,
 
   GLS.RenderContextInfo,
   GLS.BaseClasses,
@@ -33,8 +33,8 @@ uses
   GLS.ApplicationFileIO,
   GLS.Graphics,
   GLS.ImageUtils,
-  GLScene.Utils,
-  GLScene.Logger;
+  Stage.Utils,
+  Stage.Logger;
 
 {$UNDEF USE_MULTITHREAD}
 type

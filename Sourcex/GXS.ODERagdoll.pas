@@ -8,8 +8,8 @@ unit GXS.ODERagdoll;
 interface
 
 uses
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GXS.Ragdoll,
   GXS.Scene,
   GXS.Objects,

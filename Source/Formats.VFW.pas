@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit Formats.VFW;
 
@@ -77,7 +77,7 @@ unit Formats.VFW;
 interface
 
 {.$UNDEF UNICODE}
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
     Winapi.Windows,

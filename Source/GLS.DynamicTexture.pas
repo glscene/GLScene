@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.DynamicTexture;
 
@@ -10,7 +10,7 @@ unit GLS.DynamicTexture;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -19,9 +19,9 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
-  GLScene.TextureFormat,
-  GLScene.Utils,
+  Stage.OpenGLTokens,
+  Stage.TextureFormat,
+  Stage.Utils,
   GLS.Context,
   GLS.Texture,
   GLS.Graphics;
@@ -79,7 +79,7 @@ implementation
 // ---------------------------------------------------------
 
 uses
-  GLScene.VectorGeometry;
+  Stage.VectorGeometry;
 
 // ----------------------------------
 // TGLDynamicTextureImage

@@ -7,7 +7,7 @@ unit GXS.ThorFX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -18,19 +18,19 @@ uses
 
   GXS.XCollection,
   GXS.Scene,
-  GLScene.PipelineTransform,
-  GLScene.VectorGeometry,
+  Stage.PipelineTransform,
+  Stage.VectorGeometry,
   GXS.Context,
   GXS.VectorLists,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GXS.Cadencer,
   GXS.Color,
   GXS.BaseClasses,
   GXS.Coordinates,
   GXS.RenderContextInfo,
-  GLScene.Manager,
+  Stage.Manager,
   GXS.State,
-  GLScene.TextureFormat;
+  Stage.TextureFormat;
 
 type
   PThorpoint = ^TThorpoint;

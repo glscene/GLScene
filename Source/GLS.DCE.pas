@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.DCE;
 (*
@@ -23,18 +23,18 @@ unit GLS.DCE;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   System.Types,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.BaseClasses,
   GLS.Coordinates,
-  GLScene.Manager,
+  Stage.Manager,
   GLS.XCollection,
   GLS.VectorLists,
 
@@ -44,7 +44,7 @@ uses
   GLS.TerrainRenderer,
   GLS.ProxyObjects,
   GLS.MultiProxy,
-  GLScene.Strings;
+  Stage.Strings;
 
 type
   // Only csEllipsoid can have dynamic behaviour

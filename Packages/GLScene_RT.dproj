@@ -4,10 +4,10 @@
         <MainSource>GLScene_RT.dpk</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <TargetedPlatforms>1048579</TargetedPlatforms>
+        <TargetedPlatforms>1048577</TargetedPlatforms>
         <AppType>Package</AppType>
         <FrameworkType>VCL</FrameworkType>
-        <ProjectVersion>20.1</ProjectVersion>
+        <ProjectVersion>20.2</ProjectVersion>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">GLScene_RT</ProjectName>
     </PropertyGroup>
@@ -186,7 +186,7 @@
         <DCCReference Include="..\Source\GLS.AsyncTimer.pas"/>
         <DCCReference Include="..\Source\GLS.Atmosphere.pas"/>
         <DCCReference Include="..\Source\GLS.ArchiveManager.pas"/>
-        <DCCReference Include="..\Source\GLScene.AnimationUtils.pas"/>
+        <DCCReference Include="..\Source\Stage.AnimationUtils.pas"/>
         <DCCReference Include="..\Source\GLS.BaseClasses.pas"/>
         <DCCReference Include="..\Source\GLS.BaseMeshSilhouette.pas"/>
         <DCCReference Include="..\Source\GLS.Behaviours.pas"/>
@@ -255,11 +255,11 @@
         <DCCReference Include="..\Source\GLS.FileDEL.pas"/>
         <DCCReference Include="..\Source\GLS.FileVOR.pas"/>
         <DCCReference Include="..\Source\GLS.FullScreenViewer.pas"/>
-        <DCCReference Include="..\Source\GLScene.Keyboard.pas"/>
+        <DCCReference Include="..\Source\Stage.Keyboard.pas"/>
         <DCCReference Include="..\Source\GLS.GameMenu.pas"/>
         <DCCReference Include="..\Source\GLS.GeomObjects.pas"/>
         <DCCReference Include="..\Source\GLS.GeometryBB.pas"/>
-        <DCCReference Include="..\Source\GLScene.Generics.pas"/>
+        <DCCReference Include="..\Source\Stage.Generics.pas"/>
         <DCCReference Include="..\Source\GLS.Gizmo.pas"/>
         <DCCReference Include="..\Source\GLS.GizmoEx.pas"/>
         <DCCReference Include="..\Source\GLS.Graph.pas"/>
@@ -275,8 +275,8 @@
         <DCCReference Include="..\Source\GLS.Joystick.pas"/>
         <DCCReference Include="..\Source\GLS.LensFlare.pas"/>
         <DCCReference Include="..\Source\GLS.LinePFX.pas"/>
-        <DCCReference Include="..\Source\GLScene.Logger.pas"/>
-        <DCCReference Include="..\Source\GLScene.Manager.pas"/>
+        <DCCReference Include="..\Source\Stage.Logger.pas"/>
+        <DCCReference Include="..\Source\Stage.Manager.pas"/>
         <DCCReference Include="..\Source\GLS.Material.pas"/>
         <DCCReference Include="..\Source\GLS.MaterialEx.pas"/>
         <DCCReference Include="..\Source\GLS.MaterialMultiProxy.pas"/>
@@ -311,7 +311,7 @@
         <DCCReference Include="..\Source\GLS.ProxyObjects.pas"/>
         <DCCReference Include="..\Source\GLS.Ragdoll.pas"/>
         <DCCReference Include="..\Source\GLS.RandomHDS.pas"/>
-        <DCCReference Include="..\Source\GLScene.RGBE.pas"/>
+        <DCCReference Include="..\Source\Stage.RGBE.pas"/>
         <DCCReference Include="..\Source\GLS.RenderContextInfo.pas"/>
         <DCCReference Include="..\Source\GLS.ROAMPatch.pas"/>
         <DCCReference Include="..\Source\GLSL.AsmShader.pas"/>
@@ -361,7 +361,7 @@
         <DCCReference Include="..\Source\GLS.TimeEventsMgr.pas"/>
         <DCCReference Include="..\Source\GLS.Trail.pas"/>
         <DCCReference Include="..\Source\GLS.Tree.pas"/>
-        <DCCReference Include="..\Source\GLScene.Triangulation.pas"/>
+        <DCCReference Include="..\Source\Stage.Triangulation.pas"/>
         <DCCReference Include="..\Source\GLS.WaterPlane.pas"/>
         <DCCReference Include="..\Source\GLS.Windows.pas"/>
         <DCCReference Include="..\Source\GLS.WindowsContext.pas"/>
@@ -372,18 +372,18 @@
         <DCCReference Include="..\Source\GLS.XCollection.pas"/>
         <DCCReference Include="..\Source\GLS.XOpenGL.pas"/>
         <DCCReference Include="..\Source\GLS.InitOpenGL.pas"/>
-        <DCCReference Include="..\Source\GLScene.OpenGLTokens.pas"/>
-        <DCCReference Include="..\Source\GLScene.PipelineTransform.pas"/>
-        <DCCReference Include="..\Source\GLScene.Polynomials.pas"/>
-        <DCCReference Include="..\Source\GLScene.Spline.pas"/>
-        <DCCReference Include="..\Source\GLScene.Strings.pas"/>
-        <DCCReference Include="..\Source\GLScene.RandomLib.pas"/>
-        <DCCReference Include="..\Source\GLScene.TextureFormat.pas"/>
+        <DCCReference Include="..\Source\Stage.OpenGLTokens.pas"/>
+        <DCCReference Include="..\Source\Stage.PipelineTransform.pas"/>
+        <DCCReference Include="..\Source\Stage.Polynomials.pas"/>
+        <DCCReference Include="..\Source\Stage.Spline.pas"/>
+        <DCCReference Include="..\Source\Stage.Strings.pas"/>
+        <DCCReference Include="..\Source\Stage.RandomLib.pas"/>
+        <DCCReference Include="..\Source\Stage.TextureFormat.pas"/>
         <DCCReference Include="..\Source\GLS.VectorLists.pas"/>
-        <DCCReference Include="..\Source\GLScene.VectorGeometry.pas"/>
-        <DCCReference Include="..\Source\GLScene.VectorTypes.pas"/>
-        <DCCReference Include="..\Source\GLScene.VectorTypesExt.pas"/>
-        <DCCReference Include="..\Source\GLScene.Utils.pas"/>
+        <DCCReference Include="..\Source\Stage.VectorGeometry.pas"/>
+        <DCCReference Include="..\Source\Stage.VectorTypes.pas"/>
+        <DCCReference Include="..\Source\Stage.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Source\Stage.Utils.pas"/>
         <DCCReference Include="..\Source\GLS.VectorFileObjects.pas"/>
         <DCCReference Include="..\Source\GLS.VerletTypes.pas"/>
         <DCCReference Include="..\Source\GLS.VerletClothify.pas"/>
@@ -394,7 +394,9 @@
         <DCCReference Include="..\Source\gnuGettext.pas"/>
         <DCCReference Include="..\Source\gnuGettextInit.pas"/>
         <DCCReference Include="..\Source\GLS.CurvesAndSurfaces.pas"/>
-        <None Include="..\Source\GLScene.Defines.inc"/>
+        <DCCReference Include="..\Source\Stage.OpenGL4.pas"/>
+        <DCCReference Include="..\Source\Stage.RedBlackTree.pas"/>
+        <None Include="..\Source\Stage.Defines.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -424,40 +426,20 @@
             </Delphi.Personality>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">True</Platform>
+                <Platform value="Win64">False</Platform>
                 <Platform value="Win64x">True</Platform>
             </Platforms>
-            <Deployment Version="4">
+            <Deployment Version="5">
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>GLScene_RT.bpl</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win64">
-                        <RemoteName>GLScene_RT.bpl</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="Win32">
                         <Operation>0</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="AndroidClasses">
-                    <Platform Name="Android">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>64</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>64</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidFileProvider">

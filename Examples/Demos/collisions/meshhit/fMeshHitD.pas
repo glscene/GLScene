@@ -14,13 +14,13 @@ uses
   GLS.VectorFileObjects,
   GLS.Objects,
   GLS.SceneViewer,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.GeomObjects,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.File3DS,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormMeshHit = class(TForm)

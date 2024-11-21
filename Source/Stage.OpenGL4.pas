@@ -1,7 +1,7 @@
 //
 // The graphics engine GXScene https://github.com/glscene
 //
-unit GLScene.OpenGL4;
+unit Stage.OpenGL4;
 
 (* -------------------------------------------------------------
  Copyright 1991-1993, Silicon Graphics, Inc.
@@ -22,7 +22,7 @@ unit GLScene.OpenGL4;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils,
@@ -30,7 +30,7 @@ uses
  {$IFDEF MSWINDOWS}
      Winapi.Windows,
  {$ELSE} X, XLib, XUtil, {$ENDIF}
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 const
 {$IFDEF MSWINDOWS}

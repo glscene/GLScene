@@ -7,7 +7,7 @@ unit GXS.FireFX;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -17,9 +17,9 @@ uses
   GXS.XCollection,
   GXS.BaseClasses,
   GXS.VectorLists,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Manager,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Manager,
   GXS.Scene,
   GXS.Context,
   GXS.Cadencer,
@@ -27,8 +27,8 @@ uses
   GXS.Coordinates,
   GXS.RenderContextInfo,
   GXS.State,
-  GLScene.PipelineTransform,
-  GLScene.TextureFormat;
+  Stage.PipelineTransform,
+  Stage.TextureFormat;
 
 type
 

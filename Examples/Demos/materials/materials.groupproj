@@ -27,12 +27,6 @@
         <Projects Include="dyncubemap\DynCubemapD.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="fire2D_gr32\Fire_GR32C.cbproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="fire2D_gr32\Fire_GR32D.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="MaterialScript\MatScriptC.cbproj">
             <Dependencies/>
         </Projects>
@@ -103,6 +97,12 @@
             <Dependencies/>
         </Projects>
         <Projects Include="TransparAdv\TransparAdvC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="fire2D_gr32\Fire_GR32D.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="fire2D_gr32\Fire_GR32C.cbproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -184,24 +184,6 @@
     </Target>
     <Target Name="DynCubemapD:Make">
         <MSBuild Projects="dyncubemap\DynCubemapD.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="Fire_GR32C">
-        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj"/>
-    </Target>
-    <Target Name="Fire_GR32C:Clean">
-        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Fire_GR32C:Make">
-        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj" Targets="Make"/>
-    </Target>
-    <Target Name="Fire_GR32D">
-        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj"/>
-    </Target>
-    <Target Name="Fire_GR32D:Clean">
-        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="Fire_GR32D:Make">
-        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj" Targets="Make"/>
     </Target>
     <Target Name="MatScriptC">
         <MSBuild Projects="MaterialScript\MatScriptC.cbproj"/>
@@ -419,14 +401,32 @@
     <Target Name="TransparAdvC:Make">
         <MSBuild Projects="TransparAdv\TransparAdvC.cbproj" Targets="Make"/>
     </Target>
+    <Target Name="Fire_GR32D">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj"/>
+    </Target>
+    <Target Name="Fire_GR32D:Clean">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Fire_GR32D:Make">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32D.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Fire_GR32C">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj"/>
+    </Target>
+    <Target Name="Fire_GR32C:Clean">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Fire_GR32C:Make">
+        <MSBuild Projects="fire2D_gr32\Fire_GR32C.cbproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="CubemapC;CubemapD;CustomQuadC;CustomQuadD;DynTextureC;DynTextureD;DynCubemapC;DynCubemapD;Fire_GR32C;Fire_GR32D;MatScriptC;MatScriptD;MirrorC;MirrorD;MultiMaterialC;MultiMaterialD;MultipassC;MultipassD;MultiTextureC;MultiTextureD;ObjMaterialC;ObjMaterialD;ProcCloudsC;ProcCloudsD;TexAnimC;TexAnimD;TexCombineC;TexCombineD;TexFormatC;TexFormatD;TransparencyC;TransparencyD;TransparAdvD;TransparAdvC"/>
+        <CallTarget Targets="CubemapC;CubemapD;CustomQuadC;CustomQuadD;DynTextureC;DynTextureD;DynCubemapC;DynCubemapD;MatScriptC;MatScriptD;MirrorC;MirrorD;MultiMaterialC;MultiMaterialD;MultipassC;MultipassD;MultiTextureC;MultiTextureD;ObjMaterialC;ObjMaterialD;ProcCloudsC;ProcCloudsD;TexAnimC;TexAnimD;TexCombineC;TexCombineD;TexFormatC;TexFormatD;TransparencyC;TransparencyD;TransparAdvD;TransparAdvC;Fire_GR32D;Fire_GR32C"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CubemapC:Clean;CubemapD:Clean;CustomQuadC:Clean;CustomQuadD:Clean;DynTextureC:Clean;DynTextureD:Clean;DynCubemapC:Clean;DynCubemapD:Clean;Fire_GR32C:Clean;Fire_GR32D:Clean;MatScriptC:Clean;MatScriptD:Clean;MirrorC:Clean;MirrorD:Clean;MultiMaterialC:Clean;MultiMaterialD:Clean;MultipassC:Clean;MultipassD:Clean;MultiTextureC:Clean;MultiTextureD:Clean;ObjMaterialC:Clean;ObjMaterialD:Clean;ProcCloudsC:Clean;ProcCloudsD:Clean;TexAnimC:Clean;TexAnimD:Clean;TexCombineC:Clean;TexCombineD:Clean;TexFormatC:Clean;TexFormatD:Clean;TransparencyC:Clean;TransparencyD:Clean;TransparAdvD:Clean;TransparAdvC:Clean"/>
+        <CallTarget Targets="CubemapC:Clean;CubemapD:Clean;CustomQuadC:Clean;CustomQuadD:Clean;DynTextureC:Clean;DynTextureD:Clean;DynCubemapC:Clean;DynCubemapD:Clean;MatScriptC:Clean;MatScriptD:Clean;MirrorC:Clean;MirrorD:Clean;MultiMaterialC:Clean;MultiMaterialD:Clean;MultipassC:Clean;MultipassD:Clean;MultiTextureC:Clean;MultiTextureD:Clean;ObjMaterialC:Clean;ObjMaterialD:Clean;ProcCloudsC:Clean;ProcCloudsD:Clean;TexAnimC:Clean;TexAnimD:Clean;TexCombineC:Clean;TexCombineD:Clean;TexFormatC:Clean;TexFormatD:Clean;TransparencyC:Clean;TransparencyD:Clean;TransparAdvD:Clean;TransparAdvC:Clean;Fire_GR32D:Clean;Fire_GR32C:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CubemapC:Make;CubemapD:Make;CustomQuadC:Make;CustomQuadD:Make;DynTextureC:Make;DynTextureD:Make;DynCubemapC:Make;DynCubemapD:Make;Fire_GR32C:Make;Fire_GR32D:Make;MatScriptC:Make;MatScriptD:Make;MirrorC:Make;MirrorD:Make;MultiMaterialC:Make;MultiMaterialD:Make;MultipassC:Make;MultipassD:Make;MultiTextureC:Make;MultiTextureD:Make;ObjMaterialC:Make;ObjMaterialD:Make;ProcCloudsC:Make;ProcCloudsD:Make;TexAnimC:Make;TexAnimD:Make;TexCombineC:Make;TexCombineD:Make;TexFormatC:Make;TexFormatD:Make;TransparencyC:Make;TransparencyD:Make;TransparAdvD:Make;TransparAdvC:Make"/>
+        <CallTarget Targets="CubemapC:Make;CubemapD:Make;CustomQuadC:Make;CustomQuadD:Make;DynTextureC:Make;DynTextureD:Make;DynCubemapC:Make;DynCubemapD:Make;MatScriptC:Make;MatScriptD:Make;MirrorC:Make;MirrorD:Make;MultiMaterialC:Make;MultiMaterialD:Make;MultipassC:Make;MultipassD:Make;MultiTextureC:Make;MultiTextureD:Make;ObjMaterialC:Make;ObjMaterialD:Make;ProcCloudsC:Make;ProcCloudsD:Make;TexAnimC:Make;TexAnimD:Make;TexCombineC:Make;TexCombineD:Make;TexFormatC:Make;TexFormatD:Make;TransparencyC:Make;TransparencyD:Make;TransparAdvD:Make;TransparAdvC:Make;Fire_GR32D:Make;Fire_GR32C:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

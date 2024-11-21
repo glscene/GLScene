@@ -222,8 +222,8 @@ implementation
 //-----------------------------------------
 
 uses
-  GLScene.Strings,
-  GLScene.TextureFormat;
+  Stage.Strings,
+  Stage.TextureFormat;
 
 
 // ------------------

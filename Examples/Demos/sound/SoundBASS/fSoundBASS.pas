@@ -13,8 +13,8 @@ uses
   Vcl.StdCtrls,
 
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLS.Objects,
   GLS.SoundManager,
@@ -26,7 +26,7 @@ uses
   GLS.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
-  GLScene.Utils
+  Stage.Utils
   ;
 
 type

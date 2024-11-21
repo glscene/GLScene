@@ -18,14 +18,14 @@ uses
   GLS.Objects,
   GLS.SceneViewer,
   GLS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Cadencer,
   GLSL.MultiMaterialShader,
   GLSL.TextureShaders,
   GLS.Material,
   GLS.Coordinates,
 
-  GLScene.Utils,
+  Stage.Utils,
   GLS.BaseClasses,
   GLS.SimpleNavigation;
 

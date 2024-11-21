@@ -18,7 +18,7 @@
 #include "GLS.Objects.hpp"
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
-#include "GLScene.Utils.hpp"
+#include "Stage.Utils.hpp"
 #include "GLS.FileWAV.hpp"
 #include "GLS.FileMP3.hpp"
 #include "GLS.SoundManager.hpp"

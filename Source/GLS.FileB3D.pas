@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileB3D;
 
@@ -11,9 +11,9 @@ uses
   System.Classes, 
   System.SysUtils,
    
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.TextureFormat,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.TextureFormat,
 
   GLS.VectorFileObjects,
   GLS.ApplicationFileIO,

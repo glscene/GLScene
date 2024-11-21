@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit GXS.OpenGLAdapter;
 
@@ -7,7 +7,7 @@ unit GXS.OpenGLAdapter;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,11 +15,11 @@ uses
   Winapi.Windows,
   System.SysUtils,
 
-  GLScene.OpenGLTokens,
-  GLScene.Strings,
-  GLScene.Logger,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes;
+  Stage.OpenGLTokens,
+  Stage.Strings,
+  Stage.Logger,
+  Stage.VectorGeometry,
+  Stage.VectorTypes;
 
 const
   {$IFDEF CROSSVCL}

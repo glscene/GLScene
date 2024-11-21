@@ -15,15 +15,15 @@ uses
   GLS.Scene,
   GLS.Objects,
   GLS.HUDObjects,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.BitmapFont,
   GLS.Cadencer,
   GLS.TimeEventsMgr,
   GLS.GeomObjects,
 
   GLS.Coordinates,
-  GLScene.Utils,
+  Stage.Utils,
   GLS.BaseClasses;
 
 type

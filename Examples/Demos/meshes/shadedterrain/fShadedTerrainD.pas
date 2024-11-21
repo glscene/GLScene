@@ -20,9 +20,9 @@ uses
 
   GLS.Scene,
   GLS.BaseClasses,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.Keyboard,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.Keyboard,
   GLS.XCollection,
   GLS.Coordinates,
 
@@ -40,7 +40,7 @@ uses
   GLS.Material,
 
   GLS.State,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TFormShadedTerrain = class(TForm)

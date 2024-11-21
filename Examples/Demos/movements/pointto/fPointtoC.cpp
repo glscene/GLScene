@@ -10,7 +10,7 @@
 #pragma link "GLS.GeomObjects"
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.Cadencer"
-#pragma link "GLScene.VectorGeometry"
+#pragma link "Stage.VectorGeometry"
 #pragma link "GLS.Scene"
 #pragma link "GLS.Objects"
 #pragma link "GLS.BaseClasses"

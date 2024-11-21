@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.FileVfsPAK;
@@ -14,14 +14,14 @@ unit GLS.FileVfsPAK;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.Contnrs,
   System.SysUtils,
 
-  GLScene.Strings,
+  Stage.Strings,
   GLS.ApplicationFileIO;
 
 const

@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.CgPostTransformationShader;
 (*
@@ -9,7 +9,7 @@ unit GLS.CgPostTransformationShader;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -20,7 +20,7 @@ uses
   GLS.Context, 
   GLS.Scene, 
   GLS.RenderContextInfo,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
 
   Cg.Import,
   Cg.GL,

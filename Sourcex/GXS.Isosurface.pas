@@ -34,10 +34,10 @@ interface
 {.$Define UseDensity}
 
 uses
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
-  GLScene.VectorTypes,
-  GLScene.VectorTypesExt,
+  Stage.VectorTypes,
+  Stage.VectorTypesExt,
 
   GXS.Mesh,
   GXS.VectorFileObjects;

@@ -1,36 +1,27 @@
 object FormBoxedin: TFormBoxedin
   Left = 62
   Top = 15
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'Boxedin'
-  ClientHeight = 740
-  ClientWidth = 994
+  ClientHeight = 423
+  ClientWidth = 568
   Color = clGray
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 168
-  TextHeight = 24
+  TextHeight = 13
   object GLSceneViewer2: TGLSceneViewer
     Left = 0
-    Top = 114
-    Width = 994
-    Height = 626
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 65
+    Width = 568
+    Height = 358
     Camera = Camera
     Buffer.BackgroundColor = 8404992
     Buffer.ShadeModel = smFlat
-    FieldOfView = 161.848007202148400000
+    FieldOfView = 148.786758422851600000
     PenAsTouch = False
     Align = alClient
     TabOrder = 0
@@ -38,93 +29,61 @@ object FormBoxedin: TFormBoxedin
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 994
-    Height = 114
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 568
+    Height = 65
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 560
     object Label1: TLabel
-      Left = 494
-      Top = 9
-      Width = 56
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 282
+      Top = 5
+      Width = 32
+      Height = 13
       Caption = 'Label1'
     end
     object Label2: TLabel
-      Left = 494
-      Top = 42
-      Width = 56
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 282
+      Top = 24
+      Width = 32
+      Height = 13
       Caption = 'Label2'
     end
     object Label3: TLabel
-      Left = 494
-      Top = 75
-      Width = 56
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 282
+      Top = 43
+      Width = 32
+      Height = 13
       Caption = 'Label3'
     end
     object Label4: TLabel
-      Left = 280
-      Top = 9
-      Width = 66
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 160
+      Top = 5
+      Width = 37
+      Height = 13
       Caption = 'Velocity'
     end
     object LabelFPS: TLabel
-      Left = 742
-      Top = 42
-      Width = 36
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 424
+      Top = 24
+      Width = 20
+      Height = 13
       Caption = 'FPS'
     end
     object TrackBar1: TTrackBar
-      Left = 156
-      Top = 42
-      Width = 308
-      Height = 44
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 89
+      Top = 24
+      Width = 176
+      Height = 25
       Max = 50
       Position = 1
       TabOrder = 0
-      ThumbLength = 35
     end
     object Button1: TButton
-      Left = 14
-      Top = 42
-      Width = 131
-      Height = 44
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 8
+      Top = 24
+      Width = 75
+      Height = 25
       Caption = 'Reset'
       TabOrder = 1
       OnClick = Button1Click

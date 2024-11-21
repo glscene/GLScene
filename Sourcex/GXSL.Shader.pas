@@ -7,7 +7,7 @@ unit GXSL.Shader;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,12 +15,12 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GXS.Texture,
   GXS.Context,
   GXS.RenderContextInfo,
-  GLScene.TextureFormat,
+  Stage.TextureFormat,
 
   GXSL.CustomShader,
   GXSL.Parameter;

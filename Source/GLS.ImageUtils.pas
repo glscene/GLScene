@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.ImageUtils;
 
@@ -15,7 +15,7 @@ unit GLS.ImageUtils;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows,
@@ -30,11 +30,11 @@ uses
   Vcl.ExtDlgs,
   Vcl.Graphics,
 
-  GLScene.OpenGLTokens,
-  GLScene.Strings,
-  GLScene.VectorGeometry,
-  GLScene.Utils,
-  GLScene.TextureFormat;
+  Stage.OpenGLTokens,
+  Stage.Strings,
+  Stage.VectorGeometry,
+  Stage.Utils,
+  Stage.TextureFormat;
 
 var
   vImageScaleFilterWidth: Integer = 5; // Relative sample radius for filtering

@@ -7,7 +7,7 @@ unit GXS.FMX.Viewer;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   WinAPI.Windows,
@@ -19,8 +19,8 @@ uses
   FMX.Types, 
   FMX.Types3D,
   FMX.Forms,
-  GLScene.OpenGLTokens,
-  GLScene.TextureFormat,
+  Stage.OpenGLTokens,
+  Stage.TextureFormat,
 
   GXS.Scene,
   GXS.Context

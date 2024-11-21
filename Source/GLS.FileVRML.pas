@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileVRML;
 
@@ -7,7 +7,7 @@ unit GLS.FileVRML;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -17,8 +17,8 @@ uses
   GLS.VectorFileObjects,
   GLS.Material,
   GLS.ApplicationFileIO,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   Formats.VRML,
   GLS.MeshUtils;

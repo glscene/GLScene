@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.MultiSampleImage;
 
@@ -12,16 +12,16 @@ unit GLS.MultiSampleImage;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
   Winapi.OpenGLext,
   System.Classes,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.TextureFormat,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.TextureFormat,
   GLS.Context,
   GLS.Texture,
   GLS.Graphics;

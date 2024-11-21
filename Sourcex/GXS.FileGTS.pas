@@ -7,12 +7,12 @@ unit GXS.FileGTS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
   GXS.VectorFileObjects,
   GXS.ApplicationFileIO;
@@ -36,7 +36,7 @@ implementation
 // ------------------------------------------------------------------
 
 uses
-  GLScene.Utils;
+  Stage.Utils;
 
 // ------------------
 // ------------------ TgxGTSVectorFile ------------------

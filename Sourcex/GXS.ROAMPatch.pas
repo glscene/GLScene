@@ -7,17 +7,17 @@ unit GXS.ROAMPatch;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.SysUtils,
 
-  GLScene.OpenGL4, // GL_ARB_vertex_buffer_object
-  GLScene.VectorTypes,
+  Stage.OpenGL4, // GL_ARB_vertex_buffer_object
+  Stage.VectorTypes,
   GXS.XOpenGL,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.VectorLists,
-  GLScene.Strings,
+  Stage.Strings,
   GXS.HeightData,
   GXS.Isolines,
   GXS.Context;

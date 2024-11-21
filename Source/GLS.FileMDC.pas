@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileMDC;
 
@@ -15,7 +15,7 @@ unit GLS.FileMDC;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes, 
@@ -24,7 +24,7 @@ uses
   GLS.VectorFileObjects, 
   GLS.Material, 
   GLS.ApplicationFileIO,
-  GLScene.VectorGeometry;
+  Stage.VectorGeometry;
 
 const
   MDCFILE_IDENTITY = 'IDPC';

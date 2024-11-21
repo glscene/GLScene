@@ -1,7 +1,7 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.Polynomials;
+unit Stage.Polynomials;
 (*
   Utility functions for manipulationg and solving polynomials.
 
@@ -19,10 +19,10 @@ unit GLScene.Polynomials;
 *)
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
-  GLScene.VectorGeometry;
+  Stage.VectorGeometry;
 
 type
   TDoubleArray = array of Double;
@@ -56,9 +56,7 @@ function SolveCubic(const c: PDoubleArray): TDoubleArray;
   A(0) + A(1)*Z + ... + A(4)*Z**4 *)
 function SolveQuartic(const c: PDoubleArray): TDoubleArray;
 
-// --------------------------------------------------------------
-implementation
-// --------------------------------------------------------------
+implementation // -------------------------------------------------------------
 
 const
   cEpsilon: Double = 1E-40;

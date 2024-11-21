@@ -20,7 +20,7 @@ unit GXSL.ProjectedTextures;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -29,13 +29,13 @@ uses
   GXS.PersistentClasses,
   GXS.Scene,
   GXS.Texture,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Context,
   GXS.Color,
   GXS.RenderContextInfo,
-  GLScene.TextureFormat,
-  GLScene.PipelineTransform,
-  GLScene.VectorTypes;
+  Stage.TextureFormat,
+  Stage.PipelineTransform,
+  Stage.VectorTypes;
 
 type
   TgxslProjectedTexturesStyle = (ptsLight, ptsShadow);

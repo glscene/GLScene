@@ -18,7 +18,7 @@ uses
 
   Cg.GL,
   GLS.CgShader,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.SceneViewer,
   GLS.Cadencer,
   GLS.Scene,
@@ -28,8 +28,8 @@ uses
   GLS.Material,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.TextureFormat,
-  GLScene.Utils,
+  Stage.TextureFormat,
+  Stage.Utils,
   GLS.SimpleNavigation;
 
 type

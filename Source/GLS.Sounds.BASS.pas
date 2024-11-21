@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Sounds.BASS;
 
@@ -12,7 +12,7 @@ unit GLS.Sounds.BASS;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
@@ -21,8 +21,8 @@ uses
 
   GLS.Scene,
   GLS.SoundManager,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
 
   BASS.Import;
 

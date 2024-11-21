@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.AnimatedSprite;
 
@@ -7,7 +7,7 @@ unit GLS.AnimatedSprite;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -15,10 +15,10 @@ uses
   System.SysUtils,
   System.Math,
    
-  GLScene.OpenGLTokens,
+  Stage.OpenGLTokens,
   GLS.Scene,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
   GLS.Material,
   GLS.PersistentClasses,
   GLS.XCollection,

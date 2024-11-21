@@ -25,8 +25,8 @@
 #include "GLS.Navigator.hpp"
 #include "GLS.SkyDome.hpp"
 #include "GLS.VectorFileObjects.hpp"
-#include "GLScene.Keyboard.hpp"
-#include "GLScene.VectorGeometry.hpp"
+#include "Stage.Keyboard.hpp"
+#include "Stage.VectorGeometry.hpp"
 
 //---------------------------------------------------------------------------
 class TFormActorTwocam : public TForm

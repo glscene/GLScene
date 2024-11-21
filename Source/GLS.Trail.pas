@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 
 unit GLS.Trail;
@@ -8,21 +8,21 @@ unit GLS.Trail;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
   
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.MeshUtils,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorFileObjects,
   GLS.Mesh,
   GLS.Objects,
   GLS.Material,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.BaseClasses;
 
 

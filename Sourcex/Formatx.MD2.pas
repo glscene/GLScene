@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GXScene
 //
 unit Formatx.MD2;
 
@@ -8,13 +8,13 @@ unit Formatx.MD2;
 interface
 
 {$R-}
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Classes,
   System.SysUtils,
    
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 const
   MAX_MD2_TRIANGLES = 4096;

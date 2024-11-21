@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit FmGuiSkinEditor;
 
@@ -7,7 +7,7 @@ unit FmGuiSkinEditor;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.Windows, 
@@ -31,7 +31,7 @@ uses
   GLS.SceneViewer, 
   GLS.Gui, 
   GLS.Graphics, 
-  GLScene.Utils,
+  Stage.Utils,
   GLS.Coordinates,
   GLS.BaseClasses, 
   GLS.Material;

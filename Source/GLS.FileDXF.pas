@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.FileDXF;
 
@@ -17,16 +17,16 @@ uses
   System.Classes,
   System.SysUtils,
 
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.PersistentClasses,
   GLS.ApplicationFileIO,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.VectorLists,
   GLS.Scene,
   GLS.Texture,
   GLS.VectorFileObjects,
   GLS.Material,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TGLDXFVectorFile = class(TGLVectorFile)

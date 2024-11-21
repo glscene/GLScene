@@ -10,8 +10,11 @@ interface
 uses
   System.Classes,
   System.SysUtils,
+
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
+
   GXS.VectorFileObjects,
-  GLScene.VectorGeometry,
   GXS.VectorLists,
   GXS.ApplicationFileIO,
   GXS.ParametricSurfaces,

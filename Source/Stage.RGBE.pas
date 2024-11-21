@@ -1,9 +1,9 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
-unit GLScene.RGBE;
+unit Stage.RGBE;
 
-(* GLScene RGBE utils *)
+(* Stage RGBE utils *)
 
 interface
 
@@ -12,8 +12,8 @@ uses
   System.SysUtils,
   System.Math,
 
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry;
+  Stage.VectorTypes,
+  Stage.VectorGeometry;
 
 procedure Float2rgbe(var RGBE: TVector4b; const Red, Green, Blue: Single);
 procedure Rgbe2float(var Red, Green, Blue: Single; const RGBE: TVector4b);
@@ -44,7 +44,6 @@ begin
       end;
   Mantissa := X;
 end;
-
 
 function Ldexp(X: Extended; const P: Integer): Extended;
 begin

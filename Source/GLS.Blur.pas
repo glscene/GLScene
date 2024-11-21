@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.Blur;
 
@@ -7,7 +7,7 @@ unit GLS.Blur;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   Winapi.OpenGL,
@@ -16,10 +16,10 @@ uses
   System.SysUtils,
   VCL.Graphics,
 
-  GLScene.OpenGLTokens,
-  GLScene.VectorTypes,
-  GLScene.VectorGeometry,
-  GLScene.TextureFormat,
+  Stage.OpenGLTokens,
+  Stage.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.TextureFormat,
 
   GLS.BaseClasses,
   GLS.Scene,
@@ -168,7 +168,7 @@ implementation
 uses
   GLS.Coordinates,
   GLS.PersistentClasses,
-  GLScene.Strings,
+  Stage.Strings,
   GLS.OpenGLAdapter;
 
 const

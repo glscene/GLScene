@@ -7,7 +7,7 @@ unit GXS.Navigator;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -15,11 +15,11 @@ uses
   System.Classes,
   System.Math,
 
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GXS.Scene,
   GXS.Coordinates,
   GXS.Screen,
-  GLScene.VectorTypes;
+  Stage.VectorTypes;
 
 type
 

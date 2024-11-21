@@ -24,10 +24,10 @@ uses
   GLS.File3DS,
   GLS.Graph,
   GLS.Material,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses,
-  GLScene.Utils,
+  Stage.Utils,
 
   GLS.FileMD2,
   GLS.CgBombShader;

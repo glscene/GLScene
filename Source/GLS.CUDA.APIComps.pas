@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLS.CUDA.APIComps;
 
@@ -7,7 +7,7 @@ unit GLS.CUDA.APIComps;
 
 interface
 
-{$I GLScene.Defines.inc}
+{$I Stage.Defines.inc}
 
 uses
   System.Types,
@@ -17,12 +17,12 @@ uses
   GLS.PersistentClasses,
   GLS.BaseClasses,
   GLS.Context,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.VectorLists,
   GLS.Graphics,
-  GLScene.Strings,
-  GLScene.Utils,
+  Stage.Strings,
+  Stage.Utils,
 
   GLS.CUDA.Compiler,
   GLS.CUDA.Context,

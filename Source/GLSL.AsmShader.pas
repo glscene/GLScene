@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene https://github.com/glscene
+// The graphics engine GLScene
 //
 unit GLSL.AsmShader;
 
@@ -15,9 +15,9 @@ uses
   System.Classes,
   System.SysUtils,
   
-  GLScene.OpenGLTokens,
-  GLScene.VectorGeometry,
-  GLScene.VectorTypes,
+  Stage.OpenGLTokens,
+  Stage.VectorGeometry,
+  Stage.VectorTypes,
   GLS.Texture,
   GLS.Context,
   GLSL.CustomShader,

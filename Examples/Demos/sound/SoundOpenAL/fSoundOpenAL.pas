@@ -14,18 +14,18 @@ uses
 
   GLS.Cadencer,
   GLS.Scene,
-  GLScene.VectorTypes,
+  Stage.VectorTypes,
   GLS.Objects,
   GLS.SoundManager,
   GLS.SceneViewer,
   GLS.GeomObjects,
   GLS.Sounds.OpenAL,
-  GLScene.VectorGeometry,
+  Stage.VectorGeometry,
   GLS.Coordinates,
   GLS.BaseClasses,
   GLS.FileWAV,
   GLS.FileMP3,
-  GLScene.Utils;
+  Stage.Utils;
 
 type
   TForm1 = class(TForm)
