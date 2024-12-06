@@ -1,7 +1,7 @@
 # GLSEngine
 GLSEngine - a graphics engine based on GLScene and GXScene libraries with VCL/FMX components for Delphi & C++Builder. 
-Class libraries for creating 3D scenes with animation and rendering of spatial objects. 
-Includes managers for supporting physics, sound, terrains with materials and shaders. 
+Class libraries for creating 3D scenes with rendering and animations of spatial objects. 
+Includes managers for supporting physics, sounds, terrains with materials and shaders. 
 ### How to install
 1. Download a zip archive of the last release or clone the repository
 2. Run ...GLScene/External/_setupDLL.cmd as admin to include dynamic libraries
