@@ -1,9 +1,7 @@
-# GLScene
-GLScene is a graphics engine based on OpenGL and VCL components for Delphi & C++ Builder,
-Embarcadero RAD Studio. <br>  It provides a class library and tools for rendering 3D scenes with spatial objects,
-freeforms, verlets and virtual intelligent actors.<br> 
-Includes additional components for creating mesh objects with materials, shaders, animations, <br> 
-and developing graphics applications with physics. 
+# GLSEngine
+GLSEngine - a graphics engine based on GLScene and GXScene libraries with VCL/FMX components for Delphi & C++Builder. 
+Class libraries for creating 3D scenes with animation and rendering of spatial objects. 
+Includes managers for supporting physics, sound, terrains with materials and shaders. 
 ### How to install
 1. Download a zip archive of the last release or clone the repository
 2. Run ...GLScene/External/_setupDLL.cmd as admin to include dynamic libraries
