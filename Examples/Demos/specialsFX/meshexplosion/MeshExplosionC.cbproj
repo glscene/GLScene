@@ -174,7 +174,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fMeshExplosionC.cpp">
-            <Form>Form1</Form>
+            <Form>FormMeshExplosion</Form>
             <FormType>dfm</FormType>
             <DependentOn>fMeshExplosionC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

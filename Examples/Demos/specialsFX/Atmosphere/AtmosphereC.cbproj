@@ -184,7 +184,7 @@
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="fAtmosphereC.cpp">
-            <Form>Form1</Form>
+            <Form>FormAtmosphere</Form>
             <FormType>dfm</FormType>
             <DependentOn>fAtmosphereC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

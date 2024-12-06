@@ -128,7 +128,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="fBoomD.pas">
-            <Form>Form1</Form>
+            <Form>FormBoom</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

@@ -177,7 +177,7 @@
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="fCandlesC.cpp">
-            <Form>Form1</Form>
+            <Form>FormCandles</Form>
             <FormType>dfm</FormType>
             <DependentOn>fCandlesC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

@@ -20,15 +20,15 @@
 
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormAtmosphere *FormAtmosphere;
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormAtmosphere::TFormAtmosphere(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormAtmosphere::FormCreate(TObject *Sender)
 {
   Atmosphere = (TGLAtmosphere *)(GLDummyCube1->AddNewChild(__classid(TGLAtmosphere)));
   Atmosphere->Sun  = GLLensFlare1;
@@ -37,62 +37,62 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
   GLSkyDome1->Stars->AddRandomStars(5000, ConvertColorVector(clrWhite));
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
+void __fastcall TFormAtmosphere::FormClose(TObject *Sender, TCloseAction &Action)
 {
   Atmosphere->Free();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::btnRotateClick(TObject *Sender)
+void __fastcall TFormAtmosphere::ButtonRotateClick(TObject *Sender)
 {
   GLCadencer1->Enabled = !GLCadencer1->Enabled;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button2Click(TObject *Sender)
+void __fastcall TFormAtmosphere::Button2Click(TObject *Sender)
 {
   GLLensFlare1->Slide(0.8);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button3Click(TObject *Sender)
+void __fastcall TFormAtmosphere::Button3Click(TObject *Sender)
 {
   GLLensFlare1->Slide(-0.8);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button4Click(TObject *Sender)
+void __fastcall TFormAtmosphere::Button4Click(TObject *Sender)
 {
   GLDummyCube1->Slide(-0.5);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button5Click(TObject *Sender)
+void __fastcall TFormAtmosphere::Button5Click(TObject *Sender)
 {
   GLDummyCube1->Slide(0.5);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::btnShowAtmosphereClick(TObject *Sender)
+void __fastcall TFormAtmosphere::btnShowAtmosphereClick(TObject *Sender)
 {
   Atmosphere->Visible = !Atmosphere->Visible;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button8Click(TObject *Sender)
+void __fastcall TFormAtmosphere::Button8Click(TObject *Sender)
 {
   Atmosphere->TogleBlendingMode();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button10Click(TObject *Sender)
+void __fastcall TFormAtmosphere::Button10Click(TObject *Sender)
 {
   GLCamera1->AdjustDistanceToTarget(1.1);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button9Click(TObject *Sender)
+void __fastcall TFormAtmosphere::Button9Click(TObject *Sender)
 {
   GLCamera1->AdjustDistanceToTarget((float)1 / 1.1);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormAtmosphere::GLCadencer1Progress(TObject *Sender, const double deltaTime,
 		  const double newTime)
 {
   Planet->Turn(deltaTime *20);

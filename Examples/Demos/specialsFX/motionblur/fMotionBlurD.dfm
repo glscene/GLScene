@@ -1,54 +1,53 @@
 object FormMotionBlur: TFormMotionBlur
   Left = 153
   Top = 28
+  Margins.Left = 2
+  Margins.Top = 2
+  Margins.Right = 2
+  Margins.Bottom = 2
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Motion Blur'
-  ClientHeight = 603
-  ClientWidth = 636
+  ClientHeight = 550
+  ClientWidth = 644
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnResize = FormResize
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 636
-    Height = 559
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 644
+    Height = 515
     Camera = Camera
     VSync = vsmSync
     PostRender = GLSceneViewerPostRender
     Buffer.BackgroundColor = clNavy
-    FieldOfView = 159.715179443359400000
+    FieldOfView = 158.022705078125000000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewerMouseDown
     OnMouseMove = GLSceneViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 508
+    ExplicitHeight = 447
   end
   object Panel1: TPanel
     Left = 0
-    Top = 559
-    Width = 636
-    Height = 44
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 515
+    Width = 644
+    Height = 35
     Align = alBottom
     Caption = 'FPS'
     TabOrder = 1
+    ExplicitTop = 422
+    ExplicitWidth = 499
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

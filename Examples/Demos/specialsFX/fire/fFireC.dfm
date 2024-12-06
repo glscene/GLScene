@@ -1,32 +1,32 @@
-object Form1: TForm1
+object FormFire: TFormFire
   Left = 0
   Top = 0
   Caption = 'Fire'
-  ClientHeight = 300
-  ClientWidth = 427
+  ClientHeight = 504
+  ClientWidth = 673
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 427
-    Height = 300
+    Width = 673
+    Height = 504
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 143.130096435546900000
+    FieldOfView = 157.555084228515600000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 428
+    ExplicitHeight = 300
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

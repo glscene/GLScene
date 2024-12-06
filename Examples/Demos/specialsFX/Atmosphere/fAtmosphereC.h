@@ -28,7 +28,7 @@
 #include "GLS.Color.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormAtmosphere : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -37,7 +37,7 @@ __published:	// IDE-managed Components
 	TLabel *Label2;
 	TLabel *Label3;
 	TLabel *Label4;
-	TButton *btnRotate;
+	TButton *ButtonRotate;
 	TButton *Button4;
 	TButton *Button5;
 	TButton *Button2;
@@ -60,7 +60,7 @@ __published:	// IDE-managed Components
 	TButton *btnShowAtmosphere;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall btnRotateClick(TObject *Sender);
+	void __fastcall ButtonRotateClick(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall Button4Click(TObject *Sender);
@@ -74,9 +74,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	TGLAtmosphere *Atmosphere;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormAtmosphere(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormAtmosphere *FormAtmosphere;
 //---------------------------------------------------------------------------
 #endif

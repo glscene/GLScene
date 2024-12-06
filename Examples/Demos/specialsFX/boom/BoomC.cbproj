@@ -177,7 +177,7 @@
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <CppCompile Include="fBoomC.cpp">
-            <Form>Form1</Form>
+            <Form>FormBoom</Form>
             <FormType>dfm</FormType>
             <DependentOn>fBoomC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

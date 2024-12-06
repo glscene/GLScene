@@ -21,7 +21,7 @@
 #include "GLS.Scene.hpp"
 #include "GLS.SceneViewer.hpp"
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormBoom : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer1;
@@ -48,9 +48,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	int mx, my;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormBoom(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormBoom *FormBoom;
 //---------------------------------------------------------------------------
 #endif

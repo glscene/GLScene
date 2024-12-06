@@ -26,7 +26,7 @@ uses
   GLS.BaseClasses;
 
 type
-  TForm1 = class(TForm)
+  TFormBoom = class(TForm)
     GLSceneViewer1: TGLSceneViewer;
     GLScene1: TGLScene;
     GLCamera1: TGLCamera;
@@ -53,13 +53,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormBoom: TFormBoom;
 
 implementation
 
 {$R *.DFM}
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TFormBoom.Button1Click(Sender: TObject);
 begin
   // A button click triggers the small animation sequence
   // first, we enabled the cadencer, to get Progression events
@@ -77,7 +77,7 @@ begin
   SmokeFX.FireInit;
 end;
 
-procedure TForm1.GLCadencer1Progress(Sender: TObject;
+procedure TFormBoom.GLCadencer1Progress(Sender: TObject;
   const deltaTime, newTime: Double);
 begin
   // have we exploded yet?
@@ -109,7 +109,7 @@ begin
     Button1Click(Self);
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
+procedure TFormBoom.Timer1Timer(Sender: TObject);
 begin
   // standard issue framerate & particle count update
   Caption := 'Boom - ' + Format('%.1f FPS - %d Particles',
@@ -118,20 +118,20 @@ begin
   GLSceneViewer1.ResetPerformanceMonitor;
 end;
 
-procedure TForm1.FormResize(Sender: TObject);
+procedure TFormBoom.FormResize(Sender: TObject);
 begin
   // take care of zooming if window is resize
   GLCamera1.FocalLength := Width * 0.1;
 end;
 
-procedure TForm1.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
+procedure TFormBoom.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   mx := X;
   my := Y;
 end;
 
-procedure TForm1.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
+procedure TFormBoom.GLSceneViewer1MouseMove(Sender: TObject; Shift: TShiftState;
   X, Y: Integer);
 begin
   if Shift <> [] then

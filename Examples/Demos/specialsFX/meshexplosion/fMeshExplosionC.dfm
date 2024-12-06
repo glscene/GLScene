@@ -1,9 +1,9 @@
-object Form1: TForm1
+object FormMeshExplosion: TFormMeshExplosion
   Left = 0
   Top = 0
   Caption = 'Mesh Explosion'
-  ClientHeight = 421
-  ClientWidth = 588
+  ClientHeight = 541
+  ClientWidth = 716
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,25 +16,29 @@ object Form1: TForm1
   object Viewer: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 588
-    Height = 324
+    Width = 716
+    Height = 444
     Camera = Camera1
     Buffer.BackgroundColor = clBackground
-    FieldOfView = 145.695159912109400000
+    FieldOfView = 154.614669799804700000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = ViewerMouseDown
     OnMouseMove = ViewerMouseMove
     TabOrder = 0
+    ExplicitWidth = 588
+    ExplicitHeight = 325
   end
   object Panel1: TPanel
     Left = 0
-    Top = 324
-    Width = 588
+    Top = 444
+    Width = 716
     Height = 97
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitTop = 324
+    ExplicitWidth = 588
     object Label2: TLabel
       Left = 8
       Top = 56

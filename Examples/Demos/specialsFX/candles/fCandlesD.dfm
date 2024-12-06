@@ -2,8 +2,8 @@ object FormCandles: TFormCandles
   Left = 229
   Top = 109
   Caption = 'Candles'
-  ClientHeight = 325
-  ClientWidth = 442
+  ClientHeight = 533
+  ClientWidth = 650
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,21 +16,23 @@ object FormCandles: TFormCandles
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 29
-    Width = 442
-    Height = 296
+    Width = 650
+    Height = 504
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 111.908126831054700000
+    FieldOfView = 136.711135864257800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 443
+    ExplicitHeight = 296
   end
   object TrackBar1: TTrackBar
     Left = 0
     Top = 0
-    Width = 442
+    Width = 650
     Height = 29
     Hint = 'Wind'
     Align = alTop
@@ -41,6 +43,7 @@ object FormCandles: TFormCandles
     ShowHint = True
     TabOrder = 1
     OnChange = TrackBar1Change
+    ExplicitWidth = 434
   end
   object GLScene1: TGLScene
     Left = 32

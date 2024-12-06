@@ -19,27 +19,27 @@
 #pragma link "GLS.SceneViewer"
 #pragma link "GLS.VectorFileObjects"
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormMotionBlur *FormMotionBlur;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormMotionBlur::TFormMotionBlur(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormMotionBlur::FormCreate(TObject *Sender)
 {
    Frames = 5;
    HUD->Material->FrontProperties->Diffuse->Alpha = 1.0 - (float)1.00/Frames;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewerPostRender(TObject *Sender)
+void __fastcall TFormMotionBlur::GLSceneViewerPostRender(TObject *Sender)
 {
    // render is done, we transfer it to our hud plane so it can be used
    // in the next frame
    GLSceneViewer->Buffer->CopyToTexture(HUD->Material->Texture);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormResize(TObject *Sender)
+void __fastcall TFormMotionBlur::FormResize(TObject *Sender)
 {
    int w, h;
 
@@ -65,7 +65,7 @@ void __fastcall TForm1::FormResize(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormMotionBlur::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
    // make things move
@@ -74,7 +74,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
    Dodecahedron->RollAngle = newTime*15;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+void __fastcall TFormMotionBlur::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 
 {
    // turn on/off VSync, this has an obvious impact on framerate,
@@ -101,14 +101,14 @@ void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shif
 
 // standard issue camera movement
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewerMouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormMotionBlur::GLSceneViewerMouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
  mx = X; my = Y;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewerMouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormMotionBlur::GLSceneViewerMouseMove(TObject *Sender, TShiftState Shift,
           int X, int Y)
 {
    if (Shift.Contains(ssLeft))
@@ -118,7 +118,7 @@ void __fastcall TForm1::GLSceneViewerMouseMove(TObject *Sender, TShiftState Shif
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormMotionBlur::Timer1Timer(TObject *Sender)
 {
 //  const String  cVSync[vsmSync][vsmNoSync] = {"VSync ON", "VSync OFF"};
   Panel1->Caption = Format("Motion Blur on %d Frames %f FPS",

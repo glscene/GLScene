@@ -174,7 +174,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fMotionBlurC.cpp">
-            <Form>Form1</Form>
+            <Form>FormMotionBlur</Form>
             <FormType>dfm</FormType>
             <DependentOn>fMotionBlurC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

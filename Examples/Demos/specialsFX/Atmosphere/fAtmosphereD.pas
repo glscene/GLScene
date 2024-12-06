@@ -43,7 +43,7 @@ type
     GLSimpleNavigation1: TGLSimpleNavigation;
     World: TGLDummyCube;
     Panel1: TPanel;
-    Button1: TButton;
+    ButtonRotate: TButton;
     Button4: TButton;
     Button5: TButton;
     Button2: TButton;
@@ -70,7 +70,7 @@ type
     procedure GLCadencer1Progress(Sender: TObject; const deltaTime,
       newTime: Double);
     procedure rgAtmosphereClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure ButtonRotateClick(Sender: TObject);
   private
     AtmosphereLower:  TGLAtmosphere;
   end;
@@ -119,8 +119,7 @@ begin
    end;
 end;
 
-
-procedure TFormAtmosphere.Button1Click(Sender: TObject);
+procedure TFormAtmosphere.ButtonRotateClick(Sender: TObject);
 begin
   GLCadencer1.Enabled := not GLCadencer1.Enabled;
 end;

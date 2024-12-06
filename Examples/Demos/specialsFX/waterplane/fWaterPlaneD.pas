@@ -81,17 +81,6 @@ implementation
 
 {$R *.dfm}
 
-procedure TFormWaterPlane.ClickWater(X, Y: Integer);
-var
-  ip: TGLVector;
-begin
-  // create a ripple in the pond on a right-mousebutton click
-
-  GLSceneViewer1.Buffer.ScreenVectorIntersectWithPlaneXZ
-    (VectorMake(X, GLSceneViewer1.Height - Y, 0), GLWaterPlane1.Position.Y, ip);
-  GLWaterPlane1.CreateRippleAtWorldPos(ip);
-end;
-
 procedure TFormWaterPlane.FormCreate(Sender: TObject);
 begin
   var Path: TFileName := GetCurrentAssetPath();
@@ -119,6 +108,17 @@ begin
     end;
   end;
 
+end;
+
+procedure TFormWaterPlane.ClickWater(X, Y: Integer);
+var
+  ip: TGLVector;
+begin
+  // create a ripple in the pond on a right-mousebutton click
+
+  GLSceneViewer1.Buffer.ScreenVectorIntersectWithPlaneXZ
+    (VectorMake(X, GLSceneViewer1.Height - Y, 0), GLWaterPlane1.Position.Y, ip);
+  GLWaterPlane1.CreateRippleAtWorldPos(ip);
 end;
 
 procedure TFormWaterPlane.GLSceneViewer1MouseDown(Sender: TObject; Button: TMouseButton;

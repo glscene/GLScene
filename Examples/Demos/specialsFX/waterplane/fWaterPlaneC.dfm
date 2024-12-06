@@ -1,25 +1,26 @@
-object Form1: TForm1
+object FormWaterPlane: TFormWaterPlane
   Left = 169
   Top = 106
   Caption = 'Water Plane'
-  ClientHeight = 331
-  ClientWidth = 536
+  ClientHeight = 476
+  ClientWidth = 631
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 536
-    Height = 331
+    Width = 631
+    Height = 476
     Camera = GLCamera1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.FaceCulling = False
-    FieldOfView = 159.451248168945300000
+    FieldOfView = 165.631469726562500000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
@@ -60,12 +61,11 @@ object Form1: TForm1
       YSamplingScale.Min = -63.000000000000000000
       YSamplingScale.Max = 63.000000000000000000
       YSamplingScale.Step = 2.000000000000000000
-      OnGetHeight = GLHeightField1GetHeight
     end
     object GLWaterPlane1: TGLWaterPlane
       Material.MaterialLibrary = GLMaterialLibrary1
       Material.LibMaterialName = 'CubeMap'
-      Position.Coordinates = {00000000000080BF000000000000803F}
+      Position.Coordinates = {00000000000000BF000000000000803F}
       Scale.Coordinates = {000070410000803F0000704100000000}
       RainForce = 5000.000000000000000000
       Viscosity = 0.990000009536743200

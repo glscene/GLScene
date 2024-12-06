@@ -11,9 +11,9 @@
 #pragma link "GLSL.UserShader"
 #pragma resource "*.dfm"
 
-TForm1 *Form1;
+TFormWaterPlane *FormWaterPlane;
 
-void TForm1::ClickWater(int x, int y)
+void TFormWaterPlane::ClickWater(int x, int y)
 {
   TGLVector ip;
   // create a ripple in the pond on a right-mousebutton click
@@ -25,14 +25,14 @@ void TForm1::ClickWater(int x, int y)
 }
 
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
+__fastcall TFormWaterPlane::TFormWaterPlane(TComponent * Owner):TForm(Owner)
 {
   TFileName Path = GetCurrentAssetPath();
+  SetCurrentDir(Path  + "\\texture");
   GLWaterPlane1->Mask->LoadFromFile("basinMask.bmp");
   GLHeightField1->Material->Texture->Image->LoadFromFile("clover.jpg");
 
-  TFileName PathCM = GetCurrentDir() + "\\cubemap";
-  SetCurrentDir(PathCM);
+  SetCurrentDir(Path  + "\\cubemap");
 
   // Load the cube map which is used both for environment and as reflection texture
   TGLTexture *t = GLMaterialLibrary1->Materials->Items[0]->Material->Texture;
@@ -52,7 +52,7 @@ __fastcall TForm1::TForm1(TComponent * Owner):TForm(Owner)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject * Sender,
+void __fastcall TFormWaterPlane::GLSceneViewer1MouseDown(TObject * Sender,
                                                 TMouseButton Button,
                                                 TShiftState Shift, int X, int Y)
 {
@@ -64,7 +64,7 @@ void __fastcall TForm1::GLSceneViewer1MouseDown(TObject * Sender,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject * Sender,
+void __fastcall TFormWaterPlane::GLSceneViewer1MouseMove(TObject * Sender,
                                                 TShiftState Shift, int X, int Y)
 {
   if(Shift.Contains(ssLeft))
@@ -84,7 +84,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject * Sender,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLUserShader1DoApply(TObject * Sender,
+void __fastcall TFormWaterPlane::GLUserShader1DoApply(TObject * Sender,
                                              TGLRenderContextInfo & rci)
 {
   // Here is the shader trick: the same cubemap is used in reflection mode
@@ -111,7 +111,7 @@ void __fastcall TForm1::GLUserShader1DoApply(TObject * Sender,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLUserShader1DoUnApply(TObject * Sender, int Pass,
+void __fastcall TFormWaterPlane::GLUserShader1DoUnApply(TObject * Sender, int Pass,
 											   TGLRenderContextInfo & rci,
 											   bool & Continue)
 {
@@ -120,14 +120,14 @@ void __fastcall TForm1::GLUserShader1DoUnApply(TObject * Sender, int Pass,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLSceneViewer1BeforeRender(TObject * Sender)
+void __fastcall TFormWaterPlane::GLSceneViewer1BeforeRender(TObject * Sender)
 {
   reflectionToggle = false;     // toggle for environment sphere
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLDirectOpenGL1Render(TObject * Sender,
+void __fastcall TFormWaterPlane::GLDirectOpenGL1Render(TObject * Sender,
 											  TGLRenderContextInfo & rci)
 {
   reflectionToggle = true;      // toggle for pond/water plane
@@ -136,7 +136,7 @@ void __fastcall TForm1::GLDirectOpenGL1Render(TObject * Sender,
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
+void __fastcall TFormWaterPlane::GLCadencer1Progress(TObject * Sender,
                                             const double deltaTime,
                                             const double newTime)
 {
@@ -145,7 +145,7 @@ void __fastcall TForm1::GLCadencer1Progress(TObject * Sender,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::GLHeightField1GetHeight(const float x,
+void __fastcall TFormWaterPlane::GLHeightField1GetHeight(const float x,
                                                 const float y, float &z,
                                                 TVector4f & color,
                                                 TTexPoint & texPoint)

@@ -17,7 +17,8 @@
 #pragma link "GLS.SimpleNavigation"
 #pragma link "GLS.VectorFileObjects"
 #pragma link "GLS.SceneViewer"
-#pragma link "GLSL.PostEffects"  // old #pragma link "GLPostEffects"
+#pragma link "GLSL.PostEffects"
+#pragma link "GLS.FileMD2"
 #pragma resource "*.dfm"
 TMainForm *MainForm;
 //---------------------------------------------------------------------------
@@ -45,7 +46,7 @@ void __fastcall TMainForm::FormCreate(TObject *Sender)
 ///  GLActor1->SwitchToAnimation(GLActor1->Animations[0]);
 
   GLActor1->AnimationMode = aamLoop;
-///  GLActor1->ObjectStyle = GLActor1->ObjectStyle + [osDirectDraw];
+  //GLActor1->ObjectStyle = GLActor1->ObjectStyle + [osDirectDraw];
   GLActor1->Reference = aarMorph;
 }
 //---------------------------------------------------------------------------

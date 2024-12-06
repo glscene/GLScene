@@ -19,31 +19,31 @@
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
 
-TForm1 *Form1;
+TFormCandles *FormCandles;
 int mx,my;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormCandles::TFormCandles(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormResize(TObject *Sender)
+void __fastcall TFormCandles::FormResize(TObject *Sender)
 {
    GLCamera1->FocalLength = Height/3;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TFormCandles::GLSceneViewer1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
   mx = X; my = Y;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::TrackBar1Change(TObject *Sender)
+void __fastcall TFormCandles::TrackBar1Change(TObject *Sender)
 {
   GLFireFXManager1->FireDir->Z = -TrackBar1->Position*0.1;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
+void __fastcall TFormCandles::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shift,
 		  int X, int Y)
 {
   if (Shift.Contains(ssLeft) || Shift.Contains(ssRight)) // if (Shift <> [])
@@ -55,7 +55,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(TObject *Sender, TShiftState Shi
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TFormCandles::Timer1Timer(TObject *Sender)
 {
    int n;
 

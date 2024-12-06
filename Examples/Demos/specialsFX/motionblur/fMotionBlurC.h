@@ -21,7 +21,7 @@
 #include "Stage.Keyboard.hpp"
 #include "GLS.VectorFileObjects.hpp"
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormMotionBlur : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *GLSceneViewer;
@@ -51,9 +51,9 @@ private:	// User declarations
 	int Frames;
 	int mx, my;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormMotionBlur(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormMotionBlur *FormMotionBlur;
 //---------------------------------------------------------------------------
 #endif

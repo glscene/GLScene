@@ -191,7 +191,7 @@
     <ItemGroup>
         <CppCompile Include="fWaterPlaneC.cpp">
             <BuildOrder>2</BuildOrder>
-            <Form>Form1</Form>
+            <Form>FormWaterPlane</Form>
             <DependentOn>fWaterPlaneC.h</DependentOn>
             <BuildOrder>0</BuildOrder>
         </CppCompile>

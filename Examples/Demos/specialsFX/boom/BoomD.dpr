@@ -22,12 +22,12 @@ program BoomD;
 
 uses
   Forms,
-  fBoomD in 'fBoomD.pas' {Form1};
+  fBoomD in 'fBoomD.pas' {FormBoom};
 
 {$R *.RES}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormBoom, FormBoom);
   Application.Run;
 end.

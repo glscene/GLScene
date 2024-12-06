@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormBoom: TFormBoom
   Left = 155
   Top = 94
   Caption = 'Boom'
@@ -26,7 +26,6 @@ object Form1: TForm1
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
-    ExplicitHeight = 383
   end
   object Button1: TButton
     Left = 16

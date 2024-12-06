@@ -1,36 +1,37 @@
 object FormFire: TFormFire
   Left = 228
   Top = 98
+  Margins.Left = 2
+  Margins.Top = 2
+  Margins.Right = 2
+  Margins.Bottom = 2
   BorderWidth = 3
   Caption = 'GLScene Fire'
-  ClientHeight = 434
-  ClientWidth = 540
+  ClientHeight = 569
+  ClientWidth = 686
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 540
-    Height = 434
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 686
+    Height = 569
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 154.049331665039100000
+    FieldOfView = 160.064468383789100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 430
+    ExplicitHeight = 348
   end
   object GLScene1: TGLScene
     ObjectsSorting = osNone

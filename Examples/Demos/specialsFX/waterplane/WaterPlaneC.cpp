@@ -2,14 +2,14 @@
 
 #include <vcl.h>
 #pragma hdrstop
-USEFORM("fWaterPlaneC.cpp", Form1);
+USEFORM("fWaterPlaneC.cpp", FormWaterPlane);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
         try
         {
                  Application->Initialize();
-                 Application->CreateForm(__classid(TForm1), &Form1);
+                 Application->CreateForm(__classid(TFormWaterPlane), &FormWaterPlane);
 		Application->Run();
         }
         catch (Exception &exception)

@@ -29,7 +29,7 @@
 
 
 //---------------------------------------------------------------------------
-class TForm1:public TForm
+class TFormWaterPlane:public TForm
 {
 __published:                   // IDE-managed Components
   TGLScene * GLScene1;
@@ -66,14 +66,14 @@ __published:                   // IDE-managed Components
                                           TTexPoint & texPoint);
 private:                       // User declarations
 public:                        // User declarations
-    __fastcall TForm1(TComponent * Owner);
+    __fastcall TFormWaterPlane(TComponent * Owner);
 
   int mx, my;
   bool reflectionToggle;
   void ClickWater(int x, int y);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormWaterPlane *FormWaterPlane;
 //---------------------------------------------------------------------------
 #endif
  

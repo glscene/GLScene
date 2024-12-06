@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormMotionBlur: TFormMotionBlur
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
@@ -11,12 +11,10 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer: TGLSceneViewer
     Left = 0

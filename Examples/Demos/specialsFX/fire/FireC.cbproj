@@ -174,7 +174,7 @@
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="fFireC.cpp">
-            <Form>Form1</Form>
+            <Form>FormFire</Form>
             <FormType>dfm</FormType>
             <DependentOn>fFireC.h</DependentOn>
             <BuildOrder>2</BuildOrder>

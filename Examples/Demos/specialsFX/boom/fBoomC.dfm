@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormBoom: TFormBoom
   Left = 0
   Top = 0
   Caption = 'Boom'
@@ -11,7 +11,6 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0

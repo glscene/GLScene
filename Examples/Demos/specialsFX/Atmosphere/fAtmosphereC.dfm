@@ -1,4 +1,4 @@
-object Form1: TForm1
+object FormAtmosphere: TFormAtmosphere
   Left = 0
   Top = 0
   Caption = 'Atmosphere'
@@ -61,14 +61,14 @@ object Form1: TForm1
       Height = 13
       Caption = ' = turn camera'
     end
-    object btnRotate: TButton
+    object ButtonRotate: TButton
       Left = 13
       Top = 15
       Width = 74
       Height = 25
       Caption = 'Rotate Planet'
       TabOrder = 0
-      OnClick = btnRotateClick
+      OnClick = ButtonRotateClick
     end
     object Button4: TButton
       Left = 13
@@ -186,6 +186,7 @@ object Form1: TForm1
       object Not_a_Planet: TGLSphere
         Material.FrontProperties.Diffuse.Color = {E6E5653F8F8E8E3ECDCC4C3F0000803F}
         Position.Coordinates = {0000000000007041000000C00000803F}
+        Visible = False
         Radius = 3.000000000000000000
       end
       object GLDummyCube1: TGLDummyCube

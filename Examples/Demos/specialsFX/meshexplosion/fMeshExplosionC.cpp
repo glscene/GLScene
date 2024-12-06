@@ -18,14 +18,14 @@
 
 
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TFormMeshExplosion *FormMeshExplosion;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TFormMeshExplosion::TFormMeshExplosion(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormCreate(TObject *Sender)
+void __fastcall TFormMeshExplosion::FormCreate(TObject *Sender)
 {
   TFileName Path = GetCurrentAssetPath();
   SetCurrentDir(Path  + "\\model");
@@ -41,13 +41,13 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::CheckOnClick(TObject *Sender)
+void __fastcall TFormMeshExplosion::CheckOnClick(TObject *Sender)
 {
   //turn on/off
   expl->Enabled = CheckOn->Checked;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button1Click(TObject *Sender)
+void __fastcall TFormMeshExplosion::Button1Click(TObject *Sender)
 {
    //reset simulation
    expl->Reset();
@@ -58,7 +58,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::ViewerMouseMove(TObject *Sender, TShiftState Shift, int X,
+void __fastcall TFormMeshExplosion::ViewerMouseMove(TObject *Sender, TShiftState Shift, int X,
           int Y)
 {
 	 if (Shift.Contains(ssLeft))
@@ -69,13 +69,13 @@ void __fastcall TForm1::ViewerMouseMove(TObject *Sender, TShiftState Shift, int 
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::ViewerMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+void __fastcall TFormMeshExplosion::ViewerMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y)
 {
      vx = X; vy = Y;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaTime,
+void __fastcall TFormMeshExplosion::GLCadencer1Progress(TObject *Sender, const double deltaTime,
           const double newTime)
 {
 	 Viewer->Invalidate();
@@ -83,12 +83,12 @@ void __fastcall TForm1::GLCadencer1Progress(TObject *Sender, const double deltaT
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::SpeedBarChange(TObject *Sender)
+void __fastcall TFormMeshExplosion::SpeedBarChange(TObject *Sender)
 {
    expl->Speed = (float) SpeedBar->Position / 10;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::MaxStepsBarChange(TObject *Sender)
+void __fastcall TFormMeshExplosion::MaxStepsBarChange(TObject *Sender)
 {
   expl->MaxSteps = MaxStepsBar->Position;
   StepBar->Max = MaxStepsBar->Position;

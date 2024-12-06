@@ -1,39 +1,39 @@
-object Form1: TForm1
+object FormCandles: TFormCandles
   Left = 0
   Top = 0
   Caption = 'GLScene Candles'
-  ClientHeight = 364
-  ClientWidth = 478
+  ClientHeight = 519
+  ClientWidth = 670
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   WindowState = wsMaximized
   OnResize = FormResize
-  PixelsPerInch = 96
   TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 478
-    Height = 335
+    Width = 670
+    Height = 490
     Camera = GLCamera1
     Buffer.BackgroundColor = clBlack
-    FieldOfView = 118.324333190918000000
+    FieldOfView = 135.593048095703100000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 479
+    ExplicitHeight = 335
   end
   object TrackBar1: TTrackBar
     Left = 0
-    Top = 335
-    Width = 478
+    Top = 490
+    Width = 670
     Height = 29
     Hint = 'Wind'
     Align = alBottom
@@ -44,6 +44,8 @@ object Form1: TForm1
     ShowHint = True
     TabOrder = 1
     OnChange = TrackBar1Change
+    ExplicitTop = 335
+    ExplicitWidth = 478
   end
   object GLScene1: TGLScene
     Left = 32

@@ -21,7 +21,7 @@
 #include "GLS.VectorFileObjects.hpp"
 
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TFormMeshExplosion : public TForm
 {
 __published:	// IDE-managed Components
 	TGLSceneViewer *Viewer;
@@ -55,9 +55,9 @@ private:	// User declarations
 	TGLMeshObjectList *Cache;
 	TGLBExplosionFX *expl;
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TFormMeshExplosion(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TFormMeshExplosion *FormMeshExplosion;
 //---------------------------------------------------------------------------
 #endif

@@ -1,68 +1,48 @@
 object FormPostEffect: TFormPostEffect
   Left = 278
   Top = 272
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   BorderWidth = 2
   Caption = 'Post Effect'
-  ClientHeight = 910
-  ClientWidth = 1386
+  ClientHeight = 520
+  ClientWidth = 787
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   ShowHint = True
   OnCreate = FormCreate
-  PixelsPerInch = 168
-  TextHeight = 24
+  TextHeight = 13
   object Label1: TLabel
-    Left = 1383
-    Top = 58
-    Width = 3
-    Height = 852
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 786
+    Top = 33
+    Width = 1
+    Height = 487
     Align = alRight
     AutoSize = False
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1386
-    Height = 58
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 787
+    Height = 33
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 779
     object Label2: TLabel
-      Left = 14
-      Top = 18
-      Width = 82
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 8
+      Top = 10
+      Width = 49
+      Height = 13
       Caption = 'PostEffect'
     end
     object ComboBox1: TComboBox
-      Left = 112
-      Top = 11
-      Width = 254
-      Height = 32
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 64
+      Top = 6
+      Width = 145
+      Height = 21
       Style = csDropDownList
       ItemIndex = 0
       TabOrder = 0
@@ -81,16 +61,12 @@ object FormPostEffect: TFormPostEffect
   end
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
-    Top = 58
-    Width = 1383
-    Height = 852
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 33
+    Width = 786
+    Height = 487
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 166.611541748046900000
+    FieldOfView = 156.792495727539100000
     PenAsTouch = False
     Align = alClient
     TabOrder = 1

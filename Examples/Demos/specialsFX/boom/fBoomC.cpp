@@ -16,11 +16,11 @@
 #pragma link "GLS.Scene"
 #pragma link "GLS.SceneViewer"
 #pragma resource "*.dfm"
-TForm1* Form1;
+TFormBoom* FormBoom;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {}
+__fastcall TFormBoom::TFormBoom(TComponent* Owner) : TForm(Owner) {}
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Button1Click(TObject* Sender)
+void __fastcall TFormBoom::Button1Click(TObject* Sender)
 {
     // A button click triggers the small animation sequence
     // first, we enabled the cadencer, to get Progression events
@@ -39,7 +39,7 @@ void __fastcall TForm1::Button1Click(TObject* Sender)
     SmokeFX->FireInit();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLCadencer1Progress(
+void __fastcall TFormBoom::GLCadencer1Progress(
     TObject* Sender, const double deltaTime, const double newTime)
 {
     // have we exploded yet?
@@ -69,7 +69,7 @@ void __fastcall TForm1::GLCadencer1Progress(
         Button1Click(this);
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Timer1Timer(TObject* Sender)
+void __fastcall TFormBoom::Timer1Timer(TObject* Sender)
 {
     // standard issue framerate & particle count update
     Caption =
@@ -79,13 +79,13 @@ void __fastcall TForm1::Timer1Timer(TObject* Sender)
     GLSceneViewer1->ResetPerformanceMonitor();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormResize(TObject* Sender)
+void __fastcall TFormBoom::FormResize(TObject* Sender)
 {
     // take care of zooming if window is resize
     GLCamera1->FocalLength = Width * 0.1;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseMove(
+void __fastcall TFormBoom::GLSceneViewer1MouseMove(
     TObject* Sender, TShiftState Shift, int X, int Y)
 {
     if (Shift.Contains(ssLeft) || Shift.Contains(ssRight)) {
@@ -97,7 +97,7 @@ void __fastcall TForm1::GLSceneViewer1MouseMove(
     }
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::GLSceneViewer1MouseDown(
+void __fastcall TFormBoom::GLSceneViewer1MouseDown(
     TObject* Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
 {
     mx = X;

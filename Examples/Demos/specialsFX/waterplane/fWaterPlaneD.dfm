@@ -1,35 +1,37 @@
 object FormWaterPlane: TFormWaterPlane
   Left = 169
   Top = 106
+  Margins.Left = 2
+  Margins.Top = 2
+  Margins.Right = 2
+  Margins.Bottom = 2
   Caption = 'Water Plane'
-  ClientHeight = 506
-  ClientWidth = 695
+  ClientHeight = 507
+  ClientWidth = 683
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -14
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
-  PixelsPerInch = 120
-  TextHeight = 16
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 695
-    Height = 506
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Width = 683
+    Height = 507
     Camera = GLCamera1
     BeforeRender = GLSceneViewer1BeforeRender
     Buffer.FaceCulling = False
-    FieldOfView = 166.475219726562500000
+    FieldOfView = 166.501647949218800000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     TabOrder = 0
+    ExplicitWidth = 555
+    ExplicitHeight = 405
   end
   object GLScene1: TGLScene
     Left = 16

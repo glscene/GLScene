@@ -1,0 +1,5 @@
+heightmap128 RCDATA "heightmap128.jpg"
+heightmap256 RCDATA "heightmap256.jpg"
+heightmap32 RCDATA "heightmap32.jpg"
+heightmap512 RCDATA "heightmap512.jpg"
+heightmap64 RCDATA "heightmap64.jpg"

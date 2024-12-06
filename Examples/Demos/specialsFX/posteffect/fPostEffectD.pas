@@ -62,10 +62,6 @@ type
     procedure GLPostEffect1CustomEffect(Sender: TObject;
       var rci: TGLRenderContextInfo; var Buffer: TGLPostEffectBuffer);
   private
-     
-  public
-     
-
   end;
 
 var
