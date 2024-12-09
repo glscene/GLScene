@@ -52,9 +52,7 @@ type
       write SetThreadPriority default tpTimeCritical;
   end;
 
-// ------------------------------------------------------------------
-implementation
-// ------------------------------------------------------------------
+implementation // ------------------------------------------------------------
 
 type
   TTimerThread = class(TThread)
@@ -184,10 +182,9 @@ begin
   FTimerThread.Priority := Value;
 end;
 
-//---------------------------------------------------------------------
-initialization
-//---------------------------------------------------------------------
+initialization //-------------------------------------------------------------
 
+//  RegisterClass('GXScene', [TgxAsyncTimer]);
   RegisterClass(TgxAsyncTimer);
 
 

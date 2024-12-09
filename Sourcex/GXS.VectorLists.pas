@@ -3383,9 +3383,7 @@ begin
   Result := LongWordSearch(item, FList, FCount);
 end;
 
-// ------------------------------------------------------------------
-initialization
-// ------------------------------------------------------------------
+initialization // ----------------------------------------------------
 
   RegisterClasses([TgxAffineVectorList, TgxVectorList, TgxTexPointList, TgxSingleList,
                    TgxDoubleList, TG4ByteList, TGLongWordList]);

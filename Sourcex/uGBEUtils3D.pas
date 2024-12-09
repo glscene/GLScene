@@ -7,7 +7,7 @@ uses
   System.Types,
   System.Classes,
   FMX.Objects3D,
-  Math,
+  System.Math,
   FMX.Controls3D,
   FMX.Graphics,
   FMX.Types3D,

@@ -233,7 +233,6 @@ contains
   GXS.CurvesAndSurfaces in '..\Sourcex\GXS.CurvesAndSurfaces.pas',
   GXS.GeometryBB in '..\Sourcex\GXS.GeometryBB.pas',
   GXS.XCollection in '..\Sourcex\GXS.XCollection.pas',
-
   Stage.AnimationUtils in '..\Source\Stage.AnimationUtils.pas',
   Stage.Generics in '..\Source\Stage.Generics.pas',
   Stage.Keyboard in '..\Source\Stage.Keyboard.pas',
@@ -251,10 +250,8 @@ contains
   Stage.TextureFormat in '..\Source\Stage.TextureFormat.pas',
   Stage.Triangulation in '..\Source\Stage.Triangulation.pas',
   Stage.Utils in '..\Source\Stage.Utils.pas',
-  Stage.VectorTypes in '..\Source\Stage.VectorTypes.pas',
-  Stage.VectorTypesExt in '..\Source\Stage.VectorTypesExt.pas',
+  Stage.VectorTypesExt in '..\Sourcex\Stage.VectorTypesExt.pas',
   Stage.VectorGeometry in '..\Source\Stage.VectorGeometry.pas',
-
   Formatx.DXTC in '..\Sourcex\Formatx.DXTC.pas',
   Formatx.VFW in '..\Sourcex\Formatx.VFW.pas',
   Formatx.m3DS in '..\Sourcex\Formatx.m3DS.pas',
@@ -272,7 +269,8 @@ contains
   Formatx.X in '..\Sourcex\Formatx.X.pas',
   Formatx.VRML in '..\Sourcex\Formatx.VRML.pas',
   Formatx.Q3MD3 in '..\Sourcex\Formatx.Q3MD3.pas',
-  Formatx.B3D in '..\Sourcex\Formatx.B3D.pas';
+  Formatx.B3D in '..\Sourcex\Formatx.B3D.pas',
+  Stage.VectorTypes in '..\Source\Stage.VectorTypes.pas';
 
 end.
 

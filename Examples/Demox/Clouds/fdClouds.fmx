@@ -1,7 +1,7 @@
 object FormClouds: TFormClouds
   Left = 0
   Top = 0
-  Caption = 'D'#233'mo GBE3D - Clouds'
+  Caption = 'Clouds'
   ClientHeight = 480
   ClientWidth = 640
   Position = ScreenCenter

@@ -399,8 +399,7 @@
         <DCCReference Include="..\Source\Stage.TextureFormat.pas"/>
         <DCCReference Include="..\Source\Stage.Triangulation.pas"/>
         <DCCReference Include="..\Source\Stage.Utils.pas"/>
-        <DCCReference Include="..\Source\Stage.VectorTypes.pas"/>
-        <DCCReference Include="..\Source\Stage.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Sourcex\Stage.VectorTypesExt.pas"/>
         <DCCReference Include="..\Source\Stage.VectorGeometry.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.DXTC.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.VFW.pas"/>
@@ -420,6 +419,7 @@
         <DCCReference Include="..\Sourcex\Formatx.VRML.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.Q3MD3.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.B3D.pas"/>
+        <DCCReference Include="..\Source\Stage.VectorTypes.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -476,6 +476,12 @@
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GXScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\Win64\GXScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GXScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GXScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>GXScene_RT.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>

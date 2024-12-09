@@ -1,7 +1,7 @@
 object FormViewports: TFormViewports
   Left = 0
   Top = 0
-  Caption = 'GBE3D - D'#233'mo TGBEViewer3D'
+  Caption = 'Viewports'
   ClientHeight = 408
   ClientWidth = 936
   Position = ScreenCenter

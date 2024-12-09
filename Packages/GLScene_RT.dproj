@@ -381,7 +381,6 @@
         <DCCReference Include="..\Source\Stage.TextureFormat.pas"/>
         <DCCReference Include="..\Source\GLS.VectorLists.pas"/>
         <DCCReference Include="..\Source\Stage.VectorGeometry.pas"/>
-        <DCCReference Include="..\Source\Stage.VectorTypes.pas"/>
         <DCCReference Include="..\Source\Stage.VectorTypesExt.pas"/>
         <DCCReference Include="..\Source\Stage.Utils.pas"/>
         <DCCReference Include="..\Source\GLS.VectorFileObjects.pas"/>
@@ -396,6 +395,7 @@
         <DCCReference Include="..\Source\GLS.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Source\Stage.OpenGL4.pas"/>
         <DCCReference Include="..\Source\Stage.RedBlackTree.pas"/>
+        <DCCReference Include="..\Source\Stage.VectorTypes.pas"/>
         <None Include="..\Source\Stage.Defines.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -433,6 +433,12 @@
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GLScene_RT.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GLScene_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">

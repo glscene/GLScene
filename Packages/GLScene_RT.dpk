@@ -256,7 +256,6 @@ contains
   Stage.TextureFormat in '..\Source\Stage.TextureFormat.pas',
   GLS.VectorLists in '..\Source\GLS.VectorLists.pas',
   Stage.VectorGeometry in '..\Source\Stage.VectorGeometry.pas',
-  Stage.VectorTypes in '..\Source\Stage.VectorTypes.pas',
   Stage.VectorTypesExt in '..\Source\Stage.VectorTypesExt.pas',
   Stage.Utils in '..\Source\Stage.Utils.pas',
   GLS.VectorFileObjects in '..\Source\GLS.VectorFileObjects.pas',
@@ -270,7 +269,8 @@ contains
   gnuGettextInit in '..\Source\gnuGettextInit.pas',
   GLS.CurvesAndSurfaces in '..\Source\GLS.CurvesAndSurfaces.pas',
   Stage.OpenGL4 in '..\Source\Stage.OpenGL4.pas',
-  Stage.RedBlackTree in '..\Source\Stage.RedBlackTree.pas';
+  Stage.RedBlackTree in '..\Source\Stage.RedBlackTree.pas',
+  Stage.VectorTypes in '..\Source\Stage.VectorTypes.pas';
 
 end.
 

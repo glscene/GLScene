@@ -6,10 +6,11 @@
         <MainSource>Clouds_c.cpp</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win64x</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">Clouds_c</ProjectName>
-        <TargetedPlatforms>1048578</TargetedPlatforms>
+        <TargetedPlatforms>1048579</TargetedPlatforms>
         <AppType>Application</AppType>
+        <CC_Suffix Condition="'$(CC_Suffix)'==''">c</CC_Suffix>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -159,12 +160,13 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <LinkPackageImports>rtl.bpi;fmx.bpi;GBE3D.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;fmx.bpi</LinkPackageImports>
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
         <ILINK_LibraryPath>$(BDSLIB)\$(PLATFORM)$(CC_SUFFIX)\debug;..\..\lib\$(Platform);$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <IncludePath>..\..\include\$(Platform);$(IncludePath)</IncludePath>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <LinkPackageStatics>GXScene_GBE.lib</LinkPackageStatics>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -176,7 +178,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <IncludePath>..\..\..\include\Win64x;$(IncludePath)</IncludePath>
+        <IncludePath>..\..\..\include\Win64x;..\..\..\include\Win64;..\..\..\include\Win32;$(IncludePath)</IncludePath>
         <ILINK_LibraryPath>..\..\..\lib\Win64x</ILINK_LibraryPath>
         <LinkPackageImports>rtl.bpi;fmx.bpi;GXScene_GBE.bpi</LinkPackageImports>
     </PropertyGroup>
@@ -232,6 +234,12 @@
                     <Source Name="MainSource">Clouds_c.cpp</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_DT.bpl">GLScene Engine</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_Sounds_DT.bpl">GLScene Sound Managers</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_Physics_DT.bpl">GLScene Physics Managers</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GBComps.bpl">Geoblock - Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_Cg_DT.bpl">GLScene Cg Shaders</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_GPU_DT.bpl">GLScene GPU Computing</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k290.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp290.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
@@ -1256,7 +1264,7 @@
                 <ProjectRoot Platform="Win64x" Name="$(PROJECTNAME)"/>
             </Deployment>
             <Platforms>
-                <Platform value="Win32">False</Platform>
+                <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
                 <Platform value="Win64x">True</Platform>
             </Platforms>

@@ -8,7 +8,7 @@
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win64x</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">Cube_c</ProjectName>
-        <TargetedPlatforms>1048576</TargetedPlatforms>
+        <TargetedPlatforms>1048579</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
@@ -1253,8 +1253,8 @@
                 <ProjectRoot Platform="Win64x" Name="$(PROJECTNAME)"/>
             </Deployment>
             <Platforms>
-                <Platform value="Win32">False</Platform>
-                <Platform value="Win64">False</Platform>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">True</Platform>
                 <Platform value="Win64x">True</Platform>
             </Platforms>
         </BorlandProject>

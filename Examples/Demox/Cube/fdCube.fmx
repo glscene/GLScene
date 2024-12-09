@@ -1,7 +1,7 @@
 object FormCube: TFormCube
   Left = 0
   Top = 0
-  Caption = 'GBE3D - D'#233'mo TGBECubeExtend'
+  Caption = 'Cube Extended'
   ClientHeight = 480
   ClientWidth = 640
   Fill.Kind = Gradient
