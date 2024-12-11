@@ -99,7 +99,7 @@
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
         <BCC_PCHCache>true</BCC_PCHCache>
         <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
-        <AllPackageLibs>rtl.lib;vcl.lib;fmx.lib;xmlrtl.lib;vclimg.lib;GLScene_RT.lib;GLScene_Sounds_RT.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;fmx.lib;xmlrtl.lib;vclimg.lib;GLScene_RT.lib</AllPackageLibs>
         <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
         <DynamicRTL>true</DynamicRTL>
         <FinalOutputDir>.</FinalOutputDir>
@@ -159,7 +159,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <_TCHARMapping>char</_TCHARMapping>
-        <LinkPackageStatics>fmx.lib;xmlrtl.lib;vclimg.lib;GLScene_RT.lib;GLScene_Sounds_RT.lib</LinkPackageStatics>
+        <LinkPackageStatics>fmx.lib;xmlrtl.lib;vclimg.lib;GLScene_RT.lib</LinkPackageStatics>
         <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">

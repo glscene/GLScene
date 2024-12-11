@@ -25,12 +25,14 @@ package GXScene_Cg_DT;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GLXcene CG Shaders'}
+{$DESCRIPTION 'GLXE Cg Shaders'}
+{$DESIGNONLY}
 {$IMPLICITBUILD ON}
 
 requires
   rtl,
-  GXScene_RT;
+  GXScene_RT,
+  GXScene_Cg_RT;
 
 contains
   GXS.CgRegister in '..\Sourcex\GXS.CgRegister.pas';

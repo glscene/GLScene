@@ -25,15 +25,15 @@ package GXScene_GPU_DT;
 {$IMAGEBASE $400000}
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GLXcene GPU Computing'}
+{$DESCRIPTION 'GLXE GPU Computing'}
 {$DESIGNONLY}
 {$IMPLICITBUILD ON}
 
 requires
   rtl,
   fmx,
-  GXScene_GPU_RT,
-  GXScene_RT;
+  GXScene_RT,
+  GXScene_GPU_RT;
 
 contains
   GXS.GPURegister in '..\Sourcex\GXS.GPURegister.pas',

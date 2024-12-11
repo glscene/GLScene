@@ -13,6 +13,7 @@ uses
   System.Classes,
   System.SysUtils,
 
+  Stage.VectorGeometry,
   Stage.Utils,
   GXS.VectorLists,
   GXS.VectorFileObjects,

@@ -10,9 +10,9 @@ interface
 
 uses
   Winapi.MMSystem,
-
   System.Classes,
   System.SysUtils,
+
   GXS.SoundManager,
   GXS.SoundFileObjects;
 

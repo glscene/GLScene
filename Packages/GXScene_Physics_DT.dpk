@@ -28,14 +28,14 @@ package GXScene_Physics_DT;
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'GXScene Physics Managers'}
+{$DESCRIPTION 'GLXE Physics Managers'}
 {$DESIGNONLY}
 {$IMPLICITBUILD ON}
 
 requires
   rtl,
   fmx,
-  GXScene_RT;
+  GXScene_RTGXScene_Physics_RT;
 
 contains
   GXS.Physics.Register in '..\Sourcex\GXS.Physics.Register.pas';
