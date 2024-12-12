@@ -6,21 +6,22 @@ unit GBE.Heightmap;
 interface
 
 uses
+  System.Types,
   System.SysUtils,
   System.Classes,
   System.RTLConsts,
+  System.Math,
+  System.UITypes,
+  System.UIConsts,
+
   FMX.Types,
   FMX.Controls3D,
   FMX.Objects3D,
   FMX.Graphics,
   System.Math.Vectors,
   FMX.types3D,
-  System.UITypes,
-  System.UIConsts,
   FMX.Effects,
   FMX.MaterialSources,
-  System.Types,
-  Math,
   uGBEUtils3D;
 
 type
@@ -116,9 +117,9 @@ begin
     self.Data.Clear;
     fHeightmap.LoadFromFile(FileName);
     fSubdivisionsX := fHeightmap.Width;
-    fHalfSubdivisionsX := Math.Floor(fSubdivisionsX / 2);
+    fHalfSubdivisionsX := Floor(fSubdivisionsX / 2);
     fSubdivisionsZ := fHeightmap.Height;
-    fHalfSubdivisionsZ := Math.Floor(fSubdivisionsZ / 2);
+    fHalfSubdivisionsZ := Floor(fSubdivisionsZ / 2);
     GenerateHeightmap(self.Data);
   end;
 end;
@@ -128,9 +129,9 @@ begin
   self.Data.Clear;
   fHeightmap.LoadFromStream(Stream);
   fSubdivisionsX := fHeightmap.Width;
-  fHalfSubdivisionsX := Math.Floor(fSubdivisionsX / 2);
+  fHalfSubdivisionsX := Floor(fSubdivisionsX / 2);
   fSubdivisionsZ := fHeightmap.Height;
-  fHalfSubdivisionsZ := Math.Floor(fSubdivisionsZ / 2);
+  fHalfSubdivisionsZ := Floor(fSubdivisionsZ / 2);
   GenerateHeightmap(self.Data);
 end;
 
@@ -179,9 +180,9 @@ begin
   begin
     FUseRamp := Value;
     fSubdivisionsX := fHeightmap.Width;
-    fHalfSubdivisionsX := Math.Floor(fSubdivisionsX / 2);
+    fHalfSubdivisionsX := Floor(fSubdivisionsX / 2);
     fSubdivisionsZ := fHeightmap.Height;
-    fHalfSubdivisionsZ := Math.Floor(fSubdivisionsZ / 2);
+    fHalfSubdivisionsZ := Floor(fSubdivisionsZ / 2);
     GenerateHeightmap(self.Data);
   end;
 end;

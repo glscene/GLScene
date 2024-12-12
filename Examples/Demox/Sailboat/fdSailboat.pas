@@ -44,9 +44,9 @@ uses
   // TfmxStateBox - component persists form control states to ini file
   // Note: fmxStateBox.pas must be installed as a design component, prior to loading this form
 {$ENDIF OPYC}
-  // GBE3D
-  omSailSurface,
-  GBE.omOceanWaves,
+
+  GXS.SailSurface,
+  GXS.OceanWaves,
   GBE.Clouds,
   GBE.Heightmap;
 
@@ -96,7 +96,7 @@ type
     tbOpacite: TTrackBar;
     textureOceanSurface: TLightMaterialSource;
     Light1: TLight;
-    OceanSurface: TOceanSurface;
+    OceanSurface: TgxOceanSurface;
     modelBoat: TModel3D;
     Camera1: TCamera;
     Label9: TLabel;
@@ -113,8 +113,8 @@ type
     modelBoatMat01: TLightMaterialSource;
     modelBoatMat11: TLightMaterialSource;
     modelBoatMat12: TLightMaterialSource;
-    MainSail: TomSailSurface;
-    JibSail: TomSailSurface;
+    MainSail: TgxSailSurface;
+    JibSail: TgxSailSurface;
     materialMainSail: TLightMaterialSource;
     texJibSail: TLightMaterialSource;
     Label11: TLabel;
@@ -165,10 +165,10 @@ type
     labOpacite: TLabel;
     labCameraViewAngle: TLabel;
     comboWave: TComboBox;
-    WaveSystem1: TWaveSystem;
-    OceanSurfaceTop: TOceanSurface;
+    WaveSystem1: TgxWaveSystem;
+    OceanSurfaceTop: TgxOceanSurface;
     diskSeaHorizon: TDisk;
-    OceanSurfaceLeft: TOceanSurface;
+    OceanSurfaceLeft: TgxOceanSurface;
     cylinderLighthouse: TCylinder;
     materialFarol: TLightMaterialSource;
     cylinderLighthouseTop: TCylinder;
@@ -189,9 +189,9 @@ type
     Label19: TLabel;
     tbCameraElev: TTrackBar;
     labCameraElev: TLabel;
-    WaveSystem2: TWaveSystem;
-    OceanSurfaceBot: TOceanSurface;
-    OceanSurfaceRight: TOceanSurface;
+    WaveSystem2: TgxWaveSystem;
+    OceanSurfaceBot: TgxOceanSurface;
+    OceanSurfaceRight: TgxOceanSurface;
     text3dSouth: TText3D;
     btnRandomizeWaveSystem1: TSpeedButton;
     btnCloseControls: TSpeedButton;
@@ -217,7 +217,7 @@ type
     cubeContainer: TCube;
     btnSetWaveOrigine: TSpeedButton;
     materialFlag: TLightMaterialSource;
-    birutaSail: TomSailSurface;
+    birutaSail: TgxSailSurface;
     ImageTerrain: TImage;
     heightmapTerrain: TGBEHeightmap;
     Label16: TLabel;
@@ -257,7 +257,7 @@ type
     planeIvone: TPlane;
     textureWindArrow: TLightMaterialSource;
     dummyWindArrow: TDummy;
-    WindArrow1: TWindArrowSurface;
+    WindArrow1: TgxWindArrowSurface;
     dummyShip: TDummy;
     modelShip: TModel3D;
     modelShipMat01: TLightMaterialSource;
@@ -368,7 +368,7 @@ type
 var
   FormSailboatDemo: TFormSailboatDemo = nil;
 
-implementation
+implementation //-------------------------------------------------------------
 
 {$IFDEF OPYC}
 // undef for SailboatDemo, define for OPYC ( integration to sailing game )
@@ -848,7 +848,7 @@ end;
 procedure TFormSailboatDemo.SetSailShape(ixSail: Integer;
   aPtArray: TPointF_Array); // 0=main, 1=bow sail
 var
-  aSail: TomSailSurface;
+  aSail: TgxSailSurface;
   n: Integer;
 begin
   case ixSail of
@@ -868,8 +868,8 @@ begin
     n := Length(aPtArray) - 1;
     if (n > 0) then
     begin
-      aSail.SubdivisionsWidth := n; // upd mesh width  ( Spis are wilder )
-      aSail.SetMeshWith2Dline(omSailSurface.TPointF_Array(aPtArray));
+      aSail.SubdivisionsWidth := n; // upd mesh width  (Spis are wilder )
+      aSail.SetMeshWith2Dline(GXS.SailSurface.TPointF_Array(aPtArray));
     end;
   end;
 end;
