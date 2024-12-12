@@ -1,0 +1,55 @@
+GLXEngine Team
+Developers and Contributors
+
+===========================
+ 
+Aaron Hochwimmer
+Alan Rose
+Alejandro Leon Escalera
+Alexandre Hirzel
+AlexVigo
+Arvydas Juskevicius
+Benjamin Rosseaux
+Brian Johns
+Burkhard Carstens
+Da Stranger
+Daniel Bartlett
+Dave Kerr
+Davor Slutej
+Degiovani
+Eric Grange
+Eric Hardinge
+Eric Pascual
+Erick Schuitema
+Gregory Bersegeay
+Jerome Delauney
+Joen A. Joensen
+Joen Joensen
+Ivan Lee Herring,
+Kenneth Poulter
+Leo Koptyaev
+Lionel Reynaud
+Lukasz Sokol
+Marcus Oblak
+Matheus Degiovani
+Mattias Fagerlund
+Mike Lischke
+Nakayama Masanori
+Nelson Chu
+Pavel Vassiliev
+Paul van Dinther
+Phil Scadden
+Philipp Pammler
+Pierre Lemerle
+Piotr Szturmaj
+Rene Lindsay
+Roshal Sasha
+Rustam Asmandiarov
+Sandor Domokos
+Sergio Feitosa
+Sternas Stefanos
+Stuart Gooding
+Uwe Raabe
+YarUnderoaker
+Zsolt Laky
+Omar Reis

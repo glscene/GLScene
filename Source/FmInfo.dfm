@@ -1,20 +1,16 @@
 object GLInfoForm: TGLInfoForm
   Left = 293
   Top = 5
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   BorderIcons = [biSystemMenu, biHelp]
   BorderStyle = bsToolWindow
   BorderWidth = 3
   Caption = 'OpenGL Driver Info'
-  ClientHeight = 658
-  ClientWidth = 819
+  ClientHeight = 376
+  ClientWidth = 468
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
@@ -23,39 +19,27 @@ object GLInfoForm: TGLInfoForm
   OnClose = FormClose
   OnKeyPress = FormKeyPress
   OnShow = FormShow
-  PixelsPerInch = 168
   DesignSize = (
-    819
-    658)
-  TextHeight = 24
+    468
+    376)
+  TextHeight = 13
   object PageControl: TPageControl
     Left = 0
     Top = 0
-    Width = 819
-    Height = 597
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
-    ActivePage = TabSheetGLScene
+    Width = 468
+    Height = 341
+    ActivePage = TabSheetContributors
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 460
     object TabSheetGLScene: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
       Caption = 'GLScene'
       ImageIndex = 4
       object Image: TImage
-        Left = 2
-        Top = 4
-        Width = 777
-        Height = 532
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
+        Left = 1
+        Top = 2
+        Width = 444
+        Height = 304
         Center = True
         Picture.Data = {
           0A544A504547496D616765574A0100FFD8FFE000104A46494600010100000100
@@ -2705,19 +2689,15 @@ object GLInfoForm: TGLInfoForm
         Stretch = True
       end
       object VersionLbl: TLabel
-        Left = 366
-        Top = 480
-        Width = 106
-        Height = 26
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
+        Left = 209
+        Top = 274
+        Width = 72
+        Height = 16
         Caption = 'versionNo'
         Color = clBtnFace
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -23
+        Font.Height = -13
         Font.Name = 'MS Sans Serif'
         Font.Pitch = fpVariable
         Font.Style = [fsBold]
@@ -2726,19 +2706,15 @@ object GLInfoForm: TGLInfoForm
         Transparent = True
       end
       object Label30: TLabel
-        Left = 226
-        Top = 480
-        Width = 85
-        Height = 26
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
+        Left = 129
+        Top = 274
+        Width = 58
+        Height = 16
         Caption = 'Version:'
         Color = clBtnFace
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
-        Font.Height = -23
+        Font.Height = -13
         Font.Name = 'MS Sans Serif'
         Font.Pitch = fpVariable
         Font.Style = [fsBold]
@@ -2748,123 +2724,87 @@ object GLInfoForm: TGLInfoForm
       end
     end
     object TabSheetInformation: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
       Caption = 'Information'
       object ScrollBoxInfo: TScrollBox
         Left = 0
         Top = 0
-        Width = 811
-        Height = 558
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
+        Width = 460
+        Height = 313
         Align = alClient
         BorderStyle = bsNone
         TabOrder = 0
         object Label1: TLabel
-          Left = 18
-          Top = 51
-          Width = 146
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 29
+          Width = 82
+          Height = 13
           Caption = 'OpenGL vendor :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label2: TLabel
-          Left = 18
-          Top = 284
-          Width = 115
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 162
+          Width = 65
+          Height = 13
           Caption = 'Acceleration :'
           Color = clBtnFace
           ParentColor = False
           Visible = False
         end
         object Label3: TLabel
-          Left = 19
-          Top = 133
-          Width = 110
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 11
+          Top = 76
+          Width = 62
+          Height = 13
           Caption = 'Version Info :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label5: TLabel
-          Left = 18
-          Top = 170
-          Width = 145
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 97
+          Width = 82
+          Height = 13
           Caption = 'Double buffered :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label6: TLabel
-          Left = 18
-          Top = 249
-          Width = 169
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 142
+          Width = 96
+          Height = 13
           Caption = 'Buffer switch mode :'
           Color = clBtnFace
           ParentColor = False
           Visible = False
         end
         object VendorLabel: TLabel
-          Left = 245
-          Top = 51
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 29
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object AccLabel: TLabel
-          Left = 245
-          Top = 284
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 162
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
@@ -2872,38 +2812,30 @@ object GLInfoForm: TGLInfoForm
           Visible = False
         end
         object VersionLabel: TLabel
-          Left = 245
-          Top = 131
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 75
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object CopyLabel: TLabel
-          Left = 245
-          Top = 249
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 142
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
@@ -2911,83 +2843,63 @@ object GLInfoForm: TGLInfoForm
           Visible = False
         end
         object DoubleLabel: TLabel
-          Left = 245
-          Top = 170
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 97
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object Label7: TLabel
-          Left = 18
-          Top = 208
-          Width = 139
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 119
+          Width = 78
+          Height = 13
           Caption = 'Stereo enabled :'
           Color = clBtnFace
           ParentColor = False
         end
         object StereoLabel: TLabel
-          Left = 245
-          Top = 208
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 119
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object Label13: TLabel
-          Left = 18
-          Top = 89
-          Width = 90
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 51
+          Width = 50
+          Height = 13
           Caption = 'Renderer :'
           Color = clBtnFace
           ParentColor = False
         end
         object RendererLabel: TLabel
-          Left = 245
-          Top = 89
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 51
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
@@ -2995,20 +2907,16 @@ object GLInfoForm: TGLInfoForm
         end
         object LabelCommon: TLabel
           Left = 0
-          Top = 4
-          Width = 753
-          Height = 36
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Top = 2
+          Width = 430
+          Height = 21
           Alignment = taCenter
           AutoSize = False
           Caption = 'Common'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
-          Font.Height = -28
+          Font.Height = -16
           Font.Name = 'MS Sans Serif'
           Font.Pitch = fpVariable
           Font.Style = [fsBold]
@@ -3016,21 +2924,17 @@ object GLInfoForm: TGLInfoForm
           ParentFont = False
         end
         object LabelDepths: TLabel
-          Left = 18
-          Top = 322
-          Width = 735
-          Height = 37
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 184
+          Width = 420
+          Height = 21
           Alignment = taCenter
           AutoSize = False
           Caption = 'Buffers and pixel depths'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
-          Font.Height = -28
+          Font.Height = -16
           Font.Name = 'MS Sans Serif'
           Font.Pitch = fpVariable
           Font.Style = [fsBold]
@@ -3038,225 +2942,169 @@ object GLInfoForm: TGLInfoForm
           ParentFont = False
         end
         object Label8: TLabel
-          Left = 18
-          Top = 371
-          Width = 107
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 212
+          Width = 60
+          Height = 13
           Caption = 'Color buffer :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label9: TLabel
-          Left = 18
-          Top = 408
-          Width = 112
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 233
+          Width = 65
+          Height = 13
           Caption = 'Depth buffer :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label10: TLabel
-          Left = 18
-          Top = 446
-          Width = 118
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 255
+          Width = 68
+          Height = 13
           Caption = 'Stencil buffer :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label11: TLabel
-          Left = 18
-          Top = 487
-          Width = 177
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 278
+          Width = 100
+          Height = 13
           Caption = 'Accumulation buffer :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label12: TLabel
-          Left = 18
-          Top = 525
-          Width = 146
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 10
+          Top = 300
+          Width = 81
+          Height = 13
           Caption = 'Auxilliary buffers :'
           Color = clBtnFace
           ParentColor = False
         end
         object ColorLabel: TLabel
-          Left = 245
-          Top = 368
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 210
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object DepthLabel: TLabel
-          Left = 245
-          Top = 408
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 233
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object StencilLabel: TLabel
-          Left = 245
-          Top = 446
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 255
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object AuxLabel: TLabel
-          Left = 245
-          Top = 525
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 300
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object AccumLabel: TLabel
-          Left = 245
-          Top = 487
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 140
+          Top = 278
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object SubLabel: TLabel
-          Left = 249
-          Top = 565
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 323
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object Label37: TLabel
-          Left = 21
-          Top = 565
-          Width = 93
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 323
+          Width = 51
+          Height = 13
           Caption = 'Subpixels :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label18: TLabel
-          Left = 21
-          Top = 604
-          Width = 172
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 345
+          Width = 97
+          Height = 13
           Caption = 'Supported overlays :'
           Color = clBtnFace
           ParentColor = False
           Visible = False
         end
         object OverlayLabel: TLabel
-          Left = 249
-          Top = 604
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 345
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
@@ -3264,19 +3112,15 @@ object GLInfoForm: TGLInfoForm
           Visible = False
         end
         object UnderlayLabel: TLabel
-          Left = 249
-          Top = 646
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 369
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
@@ -3284,398 +3128,298 @@ object GLInfoForm: TGLInfoForm
           Visible = False
         end
         object Label20: TLabel
-          Left = 21
-          Top = 646
-          Width = 185
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 369
+          Width = 103
+          Height = 13
           Caption = 'Supported underlays :'
           Color = clBtnFace
           ParentColor = False
           Visible = False
         end
         object Label14: TLabel
-          Left = 21
-          Top = 732
-          Width = 103
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 418
+          Width = 57
+          Height = 13
           Caption = 'Clip planes :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label15: TLabel
-          Left = 21
-          Top = 772
-          Width = 147
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 441
+          Width = 83
+          Height = 13
           Caption = 'Evaluation order :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label16: TLabel
-          Left = 21
-          Top = 810
-          Width = 122
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 463
+          Width = 69
+          Height = 13
           Caption = 'Light sources :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label17: TLabel
-          Left = 21
-          Top = 851
-          Width = 103
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 486
+          Width = 59
+          Height = 13
           Caption = 'List nesting :'
           Color = clBtnFace
           ParentColor = False
         end
         object ClipLabel: TLabel
-          Left = 249
-          Top = 732
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 418
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object EvalLabel: TLabel
-          Left = 249
-          Top = 772
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 441
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object ListLabel: TLabel
-          Left = 249
-          Top = 851
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 486
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object LightLabel: TLabel
-          Left = 249
-          Top = 810
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 463
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object Label23: TLabel
-          Left = 21
-          Top = 891
-          Width = 148
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 509
+          Width = 86
+          Height = 13
           Caption = 'Modelview stack :'
           Color = clBtnFace
           ParentColor = False
         end
         object ModelLabel: TLabel
-          Left = 249
-          Top = 891
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 509
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object Label25: TLabel
-          Left = 385
-          Top = 732
-          Width = 108
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 220
+          Top = 418
+          Width = 63
+          Height = 13
           Caption = 'Name stack :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label26: TLabel
-          Left = 385
-          Top = 772
-          Width = 133
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 220
+          Top = 441
+          Width = 74
+          Height = 13
           Caption = 'Pixel map table:'
           Color = clBtnFace
           ParentColor = False
         end
         object Label27: TLabel
-          Left = 385
-          Top = 817
-          Width = 141
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 220
+          Top = 467
+          Width = 82
+          Height = 13
           Caption = 'Projection stack :'
           Color = clBtnFace
           ParentColor = False
         end
         object Label28: TLabel
-          Left = 385
-          Top = 851
-          Width = 108
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 220
+          Top = 486
+          Width = 60
+          Height = 13
           Caption = 'Texture size:'
           Color = clBtnFace
           ParentColor = False
         end
         object Label29: TLabel
-          Left = 385
-          Top = 891
-          Width = 122
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 220
+          Top = 509
+          Width = 71
+          Height = 13
           Caption = 'Texture stack :'
           Color = clBtnFace
           ParentColor = False
         end
         object NameLabel: TLabel
-          Left = 595
-          Top = 732
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 340
+          Top = 418
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object PixelLabel: TLabel
-          Left = 595
-          Top = 772
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 340
+          Top = 441
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object ProjLabel: TLabel
-          Left = 595
-          Top = 810
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 340
+          Top = 463
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object TexStackLabel: TLabel
-          Left = 595
-          Top = 891
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 340
+          Top = 509
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object TexSizeLabel: TLabel
-          Left = 595
-          Top = 851
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 340
+          Top = 486
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object Label35: TLabel
-          Left = 21
-          Top = 931
-          Width = 188
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 12
+          Top = 532
+          Width = 104
+          Height = 13
           Caption = 'Viewport Dimensions :'
           Color = clBtnFace
           ParentColor = False
         end
         object ViewLabel: TLabel
-          Left = 249
-          Top = 931
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 142
+          Top = 532
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
         end
         object Label4: TLabel
-          Left = 385
-          Top = 931
-          Width = 119
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 220
+          Top = 532
+          Width = 67
+          Height = 13
           Caption = 'Texture units :'
           Color = clBtnFace
           ParentColor = False
         end
         object TexUnitsLabel: TLabel
-          Left = 595
-          Top = 931
-          Width = 36
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Left = 340
+          Top = 532
+          Width = 21
+          Height = 13
           Caption = '???'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clTeal
-          Font.Height = -19
+          Font.Height = -11
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
           ParentColor = False
@@ -3683,20 +3427,16 @@ object GLInfoForm: TGLInfoForm
         end
         object LabelMaxValues: TLabel
           Left = 0
-          Top = 681
-          Width = 753
-          Height = 37
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
+          Top = 389
+          Width = 430
+          Height = 21
           Alignment = taCenter
           AutoSize = False
           Caption = 'Maximum values'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clMaroon
-          Font.Height = -28
+          Font.Height = -16
           Font.Name = 'MS Sans Serif'
           Font.Pitch = fpVariable
           Font.Style = [fsBold]
@@ -3706,33 +3446,25 @@ object GLInfoForm: TGLInfoForm
       end
     end
     object TabSheetExtensions: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
       Caption = 'Supported extensions'
       ImageIndex = 3
       object ListBoxExtensions: TListBox
         Left = 0
         Top = 0
-        Width = 811
-        Height = 558
+        Width = 460
+        Height = 313
         Hint = 
           'Double-click and extension to go to its OpenGL Extension registr' +
           'y page'
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
         Align = alClient
         BorderStyle = bsNone
         Color = clBtnHighlight
         Font.Charset = DEFAULT_CHARSET
         Font.Color = cl3DDkShadow
-        Font.Height = -21
+        Font.Height = -12
         Font.Name = 'Verdana'
         Font.Style = [fsBold]
-        ItemHeight = 25
+        ItemHeight = 14
         ParentFont = False
         TabOrder = 0
         OnClick = ListBoxExtensionsClick
@@ -3741,20 +3473,12 @@ object GLInfoForm: TGLInfoForm
       end
     end
     object TabSheetContributors: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
       Caption = 'Contributors'
       object MemoContributors: TMemo
         Left = 0
         Top = 0
-        Width = 811
-        Height = 558
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
+        Width = 460
+        Height = 313
         Align = alClient
         Alignment = taCenter
         BorderStyle = bsNone
@@ -3816,26 +3540,18 @@ object GLInfoForm: TGLInfoForm
       end
     end
     object TabSheetAbout: TTabSheet
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
       Caption = 'About'
       object lblSfGLScene: TLabel
-        Left = 100
-        Top = 480
-        Width = 157
-        Height = 24
+        Left = 57
+        Top = 274
+        Width = 94
+        Height = 13
         Cursor = crHandPoint
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
         Caption = 'http://GLScene.org'
         Color = clBtnFace
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlue
-        Font.Height = -19
+        Font.Height = -11
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsUnderline]
         ParentColor = False
@@ -3843,32 +3559,24 @@ object GLInfoForm: TGLInfoForm
         OnClick = lblSfGLSceneClick
       end
       object Label34: TLabel
-        Left = 16
-        Top = 480
-        Width = 60
-        Height = 24
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
+        Left = 9
+        Top = 274
+        Width = 35
+        Height = 13
         Caption = 'Official:'
         Color = clBtnFace
         ParentColor = False
       end
       object lblGithubGLScene: TLabel
-        Left = 506
-        Top = 480
-        Width = 220
-        Height = 24
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
+        Left = 289
+        Top = 274
+        Width = 130
+        Height = 13
         Caption = 'https://github.com/glscene'
         Color = clBtnFace
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlue
-        Font.Height = -19
+        Font.Height = -11
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsUnderline]
         ParentColor = False
@@ -3878,12 +3586,8 @@ object GLInfoForm: TGLInfoForm
       object MemoAbout: TMemo
         Left = 0
         Top = 0
-        Width = 811
-        Height = 453
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
+        Width = 460
+        Height = 259
         Align = alTop
         Lines.Strings = (
           'License: MPL'
@@ -3904,18 +3608,16 @@ object GLInfoForm: TGLInfoForm
     end
   end
   object CloseButton: TButton
-    Left = 336
-    Top = 602
-    Width = 131
-    Height = 44
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 192
+    Top = 344
+    Width = 75
+    Height = 25
     Anchors = [akRight, akBottom]
     Caption = '&Close'
     TabOrder = 1
     OnClick = CloseButtonClick
+    ExplicitLeft = 184
+    ExplicitTop = 319
   end
   object PMWebLink: TPopupMenu
     Left = 400
