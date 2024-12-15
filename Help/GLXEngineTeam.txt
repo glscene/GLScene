@@ -7,7 +7,7 @@ Aaron Hochwimmer
 Alan Rose
 Alejandro Leon Escalera
 Alexandre Hirzel
-AlexVigo
+Alex Vigo
 Arvydas Juskevicius
 Benjamin Rosseaux
 Brian Johns
@@ -16,14 +16,14 @@ Da Stranger
 Daniel Bartlett
 Dave Kerr
 Davor Slutej
-Degiovani
+Deg Iovani
 Eric Grange
 Eric Hardinge
 Eric Pascual
 Erick Schuitema
 Gregory Bersegeay
 Jerome Delauney
-Joen A. Joensen
+Joen A.Joensen
 Joen Joensen
 Ivan Lee Herring,
 Kenneth Poulter
@@ -36,6 +36,7 @@ Mattias Fagerlund
 Mike Lischke
 Nakayama Masanori
 Nelson Chu
+Omar Reis
 Pavel Vassiliev
 Paul van Dinther
 Phil Scadden
@@ -50,6 +51,5 @@ Sergio Feitosa
 Sternas Stefanos
 Stuart Gooding
 Uwe Raabe
-YarUnderoaker
+Yar Underoaker
 Zsolt Laky
-Omar Reis

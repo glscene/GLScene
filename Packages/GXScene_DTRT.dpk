@@ -1,4 +1,4 @@
-package GLXEngine_DTRT;
+package GXScene_DTRT;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}

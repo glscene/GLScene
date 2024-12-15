@@ -121,7 +121,7 @@
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
-        <DCC_UnitSearchPath>..\Source;..\Sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\Src;..\Sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -134,7 +134,7 @@
         <DCC_BpiOutput>..\lib\$(Platform)</DCC_BpiOutput>
         <DCC_HppOutput>..\include\$(Platform)</DCC_HppOutput>
         <DCC_ObjOutput>..\lib\$(Platform)</DCC_ObjOutput>
-        <DCC_UnitSearchPath>..\Source;..\Sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\Src;..\Sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64x)'!=''">
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
@@ -142,7 +142,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_UnitSearchPath>..\Source;..\Sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>..\Src;..\Sourcex;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -402,33 +402,12 @@
         <DCCReference Include="..\Sourcex\GXS.CurvesAndSurfaces.pas"/>
         <DCCReference Include="..\Sourcex\GXS.GeometryBB.pas"/>
         <DCCReference Include="..\Sourcex\GXS.XCollection.pas"/>
-        <DCCReference Include="..\Source\Stage.AnimationUtils.pas"/>
-        <DCCReference Include="..\Source\Stage.Generics.pas"/>
-        <DCCReference Include="..\Source\Stage.Keyboard.pas"/>
-        <DCCReference Include="..\Source\Stage.Logger.pas"/>
-        <DCCReference Include="..\Source\Stage.Manager.pas"/>
-        <DCCReference Include="..\Source\Stage.OpenGLTokens.pas"/>
-        <DCCReference Include="..\Source\Stage.PipelineTransform.pas"/>
-        <DCCReference Include="..\Source\Stage.Polynomials.pas"/>
-        <DCCReference Include="..\Source\Stage.RandomLib.pas"/>
-        <DCCReference Include="..\Source\Stage.RGBE.pas"/>
-        <DCCReference Include="..\Source\Stage.Spline.pas"/>
-        <DCCReference Include="..\Source\Stage.RedBlackTree.pas"/>
-        <DCCReference Include="..\Source\Stage.OpenGL4.pas"/>
-        <DCCReference Include="..\Source\Stage.Strings.pas"/>
-        <DCCReference Include="..\Source\Stage.TextureFormat.pas"/>
-        <DCCReference Include="..\Source\Stage.Triangulation.pas"/>
-        <DCCReference Include="..\Source\Stage.Utils.pas"/>
-        <DCCReference Include="..\Source\Stage.VectorGeometry.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.DXTC.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.VFW.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.m3DS.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.m3DSConst.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.m3DSTypes.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.m3DSUtils.pas"/>
-        <DCCReference Include="..\Source\PasDblStrUtils.pas"/>
-        <DCCReference Include="..\Source\PasGLTF.pas"/>
-        <DCCReference Include="..\Source\PasJSON.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.MD3.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.MD2.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.LWO.pas"/>
@@ -438,8 +417,31 @@
         <DCCReference Include="..\Sourcex\Formatx.VRML.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.Q3MD3.pas"/>
         <DCCReference Include="..\Sourcex\Formatx.B3D.pas"/>
-        <DCCReference Include="..\Source\Stage.VectorTypes.pas"/>
-        <DCCReference Include="..\Source\Stage.VectorTypesExt.pas"/>
+        <DCCReference Include="..\Src\gnuGettext.pas"/>
+        <DCCReference Include="..\Src\gnuGettextInit.pas"/>
+        <DCCReference Include="..\Src\PasDblStrUtils.pas"/>
+        <DCCReference Include="..\Src\PasGLTF.pas"/>
+        <DCCReference Include="..\Src\PasJSON.pas"/>
+        <DCCReference Include="..\Src\Stage.AnimationUtils.pas"/>
+        <DCCReference Include="..\Src\Stage.Generics.pas"/>
+        <DCCReference Include="..\Src\Stage.Keyboard.pas"/>
+        <DCCReference Include="..\Src\Stage.Logger.pas"/>
+        <DCCReference Include="..\Src\Stage.Manager.pas"/>
+        <DCCReference Include="..\Src\Stage.OpenGL4.pas"/>
+        <DCCReference Include="..\Src\Stage.OpenGLTokens.pas"/>
+        <DCCReference Include="..\Src\Stage.PipelineTransform.pas"/>
+        <DCCReference Include="..\Src\Stage.Polynomials.pas"/>
+        <DCCReference Include="..\Src\Stage.RandomLib.pas"/>
+        <DCCReference Include="..\Src\Stage.RedBlackTree.pas"/>
+        <DCCReference Include="..\Src\Stage.RGBE.pas"/>
+        <DCCReference Include="..\Src\Stage.Spline.pas"/>
+        <DCCReference Include="..\Src\Stage.Strings.pas"/>
+        <DCCReference Include="..\Src\Stage.TextureFormat.pas"/>
+        <DCCReference Include="..\Src\Stage.Triangulation.pas"/>
+        <DCCReference Include="..\Src\Stage.Utils.pas"/>
+        <DCCReference Include="..\Src\Stage.VectorGeometry.pas"/>
+        <DCCReference Include="..\Src\Stage.VectorTypes.pas"/>
+        <DCCReference Include="..\Src\Stage.VectorTypesExt.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -461,6 +463,7 @@
                     <Source Name="MainSource">GXScene_RT.dpk</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLXEngine_DTRT.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLXEngine_DTRT.bpl not found</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GXScene_GBE.bpl">GXScene GBE</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GBComps.bpl">Geoblock - Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k290.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>

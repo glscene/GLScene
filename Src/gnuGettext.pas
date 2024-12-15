@@ -59,7 +59,10 @@ uses
   CWString,
 {$ENDIF}
 {$ENDIF}
-  System.Classes, System.StrUtils, System.SysUtils, System.TypInfo;
+  System.Classes,
+  System.StrUtils,
+  System.SysUtils,
+  System.TypInfo;
 
 (* *************************************************************************** *)
 (* *)
