@@ -1,5 +1,5 @@
 # GLXEngine
-GLXEngine - GaLaXy engine based on GLScene & GXScene graphic libraries with VCL/FMX components for Delphi & C++Builder. 
+GLXEngine - GLScene & GXScene graphic libraries with VCL/FMX components for Delphi & C++Builder. 
 Class libraries for creating 3D scenes with rendering and animations of spatial objects 
 include managers for supporting physics, sounds, terrains with materials and shaders. 
 ### How to install
