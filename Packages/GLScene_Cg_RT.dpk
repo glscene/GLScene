@@ -39,8 +39,8 @@ contains
   GLS.CgShader in '..\Source\GLS.CgShader.pas',
   GLS.CgBombShader in '..\Source\GLS.CgBombShader.pas',
   GLS.CgPostTransformationShader in '..\Source\GLS.CgPostTransformationShader.pas',
-  Cg.GL in '..\Source\Cg.GL.pas',
-  Cg.Import in '..\Source\Cg.Import.pas';
+  Cg.GL in '..\Src\Cg.GL.pas',
+  Cg.Import in '..\Src\Cg.Import.pas';
 
 end.
 

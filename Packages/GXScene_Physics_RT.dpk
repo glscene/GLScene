@@ -49,10 +49,10 @@ contains
   GXS.PhysInertias in '..\Sourcex\GXS.PhysInertias.pas',
   GXS.PhysJoints in '..\Sourcex\GXS.PhysJoints.pas',
   GXS.PhysManager in '..\Sourcex\GXS.PhysManager.pas',
-  NGD.Import in '..\Source\NGD.Import.pas',
-  Newton.Import in '..\Source\Newton.Import.pas',
-  ODE.Import in '..\Source\ODE.Import.pas',
-  PhysX.Import in '..\Source\PhysX.Import.pas';
+  ModuleLoader in '..\Src\ModuleLoader.pas',
+  Newton.Import in '..\Src\Newton.Import.pas',
+  NGD.Import in '..\Src\NGD.Import.pas',
+  ODE.Import in '..\Src\ODE.Import.pas';
 
 end.
 

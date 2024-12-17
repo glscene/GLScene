@@ -37,11 +37,11 @@ contains
   GXS.Sounds.BASS in '..\Sourcex\GXS.Sounds.BASS.pas',
   GXS.Sounds.OpenAL in '..\Sourcex\GXS.Sounds.OpenAL.pas',
   GXS.Sounds.WaveOut in '..\Sourcex\GXS.Sounds.WaveOut.pas',
-  OpenAL.Import in '..\Unipas\OpenAL.Import.pas',
-  FMOD.errors in '..\Unipas\FMOD.errors.pas',
-  FMOD.Import in '..\Unipas\FMOD.Import.pas',
-  FMOD.presets in '..\Unipas\FMOD.presets.pas',
-  FMOD.types in '..\Unipas\FMOD.types.pas',
-  BASS.Import in '..\Source\BASS.Import.pas';
+  BASS.Import in '..\Src\BASS.Import.pas',
+  FMOD.errors in '..\Src\FMOD.errors.pas',
+  FMOD.Import in '..\Src\FMOD.Import.pas',
+  FMOD.presets in '..\Src\FMOD.presets.pas',
+  FMOD.types in '..\Src\FMOD.types.pas',
+  OpenAL.Import in '..\Src\OpenAL.Import.pas';
 
 end.

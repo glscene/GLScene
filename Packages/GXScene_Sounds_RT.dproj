@@ -212,12 +212,12 @@
         <DCCReference Include="..\Sourcex\GXS.Sounds.BASS.pas"/>
         <DCCReference Include="..\Sourcex\GXS.Sounds.OpenAL.pas"/>
         <DCCReference Include="..\Sourcex\GXS.Sounds.WaveOut.pas"/>
-        <DCCReference Include="..\Unipas\OpenAL.Import.pas"/>
-        <DCCReference Include="..\Unipas\FMOD.errors.pas"/>
-        <DCCReference Include="..\Unipas\FMOD.Import.pas"/>
-        <DCCReference Include="..\Unipas\FMOD.presets.pas"/>
-        <DCCReference Include="..\Unipas\FMOD.types.pas"/>
-        <DCCReference Include="..\Source\BASS.Import.pas"/>
+        <DCCReference Include="..\Src\BASS.Import.pas"/>
+        <DCCReference Include="..\Src\FMOD.errors.pas"/>
+        <DCCReference Include="..\Src\FMOD.Import.pas"/>
+        <DCCReference Include="..\Src\FMOD.presets.pas"/>
+        <DCCReference Include="..\Src\FMOD.types.pas"/>
+        <DCCReference Include="..\Src\OpenAL.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

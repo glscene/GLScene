@@ -1,5 +1,5 @@
-GLXEngine Team
-Developers and Contributors
+Contributors and Developers 
+of GLScene & GXScene
 
 ===========================
  

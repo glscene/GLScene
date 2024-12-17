@@ -36,7 +36,7 @@ requires
 
 contains
   GLS.SDL.Window in '..\Source\GLS.SDL.Window.pas',
-  SDL.Import in '..\Source\SDL.Import.pas';
+  SDL.Import in '..\Src\SDL.Import.pas';
 
 end.
 

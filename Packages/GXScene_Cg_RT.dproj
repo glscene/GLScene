@@ -189,8 +189,8 @@
         <DCCReference Include="..\Sourcex\GXS.CgShader.pas"/>
         <DCCReference Include="..\Sourcex\GXS.CgBombShader.pas"/>
         <DCCReference Include="..\Sourcex\GXS.CgPostTransformationShader.pas"/>
-        <DCCReference Include="..\Source\Cg.GL.pas"/>
-        <DCCReference Include="..\Source\Cg.Import.pas"/>
+        <DCCReference Include="..\Src\Cg.GL.pas"/>
+        <DCCReference Include="..\Src\Cg.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

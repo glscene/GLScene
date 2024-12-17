@@ -27,9 +27,6 @@
         <Projects Include="AdvDemos\TexCombine\TexCombineC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="AdvDemos\Archipelago\Splitter\SplitterD.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="AdvDemos\Archipelago\Splitter\SplitterC.cbproj">
             <Dependencies/>
         </Projects>
@@ -113,15 +110,6 @@
     <Target Name="TexCombineC:Make">
         <MSBuild Projects="AdvDemos\TexCombine\TexCombineC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="SplitterD">
-        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj"/>
-    </Target>
-    <Target Name="SplitterD:Clean">
-        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="SplitterD:Make">
-        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj" Targets="Make"/>
-    </Target>
     <Target Name="SplitterC">
         <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterC.cbproj"/>
     </Target>
@@ -132,13 +120,13 @@
         <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterC.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ActorMS3dC;ArchipelagoC;ChristmasC;GLSViewerC;IntensityMeshC;PanoViewerC;QuakeActorC;TexCombineC;SplitterD;SplitterC"/>
+        <CallTarget Targets="ActorMS3dC;ArchipelagoC;ChristmasC;GLSViewerC;IntensityMeshC;PanoViewerC;QuakeActorC;TexCombineC;SplitterC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ActorMS3dC:Clean;ArchipelagoC:Clean;ChristmasC:Clean;GLSViewerC:Clean;IntensityMeshC:Clean;PanoViewerC:Clean;QuakeActorC:Clean;TexCombineC:Clean;SplitterD:Clean;SplitterC:Clean"/>
+        <CallTarget Targets="ActorMS3dC:Clean;ArchipelagoC:Clean;ChristmasC:Clean;GLSViewerC:Clean;IntensityMeshC:Clean;PanoViewerC:Clean;QuakeActorC:Clean;TexCombineC:Clean;SplitterC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ActorMS3dC:Make;ArchipelagoC:Make;ChristmasC:Make;GLSViewerC:Make;IntensityMeshC:Make;PanoViewerC:Make;QuakeActorC:Make;TexCombineC:Make;SplitterD:Make;SplitterC:Make"/>
+        <CallTarget Targets="ActorMS3dC:Make;ArchipelagoC:Make;ChristmasC:Make;GLSViewerC:Make;IntensityMeshC:Make;PanoViewerC:Make;QuakeActorC:Make;TexCombineC:Make;SplitterC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

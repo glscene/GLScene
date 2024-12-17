@@ -150,8 +150,8 @@
         <DCCReference Include="..\Source\GLS.CgShader.pas"/>
         <DCCReference Include="..\Source\GLS.CgBombShader.pas"/>
         <DCCReference Include="..\Source\GLS.CgPostTransformationShader.pas"/>
-        <DCCReference Include="..\Source\Cg.GL.pas"/>
-        <DCCReference Include="..\Source\Cg.Import.pas"/>
+        <DCCReference Include="..\Src\Cg.GL.pas"/>
+        <DCCReference Include="..\Src\Cg.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -190,6 +190,12 @@
             <Deployment Version="5">
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GLScene_Cg_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_Cg_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GLScene_Cg_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GLScene_Cg_RT.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>

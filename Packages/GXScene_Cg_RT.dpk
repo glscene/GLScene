@@ -36,7 +36,7 @@ contains
   GXS.CgShader in '..\Sourcex\GXS.CgShader.pas',
   GXS.CgBombShader in '..\Sourcex\GXS.CgBombShader.pas',
   GXS.CgPostTransformationShader in '..\Sourcex\GXS.CgPostTransformationShader.pas',
-  Cg.GL in '..\Source\Cg.GL.pas',
-  Cg.Import in '..\Source\Cg.Import.pas';
+  Cg.GL in '..\Src\Cg.GL.pas',
+  Cg.Import in '..\Src\Cg.Import.pas';
 
 end.

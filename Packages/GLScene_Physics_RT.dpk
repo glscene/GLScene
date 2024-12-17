@@ -46,10 +46,11 @@ contains
   GLS.PhysInertias in '..\Source\GLS.PhysInertias.pas',
   GLS.PhysJoints in '..\Source\GLS.PhysJoints.pas',
   GLS.PhysManager in '..\Source\GLS.PhysManager.pas',
-  ModuleLoader in '..\Source\ModuleLoader.pas',
-  Newton.Import in '..\Source\Newton.Import.pas',
-  NGD.Import in '..\Source\NGD.Import.pas',
-  ODE.Import in '..\Source\ODE.Import.pas';
+  ModuleLoader in '..\Src\ModuleLoader.pas',
+  Newton.Import in '..\Src\Newton.Import.pas',
+  NGD.Import in '..\Src\NGD.Import.pas',
+  ODE.Import in '..\Src\ODE.Import.pas',
+  PhysX.Import in '..\Src\PhysX.Import.pas';
 
 end.
 

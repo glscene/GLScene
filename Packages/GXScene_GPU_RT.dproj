@@ -210,16 +210,16 @@
         <DCCReference Include="..\Sourcex\GXS.CUDA.Context.pas"/>
         <DCCReference Include="..\Sourcex\GXS.CUDA.FFTPlan.pas"/>
         <DCCReference Include="..\Sourcex\GXS.CUDA.Graphics.pas"/>
-        <DCCReference Include="..\Source\CUDA.Import.pas"/>
-        <DCCReference Include="..\Source\CUDA.DataAccess.pas"/>
-        <DCCReference Include="..\Source\CUDA.FourierTransform.pas"/>
-        <DCCReference Include="..\Source\CUDA.ParallelPrimitives.pas"/>
-        <DCCReference Include="..\Source\CUDA.Parser.pas"/>
-        <DCCReference Include="..\Source\CUDA.Runtime.pas"/>
-        <DCCReference Include="..\Source\CUDA.Utility.pas"/>
-        <DCCReference Include="..\Source\OpenCL.GL.pas"/>
-        <DCCReference Include="..\Source\OpenCL.Import.pas"/>
-        <DCCReference Include="..\Source\OpenCL.Platform.pas"/>
+        <DCCReference Include="..\Src\OpenCL.GL.pas"/>
+        <DCCReference Include="..\Src\OpenCL.Import.pas"/>
+        <DCCReference Include="..\Src\OpenCL.Platform.pas"/>
+        <DCCReference Include="..\Src\CUDA.DataAccess.pas"/>
+        <DCCReference Include="..\Src\CUDA.FourierTransform.pas"/>
+        <DCCReference Include="..\Src\CUDA.Import.pas"/>
+        <DCCReference Include="..\Src\CUDA.ParallelPrimitives.pas"/>
+        <DCCReference Include="..\Src\CUDA.Parser.pas"/>
+        <DCCReference Include="..\Src\CUDA.Runtime.pas"/>
+        <DCCReference Include="..\Src\CUDA.Utility.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

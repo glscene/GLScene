@@ -204,10 +204,10 @@
         <DCCReference Include="..\Sourcex\GXS.PhysInertias.pas"/>
         <DCCReference Include="..\Sourcex\GXS.PhysJoints.pas"/>
         <DCCReference Include="..\Sourcex\GXS.PhysManager.pas"/>
-        <DCCReference Include="..\Source\NGD.Import.pas"/>
-        <DCCReference Include="..\Source\Newton.Import.pas"/>
-        <DCCReference Include="..\Source\ODE.Import.pas"/>
-        <DCCReference Include="..\Source\PhysX.Import.pas"/>
+        <DCCReference Include="..\Src\ModuleLoader.pas"/>
+        <DCCReference Include="..\Src\Newton.Import.pas"/>
+        <DCCReference Include="..\Src\NGD.Import.pas"/>
+        <DCCReference Include="..\Src\ODE.Import.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -246,6 +246,12 @@
             <Deployment Version="5">
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\GXScene_Physics_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\22.0\Bpl\Win64\GXScene_Physics_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\GXScene_Physics_RT.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GXScene_Physics_RT.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64\GXScene_Physics_RT.bpl" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">

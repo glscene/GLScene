@@ -2416,7 +2416,7 @@ inherited GLAbout: TGLAbout
       Width = 144
       Height = 17
       BevelOuter = bvNone
-      Caption = ' '#169'  2002, 2024'
+      Caption = ' '#169'  2002, 2025'
       TabOrder = 0
     end
   end

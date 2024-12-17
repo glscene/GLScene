@@ -33,6 +33,9 @@
         <Projects Include="AdvDemos\TexCombine\TexCombineD.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="AdvDemos\Archipelago\Splitter\SplitterD.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -131,14 +134,23 @@
     <Target Name="TexCombineD:Make">
         <MSBuild Projects="AdvDemos\TexCombine\TexCombineD.dproj" Targets="Make"/>
     </Target>
+    <Target Name="SplitterD">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj"/>
+    </Target>
+    <Target Name="SplitterD:Clean">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SplitterD:Make">
+        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterD.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Actorms3dD;ArchipelagoD;ChristmasD;EarthD;ForestD;GLSViewerD;IntensityMeshD;PanoViewerD;QuakeActorD;TexCombineD"/>
+        <CallTarget Targets="Actorms3dD;ArchipelagoD;ChristmasD;EarthD;ForestD;GLSViewerD;IntensityMeshD;PanoViewerD;QuakeActorD;TexCombineD;SplitterD"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Actorms3dD:Clean;ArchipelagoD:Clean;ChristmasD:Clean;EarthD:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;PanoViewerD:Clean;QuakeActorD:Clean;TexCombineD:Clean"/>
+        <CallTarget Targets="Actorms3dD:Clean;ArchipelagoD:Clean;ChristmasD:Clean;EarthD:Clean;ForestD:Clean;GLSViewerD:Clean;IntensityMeshD:Clean;PanoViewerD:Clean;QuakeActorD:Clean;TexCombineD:Clean;SplitterD:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Actorms3dD:Make;ArchipelagoD:Make;ChristmasD:Make;EarthD:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;PanoViewerD:Make;QuakeActorD:Make;TexCombineD:Make"/>
+        <CallTarget Targets="Actorms3dD:Make;ArchipelagoD:Make;ChristmasD:Make;EarthD:Make;ForestD:Make;GLSViewerD:Make;IntensityMeshD:Make;PanoViewerD:Make;QuakeActorD:Make;TexCombineD:Make;SplitterD:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
