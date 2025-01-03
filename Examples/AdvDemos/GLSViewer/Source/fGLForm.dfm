@@ -8,10 +8,10 @@ object GLForm: TGLForm
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -16
-  Font.Name = 'MS Sans Serif'
+  Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poMainFormCenter
   Scaled = False
   OnCreate = FormCreate
-  TextHeight = 20
+  TextHeight = 21
 end

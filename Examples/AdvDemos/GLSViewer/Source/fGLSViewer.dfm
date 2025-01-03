@@ -157,16 +157,16 @@ object FormGLSViewer: TFormGLSViewer
   end
   object snViewer: TGLSceneViewer
     Left = 273
-    Top = 56
+    Top = 54
     Width = 807
-    Height = 627
+    Height = 629
     Camera = Camera
     BeforeRender = snViewerBeforeRender
     AfterRender = snViewerAfterRender
     Buffer.BackgroundColor = clBlack
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roTwoSideLighting]
     Buffer.FaceCulling = False
-    FieldOfView = 161.876480102539100000
+    FieldOfView = 161.933151245117200000
     PenAsTouch = False
     OnMouseLeave = snViewerMouseLeave
     Align = alClient
@@ -176,11 +176,12 @@ object FormGLSViewer: TFormGLSViewer
   end
   object ControlBar: TControlBar
     Left = 0
-    Top = 27
+    Top = 25
     Width = 1080
     Height = 29
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 1072
     object atbTools: TActionToolBar
       Left = 357
       Top = 2
@@ -248,7 +249,7 @@ object FormGLSViewer: TFormGLSViewer
     Left = 0
     Top = 0
     Width = 1080
-    Height = 27
+    Height = 25
     UseSystemFont = False
     ActionManager = ActionManager
     Caption = 'ActionMainMenuBar'
@@ -263,20 +264,21 @@ object FormGLSViewer: TFormGLSViewer
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     Spacing = 0
+    ExplicitWidth = 1072
   end
   object PanelLeft: TPanel
     Left = 0
-    Top = 56
+    Top = 54
     Width = 273
-    Height = 627
+    Height = 629
     Align = alLeft
     TabOrder = 4
-    ExplicitHeight = 602
+    ExplicitHeight = 604
     object tvScene: TTreeView
       Left = 1
       Top = 1
       Width = 271
-      Height = 625
+      Height = 627
       Align = alClient
       CheckStyles = [csDimmed]
       Images = dmImages.ImageListGLS
@@ -480,6 +482,7 @@ object FormGLSViewer: TFormGLSViewer
         6D0070007500740069006E0067000000410000005E0000005E000000FFFFFFFF
         FFFFFFFF0000000000000000000000000001114300550044004100470065006E
         006500720061007400650064004D00650073006800}
+      ExplicitHeight = 602
     end
   end
   object Scene: TGLScene

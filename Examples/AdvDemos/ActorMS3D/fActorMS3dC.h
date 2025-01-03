@@ -11,6 +11,9 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 
+#include "Stage.VectorGeometry.hpp"
+#include "Stage.Utils.hpp"
+
 #include "GLS.BaseClasses.hpp"
 #include "GLS.Cadencer.hpp"
 #include "GLS.Coordinates.hpp"
@@ -23,8 +26,6 @@
 #include "GLS.FileZLIB.hpp"
 
 #include "GLS.Scene.hpp"
-
-#include "Stage.VectorGeometry.hpp"
 
 #include "GLS.SimpleNavigation.hpp"
 #include "GLS.VectorFileObjects.hpp"

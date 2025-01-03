@@ -1,0 +1,10 @@
+*.dcu
+*.dproj
+*.exe
+*.identcache
+*.local
+*.res
+/DocProcessor/DocProcessor.drc
+/DocProcessor/*.map
+/Examples/*.tvsconfig
+/Documentation/Docs

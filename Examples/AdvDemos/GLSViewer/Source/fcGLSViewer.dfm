@@ -1,152 +1,121 @@
 object FormViewer: TFormViewer
   Left = 0
   Top = 0
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   Caption = 'GLSViewer'
-  ClientHeight = 776
-  ClientWidth = 1290
+  ClientHeight = 595
+  ClientWidth = 785
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -21
+  Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
-  PixelsPerInch = 168
-  TextHeight = 30
+  TextHeight = 15
   object StatusBar: TStatusBar
     Left = 0
-    Top = 742
-    Width = 1290
-    Height = 34
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 576
+    Width = 785
+    Height = 19
     Panels = <
       item
         Text = 'X'
-        Width = 88
+        Width = 50
       end
       item
         Text = 'Y'
-        Width = 88
+        Width = 50
       end
       item
         Text = 'Z'
-        Width = 88
+        Width = 50
       end
       item
         Text = 'Model'
-        Width = 70
+        Width = 40
       end>
-    ExplicitLeft = -127
-    ExplicitWidth = 1223
+    ExplicitTop = 424
+    ExplicitWidth = 733
   end
   object snViewer: TGLSceneViewer
-    Left = 267
-    Top = 82
-    Width = 1023
-    Height = 660
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 153
+    Top = 54
+    Width = 632
+    Height = 522
     Camera = Camera
     Buffer.BackgroundColor = clGray
     Buffer.ContextOptions = [roDoubleBuffer, roRenderToWindow, roTwoSideLighting]
     Buffer.FaceCulling = False
-    FieldOfView = 162.768707275390600000
+    FieldOfView = 158.310379028320300000
     PenAsTouch = False
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 830
+    ExplicitWidth = 581
+    ExplicitHeight = 370
   end
   object ControlBar: TControlBar
     Left = 0
-    Top = 31
-    Width = 1290
-    Height = 51
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 25
+    Width = 785
+    Height = 29
     Align = alTop
-    RowSize = 46
     TabOrder = 2
-    ExplicitLeft = -127
-    ExplicitTop = 43
-    ExplicitWidth = 1223
+    ExplicitWidth = 733
     object atbTools: TActionToolBar
-      Left = 580
+      Left = 333
       Top = 2
-      Width = 113
-      Height = 42
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Width = 65
+      Height = 22
       ActionManager = ActionManager
       Caption = 'Tools'
       Color = clMenuBar
-      ColorMap.DisabledFontColor = 7171437
+      ColorMap.DisabledFontColor = 10461087
       ColorMap.HighlightColor = clWhite
       ColorMap.BtnSelectedFont = clBlack
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -23
+      Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       Spacing = 0
     end
     object atbView: TActionToolBar
-      Left = 176
+      Left = 102
       Top = 2
-      Width = 383
-      Height = 42
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Width = 218
+      Height = 22
       ActionManager = ActionManager
       Caption = 'View'
       Color = clMenuBar
-      ColorMap.DisabledFontColor = 7171437
+      ColorMap.DisabledFontColor = 10461087
       ColorMap.HighlightColor = clWhite
       ColorMap.BtnSelectedFont = clBlack
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -23
+      Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       Spacing = 0
     end
     object atbFile: TActionToolBar
-      Left = 19
+      Left = 11
       Top = 2
-      Width = 136
-      Height = 42
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Width = 78
+      Height = 22
       ActionManager = ActionManager
       Caption = 'File'
       Color = clMenuBar
-      ColorMap.DisabledFontColor = 7171437
+      ColorMap.DisabledFontColor = 10461087
       ColorMap.HighlightColor = clWhite
       ColorMap.BtnSelectedFont = clBlack
       ColorMap.UnusedColor = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -23
+      Font.Height = -13
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
@@ -158,55 +127,40 @@ object FormViewer: TFormViewer
   object amMenuBar: TActionMainMenuBar
     Left = 0
     Top = 0
-    Width = 1290
-    Height = 31
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 785
+    Height = 25
     UseSystemFont = False
     ActionManager = ActionManager
     Caption = 'ActionMainMenuBar'
     Color = clMenuBar
-    ColorMap.DisabledFontColor = 7171437
+    ColorMap.DisabledFontColor = 10461087
     ColorMap.HighlightColor = clWhite
     ColorMap.BtnSelectedFont = clBlack
     ColorMap.UnusedColor = clWhite
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
-    Font.Height = -19
+    Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     Spacing = 0
-    ExplicitLeft = -127
-    ExplicitWidth = 1223
-    ExplicitHeight = 43
+    ExplicitWidth = 733
   end
   object PanelLeft: TPanel
     Left = 0
-    Top = 82
-    Width = 267
-    Height = 660
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Top = 54
+    Width = 153
+    Height = 522
     Align = alLeft
     TabOrder = 4
-    ExplicitTop = 67
-    ExplicitHeight = 709
+    ExplicitHeight = 370
     object tvScene: TTreeView
       Left = 1
       Top = 1
-      Width = 265
-      Height = 658
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Width = 151
+      Height = 520
       Align = alClient
       Images = ImageListObjects
-      Indent = 33
+      Indent = 19
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
@@ -405,7 +359,7 @@ object FormViewer: TFormViewer
         6D0070007500740069006E0067000000410000005E0000005E000000FFFFFFFF
         FFFFFFFF0000000000000000000000000001114300550044004100470065006E
         006500720061007400650064004D00650073006800}
-      ExplicitHeight = 707
+      ExplicitHeight = 368
     end
   end
   object Scene: TGLScene

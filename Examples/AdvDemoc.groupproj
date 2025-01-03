@@ -27,9 +27,6 @@
         <Projects Include="AdvDemos\TexCombine\TexCombineC.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="AdvDemos\Archipelago\Splitter\SplitterC.cbproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -110,23 +107,14 @@
     <Target Name="TexCombineC:Make">
         <MSBuild Projects="AdvDemos\TexCombine\TexCombineC.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="SplitterC">
-        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterC.cbproj"/>
-    </Target>
-    <Target Name="SplitterC:Clean">
-        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterC.cbproj" Targets="Clean"/>
-    </Target>
-    <Target Name="SplitterC:Make">
-        <MSBuild Projects="AdvDemos\Archipelago\Splitter\SplitterC.cbproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ActorMS3dC;ArchipelagoC;ChristmasC;GLSViewerC;IntensityMeshC;PanoViewerC;QuakeActorC;TexCombineC;SplitterC"/>
+        <CallTarget Targets="ActorMS3dC;ArchipelagoC;ChristmasC;GLSViewerC;IntensityMeshC;PanoViewerC;QuakeActorC;TexCombineC"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ActorMS3dC:Clean;ArchipelagoC:Clean;ChristmasC:Clean;GLSViewerC:Clean;IntensityMeshC:Clean;PanoViewerC:Clean;QuakeActorC:Clean;TexCombineC:Clean;SplitterC:Clean"/>
+        <CallTarget Targets="ActorMS3dC:Clean;ArchipelagoC:Clean;ChristmasC:Clean;GLSViewerC:Clean;IntensityMeshC:Clean;PanoViewerC:Clean;QuakeActorC:Clean;TexCombineC:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ActorMS3dC:Make;ArchipelagoC:Make;ChristmasC:Make;GLSViewerC:Make;IntensityMeshC:Make;PanoViewerC:Make;QuakeActorC:Make;TexCombineC:Make;SplitterC:Make"/>
+        <CallTarget Targets="ActorMS3dC:Make;ArchipelagoC:Make;ChristmasC:Make;GLSViewerC:Make;IntensityMeshC:Make;PanoViewerC:Make;QuakeActorC:Make;TexCombineC:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

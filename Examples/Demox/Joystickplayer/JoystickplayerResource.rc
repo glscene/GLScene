@@ -1,4 +1,0 @@
-heightmap256 RCDATA "ileVolcan256b.png"
-heightmap32 RCDATA "ileVolcan32b.png"
-heightmap64 RCDATA "ileVolcan64b.png"
-PngImage_1 RCDATA "ileVolcan128b.png"

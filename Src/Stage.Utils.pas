@@ -144,9 +144,7 @@ function GLStrToFloatDef(const S: string; const Default: Extended)
   : Extended; overload;
 function GLStrToFloatDef(const S: string): Extended; overload;
 
-//----------------------------------------------------------------------------
-implementation
-//----------------------------------------------------------------------------
+implementation //--------------------------------------------------------------
 
 var
   vSqrt255: TSqrt255Array;
@@ -510,7 +508,7 @@ var
   N: Integer;
 begin
   Path := LowerCase(ExtractFilePath(ParamStr(0)));
-  N := Pos('examples', Path); // if 'glscene' dirname then N + 7
+  N := Pos('examples', Path);
   Delete(Path, N, Length(path));
   Path := IncludeTrailingPathDelimiter(Path) + 'assets';
   SetCurrentDir(Path);

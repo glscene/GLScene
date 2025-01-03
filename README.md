@@ -8,4 +8,21 @@ include managers for supporting physics, sounds, terrains with materials and sha
 3. Configure the IDE settings and paths to source and sourcex
 4. Open GLScene & GXScene group projects, compile and install components
 5. Run Examples for C++Builder or Delphi  <br>
+
+Some examples:<br>
+GLS Viewer
+![GLSViewer](./Help/Screenshots/GLSViewer.png)
+Dune Fighter
+![DuneFighter](./Help/Screenshots/DuneFighter.png)
+Clothify 
+![Clothify](./Help/Screenshots/Clothify.png)
+Christmas
+![Christmas](./Help/Screenshots/Christmas.png)
+Forest
+![Forest](./Help/Screenshots/Forest.png)
+Village
+![Village](./Help/Screenshots/Village.png)
+Plot2D
+![Plot2D](./Help/Screenshots/Plot2D.png)
+
 GLXEngine Team
