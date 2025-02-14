@@ -19,6 +19,7 @@ uses
 
   Stage.VectorTypes,
   Stage.VectorGeometry,
+  Stage.OpenGLTokens,
   GLS.XCollection,
   GLS.VectorLists,
   GLS.PersistentClasses,
@@ -55,7 +56,7 @@ uses
   Stage.Utils;
 
 type
-  TForm1 = class(TForm)
+  TFormForest = class(TForm)
     SceneViewer: TGLSceneViewer;
     GLScene: TGLScene;
     MLTrees: TGLMaterialLibrary;
@@ -124,7 +125,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormForest: TFormForest;
 
 implementation // ------------------------------------------------------------
 
@@ -136,7 +137,7 @@ const
   cMapHeight: Integer = 1024;
   cBaseSpeed: Single = 50;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormForest.FormCreate(Sender: TObject);
 var
   density: TPicture;
 
@@ -226,7 +227,7 @@ end;
 
 //----------------------------------------------------------------
 
-procedure TForm1.FormDestroy(Sender: TObject);
+procedure TFormForest.FormDestroy(Sender: TObject);
 begin
   // RestoreDefaultMode;
 
@@ -234,22 +235,22 @@ begin
   nearTrees.Free;
 end;
 
-procedure TForm1.FormResize(Sender: TObject);
+procedure TFormForest.FormResize(Sender: TObject);
 begin
   Camera.FocalLength := Width * 50 / 800;
 end;
 
-procedure TForm1.FormDeactivate(Sender: TObject);
+procedure TFormForest.FormDeactivate(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TFormForest.FormShow(Sender: TObject);
 begin
   SetFocus;
 end;
 
-procedure TForm1.GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
+procedure TFormForest.GLCadencerProgress(Sender: TObject; const deltaTime, newTime: Double);
 var
   speed, z: Single;
   nmp: TPoint;
@@ -296,11 +297,11 @@ begin
   SceneViewer.Invalidate;
 end;
 
-procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TFormForest.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   case Key of
     VK_ESCAPE:
-      Form1.Close;
+      FormForest.Close;
     VK_ADD:
       if TreesShown < PFXTrees.Particles.ItemCount then
         TreesShown := TreesShown + 100;
@@ -318,7 +319,7 @@ begin
   end;
 end;
 
-procedure TForm1.Timer1Timer(Sender: TObject);
+procedure TFormForest.Timer1Timer(Sender: TObject);
 var
   hud: string;
 begin
@@ -337,7 +338,7 @@ begin
   Caption := Format('%.2f', [RenderTrees.LastSortTime]);
 end;
 
-procedure TForm1.PFXTreesCreateParticle(Sender: TObject; aParticle: TGLParticle);
+procedure TFormForest.PFXTreesCreateParticle(Sender: TObject; aParticle: TGLParticle);
 var
   u, v, p: Single;
   // x, y, i, j, dark : Integer;
@@ -360,13 +361,13 @@ begin
 
 end;
 
-procedure TForm1.PFXTreesBeginParticles(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TFormForest.PFXTreesBeginParticles(Sender: TObject; var rci: TGLRenderContextInfo);
 begin
   Imposter := SIBTree.ImposterFor(TestTree);
   Imposter.BeginRender(rci);
 end;
 
-procedure TForm1.PFXTreesRenderParticle(Sender: TObject; aParticle: TGLParticle;
+procedure TFormForest.PFXTreesRenderParticle(Sender: TObject; aParticle: TGLParticle;
   var rci: TGLRenderContextInfo);
 const
   cTreeCenteringOffset: TAffineVector = (X: 0; Y: 30; z: 0);
@@ -391,7 +392,7 @@ begin
   end;
 end;
 
-procedure TForm1.PFXTreesEndParticles(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TFormForest.PFXTreesEndParticles(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   aParticle: TGLParticle;
   camPos: TGLVector;
@@ -409,7 +410,7 @@ begin
   Imposter.EndRender(rci);
 end;
 
-procedure TForm1.DOTreesRender(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TFormForest.DOTreesRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   i: Integer;
   particle: TGLParticle;
@@ -436,7 +437,7 @@ begin
   nearTrees.Clear;
 end;
 
-procedure TForm1.TerrainGetTerrainBounds(var l, t, r, b: Single);
+procedure TFormForest.TerrainGetTerrainBounds(var l, t, r, b: Single);
 begin
   l := 0;
   t := cMapHeight;
@@ -444,7 +445,7 @@ begin
   b := 0;
 end;
 
-function TForm1.SIBTreeLoadingImposter(Sender: TObject; impostoredObject: TGLBaseSceneObject;
+function TFormForest.SIBTreeLoadingImposter(Sender: TObject; impostoredObject: TGLBaseSceneObject;
   destImposter: TImposter): TGLBitmap32;
 var
   bmp: TBitmap;
@@ -467,7 +468,7 @@ begin
   bmp.Free;
 end;
 
-procedure TForm1.SIBTreeImposterLoaded(Sender: TObject; impostoredObject: TGLBaseSceneObject;
+procedure TFormForest.SIBTreeImposterLoaded(Sender: TObject; impostoredObject: TGLBaseSceneObject;
   destImposter: TImposter);
 var
   bmp32: TGLBitmap32;
@@ -484,18 +485,18 @@ begin
   end;
 end;
 
-function TForm1.PFXTreesGetParticleCountEvent(Sender: TObject): Integer;
+function TFormForest.PFXTreesGetParticleCountEvent(Sender: TObject): Integer;
 begin
   Result := TreesShown;
 end;
 
-procedure TForm1.PFXTreesProgress(Sender: TObject; const progressTime: TGLProgressTimes;
+procedure TFormForest.PFXTreesProgress(Sender: TObject; const progressTime: TGLProgressTimes;
   var defaultProgress: Boolean);
 begin
   defaultProgress := False;
 end;
 
-procedure TForm1.DOInitializeReflectionRender(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TFormForest.DOInitializeReflectionRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   w, h: Integer;
   refMat: TGLMatrix;
@@ -594,7 +595,7 @@ begin
   GL.Clear(GL_COLOR_BUFFER_BIT + GL_DEPTH_BUFFER_BIT + GL_STENCIL_BUFFER_BIT);
 end;
 
-procedure TForm1.DOClassicWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TFormForest.DOClassicWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
 const
   cWaveScale = 7;
   cWaveSpeed = 0.02;
@@ -687,7 +688,7 @@ begin
   rci.GLStates.ResetTextureMatrix;
 end;
 
-procedure TForm1.DOGLSLWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
+procedure TFormForest.DOGLSLWaterPlaneRender(Sender: TObject; var rci: TGLRenderContextInfo);
 var
   X, Y: Integer;
 begin
@@ -735,7 +736,7 @@ end;
 
 // SetupReflectionMatrix
 //
-function TForm1.GetTextureReflectionMatrix: TGLMatrix;
+function TFormForest.GetTextureReflectionMatrix: TGLMatrix;
 const
   cBaseMat: TGLMatrix = (v: ((X: 0.5; Y: 0; z: 0; w: 0), (X: 0; Y: 0.5; z: 0; w: 0), (X: 0; Y: 0;
     z: 1; w: 0), (X: 0.5; Y: 0.5; z: 0; w: 1)));

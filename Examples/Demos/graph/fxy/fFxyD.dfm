@@ -1,156 +1,112 @@
 object FormFxy: TFormFxy
   Left = 179
   Top = 106
-  Margins.Left = 5
-  Margins.Top = 5
-  Margins.Right = 5
-  Margins.Bottom = 5
   BorderWidth = 4
   Caption = 'Fxy'
-  ClientHeight = 716
-  ClientWidth = 933
+  ClientHeight = 512
+  ClientWidth = 607
   Color = clBtnFace
   DockSite = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poScreenCenter
   OnMouseWheel = FormMouseWheel
-  PixelsPerInch = 168
-  TextHeight = 24
+  TextHeight = 13
   object GLSceneViewer1: TGLSceneViewer
     Left = 0
     Top = 0
-    Width = 637
-    Height = 716
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 437
+    Height = 512
     Camera = GLCamera1
     Buffer.BackgroundColor = clTeal
-    FieldOfView = 137.143493652343800000
+    FieldOfView = 120.453773498535200000
     PenAsTouch = False
     Align = alClient
     OnMouseDown = GLSceneViewer1MouseDown
     OnMouseMove = GLSceneViewer1MouseMove
     TabOrder = 0
+    ExplicitWidth = 360
+    ExplicitHeight = 409
   end
   object Panel1: TPanel
-    Left = 637
+    Left = 437
     Top = 0
-    Width = 296
-    Height = 716
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Width = 170
+    Height = 512
     Align = alRight
     TabOrder = 1
+    ExplicitLeft = 351
+    ExplicitHeight = 384
     object Label1: TLabel
-      Left = 81
-      Top = 600
-      Width = 148
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 46
+      Top = 343
+      Width = 82
+      Height = 13
       Caption = 'XYZ Grid position'
     end
     object Label2: TLabel
-      Left = 39
-      Top = 121
-      Width = 14
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 22
+      Top = 69
+      Width = 7
+      Height = 13
       Caption = 'X'
     end
     object Label3: TLabel
-      Left = 135
-      Top = 121
-      Width = 12
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 77
+      Top = 69
+      Width = 7
+      Height = 13
       Caption = 'Y'
     end
     object Label4: TLabel
-      Left = 221
-      Top = 121
-      Width = 12
-      Height = 24
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 126
+      Top = 69
+      Width = 7
+      Height = 13
       Caption = 'Z'
     end
     object CBCentered: TCheckBox
-      Left = 84
-      Top = 44
-      Width = 170
-      Height = 30
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 48
+      Top = 25
+      Width = 97
+      Height = 17
       Caption = 'Centered grids'
       TabOrder = 0
       OnClick = CBCenteredClick
     end
     object TBXYPosition: TTrackBar
-      Left = 200
-      Top = 154
-      Width = 78
-      Height = 436
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 114
+      Top = 88
+      Width = 45
+      Height = 249
       Min = -10
       Orientation = trVertical
       TabOrder = 1
-      ThumbLength = 35
       TickMarks = tmBoth
       OnChange = TBXYPositionChange
     end
     object TBYZPosition: TTrackBar
-      Left = 21
-      Top = 154
-      Width = 79
-      Height = 436
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 12
+      Top = 88
+      Width = 45
+      Height = 249
       Min = -10
       Orientation = trVertical
       TabOrder = 2
-      ThumbLength = 35
       TickMarks = tmBoth
       OnChange = TBYZPositionChange
     end
     object TBXZPosition: TTrackBar
-      Left = 110
-      Top = 154
-      Width = 79
-      Height = 436
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
+      Left = 63
+      Top = 88
+      Width = 45
+      Height = 249
       Min = -10
       Orientation = trVertical
       TabOrder = 3
-      ThumbLength = 35
       TickMarks = tmBoth
       OnChange = TBXZPositionChange
     end
@@ -182,7 +138,6 @@ object FormFxy: TFormFxy
       YSamplingScale.Min = -1.000000000000000000
       YSamplingScale.Max = 1.000000000000000000
       YSamplingScale.Step = 0.009999999776482582
-      OnGetHeight = HeightField1GetHeight
       object YZGrid: TGLXYZGrid
         LineColor.Color = {0000803F00000000000000000000803F}
         XSamplingScale.Min = -1.000000000000000000

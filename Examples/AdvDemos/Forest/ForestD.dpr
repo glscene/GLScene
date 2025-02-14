@@ -2,12 +2,12 @@ program ForestD;
 
 uses
   Forms,
-  fForestD in 'fForestD.pas' {Form1};
+  fForestD in 'fForestD.pas' {FormForest};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFormForest, FormForest);
   Application.Run;
 end.

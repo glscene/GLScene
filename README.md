@@ -15,7 +15,7 @@ GLS Viewer
 Dune Fighter
 ![DuneFighter](./Help/Screenshots/DuneFighter.png)
 Clothify 
-![Clothify](./Help/Screenshots/Clothify.png)
+![Clothify](./Help/Screenshots/RagDoll.gif)
 Christmas
 ![Christmas](./Help/Screenshots/Christmas.png)
 Forest

@@ -50,8 +50,8 @@ type
     contactgroup: TdJointGroupID;
     ground_box : PdxGeom;
     ground_box2 : PdxGeom;
-    cube: TGLCube;
-    cube2: TGLCube;
+    Cube: TGLCube;
+    Cube2: TGLCube;
     ODEEnable : boolean;
     physTime : double;
     destructor Destroy; override;
@@ -87,10 +87,9 @@ type
     procedure FormKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
-     
     my,mx: integer;
   public
-     
+
   end;
 
 var
@@ -130,6 +129,7 @@ begin
   dGeomSetPosition (ground_box,32,5,0.5);
   dGeomSetRotation (ground_box,R);
   Cube := TGLCube(FormRagdoll.ODEScene.AddNewChild(TGLCube));
+  Cube.Material.FrontProperties.Ambient.RandomColor;
   PdxGeom(ground_box).data := Cube;
   CopyCubeSizeFromBox(Cube, ground_box);
   PositionSceneObject(TGLBaseSceneObject(PdxGeom(ground_box).data), ground_box);
@@ -139,6 +139,7 @@ begin
   dGeomSetPosition (ground_box2,-12,-5,2.5);
   dGeomSetRotation (ground_box2,R);
   Cube2 := TGLCube(FormRagdoll.ODEScene.AddNewChild(TGLCube));
+  Cube2.Material.FrontProperties.Ambient.RandomColor;
   PdxGeom(ground_box2).data := Cube2;
   CopyCubeSizeFromBox(Cube2, ground_box2);
   PositionSceneObject(TGLBaseSceneObject(PdxGeom(ground_box2).data), ground_box2);
@@ -148,6 +149,7 @@ begin
   dGeomSetPosition (ground_box2,0,-15,2.5);
   PdxGeom(ground_box2).data := TGLSphere(FormRagdoll.ODEScene.AddNewChild(TGLSphere));
   TGLSphere(PdxGeom(ground_box2).data).Radius := 5;
+  TGLSphere(PdxGeom(ground_box2).data).Material.FrontProperties.Ambient.RandomColor;
   PositionSceneObject(TGLSphere(PdxGeom(ground_box2).data), ground_box2);
 end;
 

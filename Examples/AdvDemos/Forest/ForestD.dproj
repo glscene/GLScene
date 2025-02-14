@@ -127,7 +127,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="fForestD.pas">
-            <Form>Form1</Form>
+            <Form>FormForest</Form>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
