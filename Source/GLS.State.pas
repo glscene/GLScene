@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene
+// The graphics engine GLXEngine. The unit of GLScene for Delphi
 //
 unit GLS.State;
 (*  Tools for managing an application-side cache of OpenGL state. *)

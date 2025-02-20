@@ -1,5 +1,5 @@
 //
-// The graphics engine GLScene
+// The graphics engine GLXEngine
 //
 unit CUDA.ParallelPrimitives;
 (* CUDA Parallel Primitives *)

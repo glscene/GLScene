@@ -1,5 +1,5 @@
 ﻿//
-// The graphics engine GXScene https://github.com/glscene
+// The graphics engine GLXEngine. The unit of GXScene for Delphi
 //
 unit GXS.Skydome;
 
